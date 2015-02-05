@@ -1,0 +1,41 @@
+<div class="row">
+
+	<div class="col-xs-6">
+
+		<h3>About Step Forward</h4>
+
+		<hr>
+
+		<p>Step Forward is a project intended to match students with research projects. It is designed by Alan Yuan from the UofT Computer Science Department</p>
+		<p>Contact alan[dot]yuan@mail[dot]utoronto[dot].ca for more information</p>
+
+		<hr>
+
+		<b><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> For Academics:</b>
+		<br>
+		<p>Step Forward offers professors and graduate students the opportunity to post their research projects online for students to view. These projects may be NSERC, projects looking for research assistants or general consulting</p>
+		<br>
+
+		<b><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> For Students:</b>
+		<br>
+
+		<p>Step Forward gives students the opportunity to view all the on-going projects at the Computer Science Department. Students may also create a profile for themselves and our system will match your skillset with a project</p>
+
+
+	</div>
+
+	<div class="col-xs-6">
+
+		<% if !user_signed_in? %>
+
+			
+
+		<% else %> 
+
+			<h3>Welcome, <%= @current_user.name %></h3>
+
+		<% end %>
+
+	</div>
+
+</div>

@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :users
   resources :projects
   
-  root to: "static_pages#home"
+  root to: "users#home"
 
-  get '/home',  to: 'static_pages#home'
+  get '/home',  to: 'users#home'
 end
