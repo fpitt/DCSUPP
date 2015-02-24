@@ -1,0 +1,9 @@
+<% @mail_posts.each do |post| %>
+
+    <% if @current_user.news_letter_mail.news_letter_entries.
+        find_by(item_id: post.item_id) %>
+	    	<li><a data-id="<%= post.item_id %>" class="a_mail"><span style="font-size:16px">&#9745;</span> <%= post.item_title %></a></li>
+    <% else %> 
+            <li><a data-id="<%= post.item_id %>" class="a_mail"><span style="font-size:16px">&#9744;</span> <%= post.item_title %></a></li>
+    <% end %>
+<% end %>

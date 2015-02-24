@@ -1,0 +1,51 @@
+<% @mail_posts.each do |post| %>
+	<div data-id="<%= post.item_id %>" class="hidden_class" >
+
+		<% if @current_user.news_letter_mail.news_letter_entries.
+		    find_by(item_id: post.item_id) %>
+
+		    <p><b>Item Title: <%= @current_user.news_letter_mail.news_letter_entries.
+		    find_by(item_id: post.item_id).entry_title %></b></p>
+
+		    <p>Date: <%= post.item_date %></p>
+		    <hr>
+		    <p>Text:</p>
+
+		    <p><%= @current_user.news_letter_mail.news_letter_entries.
+		    find_by(item_id: post.item_id).entry_text.html_safe %><p>
+
+		    <%= form_for @current_user, namespace: post.id, :url => url_for(:controller => "users",
+			    :action => "remove_newsItem", :item_id => post.item_id), :remote => true do |f|%>
+
+			    <%= f.submit "Remove from NewsLetter", class: "btn btn-default" %>
+			<% end %>
+
+		<% else %>
+
+			<%= form_for @current_user, namespace: post.id, :url => url_for(:controller => "users",
+		        :action => "add_newsItem", :id => post.id, 
+		        :item_id => post.item_id), :remote => true do |f|%>
+
+				<%= f.label :entry_title, "Title of the Entry:" %>
+				<br>
+				<%= f.text_field :entry_title, :value => post.item_title, :size=>"35",
+				:class => "form-control" %>
+				<br><br>
+
+				<p><b>Item Title: <%= post.item_title %></b></p>
+				<p>URL: <%= post.item_url %></p>
+
+				<br>
+				<%= f.label :entry_text, "Text of Entry:" %>
+				<br>
+				<%= f.text_area :entry_text, :size => "45x10", :value => Sanitize.fragment(post.item_text), 
+				:class => "form-control", "data-id" => post.item_id %>
+
+				<br>
+
+		        <%= f.submit "Add to NewsLetter", class: "btn btn-default" %>
+		    <% end %>
+		                    
+		<% end %>
+	</div>
+<% end %>
