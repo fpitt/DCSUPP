@@ -4,6 +4,7 @@
   <title>Step Forward</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -30,7 +31,7 @@
 			      <ul class="nav navbar-nav">
 			        <li><%= link_to "Home Page", "/" %></li>
 			        <li><%= link_to "Current Projects", "/curr_project" %></li>
-			        <li><a href="#">Create Project</a></li>
+			        <li><%= link_to "Create Project", '/create_project' %></li>
 			        <li><a href="#">Student Profile</a></li>
 			      </ul>
 

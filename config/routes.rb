@@ -13,4 +13,7 @@ Rails.application.routes.draw do
 
   get '/home',  to: 'users#home'
   get '/curr_project',  to: 'static_pages#project'
+  get '/create_project', to: 'users#create_project'
+
+  get "/project_create" => 'projects#create'
 end

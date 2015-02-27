@@ -6,6 +6,10 @@ class UsersController < ApplicationController
 		
 	end
 
+	def create_project
+
+	end
+
 	private 
 
 	  def find_user

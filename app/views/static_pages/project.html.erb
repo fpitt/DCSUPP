@@ -1,13 +1,80 @@
+
 <script>
+function pageIndex(length, listID, pageID){
 
-    function initialize2(){
-          //Initialize the object defined in NewsLetter Generator
-        if (typeof pageObject2 == "undefined"){
-           pageObject2 = new pageIndex(<%= @jobs.length %>, "itemPosts3", "pagenumber2");
-     	}
+    this.max_element = length - 1;
+   	this.iterator_start = 0;
+    this.page_number = 1;
+    this.listID = listID;
+    this.pageID = pageID;
 
-        pageObject2.initialize('.a_mail', 'posts3');
-   	}
+    this.increment = function(){
+        if (this.iterator_start + 10 <= this.max_element) {
+            this.iterator_start += 10;
+            this.page_number += 1;
+        }
+
+        this.hide_divs()
+    }
+
+    this.decrement = function(){
+        if (this.iterator_start - 10 >= 0) {
+            this.iterator_start -= 10;
+            this.page_number -= 1;
+        }
+
+        this.hide_divs()
+    }
+
+    this.hide_divs = function(){
+        document.getElementById(this.pageID).innerHTML = this.page_number
+        var Posts = document.getElementById(this.listID).childNodes;
+
+        //Hide the divs of the Posts
+        for (i=0; i<Posts.length; i++){
+          if (i > this.iterator_start*2 && i < this.iterator_start + 21) {
+            Posts[i].className = ""
+          } else {
+            Posts[i].className = "hidden_class";
+          }
+        }
+    }
+
+    this.initialize = function(postClass, postID){
+
+    	this.hide_divs()
+
+        $(postClass).click(function(){
+          var Posts = document.getElementById(postID).childNodes;
+
+          //Initialize the click
+          for(i=0; i<Posts.length; i++){
+            if (Posts[i].dataset){
+              if (Posts[i].dataset.id == $(this).attr('data-id')){
+                Posts[i].className = "selected";
+              }
+              else{
+                Posts[i].className = "hidden_class";
+              }
+            }
+          }
+        })
+    }
+
+}
+
+	function initialize2(){
+	    //Initialize the object defined in NewsLetter Generator
+	    if (typeof pageObject == "undefined"){
+	        pageObject = new pageIndex(<%= @projects.length %>, "itemPosts3", "pagenumber2");
+	    }
+
+	    pageObject.initialize('.a_mail', 'posts3');
+	}
+
+  $(document).ready(initialize2);
+  $(document).on('page:load', initialize2);
+
 </script>
 
 <h3>Current Projects</h3>
@@ -20,12 +87,12 @@
 		<div class="text-center">
 			<div class="btn-group">
   			<button type="button" class="btn btn-default" 
-  			onclick="pageObject2.decrement()">Prev</button>
+  			onclick="pageObject.decrement()">Prev</button>
 
  			<button type="button" class="btn btn-default disabled" id="pagenumber2">1</button>
 
   			<button type="button" class="btn btn-default" 
-  			onclick="pageObject2.increment()">Next</button>
+  			onclick="pageObject.increment()">Next</button>
 			</div>
 		</div>
 
@@ -34,7 +101,7 @@
 
 		<ul id="itemPosts3" class="nav nav-tabs nav-stacked">
 
-            <%= render :partial => "static_pages/partial/mailPosts" %>
+            <%= render :partial => "static_pages/partial/projectPosts" %>
 
 	    </ul>
 
@@ -43,7 +110,7 @@
 	<div class="col-xs-6">
 		<div class="panel-content" id= "posts3" >
 
-            <%= render :partial => "static_pages/partial/mailPostsInfo" %>
+            <%= render :partial => "static_pages/partial/projectPostsInfo" %>
 
 		</div>
 

@@ -1,9 +1,9 @@
 class StaticPagesController < ApplicationController
 
-	before_action :find_user
+  before_action :find_user
 
   def project
-    @jobs = Project.all
+    @projects = Project.all
   end
 
 

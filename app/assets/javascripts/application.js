@@ -20,7 +20,7 @@
 function pageIndex(length, listID, pageID){
 
     this.max_element = length - 1;
-   	this.iterator_start = 0;
+    this.iterator_start = 0;
     this.page_number = 1;
     this.listID = listID;
     this.pageID = pageID;
@@ -59,7 +59,7 @@ function pageIndex(length, listID, pageID){
 
     this.initialize = function(postClass, postID){
 
-    	this.hide_divs()
+      this.hide_divs()
 
         $(postClass).click(function(){
           var Posts = document.getElementById(postID).childNodes;

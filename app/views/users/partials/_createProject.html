@@ -1,0 +1,24 @@
+<h3>Create New Project</h3>
+
+<hr>
+
+<div id="panel-error">
+    <%= render :partial => "projects/projectpartial/projecterror" %>
+</div>
+
+
+<%= form_for :project, :url => '/projects#create', :remote => true, 
+    :html => {:id => "input_form"} do |f| %> 
+
+    <%= f.label :entry_text, "Project Title:" %>
+    <%= f.text_field :item_title, placeholder: "Title of Post", :size=>"100", :class => "form-control"   %>
+    <br>
+
+
+    <%= f.label :entry_text, "Project Information:" %>
+    <%= f.text_area :item_text, :size=>"70x8", :class => "form-control", placeholder: "Content Information" %>
+    <br>
+
+    <%= f.submit "Add New Post", class: "btn btn-default" %>
+
+<% end %>

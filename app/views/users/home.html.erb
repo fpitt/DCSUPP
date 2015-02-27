@@ -28,11 +28,13 @@
 
 		<% if !user_signed_in? %>
 
-			
+			<h3>SignIn to create a profile</h3>
+
+			<hr>
 
 		<% else %> 
 
-			<h3>Welcome, <%= @current_user.name %></h3>
+			<%= render :partial => "users/partials/userProfile" %>
 
 		<% end %>
 
