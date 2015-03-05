@@ -15,5 +15,8 @@ Rails.application.routes.draw do
   get '/curr_project',  to: 'static_pages#project'
   get '/create_project', to: 'users#create_project'
 
+  patch '/savechange', to: 'users#update_profile'
+  patch '/change', to: 'users#change'
+
   get "/project_create" => 'projects#create'
 end

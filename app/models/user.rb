@@ -17,4 +17,17 @@ class User < ActiveRecord::Base
   has_one :student_course
   accepts_nested_attributes_for :student_course
 
+  after_commit :setup_dependencies, on: :create
+
+  private
+
+    def setup_dependencies
+
+      #Create the Dependencies
+      self.student_setting = StudentSetting.new
+      self.student_setting.save
+
+    end
+
+
 end

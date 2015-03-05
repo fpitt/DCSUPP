@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150129193958) do
+ActiveRecord::Schema.define(version: 20150305075053) do
 
   create_table "professor_settings", force: :cascade do |t|
     t.datetime "created_at",                       null: false
@@ -64,10 +64,16 @@ ActiveRecord::Schema.define(version: 20150129193958) do
   add_index "student_courses", ["user_id"], name: "index_student_courses_on_user_id"
 
   create_table "student_settings", force: :cascade do |t|
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
     t.integer  "user_id"
-    t.boolean  "allow_viewing", default: false
+    t.boolean  "allow_viewing",       default: false
+    t.string   "student_info_A",      default: "Blank"
+    t.string   "student_info_B",      default: "Blank"
+    t.string   "student_info_C",      default: "Blank"
+    t.string   "student_info_D",      default: "Blank"
+    t.string   "student_info_F",      default: "Blank"
+    t.boolean  "settings_initalized", default: false
   end
 
   add_index "student_settings", ["user_id"], name: "index_student_settings_on_user_id"

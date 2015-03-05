@@ -1,0 +1,39 @@
+<h3>Mail Settings</h3>
+<hr>
+
+	<%= form_for current_user, :url => url_for(:controller => "users", 
+        :action => "update_profile"), :remote => true do |f| %>
+
+		 <%= f.fields_for :student_settings do |account_form| %>
+
+			<div style="width:70%">
+
+				<%= account_form.label :student_info_A, "Student Info A" %><br>
+				<%= account_form.text_field :student_info_A %>
+				<br><br>
+
+				<%= account_form.label :student_info_B, "Student Info B" %><br>
+				<%= account_form.text_field :student_info_B %>
+				<br><br>
+
+				<%= account_form.label :student_info_C, "Student Info C" %><br>
+				<%= account_form.text_field :student_info_C %>
+				<br><br>
+
+				<%= account_form.label :student_info_D, "Student Info D" %><br>
+				<%= account_form.text_field :student_info_D %>
+				<br><br>
+
+				<%= account_form.label :student_info_F, "Student Info F" %><br>
+				<%= account_form.text_field :student_info_F %>
+				<br><br>
+			</div>
+
+		<% end %>
+
+		<br>
+		<%= f.submit "Save changes", class: "btn btn-default btn-med" %>
+		
+	<% end %>
+
+</div>
