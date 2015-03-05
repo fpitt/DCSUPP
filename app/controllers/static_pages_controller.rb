@@ -3,7 +3,7 @@ class StaticPagesController < ApplicationController
   before_action :find_user
 
   def project
-    @projects = Project.all
+    @projects = Project.order(created_at: :desc)
   end
 
 

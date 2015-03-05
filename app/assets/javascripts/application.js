@@ -63,7 +63,7 @@ function pageIndex(length, listID, pageID){
 
         $(postClass).click(function(){
           var Posts = document.getElementById(postID).childNodes;
-
+          console.log(Posts)
           //Initialize the click
           for(i=0; i<Posts.length; i++){
             if (Posts[i].dataset){
@@ -79,3 +79,4 @@ function pageIndex(length, listID, pageID){
     }
 
 }
+
