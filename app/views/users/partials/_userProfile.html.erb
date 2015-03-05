@@ -6,34 +6,31 @@
 
 	<p><b>Student Info A:</b> <%= @current_user.student_setting.student_info_A %></p>
 
-	<br><br>
+	<br>
 
 	<p><b>Student Info B:</b> <%= @current_user.student_setting.student_info_B %></p>
-
-	<br><br>
+	<br>
 
 	<p><b>Student Info C:</b> <%= @current_user.student_setting.student_info_C %></p>
-
-	<br><br>
+	<br>
 
 	<p><b>Student Info D:</b> <%= @current_user.student_setting.student_info_D %></p>
-
-	<br><br>
+	<br>
 
 	<p><b>Student Info F:</b> <%= @current_user.student_setting.student_info_F %></p>
-
-	<br><br>
+	<br>
 
 <% else %>
 
 	<p>You have not initialized your settings</p>
 
-	<%= form_for @current_user, :url => url_for(:controller => "users", 
-	    :action => "change"), :remote => true do |f| %>
+<% end %>
 
-	    <%= f.submit "Update Student Settings", class: "btn btn-default btn-med" %>
+<%= form_for @current_user, :url => url_for(:controller => "users", 
+    :action => "change"), :remote => true do |f| %>
 
-	<% end %>
+	<%= f.submit "Update Student Settings", class: "btn btn-default btn-med" %>
 
 <% end %>
+
 	

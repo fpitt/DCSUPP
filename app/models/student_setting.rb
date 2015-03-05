@@ -8,5 +8,5 @@ class StudentSetting < ActiveRecord::Base
   	validates :student_info_B, presence: true, allow_blank: false
   	validates :student_info_C, presence: true, allow_blank: false
   	validates :student_info_D, presence: true, allow_blank: false
-  	validates :student_info_E, presence: true, allow_blank: false
+  	validates :student_info_F, presence: true, allow_blank: false
 end

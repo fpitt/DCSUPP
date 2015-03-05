@@ -28,10 +28,13 @@ class UsersController < ApplicationController
 
 		if !current_user.student_setting
 			current_user.student_setting = StudentSetting.new
+
       		current_user.student_setting.save
 		end 
 
 	    #Update User Settings [No Mass- Assignment]
+	   current_user.student_setting.update_attribute(:settings_initalized, true)
+
 	    current_user.student_setting.update_attribute(:student_info_A, 
 	      param[:student_info_A])
 	    current_user.student_setting.update_attribute(:student_info_B, 

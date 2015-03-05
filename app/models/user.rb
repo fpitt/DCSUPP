@@ -25,6 +25,7 @@ class User < ActiveRecord::Base
 
       #Create the Dependencies
       self.student_setting = StudentSetting.new
+      self.student_setting.settings_initalized = false
       self.student_setting.save
 
     end
