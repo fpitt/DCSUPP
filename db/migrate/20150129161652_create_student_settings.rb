@@ -4,6 +4,7 @@ class CreateStudentSettings < ActiveRecord::Migration
 
       t.timestamps null: false
       t.belongs_to :user, index: true
+      t.boolean :apply_project, :default => true
       t.boolean :allow_viewing, :default => false
     end
   end

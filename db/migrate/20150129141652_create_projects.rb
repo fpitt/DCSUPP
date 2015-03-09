@@ -6,7 +6,6 @@ class CreateProjects < ActiveRecord::Migration
       t.belongs_to :user, index: true
       t.string :item_id
       t.string :item_title
-      t.integer :column_type
       t.datetime :item_date
       t.text :item_text
       t.boolean :approval_status
