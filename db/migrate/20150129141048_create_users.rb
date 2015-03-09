@@ -6,7 +6,6 @@ class CreateUsers < ActiveRecord::Migration
       t.string :name
       t.boolean :professor, :default => false
       t.boolean :administrator, :default => false
-      t.string :user_id
 
     end
   end

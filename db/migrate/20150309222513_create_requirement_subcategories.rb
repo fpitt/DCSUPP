@@ -1,9 +1,9 @@
-class RequirementSubcategories < ActiveRecord::Migration
+class CreateRequirementSubcategories < ActiveRecord::Migration
   def change
-  	create_table :requirement_subcategories do |t|
+    create_table :requirement_subcategories do |t|
 
       t.timestamps null: false
-      t.string :category_name
+      t.string :sub_category_name
       t.belongs_to :requirement_category, index: true
       t.string :attribute_type
       t.string :upper_limit, :null => true

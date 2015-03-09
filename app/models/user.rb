@@ -6,29 +6,14 @@ class User < ActiveRecord::Base
 
   attr_accessible :email, :password, :password_confirmation
 
-  has_many :projects
+  has_many :projects, :through => :project_applications
+  has_many :project_applications
   
   has_one :student_setting
   accepts_nested_attributes_for :student_setting
 
   has_one :professor_setting
   accepts_nested_attributes_for :professor_setting
-
-  has_one :student_course
-  accepts_nested_attributes_for :student_course
-
-  after_commit :setup_dependencies, on: :create
-
-  private
-
-    def setup_dependencies
-
-      #Create the Dependencies
-      self.student_setting = StudentSetting.new
-      self.student_setting.settings_initalized = false
-      self.student_setting.save
-
-    end
 
 
 end

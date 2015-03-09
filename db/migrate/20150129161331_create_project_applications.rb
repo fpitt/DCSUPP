@@ -6,7 +6,7 @@ class CreateProjectApplications < ActiveRecord::Migration
       t.belongs_to :user, index: true
       t.belongs_to :project, index: true
       t.text :message
-      t.text :title_message
+      t.string :title
 
     end
   end

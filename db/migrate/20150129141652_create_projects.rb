@@ -4,10 +4,9 @@ class CreateProjects < ActiveRecord::Migration
 
       t.timestamps null: false
       t.belongs_to :user, index: true
-      t.string :item_id
-      t.string :item_title
-      t.datetime :item_date
-      t.text :item_text
+      t.string :title
+      t.datetime :deadline_date
+      t.text :text
       t.boolean :approval_status
 
     end
