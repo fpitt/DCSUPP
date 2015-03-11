@@ -18,6 +18,12 @@ class UsersController < ApplicationController
 
 	end
 
+	def manage_category
+
+		@category = RequirementCategory.order(created_at: :desc)
+
+	end
+
 	def update_profile
 
 		puts params
@@ -31,20 +37,6 @@ class UsersController < ApplicationController
 
       		current_user.student_setting.save
 		end 
-
-	    #Update User Settings [No Mass- Assignment]
-	   current_user.student_setting.update_attribute(:settings_initalized, true)
-
-	    current_user.student_setting.update_attribute(:student_info_A, 
-	      param[:student_info_A])
-	    current_user.student_setting.update_attribute(:student_info_B, 
-	      param[:student_info_B])
-	    current_user.student_setting.update_attribute(:student_info_C, 
-	      param[:student_info_C])
-	    current_user.student_setting.update_attribute(:student_info_D, 
-	      param[:student_info_D])
-	    current_user.student_setting.update_attribute(:student_info_F, 
-	      param[:student_info_F])
 
 		respond_to do |format|
       		format.js

@@ -1,0 +1,2 @@
+module RequirementCategoriesHelper
+end

@@ -1,0 +1,2 @@
+class RequirementSubcategoriesController < ApplicationController
+end

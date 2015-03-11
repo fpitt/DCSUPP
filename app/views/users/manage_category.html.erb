@@ -3,10 +3,10 @@
 	function initialize2(){
 	    //Initialize the object defined in NewsLetter Generator
 	    if (typeof pageObject == "undefined"){
-	       pageObject = new pageIndex(<%= @projects.length %>, "itemPosts3", "pagenumber2");
-	    }
+	        pageObject = new pageIndex(<%= @category.length %>, "itemPosts3", "pagenumber2");
+        }
 
-	    pageObject.initialize('.a_mail', 'posts3');
+      pageObject.initialize('.a_mail', 'posts3');
 
 	}
 
@@ -15,12 +15,24 @@
 
 </script>
 
-<h3>Current Projects</h3>
+
+<h3>Manage Posting Categories</h3>
 
 <div class="row">
 
   <div class="col-xs-4">
-  		<div class="row" style="height:20px"></div>
+  		<hr>
+
+		<%= form_for :requirement_category, :url => '/requirement_categories#create', :remote => true, :html => {:id => "input_form"} do |f| %> 
+
+			<%= f.text_field :category_name, placeholder: "Title of Category", :size=>"80", :class => "form-control"  %>
+			<br>
+
+			<%= f.submit "Add New Category", class: "btn btn-default" %>
+		<% end %>
+
+		<hr>
+
 
   		<div class="text-center">
   			<div class="btn-group">
@@ -36,10 +48,9 @@
 
   		<div class="row" style="height:5px"></div>
 
+  		<ul id="itemPosts3" class="nav nav-tabs nav-stacked">
 
-  		  <ul id="itemPosts3" class="nav nav-tabs nav-stacked">
-
-              <%= render :partial => "static_pages/partial/projectPosts" %>
+            <%= render :partial => "users/partials/category/categoryPosts" %>
 
   	    </ul>
 
@@ -49,9 +60,11 @@
 
 		<div class="panel-content" id= "posts3" >
 
-          <%= render :partial => "static_pages/partial/projectPostsInfo" %>
+        	<%= render :partial => "users/partials/category/categoryPostsInfo" %>
 
 		</div>
 
-	</div>
+  </div>
+
+
 </div>
