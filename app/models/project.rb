@@ -8,16 +8,10 @@ class Project < ActiveRecord::Base
 	has_many :users, :through => :project_applications
 	has_many :requirement_subcategories, :through => :project_requirements
 
-	attr_accessible :item_title, :item_text
+	attr_accessible :title, :text
 
-  	validates :item_title, presence: true, allow_blank: false
-  	validates :item_text, presence: true, allow_blank: false
+  	validates :title, presence: true, allow_blank: false
+  	validates :text, presence: true, allow_blank: false
 
-	before_save do |project|
-
-		project.item_date = Time.current
-		project.item_id = SecureRandom.urlsafe_base64
-
-	end
 
 end
