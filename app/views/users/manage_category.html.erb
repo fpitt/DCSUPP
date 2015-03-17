@@ -23,6 +23,11 @@
   <div class="col-xs-4">
   		<hr>
 
+    <div id="panel-error">
+        <%= render :partial => "projects/projectpartial/projecterror" %>
+    </div>
+
+
 		<%= form_for :requirement_category, :url => '/requirement_categories#create', :remote => true, :html => {:id => "input_form"} do |f| %> 
 
 			<%= f.text_field :category_name, placeholder: "Title of Category", :size=>"80", :class => "form-control"  %>

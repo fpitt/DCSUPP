@@ -2,11 +2,11 @@
 
 	function initialize2(){
 	    //Initialize the object defined in NewsLetter Generator
-	    if (typeof pageObject == "undefined"){
-	       pageObject = new pageIndex(<%= @projects.length %>, "itemPosts3", "pagenumber2");
+	    if (typeof pageObject2 == "undefined"){
+	       pageObject2 = new pageIndex(<%= @projects.length %>, "itemPosts3", "pagenumber2");
 	    }
 
-	    pageObject.initialize('.a_mail', 'posts3');
+	    pageObject2.initialize('.a_mail', 'posts3');
 
 	}
 
@@ -25,12 +25,12 @@
   		<div class="text-center">
   			<div class="btn-group">
     			<button type="button" class="btn btn-default" 
-    			onclick="pageObject.decrement()">Prev</button>
+    			onclick="pageObject2.decrement()">Prev</button>
 
    			<button type="button" class="btn btn-default disabled" id="pagenumber2">1</button>
 
     			<button type="button" class="btn btn-default" 
-    			onclick="pageObject.increment()">Next</button>
+    			onclick="pageObject2.increment()">Next</button>
   			</div>
   		</div>
 
