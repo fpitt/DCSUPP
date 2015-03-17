@@ -1,11 +1,15 @@
-console.log("HII")
+console.log("HII!")
 $('#panel-error').html(" <%= escape_javascript(render(:partial => 
 	'requirement_categories/requirementpartial/categoryerror')) %>")
 
-<% if !@Category.errors.any? %>
+<% if !@new_category.errors.any? %>
 	document.getElementById("input_form").reset()
-	$('#userPosts').html(" <%= escape_javascript(render(:partial => 
-		'users/partials/createProject')) %>")
+	$('#itemPosts3').html(" <%= escape_javascript(render(:partial => 
+	'users/partials/category/categoryPosts')) %>")
+
+	$('#posts3').html(" <%= escape_javascript(render(:partial => 
+	'users/partials/category/categoryPostsInfo')) %>")
 	
 	pageObject.initialize('.a_mail', 'posts3');
 <% end %>
+

@@ -1,13 +1,13 @@
-<% if @Category and @Category.errors.any? %>
+<% if @new_category and @new_category.errors.any? %>
     <div class="alert alert-danger">
-        The form contains <%= pluralize(@Category.errors.count, "error") %>.
+        The form contains <%= pluralize(@new_category.errors.count, "error") %>.
     </div>
 
-    <% @Category.errors.full_messages.each do |error| %>
+    <% @new_category.errors.full_messages.each do |error| %>
         <p>*<%= error %></p>
     <% end %>
 
-<% elsif @Category %>
+<% elsif @new_category %>
 
 	<div class="alert alert-success" role="alert">Your Category is Added.</div>
 

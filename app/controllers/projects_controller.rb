@@ -7,6 +7,8 @@ class ProjectsController < ApplicationController
 
     end
 
+    @projects - 
+
     #Debug/ Display the Errors
     @Project.errors.full_messages.each do |msg|
       puts msg

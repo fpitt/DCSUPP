@@ -1,16 +1,16 @@
 class RequirementCategoriesController < ApplicationController
 
 	def create
-		@Category = RequirementCategory.new(params[:requirement_category])
+		@new_category = RequirementCategory.new(params[:requirement_category])
 
-	  	if @Category.save
+	  	if @new_category.save
 
 	    end
 
-	    puts @Category
+	    @category = RequirementCategory.order(created_at: :desc)
 
 	    #Debug/ Display the Errors
-	    @Category.errors.full_messages.each do |msg|
+	    @new_category.errors.full_messages.each do |msg|
 	      puts msg
 	    end
 
