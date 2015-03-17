@@ -19,7 +19,7 @@
 
 function pageIndex(length, listID, pageID){
 
-    this.max_element = length - 1;
+    this.max_element = length;
     this.iterator_start = 0;
     this.page_number = 1;
     this.listID = listID;
@@ -49,7 +49,7 @@ function pageIndex(length, listID, pageID){
 
         //Hide the divs of the Posts
         for (i=0; i<Posts.length; i++){
-          if (i > this.iterator_start*2 && i < this.iterator_start + 21) {
+          if (i > this.iterator_start*2 && i < this.iterator_start*2 + 21) {
             Posts[i].className = ""
           } else {
             Posts[i].className = "hidden_class";
