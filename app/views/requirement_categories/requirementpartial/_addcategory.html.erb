@@ -1,0 +1,55 @@
+<%= form_for :requirement_subcategories, :url => '/requirement_subcategories#create', :remote => true, 
+    :html => {:id => "input_form"} do |f| %> 
+
+    <%= f.text_field :item_title, placeholder: "Category Label", :class => "form-control span70" %>
+
+    <br>
+    <div id="selectType">
+        <%= f.label :column_type, "Input Type: " %>
+        <%= f.select(:column_type, [["Input Number", 1], ["Input Date", 2], ["Boolean", 3]]) %>
+    </div>
+
+    <div id="inputNumber">
+        <hr>
+        <p>Input Single Number e.g.[CSC 412 grade: Min 0, Max 100]</p>
+        
+        <%= check_box_tag(:min_value) %>
+        <%= label_tag(:min_value, "Add Minimum Value") %>
+        <%= f.text_field :minimumValue, placeholder: "Minimum value", :class => "form-control span40" %>
+        <br>
+        <%= check_box_tag(:max_value) %>
+        <%= label_tag(:max_value, "Add Maximum Value") %>
+        <%= f.text_field :maximumValue, placeholder: "Maximum value", :class => "form-control span40" %>
+        <br>
+        <%= check_box_tag(:decimal) %>
+        <%= label_tag(:decimal, "Allow Decimals") %>
+    </div>
+
+    <div id="inputDate" class="hidden_class">
+        <hr>
+        <p>Input Single Date e.g.[Graduate Date: December 4, 2015]</p>
+
+        <%= check_box_tag(:before_date) %>
+        <%= label_tag(:before_date, "Add Earliest Date") %><br>
+        <%= select_date Date.today, prefix: :start_date %>
+
+        <br><br>
+        <%= check_box_tag(:after_date) %>
+        <%= label_tag(:after_date, "Add Latest Date") %><br>
+        <%= select_date Date.today, prefix: :start_date %>
+    </div>
+
+    <div id="inputBoolean" class="hidden_class">
+        <hr>
+        <p>Input Boolean Value: e.g. Completed Course</p>
+
+        <%= check_box_tag(:before_date) %>
+        <%= label_tag(:before_date, "Default True") %>
+    </div>
+
+
+    <br>
+
+    <%= f.submit "Add New Requirement", class: "btn btn-default"  %>
+
+<% end %>

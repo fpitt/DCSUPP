@@ -1,5 +1,29 @@
 <script>
 
+  function initialize(){
+      //Initialize the object defined in Your Posts
+    console.log("Initalize")
+
+    var selectable_values = ["Input Number", "Input Date", "Boolean"];
+    var selectable_ID = ["inputNumber", "inputDate", "inputBoolean"];
+    var current_ID = "#inputNumber";
+
+    $( "#selectType" ).change(function() {
+
+        $(current_ID).addClass("hidden_class");
+
+        selected = $(this).find('option:selected').text();
+        current_ID = selectable_ID[selectable_values.indexOf(selected)];
+
+        current_ID = '#' + current_ID;
+        console.log(current_ID);
+
+        $(current_ID).removeClass("hidden_class")
+
+    });
+ }
+
+
 	function initialize2(){
 	    //Initialize the object defined in NewsLetter Generator
 	    if (typeof pageObject == "undefined"){
@@ -7,6 +31,8 @@
         }
 
       pageObject.initialize('.a_mail', 'posts3');
+
+      initialize()
 
 	}
 
@@ -17,11 +43,11 @@
 
 
 <h3>Manage Posting Categories</h3>
+<hr>
 
 <div class="row">
 
   <div class="col-xs-4">
-  		<hr>
 
     <div id="panel-error">
         <%= render :partial => "requirement_categories/requirementpartial/categoryerror" %>
@@ -30,7 +56,7 @@
 
 		<%= form_for :requirement_category, :url => '/requirement_categories#create', :remote => true, :html => {:id => "input_form"} do |f| %> 
 
-			<%= f.text_field :category_name, placeholder: "Title of Category", :size=>"80", :class => "form-control"  %>
+			<%= f.text_field :category_name, placeholder: "Title of Category", :class => "form-control span90"  %>
 			<br>
 
 			<%= f.submit "Add New Category", class: "btn btn-default" %>
@@ -62,6 +88,10 @@
   </div>
 
   <div class="col-xs-8">
+
+    <%= render :partial => "requirement_categories/requirementpartial/addcategory" %>
+
+    <hr>
 
 		<div class="panel-content" id= "posts3" >
 
