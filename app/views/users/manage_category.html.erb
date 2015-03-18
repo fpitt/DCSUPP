@@ -4,21 +4,22 @@
       //Initialize the object defined in Your Posts
     console.log("Initalize")
 
-    var selectable_values = ["Input Number", "Input Date", "Boolean"];
-    var selectable_ID = ["inputNumber", "inputDate", "inputBoolean"];
-    var current_ID = "#inputNumber";
+    var selectable_values = ["Input Number", "Input Date", "Boolean", "Input Field"];
+    var selectable_ID = ["inputNumber", "inputDate", "inputBoolean", "inputfield"];
+    var current_ID = "inputNumber";
+    var current_ID_hash = "#inputNumber";
 
     $( "#selectType" ).change(function() {
 
-        $(current_ID).addClass("hidden_class");
+        $(current_ID_hash).addClass("hidden_class");
 
         selected = $(this).find('option:selected').text();
         current_ID = selectable_ID[selectable_values.indexOf(selected)];
 
-        current_ID = '#' + current_ID;
-        console.log(current_ID);
+        current_ID_hash = '#' + current_ID;
 
-        $(current_ID).removeClass("hidden_class")
+        $(current_ID_hash).removeClass("hidden_class");
+        $('#requirement_subcategories_input_type').val(current_ID);
 
     });
  }

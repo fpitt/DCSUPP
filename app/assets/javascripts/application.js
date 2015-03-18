@@ -63,12 +63,14 @@ function pageIndex(length, listID, pageID){
 
         $(postClass).click(function(){
           var Posts = document.getElementById(postID).childNodes;
-          console.log(Posts)
+
           //Initialize the click
           for(i=0; i<Posts.length; i++){
             if (Posts[i].dataset){
               if (Posts[i].dataset.id == $(this).attr('data-id')){
                 Posts[i].className = "selected";
+                $('#requirement_subcategories_category').val(Posts[i].innerText.replace(/\s+/, ""));
+                $('#CategoryType').text(Posts[i].innerText.replace(/\s+/, ""));
               }
               else{
                 Posts[i].className = "hidden_class";

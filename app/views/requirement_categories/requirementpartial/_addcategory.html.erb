@@ -3,10 +3,25 @@
 
     <%= f.text_field :item_title, placeholder: "Category Label", :class => "form-control span70" %>
 
+    <%= f.hidden_field :category, :value => "test" %>
+    <%= f.hidden_field :input_type, :value => "inputNumber" %>
     <br>
-    <div id="selectType">
-        <%= f.label :column_type, "Input Type: " %>
-        <%= f.select(:column_type, [["Input Number", 1], ["Input Date", 2], ["Boolean", 3]]) %>
+
+    <div class="row"> 
+
+        <div class="col-xs-3">
+            <b>Category Name: </b><p><div id='CategoryType'>[None]</div></p>
+
+            <div id="selectType">
+                <%= f.label :column_type, "Input Type: " %><br>
+                <%= f.select(:column_type, [["Input Number", 1], ["Input Date", 2], ["Boolean", 3],
+                        ["Input Field", 4]]) %>
+            </div>
+        </div>
+
+        <div class="col-xs-9">
+            <b>Output:<b>
+        </div>
     </div>
 
     <div id="inputNumber">
@@ -36,17 +51,38 @@
         <br><br>
         <%= check_box_tag(:after_date) %>
         <%= label_tag(:after_date, "Add Latest Date") %><br>
-        <%= select_date Date.today, prefix: :start_date %>
+        <%= select_date Date.today, prefix: :start_date %><br>
     </div>
 
     <div id="inputBoolean" class="hidden_class">
         <hr>
-        <p>Input Boolean Value: e.g. Completed Course</p>
+        <p>Simple CheckBox: e.g. International</p>
 
         <%= check_box_tag(:before_date) %>
         <%= label_tag(:before_date, "Default True") %>
     </div>
 
+    <div id="inputfield" class="hidden_class">
+        <hr>
+        <p>Input Field: e.g. Email Regex: [A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}</p>
+
+        <%= check_box_tag(:regex) %>
+        <%= label_tag(:regex_equation, "Set Regex") %>
+        <%= f.text_field :minimumValue, placeholder: "Regex expression", :class => "form-control span40" %><br>
+
+        <%= check_box_tag(:max_str_len) %>
+        <%= label_tag(:max_str_len, "Set Maximum Length") %>
+        <%= f.text_field :minimumValue, placeholder: "Maximum Length", :class => "form-control span40" %><br>
+
+        <%= check_box_tag(:min_str_len) %>
+        <%= label_tag(:min_str_len, "Set Minimum Length") %>
+        <%= f.text_field :minimumValue, placeholder: "Minimum Length", :class => "form-control span40" %><br>
+
+        <%= check_box_tag(:placeholder) %>
+        <%= label_tag(:placeholder, "Add Input Placeholder") %>
+        <%= f.text_field :placeholder_value, placeholder: "Placeholder", :class => "form-control span40" %><br>
+
+    </div>
 
     <br>
 
