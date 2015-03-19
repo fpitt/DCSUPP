@@ -17,6 +17,10 @@
                 <%= f.select(:column_type, [["Input Number", 1], ["Input Date", 2], ["Boolean", 3],
                         ["Input Field", 4]]) %>
             </div>
+
+            <br>
+            <%= check_box_tag(:student_attribute) %>
+            <%= label_tag(:student_attribute, "Student Attribute") %>
         </div>
 
         <div class="col-xs-9">
@@ -83,6 +87,8 @@
         <%= f.text_field :placeholder_value, placeholder: "Placeholder", :class => "form-control span40" %><br>
 
     </div>
+
+
 
     <br>
 
