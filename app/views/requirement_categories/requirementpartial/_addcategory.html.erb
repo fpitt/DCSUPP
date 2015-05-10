@@ -25,7 +25,7 @@
         </div>
 
         <div class="col-xs-9">
-            <b>Output:<b>
+            <b>Output:</b>
         </div>
     </div>
 
@@ -33,37 +33,37 @@
         <hr>
         <p>Input Single Number e.g. [CSC 412 grade: Min 0, Max 100]</p>
         
-        <%= check_box_tag(:min_value) %>
-        <%= label_tag(:min_value, "Add Minimum Value") %>
+        <%= f.check_box(:min_value) %>
+        <b>Add Minimum Value</b>
         <%= f.text_field :minimumValue, placeholder: "Minimum value", :class => "form-control span40" %>
         <br>
-        <%= check_box_tag(:max_value) %>
-        <%= label_tag(:max_value, "Add Maximum Value") %>
+        <%= f.check_box(:max_value) %>
+        <b>Add Maximum Value</b>
         <%= f.text_field :maximumValue, placeholder: "Maximum value", :class => "form-control span40" %>
         <br>
-        <%= check_box_tag(:decimal) %>
-        <%= label_tag(:decimal, "Allow Decimals") %>
+        <%= f.check_box(:decimal) %>
+        <b>Allow Decimals</b>
     </div>
 
     <div id="inputDate" class="hidden_class">
         <hr>
         <p>Input Single Date e.g. [Graduate Date: December 4, 2015]</p>
 
-        <%= check_box_tag(:before_date) %>
+        <%= f.check_box(:before_date) %>
         <%= label_tag(:before_date, "Add Earliest Date") %><br>
-        <%= select_date Date.today, prefix: :start_date %>
+        <%= f.date_select Date.today, prefix: :start_date %>
 
         <br><br>
-        <%= check_box_tag(:after_date) %>
+        <%= f.check_box(:after_date) %>
         <%= label_tag(:after_date, "Add Latest Date") %><br>
-        <%= select_date Date.today, prefix: :start_date %><br>
+        <%= f.date_select Date.today, prefix: :start_date %><br>
     </div>
 
     <div id="inputBoolean" class="hidden_class">
         <hr>
         <p>Simple CheckBox: e.g. International Student</p>
 
-        <%= check_box_tag(:before_date) %>
+        <%= f.check_box(:before_date) %>
         <%= label_tag(:before_date, "Default True") %>
     </div>
 
@@ -71,19 +71,19 @@
         <hr>
         <p>Input Field: e.g. Email Regex: [A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}</p>
 
-        <%= check_box_tag(:regex) %>
+        <%= f.check_box(:regex) %>
         <%= label_tag(:regex_equation, "Set Regex") %>
         <%= f.text_field :minimumValue, placeholder: "Regex expression", :class => "form-control span40" %><br>
 
-        <%= check_box_tag(:max_str_len) %>
+        <%= f.check_box(:max_str_len) %>
         <%= label_tag(:max_str_len, "Set Maximum Length") %>
         <%= f.text_field :minimumValue, placeholder: "Maximum Length", :class => "form-control span40" %><br>
 
-        <%= check_box_tag(:min_str_len) %>
+        <%= f.check_box(:min_str_len) %>
         <%= label_tag(:min_str_len, "Set Minimum Length") %>
         <%= f.text_field :minimumValue, placeholder: "Minimum Length", :class => "form-control span40" %><br>
 
-        <%= check_box_tag(:placeholder) %>
+        <%= f.check_box(:placeholder) %>
         <%= label_tag(:placeholder, "Add Input Placeholder") %>
         <%= f.text_field :placeholder_value, placeholder: "Placeholder", :class => "form-control span40" %><br>
 
@@ -93,6 +93,9 @@
 
     <br>
 
-    <%= f.submit "Add New Requirement", class: "btn btn-default"  %>
+    <div id="alert" class="alert alert-warning span40" role="alert">Please select a Requirement Category</div>
+
+    <%= f.submit "Add New Requirement", class: "btn btn-default disabled",
+        :id => "submit_tag"  %>
 
 <% end %>

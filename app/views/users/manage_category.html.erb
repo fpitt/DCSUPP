@@ -39,8 +39,12 @@
   function categoryClick(){
     $(".a_mail").click(function(){
 
-        $("#CategoryType").text($(this).text())
-        $("#requirement_subcategories_category").val($(this).text())
+        $("#CategoryType").text($(this).text());
+        $("#requirement_subcategories_category").val($(this).text());
+
+        //Remove the warning tag
+        $("#submit_tag").removeClass("disabled");
+        $("#alert").addClass("hidden_class");
 
     })
   }
@@ -104,6 +108,9 @@
 		<% end %>
 
 		<hr>
+
+    <h4 style="text-align:center">Requirement Categories</h4>
+    <hr>
 
   	<div class="text-center">
   		<div class="btn-group">
