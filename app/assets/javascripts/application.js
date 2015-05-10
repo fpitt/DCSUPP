@@ -69,7 +69,8 @@ function pageIndex(length, listID, pageID){
             if (Posts[i].dataset){
               if (Posts[i].dataset.id == $(this).attr('data-id')){
                 Posts[i].className = "selected";
-                $('#requirement_subcategories_category').val(Posts[i].innerText.replace(/\s+/, ""));
+                $('#requirement_subcategories_category').val(Posts[i].dataset.id);
+                console.log(Posts[i])
                 $('#CategoryType').text(Posts[i].innerText.replace(/\s+/, ""));
               }
               else{

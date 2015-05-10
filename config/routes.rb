@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :users
   resources :projects
   resources :requirement_categories
+  resources :requirement_subcategories
   
   root to: "users#home"
 
@@ -19,6 +20,8 @@ Rails.application.routes.draw do
 
   patch '/savechange', to: 'users#update_profile'
   patch '/change', to: 'users#change'
+
+  post '/flip_direction', to: 'requirement_categories#flip_direction'
 
   get "/project_create" => 'projects#create'
 end

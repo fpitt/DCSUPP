@@ -1,10 +1,11 @@
 <%= form_for :requirement_subcategories, :url => '/requirement_subcategories#create', :remote => true, 
-    :html => {:id => "input_form"} do |f| %> 
+    :html => {:id => "add_subcategory"} do |f| %> 
+
+    <hr>
 
     <%= f.text_field :item_title, placeholder: "Category Label", :class => "form-control span70" %>
 
-    <%= f.hidden_field :category, :value => "test" %>
-    <%= f.hidden_field :input_type, :value => "inputNumber" %>
+    <%= f.hidden_field :category, :value => "empty" %>
     <br>
 
     <div class="row"> 
@@ -19,8 +20,8 @@
             </div>
 
             <br>
-            <%= check_box_tag(:student_attribute) %>
-            <%= label_tag(:student_attribute, "Student Attribute") %>
+            <%= f.check_box(:student_attribute) %>
+            <b>Student Attribute</b>
         </div>
 
         <div class="col-xs-9">

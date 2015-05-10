@@ -20,23 +20,11 @@ class UsersController < ApplicationController
 
 	def manage_category
 
-		@category = RequirementCategory.order(created_at: :desc)
+		@category = RequirementCategory.order(created_at: :desc).take(10)
 
 	end
 
 	def update_profile
-
-		puts params
-
-		param = params[:user][:student_settings]
-
-		puts param
-
-		if !current_user.student_setting
-			current_user.student_setting = StudentSetting.new
-
-      		current_user.student_setting.save
-		end 
 
 		respond_to do |format|
       		format.js
