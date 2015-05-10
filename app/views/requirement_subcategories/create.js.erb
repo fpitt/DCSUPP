@@ -4,5 +4,7 @@ $('#category-error').html(" <%= escape_javascript(render(:partial =>
 
 <% if !@new_category.errors.any? %>
 	document.getElementById("add_subcategory").reset()
+	$('#posts3').html(" <%= escape_javascript(render(:partial => 
+		'requirement_subcategories/partial/panel_listing')) %>")
 	
 <% end %>

@@ -7,11 +7,7 @@ class RequirementSubcategoriesController < ApplicationController
 
 		@new_category = RequirementSubcategory.new()
 
-		if @new_category.save
-
-	    end
-
-	    @new_category.update_column(:requirement_category_id, param[:category])
+	    @new_category.update_attribute(:requirement_category_id, param[:category])
 	    @new_category.update_column(:student_attribute, param[:student_attribute])
 	    @new_category.update_column(:sub_category_name, param[:item_title])
 
@@ -65,6 +61,12 @@ class RequirementSubcategoriesController < ApplicationController
 			puts category
 		end
 
+		if @new_category.save
+
+	    end
+
+	    @subcategory = RequirementSubcategory.where(requirement_category_id: 
+			param[:category])
 
 		respond_to do |format|
 	    	format.js

@@ -69,6 +69,8 @@
         //Remove the warning tag
         $("#submit_tag").removeClass("disabled");
         $("#alert").addClass("hidden_class");
+        $(".select_tag").removeClass("select_tag");
+        $(this).addClass("select_tag");
         subcategories($(this).attr("data-id"));
         
         if (tabOpen){
