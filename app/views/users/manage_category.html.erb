@@ -1,6 +1,7 @@
 <script>
 
   var pageNumber = 1;
+  var tabOpen = true;
 
   function flip(direction){
 
@@ -70,6 +71,17 @@
         $('#requirement_subcategories_input_type').val(current_ID);
 
     });
+
+    $("#collapse").click(function(){
+
+      if(tabOpen) {
+        $("#collapse").text("Show Add New Category")
+        tabOpen = false;
+      } else {
+        $("#collapse").text("Hide Add New Category")
+        tabOpen = true;
+      }
+    })
  }
 
 
@@ -135,7 +147,7 @@
   <div class="col-xs-8">
 
     <p>
-      <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" aria-expanded="true" aria-controls="collapseExample">
+      <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" aria-expanded="true" aria-controls="collapseExample" id="collapse">
         Hide Add New Category
       </a>
     </p>
