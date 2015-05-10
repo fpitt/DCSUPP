@@ -46,6 +46,10 @@
         //Remove the warning tag
         $("#submit_tag").removeClass("disabled");
         $("#alert").addClass("hidden_class");
+        
+        if (tabOpen){
+          $("#collapse").click();
+        }
 
     })
   }
@@ -151,6 +155,7 @@
         Hide Add New Category
       </a>
     </p>
+
     <div class="collapse in" id="collapseExample" aria-expanded="false">
         <%= render :partial => "requirement_categories/requirementpartial/addcategory" %>
     </div>
