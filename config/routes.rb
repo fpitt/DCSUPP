@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   patch '/change', to: 'users#change'
 
   post '/flip_direction', to: 'requirement_categories#flip_direction'
+  post '/get_subcategories', to: 'requirement_categories#subcategories'
 
   get "/project_create" => 'projects#create'
 end

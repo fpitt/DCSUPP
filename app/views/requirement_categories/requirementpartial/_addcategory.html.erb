@@ -2,6 +2,10 @@
 
     <hr>
 
+    <div id="category-error">
+        <%= render :partial => "requirement_categories/requirementpartial/categoryerror" %>
+    </div>
+
     <%= f.text_field :item_title, placeholder: "Category Label", :class => "form-control span70" %>
 
     <%= f.hidden_field :category, :value => "empty" %>
@@ -71,16 +75,16 @@
         <p>Input Field: e.g. Email Regex: [A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}</p>
 
         <%= f.check_box(:regex) %>
-        <%= label_tag(:regex_equation, "Set Regex") %>
-        <%= f.text_field :minimumValue, placeholder: "Regex expression", :class => "form-control span40" %><br>
+        <%= label_tag(:regex, "Set Regex") %>
+        <%= f.text_field :regex_equation, placeholder: "Regex expression", :class => "form-control span40" %><br>
 
         <%= f.check_box(:max_str_len) %>
         <%= label_tag(:max_str_len, "Set Maximum Length") %>
-        <%= f.text_field :minimumValue, placeholder: "Maximum Length", :class => "form-control span40" %><br>
+        <%= f.text_field :input_max_length, placeholder: "Maximum Length", :class => "form-control span40" %><br>
 
         <%= f.check_box(:min_str_len) %>
         <%= label_tag(:min_str_len, "Set Minimum Length") %>
-        <%= f.text_field :minimumValue, placeholder: "Minimum Length", :class => "form-control span40" %><br>
+        <%= f.text_field :input_min_length, placeholder: "Minimum Length", :class => "form-control span40" %><br>
 
         <%= f.check_box(:placeholder) %>
         <%= label_tag(:placeholder, "Add Input Placeholder") %>

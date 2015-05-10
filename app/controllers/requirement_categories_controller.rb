@@ -44,4 +44,21 @@ class RequirementCategoriesController < ApplicationController
 
 	end
 
+	def subcategories
+
+		respond_to do |format|
+	      format.html {
+
+	      	puts params[:category_id]
+
+			@subcategory = RequirementSubcategory.where(requirement_category_id: 
+						params[:category_id].to_i)
+
+	      	render :partial => 'requirement_subcategories/partial/panel_listing'
+
+	      }
+	    end		
+
+	end
+
 end

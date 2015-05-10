@@ -3,6 +3,27 @@
   var pageNumber = 1;
   var tabOpen = true;
 
+  function subcategories(category_id){
+
+    var request = {
+      category_id: category_id
+    }
+
+    $.ajax({
+        url: '/get_subcategories',
+        type: "post",
+        beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+        dataType: "html",
+        success: function(data) {
+
+            $("#posts3").html(data)
+
+        },
+        data: request
+    })
+
+  }
+
   function flip(direction){
 
     var request = {
@@ -38,6 +59,8 @@
   }
 
   function categoryClick(){
+    $(".a_mail").unbind("click")
+
     $(".a_mail").click(function(){
 
         $("#CategoryType").text($(this).text());
@@ -46,6 +69,7 @@
         //Remove the warning tag
         $("#submit_tag").removeClass("disabled");
         $("#alert").addClass("hidden_class");
+        subcategories($(this).attr("data-id"));
         
         if (tabOpen){
           $("#collapse").click();
@@ -162,7 +186,7 @@
 
     <hr>
 
-		<div class="panel-content" id= "posts3" >
+		<div id= "posts3" >
 
 		</div>
 

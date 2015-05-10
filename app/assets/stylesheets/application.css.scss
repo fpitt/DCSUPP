@@ -18,6 +18,9 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+html{
+	overflow-y: scroll;
+}
 
 .hidden_class {
   display: none !important;
