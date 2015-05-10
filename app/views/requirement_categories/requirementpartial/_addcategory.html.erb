@@ -1,5 +1,4 @@
-<%= form_for :requirement_subcategories, :url => '/requirement_subcategories#create', :remote => true, 
-    :html => {:id => "add_subcategory"} do |f| %> 
+<%= form_for :requirement_subcategories, :url => '/requirement_subcategories#create', :remote => true, :html => {:id => "add_subcategory"} do |f| %> 
 
     <hr>
 
@@ -56,15 +55,15 @@
         <br><br>
         <%= f.check_box(:after_date) %>
         <%= label_tag(:after_date, "Add Latest Date") %><br>
-        <%= f.date_select Date.today, prefix: :start_date %><br>
+        <%= f.date_select Date.today, prefix: :after_date %><br>
     </div>
 
     <div id="inputBoolean" class="hidden_class">
         <hr>
         <p>Simple CheckBox: e.g. International Student</p>
 
-        <%= f.check_box(:before_date) %>
-        <%= label_tag(:before_date, "Default True") %>
+        <%= f.check_box(:boolean_attribute) %>
+        <%= label_tag(:boolean_attribute, "Default True") %>
     </div>
 
     <div id="inputfield" class="hidden_class">

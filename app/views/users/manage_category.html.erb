@@ -41,7 +41,7 @@
     $(".a_mail").click(function(){
 
         $("#CategoryType").text($(this).text());
-        $("#requirement_subcategories_category").val($(this).text());
+        $("#requirement_subcategories_category").val($(this).attr("data-id"));
 
         //Remove the warning tag
         $("#submit_tag").removeClass("disabled");
