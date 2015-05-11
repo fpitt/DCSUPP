@@ -7,7 +7,7 @@ class RequirementSubcategoriesController < ApplicationController
 
 		@new_category = RequirementSubcategory.new()
 
-	    @new_category.update_attribute(:requirement_category_id, param[:category])
+	    @new_category.update_column(:requirement_category_id, param[:category])
 	    @new_category.update_column(:student_attribute, param[:student_attribute])
 	    @new_category.update_column(:sub_category_name, param[:item_title])
 
@@ -31,14 +31,12 @@ class RequirementSubcategoriesController < ApplicationController
 			if param[:before_date] == "1"
 				start_date = params[:start_date]["user(1i)"] + "-" +
 					params[:start_date]["user(2i)"] + "-" + params[:start_date]["user(3i)"] 
-				puts start_date
 				@new_category.update_column(:lower_limit, start_date)
 			end
 
 			if param[:after_date] == "1"
 				end_date = params[:start_date]["user(1i)"] + "-" +
 					params[:start_date]["user(2i)"] + "-" + params[:start_date]["user(3i)"]
-				puts end_date
 				@new_category.update_column(:upper_limit, end_date)
 			end
 
