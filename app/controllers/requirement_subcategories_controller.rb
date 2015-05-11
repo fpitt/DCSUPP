@@ -14,25 +14,32 @@ class RequirementSubcategoriesController < ApplicationController
 		case category
 		when 1 #Input Number
 			@new_category.update_column(:attribute_type, "InputNumber")
-			if param[:decimal]
+			if param[:decimal] == "1"
 				@new_category.update_column(:regex, param[:decimal])
 			end
 
-			if param[:min_value]
+			if param[:min_value] == "1"
 				@new_category.update_column(:lower_limit, param[:minimumValue].to_i)
 			end
 
-			if param[:max_value]
+			if param[:max_value] == "1"
 				@new_category.update_column(:upper_limit, param[:maximumValue].to_i)
 			end
 		when 2 #Input Date
 			@new_category.update_column(:attribute_type, "InputDate")
-			if param[:before_date]
-				@new_category.update_column(:lower_limit, param[:start_date].to_formatted_s(:db))
+
+			if param[:before_date] == "1"
+				start_date = params[:start_date]["user(1i)"] + "-" +
+					params[:start_date]["user(2i)"] + "-" + params[:start_date]["user(3i)"] 
+				puts start_date
+				@new_category.update_column(:lower_limit, start_date)
 			end
 
-			if param[:after_date]
-				@new_category.update_column(:upper_limit, param[:after_date].to_formatted_s(:db))
+			if param[:after_date] == "1"
+				end_date = params[:start_date]["user(1i)"] + "-" +
+					params[:start_date]["user(2i)"] + "-" + params[:start_date]["user(3i)"]
+				puts end_date
+				@new_category.update_column(:upper_limit, end_date)
 			end
 
 		when 3 #Boolean
@@ -41,19 +48,19 @@ class RequirementSubcategoriesController < ApplicationController
 
 		when 4 #Input Field
 			@new_category.update_column(:attribute_type, "InputField")
-			if param[:regex]
+			if param[:regex] == "1"
 				@new_category.update_column(:regex, param[:regex_equation])
 			end
 
-			if param[:max_str_len]
+			if param[:max_str_len] == "1"
 				@new_category.update_column(:upper_limit, param[:input_max_length])
 			end
 
-			if param[:min_str_len]
+			if param[:min_str_len] == "1"
 				@new_category.update_column(:lower_limit, param[:input_min_length])
 			end
 
-			if param[:placeholder]
+			if param[:placeholder] == "1"
 				@new_category.update_column(:placeholder, param[:placeholder_value])
 			end
 
