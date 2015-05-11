@@ -2,6 +2,22 @@
 
   var pageNumber = 1;
   var tabOpen = true;
+  var panel_error = false;
+  var category_error = false;
+
+  function clearCategoryError(){
+    if (panel_error){
+      $("#panel-error").empty();
+        panel_error = false;
+    }
+  }
+
+  function clearSubcategoryError(){
+    if (category_error){
+      $("#category-error").empty();
+        category_error = false;
+    }
+  }
 
   function subcategories(category_id){
 
@@ -105,10 +121,10 @@
     $("#collapse").click(function(){
 
       if(tabOpen) {
-        $("#collapse").text("Show Add New Category")
+        $("#collapse").text("Show Add New Subcategory")
         tabOpen = false;
       } else {
-        $("#collapse").text("Hide Add New Category")
+        $("#collapse").text("Hide Add New Subcategory")
         tabOpen = true;
       }
     })
@@ -178,7 +194,7 @@
 
     <p>
       <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" aria-expanded="true" aria-controls="collapseExample" id="collapse">
-        Hide Add New Category
+        Hide Add New Subcategory
       </a>
     </p>
 
