@@ -62,7 +62,10 @@ class RequirementSubcategoriesController < ApplicationController
 		end
 
 		if @new_category.save
-
+			#Category Created
+		else
+			@errors = @new_category.errors
+			@new_category.destroy
 	    end
 
 	    @subcategory = RequirementSubcategory.where(requirement_category_id: 

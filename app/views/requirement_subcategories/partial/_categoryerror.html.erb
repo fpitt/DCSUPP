@@ -1,0 +1,14 @@
+<% if @errors && @errors.any? %>
+    <div class="alert alert-danger">
+        The form contains <%= pluralize(@errors.count, "error") %>.
+    </div>
+
+    <% @errors.full_messages.each do |error| %>
+        <p>*<%= error %></p>
+    <% end %>
+
+<% else %>
+
+	<div class="alert alert-success" role="alert">Your Category is Added.</div>
+
+<% end %>

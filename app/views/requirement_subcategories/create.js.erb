@@ -1,6 +1,6 @@
 console.log("HII")
 $('#category-error').html(" <%= escape_javascript(render(:partial => 
-		'requirement_categories/requirementpartial/categoryerror')) %>")
+		'requirement_subcategories/partial/categoryerror')) %>")
 
 <% if !@new_category.errors.any? %>
 	document.getElementById("add_subcategory").reset()
@@ -8,3 +8,5 @@ $('#category-error').html(" <%= escape_javascript(render(:partial =>
 		'requirement_subcategories/partial/panel_listing')) %>")
 	
 <% end %>
+
+initialize2()
