@@ -1,14 +1,18 @@
-<% if @new_category and @new_category.errors.any? %>
-    <div class="alert alert-danger">
-        The form contains <%= pluralize(@new_category.errors.count, "error") %>.
-    </div>
+<div id="panel-errorBar">
 
-    <% @new_category.errors.full_messages.each do |error| %>
-        <p>*<%= error %></p>
-    <% end %>
+	<% if @new_category and @new_category.errors.any? %>
+	    <div class="alert alert-danger">
+	        The form contains <%= pluralize(@new_category.errors.count, "error") %>.
+	    </div>
 
-<% elsif @new_category %>
+	    <% @new_category.errors.full_messages.each do |error| %>
+	        <p>*<%= error %></p>
+	    <% end %>
 
-	<div class="alert alert-success" role="alert">Your Category is Added.</div>
+	<% elsif @new_category %>
 
-<% end %>
+		<div class="alert alert-success" role="alert">Your Category is Added.</div>
+
+	<% end %>
+
+</div>

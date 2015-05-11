@@ -2,21 +2,13 @@
 
   var pageNumber = 1;
   var tabOpen = true;
-  var panel_error = false;
-  var category_error = false;
 
   function clearCategoryError(){
-    if (panel_error){
-      $("#panel-error").empty();
-        panel_error = false;
-    }
+    $("#panel-errorBar").fadeOut();
   }
 
   function clearSubcategoryError(){
-    if (category_error){
-      $("#category-error").empty();
-        category_error = false;
-    }
+    $("#category-errorBar").fadeOut();
   }
 
   function subcategories(category_id){
