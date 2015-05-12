@@ -17,4 +17,9 @@ class ProjectsController < ApplicationController
     end
 
   end
+
+  def get_project
+
+
+  end
 end
