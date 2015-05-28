@@ -1,5 +1,5 @@
 == README
 
-Starter Code for the Step Forward Project
+Starter Code for the DCS Undergraduate Project Portal
 
 The project is built on Ruby on Rails.
