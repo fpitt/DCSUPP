@@ -90,3 +90,6 @@ gem 'cancan'
 gem 'mail'
 
 gem "twitter-bootstrap-rails"
+gem 'angularjs-rails'
+gem 'slim'
+gem 'angular-rails-templates'
