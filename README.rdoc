@@ -1,5 +1,1 @@
-== README
-
-Starter Code for the Step Forward Project
-
-The project is built on Ruby on Rails.
+== Step-Forward
