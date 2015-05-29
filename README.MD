@@ -6,22 +6,32 @@ This is the source code for the DCS Undergraduate Project Portal (DCSUPP). DCSUP
 
 The DCS Undergraduate Project Portal started as a CSC 494 project supervised by Professor Francois Pitt and developed by Alan Yuan. The portal is intended to match research projects and undergraduate students. Before DCSUPP, the DCS department relied on a combination of the job discussion board, NSERC applications and mass professor to student email communications.
 
-The lack of an organized communications system resulted in numerous research opportunities unfilled by undergraduate students. In addition, many students took research projects outside of their interests purely for the research credit.
+The lack of an organized communications system resulted in numerous research opportunities unfilled by undergraduate students. In addition, many students took research projects outside of their interests purely for the research credit. 
 
-### 2. Project Overview
+### 2. Project Features
 
-DCSUPP allows professors and researchers to post research projects onto the projects board. 
+DCSUPP allows professors and researchers to post research projects onto the projects board. The projects are then matched with studentes signup with the system. 
 
-### 2. Features
+* Introduces innovative student, matching system based on student preferences and pre-requisits
+* Saves student preferences to avoid input repetition
+* Highly customizable project and student attribute framework
+* Designed to scale for campus wide search
+* Adds easy student to project application process, supports PDF and recycles attributes
+* Graphical Analysis of student and project pre-requisits
 
-[insert future features here]
+We have worked to ensure the DCSUPP is very simple to use, reduces unneccessary attribute entries. 
 
-### 3. Futures Updates
+### 3. Contacts
 
-[future updates here]
+* Lead Developer: Alan Yuan <alan.yuan@mail.utoronto.ca>
+* Faculty Supervisor: Francois Pitt <fpitt@cs.utoronto.ca>
 
-### 4. Credits
+### 4. Framework Overview
 
-The project is supervised by Professor Francois Pitt, Associate Chair for Undergraduate Studies
+The DCSUPP project is built on Ruby on Rails Framework. It uses Angular.js for organization of frontend partials. 
+
+### 5. Credits
+
+The project is supervised by Professor Francois Pitt
 
 The Lead developer for this project is Alan Yuan
