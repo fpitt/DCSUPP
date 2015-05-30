@@ -1,0 +1,19 @@
+h3 Current Projects
+
+div class="row"
+  div class="col-xs-4"
+  	div class="row" style="height:20px"
+
+  	div class="text-center"
+      div class="btn-group"
+        button type="button" class="btn btn-default" onclick="flip(-10)" Prev
+        button type="button" class="btn btn-default disabled" id="pagenumber2" 1
+        button type="button" class="btn btn-default" onclick="flip(10)" Next
+
+  	div class="row" style="height:5px"
+        
+    ul id="itemPosts3" class="nav nav-tabs nav-stacked"
+      = render :partial => "static_pages/partial/projectPosts"
+
+  div class="col-xs-8"
+    div class="panel-content" id= "project_information"
