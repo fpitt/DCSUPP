@@ -15,5 +15,7 @@
 //= require ckeditor/init
 //= require turbolinks
 //= require bootstrap-sprockets
+//= require angular
+//= require angular-rails-templates
 //= require_tree .
 
