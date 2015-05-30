@@ -1,0 +1,14 @@
+div id="category-errorBar"
+	- if @errors && @errors.any?
+
+	    div class="alert alert-danger"
+	        p The form contains 
+	        	#{ pluralize(@errors.count, "error") }
+
+	    - @errors.full_messages.each do |error|
+	        p *
+	        	#{ error }
+
+	- else
+		div class="alert alert-success" role="alert"
+			p Your Category is Added.
