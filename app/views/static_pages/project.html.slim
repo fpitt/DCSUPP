@@ -10,13 +10,14 @@ div ng-app="projectPage"  ng-init=""
       	div class="text-center"
           div class="btn-group"
             button class="btn btn-default" ng-click="flip(-10)" Prev
-            button class="btn btn-default disabled" {{ pagenumber }}
+            button class="btn btn-default disabled" 
+              | {{ pagenumber }}
             button class="btn btn-default" ng-click="flip(10)" Next
 
       	div class="row" style="height:5px"
             
         ul id="itemPosts3" class="nav nav-tabs nav-stacked"
-          = render :partial => "static_pages/partial/projectPosts"
+          div ng-bind-html="return_html | html"
 
       div class="col-xs-8"
         div class="panel-content" id= "project_information"

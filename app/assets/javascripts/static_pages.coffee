@@ -1,46 +1,33 @@
 controllerFunction = ($scope, $http) ->
 	$scope.pagenumber = 1
+	$scope.return_html = ''
 
-	$scope.subcategories = (category_id)->
+	$scope.flip = (direction) ->
     	request = {
-      		category_id: category_id
-    	}
-
-    	$.ajax
-        	url: '/get_project.html',
-        	method: "POST",
-        	headers: {
-        		'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
-			},
-        	data: request
-        	success: (data) ->
-				$("#project_information").html(data)
-
-
-  	$scope.flip = (direction) ->
-    	request = {
-      		pageNumber: pageNumber,
+      		pageNumber: $scope.pagenumber,
       		direction: direction
     	}
 
     	$.ajax
+    		method: 'POST',
         	url: '/flip_project_direction.html',
-        	method: "POST",
+        	data: request,
         	headers: {
         		'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
-			},
-			data: request
+			}
 			success: (data) ->
-            	$("#itemPosts3").html(data);
-            	if (direction > 0)
-            		$scope.pagenumber += 1
-            	else if (direction < 0 && $scope.pagenumber > 1)
-            		$scope.pagenumber -= 1
+				$scope.return_html = data
+				$scope.$apply()
+			error: (data) ->
+				console.log("error")
 
-            	$scope.$apply
+
+filterFunction = ($sce)->
+    return (val)->
+        return $sce.trustAsHtml(val)
         
 
 angular
 	.module("projectPage", [])
 	.controller("pjtCtrl", controllerFunction)
-
+	.filter('html', filterFunction)
