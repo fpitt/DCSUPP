@@ -17,6 +17,5 @@
 //= require bootstrap-sprockets
 //= require angular
 //= require angular-rails-templates
-//= require static_pages
 //= require_tree .
 

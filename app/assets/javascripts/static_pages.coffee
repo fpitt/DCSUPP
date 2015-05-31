@@ -1,4 +1,5 @@
 controllerFunction = ($scope, $http) ->
+
 	$scope.pagenumber = 1
 	$scope.return_html = ''
 
@@ -10,13 +11,20 @@ controllerFunction = ($scope, $http) ->
             data: { pageNumber: $scope.pagenumber, direction: direction }
 
         $http(request).success($scope.flipSuccess)
+        $scope.flip_direction = direction/10
 
 
     $scope.flipSuccess = (data) ->
-        console.log(data)
-        $scope.return_html = data
-        $scope.$apply()
-        
+        if (data)
+            $scope.return_html = data
+            if ($scope.flip_direction > 0)
+                $scope.pagenumber = $scope.pagenumber + $scope.flip_direction
+            else if ($scope.flip_direction < 0 and $scope.pagenumber > 1)
+                $scope.pagenumber = $scope.pagenumber + $scope.flip_direction
+
+    $scope.flip_direction = 0
+    $scope.flip(0)
+
 
 filterFunction = ($sce)->
     return (val)->
