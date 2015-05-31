@@ -1,8 +1,5 @@
 controllerFunction = ($scope, $http) ->
 
-	$scope.pagenumber = 1
-	$scope.return_html = ''
-
 	$scope.flip = (direction) ->
     	request = 
             method: 'POST',
@@ -22,7 +19,10 @@ controllerFunction = ($scope, $http) ->
             else if ($scope.flip_direction < 0 and $scope.pagenumber > 1)
                 $scope.pagenumber = $scope.pagenumber + $scope.flip_direction
 
+
     $scope.flip_direction = 0
+    $scope.pagenumber = 1
+    $scope.return_html = ''
     $scope.flip(0)
 
 
