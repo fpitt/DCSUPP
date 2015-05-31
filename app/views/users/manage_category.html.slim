@@ -1,0 +1,41 @@
+div ng-app="projectPage"  ng-init=""
+    div ng-controller="pjtCtrl"
+
+        h3 Manage Posting Categories
+        hr
+
+        div class="row"
+            div class="col-xs-4"
+
+                div id="panel-error"
+                    = render :partial => "requirement_categories/requirementpartial/categoryerror"
+
+            		= form_for :requirement_category, :url => '/requirement_categories#create', :remote => true, :html => {:id => "input_form"} do |f|
+
+            			= f.text_field :category_name, placeholder: "Title of Category", :class => "form-control span90"
+            			br
+            			= f.submit "Add New Category", class: "btn btn-default"
+            		hr
+
+                h4 style="text-align:center" Requirement Categories
+                hr
+
+              	div class="text-center"
+              		div class="btn-group"
+                		button class="btn btn-default" onclick="flip(-10)" Prev
+               			button class="btn btn-default disabled" 1
+                		button class="btn btn-default" onclick="flip(10)" Next
+
+              	div class="row" style="height:5px"
+
+              	ul id="itemPosts3" class="nav nav-tabs nav-stacked"
+                  = render :partial => "users/partials/category/categoryPosts"
+
+            div class="col-xs-8"
+                a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" aria-expanded="true" aria-controls="collapseExample" id="collapse" Hide Add New Subcategory
+
+                div class="collapse in" id="collapseExample" aria-expanded="false"
+                    = render :partial => "requirement_categories/requirementpartial/addcategory"
+                hr
+
+        		div id= "posts3"
