@@ -1,23 +1,22 @@
 h3 Current Projects
 div ng-app="projectPage"  ng-init=""
 
-  div ng-controller="pjtCtrl"
+    div ng-controller="pjtCtrl"
 
-    div class="row"
-      div class="col-xs-4"
-      	div class="row" style="height:20px"
+        div class="row"
+            div class="col-xs-4"
+                div class="row" style="height:20px"
 
-      	div class="text-center"
-          div class="btn-group"
-            button class="btn btn-default" ng-click="flip(-10)" Prev
-            button class="btn btn-default disabled" 
-              | {{ pagenumber }}
-            button class="btn btn-default" ng-click="flip(10)" Next
+                div class="text-center"
+                    div class="btn-group"
+                        button class="btn btn-default" ng-click="flip(-10)" Prev
+                        button class="btn btn-default disabled" 
+                            | {{ pagenumber }}
+                        button class="btn btn-default" ng-click="flip(10)" Next
 
-      	div class="row" style="height:5px"
-            
-        ul id="itemPosts3" class="nav nav-tabs nav-stacked"
-          div ng-bind-html="return_html | html"
+                div class="row" style="height:5px"
+                
+                div ng-bind-html="return_html | html"
 
-      div class="col-xs-8"
-        div class="panel-content" id= "project_information"
+            div class="col-xs-8"
+                div class="panel-content" id= "project_information"
