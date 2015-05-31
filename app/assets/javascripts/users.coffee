@@ -31,4 +31,4 @@ angular
     .controller("cateCtrl", controllerFunction)
 
 
-$(document).on('page:load', shareCommon.initiate)
+$(document).on('page:load', bootstrapAngular)

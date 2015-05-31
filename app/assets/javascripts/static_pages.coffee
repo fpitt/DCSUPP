@@ -31,4 +31,4 @@ angular
 	.controller("pjtCtrl", controllerFunction)
 
 
-$(document).on('page:load', shareCommon.initiate)
+$(document).on('page:load', initiate)
