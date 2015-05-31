@@ -1,5 +1,5 @@
-div ng-app="projectPage"  ng-init=""
-    div ng-controller="pjtCtrl"
+div ng-app="categoryPage"  ng-init=""
+    div ng-controller="cateCtrl"
 
         h3 Manage Posting Categories
         hr
@@ -22,14 +22,14 @@ div ng-app="projectPage"  ng-init=""
 
               	div class="text-center"
               		div class="btn-group"
-                		button class="btn btn-default" onclick="flip(-10)" Prev
-               			button class="btn btn-default disabled" 1
-                		button class="btn btn-default" onclick="flip(10)" Next
+                		button class="btn btn-default" ng-click="flip_category(-10)" Prev
+               			button class="btn btn-default disabled" 
+                            | {{ pagenumber }}
+                		button class="btn btn-default" ng-click="flip_category(10)" Next
 
               	div class="row" style="height:5px"
 
-              	ul id="itemPosts3" class="nav nav-tabs nav-stacked"
-                  = render :partial => "users/partials/category/categoryPosts"
+                div ng-bind-html="return_html | html"
 
             div class="col-xs-8"
                 a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" aria-expanded="true" aria-controls="collapseExample" id="collapse" Hide Add New Subcategory

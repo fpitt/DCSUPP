@@ -26,20 +26,9 @@ controllerFunction = ($scope, $http) ->
     $scope.flip(0)
 
 
-filterFunction = ($sce)->
-    return (val)->
-        return $sce.trustAsHtml(val)
-
-
 angular
-	.module("projectPage", [])
+	.module("projectPage", ['sharedCommon'])
 	.controller("pjtCtrl", controllerFunction)
-	.filter('html', filterFunction)
 
 
-bootstrapAngular = ->
-  $('[ng-app]').each ->
-    module = $(this).attr('ng-app')
-    angular.bootstrap(this, [module])
-
-$(document).on('page:load', bootstrapAngular)
+$(document).on('page:load', shareCommon.initiate)

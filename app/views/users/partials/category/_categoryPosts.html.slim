@@ -1,3 +1,4 @@
-- @category.each do |post|
-	li
-		a data-id= post.id class="a_mail" = post.category_name
+ul id="itemPosts3" class="nav nav-tabs nav-stacked"
+	- @category.each do |post|
+		li
+			a data-id= post.id class="a_mail" = post.category_name
