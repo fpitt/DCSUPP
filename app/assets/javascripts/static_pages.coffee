@@ -28,7 +28,7 @@ controllerFunction = ($scope, $http) ->
 
 angular
 	.module("projectPage", ['sharedCommon'])
-	.controller("pjtCtrl", controllerFunction)
+	.controller("pjtCtrl", ["processHtml", controllerFunction])
 
 
-$(document).on('page:load', initiate)
+$(document).on('page:load', processHtml.bootstrapAngular())

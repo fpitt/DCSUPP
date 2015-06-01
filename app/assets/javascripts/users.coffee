@@ -28,7 +28,7 @@ controllerFunction = ($scope, $http) ->
 
 angular
     .module("categoryPage", ['sharedCommon'])
-    .controller("cateCtrl", controllerFunction)
+    .controller("cateCtrl", ['processHtml', controllerFunction])
 
 
-$(document).on('page:load', bootstrapAngular)
+$(document).on('page:load', processHtml.bootstrapAngular())

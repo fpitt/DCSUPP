@@ -12,11 +12,14 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
 //= require ckeditor/init
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require angular
 //= require angular-rails-templates
 //= require common
+//= require jquery.mousewheel
+//= require antiscroll
 //= require_tree .
 

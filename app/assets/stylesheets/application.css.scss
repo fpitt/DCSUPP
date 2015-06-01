@@ -11,6 +11,8 @@
  * file per style scope.
  *
  *= require_tree .
+ *= require antiscroll
+ *= require jquery-ui
  *= require_self
  */
 
