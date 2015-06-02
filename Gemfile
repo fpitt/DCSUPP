@@ -92,11 +92,4 @@ gem 'angularjs-rails'
 gem 'slim'
 gem 'angular-rails-templates'
 
-#For Charts
-gem 'ember-rails'
-gem 'ember-source', '~> 1.9.0'
-gem 'jquery-ui-rails'
-gem 'rails_antiscroll', '~> 0.0.3'
-gem "jquery-mousewheel-rails"
-
-
+gem 'jquery-dynatable-rails', '~> 0.3.1'

@@ -18,8 +18,5 @@
 //= require bootstrap-sprockets
 //= require angular
 //= require angular-rails-templates
-//= require common
-//= require jquery.mousewheel
-//= require antiscroll
 //= require_tree .
 
