@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   get '/curr_project',  to: 'static_pages#project'
   get '/create_project', to: 'users#create_project'
   get '/admin_categories', to: 'users#manage_category'
+  get '/student_page', to: 'static_pages#students'
 
   patch '/savechange', to: 'users#update_profile'
   patch '/change', to: 'users#change'

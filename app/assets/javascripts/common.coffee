@@ -3,17 +3,17 @@ filterFunction = ($sce)->
         return $sce.trustAsHtml(val)
 
 ProcessHTML = () ->
-	output =
+	output = {}
 
-		output.bootstrapAngular = ->
-			$('[ng-app]').each ->
-			module = $(this).attr('ng-app')
-			angular.bootstrap(this, [module])
+	output.bootstrapAngular = ->
+		$('[ng-app]').each ->
+		module = $(this).attr('ng-app')
+		angular.bootstrap(this, [module])
 
-	output
+	return output
 
 
 angular
-  .module("sharedCommon", [])
+  .module("dcsupp", [])
   .filter('html', filterFunction)
-  .factory("processHtml", ProcessHTML)
+  .service("processHtml", ProcessHTML)

@@ -92,4 +92,5 @@ gem 'angularjs-rails'
 gem 'slim'
 gem 'angular-rails-templates'
 
-gem 'jquery-dynatable-rails', '~> 0.3.1'
+# downgrade. upgrade to v3 when templates is compatible
+gem 'sprockets', '~> 2.12.3'

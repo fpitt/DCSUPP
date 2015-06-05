@@ -27,7 +27,7 @@ controllerFunction = ($scope, $http) ->
 
 
 angular
-	.module("projectPage", ['sharedCommon'])
+	.module("dcsupp", [])
 	.controller("pjtCtrl", ["processHtml", controllerFunction])
 
 

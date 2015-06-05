@@ -8,37 +8,38 @@ html
 
 	body
 
-	div class="container"
-		div style="height:60px"
-			h1 DCSUPP
+	div ng-app="dcsupp"  ng-init=""
 
-		div class="row"
-			nav class="navbar navbar-default"
-				div class="container-fluid"
-			    /Brand and toggle get grouped for better mobile display
+		div class="container"
+			div style="height:60px"
+				h1 DCSUPP
 
-			    div class="navbar-header"
-			    	button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
-			        span class="sr-only" Toggle navigation
-			        span class="icon-bar" 
-			        span class="icon-bar"
-			        span class="icon-bar"
+			div class="row"
+				nav class="navbar navbar-default"
+					div class="container-fluid"
+				    /Brand and toggle get grouped for better mobile display
 
-			    / Collect the nav links, forms, and other content for toggling
-			    div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"
-			    	ul class="nav navbar-nav"
-			        	li #{ link_to "Home Page", "/" }
-			        	li #{ link_to "Current Projects", "/curr_project" }
-			        	li #{ link_to "Create Project", '/create_project' }
-			        	li #{ link_to "Manage Categories", '/admin_categories' }
-			        	li
-			        		a href="#" List Students
+				    div class="navbar-header"
+				    	button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+				        span class="sr-only" Toggle navigation
+				        span class="icon-bar" 
+				        span class="icon-bar"
+				        span class="icon-bar"
 
-			      	ul class="nav navbar-nav navbar-right"
+				    / Collect the nav links, forms, and other content for toggling
+				    div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"
+				    	ul class="nav navbar-nav"
+				        	li #{ link_to "Home Page", "/" }
+				        	li #{ link_to "Current Projects", "/curr_project" }
+				        	li #{ link_to "Create Project", '/create_project' }
+				        	li #{ link_to "Manage Categories", '/admin_categories' }
+				        	li
+				        		a href="#" List Students
 
-				    	- if user_signed_in?
-							li #{ link_to('LOGOUT', destroy_user_session_path, :method => :delete) }
-						- else 
-						 	li #{ link_to("LOGIN".html_safe, new_user_session_path) }
+				      	ul class="nav navbar-nav navbar-right"
+					    	- if user_signed_in?
+								li #{ link_to('LOGOUT', destroy_user_session_path, :method => :delete) }
+							- else 
+							 	li #{ link_to("LOGIN".html_safe, new_user_session_path) }
 
-		== yield
+			== yield

@@ -27,7 +27,7 @@ controllerFunction = ($scope, $http) ->
 
 
 angular
-    .module("categoryPage", ['sharedCommon'])
+    .module("dcsupp", [])
     .controller("cateCtrl", ['processHtml', controllerFunction])
 
 

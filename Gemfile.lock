@@ -20,8 +20,6 @@ GEM
       erubis (~> 2.7.0)
       rails-dom-testing (~> 1.0, >= 1.0.5)
       rails-html-sanitizer (~> 1.0, >= 1.0.1)
-    active_model_serializers (0.9.3)
-      activemodel (>= 3.2)
     activejob (4.2.0)
       activesupport (= 4.2.0)
       globalid (>= 0.3.0)
@@ -46,9 +44,6 @@ GEM
     arel (6.0.0)
     autoprefixer-rails (4.0.2.2)
       execjs
-    barber (0.9.0)
-      ember-source (>= 1.0, < 2)
-      execjs (>= 1.2, < 3)
     bcrypt (3.1.10-x86-mingw32)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
@@ -91,21 +86,6 @@ GEM
       responders
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
-    ember-data-source (1.0.0.beta.18)
-      ember-source (~> 1.8)
-    ember-handlebars-template (0.2.1)
-      barber (>= 0.9.0)
-      sprockets (>= 2.1, < 3.2)
-      tilt
-    ember-rails (0.18.2)
-      active_model_serializers
-      ember-data-source (>= 1.0.0.beta.5)
-      ember-handlebars-template (>= 0.1.1, < 1.0)
-      ember-source (>= 1.1.0)
-      jquery-rails (>= 1.0.17)
-      railties (>= 3.1)
-    ember-source (1.9.1)
-      handlebars-source (~> 2.0)
     erubis (2.7.0)
     excon (0.43.0)
     execjs (2.2.2)
@@ -113,15 +93,12 @@ GEM
       multipart-post (>= 1.2, < 3)
     globalid (0.3.0)
       activesupport (>= 4.1.0)
-    handlebars-source (2.0.0)
     hashie (3.3.2)
     hike (1.2.3)
     i18n (0.7.0)
     jbuilder (2.2.6)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
-    jquery-mousewheel-rails (0.0.9)
-      railties (>= 3.1)
     jquery-rails (4.0.3)
       rails-dom-testing (~> 1.0)
       railties (>= 4.2.0)
@@ -129,8 +106,6 @@ GEM
     jquery-turbolinks (2.1.0)
       railties (>= 3.1.0)
       turbolinks
-    jquery-ui-rails (5.0.5)
-      railties (>= 3.2.16)
     json (1.8.2)
     jwt (1.2.0)
     kaminari (0.16.1)
@@ -201,8 +176,6 @@ GEM
     rails_12factor (0.0.2)
       rails_serve_static_assets
       rails_stdout_logging
-    rails_antiscroll (0.0.3)
-      railties (>= 3.1.0)
     rails_serve_static_assets (0.0.3)
     rails_stdout_logging (0.0.3)
     railties (4.2.0)
@@ -229,7 +202,7 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
-    slim (3.0.3)
+    slim (3.0.4)
       temple (~> 0.7.3)
       tilt (>= 1.3.3, < 2.1)
     slop (3.6.0)
@@ -286,13 +259,9 @@ DEPENDENCIES
   ckeditor
   coffee-rails (~> 4.1.0)
   devise
-  ember-rails
-  ember-source (~> 1.9.0)
   jbuilder (~> 2.0)
-  jquery-mousewheel-rails
   jquery-rails
   jquery-turbolinks
-  jquery-ui-rails
   kaminari
   mail
   mandrill-api
@@ -304,11 +273,11 @@ DEPENDENCIES
   protected_attributes
   rails (= 4.2.0)
   rails_12factor (= 0.0.2)
-  rails_antiscroll (~> 0.0.3)
   sanitize
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   slim
+  sprockets (~> 2.12.3)
   sqlite3
   therubyracer
   turbolinks
