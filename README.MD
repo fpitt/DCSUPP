@@ -44,9 +44,9 @@ unnecessary attribute entries.
 ### 4. Framework Overview
 
 The DCSUPP project is built on Ruby on Rails Framework. We have used Slim, 
-Coffeescript, SASS, Twitter Bootstrap, `Angular.js`, and `Charts.js` for 
-frontend development. We would like to thank all open-source developers for 
-creating such wonderful frameworks and libraries.
+Coffeescript, SASS, Twitter Bootstrap, Angular.js, and Charts.js for frontend 
+development. We would like to thank all open-source developers for creating 
+such wonderful frameworks and libraries.
 
 ### 5. Credits
 
