@@ -9,11 +9,11 @@ Department of Computer Science at the University of Toronto.
 The DCS Undergraduate Project Portal started as a course project supervised 
 by Professor François Pitt and developed by Alan Yuan. The portal is intended 
 to match research projects with undergraduate students. Before DCSUPP, the 
-department of computer science relied on a combination of the job discussion 
-board, NSERC applications and mass professor-to-student email communications.
+Department of Computer Science used a combination of Job Discussion 
+Board posts, NSERC applications with weighted preferences and mass professor-to-student email communications for for matching students with research projects.
 
-The lack of an organized communications system resulted in numerous research 
-opportunities unfilled by undergraduate students. In addition, many students 
+The lack of an organized, central communications system resulted in unfilled numerous research 
+opportunities. In addition, many students 
 took research projects outside of their interests purely for the research 
 credit.
 
