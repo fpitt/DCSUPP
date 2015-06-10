@@ -6,7 +6,7 @@ class StaticPagesController < ApplicationController
     @projects = Project.order(created_at: :desc).take(10)
   end
 
-  def students
+  def introduction
 
   end
 

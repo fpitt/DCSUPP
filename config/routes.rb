@@ -11,9 +11,10 @@ Rails.application.routes.draw do
   resources :requirement_categories
   resources :requirement_subcategories
   
-  root to: "users#home"
+  root to: "static_pages#introduction"
 
-  get '/home',  to: 'users#home'
+  get '/hintroductionome',  to: 'static_pages#introduction'
+  get '/student_account',  to: 'users#home'
   get '/curr_project',  to: 'static_pages#project'
   get '/create_project', to: 'users#create_project'
   get '/admin_categories', to: 'users#manage_category'

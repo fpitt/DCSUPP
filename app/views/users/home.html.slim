@@ -1,37 +1,8 @@
-div class="row"
-	div class="col-xs-6"
-		h3 About DCSUPP
+div class="col-xs-6" id="userSettings"
+
+	- if !user_signed_in? 
+		h3	SignIn to create a profile
 		hr
 
-		p 
-			|DCSUPP is a project intended to match students with research projects. It is designed by Alan Yuan from the UofT Computer Science Department
-
-		p
-			|Contact alan[dot]yuan@mail[dot]utoronto[dot].ca for more information
-		hr
-
-		b
-			span class="glyphicon glyphicon-ok" aria-hidden="true" 
-			| For Academics:
-		br
-
-		p
-			|DCSUPP offers professors and graduate students the opportunity to post their research projects online for students to view. These projects may be NSERC, projects looking for research assistants or general consulting
-		br
-
-		b
-			span class="glyphicon glyphicon-ok" aria-hidden="true" 
-			| For Students:
-		br
-
-		p 
-			|DCSUPP gives students the opportunity to view all the on-going projects at the Computer Science Department. Students may also create a profile for themselves and our system will match your skillset with a projects
-
-	div class="col-xs-6" id="userSettings"
-
-		- if !user_signed_in? 
-			h3	SignIn to create a profile
-			hr
-
-		- else
-			= render :partial => "users/partials/userProfile"
+	- else
+		= render :partial => "users/partials/userProfile"
