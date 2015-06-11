@@ -17,5 +17,11 @@
 //= require bootstrap-sprockets
 //= require angular
 //= require angular-rails-templates
+//= require 1intro_page
+//= require 2student_account
+//= require 3current_project
+//= require 4create_project
+//= require 5manage_category
+//= require 6list_student
 //= require_tree .
 
