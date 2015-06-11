@@ -28,7 +28,4 @@ controllerFunction = ($scope, $http) ->
 
 angular
     .module("dcsupp", [])
-    .controller("cateCtrl", ['processHtml', controllerFunction])
-
-
-$(document).on('page:load', processHtml.bootstrapAngular())
+    .controller("cateCtrl", controllerFunction)

@@ -2,6 +2,7 @@ filterFunction = ($sce)->
     return (val)->
         return $sce.trustAsHtml(val)
 
+###
 ProcessHTML = () ->
 	output = {}
 
@@ -11,9 +12,10 @@ ProcessHTML = () ->
 		angular.bootstrap(this, [module])
 
 	return output
+###
 
 
 angular
   .module("dcsupp", [])
   .filter('html', filterFunction)
-  .service("processHtml", ProcessHTML)
+  #.service("processHtml", ProcessHTML)

@@ -28,7 +28,5 @@ controllerFunction = ($scope, $http) ->
 
 angular
 	.module("dcsupp", [])
-	.controller("pjtCtrl", ["processHtml", controllerFunction])
+	.controller("currentProjectController", controllerFunction)
 
-
-$(document).on('page:load', processHtml.bootstrapAngular())
