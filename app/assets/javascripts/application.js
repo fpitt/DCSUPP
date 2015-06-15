@@ -17,6 +17,8 @@
 //= require bootstrap-sprockets
 //= require angular
 //= require angular-rails-templates
+//= require common
+//= require directive
 //= require 1intro_page
 //= require 2student_account
 //= require 3current_project
