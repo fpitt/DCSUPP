@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   
   root to: "static_pages#introduction"
 
-  get '/hintroductionome',  to: 'static_pages#introduction'
+  get '/introduction',  to: 'static_pages#introduction'
   get '/student_account',  to: 'users#home'
   get '/curr_project',  to: 'static_pages#project'
   get '/create_project', to: 'users#create_project'
