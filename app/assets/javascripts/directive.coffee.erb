@@ -21,19 +21,39 @@ Template1 = ->
 		</p>
 		<hr>
 
-		<button class="btn btn-default" type="submit">
-			Newer <span aria-hidden="true"> &rarr;</span>
+		<button class="btn btn-default" type="submit" ng-click="flippage()">
+			For Academics, Researchers and Graduate Students <span aria-hidden="true"> &rarr;</span>
 		</button>
 	'
 
 Template2 = ->
 	template: '
+		<h3>Acacdemics, Researchers and Graduate Students</h3>
 		<p>Page 2</p>
+
+		<button class="btn btn-default" type="submit" ng-click="flippage()">
+			For Students <span aria-hidden="true"> &rarr;</span>
+		</button>
 	'
 
 Template3 = ->
 	template: '
+		<h3>Students</h3>
 		<p>Page 3</p>
+
+		<button class="btn btn-default" type="submit" ng-click="flippage()">
+			DCSUPP Development Team <span aria-hidden="true"> &rarr;</span>
+		</button>
+	'
+
+Template4 = ->
+	template: '
+		<h3>DCSUPP Development Team</h3>
+		<p>DCSUPP is developed by students at the Department of Computer Science. </p>
+
+		<button class="btn btn-default" type="submit" ng-click="flippage()">
+			Introduction <span aria-hidden="true"> &rarr;</span>
+		</button>
 	'
 
 
@@ -42,3 +62,4 @@ angular
 	.directive("intropage1", Template1)
 	.directive("intropage2", Template2)
 	.directive("intropage3", Template3)
+	.directive("intropage4", Template4)

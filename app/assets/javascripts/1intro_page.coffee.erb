@@ -1,8 +1,18 @@
 controllerFunction = ($scope) ->
 
-	$scope.flip_direction = 0
+	$scope.page = 1
+	$scope.pageNumber = (PageNumber) ->
+		if ($scope.page == PageNumber)
+			return true
+		else
+			return false
+
+	$scope.flippage = ->
+		if $scope.page < 4
+			$scope.page = 1 + $scope.page
+		else
+			$scope.page = 1
 
 angular
 	.module("dcsupp")
 	.controller("introductionController", controllerFunction)
-	.directive("intropage", Template2)

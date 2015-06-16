@@ -6,4 +6,12 @@ div class="row"
 	div class="col-xs-8"
 		div ng-controller="introductionController"
 
-			intropage1
+			/Normal Panel
+			intropage1 ng-show="pageNumber(1)"
+			/For Professors Panel
+			intropage2 ng-show="pageNumber(2)"
+			/For Students Panel
+			intropage3 ng-show="pageNumber(3)"
+			/About Developers Panel
+			intropage4 ng-show="pageNumber(4)"
+
