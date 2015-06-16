@@ -1,4 +1,4 @@
-controllerFunction = ($scope, $http) ->
+controllerFunction = ($scope, $http, $compile, $sce) ->
 
     $scope.flip_category = (direction) ->
         request = 
@@ -12,7 +12,7 @@ controllerFunction = ($scope, $http) ->
 
 
     $scope.get_subcategories = (category_id) ->
-        console.log("hi")
+        console.log("test")
         request = 
             method: 'POST',
             url: '/get_subcategories.html',
