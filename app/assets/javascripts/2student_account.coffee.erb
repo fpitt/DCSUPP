@@ -1,17 +1,29 @@
-controllerFunction = ($scope) ->
+controllerFunction = ($scope, $http) ->
 
-	$scope.page = 1
-	$scope.pageNumber = (PageNumber) ->
-		if ($scope.page == PageNumber)
-			return true
-		else
-			return false
+	$scope.flip_attributes = (direction) ->
+    	request = 
+            method: 'POST',
+            url: '/flip_project_direction.html',
+            headers: { 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content') },
+            data: { pageNumber: $scope.pagenumber, direction: direction }
 
-	$scope.flippage = ->
-		if $scope.page < 4
-			$scope.page = 1 + $scope.page
-		else
-			$scope.page = 1
+        $http(request).success($scope.flipSuccess)
+        $scope.flip_direction = direction/10
+
+
+    $scope.flipSuccess = (data) ->
+        if (data)
+            $scope.return_html = data
+            if ($scope.flip_direction > 0)
+                $scope.pagenumber = $scope.pagenumber + $scope.flip_direction
+            else if ($scope.flip_direction < 0 and $scope.pagenumber > 1)
+                $scope.pagenumber = $scope.pagenumber + $scope.flip_direction
+
+
+    $scope.flip_direction = 0
+    $scope.pagenumber = 1
+    $scope.return_html = ''
+    $scope.flip_attributes(0)
 
 angular
 	.module("dcsupp")

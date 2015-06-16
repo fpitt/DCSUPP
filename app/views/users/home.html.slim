@@ -1,8 +1,20 @@
-div class="col-xs-6" id="userSettings"
+div class="row"
 
-	- if !user_signed_in? 
-		h3	SignIn to create a profile
-		hr
+	div class="col-xs-4"
+		div ng-controller="studentController"
 
-	- else
-		= render :partial => "users/partials/userProfile"
+			h4 style="text-align:center" Student Settings
+			hr
+
+	        div class="text-center"
+	          	div class="btn-group"
+	            	button class="btn btn-default" ng-click="flip_attributes(-10)" Prev
+	           		button class="btn btn-default disabled" 
+	                    | {{ pagenumber }}
+	            	button class="btn btn-default" ng-click="flip_attributes(10)" Next
+
+	        div class="row" style="height:5px"
+	        div ng-bind-html="return_html | html"
+
+	
+	div class="col-xs-8"
