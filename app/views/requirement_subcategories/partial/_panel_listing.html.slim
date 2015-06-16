@@ -1,0 +1,52 @@
+h3 Requirement SubCategories
+- @rowNumber = 1
+
+table class="table"
+	thead
+        tr
+          th # 
+          th SubCategory Name
+          th Input Type
+          th Username
+    
+	tbody
+		= @subcategory.each do |item|
+			tr
+		        th scope="row" #{@rowNumber}
+		        	/Entry1 Category Name
+		        	td = item.sub_category_name
+		        	/Entry2 Attribute Type
+		        	- if item.attribute_type == "InputNumber"
+		        		td Input Number
+		        	- elsif item.attribute_type == "InputDate"
+		        		td Input Date
+		        	- elsif item.attribute_type == "Boolean"
+		        		td Boolean Value
+		        	- else 
+		        		td Student Attribute
+		        	/Entry3 Upper Limit
+		        	- if item.upper_limit
+		        		td = item.upper_limit
+		        	- else 
+		        		td -
+		        	/Entry4 Lower Limit
+		        	- if item.lower_limit
+		        		td = item.lower_limit
+		        	- else 
+		        		td -
+		        	/Entry 5 Regex
+		        	- if item.regex
+		        		td = item.regex
+		        	- else 
+		        		td -
+		        	/Entry 6 Place Holder
+		        	- if item.placeholder
+		        		td = item.placeholder
+		        	- else 
+		        		td -
+		        	/Entry 7 Student Attribute
+		        	- if item.student_attribute
+		        		td true
+		        	- else 
+		        		td false
+
