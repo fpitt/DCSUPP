@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150510043755) do
+ActiveRecord::Schema.define(version: 20150616020746) do
 
   create_table "professor_settings", force: :cascade do |t|
     t.datetime "created_at",                       null: false
@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(version: 20150510043755) do
     t.string   "regex"
     t.string   "placeholder"
     t.boolean  "student_attribute"
+    t.boolean  "grades"
   end
 
   add_index "requirement_subcategories", ["requirement_category_id"], name: "index_requirement_subcategories_on_requirement_category_id"
