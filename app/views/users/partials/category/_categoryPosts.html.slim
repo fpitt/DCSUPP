@@ -1,4 +1,4 @@
 ul id="itemPosts3" class="nav nav-tabs nav-stacked"
 	- @category.each do |post|
 		li
-			a data-id= post.id class="a_mail" = post.category_name
+			a ng-click="get_subcategories(#{post.id})" class="a_mail" #{post.category_name}

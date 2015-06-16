@@ -11,6 +11,22 @@ controllerFunction = ($scope, $http) ->
         $scope.flip_direction = direction/10
 
 
+    $scope.get_subcategories = (category_id) ->
+        console.log("hi")
+        request = 
+            method: 'POST',
+            url: '/get_subcategories.html',
+            headers: { 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content') },
+            data: { category_id: category_id }
+
+        $http(request).success($scope.subcategoriesSuccess)
+
+
+    $scope.subcategoriesSuccess = (data) ->
+        if (data)
+            $scope.subcategory_html = data
+
+
     $scope.flipSuccess = (data) ->
         if (data)
             $scope.return_html = data
@@ -24,8 +40,9 @@ controllerFunction = ($scope, $http) ->
     $scope.pagenumber = 1
     $scope.return_html = ''
     $scope.flip_category(0)
+    $scope.subcategory_html = ''
 
 
 angular
     .module("dcsupp")
-    .controller("cateCtrl", controllerFunction)
+    .controller("categoryController", controllerFunction)
