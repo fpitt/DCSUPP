@@ -25,6 +25,9 @@ controllerFunction = ($scope, $http) ->
     $scope.return_html = ''
     $scope.flip_attributes(0)
 
+    #Initalized Tooltip
+    $('[data-toggle="tooltip"]').tooltip()
+
 angular
 	.module("dcsupp")
 	.controller("studentAccountController", controllerFunction)
