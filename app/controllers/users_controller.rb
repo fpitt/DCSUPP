@@ -10,25 +10,11 @@ class UsersController < ApplicationController
 
 	end
 
-	def change
-
-		respond_to do |format|
-      		format.js
-    	end
-
-	end
-
 	def manage_category
-
-		@category = RequirementCategory.order(created_at: :desc).take(10)
-
+		
 	end
 
-	def update_profile
-
-		respond_to do |format|
-      		format.js
-    	end
+	def students
 
 	end
 

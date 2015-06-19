@@ -13,15 +13,14 @@ Rails.application.routes.draw do
   
   root to: "static_pages#introduction"
 
+  #Routes to the 6 main App Pages
   get '/introduction',  to: 'static_pages#introduction'
   get '/student_account',  to: 'users#home'
   get '/curr_project',  to: 'static_pages#project'
   get '/create_project', to: 'users#create_project'
   get '/admin_categories', to: 'users#manage_category'
-  get '/student_page', to: 'static_pages#students'
+  get '/student_page', to: 'user#students'
 
-  patch '/savechange', to: 'users#update_profile'
-  patch '/change', to: 'users#change'
 
   post '/flip_direction', to: 'requirement_categories#flip_direction'
   post '/flip_project_direction', to: 'static_pages#flip_direction'
