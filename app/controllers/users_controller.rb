@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 
 	before_action :authenticate_user!, :find_user
 
-	def home
+	def student_page
 
 	end
 
@@ -18,10 +18,11 @@ class UsersController < ApplicationController
 
 	end
 
+	#Private Methods ----------->
 	private 
-
-	  def find_user
-	    @current_user = current_user
-	  end
+		
+		def find_user
+	    	@current_user = current_user
+	  	end
 
 end

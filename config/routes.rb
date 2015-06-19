@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   #Routes to the 6 main App Pages
   get '/introduction',  to: 'static_pages#introduction'
-  get '/student_account',  to: 'users#home'
+  get '/student_account',  to: 'users#student_page'
   get '/curr_project',  to: 'static_pages#project'
   get '/create_project', to: 'users#create_project'
   get '/admin_categories', to: 'users#manage_category'

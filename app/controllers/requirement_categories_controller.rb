@@ -9,14 +9,6 @@ class RequirementCategoriesController < ApplicationController
 
 	    @category = RequirementCategory.order(created_at: :desc).take(10)
 
-	    #Debug/ Display the Errors
-	    @new_category.errors.full_messages.each do |msg|
-	      puts msg
-	    end
-
-	    respond_to do |format|
-	      format.js
-	    end
 	end
 
 	def flip_direction

@@ -1,18 +1,19 @@
 class StaticPagesController < ApplicationController
 
-  before_action :find_user
+    before_action :find_user
 
-  def project
+    def project
     	
-  end
+    end
 
-  def introduction
+    def introduction
 
-  end
+    end
 
-  private 
+    #Private Methods ----------->
+    private 
 
-	def find_user
-	  @current_user = current_user
-	end
+        def find_user
+            @current_user = current_user
+        end
 end
