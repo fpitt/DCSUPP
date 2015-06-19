@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   get '/curr_project',  to: 'static_pages#project'
   get '/create_project', to: 'users#create_project'
   get '/admin_categories', to: 'users#manage_category'
-  get '/student_page', to: 'user#students'
+  get '/student_page', to: 'users#students'
 
 
   post '/flip_direction', to: 'requirement_categories#flip_direction'
