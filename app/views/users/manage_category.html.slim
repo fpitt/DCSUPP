@@ -31,10 +31,4 @@ div ng-controller="categoryController"
             div ng-bind-html="return_html | html"
 
         div class="col-xs-8"
-            a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" aria-expanded="true" aria-controls="collapseExample" id="collapse" Hide Add New Subcategory
-
-            div class="collapse in" id="collapseExample" aria-expanded="false"
-                = render :partial => "requirement_categories/requirementpartial/addcategory"
-            hr
-
     		div ng-bind-html="subcategory_html | html"
