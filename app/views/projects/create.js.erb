@@ -1,8 +1,0 @@
-console.log("HII")
-$('#panel-error').html(" <%= escape_javascript(render(:partial => 'projects/projectpartial/projecterror')) %>")
-
-<% if !@Project.errors.any? %>
-	document.getElementById("input_form").reset()
-	$('#userPosts').html(" <%= escape_javascript(render(:partial => 'users/partials/createProject')) %>")
-	
-<% end %>
