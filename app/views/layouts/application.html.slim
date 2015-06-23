@@ -4,7 +4,11 @@ html
 	 	title DCSUPP
 	  	= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
 	 	= javascript_include_tag 'application', 'data-turbolinks-track' => true
+	 	/Restangular + Angular-UI-router files
 	 	script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.10/angular-ui-router.js"
+	 	script src="http://cdn.jsdelivr.net/restangular/latest/restangular.js"
+		script src="http://cdn.jsdelivr.net/restangular/latest/restangular.min.js"
+		script src="//cdn.jsdelivr.net/lodash/2.1.0/lodash.compat.min.js"
 		= csrf_meta_tags
 
 	body
