@@ -1,3 +1,3 @@
-//angular.module('dcsupp').controller('ListStudentCtrl', ['$scope', function ($scope) {
-//    $scope.intro = "list student";
-//}]);
+angular.module('dcsupp').controller('ListStudentCtrl', ['$scope', function ($scope) {
+    $scope.page = "list student";
+}]);
