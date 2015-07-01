@@ -41,8 +41,7 @@ angular.module('dcsupp').controller('IntroCtrl', ['$scope', function ($scope) {
     $scope.page = "intro page";
 }]);
 
-angular.module('dcsupp').controller('StudentAccountCtrl', ['$scope', 'Restangular', function ($scope,
-    Restangular) {
+angular.module('dcsupp').controller('StudentAccountCtrl', ['$scope', function ($scope) {
     $scope.page = "student account";
 
     //$scope.getCategory = function() {
