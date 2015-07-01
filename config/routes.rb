@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resources :requirement_categories
   resources :requirement_subcategories
   
-  root to: "static_pages#introduction"
+  root to: "application#introduction"
 
   #Routes to the 6 main App Pages
   get '/introduction',  to: 'static_pages#introduction'

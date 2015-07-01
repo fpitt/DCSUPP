@@ -87,7 +87,6 @@ gem 'cancan'
 gem 'mail'
 
 gem "twitter-bootstrap-rails"
-gem 'angularjs-rails'
 gem 'slim-rails', '~> 3.0.1'
 gem 'angular-rails-templates'
 

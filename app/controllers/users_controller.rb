@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-	before_action :authenticate_user!, :find_user
+	before_action :find_user
 
 	def student_page
 

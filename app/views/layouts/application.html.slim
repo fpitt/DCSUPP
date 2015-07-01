@@ -2,8 +2,8 @@ doctype html
 html
 	head
 	 	title DCSUPP
-	  	= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
-	 	= javascript_include_tag 'application', 'data-turbolinks-track' => true
+	  	= stylesheet_link_tag    'application', media: 'all'
+	 	= javascript_include_tag 'application'
 	 	/Restangular + Angular-UI-router files
 	 	script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.10/angular-ui-router.js"
 	 	script src="http://cdn.jsdelivr.net/restangular/latest/restangular.js"
@@ -44,7 +44,7 @@ html
 					      	ul class="nav navbar-nav navbar-right"
 						    	- if user_signed_in?
 									li #{ link_to('LOGOUT', destroy_user_session_path, :method => :delete) }
-								- else 
+								- else
 								 	li #{ link_to("LOGIN".html_safe, new_user_session_path) }
 
-			ui-view
+				ui-view
