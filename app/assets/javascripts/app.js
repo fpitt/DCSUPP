@@ -4,7 +4,7 @@ angular.module('dcsupp', ['ui.router', 'templates']).config([
         $stateProvider.
             state('intro', {
             url: '/intro',
-            templateURL: 'home.html',
+            templateURL: '_intro.html',
             controller: 'IntroCtrl'
             })
             .state('student_account', {
