@@ -20,11 +20,11 @@ angular.module('dcsupp', ['ui.router', 'templates']).config([
             .state('create_project', {
                 url: '/create_project',
                 templateUrl: 'CreateProject/_create_project.html',
-                controller: 'C1wreateProjectCtrl'
+                controller: 'CreateProjectCtrl'
             })
             .state('manage_category', {
                 url: '/manage_category',
-                templateUrl: '_manage_category.html',
+                templateUrl: 'ManageCategory/_manage_category.html',
                 controller: 'ManageCategoryCtrl'
             })
             .state('list_student', {
@@ -63,15 +63,15 @@ angular.module('dcsupp').controller('StudentAccountCtrl', ['$scope', function ($
 
 angular.module('dcsupp').controller('CurrentProjectCtrl', ['$scope', function ($scope) {
     console.log("d");
-    $scope.intro = "current project";
+    $scope.page = "current project";
 }]);
 
 angular.module('dcsupp').controller('CreateProjectCtrl', ['$scope', function ($scope) {
-    $scope.intro = "create project";
+    $scope.page = "create project";
 }]);
 
 angular.module('dcsupp').controller('ManageCategoryCtrl', ['$scope', function ($scope) {
-    $scope.intro = "manage category";
+    $scope.page = "manage category";
 
     //$scope.getCategory = function() {
     //    Restangular.all('/flip_student_settings').getList().then(function(serverJson) {
@@ -89,5 +89,5 @@ angular.module('dcsupp').controller('ManageCategoryCtrl', ['$scope', function ($
 }]);
 
 angular.module('dcsupp').controller('ListStudentCtrl', ['$scope', function ($scope) {
-    $scope.intro = "list student";
+    $scope.page = "list student";
 }]);

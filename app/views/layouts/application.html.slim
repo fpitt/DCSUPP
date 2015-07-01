@@ -1,0 +1,45 @@
+doctype html
+html
+    head
+        title DCSUPP
+        = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+        = javascript_include_tag 'application', 'data-turbolinks-track' => true
+        = csrf_meta_tags
+
+    body
+
+        div ng-app="dcsupp"
+
+            div class="container"
+                div style="height:60px"
+                    h1 DCSUPP
+
+                div class="row"
+                    nav class="navbar navbar-default"
+                        div class="container-fluid"
+                        /Brand and toggle get grouped for better mobile display
+
+                        div class="navbar-header"
+                            button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+                            span class="sr-only" Toggle navigation
+                            span class="icon-bar" 
+                            span class="icon-bar"
+                            span class="icon-bar"
+
+                        / Collect the nav links, forms, and other content for toggling
+                        div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"
+                            ul class="nav navbar-nav"
+                                li 
+                                    a ui-sref="intro" About DCSUPP
+                                li 
+                                    a ui-sref="student_account" Student Information
+                                li 
+                                    a ui-sref="current_project" Current Projects
+                                li 
+                                    a ui-sref="create_project" Create Project
+                                li 
+                                    a ui-sref="manage_category" Manage Cateogories
+                                li 
+                                    a ui-sref="list_student" List Student
+
+                ui-view
