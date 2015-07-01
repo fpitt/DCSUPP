@@ -1,6 +1,6 @@
 angular.module('dcsupp', ['ui.router', 'templates']).config([
-    '$stateProvider', '$urlRouterProvider',
-    function ($stateProvider, $urlRouterProvider) {
+    '$stateProvider', '$urlRouterProvider', '$locationProvider',
+    function ($stateProvider, $urlRouterProvider, $locationProvider) {
         $stateProvider.
             state('intro', {
             url: '/intro',
@@ -14,26 +14,27 @@ angular.module('dcsupp', ['ui.router', 'templates']).config([
             })
             .state('current_project', {
                 url: '/current_project',
-                templateUrl: 'CurrentProject/_current_project.html',
+                templateUrl: 'CurrentProject/_current_project.html.slim',
                 controller: 'CurrentProjectCtrl'
             })
             .state('create_project', {
                 url: '/create_project',
-                templateUrl: 'CreateProject/_create_project.html',
+                templateUrl: 'CreateProject/_create_project.html.slim',
                 controller: 'CreateProjectCtrl'
             })
             .state('manage_category', {
                 url: '/manage_category',
-                templateUrl: 'ManageCategory/_manage_category.html',
+                templateUrl: 'ManageCategory/_manage_category.html.slim',
                 controller: 'ManageCategoryCtrl'
             })
             .state('list_student', {
                 url: '/list_student',
-                templateUrl: 'ListStudent/_list_student.html',
+                templateUrl: 'ListStudent/_list_student.html.slim',
                 controller: 'ListStudentCtrl'
             });
 
         $urlRouterProvider.otherwise('intro');
+        $locationProvider.html5Mode(true);
     }
 ]);
 
