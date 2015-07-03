@@ -28,4 +28,6 @@ Rails.application.routes.draw do
   post '/flip_student_settings', to: 'requirement_categories#flip_students'
 
   get "/project_create" => 'projects#create'
+
+  get "/*path" => redirect("/?goto=%{path}")
 end
