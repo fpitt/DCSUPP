@@ -8,6 +8,7 @@ angular.module('dcsupp').controller('IndexCtrl', ['$stateParams', '$scope', '$st
         for (i = 1; i < path.length; i++) {
             state = state + '.' + path[i];
         };
+
         $state.go(state);
     } else {
         $state.go('intro');
