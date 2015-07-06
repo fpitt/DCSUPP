@@ -1,4 +1,4 @@
-Week 1: Starting July 1
+-> July 1th
 Work Sprint: 
 + Worked together to setup the Angular and HTML file structure
 + Finished the Issue tracker on Github
@@ -9,9 +9,25 @@ Alan:
 + Add Flip page function as a factory dependency
 
 Christina:
-+ Fix Url Problem
++ Fix Url reload Problem
 + Fix Introduction Page with more states
 
 Frank:
 + Blank Popup/ Service Call
 + Project Posting/ Send to payload
+
+-> July 6th
+Work Sprint:
++ Alan and Christina merged branches
++ Successfully communicated the backend function cal with the frontend
++ The states and the factory injector were setup properly
++ Fixed the URL reload Problem
+
+Alan:
++ Finish the backend calls for the other pages
++ Revising the Backend Functionality calls for Christina and Frank
+
+Christina:
++ Working on the project URL problem for the nested states
++ Working on setting up the directives for the projects
++ Finishing the Current Project page with backend functionality
