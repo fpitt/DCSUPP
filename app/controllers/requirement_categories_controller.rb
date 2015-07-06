@@ -45,11 +45,11 @@ class RequirementCategoriesController < ApplicationController
 		value = params[:direction].to_i + (params[:pageNumber]).to_i*10 - 10
 
 		respond_to do |format|
-	      format.html {
+	      format.json {
 	      	puts value
 	      	if value < attribute_length
 		      	@category = @student_attributes[value .. value + 10]
-		        render :partial => "users/partials/category/categoryPosts"
+		        render :json => @category
 		    else 
 		    	render :nothing => true, :status => 200, :content_type => 'text/html'
 		    end
