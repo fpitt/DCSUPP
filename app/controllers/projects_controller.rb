@@ -18,11 +18,11 @@ class ProjectsController < ApplicationController
     end
 
     def grab_project
-        puts "got here"
+        take = rand(1..9)
 
         respond_to do |format|
             format.json {
-                @projects = Project.all.take(10)   
+                @projects = Project.all.offset(take).take(10)   
 
                 render :json => @projects
             }
