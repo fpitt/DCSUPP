@@ -4,7 +4,6 @@ ServiceFunction = ($http) ->
 		console.log(data)
 
 	flip: (direction, sendParams) ->
-		console.log(sendParams)
 
 		request = 
             method: 'POST',
