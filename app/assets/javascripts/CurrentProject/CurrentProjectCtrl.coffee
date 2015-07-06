@@ -7,8 +7,12 @@ controllerFunction = ($scope, requestService) ->
 		pageNumber: $scope.pagenumber
 		url: $scope.url
 
+	successFunction = (data) ->
+		$scope.projects = data
+		console.log($scope.projects)
+
 	$scope.flip = (direction) ->
-		requestService.flip(direction, $scope.sendParams)
+		requestService.flip(direction, $scope.sendParams).success(successFunction)
 
 
 angular

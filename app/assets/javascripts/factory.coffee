@@ -1,7 +1,7 @@
 ServiceFunction = ($http) ->
 
 	flipSuccess = (data) ->
-		console.log(data)
+		return data
 
 	flip: (direction, sendParams) ->
 
@@ -14,7 +14,7 @@ ServiceFunction = ($http) ->
             	pageNumber: sendParams.pageNumber
             	direction: direction
 
-        $http(request).success(flipSuccess)
+        return $http(request)
 
 
 angular
