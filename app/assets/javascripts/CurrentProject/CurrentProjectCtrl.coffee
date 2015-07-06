@@ -2,10 +2,9 @@ controllerFunction = ($scope, requestService) ->
 
 	$scope.pagenumber = 1
 	$scope.projects = null
-	$scope.url = '/flip_student_settings.json'
+	$scope.url = '/flip_project_direction.json'
 	$scope.sendParams = 
 		pageNumber: $scope.pagenumber
-		dataType: 'StudentAttributes'
 		url: $scope.url
 
 	$scope.flip = (direction) ->
