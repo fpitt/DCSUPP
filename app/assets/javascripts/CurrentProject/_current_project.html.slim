@@ -15,9 +15,11 @@ div ng-controller="CurrentProjectCtrl"
                     button class="btn btn-default" ng-click="flip(10)" Next
                 br
                 br
-                div class="list-group"
-                    div ng-repeat="project in projects"
-                            a class="list-group-item" ui-sref=".selected_project({id: project.id})"
+            div class="list-group"
+                div ng-repeat="project in projects"
+                    ul class="nav nav-pills nav-stacked"
+                        li
+                            a ui-sref=".selected_project({id: project.id})"
                                 | {{ project.title }}
 
         div class="row" style="height:5px"
