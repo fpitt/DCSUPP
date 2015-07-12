@@ -3,7 +3,8 @@ ServiceFunction = ($http) ->
 	flipSuccess = (data) ->
 		return data
 
-	flip: (direction, sendParams) ->
+
+	service: (sendParams, autopayload = []) ->
 
 		request =
 			method: 'POST',
