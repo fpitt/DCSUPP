@@ -31,4 +31,18 @@ class ProjectsController < ApplicationController
         end
     end
 
+    def show 
+        respond_to do |format|
+
+            param = params[:payload]
+
+            @project = Project.find_by_id(param[:id])
+
+            if @project
+                render :json => @project
+            else
+                render:nothing => true, :status => 200, :content_type => 'text/html'
+        end
+    end
+
 end
