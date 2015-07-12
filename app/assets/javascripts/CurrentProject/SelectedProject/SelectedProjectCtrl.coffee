@@ -24,4 +24,4 @@ controllerFunction = ($scope, requestService, $stateParams) ->
 
 angular
 .module('dcsupp')
-.controller('CurrentProjectCtrl', ['$scope', 'requestService', '$stateParams', controllerFunction])
+.controller('SelectProjectCtrl', ['$scope', 'requestService', '$stateParams', controllerFunction])
