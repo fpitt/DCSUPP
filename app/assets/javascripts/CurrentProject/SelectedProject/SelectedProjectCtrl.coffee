@@ -15,8 +15,6 @@ controllerFunction = ($scope, requestService, $stateParams) ->
 
 
     $scope.flip = ->
-
-        console.log($scope.sendParams)
         requestService.service($scope.sendParams, $scope.payload).success(successFunction)
 
     $scope.flip()
