@@ -3,7 +3,7 @@ ServiceFunction = ($http) ->
 	flipSuccess = (data) ->
 		return data
 
-	flip: (direction, sendParams) ->
+	callAngular: (method, data, url) ->
 
 		request = 
             method: 'POST',

@@ -12,7 +12,7 @@ controllerFunction = ($scope, requestService) ->
 		console.log($scope.projects)
 
 	$scope.flip = (direction) ->
-		requestService.flip(direction, $scope.sendParams).success(successFunction)
+		requestService.callAngular(direction, $scope.sendParams).success(successFunction)
 
 
 angular
