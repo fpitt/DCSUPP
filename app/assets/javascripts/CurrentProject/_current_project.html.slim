@@ -17,7 +17,7 @@ div ng-controller="CurrentProjectCtrl"
                 br
                 div class="list-group"
                     div ng-repeat="project in projects"
-                            a class="list-group-item" ui-sref=".selected_project"
+                            a class="list-group-item" ui-sref=".selected_project({id: project.id})"
                                 | {{ project.title }}
 
         div class="row" style="height:5px"

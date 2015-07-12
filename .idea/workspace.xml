@@ -2,23 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="502ee489-cd34-454b-9c03-0ca54f6a8de6" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/javascripts/CurrentProject/CurrentProjectSettings/CurrentProjectSettingsCtrl.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/javascripts/ListStudent/ListStudentSettings/ListStudentSettingsCtrl.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/javascripts/ManageCategory/ManageCategorySettings/ManageCategorySettingsCtrl.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/javascripts/CurrentProject/SelectedProject/SelectedProjectSettings/SelectedProjectsSettingsCtrl.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/javascripts/StudentAccount/StudentAccountSettings/StudentAccountSettingsCtrl.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/javascripts/CurrentProject/CurrentProjectSettings/current_project_settings.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/javascripts/ListStudent/ListStudentSettings/list_student_settings.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/javascripts/ManageCategory/ManageCategorySettings/manage_category_settings.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/javascripts/modal.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/javascripts/CurrentProject/SelectedProject/SelectedProjectSettings/selected_project_settings.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/javascripts/StudentAccount/StudentAccountSettings/student_account_settings.html" />
-      <change type="MOVED" beforePath="C:\Users\Christina\Desktop\DCSUPP\DCSUPP\app\assets\javascripts\CreateProject\create_project_settings.html" afterPath="$PROJECT_DIR$/app/assets/javascripts/CreateProject/CreateProjectSettings/create_project_settings.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/CreateProject/CreateProjectCtrl.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/CreateProject/CreateProjectCtrl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/ListStudent/ListStudentCtrl.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/ListStudent/ListStudentCtrl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/ManageCategory/ManageCategoryCtrl.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/ManageCategory/ManageCategoryCtrl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/CurrentProject/SelectedProject/SelectedProjectCtrl.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/CurrentProject/SelectedProject/SelectedProjectCtrl.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/StudentAccount/StudentAccountCtrl.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/StudentAccount/StudentAccountCtrl.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile.lock" afterPath="$PROJECT_DIR$/Gemfile.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/CurrentProject/_current_project.html.slim" afterPath="$PROJECT_DIR$/app/assets/javascripts/CurrentProject/_current_project.html.slim" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="DCSUPP.iws" />
@@ -39,7 +24,18 @@
     <favorites_list name="DCSUPP" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="_current_project.html.slim" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/CurrentProject/_current_project.html.slim">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="1.36">
+              <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -84,7 +80,6 @@
         <option value="$PROJECT_DIR$/app/assets/javascripts/Index/IndexCtrl.js" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/Intro/Intro.js" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/CurrentProject/SelectedProject/SelectedProjectCtrl.js" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/CurrentProject/_current_project.html.slim" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/CurrentProject/SelectedProject/_selected_project.html" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/CurrentProject/SelectedProject/_selected_project.html.slim" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/CurrentProject/SelectedProject/SelectedProject.js" />
@@ -116,6 +111,7 @@
         <option value="$PROJECT_DIR$/app/assets/javascripts/ListStudent/ListStudentCtrl.js" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/ManageCategory/ManageCategoryCtrl.js" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/StudentAccount/StudentAccountCtrl.js" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/CurrentProject/_current_project.html.slim" />
       </list>
     </option>
   </component>
@@ -127,8 +123,9 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
+    <option name="y" value="1" />
     <option name="width" value="1378" />
-    <option name="height" value="728" />
+    <option name="height" value="704" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -742,11 +739,17 @@
       <option name="project" value="LOCAL" />
       <updated>1436724788228</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="modals">
+      <created>1436727902019</created>
+      <option name="number" value="00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1436727902019</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1378" height="728" extended-state="0" />
+    <frame x="0" y="1" width="1378" height="704" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2597015" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -755,10 +758,10 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19630873" sideWeight="0.51044774" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3204698" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23993288" sideWeight="0.48955223" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28020135" sideWeight="0.48955223" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.295302" sideWeight="0.4940476" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.6433566" sideWeight="0.4940476" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -819,7 +822,8 @@
     <MESSAGE value="to slim" />
     <MESSAGE value="example" />
     <MESSAGE value="modal" />
-    <option name="LAST_COMMIT_MESSAGE" value="modal" />
+    <MESSAGE value="modals" />
+    <option name="LAST_COMMIT_MESSAGE" value="modals" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1058,14 +1062,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/CurrentProject/_current_project.html.slim">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5793651">
-          <caret line="20" column="32" selection-start-line="20" selection-start-column="32" selection-end-line="21" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/CreateProject/_create_project.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.65384614">
@@ -1216,6 +1212,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6883803">
           <caret line="23" column="6" selection-start-line="23" selection-start-column="6" selection-end-line="23" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/CurrentProject/_current_project.html.slim">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.36">
+          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
           <folding />
         </state>
       </provider>
