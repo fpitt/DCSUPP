@@ -4,6 +4,7 @@ controllerFunction = ($scope, requestService) ->
 	$scope.projects = null
 	$scope.url = '/flip_project_direction.json'
 	$scope.sendParams =
+		pageNumber: $scope.pagenumber
 		url: $scope.url
 		method: "POST"
 	$scope.payload = 
@@ -17,12 +18,12 @@ controllerFunction = ($scope, requestService) ->
 		console.log($scope.projects)
 
 
-	$scope.flip = (pushDirection) ->
-		$scope.sendParams["direction"] = pushDirection
+	$scope.flip = (direction) ->
 
 		requestService.service($scope.sendParams, $scope.payload).success(successFunction)
 
 
 angular
 	.module('dcsupp')
-	.controller('CurrentProjectCtrl', ['$scope', 'requestService', controllerFunction])
+	.controller('CreateProjectCtrl', ['$scope', 'requestService', controllerFunction])
+

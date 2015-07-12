@@ -3,16 +3,15 @@ ServiceFunction = ($http) ->
 	flipSuccess = (data) ->
 		return data
 
-	flip: (direction, sendParams) ->
+	service: (sendParams, autopayload = []) ->
 
 		request = 
-            method: 'POST',
+            method: sendParams.method,
             url: sendParams.url,
             headers:
             	'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
             data: 
-            	pageNumber: sendParams.pageNumber
-            	direction: direction
+                payload: autopayload
 
         return $http(request)
 

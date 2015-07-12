@@ -18,6 +18,8 @@ class ProjectsController < ApplicationController
     end
 
     def grab_project
+        puts params[:payload]
+
         take = rand(1..9)
 
         respond_to do |format|
