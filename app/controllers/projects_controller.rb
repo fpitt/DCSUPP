@@ -18,6 +18,8 @@ class ProjectsController < ApplicationController
     end
 
     def grab_project
+        puts params[:payload]
+
         take = rand(1..9)
 
         respond_to do |format|
@@ -26,6 +28,20 @@ class ProjectsController < ApplicationController
 
                 render :json => @projects
             }
+        end
+    end
+
+    def show 
+        respond_to do |format|
+
+            param = params[:payload]
+
+            @project = Project.find_by_id(param[:id])
+
+            if @project
+                render :json => @project
+            else
+                render:nothing => true, :status => 200, :content_type => 'text/html'
         end
     end
 

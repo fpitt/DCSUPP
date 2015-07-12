@@ -3,16 +3,19 @@ ServiceFunction = ($http) ->
 	flipSuccess = (data) ->
 		return data
 
+<<<<<<< HEAD
 	callAngular: (method, data, url) ->
+=======
+	service: (sendParams, autopayload = []) ->
+>>>>>>> selectedproject
 
 		request = 
-            method: 'POST',
+            method: sendParams.method,
             url: sendParams.url,
             headers:
             	'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
             data: 
-            	pageNumber: sendParams.pageNumber
-            	direction: direction
+                payload: autopayload
 
         return $http(request)
 
