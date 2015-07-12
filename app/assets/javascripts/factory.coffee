@@ -12,8 +12,7 @@ ServiceFunction = ($http) ->
 			headers:
 				'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
 			data:
-				pageNumber: sendParams.pageNumber
-				direction: direction
+				payload: autopayload
 
 		return $http(request)
 
