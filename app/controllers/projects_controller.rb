@@ -34,9 +34,8 @@ class ProjectsController < ApplicationController
     def show 
         respond_to do |format|
             format.json {
-                param = params[:payload]
 
-                @project = Project.find_by_id(param[:id])
+                @project = Project.find_by_id(params[:id])
 
                 if @project
                     render :json => @project
