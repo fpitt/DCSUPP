@@ -2,19 +2,16 @@ controllerFunction = ($scope, requestService) ->
 
 	$scope.pagenumber = 1
 	$scope.projects = null
-	$scope.url = '/flip_project_direction.json'
 	$scope.sendParams =
-		url: $scope.url
-		method: "POST"
+		method: 'POST'
+		url: '/flip_project_direction.json'
 	$scope.payload = 
 		group:
 			title: "testtitle"
 			description: "test description"
 
-
 	successFunction = (data) ->
 		$scope.projects = data
-		console.log($scope.projects)
 
 
 	$scope.flip = (pushDirection) ->
