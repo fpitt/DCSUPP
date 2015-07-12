@@ -3,11 +3,7 @@ ServiceFunction = ($http) ->
 	flipSuccess = (data) ->
 		return data
 
-<<<<<<< HEAD
-	callAngular: (method, data, url) ->
-=======
 	service: (sendParams, autopayload = []) ->
->>>>>>> selectedproject
 
 		request = 
             method: sendParams.method,
