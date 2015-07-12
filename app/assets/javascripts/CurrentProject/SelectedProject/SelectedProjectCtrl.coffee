@@ -1,20 +1,27 @@
-controllerFunction = ($scope, requestService) ->
+controllerFunction = ($scope, requestService, $stateParams) ->
 
+    $scope.pagenumber = 1
     $scope.projects = null
-    $scope.selectedProject = null
-    $scope.url = '/project.json'
+    $scope.url = '/projects/' + $stateParams.id + '.json';
     $scope.sendParams =
-        project_id: $stateParams.id
         url: $scope.url
+        method: "GET"
+    $scope.payload =
+        project:
+            id: $stateParams.id
+
 
     successFunction = (data) ->
-        $scope.selectedProject = data
+        $scope.projects = data
+        console.log($scope.projects)
 
-    $scope.getProject = () ->
-        requestService.flip($scope.sendParams).success(successFunction)
 
-    $scope.getProject();
+    $scope.flip = ->
+
+        requestService.service($scope.sendParams, $scope.payload).success(successFunction)
+
+    $scope.flip()
 
 angular
 .module('dcsupp')
-.controller('SelectedProjectCtrl', ['$scope', 'requestService', controllerFunction])
+.controller('CurrentProjectCtrl', ['$scope', 'requestService', '$stateParams', controllerFunction])
