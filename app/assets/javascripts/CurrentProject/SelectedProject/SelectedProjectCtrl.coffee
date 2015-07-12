@@ -4,9 +4,6 @@ controllerFunction = ($scope, requestService, $stateParams) ->
     $scope.sendParams =
         url: '/projects/' + $stateParams.id + '.json'
         method: 'GET'
-    $scope.payload =
-        project:
-            id: $stateParams.id
 
 
     successFunction = (data) ->
@@ -15,7 +12,7 @@ controllerFunction = ($scope, requestService, $stateParams) ->
 
 
     $scope.flip = ->
-        requestService.service($scope.sendParams, $scope.payload).success(successFunction)
+        requestService.service($scope.sendParams).success(successFunction)
 
     $scope.flip()
 
