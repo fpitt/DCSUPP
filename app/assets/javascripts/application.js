@@ -16,6 +16,7 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require angular
+//= require angular-bootstrap
 //= require angular-rails-templates
 //= require angular-ui-router
 //= require app

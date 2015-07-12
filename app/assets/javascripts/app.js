@@ -1,4 +1,4 @@
-angular.module('dcsupp', ['ui.router', 'templates']).config([
+angular.module('dcsupp', ['ui.bootstrap', 'ui.router', 'templates']).config([
     '$stateProvider', '$urlRouterProvider', '$locationProvider',
     function ($stateProvider, $urlRouterProvider, $locationProvider) {
 
