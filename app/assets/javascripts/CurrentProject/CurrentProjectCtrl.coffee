@@ -18,7 +18,7 @@ controllerFunction = ($scope, requestService) ->
 
 
 	$scope.flip = (pushDirection) ->
-		$scope.sendParams["direction"] = pushDirection
+		$scope.payload["direction"] = pushDirection
 
 		requestService.service($scope.sendParams, $scope.payload).success(successFunction)
 
