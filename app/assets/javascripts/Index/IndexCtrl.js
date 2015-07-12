@@ -10,8 +10,11 @@ angular.module('dcsupp').controller('IndexCtrl', ['$stateParams', '$scope', '$st
         };
 
         if (path[path.length - 1].indexOf('?') > -1 ) {
-            state = state + '.' +  path[path.length-1].substring(0, path[path.length - 1].indexOf('?')) + '{id:' +
-                path[path.length-1].substring(path[path.length - 1].indexOf('?'), path[path.length-1]) +'}';
+            state = state + '.' +  path[path.length-1].substring(0, path[path.length - 1].indexOf('?')) + '{' +
+                path[path.length-1].substring(path[path.length - 1].indexOf('?') + 1,
+                    path[path.length - 1].indexOf('='))
+                +
+                path[path.length-1].substring(path[path.length - 1].indexOf('=') + 1, path[path.length-1].length) +'}';
         } else {
             state = state + '.' + path[path.length - 1];
         };
