@@ -17,25 +17,19 @@ class RequirementCategoriesController < ApplicationController
 
 	end
 
-	def flip_direction
+	def getcategories
 
-		respond_to do |format|
-	      format.html {
+        puts params[:payload]
 
-	      	@Category_length = RequirementCategory.all.length
+        take = rand(1..9)
 
-	      	value = params[:direction].to_i + (params[:pageNumber]).to_i*10 - 10
+        respond_to do |format|
+            format.json {
+                @categories = RequirementCategory.all.offset(take).take(10)   
 
-	      	if value < @Category_length
-		      	@category = RequirementCategory.order(created_at: :desc).offset(value).take(10)
-		        render :partial => "users/partials/category/categoryPosts"
-
-		    else 
-		    	render :nothing => true, :status => 200, :content_type => 'text/html'
-
-		    end
-	      }
-	    end
+                render :json => @categories
+            }
+        end
 
 	end
 

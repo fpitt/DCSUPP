@@ -1,5 +1,8 @@
 controllerFunction = ($scope, requestService) ->
 
+    $scope.pagenumber = 2
+    $scope.categories = null
+
     $scope.category_name = ""
     $scope.category_nameDefault = ""
 
@@ -21,6 +24,13 @@ controllerFunction = ($scope, requestService) ->
     $scope.sendParams_subcategory =
         method: 'POST'
         url: '/requirement_subcategories.json'
+    $scope.sendParams =
+        method: 'POST'
+        url: '/get_categories.json'
+    $scope.payload = 
+        category:
+            title: "testtitle"
+            description: "test description"
 
 
     $scope.getCSS = ->
@@ -42,6 +52,10 @@ controllerFunction = ($scope, requestService) ->
     successFunction2 = (data) ->
         console.log("success")
         clearForm2()
+
+    successFunction3 = (data) ->
+        console.log("success")
+        $scope.categories = data
 
     clearForm = ->
         $scope.category_name = angular.copy($scope.category_nameDefault)
@@ -70,8 +84,13 @@ controllerFunction = ($scope, requestService) ->
 
         requestService.service($scope.sendParams_subcategory, $scope.payload_category).success(successFunction2)
 
+    $scope.flip = (pushDirection) ->
+        $scope.payload["direction"] = pushDirection
+
+        requestService.service($scope.sendParams, $scope.payload).success(successFunction3)
 
     $('[data-toggle="tooltip"]').tooltip()
+    $scope.flip(0)
 
 
 angular

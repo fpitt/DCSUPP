@@ -24,7 +24,7 @@ Rails.application.routes.draw do
 
   post '/flip_direction', to: 'requirement_categories#flip_direction'
   post '/flip_project_direction', to: 'projects#grab_project'
-  post '/get_subcategories', to: 'requirement_categories#subcategories'
+  post '/get_categories', to: 'requirement_categories#getcategories'
   post '/flip_student_settings', to: 'requirement_categories#flip_students'
 
   get "/project_create" => 'projects#create'
