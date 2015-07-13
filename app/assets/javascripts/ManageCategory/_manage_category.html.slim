@@ -63,18 +63,17 @@ div ng-controller="ManageCategoryCtrl"
 						td
 							button type="button" id="student_attribute" class="btn btn-default" ng-click="getCSS()" False
 
-					div ng-repeat="subcategory in list_subcategories"
-						tr
-							th scope="row"
-							td
-								p
-									| {{ subcategory.sub_category_name }}
-							td 
-								p
-									| {{ subcategory.attribute_type}}
-							td
-								p
-									| {{ subcategory.placeholder}}
-							td
-								p
-									| {{ subcategory.attribute}}
+					tr ng-repeat="subcategory in list_subcategories"
+						th scope="row"
+						td
+							p
+								| {{ subcategory.sub_category_name }}
+						td 
+							p
+								| {{ subcategory.attribute_type}}
+						td
+							p	
+								| {{ subcategory.placeholder}}
+						td
+							p
+								| {{ subcategory.attribute}}
