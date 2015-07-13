@@ -4,7 +4,6 @@ class ProjectsController < ApplicationController
         respond_to do |format|
             format.json {
                 param = params[:payload]
-                puts param[:project]
 
                 @project = Project.new(param[:project])
 

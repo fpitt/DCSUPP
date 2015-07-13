@@ -20,6 +20,7 @@ controllerFunction = ($scope, requestService) ->
 		requestService.service($scope.sendParams, $scope.payload).success(successFunction)
 
 	$('[data-toggle="tooltip"]').tooltip()
+	$scope.flip(0)
 
 angular
 	.module('dcsupp')
