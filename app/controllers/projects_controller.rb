@@ -1,19 +1,19 @@
 class ProjectsController < ApplicationController
 	
     def create
-        @Project = Project.new(params[:project])
-
-        if @Project.save
-
-        end
-
-        #Debug/ Display the Errors
-        @Project.errors.full_messages.each do |msg|
-            puts msg
-        end
-
         respond_to do |format|
-            format.js
+            format.json {
+                param = params[:payload]
+                puts param[:project]
+
+                @project = Project.new(param[:project])
+
+                if @project.save
+                    render :json => @project
+                else
+                    render :nothing => true, :status => 200, :content_type => 'text/html'
+                end
+            }
         end
     end
 

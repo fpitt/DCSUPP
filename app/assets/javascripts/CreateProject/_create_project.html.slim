@@ -1,0 +1,33 @@
+div ng-controller="CreateProjectCtrl"
+
+    div class="row"
+        div class="col-xs-4"
+
+        div class="col-xs-6"
+        	h3 Create Project
+        	hr
+
+        	form 
+        		div class="form-group"
+				    label for="exampleInputEmail" Project Title
+				    input class="form-control" placeholder="Email" ng-model="project.title"
+
+				div class="form-group"
+					label for="exampleInputEmail" Project Description
+					textarea class="form-control" rows="5" placeholder="Project Description" ng-model="project.text"
+
+				div class="form-group"
+					button type="submit" class="btn btn-default" ng-click="create()" Create Project
+
+
+        div class="col-xs-2"
+            div class="row" style="height:15px"
+
+            div class="btn-group" role="group" aria-label="Default button group"
+                /Button 1: Information
+                button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Information"
+                    span class="glyphicon glyphicon-info-sign" aria-hidden="true"
+
+                /Button 2: Account Settings
+                button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Settings"
+                    span class="glyphicon glyphicon-tasks" aria-hidden="true"

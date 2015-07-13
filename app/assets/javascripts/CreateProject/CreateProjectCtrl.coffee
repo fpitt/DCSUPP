@@ -1,26 +1,35 @@
 controllerFunction = ($scope, requestService) ->
 
-	$scope.pagenumber = 1
-	$scope.projects = null
-	$scope.url = '/flip_project_direction.json'
+	$scope.project =
+		title: ""
+		text: ""
+	$scope.projectDefault =
+		title: ""
+		text: ""
 	$scope.sendParams =
-		pageNumber: $scope.pagenumber
-		url: $scope.url
+		url: '/projects.json'
 		method: "POST"
-	$scope.payload = 
-		group:
-			title: "testtitle"
-			description: "test description"
 
 
 	successFunction = (data) ->
-		$scope.projects = data
-		console.log($scope.projects)
+		console.log("Created Project")
+		clearForm()
 
 
-	$scope.flip = (direction) ->
+	clearForm = ->
+		$scope.project = angular.copy($scope.projectDefault)
+
+
+	$scope.create = ->
+		$scope.payload = 
+			project:
+				title: $scope.project.title
+				text: $scope.project.text
 
 		requestService.service($scope.sendParams, $scope.payload).success(successFunction)
+	
+
+	$('[data-toggle="tooltip"]').tooltip()
 
 
 angular
