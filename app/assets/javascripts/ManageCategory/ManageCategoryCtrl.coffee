@@ -6,6 +6,19 @@ controllerFunction = ($scope, requestService) ->
     $scope.sendParams_category =
         method: 'POST'
         url: '/requirement_categories.json'
+    $scope.button_clicked = 0
+
+
+    $scope.getCSS = ->
+        console.log("clicked")
+        if $scope.button_clicked
+            $scope.button_clicked = 0
+            $("#student_attribute").addClass("btn-default").removeClass("btn-primary")
+            $("#student_attribute").html("False")
+        else
+            $scope.button_clicked = 1
+            $("#student_attribute").addClass("btn-primary").removeClass("btn-default")
+            $("#student_attribute").html("True")
 
 
     successFunction = (data) ->
@@ -26,10 +39,7 @@ controllerFunction = ($scope, requestService) ->
 
     $('[data-toggle="tooltip"]').tooltip()
 
-categoryListing = ->
-    templateUrl: 'ManageCategory/CategoryPartial/_panel_listing.html'
 
 angular
     .module('dcsupp')
     .controller('ManageCategoryCtrl', ['$scope', 'requestService', controllerFunction])
-    .directive('subCategoryList', categoryListing)
