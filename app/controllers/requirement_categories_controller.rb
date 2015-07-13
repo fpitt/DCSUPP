@@ -1,13 +1,19 @@
 class RequirementCategoriesController < ApplicationController
 
 	def create
-		@new_category = RequirementCategory.new(params[:requirement_category])
+		param = params[:payload]
 
-	  	if @new_category.save
+		@category = RequirementCategory.new(param[:requirement_category])
 
+		respond_to do |format|
+			format.json {
+	  			if @category.save
+	  				render :json => @category
+	  			else
+	  				render :nothing => true, :status => 200, :content_type => 'text/html'
+	    		end
+	    	}
 	    end
-
-	    @category = RequirementCategory.order(created_at: :desc).take(10)
 
 	end
 

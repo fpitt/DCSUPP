@@ -1,37 +1,32 @@
+div ng-controller="ManageCategoryCtrl"
+
+    div class="row"
+        div class="col-xs-4"
+            h3 Create Requirement Category
+        	hr
+
+        	form 
+        		div class="form-group"
+				    label for="exampleInputEmail" Requirement Category Title
+				    input class="form-control" placeholder="Category Name" ng-model="category_name"
+
+				div class="form-group"
+					button type="submit" class="btn btn-default" ng-click="create_category()" Create Category
 
 
-h3 Manage Posting Categories
+        div class="col-xs-6"
 
-/div
-/  h3 Manage Posting Categories
-/  hr
-/
-/  div class="row"
-/    div class="col-xs-4"
-/
-/      div id="panel-error"
-/        = render :partial => "requirement_categories/requirementpartial/categoryerror"
-/
-/      = form_for :requirement_category, :url => '/requirement_categories#create', :remote => true, :html => {:id => "input_form"} do |f|
-/
-/        = f.text_field :category_name, placeholder: "Title of Category", :class => "form-control span90"
-/        br
-/        = f.submit "Add New Category", class: "btn btn-default"
-/      hr
-/
-/      h4 style="text-align:center" Requirement Categories
-/      hr
-/
-/      div class="text-center"
-/        div class="btn-group"
-/          button class="btn btn-default" ng-click="flip_category(-10)" Prev
-/            button class="btn btn-default disabled"
-/              | {{ pagenumber }}
-/          button class="btn btn-default" ng-click="flip_category(10)" Next
-/
-/      div class="row" style="height:5px"
-/
-/      div ng-bind-html="return_html | html"
-/
-/    div class="col-xs-8"
-/    div ng-bind-html="subcategory_html | html"
+        	subCategoryList
+
+
+        div class="col-xs-2"
+            div class="row" style="height:15px"
+
+            div class="btn-group" role="group" aria-label="Default button group"
+                /Button 1: Information
+                button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Information"
+                    span class="glyphicon glyphicon-info-sign" aria-hidden="true"
+
+                /Button 2: Account Settings
+                button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Settings"
+                    span class="glyphicon glyphicon-tasks" aria-hidden="true"
