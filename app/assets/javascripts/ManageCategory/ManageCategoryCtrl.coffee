@@ -47,6 +47,9 @@ controllerFunction = ($scope, requestService) ->
         $scope.category_name = angular.copy($scope.category_nameDefault)
 
     clearForm2 = ->
+        $scope.category.student_attribute = 0
+        $("#student_attribute").addClass("btn-default").removeClass("btn-primary")
+        $("#student_attribute").html("False")
         $scope.category = angular.copy($scope.categoryDefault)
 
 
