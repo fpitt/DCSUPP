@@ -14,17 +14,18 @@ Rails.application.routes.draw do
   root to: "application#introduction"
 
   #Routes to the 6 main App Pages
-  get '/introduction',  to: 'static_pages#introduction'
+  get '/intro',  to: 'static_pages#introduction'
   get '/student_account',  to: 'users#student_page'
-  get '/curr_project',  to: 'static_pages#project'
+  get '/current_project',  to: 'static_pages#project'
   get '/create_project', to: 'users#create_project'
   get '/manage_category', to: 'users#manage_category'
-  get '/student_page', to: 'users#students'
+  get '/list_student', to: 'users#students'
 
 
   post '/flip_direction', to: 'requirement_categories#flip_direction'
   post '/flip_project_direction', to: 'projects#grab_project'
   post '/get_categories', to: 'requirement_categories#getcategories'
+  post '/get_subcategories', to: 'requirement_categories#get_subcategories'
   post '/flip_student_settings', to: 'requirement_categories#flip_students'
 
   get "/project_create" => 'projects#create'
