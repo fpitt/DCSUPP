@@ -2,7 +2,6 @@ class RequirementCategoriesController < ApplicationController
 
 	def create
 		param = params[:payload]
-
 		@category = RequirementCategory.new(param[:requirement_category])
 
 		respond_to do |format|
@@ -18,9 +17,7 @@ class RequirementCategoriesController < ApplicationController
 	end
 
 	def getcategories
-
         puts params[:payload]
-
         take = rand(1..9)
 
         respond_to do |format|
@@ -60,16 +57,17 @@ class RequirementCategoriesController < ApplicationController
 	end
 
 	def subcategories
-
 		respond_to do |format|
-	      format.html {
-	      	puts params[:category_id]
-			@subcategory = RequirementSubcategory.where(requirement_category_id: 
-						params[:category_id].to_i)
+	    	format.json {
+	      		param = params[:payload]
 
-	      	render :partial => 'requirement_subcategories/partial/panel_listing'
-	      }
+				category = RequirementCategory.find_by_id(param[:target_id])
+				puts category.id
+
+				@subcategory = category.requirement_subcategories
+
+	      		render :json => @subcategory
+	      	}
 	    end		
-
 	end
 end

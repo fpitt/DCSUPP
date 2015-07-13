@@ -62,7 +62,7 @@ controllerFunction = ($scope, requestService) ->
         $scope.categories = data
 
     successFunction4 = (data) ->
-        console.log("success")
+        console.log(data)
         $scope.subcategories = data
 
     clearForm = ->
@@ -97,8 +97,9 @@ controllerFunction = ($scope, requestService) ->
 
         requestService.service($scope.sendParams, $scope.payload).success(successFunction3)
 
-    $scope.subcategories = (category_id)->
-        $scope.payload["category_id"] = category_id
+    $scope.subcategories = (event)->
+        console.log(event.target.id)
+        $scope.payload["target_id"] = event.target.id
 
         requestService.service($scope.get_subcategories, $scope.payload).success(successFunction4)
 

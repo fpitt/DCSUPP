@@ -1,7 +1,7 @@
 class RequirementCategory < ActiveRecord::Base
 
-	has_many :requirment_subcategories, dependent: :destroy
-  	accepts_nested_attributes_for :requirment_subcategories
+	has_many :requirement_subcategories, dependent: :destroy
+  	accepts_nested_attributes_for :requirement_subcategories
 
 	attr_accessible :category_name
 
