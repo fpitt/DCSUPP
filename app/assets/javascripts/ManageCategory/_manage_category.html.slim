@@ -35,15 +35,15 @@ div ng-controller="ManageCategoryCtrl"
 								span class="glyphicon glyphicon glyphicon-plus" aria-hidden="true"
 
 						td 
-							input type="text" class="form-control" placeholder="Category Name"
+							input type="text" class="form-control" placeholder="Category Name" ng-model="category.sub_category_name"
 						td 
-							select class="form-control"
-			  					option Number
-			  					option Date
-			  					option Boolean
-								option Input Field
+							select class="form-control" ng-model="category.attribute_type"
+			  					option value="Number" Number
+			  					option value="Date" Date
+			  					option value="Boolean" Boolean
+								option value="Input Field" Input Field
 						td 
-							input type="text" class="form-control"
+							input type="text" class="form-control" placeholder="Place Holder" ng-model="category.placeholder"
 						td
 							button type="button" id="student_attribute" class="btn btn-default" ng-click="getCSS()" False
 

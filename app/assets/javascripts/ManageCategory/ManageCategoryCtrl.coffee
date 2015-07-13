@@ -1,22 +1,36 @@
 controllerFunction = ($scope, requestService) ->
 
     $scope.category_name = ""
-    $scope.pagenumber = 1
     $scope.category_nameDefault = ""
+
+    $scope.category =
+        sub_category_name: ""
+        attribute_type: "Number"
+        placeholder: ""
+        student_attribute: 0
+    $scope.categoryDefault =
+        sub_category_name: ""
+        attribute_type: "Number"
+        placeholder: ""
+        student_attribute: 0
+
+    $scope.pagenumber = 1
     $scope.sendParams_category =
         method: 'POST'
         url: '/requirement_categories.json'
-    $scope.button_clicked = 0
+    $scope.sendParams_subcategory =
+        method: 'POST'
+        url: '/requirement_subcategories.json'
 
 
     $scope.getCSS = ->
         console.log("clicked")
-        if $scope.button_clicked
-            $scope.button_clicked = 0
+        if $scope.category.student_attribute
+            $scope.category.student_attribute = 0
             $("#student_attribute").addClass("btn-default").removeClass("btn-primary")
             $("#student_attribute").html("False")
         else
-            $scope.button_clicked = 1
+            $scope.category.student_attribute = 1
             $("#student_attribute").addClass("btn-primary").removeClass("btn-default")
             $("#student_attribute").html("True")
 
@@ -25,9 +39,15 @@ controllerFunction = ($scope, requestService) ->
         console.log("success")
         clearForm()
 
+    successFunction2 = (data) ->
+        console.log("success")
+        clearForm2()
 
     clearForm = ->
         $scope.category_name = angular.copy($scope.category_nameDefault)
+
+    clearForm2 = ->
+        $scope.category = angular.copy($scope.categoryDefault)
 
 
     $scope.create_category = ->
@@ -36,6 +56,17 @@ controllerFunction = ($scope, requestService) ->
                 category_name: $scope.category_name
 
         requestService.service($scope.sendParams_category, $scope.payload_category).success(successFunction)
+
+    $scope.create_subcategory = ->
+        $scope.payload_category = 
+            requirement_subcategory:
+                sub_category_name: $scope.category.sub_category_name
+                attribute_type: $scope.category.attribute_type
+                placeholder: $scope.category.placeholder
+                student_attribute: $scope.category.student_attribute
+
+        requestService.service($scope.sendParams_subcategory, $scope.payload_category).success(successFunction2)
+
 
     $('[data-toggle="tooltip"]').tooltip()
 
