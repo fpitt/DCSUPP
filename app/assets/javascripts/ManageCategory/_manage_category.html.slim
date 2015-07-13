@@ -1,6 +1,5 @@
 div ng-controller="ManageCategoryCtrl"
 
-
     div class="row"
         div class="col-xs-4"
             h3 Create Requirement Category
@@ -46,20 +45,6 @@ div ng-controller="ManageCategoryCtrl"
 			    
 				tbody
 					/Top Row, Add Category Row
-					div ng-repeat="subcategory in subcategories"
-						th scope="row"
-						td
-							p
-								| {{ subcategory.sub_category_name }}
-						td 
-							p
-								| {{ subcategory.attribute_type}}
-						td
-							p
-								| {{ subcategory.placeholder}}
-						td
-							p
-								| {{ subcategory.attribute}}
 					tr
 						th scope="row" 
 							button type="submit" class="btn btn-default" ng-click="create_subcategory()"
@@ -78,3 +63,18 @@ div ng-controller="ManageCategoryCtrl"
 						td
 							button type="button" id="student_attribute" class="btn btn-default" ng-click="getCSS()" False
 
+					div ng-repeat="subcategory in list_subcategories"
+						tr
+							th scope="row"
+							td
+								p
+									| {{ subcategory.sub_category_name }}
+							td 
+								p
+									| {{ subcategory.attribute_type}}
+							td
+								p
+									| {{ subcategory.placeholder}}
+							td
+								p
+									| {{ subcategory.attribute}}

@@ -2,7 +2,7 @@ controllerFunction = ($scope, requestService) ->
 
     $scope.pagenumber = 2
     $scope.categories = null
-    $scope.subcategories = null
+    $scope.list_subcategories = null
 
     $scope.category_name = ""
     $scope.category_nameDefault = ""
@@ -63,7 +63,7 @@ controllerFunction = ($scope, requestService) ->
 
     successFunction4 = (data) ->
         console.log(data)
-        $scope.subcategories = data
+        $scope.list_subcategories = data
 
     clearForm = ->
         $scope.category_name = angular.copy($scope.category_nameDefault)
