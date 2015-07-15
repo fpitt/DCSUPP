@@ -1,8 +1,5 @@
 ServiceFunction = ($http) ->
 
-	flipSuccess = (data) ->
-		return data
-
 	service: (sendParams, autopayload = []) ->
 
 		request =
@@ -17,5 +14,5 @@ ServiceFunction = ($http) ->
 
 
 angular
-.module('dcsupp')
-.service('requestService', ServiceFunction)
+	.module('dcsupp')
+	.service('requestService', ServiceFunction)
