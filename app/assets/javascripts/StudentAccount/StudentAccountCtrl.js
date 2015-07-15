@@ -1,14 +1,14 @@
-angular.module('dcsupp').controller('StudentAccountCtrl', ['$scope', function ($scope) {
+angular.module('dcsupp').controller('StudentAccountCtrl', ['$scope', '$modal', function ($scope, $modal) {
     $scope.page = "student account";
 
     $scope.items = ['item1', 'item2', 'item3'];
 
-    $scope.open = function (size) {
+    $scope.changeSettings = function (size) {
 
         var modalInstance = $modal.open({
             animation: true,
-            templateUrl: 'CreateProject/CreateProjectSettings/create_project_settings.html',
-            controller: 'CreateProjectSettingsCtrl',
+            templateUrl: 'StudentAccount/StudentAccountSettings/student_account_settings.html',
+            controller: 'StudentAccountSettingsCtrl',
             size: size,
             resolve: {
                 items: function () {

@@ -1,7 +1,8 @@
 /**
  * Created by Christina on 2015-07-12.
  */
-angular.module('dcsupp').controller('CurrentProjectSettingsCtrl', ['$scope', '$modalInstance','items', function ($scope, items, $modalInstance) {
+angular.module('dcsupp').controller('CurrentProjectSettingsCtrl', ['$scope', '$modalInstance','items',
+    function ($scope,$modalInstance,items) {
     $scope.items = items;
     $scope.selected = {
         item: $scope.items[0]

@@ -1,4 +1,4 @@
-angular.module('dcsupp').controller('StudentAccountSettingsCtrl', ['$scope', '$modalInstance','items', function ($scope, items, $modalInstance) {
+angular.module('dcsupp').controller('StudentAccountSettingsCtrl', ['$scope', '$modalInstance','items', function ($scope, $modalInstance, items) {
     $scope.items = items;
     $scope.selected = {
         item: $scope.items[0]

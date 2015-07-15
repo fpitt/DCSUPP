@@ -1,11 +1,7 @@
-angular.module('dcsupp').controller('CreateProjectSettingsCtrl', ['$scope', '$modalInstance','items', function ($scope, items, $modalInstance) {
-    $scope.items = items;
-    $scope.selected = {
-        item: $scope.items[0]
-    };
+angular.module('dcsupp').controller('CreateProjectSettingsCtrl', ['$scope', '$modalInstance', function ($scope, $modalInstance) {
 
     $scope.ok = function () {
-        $modalInstance.close($scope.selected.item);
+        $modalInstance.close('ok');
     };
 
     $scope.cancel = function () {

@@ -3,6 +3,7 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/../../ArtLocalStuff/ArtLocalDashboard2/ArtLocal/client/app/app.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/../../ArtLocalStuff/ArtLocalDashboard2/ArtLocal/client/app/auth/auth.controller.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../ArtLocalStuff/ArtLocalDashboard2/ArtLocal/client/app/delete/delete/delete.controller.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/../../ArtLocalStuff/ArtLocalDashboard2/ArtLocal/client/app/main/main.controller.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/../../ArtLocalStuff/ArtLocalDashboard2/ArtLocal/client/app/main/main.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/../../ArtLocalStuff/ArtLocalDashboard2/ArtLocal/client/components/navbar/navbar.controller.js" charset="UTF-8" />

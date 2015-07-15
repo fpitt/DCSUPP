@@ -1,4 +1,4 @@
-controllerFunction = ($scope, requestService) ->
+controllerFunction = ($scope, requestService, $modal) ->
 
 	$scope.pagenumber = 1
 	$scope.projects = null
@@ -11,6 +11,21 @@ controllerFunction = ($scope, requestService) ->
 		group:
 			title: "testtitle"
 			description: "test description"
+
+	$scope.changeSettings = (size) ->
+		modalInstance = $modal.open(
+			animation: true
+			templateUrl: 'CreateProject/CreateProjectSettings/create_project_settings.html'
+			controller: 'CreateProjectSettingsCtrl'
+			size: size
+			resolve: items: ->
+				$scope.items
+		)
+		modalInstance.result.then ((selectedItem) ->
+			$scope.selected = selectedItem
+			return
+		), ->
+		return
 
 
 	successFunction = (data) ->
@@ -25,5 +40,5 @@ controllerFunction = ($scope, requestService) ->
 
 angular
 	.module('dcsupp')
-	.controller('CreateProjectCtrl', ['$scope', 'requestService', controllerFunction])
+	.controller('CreateProjectCtrl', ['$scope', 'requestService', '$modal', controllerFunction])
 
