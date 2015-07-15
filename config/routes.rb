@@ -31,4 +31,5 @@ Rails.application.routes.draw do
   get "/project_create" => 'projects#create'
 
   get "/*path" => redirect("/?goto=%{path}")
+
 end

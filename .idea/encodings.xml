@@ -4,8 +4,13 @@
     <file url="file://$PROJECT_DIR$/../../ArtLocalStuff/ArtLocalDashboard2/ArtLocal/client/app/app.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/../../ArtLocalStuff/ArtLocalDashboard2/ArtLocal/client/app/auth/auth.controller.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/../../ArtLocalStuff/ArtLocalDashboard2/ArtLocal/client/app/delete/delete/delete.controller.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../ArtLocalStuff/ArtLocalDashboard2/ArtLocal/client/app/gallery/addgallery/addgallery.scss" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/../../ArtLocalStuff/ArtLocalDashboard2/ArtLocal/client/app/main/main.controller.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/../../ArtLocalStuff/ArtLocalDashboard2/ArtLocal/client/app/main/main.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../ArtLocalStuff/ArtLocalDashboard2/ArtLocal/client/app/profile/profile.controller.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../ArtLocalStuff/ArtLocalDashboard2/ArtLocal/client/app/profile/profile.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/../../ArtLocalStuff/ArtLocalDashboard2/ArtLocal/client/components/navbar/navbar.controller.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../ArtLocalStuff/ArtLocalDashboard2/ArtLocal/server/api/auth/auth.controller.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../ArtLocalStuff/ArtLocalDashboard2/ArtLocal/server/api/auth/index.js" charset="UTF-8" />
   </component>
 </project>

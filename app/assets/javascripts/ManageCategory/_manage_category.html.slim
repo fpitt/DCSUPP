@@ -7,76 +7,73 @@ div ng-controller="ManageCategoryCtrl"
 
       form
         div class="form-group"
+        label for="exampleInputEmail" Requirement Category Title
+        input class="form-control" placeholder="Category Name" ng-model="category_name"
 
-    label for="exampleInputEmail" Requirement Category Title
-    input class="form-control" placeholder="Category Name" ng-model="category_name"
+    div class="form-group"
+      button type="submit" class="btn btn-default" ng-click="create_category()" Create Category
 
+        div class="row" style="height:20px"
 
-  div class="form-group"
-    button type="submit" class="btn btn-default" ng-click="create_category()" Create Category
-
-      div class="row" style="height:20px"
-
-      div class="text-center"
-        div class="btn-group"
-          button class="btn btn-default" ng-click="flip(-10)" Prev
-          button class="btn btn-default disabled"
-            | {{ pagenumber }}
-          button class="btn btn-default" ng-click="flip(10)" Next
-        br
-        br
-      div class="list-group"
-        div ng-repeat="category in categories"
-          ul class="nav nav-pills nav-stacked"
-            li ng-click="subcategories($event)" 
-              a id="{{ category.id }}"
-                | {{ category.category_name }}
+        div class="text-center"
+          div class="btn-group"
+            button class="btn btn-default" ng-click="flip(-10)" Prev
+            button class="btn btn-default disabled"
+              | {{ pagenumber }}
+            button class="btn btn-default" ng-click="flip(10)" Next
+          br
+          br
+        div class="list-group"
+          div ng-repeat="category in categories"
+            ul class="nav nav-pills nav-stacked"
+              li ng-click="subcategories($event)"
+                a id="{{ category.id }}"
+                  | {{ category.category_name }}
 
 
-      div class="col-xs-8"
-        h3 Requirement SubCategories
+    div class="col-xs-8"
+      h3 Requirement SubCategories
 
-  table class="table"
-    thead
-      tr
-        th # 
-        th SubCategory Name
-        th Input Type
-        th Place Holder
-        th Student Attribute
+    table class="table"
+      thead
+        tr
+          th #
+          th SubCategory Name
+          th Input Type
+          th Place Holder
+          th Student Attribute
 
-    tbody
-      /Top Row, Add Category Row
-      tr
-        th scope="row" 
-          button type="submit" class="btn btn-default" ng-click="create_subcategory()"
-            span class="glyphicon glyphicon glyphicon-plus" aria-hidden="true"
+      tbody
+        /Top Row, Add Category Row
+        tr
+          th scope="row"
+            button type="submit" class="btn btn-default" ng-click="create_subcategory()"
+              span class="glyphicon glyphicon glyphicon-plus" aria-hidden="true"
 
-        td
-          input type="text" class="form-control" placeholder="Category Name" ng-model="category.sub_category_name"
-        td
-          select class="form-control" ng-model="category.attribute_type"
-            option value="Number" Number
-            option value="Date" Date
-            option value="Boolean" Boolean
-            option value="Input Field" Input Field
-        td
-          input type="text" class="form-control" placeholder="Place Holder" ng-model="category.placeholder"
-        td
-          button type="button" id="student_attribute" class="btn btn-default" ng-click="getCSS()" False
+          td
+            input type="text" class="form-control" placeholder="Category Name" ng-model="category.sub_category_name"
+          td
+            select class="form-control" ng-model="category.attribute_type"
+              option value="Number" Number
+              option value="Date" Date
+              option value="Boolean" Boolean
+              option value="Input Field" Input Field
+          td
+            input type="text" class="form-control" placeholder="Place Holder" ng-model="category.placeholder"
+          td
+            button type="button" id="student_attribute" class="btn btn-default" ng-click="getCSS()" False
 
-      tr ng-repeat="subcategory in list_subcategories"
-        th scope="row"
-        td
-          p
-            | {{ subcategory.sub_category_name }}
-        td
-          p
-            | {{ subcategory.attribute_type}}
-        td
-          p
-            | {{ subcategory.placeholder}}
-        td
-          p
-            | {{ subcategory.student_attribute}}
-
+        tr ng-repeat="subcategory in list_subcategories"
+          th scope="row"
+          td
+            p
+              | {{ subcategory.sub_category_name }}
+          td
+            p
+              | {{ subcategory.attribute_type}}
+          td
+            p
+                | {{ subcategory.placeholder}}
+          td
+            p
+              | {{ subcategory.student_attribute}}
