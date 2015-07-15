@@ -27,6 +27,22 @@ controllerFunction = ($scope, requestService, $modal) ->
 		), ->
 		return
 
+	$scope.viewInfo = (size) ->
+		modalInstance = $modal.open(
+			animation: true
+			templateUrl: 'CreateProject/CreateProjectSettings/create_project_info.html'
+			controller: 'CreateProjectSettingsCtrl'
+			size: size
+			resolve: items: ->
+				$scope.items
+		)
+		modalInstance.result.then ((selectedItem) ->
+			$scope.selected = selectedItem
+			return
+		), ->
+		return
+
+
 
 	successFunction = (data) ->
 		$scope.projects = data

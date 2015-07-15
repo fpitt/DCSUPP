@@ -34,6 +34,21 @@ controllerFunction = ($scope, requestService, $modal) ->
 		), ->
 		return
 
+	$scope.viewInfo = (size) ->
+		modalInstance = $modal.open(
+			animation: true
+			templateUrl: 'CurrentProject/CurrentProjectSettings/current_project_info.html'
+			controller: 'CurrentProjectSettingsCtrl'
+			size: size
+			resolve: items: ->
+				$scope.items
+		)
+		modalInstance.result.then ((selectedItem) ->
+			$scope.selected = selectedItem
+			return
+		), ->
+		return
+
 	$scope.flip = (pushDirection) ->
 		$scope.payload["direction"] = pushDirection
 

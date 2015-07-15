@@ -1,35 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="502ee489-cd34-454b-9c03-0ca54f6a8de6" name="Default" comment="settings popup">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/javascripts/CreateProject/CreateProjectSettings/create_project_settings.html.slim" />
-      <change type="DELETED" beforePath="C:\Users\Christina\Desktop\DCSUPP\DCSUPP\app\assets\javascripts\CreateProject\CreateProjectCtrl.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Christina\Desktop\DCSUPP\DCSUPP\app\assets\javascripts\CreateProject\CreateProjectSettings\create_project_settings.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Christina\Desktop\DCSUPP\DCSUPP\app\assets\javascripts\CurrentProject\CurrentProjectSettingsCtrl.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Christina\Desktop\DCSUPP\DCSUPP\app\assets\javascripts\CurrentProject\current_project_settings.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Christina\Desktop\DCSUPP\DCSUPP\app\assets\javascripts\modal.js" afterPath="" />
-      <change type="MOVED" beforePath="C:\Users\Christina\Desktop\DCSUPP\DCSUPP\app\assets\javascripts\CreateProject\_create_project.html" afterPath="$PROJECT_DIR$/app/assets/javascripts/CreateProject/_create_project.html.slim" />
-      <change type="MOVED" beforePath="C:\Users\Christina\Desktop\DCSUPP\DCSUPP\app\assets\javascripts\CurrentProject\CurrentProjectSettings\current_project_settings.html" afterPath="$PROJECT_DIR$/app/assets/javascripts/CurrentProject/CurrentProjectSettings/current_project_settings.html.slim" />
-      <change type="MOVED" beforePath="C:\Users\Christina\Desktop\DCSUPP\DCSUPP\app\assets\javascripts\ListStudent\ListStudentSettings\list_student_settings.html" afterPath="$PROJECT_DIR$/app/assets/javascripts/ListStudent/ListStudentSettings/list_student_settings.html.slim" />
-      <change type="MOVED" beforePath="C:\Users\Christina\Desktop\DCSUPP\DCSUPP\app\assets\javascripts\ManageCategory\ManageCategorySettings\manage_category_settings.html" afterPath="$PROJECT_DIR$/app/assets/javascripts/ManageCategory/ManageCategorySettings/manage_category_settings.html.slim" />
-      <change type="MOVED" beforePath="C:\Users\Christina\Desktop\DCSUPP\DCSUPP\app\assets\javascripts\StudentAccount\StudentAccountSettings\student_account_settings.html" afterPath="$PROJECT_DIR$/app/assets/javascripts/StudentAccount/StudentAccountSettings/student_account_settings.html.slim" />
+    <list default="true" id="502ee489-cd34-454b-9c03-0ca54f6a8de6" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/javascripts/ManageCategory/ManageCategoryCtrl.coffee" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/javascripts/CreateProject/CreateProjectSettings/create_project_info.html.slim" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/javascripts/CurrentProject/CurrentProjectSettings/current_project_info.html.slim" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/javascripts/ListStudent/ListStudentSettings/list_student_info.html.slim" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/javascripts/ManageCategory/ManageCategorySettings/manage_category_info.html.slim" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/javascripts/StudentAccount/StudentAccountSettings/student_account_info.html.slim" />
+      <change type="DELETED" beforePath="C:\Users\Christina\Desktop\DCSUPP\DCSUPP\app\assets\javascripts\ManageCategory\ManageCategoryCtrl.js" afterPath="" />
+      <change type="MOVED" beforePath="C:\Users\Christina\Desktop\DCSUPP\DCSUPP\app\assets\javascripts\ListStudent\ListStudentCtrl.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/ListStudent/ListStudentCtrl.coffee" />
+      <change type="MOVED" beforePath="C:\Users\Christina\Desktop\DCSUPP\DCSUPP\app\assets\javascripts\StudentAccount\StudentAccountCtrl.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/StudentAccount/StudentAccountCtrl.coffee" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/CreateProject/CreateProjectCtrl.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/CreateProject/CreateProjectCtrl.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/CreateProject/CreateProjectSettings/CreateProjectSettingsCtrl.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/CreateProject/CreateProjectSettings/CreateProjectSettingsCtrl.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/CurrentProject/CurrentProjectCtrl.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/CurrentProject/CurrentProjectCtrl.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/CurrentProject/CurrentProjectSettings/CurrentProjectSettingsCtrl.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/CurrentProject/CurrentProjectSettings/CurrentProjectSettingsCtrl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/Index/IndexCtrl.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/Index/IndexCtrl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/ListStudent/ListStudent.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/ListStudent/ListStudent.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/ListStudent/ListStudentCtrl.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/ListStudent/ListStudentCtrl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/ListStudent/ListStudentSettings/ListStudentSettingsCtrl.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/ListStudent/ListStudentSettings/ListStudentSettingsCtrl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/ManageCategory/ManageCategoryCtrl.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/ManageCategory/ManageCategoryCtrl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/ManageCategory/ManageCategorySettings/ManageCategorySettingsCtrl.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/ManageCategory/ManageCategorySettings/ManageCategorySettingsCtrl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/StudentAccount/StudentAccountCtrl.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/StudentAccount/StudentAccountCtrl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/StudentAccount/StudentAccountSettings/StudentAccountSettingsCtrl.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/StudentAccount/StudentAccountSettings/StudentAccountSettingsCtrl.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/CreateProject/_create_project.html.slim" afterPath="$PROJECT_DIR$/app/assets/javascripts/CreateProject/_create_project.html.slim" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/CurrentProject/_current_project.html.slim" afterPath="$PROJECT_DIR$/app/assets/javascripts/CurrentProject/_current_project.html.slim" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/ListStudent/_list_student.html.slim" afterPath="$PROJECT_DIR$/app/assets/javascripts/ListStudent/_list_student.html.slim" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/ManageCategory/_manage_category.html.slim" afterPath="$PROJECT_DIR$/app/assets/javascripts/ManageCategory/_manage_category.html.slim" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/StudentAccount/_student_account.html.slim" afterPath="$PROJECT_DIR$/app/assets/javascripts/StudentAccount/_student_account.html.slim" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="DCSUPP.iws" />
@@ -51,117 +39,35 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="CreateProjectCtrl.coffee" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/CreateProject/CreateProjectCtrl.coffee">
+      <file leaf-file-name="student_account_info.html.slim" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/StudentAccount/StudentAccountSettings/student_account_info.html.slim">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.54">
-              <caret line="31" column="22" selection-start-line="31" selection-start-column="22" selection-end-line="31" selection-end-column="22" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ListStudentCtrl.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/ListStudent/ListStudentCtrl.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="21" column="24" selection-start-line="21" selection-start-column="24" selection-end-line="21" selection-end-column="24" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="create_project_settings.html.slim" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/CreateProject/CreateProjectSettings/create_project_settings.html.slim">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="5" selection-end-column="54" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="current_project_settings.html.slim" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/CurrentProject/CurrentProjectSettings/current_project_settings.html.slim">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.2692308">
-              <caret line="5" column="54" selection-start-line="5" selection-start-column="54" selection-end-line="5" selection-end-column="54" />
+            <state vertical-scroll-proportion="-0.65384614">
+              <caret line="1" column="28" selection-start-line="1" selection-start-column="28" selection-end-line="1" selection-end-column="28" />
               <folding>
-                <marker date="1436973660911" expanded="true" signature="0:41" placeholder=".modal-header" />
-                <marker date="1436973660911" expanded="true" signature="42:53" placeholder=".modal-body" />
-                <marker date="1436973660911" expanded="true" signature="54:169" placeholder=".modal-footer" />
+                <marker date="1436978796350" expanded="true" signature="0:42" placeholder=".modal-header" />
+                <marker date="1436978796350" expanded="true" signature="43:54" placeholder=".modal-body" />
+                <marker date="1436978796350" expanded="true" signature="55:166" placeholder=".modal-footer" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="list_student_settings.html.slim" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/ListStudent/ListStudentSettings/list_student_settings.html.slim">
+      <file leaf-file-name="_student_account.html.slim" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/StudentAccount/_student_account.html.slim">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.2692308">
-              <caret line="5" column="54" selection-start-line="5" selection-start-column="54" selection-end-line="5" selection-end-column="54" />
-              <folding>
-                <marker date="1436973665461" expanded="true" signature="0:41" placeholder=".modal-header" />
-                <marker date="1436973665461" expanded="true" signature="42:53" placeholder=".modal-body" />
-                <marker date="1436973665461" expanded="true" signature="54:169" placeholder=".modal-footer" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="manage_category_settings.html.slim" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/ManageCategory/ManageCategorySettings/manage_category_settings.html.slim">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.2692308">
-              <caret line="5" column="54" selection-start-line="5" selection-start-column="54" selection-end-line="5" selection-end-column="54" />
-              <folding>
-                <marker date="1436973669348" expanded="true" signature="0:41" placeholder=".modal-header" />
-                <marker date="1436973669348" expanded="true" signature="42:53" placeholder=".modal-body" />
-                <marker date="1436973669348" expanded="true" signature="54:169" placeholder=".modal-footer" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="student_account_settings.html.slim" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/StudentAccount/StudentAccountSettings/student_account_settings.html.slim">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.2692308">
-              <caret line="5" column="54" selection-start-line="5" selection-start-column="54" selection-end-line="5" selection-end-column="54" />
-              <folding>
-                <marker date="1436973673438" expanded="true" signature="0:41" placeholder=".modal-header" />
-                <marker date="1436973673438" expanded="true" signature="42:53" placeholder=".modal-body" />
-                <marker date="1436973673438" expanded="true" signature="54:169" placeholder=".modal-footer" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="StudentAccountCtrl.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/StudentAccount/StudentAccountCtrl.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="10" column="51" selection-start-line="10" selection-start-column="51" selection-end-line="10" selection-end-column="51" />
+            <state vertical-scroll-proportion="-11.615385">
+              <caret line="26" column="37" selection-start-line="26" selection-start-column="37" selection-end-line="26" selection-end-column="37" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_create_project.html.slim" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/CreateProject/_create_project.html.slim">
+      <file leaf-file-name="StudentAccountCtrl.coffee" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/StudentAccount/StudentAccountCtrl.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.576923">
-              <caret line="7" column="61" selection-start-line="7" selection-start-column="61" selection-end-line="7" selection-end-column="61" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ManageCategoryCtrl.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/ManageCategory/ManageCategoryCtrl.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4631101">
-              <caret line="24" column="4" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="4" />
+            <state vertical-scroll-proportion="0.18120806">
+              <caret line="14" column="67" selection-start-line="14" selection-start-column="67" selection-end-line="14" selection-end-column="67" />
               <folding />
             </state>
           </provider>
@@ -193,16 +99,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/assets/javascripts/Intro/intro.scss" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/Intro/_intro.html.slim" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/Intro/_intro.html" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/factory.js" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/CurrentProject/CurrentProject.js" />
-        <option value="$PROJECT_DIR$/app/controllers/application_controller.rb" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/Intro/Intro.js" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/CurrentProject/SelectedProject/SelectedProjectCtrl.js" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/CurrentProject/SelectedProject/_selected_project.html" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/CurrentProject/SelectedProject/SelectedProject.js" />
         <option value="$PROJECT_DIR$/app/views/users/create_project.html.slim" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/CurrentProject/current_project_settings.html" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/CurrentProject/CurrentProjectSettingsCtrl.js" />
@@ -225,17 +121,9 @@
         <option value="$PROJECT_DIR$/app/assets/javascripts/ListStudent/ListStudent.js" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/ListStudent/ListStudentSettings/ListStudentSettingsCtrl.js" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/CurrentProject/CurrentProjectSettings/CurrentProjectSettingsCtrl.js" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/CurrentProject/_current_project.html.slim" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/ListStudent/_list_student.html.slim" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/ManageCategory/_manage_category.html.slim" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/CurrentProject/CurrentProjectCtrl.coffee" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/ListStudent/ListStudentCtrl.js" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/CreateProject/_create_project.html.slim" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/StudentAccount/_student_account.html.slim" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/StudentAccount/StudentAccountSettings/StudentAccountSettingsCtrl.js" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/ManageCategory/ManageCategorySettings/ManageCategorySettingsCtrl.js" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/ManageCategory/ManageCategoryCtrl.js" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/CreateProject/CreateProjectCtrl.coffee" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/CreateProject/CreateProjectSettings/CreateProjectSettingsCtrl.js" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/CreateProject/CreateProjectSettings/create_project_settings.html" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/CreateProject/CreateProjectSettings/create_project_settings.html.slim" />
@@ -244,6 +132,24 @@
         <option value="$PROJECT_DIR$/app/assets/javascripts/ManageCategory/ManageCategorySettings/manage_category_settings.html.slim" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/StudentAccount/StudentAccountSettings/student_account_settings.html.slim" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/StudentAccount/StudentAccountCtrl.js" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/CreateProject/_create_project.html.slim" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/CreateProject/CreateProjectCtrl.coffee" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/StudentAccount/StudentAccountSettings/student_account_info.html.slim" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/ManageCategory/ManageCategorySettings/manage_category_info.html.slim" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/CreateProject/CreateProject.js" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/ListStudent/ListStudentSettings/list_student_info.html.slim" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/CurrentProject/CurrentProjectSettings/current_project_info.html.slim" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/CreateProject/CreateProjectSettings/create_project_info.html.slim" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/CurrentProject/_current_project.html.slim" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/CurrentProject/CurrentProjectCtrl.coffee" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/ListStudent/ListStudentCtrl.js" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/ManageCategory/ManageCategoryCtrl.cofee" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/ManageCategory/ManageCategoryCtrl.coffee" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/ListStudent/ListStudentCtrl.coffee" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/ManageCategory/_manage_category.html.slim" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/ListStudent/_list_student.html.slim" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/StudentAccount/_student_account.html.slim" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/StudentAccount/StudentAccountCtrl.coffee" />
       </list>
     </option>
   </component>
@@ -255,9 +161,9 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="455" />
-    <option name="width" value="1402" />
-    <option name="height" value="1041" />
+    <option name="x" value="1" />
+    <option name="width" value="1364" />
+    <option name="height" value="728" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -545,179 +451,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ManageCategory" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ManageCategorySettings" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DCSUPP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DCSUPP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="javascripts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ListStudent" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DCSUPP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DCSUPP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="javascripts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ListStudent" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ListStudentSettings" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DCSUPP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DCSUPP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="javascripts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CurrentProject" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DCSUPP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DCSUPP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="javascripts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CurrentProject" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CurrentProjectSettings" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DCSUPP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DCSUPP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="javascripts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="CreateProject" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DCSUPP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DCSUPP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="javascripts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CreateProject" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CreateProjectSettings" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -945,14 +679,20 @@
       <option name="project" value="LOCAL" />
       <updated>1436730060750</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="converted html to slim">
+      <created>1436974047079</created>
+      <option name="number" value="00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1436974047079</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="455" y="0" width="1402" height="1041" extended-state="0" />
-    <editor active="false" />
+    <frame x="1" y="0" width="1364" height="728" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28005865" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28808448" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32929516" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29194632" sideWeight="0.114179105" order="11" side_tool="true" content_ui="tabs" />
@@ -961,7 +701,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39685315" sideWeight="0.48656717" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18281938" sideWeight="0.8858209" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16107382" sideWeight="0.8858209" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1027,48 +767,14 @@
     <MESSAGE value="fixed url parser" />
     <MESSAGE value="small changes" />
     <MESSAGE value="settings popup" />
-    <option name="LAST_COMMIT_MESSAGE" value="settings popup" />
+    <MESSAGE value="converted html to slim" />
+    <option name="LAST_COMMIT_MESSAGE" value="converted html to slim" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/Intro/IntroCtrl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/application_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5589041">
-          <caret line="12" column="69" selection-start-line="12" selection-start-column="69" selection-end-line="12" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/db/seeds.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/Intro/_1.html.slim">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/Intro/_intro.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.9615384">
-          <caret line="3" column="6" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/Intro/Intro.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1157,13 +863,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.13350785">
           <caret line="3" column="37" selection-start-line="3" selection-start-column="37" selection-end-line="3" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/CreateProject/CreateProject.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1550152">
-          <caret line="3" column="27" selection-start-line="3" selection-start-column="27" selection-end-line="3" selection-end-column="27" />
         </state>
       </provider>
     </entry>
@@ -1271,38 +970,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/StudentAccount/_student_account.html.slim">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-18.961538">
-          <caret line="29" column="43" selection-start-line="29" selection-start-column="43" selection-end-line="29" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/ManageCategory/_manage_category.html.slim">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.1923075">
-          <caret line="11" column="61" selection-start-line="11" selection-start-column="61" selection-end-line="11" selection-end-column="61" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/ListStudent/_list_student.html.slim">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.230769">
-          <caret line="8" column="33" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/CurrentProject/_current_project.html.slim">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.115385">
-          <caret line="22" column="53" selection-start-line="22" selection-start-column="53" selection-end-line="22" selection-end-column="53" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/StudentAccount/StudentAccountSettings/StudentAccountSettingsCtrl.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1319,43 +986,35 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/CurrentProject/CurrentProjectCtrl.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.92">
-          <caret line="19" column="3" selection-start-line="19" selection-start-column="3" selection-end-line="19" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/CreateProject/_create_project.html.slim">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.576923">
-          <caret line="7" column="61" selection-start-line="7" selection-start-column="61" selection-end-line="7" selection-end-column="61" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/CreateProject/CreateProjectCtrl.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.54">
-          <caret line="31" column="22" selection-start-line="31" selection-start-column="22" selection-end-line="31" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/ListStudent/ListStudentCtrl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="21" column="24" selection-start-line="21" selection-start-column="24" selection-end-line="21" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/CreateProject/CreateProjectSettings/CreateProjectSettingsCtrl.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.23809524">
           <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/ManageCategory/ManageCategorySettings/manage_category_settings.html.slim">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.2692308">
+          <caret line="5" column="54" selection-start-line="5" selection-start-column="54" selection-end-line="5" selection-end-column="54" />
+          <folding>
+            <marker date="1436973669348" expanded="true" signature="-1:-1" placeholder=".modal-header" />
+            <marker date="1436973669348" expanded="true" signature="-1:-1" placeholder=".modal-body" />
+            <marker date="1436973669348" expanded="true" signature="-1:-1" placeholder=".modal-footer" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/ListStudent/ListStudentSettings/list_student_settings.html.slim">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.099415205">
+          <caret line="5" column="54" selection-start-line="5" selection-start-column="54" selection-end-line="5" selection-end-column="54" />
+          <folding>
+            <marker date="1436973665461" expanded="true" signature="-1:-1" placeholder=".modal-header" />
+            <marker date="1436973665461" expanded="true" signature="-1:-1" placeholder=".modal-body" />
+            <marker date="1436973665461" expanded="true" signature="-1:-1" placeholder=".modal-footer" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1367,66 +1026,162 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/CurrentProject/CurrentProjectSettings/current_project_settings.html.slim">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.2692308">
-          <caret line="5" column="54" selection-start-line="5" selection-start-column="54" selection-end-line="5" selection-end-column="54" />
-          <folding>
-            <marker date="1436973660911" expanded="true" signature="0:41" placeholder=".modal-header" />
-            <marker date="1436973660911" expanded="true" signature="42:53" placeholder=".modal-body" />
-            <marker date="1436973660911" expanded="true" signature="54:169" placeholder=".modal-footer" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/ListStudent/ListStudentSettings/list_student_settings.html.slim">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.2692308">
-          <caret line="5" column="54" selection-start-line="5" selection-start-column="54" selection-end-line="5" selection-end-column="54" />
-          <folding>
-            <marker date="1436973665461" expanded="true" signature="0:41" placeholder=".modal-header" />
-            <marker date="1436973665461" expanded="true" signature="42:53" placeholder=".modal-body" />
-            <marker date="1436973665461" expanded="true" signature="54:169" placeholder=".modal-footer" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/ManageCategory/ManageCategorySettings/manage_category_settings.html.slim">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.2692308">
-          <caret line="5" column="54" selection-start-line="5" selection-start-column="54" selection-end-line="5" selection-end-column="54" />
-          <folding>
-            <marker date="1436973669348" expanded="true" signature="0:41" placeholder=".modal-header" />
-            <marker date="1436973669348" expanded="true" signature="42:53" placeholder=".modal-body" />
-            <marker date="1436973669348" expanded="true" signature="54:169" placeholder=".modal-footer" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/StudentAccount/StudentAccountSettings/student_account_settings.html.slim">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.2692308">
+        <state vertical-scroll-proportion="0.099415205">
           <caret line="5" column="54" selection-start-line="5" selection-start-column="54" selection-end-line="5" selection-end-column="54" />
           <folding>
-            <marker date="1436973673438" expanded="true" signature="0:41" placeholder=".modal-header" />
-            <marker date="1436973673438" expanded="true" signature="42:53" placeholder=".modal-body" />
-            <marker date="1436973673438" expanded="true" signature="54:169" placeholder=".modal-footer" />
+            <marker date="1436973673438" expanded="true" signature="-1:-1" placeholder=".modal-header" />
+            <marker date="1436973673438" expanded="true" signature="-1:-1" placeholder=".modal-body" />
+            <marker date="1436973673438" expanded="true" signature="-1:-1" placeholder=".modal-footer" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/StudentAccount/StudentAccountCtrl.js">
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/CreateProject/CreateProjectSettings/create_project_info.html.slim">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="51" selection-start-line="10" selection-start-column="51" selection-end-line="10" selection-end-column="51" />
+        <state vertical-scroll-proportion="0.045945946">
+          <caret line="1" column="28" selection-start-line="1" selection-start-column="28" selection-end-line="1" selection-end-column="28" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/ManageCategory/ManageCategoryCtrl.js">
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/ListStudent/ListStudentSettings/list_student_info.html.slim">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4631101">
-          <caret line="24" column="4" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="4" />
+        <state vertical-scroll-proportion="0.045945946">
+          <caret line="1" column="28" selection-start-line="1" selection-start-column="28" selection-end-line="1" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/CreateProject/CreateProject.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.21464646">
+          <caret line="5" column="43" selection-start-line="5" selection-start-column="43" selection-end-line="5" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/ManageCategory/ManageCategorySettings/manage_category_info.html.slim">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.045945946">
+          <caret line="1" column="28" selection-start-line="1" selection-start-column="28" selection-end-line="1" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/CreateProject/_create_project.html.slim">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.32162163">
+          <caret line="7" column="54" selection-start-line="7" selection-start-column="54" selection-end-line="7" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/CurrentProject/CurrentProjectCtrl.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.965318">
+          <caret line="40" column="46" selection-start-line="40" selection-start-column="46" selection-end-line="40" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/CurrentProject/CurrentProjectSettings/current_project_settings.html.slim">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.22972973">
+          <caret line="5" column="54" selection-start-line="5" selection-start-column="54" selection-end-line="5" selection-end-column="54" />
+          <folding>
+            <marker date="1436973660911" expanded="true" signature="-1:-1" placeholder=".modal-header" />
+            <marker date="1436973660911" expanded="true" signature="-1:-1" placeholder=".modal-body" />
+            <marker date="1436973660911" expanded="true" signature="-1:-1" placeholder=".modal-footer" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/CurrentProject/_current_project.html.slim">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.26486486">
+          <caret line="31" column="47" selection-start-line="31" selection-start-column="47" selection-end-line="31" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/CurrentProject/CurrentProjectSettings/current_project_info.html.slim">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.045945946">
+          <caret line="1" column="28" selection-start-line="1" selection-start-column="28" selection-end-line="1" selection-end-column="28" />
+          <folding>
+            <marker date="1436979009889" expanded="true" signature="-1:-1" placeholder=".modal-header" />
+            <marker date="1436979009889" expanded="true" signature="-1:-1" placeholder=".modal-body" />
+            <marker date="1436979009889" expanded="true" signature="-1:-1" placeholder=".modal-footer" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/CreateProject/CreateProjectCtrl.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.92">
+          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="42" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/ManageCategory/ManageCategoryCtrl.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.1029083">
+          <caret line="29" column="80" selection-start-line="29" selection-start-column="80" selection-end-line="29" selection-end-column="80" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/ListStudent/ListStudentCtrl.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.556872">
+          <caret line="44" column="36" selection-start-line="44" selection-start-column="36" selection-end-line="44" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/ManageCategory/_manage_category.html.slim">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.22869955">
+          <caret line="6" column="29" selection-start-line="6" selection-start-column="29" selection-end-line="6" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/ListStudent/_list_student.html.slim">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.15246637">
+          <caret line="4" column="28" selection-start-line="4" selection-start-column="28" selection-end-line="4" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/StudentAccount/StudentAccountSettings/student_account_info.html.slim">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.65384614">
+          <caret line="1" column="28" selection-start-line="1" selection-start-column="28" selection-end-line="1" selection-end-column="28" />
+          <folding>
+            <marker date="1436978796350" expanded="true" signature="0:42" placeholder=".modal-header" />
+            <marker date="1436978796350" expanded="true" signature="43:54" placeholder=".modal-body" />
+            <marker date="1436978796350" expanded="true" signature="55:166" placeholder=".modal-footer" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/StudentAccount/_student_account.html.slim">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.615385">
+          <caret line="26" column="37" selection-start-line="26" selection-start-column="37" selection-end-line="26" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/StudentAccount/StudentAccountCtrl.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.18120806">
+          <caret line="14" column="67" selection-start-line="14" selection-start-column="67" selection-end-line="14" selection-end-column="67" />
           <folding />
         </state>
       </provider>
