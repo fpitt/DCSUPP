@@ -7,5 +7,11 @@ angular.module('dcsupp', ['ui.bootstrap', 'ui.router', 'templates']).config([
     }
 ]);
 
-
-
+angular.module('dcsupp').run(function($rootScope, $state) {
+    $rootScope.$on('$routeChangeStart', function(next, current){
+        var loggedIn = true;
+        if (!loggedIn){
+            $state.go('auth');
+        }
+    });
+});
