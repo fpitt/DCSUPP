@@ -6,10 +6,10 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
-  resources :users
-  resources :projects
-  resources :requirement_categories
-  resources :requirement_subcategories
+  resources :users, only: [:create, :update, :destroy, :show]
+  resources :projects, only: [:create, :update, :destroy, :show]
+  resources :requirement_categories, only: [:create, :update, :destroy]
+  resources :requirement_subcategories, only: [:create, :update, :destroy]
   
   root to: "application#introduction"
 

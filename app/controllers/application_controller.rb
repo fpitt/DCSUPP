@@ -1,16 +1,16 @@
 class ApplicationController < ActionController::Base
 
-  before_filter :configure_permitted_parameters, if: :devise_controller?
+    before_filter :authenticate
 
-  def introduction
-    render 'layouts/application'
-  end
-
-  protected
-
-    def configure_permitted_parameters
-      devise_parameter_sanitizer.for(:sign_up) do |u|
-        u.permit :username, :email, :password, :password_confirmation
-      end
+    def introduction
+        render 'layouts/application'
     end
+
+    protected
+
+        def authenticate
+            authenticate_or_request_with_http_basic do |username, password|
+                username == "foo" && password == "bar"
+            end
+        end
 end
