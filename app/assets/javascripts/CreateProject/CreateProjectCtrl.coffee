@@ -1,4 +1,4 @@
-controllerFunction = ($scope, requestService) ->
+controllerFunction = ($scope, requestService, $modal) ->
 
 	$scope.project =
 		title: ""
@@ -9,6 +9,37 @@ controllerFunction = ($scope, requestService) ->
 	$scope.sendParams =
 		url: '/projects.json'
 		method: "POST"
+
+	$scope.changeSettings = (size) ->
+		modalInstance = $modal.open(
+			animation: true
+			templateUrl: 'CreateProject/CreateProjectSettings/create_project_settings.html'
+			controller: 'CreateProjectSettingsCtrl'
+			size: size
+			resolve: items: ->
+				$scope.items
+		)
+		modalInstance.result.then ((selectedItem) ->
+			$scope.selected = selectedItem
+			return
+		), ->
+		return
+
+	$scope.viewInfo = (size) ->
+		modalInstance = $modal.open(
+			animation: true
+			templateUrl: 'CreateProject/CreateProjectSettings/create_project_info.html'
+			controller: 'CreateProjectSettingsCtrl'
+			size: size
+			resolve: items: ->
+				$scope.items
+		)
+		modalInstance.result.then ((selectedItem) ->
+			$scope.selected = selectedItem
+			return
+		), ->
+		return
+
 
 
 	successFunction = (data) ->
@@ -34,5 +65,5 @@ controllerFunction = ($scope, requestService) ->
 
 angular
 	.module('dcsupp')
-	.controller('CreateProjectCtrl', ['$scope', 'requestService', controllerFunction])
+	.controller('CreateProjectCtrl', ['$scope', 'requestService', '$modal', controllerFunction])
 

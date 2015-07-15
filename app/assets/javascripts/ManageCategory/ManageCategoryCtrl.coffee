@@ -6,7 +6,7 @@ controllerFunction = ($scope, requestService) ->
 
     $scope.category_name = ""
     $scope.category_nameDefault = ""
-
+    
     $scope.category =
         sub_category_name: ""
         attribute_type: "Number"
@@ -106,7 +106,37 @@ controllerFunction = ($scope, requestService) ->
     $('[data-toggle="tooltip"]').tooltip()
     $scope.flip(0)
 
+  $scope.changeSettings = (size) ->
+  modalInstance = $modal.open(
+    animation: true
+    templateUrl: 'ManageCategory/ManageCategorySettings/manage_category_settings.html'
+    controller: 'ManageCategorySettingsCtrl'
+    size: size
+    resolve: items: ->
+      $scope.items
+  )
+  modalInstance.result.then ((selectedItem) ->
+    $scope.selected = selectedItem
+    return
+  ), ->
+  return
+
+  $scope.viewInfo = (size) ->
+    modalInstance = $modal.open(
+      animation: true
+      templateUrl: 'ManageCategory/ManageCategorySettings/manage_category_info.html'
+      controller: 'ManageCategorySettingsCtrl'
+      size: size
+      resolve: items: ->
+        $scope.items
+    )
+    modalInstance.result.then ((selectedItem) ->
+      $scope.selected = selectedItem
+      return
+    ), ->
+    return        
 
 angular
     .module('dcsupp')
     .controller('ManageCategoryCtrl', ['$scope', 'requestService', controllerFunction])
+
