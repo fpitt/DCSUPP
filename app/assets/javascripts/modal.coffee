@@ -1,4 +1,4 @@
-ServiceFunction = ()->
+ServiceFunction = ($modal)->
 
     modal.open = (templateUrl, controller, data) ->
         modalInstance = $modal.open(

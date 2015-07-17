@@ -1,4 +1,6 @@
-controllerFunction = ($scope, requestService) ->
+controllerFunction = ($scope, requestService, modalService) ->
+
+    $scope.modalService = modalService
 
     $scope.pagenumber = 2
     $scope.categories = null
@@ -138,5 +140,5 @@ controllerFunction = ($scope, requestService) ->
 
 angular
     .module('dcsupp')
-    .controller('ManageCategoryCtrl', ['$scope', 'requestService', controllerFunction])
+    .controller('ManageCategoryCtrl', ['$scope', 'requestService', 'modalService', controllerFunction])
 

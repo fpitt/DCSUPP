@@ -1,4 +1,6 @@
-controllerFunction = ($scope, requestService, $modal) ->
+controllerFunction = ($scope, requestService, $modal, modalService) ->
+
+	$scope.modalService = modalService
 
 	$scope.pagenumber = 1
 	$scope.projects = null
@@ -59,4 +61,4 @@ controllerFunction = ($scope, requestService, $modal) ->
 
 angular
 .module('dcsupp')
-.controller('CurrentProjectCtrl', ['$scope', 'requestService', '$modal', controllerFunction])
+.controller('CurrentProjectCtrl', ['$scope', 'requestService', '$modal', 'modalService', controllerFunction])

@@ -1,8 +1,9 @@
 angular.module('dcsupp').controller 'StudentAccountCtrl', [
     '$scope'
     '$modal'
-    ($scope, $modal) ->
-        $scope.page = 'manage category'
+    'modalService'
+    ($scope, $modal, modalService) ->
+        $scope.modalService = modalService
         $scope.items = [
             'item1'
             'item2'
