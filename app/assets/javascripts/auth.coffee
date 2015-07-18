@@ -1,18 +1,10 @@
-ServiceFunction = (requestService)->
-    successFunction = (data) ->
-        return data
+ServiceFunction = (requestService, $cookies)->
+    auth = {}
+    auth.storeToken = (token)->
+        $cookies.push('userToken', token)
 
-
-    auth.getUser = (userId)->
-        sendParams =
-            url: '/users/' + userId
-            method: 'GET'
-
-        requestService.service(sendParams).success(successFunction)
-
-
-    return auth
-
+    auth.getToken = () ->
+        $cookies.get('userToken')
 angular
 .module('dcsupp')
 .service('authService', ServiceFunction)
