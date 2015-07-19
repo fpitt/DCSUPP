@@ -11,9 +11,19 @@ angular.module('dcsupp').controller 'ListStudentCtrl', [
             'item3'
         ]
 
-        $scope.toggleAnimation = ->
-            $scope.animationsEnabled = !$scope.animationsEnabled
-            return
+
+        $scope.sendParams =
+            url: '/list_student.json'
+            method: "GET"
+
+        successFunction = (data) ->
+            $scope.students = data
+
+
+        $scope.loadStudents = ->
+
+            requestService.service($scope.sendParams).success(successFunction)
+
 
         return
 ]

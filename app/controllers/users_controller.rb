@@ -15,8 +15,31 @@ class UsersController < ApplicationController
 	end
 
 	def students
+		takes = rand(1..9)
+        respond_to do |format|
+            format.json {
+                @students = User.all.offset(take).take(10)
 
+                render :json => @students
+            }
+        end
 	end
+
+    def show
+        respond_to do |format|
+            format.json {
+
+                @student = User.find_by_id(params[:id])
+
+                if @student
+                    render :json => @student
+                else
+                    render :nothing => true, :status => 200, :content_type => 'text/html'
+                end
+            }
+        end
+    end
+
 
 	#Private Methods ----------->
 	private 
