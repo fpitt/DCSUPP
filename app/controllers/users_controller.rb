@@ -15,10 +15,10 @@ class UsersController < ApplicationController
 	end
 
 	def students
-		takes = rand(1..9)
+		take = rand(1..9)
         respond_to do |format|
             format.json {
-                @students = User.all.offset(take).take(10)
+                @students = User.all
 
                 render :json => @students
             }
