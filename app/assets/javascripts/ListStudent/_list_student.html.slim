@@ -17,7 +17,7 @@ div class="row"
       div ng-repeat="student in students"
         ul class="nav nav-pills nav-stacked"
           li
-            a ui-sref=".selected_project({id: project.id})"
+            a ui-sref=".selected_student({id: student.id})"
               | {{ student.name }}
 
   div class="row" style="height:5px"

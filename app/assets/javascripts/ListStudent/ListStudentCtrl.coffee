@@ -2,7 +2,8 @@ angular.module('dcsupp').controller 'ListStudentCtrl', [
     '$scope'
     '$modal'
     'modalService'
-    ($scope, $modal, modalService) ->
+    'requestService'
+    ($scope, $modal, modalService, requestService) ->
         $scope.modalService = modalService
 
         $scope.items = [
@@ -25,5 +26,5 @@ angular.module('dcsupp').controller 'ListStudentCtrl', [
             requestService.service($scope.sendParams).success(successFunction)
 
 
-        return
+        $scope.loadStudents()
 ]
