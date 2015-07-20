@@ -3,3 +3,5 @@ angular.module('dcsupp').config ($stateProvider) ->
         url: '/auth'
         templateUrl: 'Auth/_auth.html'
         controller: 'AuthCtrl'
+
+

@@ -3,3 +3,6 @@ angular.module('dcsupp').config ($stateProvider) ->
         url: '/selected_project/:id'
         templateUrl: 'CurrentProject/SelectedProject/_selected_project.html'
         controller: 'SelectedProjectCtrl'
+        data:
+            permissions:
+                except: ['anonymous']

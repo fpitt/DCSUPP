@@ -3,3 +3,6 @@ angular.module('dcsupp').config ($stateProvider) ->
         url: '/student_account'
         templateUrl: 'StudentAccount/_student_account.html'
         controller: 'StudentAccountCtrl'
+        data:
+            permissions:
+                only: ['student']
