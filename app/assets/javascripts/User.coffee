@@ -1,7 +1,7 @@
 ServiceFunction = (requestService) ->
 
     getAccessLevel: ->
-        return 'student'
+        return 'administrator'
 
 
 angular
