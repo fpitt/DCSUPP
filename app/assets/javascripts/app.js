@@ -19,68 +19,31 @@ angular.module('dcsupp')
     .run(function (Permission, User, $q) {
         Permission
             .defineRole('student', function (stateParams) {
-                //var deferred = $q.defer();
-                //
-                //User.getAccessLevel().then(function (data) {
-                //    if (data.accessLevel === 'student') {
-                //        deferred.resolve();
-                //    } else {
-                //        deferred.reject();
-                //    }
-                //}, function () {
-                //    deferred.reject();
-                //});
-                //
-                //return deferred.promise;
-                return false;
-
+                if (User.getAccessLevel() == 'student') {
+                    return true;
+                } else {
+                    return false;
+                };
             })
             .defineRole('administrator', function (stateParams) {
-                //var deferred = $q.defer();
-                //
-                //User.getAccessLevel().then(function (data) {
-                //    if (data.accessLevel === 'administrator') {
-                //        deferred.resolve();
-                //    } else {
-                //        deferred.reject();
-                //    }
-                //}, function () {
-                //    deferred.reject();
-                //});
-                //
-                //return deferred.promise;
-                return false;
+                if (User.getAccessLevel() == 'administrator') {
+                    return true;
+                } else {
+                    return false;
+                };
             })
         .defineRole('professor', function (stateParams) {
-            //var deferred = $q.defer();
-            //
-            //User.getAccessLevel().then(function (data) {
-            //    if (data.accessLevel === 'professor') {
-            //        deferred.resolve();
-            //    } else {
-            //        deferred.reject();
-            //    }
-            //}, function () {
-            //    deferred.reject();
-            //});
-            //
-            //return deferred.promise;
-                return false;
+                if (User.getAccessLevel() == 'professor') {
+                    return true;
+                } else {
+                    return false;
+                };
         })
         .defineRole('anonymous', function (stateParams) {
-            //var deferred = $q.defer();
-            //
-            //User.getAccessLevel().then(function (data) {
-            //    if (data.accessLevel === 'anonymous') {
-            //        deferred.resolve();
-            //    } else {
-            //        deferred.reject();
-            //    }
-            //}, function () {
-            //    deferred.reject();
-            //});
-            //
-            //return deferred.promise;
-                return true;
+                if (User.getAccessLevel() == 'anonymous') {
+                    return true;
+                } else {
+                    return false;
+                };
         });
     });

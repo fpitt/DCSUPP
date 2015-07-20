@@ -1,4 +1,4 @@
-ServiceFunction = ($http) ->
+ServiceFunction = (requestService) ->
 
     getAccessLevel: ->
         return 'student'
