@@ -1,4 +1,6 @@
-controllerFunction = ($scope, requestService, $modal) ->
+controllerFunction = ($scope, requestService, $modal, modalService) ->
+
+	$scope.modalService = modalService
 
 	$scope.pagenumber = 1
 	$scope.projects = null
@@ -19,36 +21,6 @@ controllerFunction = ($scope, requestService, $modal) ->
 		'item3'
 	]
 
-	$scope.changeSettings = (size) ->
-		modalInstance = $modal.open(
-			animation: true
-			templateUrl: 'CurrentProject/CurrentProjectSettings/current_project_settings.html'
-			controller: 'CurrentProjectSettingsCtrl'
-			size: size
-			resolve: items: ->
-				$scope.items
-		)
-		modalInstance.result.then ((selectedItem) ->
-			$scope.selected = selectedItem
-			return
-		), ->
-		return
-
-	$scope.viewInfo = (size) ->
-		modalInstance = $modal.open(
-			animation: true
-			templateUrl: 'CurrentProject/CurrentProjectSettings/current_project_info.html'
-			controller: 'CurrentProjectSettingsCtrl'
-			size: size
-			resolve: items: ->
-				$scope.items
-		)
-		modalInstance.result.then ((selectedItem) ->
-			$scope.selected = selectedItem
-			return
-		), ->
-		return
-
 	$scope.flip = (pushDirection) ->
 		$scope.payload["direction"] = pushDirection
 
@@ -59,4 +31,4 @@ controllerFunction = ($scope, requestService, $modal) ->
 
 angular
 .module('dcsupp')
-.controller('CurrentProjectCtrl', ['$scope', 'requestService', '$modal', controllerFunction])
+.controller('CurrentProjectCtrl', ['$scope', 'requestService', '$modal', 'modalService', controllerFunction])

@@ -1,42 +1,38 @@
 angular.module('dcsupp').controller 'StudentAccountCtrl', [
     '$scope'
     '$modal'
-    ($scope, $modal) ->
-        $scope.page = 'manage category'
+    'modalService'
+    'requestService'
+    'User'
+    ($scope, $modal, modalService, requestService, User) ->
+        $scope.modalService = modalService
         $scope.items = [
             'item1'
             'item2'
             'item3'
         ]
 
-        $scope.changeSettings = (size) ->
-            modalInstance = $modal.open(
-                animation: true
-                templateUrl: 'StudentAccount/StudentAccountSettings/student_account_settings.html'
-                controller: 'StudentAccountSettingsCtrl'
-                size: size
-                resolve: items: ->
-                    $scope.items
-            )
-            modalInstance.result.then ((selectedItem) ->
-                $scope.selected = selectedItem
-                return
-            ), ->
+        $scope.nameCollapsed = $scope.emailCollapsed = true
+        $scope.student = {}
+        $scope.payload = {}
+
+        patchSuccess = (data) ->
+            $scope.getStudent();
             return
 
-        $scope.viewInfo = (size) ->
-            modalInstance = $modal.open(
-                animation: true
-                templateUrl: 'StudentAccount/StudentAccountSettings/student_account_info.html'
-                controller: 'StudentAccountSettingsCtrl'
-                size: size
-                resolve: items: ->
-                    $scope.items
-            )
-            modalInstance.result.then ((selectedItem) ->
-                $scope.selected = selectedItem
-                return
-            ), ->
+        $scope.getStudent = ->
+            User.getUser().success((data) ->
+                $scope.student = data
+                $scope.payload = jQuery.extend(true, {}, data))
             return
 
+        $scope.patchStudent = ->
+            patchSendParams =
+                url: '/users/' + $scope.student.id + '.json'
+                method: 'PATCH'
+            requestService.service(patchSendParams, $scope.payload).success((data) ->
+                $scope.getStudent())
+            return
+
+        $scope.getStudent();
 ]

@@ -11,7 +11,6 @@ div class="row"
           button class="btn btn-default" ng-click="flip_attributes(10)" Next
 
       div class="row" style="height:10px"
-      div ng-bind-html="return_html | html"
 
 
   div class="col-xs-8"
@@ -20,12 +19,37 @@ div class="row"
       div class="col-xs-10"
         h4 Update Student Attributes
 
+        label Name:
+        span
+          | {{ student.name }}
+        button class="btn btn-default" ng-click=("nameCollapsed = !nameCollapsed")  Edit
+        div collapse="nameCollapsed"
+          br
+          div class="well well-lg"
+            input class="form-control" ng-model="payload.name" placeholder="Name"
+            br
+            button class="btn btn-default" ng-click="patchStudent()" Update
+
+        br
+
+        label E-mail:
+        span
+          | {{ student.email }}
+        button class="btn btn-default" ng-click=("emailCollapsed = !emailCollapsed")  Edit
+
+        div collapse="emailCollapsed"
+          br
+          div class="well well-lg"
+            input class="form-control" ng-model="payload.email" placeholder="E-mail"
+            br
+            button class="btn btn-default" ng-click="patchStudent()" Update
+
 
       div class="col-xs-2"
         div class="btn-group" role="group" aria-label="Default button group"
           /Button 1: Information
-          button ng-click="viewInfo()" type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Information"
+          button ng-click="modalService.open('StudentAccount/StudentAccountSettings/student_account_info.html', 'StudentAccountSettingsCtrl', items)" type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Information"
             span class="glyphicon glyphicon-info-sign" aria-hidden="true"
           /Button 2: Account Settings
-          button ng-click="changeSettings()" type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Settings"
+          button ng-click="modalService.open('StudentAccount/StudentAccountSettings/student_account_settings.html', 'StudentAccountSettingsCtrl', items)" type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Settings"
             span class="glyphicon glyphicon-tasks" aria-hidden="true"

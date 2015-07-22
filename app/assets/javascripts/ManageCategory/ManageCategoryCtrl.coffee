@@ -1,4 +1,6 @@
-controllerFunction = ($scope, requestService) ->
+controllerFunction = ($scope, requestService, modalService) ->
+
+    $scope.modalService = modalService
 
     $scope.pagenumber = 2
     $scope.categories = null
@@ -106,37 +108,7 @@ controllerFunction = ($scope, requestService) ->
     $('[data-toggle="tooltip"]').tooltip()
     $scope.flip(0)
 
-    $scope.changeSettings = (size) ->
-        modalInstance = $modal.open(
-            animation: true
-            templateUrl: 'ManageCategory/ManageCategorySettings/manage_category_settings.html'
-            controller: 'ManageCategorySettingsCtrl'
-            size: size
-            resolve: items: ->
-                $scope.items
-        )
-        modalInstance.result.then ((selectedItem) ->
-            $scope.selected = selectedItem
-            return
-        ), ->
-        return
-
-    $scope.viewInfo = (size) ->
-        modalInstance = $modal.open(
-            animation: true
-            templateUrl: 'ManageCategory/ManageCategorySettings/manage_category_info.html'
-            controller: 'ManageCategorySettingsCtrl'
-            size: size
-            resolve: items: ->
-                $scope.items
-        )
-        modalInstance.result.then ((selectedItem) ->
-            $scope.selected = selectedItem
-            return
-        ), ->
-        return        
-
 angular
     .module('dcsupp')
-    .controller('ManageCategoryCtrl', ['$scope', 'requestService', controllerFunction])
+    .controller('ManageCategoryCtrl', ['$scope', 'requestService', 'modalService', controllerFunction])
 

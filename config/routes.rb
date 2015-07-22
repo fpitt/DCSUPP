@@ -6,14 +6,21 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
-  resources :users, only: [:create, :update, :destroy, :show]
-  resources :projects, only: [:create, :update, :destroy, :show]
-  resources :requirement_categories, only: [:create, :update, :destroy]
-  resources :requirement_subcategories, only: [:create, :update, :destroy]
+  resources :users
+  resources :projects
+  resources :requirement_categories
+  resources :requirement_subcategories
   
   root to: "application#introduction"
 
-  get "/*path" => redirect("/?goto=%{path}")
+  #Routes to the 6 main App Pages
+  get '/intro',  to: 'static_pages#introduction'
+  get '/student_account',  to: 'users#student_page'
+  get '/current_project',  to: 'static_pages#project'
+  get '/create_project', to: 'users#create_project'
+  get '/manage_category', to: 'users#manage_category'
+  get '/list_student', to: 'users#students'
+
 
   post '/flip_direction', to: 'requirement_categories#flip_direction'
   post '/flip_project_direction', to: 'projects#grab_project'
@@ -21,5 +28,9 @@ Rails.application.routes.draw do
   post '/get_subcategories', to: 'requirement_categories#subcategories'
   post '/flip_student_settings', to: 'requirement_categories#flip_students'
 
-  
+  get "/project_create" => 'projects#create'
+  get "/current_user" => 'users#get_current_user'
+
+  get "/*path" => redirect("/?goto=%{path}")
+
 end
