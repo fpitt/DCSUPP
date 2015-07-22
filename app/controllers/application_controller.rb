@@ -9,9 +9,10 @@ class ApplicationController < ActionController::Base
     protected
 
         def authenticate
-            authenticate_or_request_with_http_basic do |username, password|
+            authenticate_or_request_with_http_basic do |username|
                 user = User.find_or_create_by(name: username)
-                user.name == username && password == "bar"
+                user.name == username
+                user.save
             end
         end
 end
