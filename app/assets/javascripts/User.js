@@ -10,10 +10,6 @@ ServiceFunction = function(requestService) {
             };
 
             return requestService.service(sendParams);
-        },
-
-        getAccessLevel: function() {
-            return 'administrator';
         }
     };
 };

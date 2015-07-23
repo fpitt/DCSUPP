@@ -19,31 +19,23 @@ angular.module('dcsupp')
     .run(function (Permission, User, $q) {
         Permission
             .defineRole('student', function (stateParams) {
-                if (User.getAccessLevel() == 'student') {
-                    return true;
-                } else {
-                    return false;
-                };
+                User.getUser.success(function(data) {
+                    return !data.professor && !data.administrator;
+                });
             })
             .defineRole('administrator', function (stateParams) {
-                if (User.getAccessLevel() == 'administrator') {
-                    return true;
-                } else {
-                    return false;
-                };
+                User.getUser.success(function(data) {
+                    return data.administrator;
+                });
             })
         .defineRole('professor', function (stateParams) {
-                if (User.getAccessLevel() == 'professor') {
-                    return true;
-                } else {
-                    return false;
-                };
+                User.getUser.success(function(data) {
+                    return data.professor;
+                });
         })
         .defineRole('anonymous', function (stateParams) {
-                if (User.getAccessLevel() == 'anonymous') {
-                    return true;
-                } else {
-                    return false;
-                };
+                User.getUser.success(function(data) {
+                    return data == null;
+                });
         });
     });
