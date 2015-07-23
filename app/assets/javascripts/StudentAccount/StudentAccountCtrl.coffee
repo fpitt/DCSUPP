@@ -16,10 +16,6 @@ angular.module('dcsupp').controller 'StudentAccountCtrl', [
         $scope.student = {}
         $scope.payload = {}
 
-        patchSuccess = (data) ->
-            $scope.getStudent();
-            return
-
         $scope.getStudent = ->
             User.getUser().success((data) ->
                 $scope.student = data

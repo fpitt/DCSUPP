@@ -1,6 +1,28 @@
-div class="page-header"
-  h3
-    | {{student.name}}
+div
+  br
+  br
+  label Name:
+  span
+    | {{ student.name }}
+  button class="btn btn-default" ng-click=("nameCollapsed = !nameCollapsed")  Edit
+  div collapse="nameCollapsed"
+    br
+    div class="well well-lg"
+      input class="form-control" ng-model="payload.name" placeholder="Name"
+      br
+      button class="btn btn-default" ng-click="patchStudent()" Update
 
-span
-  | {{student.email}}
+  br
+  br
+
+  label E-mail:
+  span
+    | {{ student.email }}
+  button class="btn btn-default" ng-click=("emailCollapsed = !emailCollapsed")  Edit
+
+  div collapse="emailCollapsed"
+    br
+    div class="well well-lg"
+      input class="form-control" ng-model="payload.email" placeholder="E-mail"
+      br
+      button class="btn btn-default" ng-click="patchStudent()" Update
