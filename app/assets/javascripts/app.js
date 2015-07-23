@@ -22,24 +22,19 @@ angular.module('dcsupp', ['ui.bootstrap', 'ui.router', 'templates', 'permission'
 
 angular.module('dcsupp')
     .run(function (Permission, User) {
-        Permission
-            .defineRole('student', function (stateParams) {
-                User.getUser().success(function(data) {
+
+        User.getUser().success(function(data) {
+            Permission
+                .defineRole('student', function (stateParams) {
                     return !data.professor && !data.administrator;
-                });
-            })
-            .defineRole('administrator', function (stateParams) {
-                User.getUser().success(function(data) {
+                })
+                .defineRole('administrator', function (stateParams) {
                     return data.administrator;
-                });
-            })
-        .defineRole('professor', function (stateParams) {
-                User.getUser().success(function(data) {
+                })
+                .defineRole('professor', function (stateParams) {
                     return data.professor;
-                });
-        })
-        .defineRole('anonymous', function (stateParams) {
-                User.getUser().success(function(data) {
+                })
+                .defineRole('anonymous', function (stateParams) {
                     return data == null;
                 });
         });
