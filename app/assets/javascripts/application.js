@@ -19,7 +19,6 @@
 //= require angular-bootstrap
 //= require angular-rails-templates
 //= require angular-ui-router
-//= require angular-cookies
 //= require angular-permission
 //= require app
 //= require_tree .
