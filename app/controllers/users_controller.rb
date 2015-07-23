@@ -43,7 +43,7 @@ class UsersController < ApplicationController
         respond_to do |format|
             format.json {
 
-                @student = User.find_by_id('1')
+                @student = User.find_by_id(1)
 
                 if @student
                     render :json => @student
