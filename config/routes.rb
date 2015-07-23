@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 
     get "/project_create" => 'projects#create'
     get "/current_user" => 'users#get_current_user'
-    get "/list_student" => 'users#students'
+    get "/students" => 'users#students'
 
     get "/*path" => redirect("/?goto=%{path}")
 end
