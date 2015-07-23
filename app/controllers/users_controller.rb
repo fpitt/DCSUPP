@@ -15,7 +15,6 @@ class UsersController < ApplicationController
 	end
 
 	def students
-		take = rand(1..9)
         respond_to do |format|
             format.json {
                 @students = User.all
