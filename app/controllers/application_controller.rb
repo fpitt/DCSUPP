@@ -13,6 +13,7 @@ class ApplicationController < ActionController::Base
                 user = User.find_or_create_by(name: username)
                 user.name == username
                 user.save
+                @current_user = user
             end
         end
 end

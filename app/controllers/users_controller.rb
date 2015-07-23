@@ -1,7 +1,5 @@
 class UsersController < ApplicationController
 
-	before_action :find_user
-
 	def student_page
 
 	end
@@ -43,10 +41,10 @@ class UsersController < ApplicationController
         respond_to do |format|
             format.json {
 
-                @student = User.find_by_id(1)
+                puts @current_user.name
 
-                if @student
-                    render :json => @student
+                if @current_user                    
+                    render :json => @current_user
                 else
                     render :nothing => true, :status => 200, :content_type => 'text/html'
                 end
@@ -70,13 +68,5 @@ class UsersController < ApplicationController
             }
         end
     end
-
-
-	#Private Methods ----------->
-	private 
-		
-		def find_user
-	    	@current_user = current_user
-	  	end
 
 end
