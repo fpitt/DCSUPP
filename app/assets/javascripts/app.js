@@ -3,11 +3,8 @@ angular.module('dcsupp', ['ui.bootstrap', 'ui.router', 'templates', 'permission'
     function ($stateProvider, $urlRouterProvider, $locationProvider) {
         $urlRouterProvider.otherwise('intro');
         $locationProvider.html5Mode(true).hashPrefix('!');
-        //
-        //User.getUser().success(function () {
-        //   User.user = data;
-        //});
-        //
+
+
     }
 ]);
 
@@ -23,19 +20,48 @@ angular.module('dcsupp', ['ui.bootstrap', 'ui.router', 'templates', 'permission'
 angular.module('dcsupp')
     .run(function (Permission, User) {
 
-        User.getUser().success(function(data) {
+        User.getUser().success(function (data) {
+            if (!data.professor && !data.administrator) {
+                User.role = 'student';
+            } else if (data.professor && !data.administrator) {
+                User.role = 'professor';
+            } else if (data.administrator) {
+                User.role = 'administrator';
+            } else {
+                User.role = 'anonymous';
+            };
+
             Permission
                 .defineRole('student', function (stateParams) {
-                    return !data.professor && !data.administrator;
+                    return User.role == 'student';
                 })
                 .defineRole('administrator', function (stateParams) {
-                    return data.administrator;
+                    return User.role == 'administrator';
                 })
                 .defineRole('professor', function (stateParams) {
-                    return data.professor;
+                    return User.role == 'professor';
                 })
                 .defineRole('anonymous', function (stateParams) {
-                    return data == null;
+                    return User.role == 'anonymous';
                 });
+
         });
+
     });
+
+//angular.module('dcsupp').run(function (User, Permission) {
+//
+//    Permission
+//        .defineRole('student', function (stateParams) {
+//            return User.role == 'student';
+//        })
+//        .defineRole('administrator', function (stateParams) {
+//            return User.role == 'administrator';
+//        })
+//        .defineRole('professor', function (stateParams) {
+//            return User.role == 'professor';
+//        })
+//        .defineRole('anonymous', function (stateParams) {
+//            return User.role == 'anonymous';
+//        });
+//});

@@ -4,7 +4,7 @@ div
       td
         | Name
       td
-        | {{ student.name }}
+        | {{ user.name }}
         div collapse="nameCollapsed"
           br
             div class="well well-lg"
@@ -15,9 +15,9 @@ div
         button class="btn btn-default" ng-click="nameCollapsed = !nameCollapsed" Edit
     tr
       td
-        | E-mail:
+        | E-mail
       td
-        | {{ student.email}}
+        | {{ user.email}}
         div collapse="emailCollapsed"
           br
           div class="well well-lg"

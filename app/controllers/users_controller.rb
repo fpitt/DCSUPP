@@ -53,7 +53,6 @@ class UsersController < ApplicationController
     end
 
     def update
-        logger.debug 'here'
         respond_to do |format|
             format.json {
                 param = params[:payload]
