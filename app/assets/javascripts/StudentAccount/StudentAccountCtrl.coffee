@@ -3,8 +3,9 @@ angular.module('dcsupp').controller 'StudentAccountCtrl', [
     '$modal'
     'modalService'
     'requestService'
-    'User'
-    ($scope, $modal, modalService, requestService, User) ->
+    'User',
+    '$state'
+    ($scope, $modal, modalService, requestService, User, $state) ->
         $scope.modalService = modalService
         $scope.items = [
             'item1'
@@ -29,6 +30,9 @@ angular.module('dcsupp').controller 'StudentAccountCtrl', [
             requestService.service(patchSendParams, $scope.payload).success((data) ->
                 $scope.getStudent())
             return
+
+        $scope.updateProject = ->
+            $state.go('update_project', {id: 1})
 
         $scope.getStudent();
 ]

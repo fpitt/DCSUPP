@@ -30,6 +30,25 @@ class ProjectsController < ApplicationController
         end
     end
 
+    def update
+        respond_to do |format|
+            format.json {
+            param = params[:payload]
+                @project = Project.find_by_id(param[:id])
+                if @project
+                    @project.title = param[:title]
+                    @project.text = param[:text]
+
+                    if @project.save
+                        render :json => @user
+                    else
+                        render :nothing => true, :status => 200, :content_type => 'text/html'
+                    end
+                end
+            }
+        end
+    end
+
     def show 
         respond_to do |format|
             format.json {
