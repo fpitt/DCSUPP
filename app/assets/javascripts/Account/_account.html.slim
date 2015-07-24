@@ -17,7 +17,7 @@ div class="row"
 
     div class="row"
       div class="col-xs-10"
-        h4 Profile
+        h3 Personal Information
         br
 
         table class="table table-hover"
@@ -44,14 +44,14 @@ div class="row"
               button ng-show="!emailCollapsed" class="btn btn-default" ng-click="emailCollapsed = !emailCollapsed; patchUser()" Update
 
         div access="student" restrict=""
-          | Your Applications
+          h3 Your Applications
 
         div access="professor" restrict=""
-          | Your Projects
+          h3 Your Projects
           button class="btn btn-default" ng-click="updateProject()" Update
 
         div access="administrator" restrict=""
-          | Admin
+          h3 Admin
           button class="btn btn-default" ng-click="updateProject()" Update
 
       div class="col-xs-2"
