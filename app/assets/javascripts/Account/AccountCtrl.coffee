@@ -1,4 +1,4 @@
-angular.module('dcsupp').controller 'StudentAccountCtrl', [
+angular.module('dcsupp').controller 'AccountCtrl', [
     '$scope'
     '$modal'
     'modalService'
@@ -14,25 +14,25 @@ angular.module('dcsupp').controller 'StudentAccountCtrl', [
         ]
 
         $scope.nameCollapsed = $scope.emailCollapsed = true
-        $scope.student = {}
+        $scope.user = {}
         $scope.payload = {}
 
-        $scope.getStudent = ->
+        $scope.getUser = ->
             User.getUser().success((data) ->
-                $scope.student = data
+                $scope.user = data
                 $scope.payload = jQuery.extend(true, {}, data))
             return
 
-        $scope.patchStudent = ->
+        $scope.patchUser = ->
             patchSendParams =
-                url: '/users/' + $scope.student.id + '.json'
+                url: '/users/' + $scope.user.id + '.json'
                 method: 'PATCH'
             requestService.service(patchSendParams, $scope.payload).success((data) ->
-                $scope.getStudent())
+                $scope.getUser())
             return
 
         $scope.updateProject = ->
             $state.go('update_project', {id: 1})
 
-        $scope.getStudent();
+        $scope.getUser();
 ]

@@ -3,28 +3,29 @@
 div class="row"
 
   div class="col-xs-4"
-      div class="text-center"
-        div class="btn-group"
-          button class="btn btn-default" ng-click="flip_attributes(-10)" Prev
-          button class="btn btn-default disabled"
-            | {{ pagenumber }}
-          button class="btn btn-default" ng-click="flip_attributes(10)" Next
-
-      div class="row" style="height:10px"
+      /div class="text-center"
+      /  div class="btn-group"
+      /    button class="btn btn-default" ng-click="flip_attributes(-10)" Prev
+      /    button class="btn btn-default disabled"
+      /      | {{ pagenumber }}
+      /    button class="btn btn-default" ng-click="flip_attributes(10)" Next
+      /
+      /div class="row" style="height:10px"
 
 
   div class="col-xs-8"
 
     div class="row"
       div class="col-xs-10"
-        h4 Update Student Attributes
+        h4 Account Profile
+        br
 
         table class="table table-hover"
           tr
             td
               | Name
             td
-              | {{ student.name }}
+              | {{ user.name }}
               div collapse="nameCollapsed"
                 br
                   div class="well well-lg"
@@ -37,7 +38,7 @@ div class="row"
             td
               | E-mail:
             td
-              | {{ student.email}}
+              | {{ user.email }}
               div collapse="emailCollapsed"
                 br
                 div class="well well-lg"
@@ -47,13 +48,13 @@ div class="row"
             td
               button class="btn btn-default" ng-click="emailCollapsed = !emailCollapsed" Edit
 
-        button class="btn btn-default" ng-click="updateProject()" Update
+        /button class="btn btn-default" ng-click="updateProject()" Update
 
       div class="col-xs-2"
         div class="btn-group" role="group" aria-label="Default button group"
           /Button 1: Information
-          button ng-click="modalService.open('StudentAccount/StudentAccountSettings/student_account_info.html', 'StudentAccountSettingsCtrl', items)" type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Information"
+          button ng-click="modalService.open(Account, 'StudentAccountSettingsCtrl', items)" type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Information"
             span class="glyphicon glyphicon-info-sign" aria-hidden="true"
           /Button 2: Account Settings
-          button ng-click="modalService.open('StudentAccount/StudentAccountSettings/student_account_settings.html', 'StudentAccountSettingsCtrl', items)" type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Settings"
+          button ng-click="modalService.open(Account, 'StudentAccountSettingsCtrl', items)" type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Settings"
             span class="glyphicon glyphicon-tasks" aria-hidden="true"

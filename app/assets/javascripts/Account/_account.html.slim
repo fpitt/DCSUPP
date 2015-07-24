@@ -1,0 +1,65 @@
+
+
+div class="row"
+
+  div class="col-xs-4"
+    div class="text-center"
+      div class="btn-group"
+        button class="btn btn-default" ng-click="flip_attributes(-10)" Prev
+        button class="btn btn-default disabled"
+          | {{ pagenumber }}
+        button class="btn btn-default" ng-click="flip_attributes(10)" Next
+
+    div class="row" style="height:10px"
+
+
+  div class="col-xs-8"
+
+    div class="row"
+      div class="col-xs-10"
+        h4 Profile
+        br
+
+        table class="table table-hover"
+          tr
+            td
+              | Name
+            td
+              span ng-show="nameCollapsed"
+                | {{ user.name }}
+              input ng-show="!nameCollapsed" class="form-control" ng-model="payload.name" placeholder="Name"
+            td
+              button ng-show="nameCollapsed" class="btn btn-default" ng-click="nameCollapsed = !nameCollapsed" Edit
+              button ng-show="!nameCollapsed" class="btn btn-default" ng-click="nameCollapsed = !nameCollapsed; patchUser()" Update
+
+          tr
+            td
+              | E-mail
+            td
+              span ng-show="emailCollapsed"
+                | {{ user.email }}
+              input ng-show="!emailCollapsed" class="form-control" ng-model="payload.email" placeholder="E-mail"
+            td
+              button ng-show="emailCollapsed" class="btn btn-default" ng-click="emailCollapsed = !emailCollapsed" Edit
+              button ng-show="!emailCollapsed" class="btn btn-default" ng-click="emailCollapsed = !emailCollapsed; patchUser()" Update
+
+        div access="student" restrict=""
+          | Your Applications
+
+        div access="professor" restrict=""
+          | Your Projects
+          button class="btn btn-default" ng-click="updateProject()" Update
+
+        div access="administrator" restrict=""
+          | Admin
+          button class="btn btn-default" ng-click="updateProject()" Update
+
+      div class="col-xs-2"
+        div class="btn-group" role="group" aria-label="Default button group"
+          /Button 1: Information
+          button ng-click="modalService.open('StudentAccount/StudentAccountSettings/student_account_info.html', 'StudentAccountSettingsCtrl', items)" type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Information"
+            span class="glyphicon glyphicon-info-sign" aria-hidden="true"
+          /Button 2: Account Settings
+          button ng-click="modalService.open('StudentAccount/StudentAccountSettings/student_account_settings.html', 'StudentAccountSettingsCtrl', items)" type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Settings"
+            span class="glyphicon glyphicon-tasks" aria-hidden="true"
+
