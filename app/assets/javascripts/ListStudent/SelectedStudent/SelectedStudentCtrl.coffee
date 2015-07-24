@@ -10,24 +10,24 @@ controllerFunction = ($scope, requestService, $stateParams) ->
     ]
 
     $scope.nameCollapsed = $scope.emailCollapsed = true
-    $scope.student = {}
+    $scope.user = {}
     $scope.payload = {}
 
-    $scope.getStudent = ->
+    $scope.getUser = ->
         requestService.service($scope.sendParams).success((data) ->
-            $scope.student = data
+            $scope.user = data
             $scope.payload = jQuery.extend(true, {}, data))
         return
 
-    $scope.patchStudent = ->
+    $scope.patchUser = ->
         patchSendParams =
-            url: '/users/' + $scope.student.id + '.json'
+            url: '/users/' + $scope.user.id + '.json'
             method: 'PATCH'
         requestService.service(patchSendParams, $scope.payload).success((data) ->
             $scope.getStudent())
         return
 
-    $scope.getStudent();
+    $scope.getUser();
 
 angular
 .module('dcsupp')

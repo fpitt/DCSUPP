@@ -1,28 +1,29 @@
-div
-  table class="table table-hover"
-    tr
-      td
-        | Name
-      td
+h3 Personal Information
+br
+table class="table table-hover"
+  tr
+    td
+      | Name
+    td
+      span ng-show="nameCollapsed"
         | {{ user.name }}
-        div collapse="nameCollapsed"
-          br
-            div class="well well-lg"
-              input class="form-control" ng-model="payload.name" placeholder="Name"
-              br
-              button class="btn btn-default" ng-click="patchStudent()" Update
-      td
-        button class="btn btn-default" ng-click="nameCollapsed = !nameCollapsed" Edit
-    tr
-      td
-        | E-mail
-      td
-        | {{ user.email}}
-        div collapse="emailCollapsed"
-          br
-          div class="well well-lg"
-            input class="form-control" ng-model="payload.email" placeholder="E-mail"
-            br
-            button class="btn btn-default" ng-click="patchStudent()" Update
-      td
-        button class="btn btn-default" ng-click="emailCollapsed = !emailCollapsed" Edit
+      input ng-show="!nameCollapsed" class="form-control" ng-model="payload.name" placeholder="Name"
+    td
+      div access="administrator" restrict=""
+        button ng-show="nameCollapsed" class="btn btn-default" ng-click="nameCollapsed = !nameCollapsed" Edit
+        button ng-show="!nameCollapsed" class="btn btn-default" ng-click="nameCollapsed = !nameCollapsed; patchUser()" Update
+
+  tr
+    td
+      | E-mail
+    td
+      span ng-show="emailCollapsed"
+        | {{ user.email }}
+      input ng-show="!emailCollapsed" class="form-control" ng-model="payload.email" placeholder="E-mail"
+    td
+      div access="administrator" restrict=""
+        button ng-show="emailCollapsed" class="btn btn-default" ng-click="emailCollapsed = !emailCollapsed" Edit
+        button ng-show="!emailCollapsed" class="btn btn-default" ng-click="emailCollapsed = !emailCollapsed; patchUser()" Update
+
+div access="administrator" restrict=""
+  h3 Applications
