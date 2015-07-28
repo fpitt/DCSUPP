@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     get "/project_create" => 'projects#create'
     get "/current_user" => 'users#get_current_user'
     get "/students" => 'users#students'
+    #get "/get_projects_of_user" => 'projects#get_projects_of_user"
 
     get "/*path" => redirect("/?goto=%{path}")
 end
