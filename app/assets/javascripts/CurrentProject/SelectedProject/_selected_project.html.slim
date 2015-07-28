@@ -1,6 +1,6 @@
 div
-  h3 style="display: inline-block" Project Details
-  button access="administrator" restrict="" class="btn btn-default" ui-sref="update_project({id: project.id})" Edit
+  h3 Project Details
+  /button access="administrator" restrict="" class="btn btn-default" ui-sref="update_project({id: project.id})" Edit
   br
   br
   table class="table table-hover"
@@ -16,3 +16,7 @@ div
 	  td
 		span
 		  | {{ project.text }}
+
+  br
+
+  button style="margin: auto; width: 50%" access="administrator student" restrict="" class="btn btn-default btn-lg" ui-sref="apply_project" Apply

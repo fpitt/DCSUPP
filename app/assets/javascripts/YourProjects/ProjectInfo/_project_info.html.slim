@@ -1,0 +1,20 @@
+div
+  h3 style="display:inline-block" Project Details
+  button class="btn btn-default" ui-sref="your_projects.update_project({id: project.id})" Edit
+  /button access="administrator" restrict="" class="btn btn-default" ui-sref="update_project({id: project.id})" Edit
+  br
+  br
+  table class="table table-hover"
+    tr
+      td
+        | Title
+      td
+        span
+          | {{ project.title }}
+    tr
+      td
+        | Description
+      td
+        span
+          | {{ project.text }}
+  br
