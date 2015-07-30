@@ -3,7 +3,7 @@ angular.module('dcsupp').controller 'IndexCtrl', [
     '$scope'
     '$state'
     ($stateParams, $scope, $state) ->
-        if $stateParams.goto != null
+        if $stateParams.goto
             path = $stateParams.goto.split('/')
             state = path[0]
             state2 = path[0]
