@@ -57,8 +57,8 @@ class UsersController < ApplicationController
             format.json {
                 param = params[:payload]
                 @user = User.find_by_id(param[:id])
-                @user.name = param[:name]
-                @user.email = param[:email]
+                @user.update_attribute(:name, param[:name])
+                @user.update_attribute(:email, param[:email])
                 if @user.save
                     render :json => @user
                 else
