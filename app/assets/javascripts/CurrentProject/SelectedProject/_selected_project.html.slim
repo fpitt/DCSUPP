@@ -16,7 +16,13 @@ div
 	  td
 		span
 		  | {{ project.text }}
+	tr
+	  td
+		| Deadline
+	  td
+		span
+		  | {{ project.deadline_date }}
 
   br
 
-  button style="margin: auto; width: 50%" access="administrator student" restrict="" class="btn btn-default btn-lg" ui-sref="apply_project" Apply
+  button style="margin: auto; width: 50%" access="administrator student" restrict="" class="btn btn-default btn-md" ui-sref="apply_project" Apply

@@ -5,7 +5,7 @@ ServiceFunction = function(requestService) {
         var sendParams;
         sendParams = {
             url: '/current_user.json',
-            method: "GET"
+            method: "POST"
         };
 
         return requestService.service(sendParams);

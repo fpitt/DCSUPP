@@ -15,7 +15,7 @@ angular.module('dcsupp').controller 'ListStudentCtrl', [
 
         $scope.sendParams =
             url: '/students.json'
-            method: "GET"
+            method: "POST"
 
         successFunction = (data) ->
             $scope.students = data

@@ -17,15 +17,21 @@ class ProjectsController < ApplicationController
     end
 
     def grab_project
-        puts params[:payload]
-
-        take = rand(1..9)
+        project_size = Project.all.length
+        current_offset = (params[:payload][:pagenumber] - 1)*10
+        direction = params[:payload][:direction]
 
         respond_to do |format|
             format.json {
-                @projects = Project.all.offset(take).take(10)   
 
-                render :json => @projects
+                if current_offset + direction < project_size && current_offset + direction >= 0
+                    offset = current_offset + direction
+                    @projects = Project.all.offset(offset).take(10)
+                    render :json => @projects
+                else 
+                    render :nothing => true, :status => 200, :content_type => 'text/html'
+                end
+                             
             }
         end
     end

@@ -17,14 +17,20 @@ class RequirementCategoriesController < ApplicationController
 	end
 
 	def getcategories
-        puts params[:payload]
-        take = rand(1..9)
+        category_size = RequirementCategory.all.length
+        current_offset = (params[:payload][:pagenumber] - 1)*10
+        direction = params[:payload][:direction]
 
         respond_to do |format|
             format.json {
-                @categories = RequirementCategory.all.offset(take).take(10)   
 
-                render :json => @categories
+            	if current_offset + direction < category_size && current_offset + direction >= 0
+                    offset = current_offset + direction
+                	@categories = RequirementCategory.all.offset(offset).take(10)   
+                	render :json => @categories
+                else
+                	render :nothing => true, :status => 200, :content_type => 'text/html'
+                end
             }
         end
 

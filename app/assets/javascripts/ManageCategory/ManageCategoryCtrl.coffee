@@ -1,13 +1,15 @@
 controllerFunction = ($scope, requestService, modalService) ->
 
-    $scope.modalService = modalService
+    #$scope.modalService = modalService
 
-    $scope.pagenumber = 2
+    # --- Page Variables ----
+
+    $scope.pagenumber = 1
+    $scope.direction = 0
     $scope.categories = null
     $scope.list_subcategories = null
-
     $scope.category_name = ""
-    $scope.category_nameDefault = ""
+    
     
     $scope.category =
         sub_category_name: ""
@@ -20,23 +22,10 @@ controllerFunction = ($scope, requestService, modalService) ->
         placeholder: ""
         student_attribute: 0
 
-    $scope.pagenumber = 1
-    $scope.sendParams_category =
-        method: 'POST'
-        url: '/requirement_categories.json'
+
     $scope.sendParams_subcategory =
         method: 'POST'
         url: '/requirement_subcategories.json'
-    $scope.sendParams =
-        method: 'POST'
-        url: '/get_categories.json'
-    $scope.get_subcategories =
-        method: 'POST'
-        url: '/get_subcategories.json'
-    $scope.payload = 
-        category:
-            title: "testtitle"
-            description: "test description"
 
 
     $scope.getCSS = ->
@@ -51,24 +40,9 @@ controllerFunction = ($scope, requestService, modalService) ->
             $("#student_attribute").html("True")
 
 
-    successFunction = (data) ->
-        console.log("success")
-        clearForm()
-
     successFunction2 = (data) ->
         console.log("success")
         clearForm2()
-
-    successFunction3 = (data) ->
-        console.log("success")
-        $scope.categories = data
-
-    successFunction4 = (data) ->
-        console.log(data)
-        $scope.list_subcategories = data
-
-    clearForm = ->
-        $scope.category_name = angular.copy($scope.category_nameDefault)
 
     clearForm2 = ->
         $scope.category.student_attribute = 0
@@ -76,13 +50,6 @@ controllerFunction = ($scope, requestService, modalService) ->
         $("#student_attribute").html("False")
         $scope.category = angular.copy($scope.categoryDefault)
 
-
-    $scope.create_category = ->
-        $scope.payload_category = 
-            requirement_category:
-                category_name: $scope.category_name
-
-        requestService.service($scope.sendParams_category, $scope.payload_category).success(successFunction)
 
     $scope.create_subcategory = ->
         $scope.payload_category = 
@@ -94,21 +61,66 @@ controllerFunction = ($scope, requestService, modalService) ->
 
         requestService.service($scope.sendParams_subcategory, $scope.payload_category).success(successFunction2)
 
-    $scope.flip = (pushDirection) ->
-        $scope.payload["direction"] = pushDirection
-
-        requestService.service($scope.sendParams, $scope.payload).success(successFunction3)
+    # --- Get SubCategory ---
 
     $scope.subcategories = (event)->
-        console.log(event.target.id)
-        $scope.payload["target_id"] = event.target.id
+        payload = 
+            target_id = event.target.id
+        get_subcategories =
+            method: 'POST'
+            url: '/get_subcategories.json'
 
-        requestService.service($scope.get_subcategories, $scope.payload).success(successFunction4)
+        requestService.service(get_subcategories, payload).success(getsubcategoriesSuccess)
+
+    getsubcategoriesSuccess = (data) ->
+        console.log(data)
+        $scope.list_subcategories = data
+
+    # --- Create Category --- 
+
+    $scope.create_category = ->
+        payload = 
+            requirement_category:
+                category_name: $scope.category_name
+        sendParams_category =
+            method: 'POST'
+            url: '/requirement_categories.json'
+
+        requestService.service(sendParams_category, payload).success(createCategorySuccess)
+
+    createCategorySuccess = (data) ->
+        category_nameDefault = ""
+        $scope.category_name = angular.copy(category_nameDefault)
+
+    # --- Category Navigation --- 
+
+    $scope.flip = (pushDirection) ->
+        payload = 
+            direction: pushDirection
+            pagenumber: $scope.pagenumber
+        sendParams =
+            method: 'POST'
+            url: '/get_categories.json'
+        $scope.direction = pushDirection
+
+        requestService.service(sendParams, payload).success(flipSuccess)
+
+    flipSuccess = (data) ->
+        if (data)
+            $scope.categories = data
+            if $scope.direction > 0
+                $scope.pagenumber += 1
+            else if $scope.direction < 0
+                $scope.pagenumber -= 1
+            else
+                $scope.pagenumber = 1
+
+    # --- JQuery Initialization Code --- 
 
     $('[data-toggle="tooltip"]').tooltip()
     $scope.flip(0)
 
 angular
     .module('dcsupp')
-    .controller('ManageCategoryCtrl', ['$scope', 'requestService', 'modalService', controllerFunction])
+    .controller('ManageCategoryCtrl', ['$scope', 'requestService',  controllerFunction])
 
