@@ -6,6 +6,7 @@ class ProjectsController < ApplicationController
                 param = params[:payload]
 
                 @project = Project.new(param[:project])
+                @project.user = @current_user
 
                 if @project.save
                     render :json => @project
@@ -51,7 +52,7 @@ class ProjectsController < ApplicationController
     def get_projects_of_user
         respond_to do |format|
             format.json {
-                param = params[:payload]
+                #param = params[:payload]
                 #@user = User.find_by_id(param[:id])
                 @projects = Project.where(:user_id => @current_user.id)
                 if @projects

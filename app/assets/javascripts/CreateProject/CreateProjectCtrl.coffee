@@ -21,16 +21,12 @@ controllerFunction = ($scope, requestService, modalService, User) ->
 
 
 	$scope.create = ->
-		User.getUser().success((data) ->
-			$scope.payload =
-				project:
-					title: $scope.project.title
-					text: $scope.project.text
-					user_id: data.id
+		$scope.payload =
+			project:
+				title: $scope.project.title
+				text: $scope.project.text
 
-			requestService.service($scope.sendParams, $scope.payload).success(successFunction)
-		)
-
+		requestService.service($scope.sendParams, $scope.payload).success(successFunction)
 
 	$('[data-toggle="tooltip"]').tooltip()
 
