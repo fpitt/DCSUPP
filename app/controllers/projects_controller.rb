@@ -6,7 +6,7 @@ class ProjectsController < ApplicationController
                 param = params[:payload]
 
                 @project = Project.new(param[:project])
-                @project.update_attribute(:user, @current_user)
+                @project.user = @current_user
 
                 if @project.save
                     render :json => @project
