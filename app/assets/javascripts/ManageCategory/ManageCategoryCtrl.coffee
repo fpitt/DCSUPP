@@ -9,71 +9,50 @@ controllerFunction = ($scope, requestService, modalService) ->
     $scope.categories = null
     $scope.list_subcategories = null
     $scope.category_name = ""
-    
-    
+    $scope.current_category_id = -1
     $scope.category =
         sub_category_name: ""
         attribute_type: "Number"
         placeholder: ""
         student_attribute: 0
-    $scope.categoryDefault =
-        sub_category_name: ""
-        attribute_type: "Number"
-        placeholder: ""
-        student_attribute: 0
 
-
-    $scope.sendParams_subcategory =
-        method: 'POST'
-        url: '/requirement_subcategories.json'
-
-
-    $scope.getCSS = ->
-        console.log("clicked")
-        if $scope.category.student_attribute
-            $scope.category.student_attribute = 0
-            $("#student_attribute").addClass("btn-default").removeClass("btn-primary")
-            $("#student_attribute").html("False")
-        else
-            $scope.category.student_attribute = 1
-            $("#student_attribute").addClass("btn-primary").removeClass("btn-default")
-            $("#student_attribute").html("True")
-
-
-    successFunction2 = (data) ->
-        console.log("success")
-        clearForm2()
-
-    clearForm2 = ->
-        $scope.category.student_attribute = 0
-        $("#student_attribute").addClass("btn-default").removeClass("btn-primary")
-        $("#student_attribute").html("False")
-        $scope.category = angular.copy($scope.categoryDefault)
-
+    # --- Create SubCategory ---
 
     $scope.create_subcategory = ->
-        $scope.payload_category = 
-            requirement_subcategory:
+        payload_category = 
+            subcategory:
                 sub_category_name: $scope.category.sub_category_name
                 attribute_type: $scope.category.attribute_type
                 placeholder: $scope.category.placeholder
                 student_attribute: $scope.category.student_attribute
+            target_id: $scope.current_category_id
+        sendParams_subcategory =
+            method: 'POST'
+            url: '/requirement_subcategories.json'
 
-        requestService.service($scope.sendParams_subcategory, $scope.payload_category).success(successFunction2)
+        requestService.service(sendParams_subcategory, payload_category).success(createsubSuccess)
+
+    createsubSuccess = (data) ->
+        categoryDefault =
+            sub_category_name: ""
+            attribute_type: "Number"
+            placeholder: ""
+            student_attribute: 0
+        $scope.category = angular.copy(categoryDefault)
 
     # --- Get SubCategory ---
 
     $scope.subcategories = (event)->
         payload = 
-            target_id = event.target.id
+            target_id: event.target.id
         get_subcategories =
             method: 'POST'
             url: '/get_subcategories.json'
+        $scope.current_category_id = event.target.id
 
         requestService.service(get_subcategories, payload).success(getsubcategoriesSuccess)
 
     getsubcategoriesSuccess = (data) ->
-        console.log(data)
         $scope.list_subcategories = data
 
     # --- Create Category --- 

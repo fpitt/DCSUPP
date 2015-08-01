@@ -4,13 +4,10 @@ class User < ActiveRecord::Base
 
   attr_accessible :name
 
-  has_many :projects, :through => :project_applications
   has_many :project_applications
   
   has_one :student_setting
-  accepts_nested_attributes_for :student_setting
 
   has_one :professor_setting
-  accepts_nested_attributes_for :professor_setting
 
 end

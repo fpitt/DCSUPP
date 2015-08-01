@@ -2,13 +2,16 @@ class RequirementSubcategoriesController < ApplicationController
 
 	def create
 
-		param = params[:payload]
+		puts params[:payload]
 
-		@category = RequirementSubcategory.new(param[:requirement_category])
+		@subcategory = RequirementSubcategory.new(params[:payload][:subcategory])
+
+		@category = RequirementCategory.find_by_id(params[:payload][:target_id])
 
 		respond_to do |format|
 	    	format.json {
-	    		if @category.save
+	    		if @subcategory.save
+	    			@subcategory.requirement_category = @category
 	  				render :json => @category
 	  			else
 	  				render :nothing => true, :status => 200, :content_type => 'text/html'

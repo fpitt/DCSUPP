@@ -61,7 +61,10 @@ div ng-controller="ManageCategoryCtrl"
             td
               input type="text" class="form-control" placeholder="Place Holder" ng-model="category.placeholder"
             td
-              button type="button" id="student_attribute" class="btn btn-default" ng-click="getCSS()" False
+              div ng-if="category.student_attribute == 0"
+                button type="button" class="btn btn-default" ng-click="category.student_attribute = 1" False
+              div ng-if="category.student_attribute == 1"
+                button type="button" class="btn btn-primary" ng-click="category.student_attribute = 0" True
 
           tr ng-repeat="subcategory in list_subcategories"
             th scope="row"

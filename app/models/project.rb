@@ -5,9 +5,6 @@ class Project < ActiveRecord::Base
 	has_many :project_application
 	has_many :project_requirement
 
-	has_many :users, :through => :project_applications
-	has_many :requirement_subcategories, :through => :project_requirements
-
 	attr_accessible :title, :text
 
   	validates :title, presence: true, allow_blank: false
