@@ -20,11 +20,8 @@ controllerFunction = ($scope, requestService, modalService, $state, User) ->
     ]
 
     $scope.loadProjects = (pushDirection) ->
-        User.getUser().then((data) ->
-            $scope.payload =
-                data
-            requestService.service($scope.sendParams, $scope.payload).success(successFunction)
-        )
+        requestService.service($scope.sendParams).success(successFunction)
+
 
     $scope.selectProject = (project) ->
         $scope.selectedProject = project
