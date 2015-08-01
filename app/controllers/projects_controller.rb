@@ -52,8 +52,9 @@ class ProjectsController < ApplicationController
         respond_to do |format|
             format.json {
                 param = params[:payload]
-                @projects = Project.where(user_id = param[:id])
-                if @project
+                #@user = User.find_by_id(param[:id])
+                @projects = Project.where(:user_id => @current_user.id)
+                if @projects
                     render :json => @projects
                 else
                     render :nothing => true, :status => 200, :content_type => 'text/html'

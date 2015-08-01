@@ -1,19 +1,13 @@
 angular.module('dcsupp', ['ui.bootstrap', 'ui.router', 'templates', 'permission']).config([
     '$stateProvider', '$urlRouterProvider', '$locationProvider',
     function ($stateProvider, $urlRouterProvider, $locationProvider) {
-        $urlRouterProvider.otherwise('intro');
+        $urlRouterProvider.otherwise( function($injector) {
+            var $state = $injector.get("$state");
+            $state.go('intro');
+        });
         $locationProvider.html5Mode(true).hashPrefix('!');
     }
 ]);
-
-//angular.module('dcsupp').run(function($rootScope, $state) {
-//    $rootScope.$on('$routeChangeStart', function(next, current){
-//        var loggedIn = true;
-//        if (!loggedIn){
-//            $state.go('auth');
-//        }
-//    });
-//});
 
 angular.module('dcsupp')
     .run(function (Permission, User, $q) {

@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :projects, only: [:create, :update, :destroy, :show]
     resources :requirement_categories, only: [:create, :update, :destroy]
     resources :requirement_subcategories, only: [:create, :update, :destroy]
+    resources :project_applications, only: [:create, :update, :destroy]
 
     root to: "application#introduction"
 
@@ -21,7 +22,7 @@ Rails.application.routes.draw do
     get "/project_create" => 'projects#create'
     get "/current_user" => 'users#get_current_user'
     get "/students" => 'users#students'
-    #get "/get_projects_of_user" => 'projects#get_projects_of_user"
+    get "/get_projects_of_user" => 'projects#get_projects_of_user'
 
     get "/*path" => redirect("/?goto=%{path}")
 end
