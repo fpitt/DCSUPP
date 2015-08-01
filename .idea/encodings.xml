@@ -23,5 +23,6 @@
     <file url="file://$USER_HOME$/WebstormProjects/similarityidentification2/client/app/training/training.scss" charset="UTF-8" />
     <file url="file://$USER_HOME$/WebstormProjects/similarityidentification2/server/api/question/index.js" charset="UTF-8" />
     <file url="file://$USER_HOME$/WebstormProjects/similarityidentification2/server/api/question/question.controller.js" charset="UTF-8" />
+    <file url="file://$USER_HOME$/WebstormProjects/similarityidentification2/server/routes.js" charset="UTF-8" />
   </component>
 </project>

@@ -39,7 +39,7 @@ class ProjectsController < ApplicationController
     def update
         respond_to do |format|
             format.json {
-            param = params[:payload]
+                param = params[:payload]
                 @project = Project.find_by_id(param[:id])
                 if @project
                     @project.title = param[:title]
@@ -50,6 +50,20 @@ class ProjectsController < ApplicationController
                     else
                         render :nothing => true, :status => 200, :content_type => 'text/html'
                     end
+                end
+            }
+        end
+    end
+
+    def get_projects_of_user
+        respond_to do |format|
+            format.json {
+                param = params[:payload]
+                @projects = Project.where(user_id = param[:id])
+                if @project
+                    render :json => @projects
+                else
+                    render :nothing => true, :status => 200, :content_type => 'text/html'
                 end
             }
         end
@@ -71,3 +85,4 @@ class ProjectsController < ApplicationController
     end
 
 end
+
