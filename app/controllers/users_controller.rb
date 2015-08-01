@@ -13,11 +13,19 @@ class UsersController < ApplicationController
 	end
 
 	def students
+        student_size = User.all.length
+        current_offset = (params[:payload][:pagenumber] - 1)*10
+        direction = params[:payload][:direction]
+
         respond_to do |format|
             format.json {
-                @students = User.all
-
-                render :json => @students
+                if current_offset + direction < student_size && current_offset + direction >= 0
+                    offset = current_offset + direction
+                    @students = User.all.offset(offset).take(10)   
+                    render :json => @students
+                else
+                    render :nothing => true, :status => 200, :content_type => 'text/html'
+                end
             }
         end
 	end

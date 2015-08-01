@@ -1,30 +1,48 @@
-angular.module('dcsupp').controller 'ListStudentCtrl', [
-    '$scope'
-    '$modal'
-    'modalService'
-    'requestService'
-    ($scope, $modal, modalService, requestService) ->
-        $scope.modalService = modalService
+ListStudentFunction = ($scope, $modal, modalService, requestService) ->
+        
+    $scope.modalService = modalService
+    
+    # --- Page Variables --- 
 
-        $scope.items = [
-            'item1'
-            'item2'
-            'item3'
-        ]
+    $scope.direction = 0
+    $scope.students = null
+    $scope.pagenumber = 1
 
+    $scope.items = [
+        'item1'
+        'item2'
+        'item3'
+    ]
 
-        $scope.sendParams =
+    # --- Page Navigation ---
+
+    $scope.flip = (pushDirection) ->
+        payload = 
+            direction: pushDirection
+            pagenumber: $scope.pagenumber
+        sendParams =
+            method: 'POST'
             url: '/students.json'
-            method: "POST"
+        $scope.direction = pushDirection
 
-        successFunction = (data) ->
+        requestService.service(sendParams, payload).success(flipSuccess)
+
+    flipSuccess = (data) ->
+        if (data)
             $scope.students = data
+            console.log($scope.students)
+            if $scope.direction > 0
+                $scope.pagenumber += 1
+            else if $scope.direction < 0
+                $scope.pagenumber -= 1
+            else
+                $scope.pagenumber = 1
 
+    # --- JQuery Initialization Code --- 
+    $('[data-toggle="tooltip"]').tooltip()
+    $scope.flip(0)
 
-        $scope.loadStudents = ->
-
-            requestService.service($scope.sendParams).success(successFunction)
-
-
-        $scope.loadStudents()
-]
+angular
+    .module('dcsupp')
+    .controller('ListStudentCtrl', ['$scope', '$modal', 'modalService', 'requestService', ListStudentFunction])
+    
