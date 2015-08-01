@@ -39,10 +39,18 @@ controllerFunction = ($scope, requestService, modalService) ->
             placeholder: ""
             student_attribute: 0
         $scope.category = angular.copy(categoryDefault)
+        #Grab subCategories
+        payload = 
+            target_id: $scope.current_category_id
+        get_subcategories =
+            method: 'POST'
+            url: '/get_subcategories.json'
+        requestService.service(get_subcategories, payload).success(getsubcategoriesSuccess)
 
     # --- Get SubCategory ---
 
-    $scope.subcategories = (event)->
+    $scope.subcategories = (target_id)->
+        console.log("subcategories")
         payload = 
             target_id: event.target.id
         get_subcategories =
@@ -54,6 +62,7 @@ controllerFunction = ($scope, requestService, modalService) ->
 
     getsubcategoriesSuccess = (data) ->
         $scope.list_subcategories = data
+        console.log($scope.list_subcategories)
 
     # --- Create Category --- 
 
