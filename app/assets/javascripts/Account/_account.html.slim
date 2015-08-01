@@ -3,12 +3,12 @@
 div class="row"
 
   div class="col-xs-4"
-    div class="text-center"
-      div class="btn-group"
-        button class="btn btn-default" ng-click="flip_attributes(-10)" Prev
-        button class="btn btn-default disabled"
-          | {{ pagenumber }}
-        button class="btn btn-default" ng-click="flip_attributes(10)" Next
+    /div class="text-center"
+    /  div class="btn-group"
+    /    button class="btn btn-default" ng-click="flip_attributes(-10)" Prev
+    /    button class="btn btn-default disabled"
+    /      | {{ pagenumber }}
+    /    button class="btn btn-default" ng-click="flip_attributes(10)" Next
 
     div class="row" style="height:10px"
 
@@ -43,16 +43,16 @@ div class="row"
               button ng-show="emailCollapsed" class="btn btn-default" ng-click="emailCollapsed = !emailCollapsed" Edit
               button ng-show="!emailCollapsed" class="btn btn-default" ng-click="emailCollapsed = !emailCollapsed; patchUser()" Update
 
-        div access="student" restrict=""
-          h3 Your Applications
-
-        div access="professor" restrict=""
-          h3 Your Projects
-          button class="btn btn-default" ng-click="updateProject()" Update
-
-        div access="administrator" restrict=""
-          h3 Admin
-          button class="btn btn-default" ng-click="updateProject()" Update
+        /div access="student" restrict=""
+        /  h3 Your Applications
+        /
+        /div access="professor" restrict=""
+        /  h3 Your Projects
+        /  button class="btn btn-default" ng-click="updateProject()" Update
+        /
+        /div access="administrator" restrict=""
+        /  h3 Admin
+        /  button class="btn btn-default" ng-click="updateProject()" Update
 
       div class="col-xs-2"
         div class="btn-group" role="group" aria-label="Default button group"

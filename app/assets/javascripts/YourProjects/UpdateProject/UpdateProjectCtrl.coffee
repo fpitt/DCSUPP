@@ -5,7 +5,8 @@ angular.module('dcsupp').controller 'UpdateProjectCtrl', [
     'requestService'
     'User',
     '$stateParams',
-    ($scope, $modal, modalService, requestService, User, $stateParams) ->
+    '$state'
+    ($scope, $modal, modalService, requestService, User, $stateParams, $state) ->
         $scope.modalService = modalService
         $scope.items = [
             'item1'
@@ -28,7 +29,8 @@ angular.module('dcsupp').controller 'UpdateProjectCtrl', [
                 url: '/projects/' + $stateParams.id + '.json'
                 method: 'PATCH'
             requestService.service(patchSendParams, $scope.project).success((data) ->
-                $scope.getProject())
+                $state.go('your_projects.project_info', {id: $stateParams.id}))
+#                $scope.getProject()
             return
 
 

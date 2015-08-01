@@ -6,6 +6,7 @@ class ProjectsController < ApplicationController
                 param = params[:payload]
 
                 @project = Project.new(param[:project])
+                @project.update_attribute(:user, @current_user)
 
                 if @project.save
                     render :json => @project
@@ -42,9 +43,8 @@ class ProjectsController < ApplicationController
                 param = params[:payload]
                 @project = Project.find_by_id(param[:id])
                 if @project
-                    @project.title = param[:title]
-                    @project.text = param[:text]
-
+                    @project.update_attribute(:title, param[:title])
+                    @project.update_attribute(:text, param[:text])
                     if @project.save
                         render :json => @user
                     else
@@ -58,9 +58,10 @@ class ProjectsController < ApplicationController
     def get_projects_of_user
         respond_to do |format|
             format.json {
-                param = params[:payload]
-                @projects = Project.where(user_id = param[:id])
-                if @project
+                #param = params[:payload]
+                #@user = User.find_by_id(param[:id])
+                @projects = Project.where(:user_id => @current_user.id)
+                if @projects
                     render :json => @projects
                 else
                     render :nothing => true, :status => 200, :content_type => 'text/html'

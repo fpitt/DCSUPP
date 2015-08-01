@@ -1,4 +1,4 @@
-controllerFunction = ($scope, requestService, modalService) ->
+controllerFunction = ($scope, requestService, modalService, User) ->
 	$scope.modalService = modalService
 
 	$scope.project =
@@ -21,18 +21,17 @@ controllerFunction = ($scope, requestService, modalService) ->
 
 
 	$scope.create = ->
-		$scope.payload = 
+		$scope.payload =
 			project:
 				title: $scope.project.title
 				text: $scope.project.text
 
 		requestService.service($scope.sendParams, $scope.payload).success(successFunction)
-	
 
 	$('[data-toggle="tooltip"]').tooltip()
 
 
 angular
 	.module('dcsupp')
-	.controller('CreateProjectCtrl', ['$scope', 'requestService', '$modal', 'modalService', controllerFunction])
+	.controller('CreateProjectCtrl', ['$scope', 'requestService', 'modalService', 'User', controllerFunction])
 
