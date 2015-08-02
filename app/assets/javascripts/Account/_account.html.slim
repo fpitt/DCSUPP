@@ -1,22 +1,27 @@
-
-
 div class="row"
+    div class="col-xs-4"
+        div class="text-center"
+            h3 Student Settings
+        div class="row" style="height:20px"
 
-  div class="col-xs-4"
-    /div class="text-center"
-    /  div class="btn-group"
-    /    button class="btn btn-default" ng-click="flip_attributes(-10)" Prev
-    /    button class="btn btn-default disabled"
-    /      | {{ pagenumber }}
-    /    button class="btn btn-default" ng-click="flip_attributes(10)" Next
+        div class="text-center"
+            div class="btn-group"
+                button class="btn btn-default" ng-click="flip(-10)" Prev
+                button class="btn btn-default disabled"
+                    | {{ pagenumber }}
+                button class="btn btn-default" ng-click="flip(10)" Next
+            br
+            br
+        div class="list-group"
+            div ng-repeat="category in categories"
+                ul class="nav nav-pills nav-stacked"
+                    li
+                        a 
+                            | {{ category.category_name }}
 
     div class="row" style="height:10px"
 
-
-  div class="col-xs-8"
-
-    div class="row"
-      div class="col-xs-10"
+    div class="col-xs-6"
         h3 Personal Information
         br
 
@@ -54,12 +59,12 @@ div class="row"
         /  h3 Admin
         /  button class="btn btn-default" ng-click="updateProject()" Update
 
-      div class="col-xs-2"
+    div class="col-xs-2"
         div class="btn-group" role="group" aria-label="Default button group"
-          /Button 1: Information
-          button ng-click="modalService.open('StudentAccount/StudentAccountSettings/student_account_info.html', 'StudentAccountSettingsCtrl', items)" type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Information"
-            span class="glyphicon glyphicon-info-sign" aria-hidden="true"
-          /Button 2: Account Settings
-          button ng-click="modalService.open('StudentAccount/StudentAccountSettings/student_account_settings.html', 'StudentAccountSettingsCtrl', items)" type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Settings"
-            span class="glyphicon glyphicon-tasks" aria-hidden="true"
+            /Button 1: Information
+            button ng-click="modalService.open('StudentAccount/StudentAccountSettings/student_account_info.html', 'StudentAccountSettingsCtrl', items)" type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Information"
+                span class="glyphicon glyphicon-info-sign" aria-hidden="true"
+            /Button 2: Account Settings
+            button ng-click="modalService.open('StudentAccount/StudentAccountSettings/student_account_settings.html', 'StudentAccountSettingsCtrl', items)" type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Settings"
+                span class="glyphicon glyphicon-tasks" aria-hidden="true"
 

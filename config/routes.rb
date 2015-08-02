@@ -19,7 +19,6 @@ Rails.application.routes.draw do
     post '/get_subcategories', to: 'requirement_categories#subcategories'
     post '/flip_student_settings', to: 'requirement_categories#flip_students'
 
-
     post "/current_user" => 'users#get_current_user'
     post "/students" => 'users#students'
     post "/get_projects_of_user" => 'projects#get_projects_of_user'

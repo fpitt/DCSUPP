@@ -38,26 +38,31 @@ class RequirementCategoriesController < ApplicationController
 
 	def flip_students
 		@student_attributes = RequirementCategory.find_by_sql(
-			"SELECT DISTINCT requirement_categories.category_name FROM requirement_categories
-			INNER JOIN requirement_subcategories on
-			requirement_categories.id = requirement_subcategories.requirement_category_id AND
-			requirement_subcategories.student_attribute = '1'
+			"SELECT DISTINCT requirement_categories.category_name 
+				FROM requirement_categories
+				WHERE ID in (SELECT requirement_category_id
+							FROM requirement_subcategories
+							WHERE student_attribute = 't')
 			ORDER BY requirement_categories.created_at desc")
 
-		attribute_length = @student_attributes.length
-		value = params[:direction].to_i + (params[:pageNumber]).to_i*10 - 10
+		puts @student_attributes.size
+
+        current_offset = (params[:payload][:pagenumber] - 1)*10
+        direction = params[:payload][:direction]
+		attribute_length = @student_attributes.size
 
 		respond_to do |format|
-	      format.json {
-	      	puts value
-	      	if value < attribute_length
-		      	@category = @student_attributes[value .. value + 10]
-		        render :json => @category
-		    else 
-		    	render :nothing => true, :status => 200, :content_type => 'text/html'
-		    end
+	      	format.json {
+	      	    if current_offset + direction < attribute_length && current_offset + direction >= 0
+                    offset = current_offset + direction
+                    offset_10 = offset + 10
+                    @projects = @student_attributes[offset..offset_10]
+                    render :json => @projects
+                else 
+                    render :nothing => true, :status => 200, :content_type => 'text/html'
+                end
 
-	      }
+	      	}
 	    end
 
 	end
