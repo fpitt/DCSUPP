@@ -4,8 +4,9 @@ class ProjectApplicationsController < ApplicationController
         respond_to do |format|
             format.json {
                 param = params[:payload]
-
-                @project_application = ProjectApplication.new(param[:application])
+                @project_application = ProjectApplication.new()
+                @project_application.update_attribute(:title, param[:application][:title])
+                @project_application.update_attribute(:message, param[:application][:message])
                 @project_application.update_attribute(:project, Project.find_by_id(param[:project]))
                 @project_application.user = @current_user
 
