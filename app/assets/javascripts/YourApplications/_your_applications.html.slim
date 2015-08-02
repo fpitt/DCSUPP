@@ -6,7 +6,8 @@ div
         h3 Your Current Applications
 
       div class="list-group" style="overflow:scroll; max-height:150px"
-        div ng-repeat="project in projects"
+
+        div ng-repeat="application in applications"
           ul class="nav nav-pills nav-stacked"
             li
               a ui-sref="your_application.application_info({id: project.id})"
