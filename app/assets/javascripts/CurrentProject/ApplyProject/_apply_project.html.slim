@@ -1,0 +1,17 @@
+div
+  h3 Application
+  table class="table"
+    tr
+      td
+        | Title
+      td
+        input ng-model="application.title" type="text" class="form-control"
+    tr
+      td
+        | Message
+      td
+        textarea ng-model="application.message" type="text" class="form-control"
+
+  br
+
+  button style="margin: auto; width: 50%" access="administrator student" restrict="" class="btn btn-default btn-lg" ng-click="createApplication()" Submit

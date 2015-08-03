@@ -6,7 +6,7 @@ controllerFunction = ($scope, requestService, modalService, $state, User) ->
     $scope.projects = null
     $scope.selectedProject = {}
     $scope.sendParams =
-        method: 'GET'
+        method: 'POST'
         url: '/get_projects_of_user.json'
 
 

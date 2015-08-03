@@ -3,32 +3,15 @@ div
     div class="col-xs-4"
 
       div class="text-center"
-        h3 Your Current Projects
+        h3 Your Current Applications
 
       div class="list-group" style="overflow:scroll; max-height:150px"
-        div ng-repeat="project in projects"
-          ul class="nav nav-pills nav-stacked"
-            li
-              a ng-click="selectProject(project)"
-                | {{ project.title }}
 
-      div
-        div class="text-center"
-          h4 Project Information
-        a ui-sref="your_projects.project_info({id: selectedProject.id})"
-          | {{ selectedProject.title }}
-
-        div class="list-group"
-          ul class="nav nav-pills nav-stacked"
-            li
-
-        div class="text-center"
-          h4  Applications
         div ng-repeat="application in applications"
           ul class="nav nav-pills nav-stacked"
             li
-              a ui-sref=".application_info({id: application.id})" | {{application.name }}
-
+              a ui-sref="your_applications.application_info({id: application.id})"
+                | {{ application.title }}
 
     div class="row" style="height:5px"
 
