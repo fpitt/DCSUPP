@@ -13,12 +13,6 @@ ServiceFunction = function(requestService) {
 
     this.role = " ";
 
-    this.getAccessLevel = function() {
-        return this.getUser().then(function (data) {
-            return data;
-        });
-    };
-
     return this;
 
 };

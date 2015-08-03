@@ -1,16 +1,24 @@
 angular.module('dcsupp', ['ui.bootstrap', 'ui.router', 'templates', 'permission']).config([
     '$stateProvider', '$urlRouterProvider', '$locationProvider',
     function ($stateProvider, $urlRouterProvider, $locationProvider) {
-        $urlRouterProvider.otherwise( function($injector) {
-            var $state = $injector.get("$state");
-            $state.go('intro');
-        });
+        $urlRouterProvider.otherwise('intro');
         $locationProvider.html5Mode(true).hashPrefix('!');
+
+
     }
 ]);
 
+//angular.module('dcsupp').run(function($rootScope, $state) {
+//    $rootScope.$on('$routeChangeStart', function(next, current){
+//        var loggedIn = true;
+//        if (!loggedIn){
+//            $state.go('auth');
+//        }
+//    });
+//});
+
 angular.module('dcsupp')
-    .run(function (Permission, User, $q) {
+    .run(function (Permission, User) {
 
         User.getUser().success(function (data) {
             if (!data.professor && !data.administrator) {
@@ -22,71 +30,38 @@ angular.module('dcsupp')
             } else {
                 User.role = 'anonymous';
             };
+
+            Permission
+                .defineRole('student', function (stateParams) {
+                    return User.role == 'student';
+                })
+                .defineRole('administrator', function (stateParams) {
+                    return User.role == 'administrator';
+                })
+                .defineRole('professor', function (stateParams) {
+                    return User.role == 'professor';
+                })
+                .defineRole('anonymous', function (stateParams) {
+                    return User.role == 'anonymous';
+                });
+
         });
 
-        Permission
-            .defineRole('student', function (stateParams) {
-                var deferred = $q.defer();
-
-                User.getAccessLevel().then(function (data) {
-                    if (!data.data.professor && !data.data.administrator) {
-                        deferred.resolve(true);
-                    } else {
-                        deferred.reject(false);
-                    }
-                }, function () {
-                    // Error with request
-                    deferred.reject(false);
-                });
-
-                return deferred.promise;
-            })
-            .defineRole('administrator', function (stateParams) {
-                var deferred = $q.defer();
-
-                User.getAccessLevel().then(function (data) {
-                    if (data.data.administrator) {
-                        deferred.resolve(true);
-                    } else {
-                        deferred.reject(false);
-                    }
-                }, function () {
-                    // Error with request
-                    deferred.reject(false);
-                });
-
-                return deferred.promise;
-            })
-            .defineRole('professor', function (stateParams) {
-                var deferred = $q.defer();
-
-                User.getAccessLevel().then(function (data) {
-                    if (data.data.professor && !data.data.administrator) {
-                        deferred.resolve(true);
-                    } else {
-                        deferred.reject(false);
-                    }
-                }, function () {
-                    // Error with request
-                    deferred.reject(false);
-                });
-
-                return deferred.promise;
-            })
-            .defineRole('anonymous', function (stateParams) {
-                var deferred = $q.defer();
-
-                User.getAccessLevel().then(function (data) {
-                    if (!data.data.id) {
-                        deferred.resolve(true);
-                    } else {
-                        deferred.reject(false);
-                    }
-                }, function () {
-                    // Error with request
-                    deferred.reject(false);
-                });
-
-                return deferred.promise;
-            });
     });
+
+//angular.module('dcsupp').run(function (User, Permission) {
+//
+//    Permission
+//        .defineRole('student', function (stateParams) {
+//            return User.role == 'student';
+//        })
+//        .defineRole('administrator', function (stateParams) {
+//            return User.role == 'administrator';
+//        })
+//        .defineRole('professor', function (stateParams) {
+//            return User.role == 'professor';
+//        })
+//        .defineRole('anonymous', function (stateParams) {
+//            return User.role == 'anonymous';
+//        });
+//});
