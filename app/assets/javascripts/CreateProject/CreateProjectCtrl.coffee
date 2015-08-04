@@ -23,9 +23,8 @@ controllerFunction = ($scope, requestService, modalService, User) ->
 	$scope.create = ->
 		$scope.payload =
 			project:
-				title: $scope.project.title
-				text: $scope.project.text
-				date: $scope.project.deadline_date
+				$scope.project
+
 
 		requestService.service($scope.sendParams, $scope.payload).success(successFunction)
 
@@ -36,8 +35,9 @@ controllerFunction = ($scope, requestService, modalService, User) ->
 		$scope.opened = !$scope.opened
 		return
 
+	$scope.loadRequirementCategories = ->
 
-
+	$scope.loadRequirementSubcategories = ->
 
 
 angular
