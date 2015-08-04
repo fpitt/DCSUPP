@@ -1,7 +1,6 @@
 controllerFunction = ($scope, requestService, modalService, User) ->
 	$scope.modalService = modalService
 	$scope.opened = false
-
 	$scope.project =
 		title: ""
 		text: ""
@@ -54,7 +53,7 @@ controllerFunction = ($scope, requestService, modalService, User) ->
 	$scope.toggleMin()
 
 	$scope.open = ($event) ->
-		$scope.opened = true
+		$scope.opened = !$scope.opened
 		return
 
 	$scope.dateOptions =
