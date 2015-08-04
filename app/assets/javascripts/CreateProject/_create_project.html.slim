@@ -17,6 +17,13 @@ div ng-controller="CreateProjectCtrl"
 					textarea class="form-control" rows="5" placeholder="Project Description" ng-model="project.text"
 
 				div class="form-group"
+					label for="exampleInputDate" Project Date
+					input.form-control close-text="Close" date-disabled="disabled(date, mode)" datepicker-options="dateOptions" datepicker-popup="{{format}}" is-open="opened" max-date="'2020-06-22'" min-date="minDate" ng-model="dt" ng-required="true" type="text" /
+					span.input-group-btn
+					  	button.btn.btn-default ng-click="open($event)" type="button"
+							i.glyphicon.glyphicon-calendar
+
+				div class="form-group"
 					button type="submit" class="btn btn-default" ng-click="create()" Create Project
 
 
