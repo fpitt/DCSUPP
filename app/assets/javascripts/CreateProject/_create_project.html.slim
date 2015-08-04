@@ -7,7 +7,7 @@ div ng-controller="CreateProjectCtrl"
         	h3 Create Project
         	hr
 
-        	form 
+        	form
         		div class="form-group"
 				    label for="exampleInputEmail" Project Title
 				    input class="form-control" placeholder="Project Title" ng-model="project.title"
@@ -24,6 +24,29 @@ div ng-controller="CreateProjectCtrl"
 								  i.glyphicon.glyphicon-calendar
 				div class="form-group"
 					button type="submit" class="btn btn-default" ng-click="create()" Create Project
+
+				div class="row" style="height:20px"
+				    div class="text-center"
+				     div class="btn-group"
+				         button class="btn btn-default" ng-click="flip(-10)" Prev
+				          button class="btn btn-default disabled"
+				            | {{ pagenumber}}
+				        button class="btn btn-default" ng-click="flip
+
+					  div class="text-center"
+						div class="btn-group"
+						button class="btn btn-default" ng-click="flip(-10)" Prev
+						button class="btn btn-default disabled"
+						  | {{ pagenumber }}
+						button class="btn btn-default" ng-click="flip(10)" Next
+						  br
+						  br
+					  div class="list-group"
+						div ng-repeat="category in categories"
+						ul class="nav nav-pills nav-stacked"
+						  li ng-click="subcategories($event)"
+						  a id="{{ category.id }}"
+							| {{ category.category_name }}
 
 
         div class="col-xs-2"

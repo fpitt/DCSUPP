@@ -1,18 +1,18 @@
 div class="row"
-  div class="col-xs-10"
-    h4 Update Project
+    div class="col-xs-10"
+        h4 Update Project
 
-    table class="table"
-      tr
-        td
-          | Title
-        td
-          input type="text" class="form-control" ng-model="project.title"
-      tr
-        td
-          | Description
-        td
-          textarea type="text" class="form-control" ng-model="project.text"
+        table class="table"
+            tr
+                td
+                    | Title
+                td
+                    input type="text" class="form-control" ng-model="project.title"
+            tr
+                td
+                    | Description
+                td
+                    textarea type="text" class="form-control" ng-model="project.text"
 
 
-    button class="btn btn-default" ng-click="patchProject()" Save
+        button class="btn btn-default" ng-click="patchProject()" Save
