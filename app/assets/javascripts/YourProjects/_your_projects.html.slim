@@ -26,7 +26,8 @@ div
                 div ng-repeat="application in applications"
                     ul class="nav nav-pills nav-stacked"
                         li
-                            a ui-sref=".application_info({id: application.id})" | {{application.name }}
+                            a ui-sref="your_projects.application_info({id: application.id})"
+                                | {{application.title }}
 
             button ui-sref="create_project" class="btn btn-default btn-lg" Create New
         div class="row" style="height:5px"

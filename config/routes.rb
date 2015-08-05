@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     post "/students" => 'users#students'
     post "/get_projects_of_user" => 'projects#get_projects_of_user'
     post "/get_applications_of_user" => 'project_applications#get_applications_of_user'
+    post "/get_applications_of_project" => 'project_applications#get_applications_of_project'
 
     get "/*path" => redirect("/?goto=%{path}")
 end

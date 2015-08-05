@@ -1,0 +1,8 @@
+angular.module('dcsupp').config ($stateProvider) ->
+    $stateProvider.state 'your_projects.application_info',
+        url: '/application/:id'
+        templateUrl: 'YourApplications/ApplicationInfo/_application_info.html'
+        controller: 'ApplicationInfoCtrl'
+        data:
+            permissions:
+                only: ['administrator', 'professor']

@@ -20,10 +20,17 @@ ServiceFunction = (requestService) ->
         return requestService.service(sendParams)
 
     getByCurrentUser: () ->
-        endParams =
+        sendParams =
             method: 'POST'
             url: '/get_applications_of_user.json'
         return requestService.service(sendParams)
+
+    getByProject: (payload) ->
+        sendParams =
+            method: 'POST'
+            url: '/get_applications_of_project.json'
+        return requestService.service(sendParams, payload)
+
 
 angular
 .module('dcsupp')

@@ -1,14 +1,10 @@
-controllerFunction = ($scope, requestService, modalService, $state, User, Project) ->
+controllerFunction = ($scope, modalService, $state, User, Project, ProjectApplication) ->
 
     $scope.modalService = modalService
     $scope.showProject = false;
     $scope.pagenumber = 1
     $scope.projects = null
     $scope.selectedProject = {}
-    $scope.sendParams =
-        method: 'POST'
-        url: '/get_projects_of_user.json'
-
 
     successFunction = (data) ->
         $scope.projects = data
@@ -25,11 +21,18 @@ controllerFunction = ($scope, requestService, modalService, $state, User, Projec
 
     $scope.selectProject = (project) ->
         $scope.selectedProject = project
+        $scope.loadProjectApplications(project);
         $state.go('your_projects.project_info', {id: $scope.selectedProject.id})
+
+    $scope.loadProjectApplications = (project) ->
+        payload =
+            id: project.id
+        ProjectApplication.getByProject(payload).success((data)->
+            $scope.applications = data)
 
 
     $scope.loadProjects()
 
 angular
 .module('dcsupp')
-.controller('YourProjectsCtrl', ['$scope', 'requestService', 'modalService', '$state', 'User', 'Project', controllerFunction])
+.controller('YourProjectsCtrl', ['$scope', 'modalService', '$state', 'User', 'Project', 'ProjectApplication', controllerFunction])
