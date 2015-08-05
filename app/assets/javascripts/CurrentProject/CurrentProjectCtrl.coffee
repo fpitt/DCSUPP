@@ -16,12 +16,13 @@ controllerFunction = ($scope, requestService, $modal, modalService, Project) ->
 
 	# --- Project Navigation ---
 
-	$scope.loadProjcts = (pushDirection) ->
+	$scope.flip = (pushDirection) ->
 		payload = 
 			direction: pushDirection
 			pagenumber: $scope.pagenumber
+		$scope.direction = pushDirection
 
-		Project.flip().success((data) ->
+		Project.flip(payload).success((data) ->
 			if (data)
 				$scope.projects = data
 				if $scope.direction > 0
@@ -34,7 +35,7 @@ controllerFunction = ($scope, requestService, $modal, modalService, Project) ->
 	# --- JQuery Initialization Code ---
 
 	$('[data-toggle="tooltip"]').tooltip()
-	$scope.loadProjects(0)
+	$scope.flip(0)
 
 angular
 .module('dcsupp')

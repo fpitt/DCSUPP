@@ -1,21 +1,17 @@
-controllerFunction = ($scope, requestService, modalService, $stateParams, $state) ->
+controllerFunction = ($scope, requestService, modalService, $stateParams, $state, ProjectApplication) ->
 
     $scope.modalService = modalService
 
     $scope.application = {}
 
     $scope.createApplication = () ->
-        $scope.sendParams =
-            url: '/project_applications.json'
-            method: 'POST'
-
-        $scope.payload =
+        payload =
             application:
                 $scope.application
             project:
                 $stateParams.id
 
-        requestService.service($scope.sendParams, $scope.payload).success((data) ->
+        ProjectApplication.create(payload).success((data) ->
             $state.go('your_applications.application_info', {id: data.id}))
 
         return
@@ -23,4 +19,4 @@ controllerFunction = ($scope, requestService, modalService, $stateParams, $state
 
 angular
 .module('dcsupp')
-.controller('ApplyProjectCtrl', ['$scope', 'requestService', 'modalService', '$stateParams', '$state', controllerFunction])
+.controller('ApplyProjectCtrl', ['$scope', 'requestService', 'modalService', '$stateParams', '$state', 'ProjectApplication', controllerFunction])
