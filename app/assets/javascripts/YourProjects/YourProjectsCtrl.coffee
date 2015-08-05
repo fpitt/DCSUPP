@@ -1,4 +1,4 @@
-controllerFunction = ($scope, requestService, modalService, $state, User) ->
+controllerFunction = ($scope, requestService, modalService, $state, User, Project) ->
 
     $scope.modalService = modalService
     $scope.showProject = false;
@@ -19,9 +19,9 @@ controllerFunction = ($scope, requestService, modalService, $state, User) ->
         'item3'
     ]
 
-    $scope.loadProjects = (pushDirection) ->
-        requestService.service($scope.sendParams).success(successFunction)
-
+    $scope.loadProjects = () ->
+        Project.getByCurrentUser().success((data) ->
+            $scope.projects = data)
 
     $scope.selectProject = (project) ->
         $scope.selectedProject = project
@@ -32,4 +32,4 @@ controllerFunction = ($scope, requestService, modalService, $state, User) ->
 
 angular
 .module('dcsupp')
-.controller('YourProjectsCtrl', ['$scope', 'requestService', 'modalService', '$state', 'User', controllerFunction])
+.controller('YourProjectsCtrl', ['$scope', 'requestService', 'modalService', '$state', 'User', 'Project', controllerFunction])
