@@ -2,14 +2,11 @@ class RequirementSubcategoriesController < ApplicationController
 
 	def create
 
-		puts params[:payload]
-
-		@subcategory = RequirementSubcategory.new(params[:payload][:subcategory])
-
-		@category = RequirementCategory.find_by_id(params[:payload][:target_id])
-
 		respond_to do |format|
 	    	format.json {
+				puts params[:payload]
+				@subcategory = RequirementSubcategory.new(params[:payload][:subcategory])
+				@category = RequirementCategory.find_by_id(params[:payload][:target_id])
 	    		if @subcategory.save
 	    			if @category
 		    			puts "-----"

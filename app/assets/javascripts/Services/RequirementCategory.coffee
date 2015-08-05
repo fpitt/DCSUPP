@@ -16,6 +16,14 @@ ServiceFunction = (requestService) ->
 
     getById: (id) ->
         return
+
+    flip: (payload) ->
+        sendParams =
+            method: 'POST'
+            url: '/get_categories.json'
+        requestService.service(sendParams, payload)
+
+
 angular
 .module('dcsupp')
 .service('RequirementCategory', ServiceFunction)

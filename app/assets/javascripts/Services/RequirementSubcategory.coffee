@@ -3,18 +3,21 @@ ServiceFunction = (requestService) ->
     create: (payload) ->
         sendParams=
             method: 'POST'
-            url: '/requirement_categories.json'
+            url: '/requirement_subcategories.json'
 
         return requestService.service(sendParams, payload)
 
     patch: (id, payload) ->
         return
 
-    getAll: () ->
-        return
+    getAll: (payload) ->
+        sendParams =
+            method: 'POST'
+            url: '/get_subcategories.json'
+        requestService.service(sendParams, payload)
 
     getById: (id) ->
         return
 angular
 .module('dcsupp')
-.service('RequirementSubc ategory', ServiceFunction)
+.service('RequirementSubcategory', ServiceFunction)
