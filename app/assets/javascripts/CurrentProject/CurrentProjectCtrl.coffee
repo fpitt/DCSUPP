@@ -1,4 +1,4 @@
-controllerFunction = ($scope, requestService, $modal, modalService) ->
+controllerFunction = ($scope, requestService, $modal, modalService, Project) ->
 
 	$scope.modalService = modalService
 
@@ -16,32 +16,26 @@ controllerFunction = ($scope, requestService, $modal, modalService) ->
 
 	# --- Project Navigation ---
 
-	$scope.flip = (pushDirection) ->
+	$scope.loadProjcts = (pushDirection) ->
 		payload = 
 			direction: pushDirection
 			pagenumber: $scope.pagenumber
-		$scope.direction = pushDirection
-		sendParams =
-			method: 'POST'
-			url: '/flip_project_direction.json'
 
-		requestService.service(sendParams, payload).success(successFunction)
-
-	successFunction = (data) ->
-		if (data)
-			$scope.projects = data
-			if $scope.direction > 0
-				$scope.pagenumber += 1
-			else if $scope.direction < 0
-				$scope.pagenumber -= 1
-			else
-				$scope.pagenumber = 1
+		Project.flip().success((data) ->
+			if (data)
+				$scope.projects = data
+				if $scope.direction > 0
+					$scope.pagenumber += 1
+				else if $scope.direction < 0
+					$scope.pagenumber -= 1
+				else
+					$scope.pagenumber = 1)
 
 	# --- JQuery Initialization Code ---
 
 	$('[data-toggle="tooltip"]').tooltip()
-	$scope.flip(0)
+	$scope.loadProjects(0)
 
 angular
 .module('dcsupp')
-.controller('CurrentProjectCtrl', ['$scope', 'requestService', '$modal', 'modalService', controllerFunction])
+.controller('CurrentProjectCtrl', ['$scope', 'requestService', '$modal', 'modalService', 'Project', controllerFunction])
