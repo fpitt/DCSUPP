@@ -25,7 +25,14 @@ ServiceFunction = (requestService) ->
         sendParams =
             method: 'POST'
             url: '/get_projects_of_user.json'
-        return requestService.service($scope.sendParams)
+        return requestService.service(sendParams)
+
+    flip: (payload) ->
+        sendParams =
+            method: 'POST'
+            url: '/flip_project_direction.json'
+
+        requestService.service(sendParams, payload)
 
 angular
 .module('dcsupp')
