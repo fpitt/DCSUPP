@@ -1,15 +1,10 @@
-controllerFunction = ($scope, requestService, $stateParams) ->
-    $scope.sendParams =
-        url: '/project_applications/' + $stateParams.id + '.json'
-        method: 'GET'
-
-
-    $scope.flip = ->
-        requestService.service($scope.sendParams).success((data) ->
+controllerFunction = ($scope, $stateParams, ProjectApplication) ->
+    $scope.loadProjectApplications = ->
+        ProjectApplication.getById($stateParams.id).success((data) ->
             $scope.application = data)
 
-    $scope.flip()
+    $scope.loadProjectApplications()
 
 angular
 .module('dcsupp')
-.controller('ApplicationInfoCtrl', ['$scope', 'requestService', '$stateParams', controllerFunction])
+.controller('ApplicationInfoCtrl', ['$scope', '$stateParams', 'ProjectApplication', controllerFunction])
