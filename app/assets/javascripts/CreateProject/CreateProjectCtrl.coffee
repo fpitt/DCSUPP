@@ -1,29 +1,30 @@
-controllerFunction = ($scope, requestService, modalService, User) ->
+controllerFunction = ($scope, requestService, modalService, User, Project) ->
 	$scope.modalService = modalService
 	$scope.opened = false
 	$scope.project =
 		title: ""
 		text: ""
-	$scope.projectDefault =
-		title: ""
-		text: ""
-	$scope.sendParams =
-		url: '/projects.json'
-		method: "POST"
+	$scope.pagenumber = 1
+	$scope.direction = 0
+	$scope.categories = null
+	$scope.list_subcategories = null
 
-	clearForm = ->
-		$scope.project = angular.copy($scope.projectDefault)
+	$scope.clearForm = ->
+		projectDefault =
+			title: ""
+			text: ""
+		$scope.project = angular.copy(projectDefault)
 
 	$scope.create = ->
-		$scope.payload =
+		payload =
 			project:
 				$scope.project
 			requirements:
 				$scope.requirements
 
-		requestService.service($scope.sendParams, $scope.payload).success((data) ->
-			console.log("Created Project")
-			clearForm())
+		Project.create(payload).success((data) ->
+			$scope.clearForm()
+		)
 
 	$scope.loadCategories = (pushDirection) ->
 		payload =
@@ -70,5 +71,5 @@ controllerFunction = ($scope, requestService, modalService, User) ->
 
 angular
 	.module('dcsupp')
-	.controller('CreateProjectCtrl', ['$scope', 'requestService', 'modalService', 'User', controllerFunction])
+	.controller('CreateProjectCtrl', ['$scope', 'requestService', 'modalService', 'User', 'Project', controllerFunction])
 
