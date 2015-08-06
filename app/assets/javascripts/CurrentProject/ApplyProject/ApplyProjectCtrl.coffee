@@ -17,6 +17,8 @@ controllerFunction = ($scope, requestService, modalService, $stateParams, $state
         return
 
 
+
+
 angular
 .module('dcsupp')
 .controller('ApplyProjectCtrl', ['$scope', 'requestService', 'modalService', '$stateParams', '$state', 'ProjectApplication', controllerFunction])
