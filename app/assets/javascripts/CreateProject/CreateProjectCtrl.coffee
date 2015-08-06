@@ -1,4 +1,4 @@
-controllerFunction = ($scope, requestService, modalService, User, Project) ->
+controllerFunction = ($scope, modalService, User, Project, RequirementCategory, RequirementSubcategory) ->
 	$scope.modalService = modalService
 	$scope.opened = false
 	$scope.project =
@@ -26,50 +26,46 @@ controllerFunction = ($scope, requestService, modalService, User, Project) ->
 			$scope.clearForm()
 		)
 
-	$scope.loadCategories = (pushDirection) ->
+		# --- Get SubCategory ---
+
+	$scope.loadSubcategories = (id)->
 		payload =
-			direction: pushDirection
-			pagenumber: $scope.pagenumber
-		sendParams =
-			method: 'POST'
-			url: '/get_categories.json'
-		$scope.direction = pushDirection
+			target_id: id
+		$scope.current_category_id = id
 
-		requestService.service(sendParams, payload).success((data) ->
-			$scope.list_subcategories = data
-			console.log($scope.list_subcategories))
+		RequirementSubcategory.getAll(payload).success((data) ->
+			$scope.subcategories = data)
 
-	$scope.loadSubcategories = (target_id)->
-		console.log("subcategories")
-		payload =
-			target_id: event.target.id
-		get_subcategories =
-			method: 'POST'
-			url: '/get_subcategories.json'
-		$scope.current_category_id = event.target.id
+		# --- Category Navigation ---
 
-		requestService.service(get_subcategories, payload).success((data) ->
-			if (data)
-				$scope.categories = data)
-#				if $scope.direction > 0
-#					$scope.pagenumber += 1
-#				else if $scope.direction < 0
-#					$scope.pagenumber -= 1
-#				else
-#					$scope.pagenumber = 1)
+	$scope.flip = (pushDirection) ->
+			payload =
+				direction: pushDirection
+				pagenumber: $scope.pagenumber
+			$scope.direction = pushDirection
+
+			RequirementCategory.flip(payload).success((data) ->
+				if (data)
+					$scope.categories = data
+					if $scope.direction > 0
+						$scope.pagenumber += 1
+					else if $scope.direction < 0
+						$scope.pagenumber -= 1
+					else
+						$scope.pagenumber = 1)
 
 
-
-	$('[data-toggle="tooltip"]').tooltip()
 
 
 	$scope.open = ($event) ->
 		$scope.opened = !$scope.opened
 		return
 
+	$scope.flip(0)
+
 
 
 angular
 	.module('dcsupp')
-	.controller('CreateProjectCtrl', ['$scope', 'requestService', 'modalService', 'User', 'Project', controllerFunction])
+	.controller('CreateProjectCtrl', ['$scope', 'modalService', 'User', 'Project', 'RequirementCategory', 'RequirementSubcategory', controllerFunction])
 

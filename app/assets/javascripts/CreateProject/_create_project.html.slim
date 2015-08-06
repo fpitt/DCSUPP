@@ -18,29 +18,40 @@ div ng-controller="CreateProjectCtrl"
 
 				div class="form-group"
 					label for="exampleInputDate" Deadline
-					input.form-control close-text="Close" datepicker-popup="{{'dd-MMMM-yyyy'}}"  ng-model="project.deadline_date" is-open="opened == true" ng-required="true" type="text"
+					input.form-control close-text="Close" datepicker-popup="{{'dd-MMMM-yyyy'}}"  ng-model="project.deadline_date" is-open="opened == true" type="text"
 					span.input-group-btn
 					  	button.btn.btn-default ng-click="open($event)" type="button"
 								  i.glyphicon.glyphicon-calendar
+
+				div class="form-group row" style="height:20px"
+					label for="exampleInputRequirementCateogry" Requirement Categories
+					div class="text-center"
+						div class="btn-group"
+							button class="btn btn-default" ng-click="flip(-10)" Prev
+							button class="btn btn-default disabled"
+								| {{ pagenumber }}
+							button class="btn btn-default" ng-click="flip(10)" Next
+							br
+							br
+							div class="list-group"
+								div ng-repeat="category in categories"
+									ul class="nav nav-pills nav-stacked"
+										li ng-click="loadSubcategories(category.id)"
+											a id="{{ category.id }}"
+												| {{ category.category_name }}
+
+				div class="form-group list-group"
+					div ng-repeat="subcategory in subcategories"
+						ul class="nav nav-pills nav-stacked"
+							li ng-click="addSubcategory(category.id)"
+								a
+									| {{ category.category_name }}
+
+
 				div class="form-group"
 					button type="submit" class="btn btn-default" ng-click="create()" Create Project
 
-				div class="row" style="height:20px"
 
-					div class="text-center"
-						div class="btn-group"
-							button class="btn btn-default" ng-click="loadCategories(-10)" Prev
-							button class="btn btn-default disabled"
-								| {{ pagenumber }}
-							button class="btn btn-default" ng-click="loadCategories(10)" Next
-						br
-						br
-					div class="list-group"
-						div ng-repeat="category in categories"
-							ul class="nav nav-pills nav-stacked"
-								li ng-click="loadSubcategories($event)"
-									a id="{{ category.id }}"
-										| {{ category.category_name }}
 
 
 
