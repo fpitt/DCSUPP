@@ -43,9 +43,13 @@ div ng-controller="CreateProjectCtrl"
 				div class="form-group list-group"
 					div ng-repeat="subcategory in subcategories"
 						ul class="nav nav-pills nav-stacked"
-							li ng-click="addSubcategory(category.id)"
+							li ng-click="addSubcategory(subcategory)"
 								a
-									| {{ category.category_name }}
+									| {{ subcategory.sub_category_name }}
+
+				ul
+                    li ng-repeat="subcategory in project.subcategories"
+                    	| {{ subcategory.sub_category_name }}
 
 
 				div class="form-group"
