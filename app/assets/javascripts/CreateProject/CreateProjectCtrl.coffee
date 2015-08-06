@@ -5,7 +5,7 @@ controllerFunction = ($scope, modalService, User, Project, RequirementCategory, 
 		title: ""
 		text: ""
 		deadline_date: ""
-		subcategories: []
+	$scope.requirements =  []
 	$scope.pagenumber = 1
 	$scope.direction = 0
 
@@ -21,6 +21,8 @@ controllerFunction = ($scope, modalService, User, Project, RequirementCategory, 
 		payload =
 			project:
 				$scope.project
+			requirements:
+				$scope.requirements
 
 		Project.create(payload).success((data) ->
 			$scope.clearForm()
@@ -56,7 +58,7 @@ controllerFunction = ($scope, modalService, User, Project, RequirementCategory, 
 
 
 	$scope.addSubcategory = (subcategory) ->
-		$scope.project.subcategories.push(subcategory)
+		$scope.requirements.push(subcategory)
 
 	$scope.open = ($event) ->
 		$scope.opened = !$scope.opened
