@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     resources :users, only: [:create, :update, :destroy, :show]
     resources :projects, only: [:create, :update, :destroy, :show]
     resources :requirement_categories, only: [:create, :update, :destroy]
-    resources :requirement_subcategories, only: [:create, :update, :destroy]
+    resources :requirement_subcategories, only: [:create, :update, :destroy, :show]
     resources :project_applications, only: [:create, :update, :destroy, :show]
 
     root to: "application#introduction"

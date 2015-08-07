@@ -17,7 +17,12 @@ ServiceFunction = (requestService) ->
         requestService.service(sendParams, payload)
 
     getById: (id) ->
-        return
+        sendParams =
+            method: 'GET'
+            url: '/requirement_subcategories/' + id + '.json'
+        requestService.service(sendParams)
+
+
 angular
 .module('dcsupp')
 .service('RequirementSubcategory', ServiceFunction)

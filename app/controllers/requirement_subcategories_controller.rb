@@ -20,5 +20,20 @@ class RequirementSubcategoriesController < ApplicationController
 	    	}
 	    end
 	end
+
+    def show
+        respond_to do |format|
+            format.json {
+
+                @requirement_subcategory = RequirementSubcategory.find_by_id(params[:id])
+
+                if @requirement_subcategory
+                    render :json => @requirement_subcategory
+                else
+                    render :nothing => true, :status => 200, :content_type => 'text/html'
+                end
+            }
+        end
+    end
 	
 end
