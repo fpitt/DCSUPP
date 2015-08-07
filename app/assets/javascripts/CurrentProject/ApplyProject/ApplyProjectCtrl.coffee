@@ -10,6 +10,8 @@ controllerFunction = ($scope, modalService, $stateParams, $state, ProjectApplica
         payload =
             application:
                 $scope.application
+            requirements:
+                $scope.requirements
             project:
                 $stateParams.id
 
