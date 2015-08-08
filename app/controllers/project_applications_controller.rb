@@ -11,11 +11,14 @@ class ProjectApplicationsController < ApplicationController
                 @project_application.update_attribute(:user, @current_user)
 
                 for requirement in param[:requirements]
-                    @student_attribute = StudentAttribute.new()
-                    @student_attribute.update_attribute(:requirement_subcategory, RequirementSubcategory.find_by_id(requirement[:id]))
-                    @student_attribute.update_attribute(:user, @current_user)
-                    @student_attribute.update_attribute(:value, requirement[:value])
-                    @student_attribute.save
+                    if StudentAttribute.find_by_requirement_subcategory_id_and_user_id(requirement[:id], @current_user.id)
+                    else
+                        @student_attribute = StudentAttribute.new()
+                        @student_attribute.update_attribute(:requirement_subcategory, RequirementSubcategory.find_by_id(requirement[:id]))
+                        @student_attribute.update_attribute(:user, @current_user)
+                        @student_attribute.update_attribute(:value, requirement[:value])
+                        @student_attribute.save
+                    end
                 end
 
                 if @project_application.save
