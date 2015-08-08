@@ -21,11 +21,11 @@ ServiceFunction = (requestService) ->
     getBySubcategoryAndCurrentUser: (payload) ->
         sendParams =
             method: 'POST'
-            url: '/get_attribute_of_user_and_subcategory.json'
+            url: '/get_attribute_by_user_and_subcategory.json'
         return requestService.service(sendParams, payload)
 
 
 
 angular
 .module('dcsupp')
-.service('Project', ServiceFunction)
+.service('StudentAttribute', ServiceFunction)

@@ -1,5 +1,5 @@
 class StudentAttributesController < ApplicationController
-    def get_attribute_by_subcategory
+    def get_attribute_by_user_and_subcategory
         respond_to do |format|
             format.json {
                 @student_attribute = StudentAttribute.find_by_requirement_subcategory_id_and_user_id(params[:id], @current_user.id)

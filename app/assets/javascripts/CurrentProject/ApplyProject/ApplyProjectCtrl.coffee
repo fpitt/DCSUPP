@@ -1,4 +1,4 @@
-controllerFunction = ($scope, modalService, $stateParams, $state, ProjectApplication, ProjectRequirement, RequirementSubcategory) ->
+controllerFunction = ($scope, modalService, $stateParams, $state, ProjectApplication, ProjectRequirement, RequirementSubcategory, StudentAttribute) ->
     $scope.modalService = modalService
 
     $scope.application = {}
@@ -19,10 +19,13 @@ controllerFunction = ($scope, modalService, $stateParams, $state, ProjectApplica
         return
 
     $scope.loadRequirements = () ->
+        payload =
+            project:
+                $stateParams.id
         ProjectRequirement.getByProject(payload).success((projectRequirements) ->
-            for i in [0 .. data.length - 1]
+            for i in [0 .. projectRequirements.length - 1]
                 StudentAttribute.getById(projectRequirements[i].requirement_subcategory_id).success((studentAttribute) ->
-                    RequirementSubcategory.getById(projectRequirements[i].requirement_subcategory_id).success((subcategory) ->
+                    RequirementSubcategory.getBySubcategoryAndCurrentUser(projectRequirements[i].requirement_subcategory_id).success((subcategory) ->
                         if studentAttribute.id
                             $scope.requirements.push(id: subcategory.id,ttribute_type: subcategory.attribute_type,subcategory: subcategory.sub_category_name,value: studentAttribute.value)
                         else
@@ -39,4 +42,4 @@ angular
 .module('dcsupp')
 .controller('ApplyProjectCtrl',
     ['$scope', 'modalService', '$stateParams', '$state', 'ProjectApplication', 'ProjectRequirement',
-     'RequirementSubcategory', controllerFunction])
+     'RequirementSubcategory', 'StudentAttribute', controllerFunction])

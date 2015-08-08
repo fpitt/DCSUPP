@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     post '/get_categories', to: 'requirement_categories#getcategories'
     post '/get_subcategories', to: 'requirement_categories#subcategories'
     post '/flip_student_settings', to: 'requirement_categories#flip_students'
+    post '/get_attribute_by_user_and_subcategory', to: 'student_attributes#get_attribute_by_user_and_subcategory'
 
     post "/current_user" => 'users#get_current_user'
     post "/students" => 'users#students'
