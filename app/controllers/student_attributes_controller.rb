@@ -2,7 +2,7 @@ class StudentAttributesController < ApplicationController
     def get_attribute_by_subcategory
         respond_to do |format|
             format.json {
-                @student_attribute = StudentAttribute.find_by_requirement_subcategory_id(params[:id])
+                @student_attribute = StudentAttribute.find_by_requirement_subcategory_id_and_user_id(params[:id], @current_user.id)
                 if @student_attribute
                     render :json => @student_attribute
                 else
