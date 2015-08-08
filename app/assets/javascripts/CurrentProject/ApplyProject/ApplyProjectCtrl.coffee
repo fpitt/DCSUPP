@@ -8,38 +8,28 @@ controllerFunction = ($scope, modalService, $stateParams, $state, ProjectApplica
     $scope.createApplication = () ->
         payload =
             application:
-            $scope.application
+                $scope.application
             requirements:
-            $scope.requirements
+                $scope.requirements
             project:
-            $stateParams.id
+                $stateParams.id
 
         ProjectApplication.create(payload).success((data) ->
             $state.go('your_applications.application_info', {id: data.id}))
-
         return
 
-        $scope.loadRequirements = () ->
-            ProjectRequirement.getByProject(payload).success((projectRequirements) ->
-                for i in [0 .. data.length - 1]
-                    StudentAttribute.getById(projectRequirements[i].requirement_subcategory_id).success((studentAttribute) ->
-                        RequirementSubcategory.getById(projectRequirements[i].requirement_subcategory_id).success((subcategory) ->
-                            if (studentAttribute.id)
-                                $scope.requirements.push({
-                                    id: subcategory.id,
-                                    attribute_type: subcategory.attribute_type,
-                                    subcategory: subcategory.sub_category_name,
-                                    value: studentAttribute.value
-                                })
-                            else
-                                $scope.requirements.push({
-                                    id: subcategory.id,
-                                    attribute_type: subcategory.attribute_type,
-                                    subcategory: subcategory.sub_category_name,
-                                })
-                        )
+    $scope.loadRequirements = () ->
+        ProjectRequirement.getByProject(payload).success((projectRequirements) ->
+            for i in [0 .. data.length - 1]
+                StudentAttribute.getById(projectRequirements[i].requirement_subcategory_id).success((studentAttribute) ->
+                    RequirementSubcategory.getById(projectRequirements[i].requirement_subcategory_id).success((subcategory) ->
+                        if studentAttribute.id
+                            $scope.requirements.push(id: subcategory.id,ttribute_type: subcategory.attribute_type,subcategory: subcategory.sub_category_name,value: studentAttribute.value)
+                        else
+                            $scope.requirements.push(id: subcategory.id, attribute_type: subcategory.attribute_type,subcategory: subcategory.sub_category_name)
                     )
-            )
+                )
+        )
 
 
     $scope.loadRequirements()
