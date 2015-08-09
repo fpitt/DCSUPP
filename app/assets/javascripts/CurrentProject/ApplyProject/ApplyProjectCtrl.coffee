@@ -19,17 +19,17 @@ controllerFunction = ($scope, modalService, $stateParams, $state, ProjectApplica
         return
 
     $scope.loadRequirements = () ->
-        payload =
-            project:
-                $stateParams.id
+        payload = project: $stateParams.id
         ProjectRequirement.getByProject(payload).success((projectRequirements) ->
-            for i in [0 .. projectRequirements.length - 1]
-                StudentAttribute.getById(projectRequirements[i].requirement_subcategory_id).success((studentAttribute) ->
-                    RequirementSubcategory.getBySubcategoryAndCurrentUser(projectRequirements[i].requirement_subcategory_id).success((subcategory) ->
+            for req in projectRequirements
+
+                RequirementSubcategory.getById(req.requirement_subcategory_id).success((subcategory) ->
+                    payload = subcategory: subcategory.id
+                    StudentAttribute.getBySubcategoryAndCurrentUser(payload).success((studentAttribute) ->
+                        attr = id: subcategory.id, attribute_type: subcategory.attribute_type, sub_category_name: subcategory.sub_category_name
                         if studentAttribute.id
-                            $scope.requirements.push(id: subcategory.id,ttribute_type: subcategory.attribute_type,subcategory: subcategory.sub_category_name,value: studentAttribute.value)
-                        else
-                            $scope.requirements.push(id: subcategory.id, attribute_type: subcategory.attribute_type,subcategory: subcategory.sub_category_name)
+                            if subcategory.attribute_type == 'Number' then attr.value = parseInt(studentAttribute.value) else attr.value = studentAttribute.value
+                        $scope.requirements.push(attr)
                     )
                 )
         )
