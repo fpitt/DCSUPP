@@ -5,6 +5,11 @@ div
     table class="table table-hover"
         tr
             td
+                | Project
+            td
+                | {{ project.title }}
+        tr
+            td
                 | Title
             td
                 span
@@ -15,4 +20,10 @@ div
             td
                 span
                     | {{ application.message }}
+
+        tr ng-repeat="attribute in attributes"
+            td
+                | {{ attribute.sub_category_name }}
+            td
+                | {{ attribute.value }}
     br

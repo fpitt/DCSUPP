@@ -1,4 +1,4 @@
-controllerFunction = ($scope, $stateParams, ProjectApplication, ProjectRequirement, RequirementSubcategory, StudentAttribute) ->
+controllerFunction = ($scope, $stateParams, ProjectApplication, ProjectRequirement, RequirementSubcategory, StudentAttribute, Project) ->
     $scope.attributes = []
 
 #
@@ -16,6 +16,11 @@ controllerFunction = ($scope, $stateParams, ProjectApplication, ProjectRequireme
         ProjectApplication.getById($stateParams.id).success((data) ->
             $scope.application = data
             payload = project: data.project_id
+
+            Project.getById(data.project_id).success((data) ->
+                $scope.project = data
+            )
+
             ProjectRequirement.getByProject(payload).success((projectRequirements) ->
                 for req in projectRequirements
                     RequirementSubcategory.getById(req.requirement_subcategory_id).success((subcategory) ->
@@ -28,6 +33,8 @@ controllerFunction = ($scope, $stateParams, ProjectApplication, ProjectRequireme
         )
 
 
+
+
     $scope.loadApplicationInfo()
 
 
@@ -35,4 +42,4 @@ controllerFunction = ($scope, $stateParams, ProjectApplication, ProjectRequireme
 
 angular
 .module('dcsupp')
-.controller('ApplicationInfoCtrl', ['$scope', '$stateParams', 'ProjectApplication', 'ProjectRequirement', 'RequirementSubcategory', 'StudentAttribute', controllerFunction])
+.controller('ApplicationInfoCtrl', ['$scope', '$stateParams', 'ProjectApplication', 'ProjectRequirement', 'RequirementSubcategory', 'StudentAttribute', 'Project', controllerFunction])
