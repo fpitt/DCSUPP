@@ -1,28 +1,44 @@
 div
-  h3 Project Details
-  /button access="administrator" restrict="" class="btn btn-default" ui-sref="update_project({id: project.id})" Edit
-  br
-  br
-  table class="table table-hover"
-	tr
-	  td
-		| Title
-	  td
-		span
-		  | {{ project.title }}
-	tr
-	  td
-		| Description
-	  td
-		span
-		  | {{ project.text }}
-	tr
-	  td
-		| Deadline
-	  td
-		span
-		  | {{ project.deadline_date | date: 'dd-MM-yyyy' }}
+    h3 Project Information
+    /button access="administrator" restrict="" class="btn btn-default" ui-sref="update_project({id: project.id})" Edit
+    br
+    br
+    table class="table table-hover"
+        tr
+            td
+                | Title
+            td
+                span
+                    | {{ project.basicInfo.title }}
+        tr
+            td
+                | Description
+            td
+                span
+                    | {{ project.basicInfo.text }}
+        tr
+            td
+               | Deadline
+            td
+                span
+                    | {{ project.basicInfo.deadline_date | date: 'dd-MM-yyyy' }}
 
-  br
+        tr
+            td
+                | Details
+            td
+                ul
+                    li ng-repeat="subcategory in project.subcategories"
+                        | {{ subcategory.sub_category_name }}
 
-  button style="margin: auto; width: 50%" access="administrator student" restrict="" class="btn btn-default btn-lg" ui-sref="current_project.apply_project({id: project.id})" Apply
+        tr
+            td
+                | Requirements
+            td
+                ul
+                    li ng-repeat="requirement in project.requirements"
+                        | {{ requirement.sub_category_name }}
+
+    br
+
+    button style="margin: auto; width: 50%" access="administrator student" restrict="" class="btn btn-default btn-lg" ui-sref="current_project.apply_project({id: project.id})" Apply
