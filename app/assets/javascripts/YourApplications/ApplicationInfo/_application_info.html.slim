@@ -24,6 +24,8 @@ div
         tr ng-repeat="attribute in attributes"
             td
                 | {{ attribute.sub_category_name }}
-            td
+            td ng-show="attribute.attribute_type != 'Date'"
                 | {{ attribute.value }}
+            td ng-show="attribute.attribute_type == 'Date'"
+                | {{ attribute.value | date: "yyyy-MMM-dd" }}
     br

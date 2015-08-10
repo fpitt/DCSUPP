@@ -2,7 +2,6 @@ controllerFunction = ($scope, modalService, $stateParams, $state, ProjectApplica
     $scope.modalService = modalService
 
     $scope.application = {}
-    $scope.attributes = []
     $scope.requirements = []
 
     $scope.createApplication = () ->
@@ -22,7 +21,6 @@ controllerFunction = ($scope, modalService, $stateParams, $state, ProjectApplica
         payload = project: $stateParams.id
         ProjectRequirement.getByProject(payload).success((projectRequirements) ->
             for req in projectRequirements
-
                 RequirementSubcategory.getById(req.requirement_subcategory_id).success((subcategory) ->
                     if subcategory.student_attribute
                         payload = subcategory: subcategory.id
@@ -34,7 +32,6 @@ controllerFunction = ($scope, modalService, $stateParams, $state, ProjectApplica
                         )
                 )
         )
-
 
     $scope.loadRequirements()
 

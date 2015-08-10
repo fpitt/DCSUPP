@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 20150510043755) do
     t.datetime "updated_at",                 null: false
     t.integer  "requirement_subcategory_id"
     t.integer  "project_id"
-    t.string   "value_array"
+    t.string   "value_type"
     t.string   "value"
   end
 
@@ -85,7 +85,6 @@ ActiveRecord::Schema.define(version: 20150510043755) do
     t.datetime "updated_at",                 null: false
     t.integer  "requirement_subcategory_id"
     t.integer  "user_id"
-    t.string   "value_array"
     t.string   "value"
   end
 

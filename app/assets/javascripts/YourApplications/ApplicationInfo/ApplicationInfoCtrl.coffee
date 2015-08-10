@@ -26,7 +26,7 @@ controllerFunction = ($scope, $stateParams, ProjectApplication, ProjectRequireme
                     RequirementSubcategory.getById(req.requirement_subcategory_id).success((subcategory) ->
                         payload = subcategory: subcategory.id
                         StudentAttribute.getBySubcategoryAndCurrentUser(payload).success((studentAttribute) ->
-                            $scope.attributes.push(sub_category_name: subcategory.sub_category_name, value: studentAttribute.value)
+                            $scope.attributes.push(attribute_type: subcategory.attribute_type, sub_category_name: subcategory.sub_category_name, value: studentAttribute.value)
                         )
                     )
             )
