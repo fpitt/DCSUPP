@@ -1,10 +1,9 @@
 div ng-controller="CreateProjectCtrl"
-
     div class="row"
         div class="col-xs-4"
 
         div class="col-xs-6"
-        	h3 Create Project
+        	h3 Project Information
         	hr
 
         	form
@@ -17,11 +16,8 @@ div ng-controller="CreateProjectCtrl"
 					textarea class="form-control" rows="5" placeholder="Project Description" ng-model="project.text"
 
 				div class="form-group"
-					label for="exampleInputDate" Deadline
-					input.form-control close-text="Close" datepicker-popup="{{'dd-MMMM-yyyy'}}"  ng-model="project.deadline_date" is-open="opened == true" type="text"
-					span.input-group-btn
-					  	button.btn.btn-default ng-click="open($event)" type="button"
-								  i.glyphicon.glyphicon-calendar
+                    input type="date" class="form-control" ng-model="project.deadline_date" placeholder="yyyy-MM-dd"
+
 
 				div class="form-group row" style="height:20px"
 					label for="exampleInputRequirementCateogry" Requirement Categories
