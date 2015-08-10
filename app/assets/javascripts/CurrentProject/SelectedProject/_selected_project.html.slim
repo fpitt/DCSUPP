@@ -21,7 +21,7 @@ div
 		| Deadline
 	  td
 		span
-		  | {{ project.deadline_date }}
+		  | {{ project.deadline_date | date: 'dd-MM-yyyy' }}
 
   br
 
