@@ -11,11 +11,13 @@ class ProjectsController < ApplicationController
                 @project.update_attribute(:deadline_date, param[:project][:deadline_date])
                 @project.update_attribute(:user, @current_user)
 
-                for requirement in param[:requirements]
-                    @requirement = ProjectRequirement.new()
-                    @requirement.update_attribute(:requirement_subcategory, RequirementSubcategory.find_by_id(requirement[:id]))
-                    @requirement.update_attribute(:project, @project)
-                    @requirement.save
+                if param[:requirements]
+                    for requirement in param[:requirements]
+                        @requirement = ProjectRequirement.new()
+                        @requirement.update_attribute(:requirement_subcategory, RequirementSubcategory.find_by_id(requirement[:id]))
+                        @requirement.update_attribute(:project, @project)
+                        @requirement.save
+                    end
                 end
 
 
