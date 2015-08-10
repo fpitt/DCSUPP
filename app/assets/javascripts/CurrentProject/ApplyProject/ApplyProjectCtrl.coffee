@@ -24,13 +24,14 @@ controllerFunction = ($scope, modalService, $stateParams, $state, ProjectApplica
             for req in projectRequirements
 
                 RequirementSubcategory.getById(req.requirement_subcategory_id).success((subcategory) ->
-                    payload = subcategory: subcategory.id
-                    StudentAttribute.getBySubcategoryAndCurrentUser(payload).success((studentAttribute) ->
-                        attr = id: subcategory.id, attribute_type: subcategory.attribute_type, sub_category_name: subcategory.sub_category_name
-                        if studentAttribute.id
-                            if subcategory.attribute_type == 'Number' then attr.value = parseInt(studentAttribute.value) else attr.value = studentAttribute.value
-                        $scope.requirements.push(attr)
-                    )
+                    if subcategory.student_attribute
+                        payload = subcategory: subcategory.id
+                        StudentAttribute.getBySubcategoryAndCurrentUser(payload).success((studentAttribute) ->
+                            attr = id: subcategory.id, attribute_type: subcategory.attribute_type, sub_category_name: subcategory.sub_category_name
+                            if studentAttribute.id
+                                if subcategory.attribute_type == 'Number' then attr.value = parseInt(studentAttribute.value) else attr.value = studentAttribute.value
+                            $scope.requirements.push(attr)
+                        )
                 )
         )
 
