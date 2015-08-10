@@ -27,7 +27,12 @@ controllerFunction = ($scope, modalService, $stateParams, $state, ProjectApplica
                         StudentAttribute.getBySubcategoryAndCurrentUser(payload).success((studentAttribute) ->
                             attr = id: subcategory.id, attribute_type: subcategory.attribute_type, sub_category_name: subcategory.sub_category_name
                             if studentAttribute.id
-                                if subcategory.attribute_type == 'Number' then attr.value = parseInt(studentAttribute.value) else attr.value = studentAttribute.value
+                                if subcategory.attribute_type == 'Number'
+                                    attr.value = parseInt(studentAttribute.value)
+                                else if subcategory.attribute_type == 'Date'
+                                    attr.value = new Date(studentAttribute.value)
+                                else
+                                    attr.value = studentAttribute.value
                             $scope.requirements.push(attr)
                         )
                 )
