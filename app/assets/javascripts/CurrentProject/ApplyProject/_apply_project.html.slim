@@ -26,10 +26,7 @@ div
                 td ng-show="requirement.attribute_type == 'Input Field'"
                     input ng-model="requirement.value" type="text" class="form-control"
                 td ng-show="requirement.attribute_type == 'Date'"
-                    input.form-control close-text="Close" datepicker-popup="{{'dd-MMMM-yyyy'}}" ng-model="requirement.value" is-open="opened == true" type="text"
-                    span.input-group-btn
-                        button.btn.btn-default ng-click="open($event)" type="button"
-                            i.glyphicon.glyphicon-calendar
+                    input type="date" class="form-control" ng-model="requirement.value" placeholder="yyyy-MM-dd"
 
     br
 
