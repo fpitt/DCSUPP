@@ -1,16 +1,6 @@
 controllerFunction = ($scope, $stateParams, ProjectApplication, ProjectRequirement, RequirementSubcategory, StudentAttribute, Project) ->
     $scope.attributes = []
 
-#
-#    $scope.loadStudentAttributes = ->
-#        payload = project: $stateParams.id
-#        ProjectRequirement.getByProject(payload).success((projectRequirements) ->
-#            for req in projectRequirements
-#                    payload = subcategory: req.requirement_subcategory_id
-#                    StudentAttribute.getBySubcategoryAndCurrentUser(payload).success((studentAttribute) ->
-#                        $scope.attributes.push(studentAttribute)
-#                    )
-#                )
 
     $scope.loadApplicationInfo = ->
         ProjectApplication.getById($stateParams.id).success((data) ->

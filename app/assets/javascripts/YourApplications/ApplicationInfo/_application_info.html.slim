@@ -2,6 +2,34 @@ div
     h3 style="display:inline-block" Application Details
     br
     br
+    div access="administrator student" restrict=""
+        span
+            | Status:
+        span ng-show="application.professor_approved == 'pending'"
+            | Pending
+        span ng-show="application.professor_approved == 'true'"
+            | Accepted
+        span ng-show="application.professor_approved == 'false'"
+            | Rejected
+
+        button ng-show="application.professor_approved == 'true'" class="btn btn-default" ng-click="processOffer(true)" Accept Offer
+        button ng-show="application.professor_approved == 'true'" class="btn btn-default" ng-click="processOffer(false)" Reject Offer
+
+    div access="administrator profess" restrict=""
+        span
+            | Status:
+        span ng-show="application.professor_approved == 'true' && application.student_approved == 'pending'"
+            | Pending
+        span ng-show="application.student_approved"
+            | Accepted
+        span ng-show="application.professor_approved == 'true' && !student.student_approved == 'true'"
+            | Rejected
+
+        button ng-show="application.professor_approved == 'pending'" class="btn btn-default" ng-click="processOffer(true)" Accept Offer
+        button ng-show="application.pending == 'pending'" class="btn btn-default" ng-click="processOffer(false)" Reject Offer
+
+    br
+    br
     table class="table table-hover"
         tr
             td
@@ -29,3 +57,6 @@ div
             td ng-show="attribute.attribute_type == 'Date'"
                 | {{ attribute.value | date: "yyyy-MMM-dd" }}
     br
+
+
+

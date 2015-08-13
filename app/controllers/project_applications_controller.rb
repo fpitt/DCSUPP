@@ -9,15 +9,20 @@ class ProjectApplicationsController < ApplicationController
                 @project_application.update_attribute(:message, param[:application][:message])
                 @project_application.update_attribute(:project, Project.find_by_id(param[:project]))
                 @project_application.update_attribute(:user, @current_user)
+                @project_application.update_attribute(:professor_approved, 'pending')
+                @project_application.update_attribute(:student_approved, 'pending')
+                @project_application.update_attribute(:administrator_approved, 'pending')
 
-                for requirement in param[:requirements]
-                    if StudentAttribute.find_by_requirement_subcategory_id_and_user_id(requirement[:id], @current_user.id)
-                    else
-                        @student_attribute = StudentAttribute.new()
-                        @student_attribute.update_attribute(:requirement_subcategory, RequirementSubcategory.find_by_id(requirement[:id]))
-                        @student_attribute.update_attribute(:user, @current_user)
-                        @student_attribute.update_attribute(:value, requirement[:value])
-                        @student_attribute.save
+                if param[:requirements]
+                    for requirement in param[:requirements]
+                        if StudentAttribute.find_by_requirement_subcategory_id_and_user_id(requirement[:id], @current_user.id)
+                        else
+                            @student_attribute = StudentAttribute.new()
+                            @student_attribute.update_attribute(:requirement_subcategory, RequirementSubcategory.find_by_id(requirement[:id]))
+                            @student_attribute.update_attribute(:user, @current_user)
+                            @student_attribute.update_attribute(:value, requirement[:value])
+                            @student_attribute.save
+                        end
                     end
                 end
 
