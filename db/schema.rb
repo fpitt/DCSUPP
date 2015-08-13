@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150510043755) do
+ActiveRecord::Schema.define(version: 20150813155653) do
 
   create_table "professor_settings", force: :cascade do |t|
     t.datetime "created_at",                       null: false
@@ -24,12 +24,15 @@ ActiveRecord::Schema.define(version: 20150510043755) do
   add_index "professor_settings", ["user_id"], name: "index_professor_settings_on_user_id"
 
   create_table "project_applications", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.integer  "user_id"
     t.integer  "project_id"
     t.text     "message"
     t.string   "title"
+    t.string   "professor_approved"
+    t.string   "student_approved"
+    t.string   "administrator_approved"
   end
 
   add_index "project_applications", ["project_id"], name: "index_project_applications_on_project_id"
@@ -40,7 +43,7 @@ ActiveRecord::Schema.define(version: 20150510043755) do
     t.datetime "updated_at",                 null: false
     t.integer  "requirement_subcategory_id"
     t.integer  "project_id"
-    t.string   "value_type"
+    t.string   "value_array"
     t.string   "value"
   end
 
@@ -85,6 +88,7 @@ ActiveRecord::Schema.define(version: 20150510043755) do
     t.datetime "updated_at",                 null: false
     t.integer  "requirement_subcategory_id"
     t.integer  "user_id"
+    t.string   "value_array"
     t.string   "value"
   end
 

@@ -32,6 +32,13 @@ ServiceFunction = (requestService) ->
         return requestService.service(sendParams, payload)
 
 
+    processOffer: (payload) ->
+        sendParams =
+            method: 'POST'
+            url: '/process_offer.json'
+
+        return requestService.service(sendParams, payload)
+
 angular
 .module('dcsupp')
 .service('ProjectApplication', ServiceFunction)

@@ -1,8 +1,9 @@
 controllerFunction = ($scope, $stateParams, ProjectApplication, ProjectRequirement, RequirementSubcategory, StudentAttribute, Project) ->
-    $scope.attributes = []
+
 
 
     $scope.loadApplicationInfo = ->
+        $scope.attributes = []
         ProjectApplication.getById($stateParams.id).success((data) ->
             $scope.application = data
             payload = project: data.project_id
@@ -23,6 +24,15 @@ controllerFunction = ($scope, $stateParams, ProjectApplication, ProjectRequireme
         )
 
 
+    $scope.processOffer = (approved) ->
+        payload =
+            approved: approved,
+            id: $scope.application.id
+
+
+        ProjectApplication.processOffer(payload).success((data) ->
+            $scope.loadApplicationInfo()
+        )
 
 
     $scope.loadApplicationInfo()

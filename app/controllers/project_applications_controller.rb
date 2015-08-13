@@ -62,6 +62,31 @@ class ProjectApplicationsController < ApplicationController
         end
     end
 
+    def process_offer
+        respond_to do |format|
+            format.json {
+                param = params[:payload]
+                @project_application = ProjectApplication.find_by_id(param[:id])
+
+                if @project_application
+                    if @current_user.administrator
+                        @project_application.update_attribute(:administrator_approved, param[:approved])
+                    elsif @current_user.professor
+                        @project_application.update_attribute(:professor_approved, param[:approved])
+                    else
+                         @project_application.update_attribute(:student_approved, param[:approved])
+                    end
+
+                    @project_application.save
+
+                    render :json => @project_application
+                else
+                    render :nothing => true, :status => 200, :content_type => 'text/html'
+                end
+            }
+        end
+    end
+
     def show
         respond_to do |format|
             format.json {
