@@ -10,6 +10,7 @@ class ProjectsController < ApplicationController
                 @project.update_attribute(:text, param[:project][:text])
                 @project.update_attribute(:deadline_date, param[:project][:deadline_date])
                 @project.update_attribute(:user, @current_user)
+                @project.update_attribute(:looking_for_students, true)
 
                 if param[:requirements]
                     for requirement in param[:requirements]
