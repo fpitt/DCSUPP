@@ -41,4 +41,7 @@ div
 
     br
 
-    button style="margin: auto; width: 50%" access="administrator student" restrict="" class="btn btn-default btn-lg" ui-sref="current_project.apply_project({id: project.basicInfo.id})" Apply
+    div ng-show="project.deadline_date <= today"
+        button style="margin: auto; width: 50%" access="administrator student" restrict="" class="btn btn-default btn-lg" ui-sref="current_project.apply_project({id: project.basicInfo.id})" Apply
+    div ng-show="!project.deadline_date > today"
+        span The application period is over.

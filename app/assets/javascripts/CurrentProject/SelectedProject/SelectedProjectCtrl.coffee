@@ -1,6 +1,7 @@
 controllerFunction = ($scope, $stateParams, Project, ProjectRequirement, RequirementSubcategory) ->
 
     $scope.project = {basicInfo: {}, subcategories: [], requirements: []}
+    $scope.today = new Date()
 
     $scope.loadProject = ->
         Project.getById($stateParams.id).success((data) ->
