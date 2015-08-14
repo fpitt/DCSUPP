@@ -9,9 +9,6 @@ class ProjectApplicationsController < ApplicationController
                 @project_application.update_attribute(:message, param[:application][:message])
                 @project_application.update_attribute(:project, Project.find_by_id(param[:project]))
                 @project_application.update_attribute(:user, @current_user)
-                @project_application.update_attribute(:professor_approved, 'pending')
-                @project_application.update_attribute(:student_approved, 'pending')
-                @project_application.update_attribute(:administrator_approved, 'pending')
 
                 if param[:requirements]
                     for requirement in param[:requirements]

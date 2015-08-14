@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150813155653) do
+ActiveRecord::Schema.define(version: 20150814153913) do
 
   create_table "professor_settings", force: :cascade do |t|
     t.datetime "created_at",                       null: false
@@ -30,9 +30,9 @@ ActiveRecord::Schema.define(version: 20150813155653) do
     t.integer  "project_id"
     t.text     "message"
     t.string   "title"
-    t.string   "professor_approved"
-    t.string   "student_approved"
-    t.string   "administrator_approved"
+    t.boolean  "professor_approved"
+    t.boolean  "student_approved"
+    t.boolean  "administrator_approved"
   end
 
   add_index "project_applications", ["project_id"], name: "index_project_applications_on_project_id"
@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 20150813155653) do
     t.datetime "deadline_date"
     t.text     "text"
     t.boolean  "approval_status"
+    t.boolean  "completed"
   end
 
   add_index "projects", ["user_id"], name: "index_projects_on_user_id"
