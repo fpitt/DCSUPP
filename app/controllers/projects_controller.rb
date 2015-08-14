@@ -98,5 +98,22 @@ class ProjectsController < ApplicationController
         end
     end
 
+    def close_project
+        respond_to do |format|
+            format.json {
+
+                @project = Project.find_by_id(params[:paylod][:project])
+
+                if @project
+                    @project.update_attribute(:open, false)
+                    render :json => @project
+                else
+                    render :nothing => true, :status => 200, :content_type => 'text/html'
+                end
+            }
+        end
+    end
+
+
 end
 

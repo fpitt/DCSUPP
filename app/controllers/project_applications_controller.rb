@@ -68,6 +68,8 @@ class ProjectApplicationsController < ApplicationController
                 if @project_application
                     if @current_user.administrator
                         @project_application.update_attribute(:administrator_approved, param[:approved])
+
+
                     elsif @current_user.professor
                         @project_application.update_attribute(:professor_approved, param[:approved])
                     else
