@@ -5,7 +5,11 @@ controllerFunction = ($scope, $stateParams, Project, ProjectRequirement, Require
 
     $scope.loadProject = ->
         Project.getById($stateParams.id).success((data) ->
-            $scope.project.basicInfo = data)
+            $scope.project.basicInfo = data
+            dead = $scope.project.basicInfo.deadline_date
+            $scope.acceptingApplications = new Date(parseInt(dead.substring(0,4)), parseInt(dead.substring(5, 7)) - 1, parseInt(dead.substring(8,10))) >= new Date()
+            console.log()
+        )
 
         payload = project: $stateParams.id
         ProjectRequirement.getByProject(payload).success((projectRequirements) ->
