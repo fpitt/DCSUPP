@@ -17,6 +17,7 @@ controllerFunction = ($scope, modalService, User, Project, RequirementCategory, 
 			deadline_date: ""
 			subcategories: []
 		$scope.project = angular.copy(projectDefault)
+		$scope.requirements = []
 
 	$scope.create = ->
 		payload =
@@ -32,7 +33,7 @@ controllerFunction = ($scope, modalService, User, Project, RequirementCategory, 
 	$scope.loadSubcategories = ()->
 		RequirementSubcategory.getAll().success((data) ->
 			for item in data
-				$scope.subcategories.push({name: item.sub_category_name, obj: item})
+				$scope.subcategories.push({name: item.sub_category_name, id: item.id})
 			)
 
 	$scope.loadTags = () ->
