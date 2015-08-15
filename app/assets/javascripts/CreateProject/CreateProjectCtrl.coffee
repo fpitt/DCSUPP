@@ -8,6 +8,7 @@ controllerFunction = ($scope, modalService, User, Project, RequirementCategory, 
 	$scope.requirements =  []
 	$scope.pagenumber = 1
 	$scope.direction = 0
+	$scope.subcategories = []
 
 	$scope.clearForm = ->
 		projectDefault =
@@ -28,43 +29,21 @@ controllerFunction = ($scope, modalService, User, Project, RequirementCategory, 
 			$scope.clearForm()
 		)
 
-		# --- Get SubCategory ---
+	$scope.loadSubcategories = ()->
+		RequirementSubcategory.getAll().success((data) ->
+			for item in data
+				$scope.subcategories.push({name: item.sub_category_name, obj: item})
+			)
 
-	$scope.loadSubcategories = (id)->
-		payload =
-			target_id: id
-		$scope.current_category_id = id
+	$scope.loadTags = () ->
+		return $scope.subcategories
 
-		RequirementSubcategory.getAll(payload).success((data) ->
-			$scope.subcategories = data)
-
-		# --- Category Navigation ---
-
-	$scope.flip = (pushDirection) ->
-			payload =
-				direction: pushDirection
-				pagenumber: $scope.pagenumber
-			$scope.direction = pushDirection
-
-			RequirementCategory.flip(payload).success((data) ->
-				if (data)
-					$scope.categories = data
-					if $scope.direction > 0
-						$scope.pagenumber += 1
-					else if $scope.direction < 0
-						$scope.pagenumber -= 1
-					else
-						$scope.pagenumber = 1)
-
-
-	$scope.addSubcategory = (subcategory) ->
-		$scope.requirements.push(subcategory)
 
 	$scope.open = ($event) ->
 		$scope.opened = !$scope.opened
-		return
 
-	$scope.flip(0)
+
+	$scope.loadSubcategories()
 
 
 

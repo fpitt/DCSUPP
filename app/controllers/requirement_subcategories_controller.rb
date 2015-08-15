@@ -35,5 +35,20 @@ class RequirementSubcategoriesController < ApplicationController
             }
         end
     end
+
+    def show_all
+        respond_to do |format|
+            format.json {
+
+                @requirement_subcategories = RequirementSubcategory.all
+
+                if @requirement_subcategories
+                    render :json => @requirement_subcategories
+                else
+                    render :nothing => true, :status => 200, :content_type => 'text/html'
+                end
+            }
+        end
+    end
 	
 end

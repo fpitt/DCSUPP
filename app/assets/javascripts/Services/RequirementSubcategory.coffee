@@ -10,11 +10,17 @@ ServiceFunction = (requestService) ->
     patch: (id, payload) ->
         return
 
-    getAll: (payload) ->
+    getAllOfCategory: (payload) ->
         sendParams =
             method: 'POST'
             url: '/get_subcategories.json'
         requestService.service(sendParams, payload)
+
+    getAll: () ->
+        sendParams =
+            method: 'POST'
+            url: '/get_all_subcategories.json'
+        requestService.service(sendParams)
 
     getById: (id) ->
         sendParams =

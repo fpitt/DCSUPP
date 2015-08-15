@@ -43,7 +43,7 @@ controllerFunction = ($scope, RequirementCategory, RequirementSubcategory) ->
             target_id: id
         $scope.current_category_id = id
 
-        RequirementSubcategory.getAll(payload).success((data) ->
+        RequirementSubcategory.getAllOfCategory(payload).success((data) ->
             $scope.list_subcategories = data)
 
     # --- Create Category --- 

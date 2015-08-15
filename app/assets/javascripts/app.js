@@ -1,4 +1,4 @@
-angular.module('dcsupp', ['ui.bootstrap', 'ui.router', 'templates', 'permission']).config([
+angular.module('dcsupp', ['ui.bootstrap', 'ui.router', 'templates', 'permission', 'ngTagsInput']).config([
     '$stateProvider', '$urlRouterProvider', '$locationProvider',
     function ($stateProvider, $urlRouterProvider, $locationProvider) {
         $urlRouterProvider.otherwise( function($injector) {
