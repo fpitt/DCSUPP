@@ -21,44 +21,12 @@ div ng-controller="CreateProjectCtrl"
 					label for="exampleInputEmail" Deadline
                     input type="date" class="form-control" ng-model="project.deadline_date" placeholder="yyyy-MM-dd"
 
-
-				/div class="form-group row" style="height:20px"
-				/	label for="exampleInputRequirementCateogry" Requirement Categories
-				/	div class="text-center"
-				/		div class="btn-group"
-				/			button class="btn btn-default" ng-click="flip(-10)" Prev
-				/			button class="btn btn-default disabled"
-				/				| {{ pagenumber }}
-				/			button class="btn btn-default" ng-click="flip(10)" Next
-				/			br
-				/			br
-				/			div class="list-group"
-				/				div ng-repeat="category in categories"
-				/					ul class="nav nav-pills nav-stacked"
-				/						li ng-click="loadSubcategories(category.id)"
-				/							a id="{{ category.id }}"
-				/								| {{ category.category_name }}
-                /
-				/div class="form-group list-group"
-				/	div ng-repeat="subcategory in subcategories"
-				/		ul class="nav nav-pills nav-stacked"
-				/			li ng-click="addSubcategory(subcategory)"
-				/				a
-				/					| {{ subcategory.sub_category_name }}
-                /
-				/ul
-                 /   li ng-repeat="requirement in requirements"
-                 /   	| {{ requirement.sub_category_name }}
-
 				div class="form-group"
 					label for="exampleInputRequirements" Project Requirements
-					tags-input ng-model="tags"
-						auto-complete source="loadTags($query)"
-
-
-
+					tags-input class="bootstrap" ng-model="requirements"
+						auto-complete source="loadTags()"
+					span E.g. 'CSC148 Grade', 'Volunteer', 'Resume', 'Unofficial transcript', etc.
 				br
-                br
 				div class="form-group"
 					button type="submit" class="btn btn-default" ng-click="create()" Create Project
 
