@@ -1,0 +1,19 @@
+table class="table"
+    tr
+        th Project
+        th Student
+        th Professor
+        th Admin Approval Status
+        th Actions
+    tr ng-repeat="assignment in assignments"
+        td
+            | {{ assignment.project.title }}
+        td
+            | {{ assignment.professor.name }}
+        td
+            | {{ assignment.student.name }}
+        td
+            | {{ assignment.administrator_approval || 'Pending' }}
+        td
+            button class="btn btn-default" Accept
+            button class="btn btn-default" Reject
