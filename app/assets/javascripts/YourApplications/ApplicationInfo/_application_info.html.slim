@@ -12,8 +12,8 @@ div
         span ng-show="application.professor_approved == false"
             | Rejected
 
-        button ng-show="application.professor_approved == true && application.student_approved == null" class="btn btn-default" ng-click="processOffer(true)" Accept Offer
-        button ng-show="application.professor_approved == true && application.student_approved == null" class="btn btn-default" ng-click="processOffer(false)" Reject Offer
+        button ng-show="application.professor_approved == true" class="btn btn-default" ng-click="processOffer(true)" Accept Offer
+        button ng-show="application.professor_approved == true" class="btn btn-default" ng-click="processOffer(false)" Reject Offer
 
     div access="administrator profess" restrict=""
         span ng-show="application.professor_approved == true"
@@ -26,8 +26,8 @@ div
             | Rejected
 
         br
-        button ng-show="application.professor_approved == null" class="btn btn-default" ng-click="processOffer('true')" Accept Offer
-        button ng-show="application.professor_approved == null" class="btn btn-default" ng-click="processOffer('false')" Reject Offer
+        button  class="btn btn-default" ng-click="processOffer('true')" Accept Offer
+        button  class="btn btn-default" ng-click="processOffer('false')" Reject Offer
 
     br
     br
