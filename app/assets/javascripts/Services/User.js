@@ -19,6 +19,14 @@ ServiceFunction = function(requestService) {
         });
     };
 
+    this.getById = function (id) {
+        var sendParams = {
+            url: '/users/' + id + '.json',
+            method: "GET"
+        };
+        return requestService.service(sendParams)
+    }
+
     return this;
 
 };

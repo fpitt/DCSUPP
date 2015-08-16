@@ -32,6 +32,34 @@ class ProjectApplicationsController < ApplicationController
         end
     end
 
+    def get_require_administrator_approval_applications
+        respond_to do |format|
+            param = params[:payload]
+            format.json {s
+                @project_applications = ProjectApplication.where(:student_approved => true, :professor_approved => true, :administrator_approved => null)
+                if @project_applications
+                    render :json => @project_applications
+                else
+                    render :nothing => true, :status => 200, :content_type => 'text/html'
+                end
+            }
+        end
+    end
+
+    def get_project_assignments
+        respond_to do |format|
+            param = params[:payload]
+            format.json {
+                @project_applications = ProjectApplication.where(:student_approved => true, :professor_approved => true)
+                if @project_applications
+                    render :json => @project_applications
+                else
+                    render :nothing => true, :status => 200, :content_type => 'text/html'
+                end
+            }
+        end
+    end
+
     def get_applications_of_user
         respond_to do |format|
             format.json {
@@ -68,8 +96,8 @@ class ProjectApplicationsController < ApplicationController
                 if @project_application
                     if @current_user.administrator
                         @project_application.update_attribute(:administrator_approved, param[:approved])
-
-
+                        @project_application.update_attribute(:professor_approved, param[:approved])
+                        @project_application.update_attribute(:student_approved, param[:approved])
                     elsif @current_user.professor
                         @project_application.update_attribute(:professor_approved, param[:approved])
                     else

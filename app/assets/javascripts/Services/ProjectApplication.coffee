@@ -39,6 +39,14 @@ ServiceFunction = (requestService) ->
 
         return requestService.service(sendParams, payload)
 
+    getProjectAssignments: () ->
+        sendParams =
+            method: 'POST'
+            url: '/get_project_assignments.json'
+        return requestService.service(sendParams);
+
+
+
 angular
 .module('dcsupp')
 .service('ProjectApplication', ServiceFunction)
