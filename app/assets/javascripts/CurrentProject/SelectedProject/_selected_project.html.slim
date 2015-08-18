@@ -1,6 +1,6 @@
 div
     h3 Project Information
-    button access="administrator professor" restrict="" class="btn btn-default" ui-sref="your_projects.update_project({id: project.basicInfo.id})" Edit
+    button access="administrator professor" restrict="" class="btn btn-default" ui-sref="your_projects.update_project({id: project.id})" Edit
     button access="administrator professor" restrict="" class="btn btn-default" ng-click="setCompleted()" Set As Completed
     br
     br
@@ -10,26 +10,26 @@ div
                 | Title
             td
                 span
-                    | {{ project.basicInfo.title }}
+                    | {{ project.title }}
         tr
             td
                 | Description
             td
                 span
-                    | {{ project.basicInfo.text }}
+                    | {{ project.text }}
         tr
             td
                | Deadline
             td
                 span
-                    | {{ project.basicInfo.deadline_date | date: 'dd-MM-yyyy' }}
+                    | {{ project.deadline_date | date: 'dd-MM-yyyy' }}
 
         tr
             td
                 | Details
             td
                 ul
-                    li ng-repeat="subcategory in project.subcategories"
+                    li ng-repeat="subcategory in project.studentAttributes"
                         | {{ subcategory.sub_category_name }}
 
         tr
@@ -37,12 +37,12 @@ div
                 | Requirements
             td
                 ul
-                    li ng-repeat="requirement in project.requirements"
-                        | {{ requirement.sub_category_name }}
+                    li ng-repeat="subcategory in project.nonStudentAttributes"
+                        | {{ subcategory.sub_category_name }}
 
     br
 
     div ng-show="acceptingApplications"
-        button style="margin: auto; width: 50%" access="administrator student" restrict="" class="btn btn-default btn-lg" ui-sref="current_project.apply_project({id: project.basicInfo.id})" Apply
+        button style="margin: auto; width: 50%" access="administrator student" restrict="" class="btn btn-default btn-lg" ui-sref="current_project.apply_project({id: project.id})" Apply
     div ng-show="!acceptingApplications"
         span The application period is over.

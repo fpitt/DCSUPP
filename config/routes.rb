@@ -30,6 +30,7 @@ Rails.application.routes.draw do
     post "/get_all_subcategories" => 'requirement_subcategories#show_all'
     post "/get_require_administrator_approval_applications" =>  'project_applications#get_require_administrator_approval_applications'
     post "/get_project_assignments" => 'project_applications#get_project_assignments'
+    post "/set_project_completed" => 'projects#set_project_completed'
 
     get "/*path" => redirect("/?goto=%{path}")
 end

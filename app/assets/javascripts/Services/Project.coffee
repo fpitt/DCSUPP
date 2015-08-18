@@ -11,6 +11,7 @@ ServiceFunction = (requestService) ->
             url: '/projects/' + id + '.json'
             method: 'PATCH'
         return requestService.service(sendParams, payload)
+
     getAll: () ->
         return
 
@@ -32,6 +33,12 @@ ServiceFunction = (requestService) ->
             method: 'POST'
             url: '/flip_project_direction.json'
 
+        requestService.service(sendParams, payload)
+
+    setCompleted: (payload) ->
+        sendParams =
+            method: 'POST'
+            url: '/set_project_completed.json'
         requestService.service(sendParams, payload)
 
 angular

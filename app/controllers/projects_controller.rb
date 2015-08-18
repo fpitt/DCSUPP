@@ -10,7 +10,7 @@ class ProjectsController < ApplicationController
                 @project.update_attribute(:text, param[:project][:text])
                 @project.update_attribute(:deadline_date, param[:project][:deadline_date])
                 @project.update_attribute(:user, @current_user)
-                @project.update_attribute(:looking_for_students, true)
+                @project.update_attribute(:completed, false)
 
                 if param[:requirements]
                     for requirement in param[:requirements]
@@ -47,6 +47,46 @@ class ProjectsController < ApplicationController
                     render :nothing => true, :status => 200, :content_type => 'text/html'
                 end
                              
+            }
+        end
+    end
+
+    def grab_in_progress_project
+        project_size = Project.all.length
+        current_offset = (params[:payload][:pagenumber] - 1)*10
+        direction = params[:payload][:direction]
+
+        respond_to do |format|
+            format.json {
+
+                if current_offset + direction < project_size && current_offset + direction >= 0
+                    offset = current_offset + direction
+                    @projects = Project.where(:completed => false).offset(offset).take(10)
+                    render :json => @projects
+                else
+                    render :nothing => true, :status => 200, :content_type => 'text/html'
+                end
+
+            }
+        end
+    end
+
+    def grab_completed_project
+        project_size = Project.all.length
+        current_offset = (params[:payload][:pagenumber] - 1)*10
+        direction = params[:payload][:direction]
+
+        respond_to do |format|
+            format.json {
+
+                if current_offset + direction < project_size && current_offset + direction >= 0
+                    offset = current_offset + direction
+                    @projects = Project.where(:completed => true).offset(offset).take(10)
+                    render :json => @projects
+                else
+                    render :nothing => true, :status => 200, :content_type => 'text/html'
+                end
+
             }
         end
     end
@@ -117,6 +157,22 @@ class ProjectsController < ApplicationController
 
                 if @project
                     @project.update_attribute(:open, false)
+                    render :json => @project
+                else
+                    render :nothing => true, :status => 200, :content_type => 'text/html'
+                end
+            }
+        end
+    end
+
+    def set_project_completed
+        respond_to do |format|
+            format.json {
+                @project = Project.find_by_id(params[:payload][:project])
+
+                if @project
+                    @project.update_attribute(:completed, true)
+                    @project.save
                     render :json => @project
                 else
                     render :nothing => true, :status => 200, :content_type => 'text/html'
