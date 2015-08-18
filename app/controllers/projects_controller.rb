@@ -57,8 +57,12 @@ class ProjectsController < ApplicationController
                 param = params[:payload]
                 @project = Project.find_by_id(param[:id])
                 if @project
-                    @project.update_attribute(:title, param[:title])
-                    @project.update_attribute(:text, param[:text])
+
+
+
+
+
+
                     if @project.save
                         render :json => @user
                     else
