@@ -5,7 +5,7 @@ controllerFunction = ($scope, $stateParams, Project, ProjectRequirement, Require
     $scope.subcategories = []
 
     # get current project information
-    $scope.loadProject = ->
+    $scope.getProject = ->
         # get project obj with id $stateParams.id and store json into $scope.project
         Project.getById($stateParams.id).success((data) ->
             $scope.project = data
@@ -45,7 +45,7 @@ controllerFunction = ($scope, $stateParams, Project, ProjectRequirement, Require
 
 
     # run these functions when controller loads
-    $scope.loadProject()
+    $scope.getProject()
     $scope.loadSubcategories()
 
 angular
