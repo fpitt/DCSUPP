@@ -3,6 +3,12 @@ controllerFunction = ($scope, $stateParams, Project, ProjectRequirement, Require
     $scope.project = {basicInfo: {}, subcategories: [], requirements: []}
     $scope.today = new Date()
 
+    $scope.setCompleted = ->
+        payload = project: $stateParams.id
+        Project.setCompleted(payload).success((data) ->
+            $scope.loadProject()
+        )
+
     $scope.loadProject = ->
         Project.getById($stateParams.id).success((data) ->
             $scope.project.basicInfo = data
