@@ -57,11 +57,17 @@ class ProjectsController < ApplicationController
                 param = params[:payload]
                 @project = Project.find_by_id(param[:id])
                 if @project
+                    @project.update_attribute(:title, param[:title])
+                    @project.update_attribute(:text, param[:text])
+                    @project.update_attribute(:deadline_date, param[:deadline_date])
+                    @project.update_attribute(:user, @current_user)
 
-
-
-
-
+                    if param[:subcategories]
+                        for subcategory in param[:subcategories]
+                            @requirement = ProjectRequirement.where(:requirement_subcategory => RequirementSubcategory.find_by_id(subcategory[:id]), :project => @project).first_or_create
+                            @requirement.save
+                        end
+                    end
 
                     if @project.save
                         render :json => @user

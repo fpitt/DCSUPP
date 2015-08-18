@@ -10,7 +10,7 @@ ServiceFunction = (requestService) ->
         sendParams =
             url: '/projects/' + id + '.json'
             method: 'PATCH'
-        return requestService.service(patchSendParams, payload)
+        return requestService.service(sendParams, payload)
     getAll: () ->
         return
 

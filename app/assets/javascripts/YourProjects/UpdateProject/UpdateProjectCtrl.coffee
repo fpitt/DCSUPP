@@ -1,7 +1,7 @@
 controllerFunction = ($scope, $stateParams, Project, ProjectRequirement, RequirementSubcategory, $state) ->
-    # store project info
+    # project info
     $scope.project = {}
-    # store all subcategories that can be added to project
+    # all subcategories
     $scope.subcategories = []
 
     # get current project information
@@ -27,7 +27,7 @@ controllerFunction = ($scope, $stateParams, Project, ProjectRequirement, Require
 
     # saved updated project and go to your_projects.project_info state
     $scope.patchProject = ->
-        Project.patch($scope.project).success((data) ->
+        Project.patch($stateParams.id, $scope.project).success((data) ->
             $state.go('your_projects.project_info', {id: $stateParams.id})
         )
 
