@@ -31,13 +31,13 @@ ServiceFunction = (requestService) ->
     getInProgressProjectsOfCurrentUser: () ->
         sendParams =
             method: 'POST'
-            url: ''
+            url: 'get_in_progress_projects_of_current_user.json'
         return requestService.service(sendParams)
 
     getCompletedProjectsOfCurrentUser: () ->
         sendParams =
             method: 'POST'
-            url: ''
+            url: 'get_completed_projects_of_current_user.json'
         return requestService.service(sendParams)
 
     flip: (payload) ->

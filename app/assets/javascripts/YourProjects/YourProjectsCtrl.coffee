@@ -19,12 +19,12 @@ controllerFunction = ($scope, modalService, $state, User, Project, ProjectApplic
 
     $scope.getInProgressProjects = () ->
         $scope.filter = 'In progress'
-        Project.getInProgressProjectsOfUser((data) ->
+        Project.getInProgressProjectsOfCurrentUser().success((data) ->
             $scope.projects = data)
 
     $scope.getCompletedProjects = () ->
         $scope.filter = 'Completed'
-        Projects.getCompletedProjectsOfUser((data) ->
+        Project.getCompletedProjectsOfCurrentUser().success((data) ->
             $scope.projects = data)
 
 
