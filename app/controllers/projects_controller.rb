@@ -52,12 +52,12 @@ class ProjectsController < ApplicationController
     end
 
     def grab_in_progress_project
-        project_size = Project.all.length
-        current_offset = (params[:payload][:pagenumber] - 1)*10
-        direction = params[:payload][:direction]
 
         respond_to do |format|
             format.json {
+                project_size = Project.where(:completed => false).length
+                current_offset = (params[:payload][:pagenumber] - 1)*10
+                direction = params[:payload][:direction]
 
                 if current_offset + direction < project_size && current_offset + direction >= 0
                     offset = current_offset + direction
@@ -66,13 +66,12 @@ class ProjectsController < ApplicationController
                 else
                     render :nothing => true, :status => 200, :content_type => 'text/html'
                 end
-
             }
         end
     end
 
     def grab_completed_project
-        project_size = Project.all.length
+        project_size = Project.where(:completed => true).length
         current_offset = (params[:payload][:pagenumber] - 1)*10
         direction = params[:payload][:direction]
 

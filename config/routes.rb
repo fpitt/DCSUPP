@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     post '/flip_student_settings', to: 'requirement_categories#flip_students'
     post '/get_attribute_by_user_and_subcategory', to: 'student_attributes#get_attribute_by_user_and_subcategory'
 
+
     post "/current_user" => 'users#get_current_user'
     post "/students" => 'users#students'
     post "/get_projects_of_user" => 'projects#get_projects_of_user'
@@ -31,6 +32,8 @@ Rails.application.routes.draw do
     post "/get_require_administrator_approval_applications" =>  'project_applications#get_require_administrator_approval_applications'
     post "/get_project_assignments" => 'project_applications#get_project_assignments'
     post "/set_project_completed" => 'projects#set_project_completed'
+    post "/flip_in_progress_direction" => 'projects#grab_in_progress_project'
+    post "/flip_completed_direction" => 'projects#grab_completed_project'
 
     get "/*path" => redirect("/?goto=%{path}")
 end

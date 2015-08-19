@@ -1,15 +1,25 @@
 div class="row"
     div class="col-xs-4"
-
         div class="text-center"
             h3 Current Projects
-        div class="row" style="height:20px"
+
+            .btn-group dropdown="" is-open="status.isopen"
+                button#single-button.btn.btn-primary dropdown-toggle="" ng-disabled="disabled" type="button"
+                    | {{ filter }}
+                    span.caret
+                ul.dropdown-menu aria-labelledby="single-button" role="menu"
+                    li role="menuitem"
+                        a ng-click="pagenumber.inProgress = 0;filter = 'In progress';flipInProgress(10)" In Progress
+                    li role="menuitem"
+                        a ng-click="pagenumber.completed = 0;filter = 'Completed';flipCompleted(10)" Completed
+
+        br
 
         div class="text-center"
             div class="btn-group"
                 button class="btn btn-default" ng-click="flip(-10)" Prev
                 button class="btn btn-default disabled"
-                    | {{ pagenumber }}
+                    | {{ pagenumber.current }}
                 button class="btn btn-default" ng-click="flip(10)" Next
             br
             br

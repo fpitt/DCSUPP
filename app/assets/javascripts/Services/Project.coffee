@@ -35,6 +35,18 @@ ServiceFunction = (requestService) ->
 
         requestService.service(sendParams, payload)
 
+    flipInProgress: (payload) ->
+        sendParams =
+            method: 'POST'
+            url: '/flip_in_progress_direction.json'
+        requestService.service(sendParams, payload)
+
+    flipCompleted: (payload) ->
+        sendParams =
+            method: 'POST'
+            url: '/flip_completed_direction.json'
+        requestService.service(sendParams, payload)
+
     setCompleted: (payload) ->
         sendParams =
             method: 'POST'
