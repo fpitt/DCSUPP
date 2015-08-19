@@ -5,19 +5,28 @@ controllerFunction = ($scope, modalService, $state, User, Project, ProjectApplic
     $scope.pagenumber = 1
     $scope.projects = null
     $scope.selectedProject = {}
-
-    successFunction = (data) ->
-        $scope.projects = data
-
+    $scope.filtr = 'In progress'
     $scope.items = [
         'item1'
         'item2'
         'item3'
     ]
 
-    $scope.loadProjects = () ->
-        Project.getByCurrentUser().success((data) ->
+#    $scope.loadProjects = () ->
+#        Project.getByCurrentUser().success((data) ->
+#            $scope.projects = data)
+
+
+    $scope.getInProgressProjects = () ->
+        $scope.filter = 'In progress'
+        Project.getInProgressProjectsOfUser((data) ->
             $scope.projects = data)
+
+    $scope.getCompletedProjects = () ->
+        $scope.filter = 'Completed'
+        Projects.getCompletedProjectsOfUser((data) ->
+            $scope.projects = data)
+
 
     $scope.selectProject = (project) ->
         $scope.selectedProject = project
@@ -31,7 +40,7 @@ controllerFunction = ($scope, modalService, $state, User, Project, ProjectApplic
             $scope.applications = data)
 
 
-    $scope.loadProjects()
+    $scope.getInProgressProjects()
 
 angular
 .module('dcsupp')

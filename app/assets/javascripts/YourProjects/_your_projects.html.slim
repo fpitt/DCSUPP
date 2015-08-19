@@ -4,6 +4,16 @@ div
             div class="text-center"
                 h3 Your Current Projects
 
+                .btn-group dropdown="" is-open="status.isopen"
+                    button#single-button.btn.btn-primary dropdown-toggle="" ng-disabled="disabled" type="button"
+                        | {{ filter }}
+                        span.caret
+                    ul.dropdown-menu aria-labelledby="single-button" role="menu"
+                        li role="menuitem"
+                            a ng-click="getInProgressProjects()" In progress
+                        li role="menuitem"
+                            a ng-click="getCompletedProjects()" Completed
+
             div class="list-group" style="overflow:scroll; max-height:150px"
                 div ng-repeat="project in projects"
                     ul class="nav nav-pills nav-stacked"

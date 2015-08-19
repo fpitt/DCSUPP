@@ -28,6 +28,18 @@ ServiceFunction = (requestService) ->
             url: '/get_projects_of_user.json'
         return requestService.service(sendParams)
 
+    getInProgressProjectsOfCurrentUser: () ->
+        sendParams =
+            method: 'POST'
+            url: ''
+        return requestService.service(sendParams)
+
+    getCompletedProjectsOfCurrentUser: () ->
+        sendParams =
+            method: 'POST'
+            url: ''
+        return requestService.service(sendParams)
+
     flip: (payload) ->
         sendParams =
             method: 'POST'

@@ -133,6 +133,32 @@ class ProjectsController < ApplicationController
         end
     end
 
+    def get_completed_projects_of_current_user
+        respond_to do |format|
+            format.json {
+                @projects = Project.where(:user_id => @current_user.id, :completed => true)
+                if @projects
+                    render :json => @projects
+                else
+                    render :nothing => true, :status => 200, :content_type => 'text/html'
+                end
+            }
+        end
+    end
+
+    def get_in_progress_projects_of_current_user
+        respond_to do |format|
+            format.json {
+                @projects = Project.where(:user_id => @current_user.id, :completed => false)
+                if @projects
+                    render :json => @projects
+                else
+                    render :nothing => true, :status => 200, :content_type => 'text/html'
+                end
+            }
+        end
+    end
+
     def show 
         respond_to do |format|
             format.json {
