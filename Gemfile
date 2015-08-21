@@ -1,9 +1,9 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 ruby "2.1.5"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.0'
+gem 'rails', '4.2.1'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -79,8 +79,8 @@ end
 
 gem 'mandrill-api'
 
-gem 'bootstrap-sass', '~> 3.3.1'
-gem 'autoprefixer-rails', '~> 4.0.2.2'
+gem 'bootstrap-sass', '~> 3.3.5'
+#gem 'autoprefixer-rails', '~> 4.0.2.2'
 
 gem 'jquery-turbolinks'
 gem 'cancan'
@@ -92,3 +92,5 @@ gem 'angular-rails-templates'
 
 # downgrade. upgrade to v3 when templates is compatible
 gem 'sprockets', '~> 2.12.3'
+
+gem 'coffee-script-source', '1.8.0'
