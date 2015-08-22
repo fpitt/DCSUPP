@@ -2,7 +2,7 @@ ServiceFunction = (requestService) ->
 
     create: (payload) ->
         sendParams =
-            url: '/refe.json'
+            url: '/references.json'
             method: 'POST'
         return requestService.service(sendParams, payload)
 

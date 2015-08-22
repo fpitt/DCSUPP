@@ -7,7 +7,7 @@ div
                     | Select Professor
 
                 td
-                    input class="form-control" type="text" ng-model="reference.professor" typeahead="professor as professor.name for professor in getProfessors($viewValue)" typeahead-loading="loading" typeahead-no-results="noResults"
+                    input class="form-control" type="text" ng-model="professor" typeahead="professor as professor.name for professor in getProfessors($viewValue)" typeahead-loading="loading" typeahead-no-results="noResults"
 
                     i ng-show="loading" class="glyphicon gylphicon-refresh"
 
@@ -18,7 +18,7 @@ div
                 td
                     | Message
                 td
-                    textarea ng-model="reference.message" type="text" class="form-control"
+                    textarea ng-model="reference.studentText" type="text" class="form-control"
     br
 
     button style="margin: auto; width: 50%" access="administrator student" restrict="" class="btn btn-default btn-lg" ng-click="createReference()" Submit
