@@ -26,65 +26,57 @@ runFunction = (Permission, User, $q) ->
 			User.role = 'professor'
 		else if (data.administrator)
 			User.role = 'administrator'
-		else 
-			User.role = 'anonymous'
+		return
 
-	deferred = $q.defer()
+	
 
 	Permission
 		.defineRole 'student', (stateParams) ->
-			User.getUser().then(studentSuccess, globalFailure)
+			deferred = $q.defer()
+
+			User.getUser()
+				.then (data) ->
+					console.log(data)
+					if (!data.data.professor && !data.data.administrator)
+						deferred.resolve(true)
+					else
+						deferred.reject(false)
+					return
+				.catch ->
+					deferred.reject(false)
+
 			return deferred.promise
 
 		.defineRole 'administrator', (stateParams) ->
-			User.getUser().then(administratorSuccess, globalFailure)
+			deferred = $q.defer()
+
+			User.getUser()
+				.then (data) ->
+					console.log(data)
+					if (data.data.administrator)
+						deferred.resolve(true)
+					else
+						deferred.reject(false)
+					return
+				.catch ->
+					deferred.reject(false)
+
 			return deferred.promise
 
 		.defineRole 'professor', (stateParams) ->
-			User.getUser().then(professorSuccess, globalFailure)
+			deferred = $q.defer()
+
+			User.getUser()
+				.then (data) ->
+					if (data.data.professor)
+						deferred.resolve(true)
+					else
+						deferred.reject(false)
+					return
+				.catch ->
+					deferred.reject(false)
+			
 			return deferred.promise
-
-		.defineRole 'anonymous', (stateParams) ->
-			User.getUser().then(anomymousSuccess, globalFailure)
-			return deferred.promise
-
-
-	# ---- Global Failure ----
-	globalFailure = ->
-		deferred.reject(false)
-		return
-
-	# ---- Anonymous Functions ----
-	anomymousSuccess = (data) ->
-		if (!data.data.id)
-			deferred.resolve(true)
-		else
-			deferred.reject(false)
-		return
-
-	# ---- Professor Functions ----
-	professorSuccess = (data) ->
-		if (data.data.professor && !data.data.administrator)
-			deferred.resolve(true)
-		else
-			deferred.reject(false)
-		return
-
-	# ---- Administrator Function ---
-	administratorSuccess = (data) ->
-		if (data.data.administrator)
-			deferred.resolve(true)
-		else
-			deferred.reject(false)
-		return
-
-	# ---- Professor Funcion ---
-	studentSuccess = (data) ->
-		if (!data.data.professor && !data.data.administrator)
-			deferred.resolve(true)
-		else
-			deferred.reject(false)
-		return
 
 
 angular

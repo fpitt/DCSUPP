@@ -4,5 +4,5 @@ angular.module('dcsupp').config ($stateProvider) ->
         templateUrl: 'Account/_account.html'
         controller: 'AccountCtrl'
         data:
-            permissions:
-                only: ['administrator', 'professor', 'student']
+        	permissions:
+        		only: ['administrator', 'professor', 'student']

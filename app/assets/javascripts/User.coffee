@@ -18,10 +18,6 @@ ServiceFunction = (requestService) ->
     this.role = " "
 
     ###
-    ** I removed this function and replaced it with getUser() for the
-    angular run section in app,js, I think its unneccessary to have 
-    getAccessLevel return the getUser function ** 
-
     this.getAccessLevel = ->
         return this.getUser().then((data)->
             return data
@@ -29,6 +25,7 @@ ServiceFunction = (requestService) ->
 
     return this
     ###
+    
 
 angular
     .module('dcsupp')
