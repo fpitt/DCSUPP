@@ -34,22 +34,18 @@ runFunction = (Permission, User, $q) ->
 	Permission
 		.defineRole 'student', (stateParams) ->
 			User.getUser().then(studentSuccess, globalFailure)
-			
 			return deferred.promise
 
 		.defineRole 'administrator', (stateParams) ->
 			User.getUser().then(administratorSuccess, globalFailure)
-			
 			return deferred.promise
 
 		.defineRole 'professor', (stateParams) ->
 			User.getUser().then(professorSuccess, globalFailure)
-
 			return deferred.promise
 
 		.defineRole 'anonymous', (stateParams) ->
 			User.getUser().then(anomymousSuccess, globalFailure)
-
 			return deferred.promise
 
 
