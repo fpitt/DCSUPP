@@ -1,4 +1,12 @@
-angular.module('dcsupp').directive('restrict', function(User){
+# ---------------------------------------------------------
+# Directive: Restrict
+#
+# I think this directive is not used at the moment. I will
+# comment this directive out
+# ---------------------------------------------------------
+
+###
+restrictDirective = (User) ->
     return{
         restrict: 'A',
         prioriry: 100000,
@@ -21,5 +29,7 @@ angular.module('dcsupp').directive('restrict', function(User){
                 element.remove();
             };
         }
-    };
-});
+    }
+
+angular.module('dcsupp').directive('restrict', restrictDirective)
+###
