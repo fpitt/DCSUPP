@@ -36,6 +36,10 @@ Rails.application.routes.draw do
     post "/flip_completed_direction" => 'projects#grab_completed_project'
     post "/get_in_progress_projects_of_current_user" => 'projects#get_in_progress_projects_of_current_user'
     post "/get_completed_projects_of_current_user" => 'projects#get_completed_projects_of_current_user'
+    post "/flip_professor_direction" => 'users#grab_professors'
+    post "/get_professor_by_name" => 'users#get_professor_by_name'
+    post "/get_by_project" => 'references#get_by_project'
+
 
     get "/*path" => redirect("/?goto=%{path}")
 end

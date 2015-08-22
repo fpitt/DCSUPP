@@ -76,4 +76,39 @@ class UsersController < ApplicationController
         end
     end
 
+    def grab_professors
+        professor_size = User.where(:professor => true).length
+        current_offset = (params[:payload][:pagenumber] - 1)*10
+        direction = params[:payload][:direction]
+
+        respond_to do |format|
+            format.json {
+
+                if current_offset + direction < professor_size && current_offset + direction >= 0
+                    offset = current_offset + direction
+                    @professors = User.where(:professor => true).offset(offset).take(10)
+                    render :json => @professors
+                else
+                    render :nothing => true, :status => 200, :content_type => 'text/html'
+                end
+
+            }
+        end
+    end
+
+    def get_professor_by_name
+        respond_to do |format|
+            format.json {
+                param = params[:payload]
+                    @professor = User.where('name LIKE ?', '%' + param[:professor] + '%').where(:professor => true)
+                    if @professor
+                        render :json => @professor
+                    else
+                        render :nothing => true, :status => 200, :content_type => 'text/html'
+                    end
+            }
+        end
+
+    end
+
 end

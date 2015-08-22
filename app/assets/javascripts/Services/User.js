@@ -19,13 +19,33 @@ ServiceFunction = function(requestService) {
         });
     };
 
-    this.getById = function (id) {
+    this.getById = function(id) {
         var sendParams = {
             url: '/users/' + id + '.json',
             method: "GET"
         };
-        return requestService.service(sendParams)
-    }
+        return requestService.service(sendParams);
+    };
+
+    this.flipProfessors = function(payload) {
+        var sendParams = {
+            url: '/flip_professor_direction.json',
+            method: 'POST'
+        };
+        return requestService.service(sendParams, payload);
+    };
+
+    this.getStudents = function() {
+    };
+
+    this.getProfessorByName = function(payload) {
+        var sendParams = {
+            url: '/get_professor_by_name.json',
+            method: 'POST'
+        };
+
+        return requestService.service(sendParams, payload);
+    };
 
     return this;
 
