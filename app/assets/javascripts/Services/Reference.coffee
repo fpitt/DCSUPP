@@ -18,7 +18,7 @@ ServiceFunction = (requestService) ->
             method: 'POST'
         return requestService.service(sendParams, payload)
 
-    AddProfessorText: (payload) ->
+    addProfessorText: (payload) ->
         sendParams =
             url: 'add_professor_reference_text.json'
             method: 'POST'
