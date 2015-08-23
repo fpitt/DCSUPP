@@ -28,15 +28,12 @@ runFunction = (Permission, User, $q) ->
 			User.role = 'administrator'
 		return
 
-	
-
 	Permission
 		.defineRole 'student', (stateParams) ->
 			deferred = $q.defer()
 
 			User.getUser()
 				.then (data) ->
-					console.log(data)
 					if (!data.data.professor && !data.data.administrator)
 						deferred.resolve(true)
 					else
@@ -52,7 +49,6 @@ runFunction = (Permission, User, $q) ->
 
 			User.getUser()
 				.then (data) ->
-					console.log(data)
 					if (data.data.administrator)
 						deferred.resolve(true)
 					else
