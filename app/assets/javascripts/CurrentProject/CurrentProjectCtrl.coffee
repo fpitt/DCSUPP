@@ -1,3 +1,12 @@
+
+# ---------------------------------------------------------
+# Page 3: Current Project
+#
+# This is the current projects page for the application. It
+# lists the current projects students can apply for and it
+# includes the requirements students will need to access.
+# ---------------------------------------------------------
+
 controllerFunction = ($scope, requestService, $modal, modalService) ->
 
 	$scope.modalService = modalService
