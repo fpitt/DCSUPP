@@ -1,17 +1,33 @@
 div
-  h3 Application
-  table class="table"
-    tr
-      td
-        | Title
-      td
-        input ng-model="application.title" type="text" class="form-control"
-    tr
-      td
-        | Message
-      td
-        textarea ng-model="application.message" type="text" class="form-control"
+    h3 Application
+    form
+        table class="table"
+            tr
+                td
+                    | Title
+                td
+                    input ng-model="application.title" type="text" class="form-control"
+            tr
+                td
+                    | Message
+                td
+                    textarea ng-model="application.message" type="text" class="form-control"
 
-  br
+            tr ng-repeat="requirement in requirements"
+                td
+                    | {{ requirement.sub_category_name }}
+                td ng-show="requirement.attribute_type == 'Number'"
+                    input ng-model="requirement.value" type="number" class="form-control"
+                td ng-show="requirement.attribute_type == 'Boolean'"
+                    input type="radio" value="True" ng-model="requirement.value"
+                        | True
+                    input type="radio" value="False" ng-model="requirement.value"
+                        | False
+                td ng-show="requirement.attribute_type == 'Input Field'"
+                    input ng-model="requirement.value" type="text" class="form-control"
+                td ng-show="requirement.attribute_type == 'Date'"
+                    input type="date" class="form-control" ng-model="requirement.value"
 
-  button style="margin: auto; width: 50%" access="administrator student" restrict="" class="btn btn-default btn-lg" ng-click="createApplication()" Submit
+    br
+
+    button style="margin: auto; width: 50%" access="administrator student" restrict="" class="btn btn-default btn-lg" ng-click="createApplication()" Submit

@@ -16,7 +16,7 @@ div class="row"
             div ng-repeat="category in categories"
                 ul class="nav nav-pills nav-stacked"
                     li
-                        a 
+                        a
                             | {{ category.category_name }}
 
     div class="row" style="height:10px"
@@ -26,38 +26,38 @@ div class="row"
         br
 
         table class="table table-hover"
-          tr
-            td
-              | Name
-            td
-              span ng-show="nameCollapsed"
-                | {{ user.name }}
-              input ng-show="!nameCollapsed" class="form-control" ng-model="payload.name" placeholder="Name"
-            td
-              button ng-show="nameCollapsed" class="btn btn-default" ng-click="nameCollapsed = !nameCollapsed" Edit
-              button ng-show="!nameCollapsed" class="btn btn-default" ng-click="nameCollapsed = !nameCollapsed; patchUser()" Update
+            tr
+                td
+                    | Name
+                td
+                    span ng-show="nameCollapsed"
+                        | {{ user.name }}
+                    input ng-show="!nameCollapsed" class="form-control" ng-model="payload.name" placeholder="Name"
+                td
+                    button ng-show="nameCollapsed" class="btn btn-default" ng-click="nameCollapsed = !nameCollapsed" Edit
+                    button ng-show="!nameCollapsed" class="btn btn-default" ng-click="nameCollapsed = !nameCollapsed; patchUser()" Update
 
-          tr
-            td
-              | E-mail
-            td
-              span ng-show="emailCollapsed"
-                | {{ user.email }}
-              input ng-show="!emailCollapsed" class="form-control" ng-model="payload.email" placeholder="E-mail"
-            td
-              button ng-show="emailCollapsed" class="btn btn-default" ng-click="emailCollapsed = !emailCollapsed" Edit
-              button ng-show="!emailCollapsed" class="btn btn-default" ng-click="emailCollapsed = !emailCollapsed; patchUser()" Update
+            tr
+                td
+                    | E-mail
+                td
+                    span ng-show="emailCollapsed"
+                        | {{ user.email }}
+                    input ng-show="!emailCollapsed" class="form-control" ng-model="payload.email" placeholder="E-mail"
+                td
+                    button ng-show="emailCollapsed" class="btn btn-default" ng-click="emailCollapsed = !emailCollapsed" Edit
+                    button ng-show="!emailCollapsed" class="btn btn-default" ng-click="emailCollapsed = !emailCollapsed; patchUser()" Update
 
-        /div access="student" restrict=""
-        /  h3 Your Applications
-        /
-        /div access="professor" restrict=""
-        /  h3 Your Projects
-        /  button class="btn btn-default" ng-click="updateProject()" Update
-        /
-        /div access="administrator" restrict=""
-        /  h3 Admin
-        /  button class="btn btn-default" ng-click="updateProject()" Update
+    /div access="student" restrict=""
+    /  h3 Your Applications
+    /
+    /div access="professor" restrict=""
+    /  h3 Your Projects
+    /  button class="btn btn-default" ng-click="updateProject()" Update
+    /
+    /div access="administrator" restrict=""
+    /  h3 Admin
+    /  button class="btn btn-default" ng-click="updateProject()" Update
 
     div class="col-xs-2"
         div class="btn-group" role="group" aria-label="Default button group"

@@ -1,102 +1,54 @@
-controllerFunction = ($scope, requestService, modalService, User) ->
+controllerFunction = ($scope, modalService, User, Project, RequirementCategory, RequirementSubcategory) ->
 	$scope.modalService = modalService
 	$scope.opened = false
 	$scope.project =
 		title: ""
 		text: ""
-	$scope.projectDefault =
-		title: ""
-		text: ""
-	$scope.sendParams =
-		url: '/projects.json'
-		method: "POST"
+		deadline_date: ""
+	$scope.requirements =  []
+	$scope.pagenumber = 1
+	$scope.direction = 0
+	$scope.subcategories = []
 
-	successFunction = (data) ->
-		console.log("Created Project")
-		clearForm()
-
-
-	clearForm = ->
-		$scope.project = angular.copy($scope.projectDefault)
-
+	$scope.clearForm = ->
+		projectDefault =
+			title: ""
+			text: ""
+			deadline_date: ""
+			subcategories: []
+		$scope.project = angular.copy(projectDefault)
+		$scope.requirements = []
 
 	$scope.create = ->
-		$scope.payload =
+		payload =
 			project:
-				title: $scope.project.title
-				text: $scope.project.text
-				date: $scope.project.deadline
+				$scope.project
+			requirements:
+				$scope.requirements
 
-		requestService.service($scope.sendParams, $scope.payload).success(successFunction)
+		Project.create(payload).success((data) ->
+			$scope.clearForm()
+		)
 
-	$('[data-toggle="tooltip"]').tooltip()
+	$scope.loadSubcategories = ()->
+		RequirementSubcategory.getAll().success((data) ->
+			for item in data
+				$scope.subcategories.push({name: item.sub_category_name, id: item.id})
+			)
 
-	$scope.today = ->
-		$scope.dt = new Date
-		return
+	$scope.loadTags = () ->
+		return $scope.subcategories
 
-	$scope.today()
-
-	$scope.clear = ->
-		$scope.dt = null
-		return
-
-	# Disable weekend selection
-
-	$scope.disabled = (date, mode) ->
-		mode == 'day' and (date.getDay() == 0 or date.getDay() == 6)
-
-	$scope.toggleMin = ->
-		$scope.minDate = if $scope.minDate then null else new Date
-		return
-
-	$scope.toggleMin()
 
 	$scope.open = ($event) ->
 		$scope.opened = !$scope.opened
-		return
-
-	$scope.dateOptions =
-		formatYear: 'yy'
-		startingDay: 1
-	$scope.formats = [
-		'dd-MMMM-yyyy'
-		'yyyy/MM/dd'
-		'dd.MM.yyyy'
-		'shortDate'
-	]
-
-	$scope.format = $scope.formats[0]
-	tomorrow = new Date
-	tomorrow.setDate tomorrow.getDate() + 1
-	afterTomorrow = new Date
-	afterTomorrow.setDate tomorrow.getDate() + 2
-	$scope.events = [
-		{
-			date: tomorrow
-			status: 'full'
-		}
-		{
-			date: afterTomorrow
-			status: 'partially'
-		}
-	]
-
-	$scope.getDayClass = (date, mode) ->
-		if mode == 'day'
-			dayToCheck = new Date(date).setHours(0, 0, 0, 0)
-			i = 0
-			while i < $scope.events.length
-				currentDay = new Date($scope.events[i].date).setHours(0, 0, 0, 0)
-				if dayToCheck == currentDay
-					return $scope.events[i].status
-				i++
 
 
+	$scope.loadSubcategories()
 
 
 
 angular
 	.module('dcsupp')
-	.controller('CreateProjectCtrl', ['$scope', 'requestService', 'modalService', 'User', controllerFunction])
+	.controller('CreateProjectCtrl', ['$scope', 'modalService', 'User', 'Project', 'RequirementCategory', 'RequirementSubcategory', controllerFunction])
 

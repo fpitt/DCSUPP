@@ -1,0 +1,26 @@
+h3 Personal Information
+br
+table class="table table-hover"
+    tr
+        td
+            | Name
+        td
+            span ng-show="nameCollapsed"
+                | {{ user.name }}
+            input ng-show="!nameCollapsed" class="form-control" ng-model="payload.name" placeholder="Name"
+        td
+            div access="administrator" restrict=""
+                button ng-show="nameCollapsed" class="btn btn-default" ng-click="nameCollapsed = !nameCollapsed" Edit
+                button ng-show="!nameCollapsed" class="btn btn-default" ng-click="nameCollapsed = !nameCollapsed; patchUser()" Update
+
+    tr
+        td
+            | E-mail
+        td
+            span ng-show="emailCollapsed"
+                | {{ user.email }}
+            input ng-show="!emailCollapsed" class="form-control" ng-model="payload.email" placeholder="E-mail"
+        td
+            div access="administrator" restrict=""
+                button ng-show="emailCollapsed" class="btn btn-default" ng-click="emailCollapsed = !emailCollapsed" Edit
+                button ng-show="!emailCollapsed" class="btn btn-default" ng-click="emailCollapsed = !emailCollapsed; patchUser()" Update

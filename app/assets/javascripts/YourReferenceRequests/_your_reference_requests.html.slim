@@ -1,0 +1,19 @@
+table class="table table-striped"
+    tr
+        th Student
+        th Project
+        th Student Message
+        th Actions
+    tr ng-repeat="reference in references"
+        td
+            a ui-sref="list_student.selected_student({id: reference.student.id})"
+                | {{ reference.student.name }}
+        td
+            a ui-sref="current_project.selected_project({id: reference.project.id})"
+                | {{ reference.project.title }}
+        td
+            span
+                | {{ reference.student_text }}
+        td
+            button class="btn btn-default" ng-click="rejectReference(reference)" Reject
+            button class="btn btn-default" ui-sref="write_reference({id: reference.id})" Write Reference

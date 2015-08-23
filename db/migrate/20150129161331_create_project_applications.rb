@@ -7,7 +7,6 @@ class CreateProjectApplications < ActiveRecord::Migration
       t.belongs_to :project, index: true
       t.text :message
       t.string :title
-
     end
   end
 end

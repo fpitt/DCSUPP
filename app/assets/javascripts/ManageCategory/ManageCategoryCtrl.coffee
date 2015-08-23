@@ -1,4 +1,4 @@
-controllerFunction = ($scope, requestService, modalService) ->
+controllerFunction = ($scope, RequirementCategory, RequirementSubcategory) ->
 
     #$scope.modalService = modalService
 
@@ -19,66 +19,43 @@ controllerFunction = ($scope, requestService, modalService) ->
     # --- Create SubCategory ---
 
     $scope.create_subcategory = ->
-        payload_category = 
+        payload =
             subcategory:
                 sub_category_name: $scope.category.sub_category_name
                 attribute_type: $scope.category.attribute_type
                 placeholder: $scope.category.placeholder
                 student_attribute: $scope.category.student_attribute
             target_id: $scope.current_category_id
-        sendParams_subcategory =
-            method: 'POST'
-            url: '/requirement_subcategories.json'
 
-        requestService.service(sendParams_subcategory, payload_category).success(createsubSuccess)
-
-    createsubSuccess = (data) ->
-        categoryDefault =
-            sub_category_name: ""
-            attribute_type: "Number"
-            placeholder: ""
-            student_attribute: 0
-        $scope.category = angular.copy(categoryDefault)
-        #Grab subCategories
-        payload = 
-            target_id: $scope.current_category_id
-        get_subcategories =
-            method: 'POST'
-            url: '/get_subcategories.json'
-        requestService.service(get_subcategories, payload).success(getsubcategoriesSuccess)
+        RequirementSubcategory.create(payload).success((data) ->
+            categoryDefault =
+                sub_category_name: ""
+                attribute_type: "Number"
+                placeholder: ""
+                student_attribute: 0
+            $scope.category = angular.copy(categoryDefault)
+            $scope.loadSubcategories($scope.current_category_id))
 
     # --- Get SubCategory ---
 
-    $scope.subcategories = (target_id)->
-        console.log("subcategories")
-        payload = 
-            target_id: event.target.id
-        get_subcategories =
-            method: 'POST'
-            url: '/get_subcategories.json'
-        $scope.current_category_id = event.target.id
+    $scope.loadSubcategories = (id)->
+        payload =
+            target_id: id
+        $scope.current_category_id = id
 
-        requestService.service(get_subcategories, payload).success(getsubcategoriesSuccess)
-
-    getsubcategoriesSuccess = (data) ->
-        $scope.list_subcategories = data
-        console.log($scope.list_subcategories)
+        RequirementSubcategory.getAllOfCategory(payload).success((data) ->
+            $scope.list_subcategories = data)
 
     # --- Create Category --- 
 
-    $scope.create_category = ->
+    $scope.createCategory = ->
         payload = 
             requirement_category:
                 category_name: $scope.category_name
-        sendParams_category =
-            method: 'POST'
-            url: '/requirement_categories.json'
-
-        requestService.service(sendParams_category, payload).success(createCategorySuccess)
-
-    createCategorySuccess = (data) ->
-        category_nameDefault = ""
-        $scope.category_name = angular.copy(category_nameDefault)
+        RequirementCategory.create(payload).success((data) ->
+            category_nameDefault = ""
+            $scope.category_name = angular.copy(category_nameDefault)
+            $scope.flip(0))
 
     # --- Category Navigation --- 
 
@@ -86,22 +63,17 @@ controllerFunction = ($scope, requestService, modalService) ->
         payload = 
             direction: pushDirection
             pagenumber: $scope.pagenumber
-        sendParams =
-            method: 'POST'
-            url: '/get_categories.json'
         $scope.direction = pushDirection
 
-        requestService.service(sendParams, payload).success(flipSuccess)
-
-    flipSuccess = (data) ->
-        if (data)
-            $scope.categories = data
-            if $scope.direction > 0
-                $scope.pagenumber += 1
-            else if $scope.direction < 0
-                $scope.pagenumber -= 1
-            else
-                $scope.pagenumber = 1
+        RequirementCategory.flip(payload).success((data) ->
+            if (data)
+                $scope.categories = data
+                if $scope.direction > 0
+                    $scope.pagenumber += 1
+                else if $scope.direction < 0
+                    $scope.pagenumber -= 1
+                else
+                    $scope.pagenumber = 1)
 
     # --- JQuery Initialization Code --- 
 
@@ -110,5 +82,5 @@ controllerFunction = ($scope, requestService, modalService) ->
 
 angular
     .module('dcsupp')
-    .controller('ManageCategoryCtrl', ['$scope', 'requestService',  controllerFunction])
+    .controller('ManageCategoryCtrl', ['$scope', 'RequirementCategory', 'RequirementSubcategory',  controllerFunction])
 

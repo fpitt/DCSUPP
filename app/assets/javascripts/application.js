@@ -16,10 +16,13 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require angular
+//= require bootstrap
 //= require angular-bootstrap
 //= require angular-rails-templates
 //= require angular-ui-router
 //= require angular-permission
+//= require ng-tags-input
 //= require app
+//= require async
 //= require_tree .
 

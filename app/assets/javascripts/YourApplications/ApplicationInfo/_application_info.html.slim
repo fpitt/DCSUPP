@@ -1,18 +1,64 @@
 div
-  h3 style="display:inline-block" Application Details
-  br
-  br
-  table class="table table-hover"
-    tr
-      td
-        | Title
-      td
+    h3 style="display:inline-block" Application Details
+    br
+    br
+    div access="administrator student" restrict=""
         span
-          | {{ application.title }}
-    tr
-      td
-        | Message
-      td
-        span
-          | {{ application.message }}
-  br
+            | Status:
+        span ng-show="application.professor_approved == null"
+            | Pending
+        span ng-show="application.professor_approved == true"
+            | Accepted
+        span ng-show="application.professor_approved == false"
+            | Rejected
+
+        button ng-show="application.professor_approved == true" class="btn btn-default" ng-click="processOffer(true)" Accept Offer
+        button ng-show="application.professor_approved == true" class="btn btn-default" ng-click="processOffer(false)" Reject Offer
+
+    div access="administrator profess" restrict=""
+        span ng-show="application.professor_approved == true"
+            | Status:
+        span ng-show="application.professor_approved == true && application.student_approved == null"
+            | Pending
+        span ng-show="application.student_approved == true"
+            | Accepted
+        span ng-show="application.professor_approved == true && student.student_approved == false"
+            | Rejected
+
+        br
+        button  class="btn btn-default" ng-click="processOffer('true')" Accept Offer
+        button  class="btn btn-default" ng-click="processOffer('false')" Reject Offer
+
+    br
+    br
+    table class="table table-hover"
+        tr
+            td
+                | Project
+            td
+                | {{ project.title }}
+        tr
+            td
+                | Title
+            td
+                span
+                    | {{ application.title }}
+        tr
+            td
+                | Message
+            td
+                span
+                    | {{ application.message }}
+
+        tr ng-repeat="attribute in attributes"
+            td
+                | {{ attribute.sub_category_name }}
+            td ng-show="attribute.attribute_type != 'Date'"
+                | {{ attribute.value }}
+            td ng-show="attribute.attribute_type == 'Date'"
+                | {{ attribute.value | date: "yyyy-MMM-dd" }}
+    br
+    button ui-sref="your_applications.request_reference({id: application.id})" class="btn btn-default" Request Reference
+
+
+
