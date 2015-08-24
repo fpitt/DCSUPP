@@ -1,4 +1,4 @@
-controllerFunction = ($scope, $modal, modalService, User) ->
+controllerFunction = ($scope, $modal, modalService, User, requestService) ->
 
     $scope.modalService = modalService
 
@@ -17,13 +17,16 @@ controllerFunction = ($scope, $modal, modalService, User) ->
     # --- Page Navigation ---
 
     $scope.flip = (pushDirection) ->
+        params = 
+            method: 'POST'
+            url: '/flip_professor_direction.json'
         payload =
             direction: pushDirection
             pagenumber: $scope.pagenumber
-        User.flipProfessors(payload).success((data) ->
+        
+        requestService.service(params, payload).then((data) ->
             if (data)
                 $scope.professors = data
-                console.log($scope.students)
                 if $scope.direction > 0
                     $scope.pagenumber += 1
                 else if $scope.direction < 0
@@ -38,4 +41,4 @@ controllerFunction = ($scope, $modal, modalService, User) ->
 
 angular
 .module('dcsupp')
-.controller('ListProfessorCtrl', ['$scope', '$modal', 'modalService', 'User', controllerFunction])
+.controller('ListProfessorCtrl', ['$scope', '$modal', 'modalService', 'User', 'requestService', controllerFunction])

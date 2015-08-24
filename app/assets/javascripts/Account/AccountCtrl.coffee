@@ -1,3 +1,13 @@
+
+# ---------------------------------------------------------
+# Page 2: Account Page
+#
+# This is the Account Page for DCSUPP. It contains the
+# student settings and allows students to change their 
+# personal informations.
+# ---------------------------------------------------------
+
+
 AccountFunction = ($scope, $modal, modalService, requestService, User, $state) ->
         
     $scope.modalService = modalService

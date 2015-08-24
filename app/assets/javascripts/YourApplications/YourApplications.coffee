@@ -5,4 +5,4 @@ angular.module('dcsupp').config ($stateProvider) ->
         controller: 'YourApplicationsCtrl'
         data:
             permissions:
-                only: ['administrator', 'student']
+                only: ['student', 'administrator']
