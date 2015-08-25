@@ -55,12 +55,8 @@ class RequirementCategoriesController < ApplicationController
 	      	format.json {
 	      	    if current_offset + direction < attribute_length && current_offset + direction >= 0
                     offset = current_offset + direction
-                    offset_10 = offset + 10
+                    offset_10 = offset + 9
                     @attributes = @student_attributes[offset..offset_10]
-
-                    @attributes.each do |attribute|
-                    	puts attribute.id
-                    end
 
                     render :json => @attributes
                 else 

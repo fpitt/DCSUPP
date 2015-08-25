@@ -26,8 +26,7 @@ AccountFunction = ($scope, $modal, modalService, requestService, User, $state, R
     $scope.categories = null
     #SubCategory Identication
     $scope.subcateogories = null
-    $scope.selected_category = null
-    $scope.current_category_id = null
+    $scope.selectCategory = null
 
     # --- Get User ---
 
@@ -52,11 +51,11 @@ AccountFunction = ($scope, $modal, modalService, requestService, User, $state, R
     
     # --- Grab SubCategories ---
 
-    $scope.loadSubcategories = (id)->
-        console.log($scope.categories)
+    $scope.loadSubcategories = (category)->
         payload =
-            target_id: id
-        $scope.current_category_id = id
+            target_id: category.id
+
+        $scope.selectCategory = category
 
         RequirementSubcategory.getAllOfCategory(payload).success((data) ->
             $scope.subcateogories = data)
