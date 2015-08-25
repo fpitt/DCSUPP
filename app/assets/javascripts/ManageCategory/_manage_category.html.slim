@@ -38,9 +38,21 @@ div ng-controller="ManageCategoryCtrl"
                 thead
                     tr
                         th #
-                        th SubCategory Name
                         th Input Type
-                        th Place Holder
+                        th Field Name
+                        /Case 1: Selected Number
+                        th ng-if="category.attribute_type=='Number'" Place Holder
+                        th ng-if="category.attribute_type=='Number'" Max Value
+                        th ng-if="category.attribute_type=='Number'" Min Value
+                        /Case 2: Selected Date
+                        th ng-if="category.attribute_type=='Date'" Max Date
+                        th ng-if="category.attribute_type=='Date'" Min Date
+                        /Case 3: Selected Boolean
+                        /Nothing
+                        /Case 4: Selected Input Field
+                        th ng-if="category.attribute_type=='Input Field'" Place Holder
+                        th ng-if="category.attribute_type=='Input Field'" REGEX Expression
+
                         th Student Attribute
 
                 tbody
@@ -49,9 +61,6 @@ div ng-controller="ManageCategoryCtrl"
                         th scope="row"
                             button type="submit" class="btn btn-default" ng-click="create_subcategory()"
                                 span class="glyphicon glyphicon glyphicon-plus" aria-hidden="true"
-
-                        td
-                            input type="text" class="form-control" placeholder="Category Name" ng-model="category.sub_category_name"
                         td
                             select class="form-control" ng-model="category.attribute_type"
                                 option value="Number" Number
@@ -59,15 +68,49 @@ div ng-controller="ManageCategoryCtrl"
                                 option value="Boolean" Boolean
                                 option value="Input Field" Input Field
                         td
-                            input type="text" class="form-control" placeholder="Place Holder" ng-model="category.placeholder"
+                            input type="text" class="form-control" placeholder="Input Name" ng-model="category.sub_category_name"
+
+                        /Case 1: Select Number
+                        td ng-if="category.attribute_type=='Number'"
+                            input type="number" class="form-control" placeholder="Place Holder"
+                        td ng-if="category.attribute_type=='Number'"
+                            input type="number" class="form-control" placeholder="Max"
+                        td ng-if="category.attribute_type=='Number'"
+                            input type="number" class="form-control" placeholder="Min"
+
+                        /Case 2: Select Date
+                        td ng-if="category.attribute_type=='Date'"
+                            input type="date" class="form-control" placeholder="yyyy-MM-dd"
+                        td ng-if="category.attribute_type=='Date'"
+                            input type="date" class="form-control" placeholder="yyyy-MM-dd"
+
+                        /Case 3: Select Boolean
+                        /Display Nothing
+
+                        /Case 4: Selected Input Field
+                        td ng-if="category.attribute_type=='Input Field'"
+                            input type="number" class="form-control" placeholder="Place Holder"
+                        td ng-if="category.attribute_type=='Input Field'"
+                            input type="number" class="form-control" placeholder="REGEX Expression"
+
                         td
                             div ng-if="category.student_attribute == 0"
                                 button type="button" class="btn btn-default" ng-click="category.student_attribute = 1" False
                             div ng-if="category.student_attribute == 1"
                                 button type="button" class="btn btn-primary" ng-click="category.student_attribute = 0" True
 
+            table class="table"
+                thead
+                    tr
+                        th Category Name
+                        th Attribute Type
+                        th Placeholder
+                        th Max
+                        th Min
+                        th Regex
+                        th Student Attribute
+
                     tr ng-repeat="subcategory in list_subcategories"
-                        th scope="row"
                         td
                             p
                                 | {{ subcategory.sub_category_name }}
@@ -79,4 +122,15 @@ div ng-controller="ManageCategoryCtrl"
                                 | {{ subcategory.placeholder}}
                         td
                             p
+                                | {{ subcategory.upper_limit}}
+                        td
+                            p
+                                | {{ subcategory.lower_limit}}
+                        td
+                            p
+                                | {{ subcategory.regex}}
+                        td
+                            p
                                 | {{ subcategory.student_attribute}}
+                        td
+                            button type="button" class="btn btn-default" edit

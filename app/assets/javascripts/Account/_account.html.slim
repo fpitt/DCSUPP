@@ -1,7 +1,7 @@
 div class="row"
     div class="col-xs-4"
         div class="text-center"
-            h3 Student Settings
+            h3 Student Prerequisites
         div class="row" style="height:20px"
 
         div class="text-center"
@@ -15,49 +15,49 @@ div class="row"
         div class="list-group"
             div ng-repeat="category in categories"
                 ul class="nav nav-pills nav-stacked"
-                    li
-                        a
+                    li ng-click="loadSubcategories(category)"
+                        a id="{{ category.id }}"
                             | {{ category.category_name }}
 
     div class="row" style="height:10px"
 
     div class="col-xs-6"
-        h3 Personal Information
-        br
 
-        table class="table table-hover"
-            tr
-                td
-                    | Name
-                td
-                    span ng-show="nameCollapsed"
-                        | {{ user.name }}
-                    input ng-show="!nameCollapsed" class="form-control" ng-model="payload.name" placeholder="Name"
-                td
-                    button ng-show="nameCollapsed" class="btn btn-default" ng-click="nameCollapsed = !nameCollapsed" Edit
-                    button ng-show="!nameCollapsed" class="btn btn-default" ng-click="nameCollapsed = !nameCollapsed; patchUser()" Update
+        div ng-if="!selectCategory"
+            h3 Student Prerequisites and Information
+            hr
+            p Please update your individual prerequisites to help DCSUPP to identity potential research projects that are suitable for your academic strengths and interests.
 
-            tr
-                td
-                    | E-mail
-                td
-                    span ng-show="emailCollapsed"
-                        | {{ user.email }}
-                    input ng-show="!emailCollapsed" class="form-control" ng-model="payload.email" placeholder="E-mail"
-                td
-                    button ng-show="emailCollapsed" class="btn btn-default" ng-click="emailCollapsed = !emailCollapsed" Edit
-                    button ng-show="!emailCollapsed" class="btn btn-default" ng-click="emailCollapsed = !emailCollapsed; patchUser()" Update
+            spam
+                b Note:
+                p This information will remain private and can only be accessed by certified administrators and professors registered with DCSUPP.
 
-    /div access="student" restrict=""
-    /  h3 Your Applications
-    /
-    /div access="professor" restrict=""
-    /  h3 Your Projects
-    /  button class="btn btn-default" ng-click="updateProject()" Update
-    /
-    /div access="administrator" restrict=""
-    /  h3 Admin
-    /  button class="btn btn-default" ng-click="updateProject()" Update
+        div ng-if="selectCategory"
+            h3 
+                | {{selectCategory.category_name}}
+            hr
+
+            table class="table"
+                thead
+                    tr ng-repeat="subcategory in subcateogories"
+                        td
+                            p
+                                | {{ subcategory.sub_category_name }}
+                        td
+                            div ng-if="subcategory.attribute_type=='Number'"
+                                input type="number" class="form-control" placeholder="{{subcategory.placeholder}}"
+
+                            div ng-if="subcategory.attribute_type=='Date'"
+                                input type="date" class="form-control" placeholder="yyyy-MM-dd"
+
+                            div ng-if="subcategory.attribute_type=='Boolean'"
+                                input type="checkbox" class="form-control"
+
+                            div ng-if="subcategory.attribute_type=='Input Field'"
+                                input type="text" class="form-control" placeholder="{{subcategory.placeholder}}"
+                        td
+                            button type="button" class="btn btn-default" edit
+
 
     div class="col-xs-2"
         div class="btn-group" role="group" aria-label="Default button group"
