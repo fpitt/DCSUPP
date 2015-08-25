@@ -19,12 +19,28 @@ class ReferencesController < ApplicationController
         end
     end
 
-    def get_by_project
+    def get_by_project_application
         respond_to do |format|
             format.json {
                 param = params[:payload]
 
-                @reference = Reference.where(:project, Project.find_by_id(param[:project]))
+                @reference = Reference.where(:project_application_id, param[:projectApplication])
+
+                if @reference
+                    render :json => @reference
+                else
+                    render :nothing => true, :status => 200, :content_type => 'text/html'
+                end
+            }
+        end
+    end
+
+    def get_student_approved_by_project_application
+        respond_to do |format|
+            format.json {
+                param = params[:payload]
+
+                @reference = Reference.where(:project_application_id, param[:projectApplication])
 
                 if @reference
                     render :json => @reference

@@ -23,6 +23,5 @@
 //= require angular-permission
 //= require ng-tags-input
 //= require app
-//= require async
 //= require_tree .
 

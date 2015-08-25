@@ -24,9 +24,18 @@ ServiceFunction = (requestService) ->
             method: 'POST'
         return requestService.service(sendParams, payload)
 
+    getStudentApprovedByProjectApplication: (payload) ->
+        sendParams =
+            url: 'get_student_approved_by_project_application.json'
+            method: 'POST'
+        return requestService.service(sendParams, payload)
 
 
-
+    getByProjectApplication: (payload) ->
+        sendParams =
+            url: 'get_by_project_application.json'
+            method: 'POST'
+        return requestService.service(sendParams, payload)
 angular
 .module('dcsupp')
 .service('Reference', ServiceFunction)
