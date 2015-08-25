@@ -38,6 +38,9 @@ ListStudentFunction = ($scope, $modal, modalService, requestService) ->
             else
                 $scope.pagenumber = 1
 
+
+
+
     # --- JQuery Initialization Code --- 
     $('[data-toggle="tooltip"]').tooltip()
     $scope.flip(0)
