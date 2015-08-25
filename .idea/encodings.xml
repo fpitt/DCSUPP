@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/../../ArtLocalStuff/ArtLocalDashboard2/ArtLocal/client/app/app.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../ArtLocalStuff/ArtLocalDashboard2/ArtLocal/client/app/auth/auth.controller.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../ArtLocalStuff/ArtLocalDashboard2/ArtLocal/client/app/delete/delete/delete.controller.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../ArtLocalStuff/ArtLocalDashboard2/ArtLocal/client/app/exhibition/addexhibition/addexhibition.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../ArtLocalStuff/ArtLocalDashboard2/ArtLocal/client/app/exhibition/addexhibition/updatecover/updatecover.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../ArtLocalStuff/ArtLocalDashboard2/ArtLocal/client/app/exhibition/exhibition.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../ArtLocalStuff/ArtLocalDashboard2/ArtLocal/client/app/exhibition/exhibition.scss" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../ArtLocalStuff/ArtLocalDashboard2/ArtLocal/client/app/gallery/addgallery/addgallery.scss" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../ArtLocalStuff/ArtLocalDashboard2/ArtLocal/client/app/main/main.controller.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../ArtLocalStuff/ArtLocalDashboard2/ArtLocal/client/app/main/main.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../ArtLocalStuff/ArtLocalDashboard2/ArtLocal/client/app/profile/profile.controller.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../ArtLocalStuff/ArtLocalDashboard2/ArtLocal/client/app/profile/profile.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../ArtLocalStuff/ArtLocalDashboard2/ArtLocal/client/components/navbar/navbar.controller.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../ArtLocalStuff/ArtLocalDashboard2/ArtLocal/server/api/auth/auth.controller.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../ArtLocalStuff/ArtLocalDashboard2/ArtLocal/server/api/auth/index.js" charset="UTF-8" />
+    <file url="file://$USER_HOME$/WebstormProjects/similarityidentification2/client/app/intro/intro.html" charset="UTF-8" />
+    <file url="file://$USER_HOME$/WebstormProjects/similarityidentification2/client/app/questions/questions.controller.js" charset="UTF-8" />
+    <file url="file://$USER_HOME$/WebstormProjects/similarityidentification2/client/app/questions/questions.html" charset="UTF-8" />
+    <file url="file://$USER_HOME$/WebstormProjects/similarityidentification2/client/app/questions/questions.scss" charset="UTF-8" />
+    <file url="file://$USER_HOME$/WebstormProjects/similarityidentification2/client/app/training/training.scss" charset="UTF-8" />
+    <file url="file://$USER_HOME$/WebstormProjects/similarityidentification2/server/api/question/index.js" charset="UTF-8" />
+    <file url="file://$USER_HOME$/WebstormProjects/similarityidentification2/server/api/question/question.controller.js" charset="UTF-8" />
+    <file url="file://$USER_HOME$/WebstormProjects/similarityidentification2/server/routes.js" charset="UTF-8" />
+  </component>
+</project>

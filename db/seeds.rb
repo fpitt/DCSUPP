@@ -17,3 +17,11 @@ end
 Project_list.each do |title, text|
 	Project.create(title: title, text: text)
 end
+
+user = User.create(name: "admin")
+user.administrator = true
+user.save
+
+user2 = User.create(name: "prof")
+user2.professor = true
+user2.save

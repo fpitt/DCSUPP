@@ -1,0 +1,70 @@
+div class="row"
+    div class="col-xs-4"
+        div class="text-center"
+            h3 Student Prerequisites
+        div class="row" style="height:20px"
+
+        div class="text-center"
+            div class="btn-group"
+                button class="btn btn-default" ng-click="flip(-10)" Prev
+                button class="btn btn-default disabled"
+                    | {{ pagenumber }}
+                button class="btn btn-default" ng-click="flip(10)" Next
+            br
+            br
+        div class="list-group"
+            div ng-repeat="category in categories"
+                ul class="nav nav-pills nav-stacked"
+                    li ng-click="loadSubcategories(category)"
+                        a id="{{ category.id }}"
+                            | {{ category.category_name }}
+
+    div class="row" style="height:10px"
+
+    div class="col-xs-6"
+
+        div ng-if="!selectCategory"
+            h3 Student Prerequisites and Information
+            hr
+            p Please update your individual prerequisites to help DCSUPP to identity potential research projects that are suitable for your academic strengths and interests.
+
+            spam
+                b Note:
+                p This information will remain private and can only be accessed by certified administrators and professors registered with DCSUPP.
+
+        div ng-if="selectCategory"
+            h3 
+                | {{selectCategory.category_name}}
+            hr
+
+            table class="table"
+                thead
+                    tr ng-repeat="subcategory in subcateogories"
+                        td
+                            p
+                                | {{ subcategory.sub_category_name }}
+                        td
+                            div ng-if="subcategory.attribute_type=='Number'"
+                                input type="number" class="form-control" placeholder="{{subcategory.placeholder}}"
+
+                            div ng-if="subcategory.attribute_type=='Date'"
+                                input type="date" class="form-control" placeholder="yyyy-MM-dd"
+
+                            div ng-if="subcategory.attribute_type=='Boolean'"
+                                input type="checkbox" class="form-control"
+
+                            div ng-if="subcategory.attribute_type=='Input Field'"
+                                input type="text" class="form-control" placeholder="{{subcategory.placeholder}}"
+                        td
+                            button type="button" class="btn btn-default" edit
+
+
+    div class="col-xs-2"
+        div class="btn-group" role="group" aria-label="Default button group"
+            /Button 1: Information
+            button ng-click="modalService.open('StudentAccount/StudentAccountSettings/student_account_info.html', 'StudentAccountSettingsCtrl', items)" type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Information"
+                span class="glyphicon glyphicon-info-sign" aria-hidden="true"
+            /Button 2: Account Settings
+            button ng-click="modalService.open('StudentAccount/StudentAccountSettings/student_account_settings.html', 'StudentAccountSettingsCtrl', items)" type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Settings"
+                span class="glyphicon glyphicon-tasks" aria-hidden="true"
+

@@ -31,3 +31,25 @@ Christina:
 + Working on the project URL problem for the nested states
 + Working on setting up the directives for the projects
 + Finishing the Current Project page with backend functionality
+
+Frank:
++ Wire the Project page with the backend
+
+-> July 12th
+* Frank left the team due to PEY work commitments
+
+Work Sprint: 
++ Alan and Christina begun communicating with the backend
++ Wrote specialized function to send payload and URL to get API requests
+
+Alan: 
++ Took over Frank's create server request
++ Finished the SubCatogories Requirement Page
+
+Christina:
++ Finished working on popup
++ Finished the rest of Select Project Page
+
+-> July 14th
++ Work on the Angular-Rails Authentication.
++ Login, Logout, Signup.

@@ -1,37 +1,136 @@
+div ng-controller="ManageCategoryCtrl"
+
+    div class="row"
+        div class="col-xs-4"
+            h3 Create Requirement Category
+            hr
+
+            form
+                div class="form-group"
+                label for="exampleInputEmail" Requirement Category Title
+                input class="form-control" placeholder="Category Name" ng-model="category_name"
+                br
+                div class="form-group"
+                    button type="submit" class="btn btn-default" ng-click="createCategory()" Create Category
+
+            div class="row" style="height:20px"
+
+                div class="text-center"
+                    div class="btn-group"
+                        button class="btn btn-default" ng-click="flip(-10)" Prev
+                        button class="btn btn-default disabled"
+                            | {{ pagenumber }}
+                        button class="btn btn-default" ng-click="flip(10)" Next
+                    br
+                    br
+                div class="list-group"
+                    div ng-repeat="category in categories"
+                        ul class="nav nav-pills nav-stacked"
+                            li ng-click="loadSubcategories(category.id)"
+                                a id="{{ category.id }}"
+                                    | {{ category.category_name }}
 
 
-h3 Manage Posting Categories
+        div class="col-xs-8"
+            h3 Requirement SubCategories
 
-/div
-/  h3 Manage Posting Categories
-/  hr
-/
-/  div class="row"
-/    div class="col-xs-4"
-/
-/      div id="panel-error"
-/        = render :partial => "requirement_categories/requirementpartial/categoryerror"
-/
-/      = form_for :requirement_category, :url => '/requirement_categories#create', :remote => true, :html => {:id => "input_form"} do |f|
-/
-/        = f.text_field :category_name, placeholder: "Title of Category", :class => "form-control span90"
-/        br
-/        = f.submit "Add New Category", class: "btn btn-default"
-/      hr
-/
-/      h4 style="text-align:center" Requirement Categories
-/      hr
-/
-/      div class="text-center"
-/        div class="btn-group"
-/          button class="btn btn-default" ng-click="flip_category(-10)" Prev
-/            button class="btn btn-default disabled"
-/              | {{ pagenumber }}
-/          button class="btn btn-default" ng-click="flip_category(10)" Next
-/
-/      div class="row" style="height:5px"
-/
-/      div ng-bind-html="return_html | html"
-/
-/    div class="col-xs-8"
-/    div ng-bind-html="subcategory_html | html"
+            table class="table"
+                thead
+                    tr
+                        th #
+                        th Input Type
+                        th Field Name
+                        /Case 1: Selected Number
+                        th ng-if="category.attribute_type=='Number'" Place Holder
+                        th ng-if="category.attribute_type=='Number'" Max Value
+                        th ng-if="category.attribute_type=='Number'" Min Value
+                        /Case 2: Selected Date
+                        th ng-if="category.attribute_type=='Date'" Max Date
+                        th ng-if="category.attribute_type=='Date'" Min Date
+                        /Case 3: Selected Boolean
+                        /Nothing
+                        /Case 4: Selected Input Field
+                        th ng-if="category.attribute_type=='Input Field'" Place Holder
+                        th ng-if="category.attribute_type=='Input Field'" REGEX Expression
+
+                        th Student Attribute
+
+                tbody
+                    /Top Row, Add Category Row
+                    tr
+                        th scope="row"
+                            button type="submit" class="btn btn-default" ng-click="create_subcategory()"
+                                span class="glyphicon glyphicon glyphicon-plus" aria-hidden="true"
+                        td
+                            select class="form-control" ng-model="category.attribute_type"
+                                option value="Number" Number
+                                option value="Date" Date
+                                option value="Boolean" Boolean
+                                option value="Input Field" Input Field
+                        td
+                            input type="text" class="form-control" placeholder="Input Name" ng-model="category.sub_category_name"
+
+                        /Case 1: Select Number
+                        td ng-if="category.attribute_type=='Number'"
+                            input type="number" class="form-control" placeholder="Place Holder"
+                        td ng-if="category.attribute_type=='Number'"
+                            input type="number" class="form-control" placeholder="Max"
+                        td ng-if="category.attribute_type=='Number'"
+                            input type="number" class="form-control" placeholder="Min"
+
+                        /Case 2: Select Date
+                        td ng-if="category.attribute_type=='Date'"
+                            input type="date" class="form-control" placeholder="yyyy-MM-dd"
+                        td ng-if="category.attribute_type=='Date'"
+                            input type="date" class="form-control" placeholder="yyyy-MM-dd"
+
+                        /Case 3: Select Boolean
+                        /Display Nothing
+
+                        /Case 4: Selected Input Field
+                        td ng-if="category.attribute_type=='Input Field'"
+                            input type="number" class="form-control" placeholder="Place Holder"
+                        td ng-if="category.attribute_type=='Input Field'"
+                            input type="number" class="form-control" placeholder="REGEX Expression"
+
+                        td
+                            div ng-if="category.student_attribute == 0"
+                                button type="button" class="btn btn-default" ng-click="category.student_attribute = 1" False
+                            div ng-if="category.student_attribute == 1"
+                                button type="button" class="btn btn-primary" ng-click="category.student_attribute = 0" True
+
+            table class="table"
+                thead
+                    tr
+                        th Category Name
+                        th Attribute Type
+                        th Placeholder
+                        th Max
+                        th Min
+                        th Regex
+                        th Student Attribute
+
+                    tr ng-repeat="subcategory in list_subcategories"
+                        td
+                            p
+                                | {{ subcategory.sub_category_name }}
+                        td
+                            p
+                                | {{ subcategory.attribute_type}}
+                        td
+                            p
+                                | {{ subcategory.placeholder}}
+                        td
+                            p
+                                | {{ subcategory.upper_limit}}
+                        td
+                            p
+                                | {{ subcategory.lower_limit}}
+                        td
+                            p
+                                | {{ subcategory.regex}}
+                        td
+                            p
+                                | {{ subcategory.student_attribute}}
+                        td
+                            button type="button" class="btn btn-default" edit

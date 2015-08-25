@@ -1,0 +1,21 @@
+table class="table table-striped"
+    tr
+        th Project
+        th Professor
+        th Student
+        th Administrator Approved
+        th Actions
+    tr ng-repeat="assignment in assignments"
+        td
+            a ui-sref="current_project.selected_project({id: assignment.project_id})"
+                | {{ assignment.project.title }}
+        td
+            | {{ assignment.professor.name }}
+        td
+            a ui-sref="list_student.selected_student({id: assignment.student.id})"
+                | {{ assignment.student.name }}
+        td
+            | {{ assignment.administrator_approved || 'Pending' }}
+        td
+            button class="btn btn-default" ng-click="processOffer(assignment.id, true)" Accept
+            button class="btn btn-default" ng-click="processOffer(assignment.id, false)" Reject
