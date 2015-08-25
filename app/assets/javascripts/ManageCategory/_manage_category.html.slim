@@ -55,12 +55,34 @@ div ng-controller="ManageCategoryCtrl"
                                 option value="Date" Date
                                 option value="Boolean" Boolean
                                 option value="Input Field" Input Field
-
                         td
-                            input type="text" class="form-control" placeholder="Category Name" ng-model="category.sub_category_name"
+                            input type="text" class="form-control" placeholder="Input Name" ng-model="category.sub_category_name"
 
-                        td
-                            input type="text" class="form-control" placeholder="Place Holder" ng-model="category.placeholder"
+                        /Case 1: Select Number
+                        td ng-if="category.attribute_type=='Number'"
+                            input type="number" class="form-control" placeholder="Place Holder"
+                        td ng-if="category.attribute_type=='Number'"
+                            input type="number" class="form-control" placeholder="Max"
+                        td ng-if="category.attribute_type=='Number'"
+                            input type="number" class="form-control" placeholder="Min"
+
+                        /Case 2: Select Date
+                        td ng-if="category.attribute_type=='Date'"
+                            input type="date" class="form-control" placeholder="yyyy-MM-dd"
+                        td ng-if="category.attribute_type=='Date'"
+                            input type="date" class="form-control" placeholder="yyyy-MM-dd"
+                        td ng-if="category.attribute_type=='Date'"
+                            input type="date" class="form-control" placeholder="yyyy-MM-dd"
+
+                        /Case 3: Select Boolean
+                        /Display Nothing
+
+                        /Case 4: Selected Input Field
+                        td ng-if="category.attribute_type=='Input Field'"
+                            input type="number" class="form-control" placeholder="Place Holder"
+                        td ng-if="category.attribute_type=='Input Field'"
+                            input type="number" class="form-control" placeholder="REGEX Expression"
+
                         td
                             div ng-if="category.student_attribute == 0"
                                 button type="button" class="btn btn-default" ng-click="category.student_attribute = 1" False
