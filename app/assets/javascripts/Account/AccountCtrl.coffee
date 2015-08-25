@@ -8,7 +8,7 @@
 # ---------------------------------------------------------
 
 
-AccountFunction = ($scope, $modal, modalService, requestService, User, $state) ->
+AccountFunction = ($scope, $modal, modalService, requestService, User, $state, RequirementSubcategory) ->
         
     $scope.modalService = modalService
 
@@ -24,6 +24,10 @@ AccountFunction = ($scope, $modal, modalService, requestService, User, $state) -
     $scope.user = {}
     $scope.pagenumber = 1
     $scope.categories = null
+    #SubCategory Identication
+    $scope.subcateogories = null
+    $scope.selected_category = null
+    $scope.current_category_id = null
 
     # --- Get User ---
 
@@ -45,6 +49,17 @@ AccountFunction = ($scope, $modal, modalService, requestService, User, $state) -
 
     $scope.updateProject = ->
         $state.go('update_project', {id: 1})
+    
+    # --- Grab SubCategories ---
+
+    $scope.loadSubcategories = (id)->
+        console.log($scope.categories)
+        payload =
+            target_id: id
+        $scope.current_category_id = id
+
+        RequirementSubcategory.getAllOfCategory(payload).success((data) ->
+            $scope.subcateogories = data)
 
     # --- Settings Navigation --- 
 
@@ -74,4 +89,4 @@ AccountFunction = ($scope, $modal, modalService, requestService, User, $state) -
     $scope.flip(0)
 
 angular.module('dcsupp').controller('AccountCtrl', ['$scope',
-    '$modal', 'modalService', 'requestService', 'User', '$state', AccountFunction])
+    '$modal', 'modalService', 'requestService', 'User', '$state', 'RequirementSubcategory', AccountFunction])

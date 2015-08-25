@@ -1,3 +1,13 @@
+
+# ---------------------------------------------------------
+# Page 5: Manage Cateogires Page
+#
+# This is the manage catogories page for the DCSUPP. Admins
+# can dynamically add new project/ student categories which
+# students can dynamically change their settings.
+# ---------------------------------------------------------
+
+
 controllerFunction = ($scope, RequirementCategory, RequirementSubcategory) ->
 
     #$scope.modalService = modalService

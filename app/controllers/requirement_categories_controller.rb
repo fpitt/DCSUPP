@@ -38,7 +38,7 @@ class RequirementCategoriesController < ApplicationController
 
 	def flip_students
 		@student_attributes = RequirementCategory.find_by_sql(
-			"SELECT DISTINCT requirement_categories.category_name 
+			"SELECT DISTINCT requirement_categories.category_name, requirement_categories.id
 				FROM requirement_categories
 				WHERE ID in (SELECT requirement_category_id
 							FROM requirement_subcategories
@@ -56,8 +56,13 @@ class RequirementCategoriesController < ApplicationController
 	      	    if current_offset + direction < attribute_length && current_offset + direction >= 0
                     offset = current_offset + direction
                     offset_10 = offset + 10
-                    @projects = @student_attributes[offset..offset_10]
-                    render :json => @projects
+                    @attributes = @student_attributes[offset..offset_10]
+
+                    @attributes.each do |attribute|
+                    	puts attribute.id
+                    end
+
+                    render :json => @attributes
                 else 
                     render :nothing => true, :status => 200, :content_type => 'text/html'
                 end

@@ -1,3 +1,14 @@
+
+# ---------------------------------------------------------
+# Service Function Calls: Requirement Subcategories
+#
+# These are the server function calls for the requirement
+# subcategories. We define the method, url and payload
+# as services and call these methods using controller
+# functions in the various folders.
+# ---------------------------------------------------------
+
+
 ServiceFunction = (requestService) ->
 
     create: (payload) ->
