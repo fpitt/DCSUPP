@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
   attr_accessible :name
 
   has_many :project_applications
+
+  has_many :ratings
   
   has_one :student_setting
 
