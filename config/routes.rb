@@ -21,16 +21,16 @@ Rails.application.routes.draw do
     post "/get_professor_by_name" => 'users#get_professor_by_name'
 
     #Requirement Categories Routes
-    post '/flip_direction', to: 'requirement_categories#flip_direction'
-    post '/get_categories', to: 'requirement_categories#getcategories'
-    post '/get_subcategories', to: 'requirement_categories#subcategories'
-    post '/flip_student_settings', to: 'requirement_categories#flip_students'
+    post '/flip_direction' => 'requirement_categories#flip_direction'
+    post '/get_categories' => 'requirement_categories#getcategories'
+    post '/get_subcategories' => 'requirement_categories#subcategories'
+    post '/flip_student_settings' => 'requirement_categories#flip_students'
 
     #Student Attributes Routes
-    post '/get_attribute_by_user_and_subcategory', to: 'student_attributes#get_attribute_by_user_and_subcategory'
+    post '/get_attribute_by_user_and_subcategory' => 'student_attributes#get_attribute_by_user_and_subcategory'
 
     #Projects Routes
-    post '/flip_project_direction', to: 'projects#grab_project'
+    post '/flip_project_direction' => 'projects#grab_project'
     post "/get_projects_of_user" => 'projects#get_projects_of_user'
     post "/flip_in_progress_direction" => 'projects#grab_in_progress_project'
     post "/flip_completed_direction" => 'projects#grab_completed_project'
@@ -57,6 +57,6 @@ Rails.application.routes.draw do
     post "/process_reference_approval" => 'references#process_reference_approval'
     post "/add_professor_reference_text" => 'references#add_professor_reference_text'
 
-
+    #URL Routing Path
     get "/*path" => redirect("/?goto=%{path}")
 end
