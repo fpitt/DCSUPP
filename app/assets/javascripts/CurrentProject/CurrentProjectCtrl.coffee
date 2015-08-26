@@ -7,7 +7,7 @@
 # includes the requirements students will need to access.
 # ---------------------------------------------------------
 
-controllerFunction = ($scope, requestService, $modal, modalService) ->
+controllerFunction = ($scope, modalService, Project) ->
 
 	$scope.modalService = modalService
 	$scope.projects = null
@@ -66,4 +66,4 @@ controllerFunction = ($scope, requestService, $modal, modalService) ->
 
 angular
 .module('dcsupp')
-.controller('CurrentProjectCtrl', ['$scope',  '$modal', 'modalService', 'Project', controllerFunction])
+.controller('CurrentProjectCtrl', ['$scope', 'modalService', 'Project', controllerFunction])

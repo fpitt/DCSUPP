@@ -43,6 +43,8 @@ Rails.application.routes.draw do
     post "/get_reference_requests_of_professor" => 'references#get_reference_requests_of_professor'
     post "/process_reference_approval" => 'references#process_reference_approval'
     post "/add_professor_reference_text" => 'references#add_professor_reference_text'
+    post "/get_by_project_application" => 'references#get_by_project_application'
+    post "/get_student_approved_by_project_application" => 'references#get_student_approved_by_project_application'
 
 
     get "/*path" => redirect("/?goto=%{path}")

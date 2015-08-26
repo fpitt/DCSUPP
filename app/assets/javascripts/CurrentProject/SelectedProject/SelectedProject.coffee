@@ -5,4 +5,4 @@ angular.module('dcsupp').config ($stateProvider) ->
         controller: 'SelectedProjectCtrl'
         data:
             permissions:
-                except: ['anonymous']
+                only: ['professor', 'student', 'administrator']

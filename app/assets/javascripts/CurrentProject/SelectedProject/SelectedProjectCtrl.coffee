@@ -6,7 +6,7 @@ controllerFunction = ($scope, $stateParams, Project, ProjectRequirement, Require
     $scope.setCompleted = ->
         payload = project: $stateParams.id
         Project.setCompleted(payload).success((projectInfo) ->
-            $scope.loadProject()
+            $scope.getProject()
         )
 
     $scope.getProject = ->
