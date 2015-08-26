@@ -24,7 +24,7 @@ class ReferencesController < ApplicationController
             format.json {
                 param = params[:payload]
 
-                @reference = Reference.where(:project_application_id, param[:projectApplication])
+                @reference = Reference.where(:project_application_id => param[:projectApplication])
 
                 if @reference
                     render :json => @reference
@@ -40,7 +40,7 @@ class ReferencesController < ApplicationController
             format.json {
                 param = params[:payload]
 
-                @reference = Reference.where(:project_application_id, param[:projectApplication])
+                @reference = Reference.where(:project_application_id => param[:projectApplication])
 
                 if @reference
                     render :json => @reference
@@ -96,6 +96,7 @@ class ReferencesController < ApplicationController
                 if @reference
                     @reference.update_attribute(:professor_text, param[:professorText])
                     @reference.save
+
 
                     render :json => @reference
                 else

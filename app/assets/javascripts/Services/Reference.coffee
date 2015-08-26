@@ -10,6 +10,7 @@ ServiceFunction = (requestService) ->
         sendParams =
             url: '/get_reference_requests_of_professor.json'
             method: 'POST'
+
         return requestService.service(sendParams)
 
     processReferenceApproval: (payload) ->

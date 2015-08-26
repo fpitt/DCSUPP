@@ -35,7 +35,6 @@ controllerFunction = ($scope, $stateParams, ProjectApplication, ProjectRequireme
                 )
         )
 
-
     $scope.processOffer = (approved) ->
         payload =
             approved: approved,
@@ -60,7 +59,7 @@ controllerFunction = ($scope, $stateParams, ProjectApplication, ProjectRequireme
         Reference.getStudentApprovedByProjectApplication(payload).success((data) ->
             $scope.studentApprovedReferences = data
 
-            for reference in $scope.allReferences
+            for reference in $scope.studentApprovedReferences
                 User.getById(reference.user_id).success((data) ->
                     reference.professor = data;
                 )
