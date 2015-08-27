@@ -89,9 +89,9 @@ div ng-controller="ManageCategoryCtrl"
 
                         /Case 4: Selected Input Field
                         td ng-if="category.attribute_type=='Input Field'"
-                            input type="number" class="form-control" placeholder="Place Holder" ng-model="category.input_placeholder"
+                            input type="text" class="form-control" placeholder="Place Holder" ng-model="category.input_placeholder"
                         td ng-if="category.attribute_type=='Input Field'"
-                            input type="number" class="form-control" placeholder="REGEX Expression" ng-model="category.regex"
+                            input type="text" class="form-control" placeholder="REGEX Expression" ng-model="category.regex"
 
                         td
                             div ng-if="category.student_attribute == 0"

@@ -60,6 +60,17 @@ AccountFunction = ($scope, $modal, modalService, requestService, User, $state, R
         RequirementSubcategory.getAllOfCategory(payload).success((data) ->
             $scope.subcateogories = data)
 
+    # --- Submit Student Attribute
+
+    ###
+    $scope.submit = () ->
+        value = null
+        payload =
+            url: '/student_attributes.json'
+            value: value
+
+    ###
+
     # --- Settings Navigation --- 
 
     $scope.flip = (pushDirection) ->
