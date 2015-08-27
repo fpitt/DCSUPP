@@ -7,12 +7,14 @@
 # includes the requirements students will need to access.
 # ---------------------------------------------------------
 
-controllerFunction = ($scope, modalService, Project) ->
+controllerFunction = ($scope, modalService, Project, RequirementSubcategory) ->
 
 	$scope.modalService = modalService
 	$scope.projects = null
 	$scope.direction = 0
 	$scope.filter = 'In progress'
+	$scope.subcategories = []
+	$scope.requirements = []
 
 	$scope.items = [
 		'item1'
@@ -58,12 +60,22 @@ controllerFunction = ($scope, modalService, Project) ->
 				$scope.pagenumber.current = $scope.pagenumber.inProgress
 		)
 
+	$scope.loadSubcategories = () ->
+		RequirementSubcategory.getAll().success((data) ->
+			for item in data
+				$scope.subcategories.push({name: item.sub_category_name, id: item.id})
+		)
+
+	$scope.loadTags = () ->
+		return $scope.subcategories
+
 	# --- JQuery Initialization Code ---
 
 	$('[data-toggle="tooltip"]').tooltip()
 	$scope.flipInProgress(10)
+	$scope.loadSubcategories()
 
 
 angular
 .module('dcsupp')
-.controller('CurrentProjectCtrl', ['$scope', 'modalService', 'Project', controllerFunction])
+.controller('CurrentProjectCtrl', ['$scope', 'modalService', 'Project', 'RequirementSubcategory', controllerFunction])

@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     resources :references, only: [:create]
     resources :ratings, only: [:create]
     resources :student_attributes, only: [:create, :destroy, :show]
-    
+
     root to: "application#introduction"
 
     #User Routes
