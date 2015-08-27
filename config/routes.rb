@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :requirement_subcategories, only: [:create, :update, :destroy, :show]
     resources :project_applications, only: [:create, :update, :destroy, :show]
     resources :references, only: [:create]
+    resources :ratings, only: [:create]
 
     root to: "application#introduction"
 
