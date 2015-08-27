@@ -10,20 +10,32 @@
 
 controllerFunction = ($scope, RequirementCategory, RequirementSubcategory) ->
 
-    #$scope.modalService = modalService
+    #$scope.modalService = modalSDaervice
 
     # --- Page Variables ----
 
     $scope.pagenumber = 1
     $scope.direction = 0
+    #Store Category List
     $scope.categories = null
     $scope.list_subcategories = null
+    #Category Identification
     $scope.category_name = ""
     $scope.current_category_id = -1
     $scope.category =
+        #Global Category Name
         sub_category_name: ""
         attribute_type: "Number"
-        placeholder: ""
+        #Case 1: Select Number
+        number_placerholder: ""
+        number_max: 0
+        number_min: 0
+        #Case 2: Select Date
+        maxDate: "yyyy-MM-dd"
+        minDate: "yyyy-MM-dd"
+        #Case 4: Select Input
+        regex: ""
+        input_placeholder: ""
         student_attribute: 0
 
     # --- Create SubCategory ---
@@ -39,9 +51,19 @@ controllerFunction = ($scope, RequirementCategory, RequirementSubcategory) ->
 
         RequirementSubcategory.create(payload).success((data) ->
             categoryDefault =
+                #Global Category Name
                 sub_category_name: ""
                 attribute_type: "Number"
-                placeholder: ""
+                #Case 1: Select Number
+                number_placerholder: ""
+                number_max: 0
+                number_min: 0
+                #Case 2: Select Date
+                maxDate: "yyyy-MM-dd"
+                minDate: "yyyy-MM-dd"
+                #Case 4: Select Input
+                regex: ""
+                input_placeholder: ""
                 student_attribute: 0
             $scope.category = angular.copy(categoryDefault)
             $scope.loadSubcategories($scope.current_category_id))
