@@ -7,6 +7,6 @@ class RequirementSubcategory < ActiveRecord::Base
 
 	validates :sub_category_name, presence: true, allow_blank: false, uniqueness: true
 	
-	attr_accessible :sub_category_name, :attribute_type, :placeholder, :student_attribute
+	attr_accessible :sub_category_name, :attribute_type, :placeholder, :student_attribute, :upper_limit, :lower_limit, :regex
 	
 end

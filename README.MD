@@ -38,8 +38,8 @@ unnecessary attribute entries.
 ### 3. Contacts
 
 * Online Demo Link: <http://dry-forest-3722.herokuapp.com/>
-* Lead Developer: Alan Yuan <alan.yuan@mail.utoronto.ca>
-* Faculty Supervisor: François Pitt <fpitt@cs.utoronto.ca>
+* Developer Contact: Alan Yuan <alan[dot]yuan[at]mail[dot]utoronto[dot]ca>
+* Faculty Supervisor: François Pitt <fpitt[at]cs[dot]utoronto[dot]ca>
 
 ### 4. Framework Overview
 
@@ -52,4 +52,4 @@ such wonderful frameworks and libraries.
 
 The project is supervised by Professor François Pitt.
 
-The Lead developer for this project is Alan Yuan.
+Developers: Alan Yuan, Christina Chung

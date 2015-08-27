@@ -41,11 +41,30 @@ controllerFunction = ($scope, RequirementCategory, RequirementSubcategory) ->
     # --- Create SubCategory ---
 
     $scope.create_subcategory = ->
+        #The Input Categories will be arranged Client-Sides
+        input_upper_limit = null
+        input_lower_limit = null
+        input_placeholder = null
+        console.log($scope.category.attribute_type)
+        #Set the Client-Side Attributes
+        if ($scope.category.attribute_type == "Number")
+            input_upper_limit = $scope.category.number_max
+            input_lower_limit = $scope.category.number_min
+            input_placeholder = $scope.category.number_placeholder
+        else if ($scope.category.attribute_type == "Date")
+            input_upper_limit = $scope.category.maxDate
+            input_lower_limit = $scope.category.minDate
+        else if ($scope.category.attribute_type == "Input Field")
+            input_placeholder = $scope.category.input_placeholder
+
         payload =
             subcategory:
                 sub_category_name: $scope.category.sub_category_name
                 attribute_type: $scope.category.attribute_type
-                placeholder: $scope.category.placeholder
+                upper_limit: input_upper_limit
+                lower_limit: input_lower_limit
+                regex: $scope.category.regex
+                placeholder: input_placeholder
                 student_attribute: $scope.category.student_attribute
             target_id: $scope.current_category_id
 
@@ -66,6 +85,7 @@ controllerFunction = ($scope, RequirementCategory, RequirementSubcategory) ->
                 input_placeholder: ""
                 student_attribute: 0
             $scope.category = angular.copy(categoryDefault)
+            #Reset the Default category
             $scope.loadSubcategories($scope.current_category_id))
 
     # --- Get SubCategory ---
