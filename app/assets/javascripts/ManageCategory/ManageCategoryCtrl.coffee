@@ -27,7 +27,7 @@ controllerFunction = ($scope, RequirementCategory, RequirementSubcategory) ->
         sub_category_name: ""
         attribute_type: "Number"
         #Case 1: Select Number
-        number_placerholder: ""
+        number_placeholder: ""
         number_max: 0
         number_min: 0
         #Case 2: Select Date
@@ -37,6 +37,34 @@ controllerFunction = ($scope, RequirementCategory, RequirementSubcategory) ->
         regex: ""
         input_placeholder: ""
         student_attribute: 0
+    #Edit Subcategory
+    $scope.edit_category = null
+    #Global Empty => Empty Category used to reset the Input/ Edit Models
+    $scope.GlobalDefault =
+        #Global Category Name
+        sub_category_name: ""
+        attribute_type: "Number"
+        #Case 1: Select Number
+        number_placeholder: ""
+        number_max: 0
+        number_min: 0
+        #Case 2: Select Date
+        maxDate: "yyyy-MM-dd"
+        minDate: "yyyy-MM-dd"
+        #Case 4: Select Input
+        regex: ""
+        input_placeholder: ""
+        student_attribute: 0
+
+    # --- Edit SubCategory ---
+
+    $scope.edit = (subcategory) ->
+        $scope.edit_category = subcategory
+
+    # --- Update SubCategory ---
+
+    $scope.update = ->
+        $scope.edit_category = null
 
     # --- Create SubCategory ---
 
@@ -69,22 +97,7 @@ controllerFunction = ($scope, RequirementCategory, RequirementSubcategory) ->
             target_id: $scope.current_category_id
 
         RequirementSubcategory.create(payload).success((data) ->
-            categoryDefault =
-                #Global Category Name
-                sub_category_name: ""
-                attribute_type: "Number"
-                #Case 1: Select Number
-                number_placerholder: ""
-                number_max: 0
-                number_min: 0
-                #Case 2: Select Date
-                maxDate: "yyyy-MM-dd"
-                minDate: "yyyy-MM-dd"
-                #Case 4: Select Input
-                regex: ""
-                input_placeholder: ""
-                student_attribute: 0
-            $scope.category = angular.copy(categoryDefault)
+            $scope.category = angular.copy($scope.GlobalDefault)
             #Reset the Default category
             $scope.loadSubcategories($scope.current_category_id))
 
