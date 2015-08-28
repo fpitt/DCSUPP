@@ -113,7 +113,7 @@ div ng-controller="ManageCategoryCtrl"
                     tr ng-repeat="subcategory in list_subcategories"
                         /Edit the SubCategory
                         td ng-if="edit_category.id==subcategory.id"
-                            input type="text" class="form-control" placeholder="{{subcategory.sub_category_name}}" ng-model="edit_input.input_placeholder"
+                            input type="text" class="form-control" placeholder="{{subcategory.sub_category_name}}" ng-model="edit_category.input_placeholder"
 
                         td ng-if="edit_category.id==subcategory.id"
                             select class="form-control" ng-model="edit_category.attribute_type"
@@ -124,10 +124,10 @@ div ng-controller="ManageCategoryCtrl"
 
                         /Input Field
                         td ng-if="edit_category.id==subcategory.id && subcategory.attribute_type=='Number'"
-                            input type="text" class="form-control" placeholder="{{subcategory.placeholder}}" ng-model="edit_input.number_placeholder"                            
+                            input type="text" class="form-control" placeholder="{{subcategory.placeholder}}" ng-model="edit_category.number_placeholder"                            
 
                         td ng-if="edit_category.id==subcategory.id && subcategory.attribute_type=='Input Field'"
-                            input type="text" class="form-control" placeholder="{{subcategory.placeholder}}" ng-model="edit_input.input_placeholder"
+                            input type="text" class="form-control" placeholder="{{subcategory.placeholder}}" ng-model="edit_category.input_placeholder"
 
                         /Input Field [Empty]
                         td ng-if="edit_category.id==subcategory.id && subcategory.attribute_type=='Date'"
@@ -137,10 +137,10 @@ div ng-controller="ManageCategoryCtrl"
 
                         /Input Max
                         td ng-if="edit_category.id==subcategory.id && subcategory.attribute_type=='Date'"
-                            input type="date" class="form-control" placeholder="{{subcategory.maxDate}}" ng-model="edit_input.maxDate"                            
+                            input type="date" class="form-control" placeholder="{{subcategory.maxDate}}" ng-model="edit_category.maxDate"                            
 
                         td ng-if="edit_category.id==subcategory.id && subcategory.attribute_type=='Number'"
-                            input type="number" class="form-control" placeholder="{{subcategory.number_max}}" ng-model="edit_input.number_max"
+                            input type="number" class="form-control" placeholder="{{subcategory.number_max}}" ng-model="edit_category.number_max"
 
                         td ng-if="edit_category.id==subcategory.id && subcategory.attribute_type=='Input Field'"
                             p 
@@ -149,10 +149,10 @@ div ng-controller="ManageCategoryCtrl"
 
                         /Input Min                     
                         td ng-if="edit_category.id==subcategory.id && subcategory.attribute_type=='Date'"
-                            input type="date" class="form-control" placeholder="{{subcategory.minDate}}" ng-model="edit_input.minDate"                            
+                            input type="date" class="form-control" placeholder="{{subcategory.minDate}}" ng-model="edit_category.minDate"                            
 
                         td ng-if="edit_category.id==subcategory.id && subcategory.attribute_type=='Number'"
-                            input type="number" class="form-control" placeholder="{{subcategory.number_min}}" ng-model="edit_input.number_min"
+                            input type="number" class="form-control" placeholder="{{subcategory.number_min}}" ng-model="edit_category.number_min"
 
                         td ng-if="edit_category.id==subcategory.id && subcategory.attribute_type=='Input Field'"
                             p 
@@ -161,7 +161,7 @@ div ng-controller="ManageCategoryCtrl"
 
                         /Input Regex
                         td ng-if="edit_category.id==subcategory.id && subcategory.attribute_type=='Input Field'"
-                            input type="number" class="form-control" placeholder="{{subcategory.regex}}" ng-model="edit_input.regex"
+                            input type="number" class="form-control" placeholder="{{subcategory.regex}}" ng-model="edit_category.regex"
 
                         td ng-if="edit_category.id==subcategory.id && subcategory.attribute_type=='Number'"
                             p 

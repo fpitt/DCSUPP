@@ -39,21 +39,6 @@ controllerFunction = ($scope, RequirementCategory, RequirementSubcategory) ->
         student_attribute: 0
     #Edit Subcategory
     $scope.edit_category = null
-    $scope.edit_input =
-        #Global Category Name
-        sub_category_name: ""
-        attribute_type: "Number"
-        #Case 1: Select Number
-        number_placeholder: ""
-        number_max: 0
-        number_min: 0
-        #Case 2: Select Date
-        maxDate: "yyyy-MM-dd"
-        minDate: "yyyy-MM-dd"
-        #Case 4: Select Input
-        regex: ""
-        input_placeholder: ""
-        student_attribute: 0
     #Global Empty => Empty Category used to reset the Input/ Edit Models
     $scope.GlobalDefault =
         #Global Category Name
@@ -75,13 +60,11 @@ controllerFunction = ($scope, RequirementCategory, RequirementSubcategory) ->
 
     $scope.edit = (subcategory) ->
         $scope.edit_category = subcategory
-        $scope.edit_input = angular.copy($scope.GlobalDefault)
 
     # --- Update SubCategory ---
 
     $scope.update = ->
         $scope.edit_category = null
-        $scope.edit_input = angular.copy($scope.GlobalDefault)
 
     # --- Create SubCategory ---
 
