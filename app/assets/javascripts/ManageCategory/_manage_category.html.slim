@@ -116,7 +116,7 @@ div ng-controller="ManageCategoryCtrl"
                             input type="text" class="form-control" placeholder="{{subcategory.sub_category_name}}" ng-model="edit_input.input_placeholder"
 
                         td ng-if="edit_category.id==subcategory.id"
-                            select class="form-control" ng-model="edit_input.attribute_type"
+                            select class="form-control" ng-model="edit_category.attribute_type"
                                 option value="Number" Number
                                 option value="Date" Date
                                 option value="Boolean" Boolean
