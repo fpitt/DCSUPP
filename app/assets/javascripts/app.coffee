@@ -76,6 +76,6 @@ runFunction = (Permission, User, $q) ->
 
 
 angular
-	.module('dcsupp', ['ui.bootstrap', 'ui.router', 'templates', 'permission', 'ngTagsInput'])
+	.module('dcsupp', ['ui.bootstrap', 'ui.router', 'templates', 'permission', 'ngTagsInput', 'ngFileUpload'])
 	.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', configFunction])
 	.run(runFunction)
