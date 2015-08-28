@@ -15,4 +15,4 @@ ServiceFunction = (requestService) ->
 
 angular
 .module('dcsupp')
-.service('Reference', ServiceFunction)
+.service('Rating', ServiceFunction)

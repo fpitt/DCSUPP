@@ -29,7 +29,10 @@ h3 Ratings
 table class="table"
     tr ng-repeat="rating in ratings"
         td
-            | {{ rating }}
+            rating ng-model="rating.rating" max="5" readonly="true"
+            br
+            | {{ rating.comment }}
 
-div access="administrator" restrict=""
-    h3 Applications
+
+div access="administrator professor" restrict=""
+    button class="btn btn-default" ui-sref="list_student.rate_student({id: user.id})" Rate This Student

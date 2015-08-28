@@ -1,17 +1,26 @@
+link href="/assets/ng-tags-input/ng-tags-input.min.css" rel="stylesheet" type="text/css"
+
+
 div class="row"
     div class="col-xs-4"
+
+
         div class="text-center"
             h3 Current Projects
 
-            .btn-group dropdown="" is-open="status.isopen"
-                button#single-button.btn.btn-primary dropdown-toggle="" ng-disabled="disabled" type="button"
-                    | {{ filter }}
-                    span.caret
-                ul.dropdown-menu aria-labelledby="single-button" role="menu"
-                    li role="menuitem"
-                        a ng-click="pagenumber.inProgress = 0;filter = 'In progress';flipInProgress(10)" In progress
-                    li role="menuitem"
-                        a ng-click="pagenumber.completed = 0;filter = 'Completed';flipCompleted(10)" Completed
+            /.btn-group dropdown="" is-open="status.isopen"
+            /    button#single-button.btn.btn-primary dropdown-toggle="" ng-disabled="disabled" type="button"
+            /        | {{ filter }}
+            /        span.caret
+            /    ul.dropdown-menu aria-labelledby="single-button" role="menu"
+            /        li role="menuitem"
+            /            a ng-click="pagenumber.inProgress = 0;filter = 'In progress';flipInProgress(10)" In progress
+            /        li role="menuitem"
+            /            a ng-click="pagenumber.completed = 0;filter = 'Completed';flipCompleted(10)" Completed
+            tags-input class="bootstrap" ng-model="requirements" display_property="name"
+                auto-complete source="loadTags()"
+            span E.g. 'CSC148 Grade', 'Volunteer', 'Resume', 'Unofficial transcript', etc.
+
 
         br
 

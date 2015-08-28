@@ -30,7 +30,7 @@ controllerFunction = ($scope, requestService, $stateParams, Rating) ->
     $scope.getRatings = () ->
         payload =
             student : $stateParams.id
-        Rating.getStudentRatings(payload).success((data) ->
+        Rating.getRatingsOfStudent(payload).success((data) ->
             $scope.ratings  = data
         )
 
