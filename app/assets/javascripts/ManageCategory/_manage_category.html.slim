@@ -111,26 +111,34 @@ div ng-controller="ManageCategoryCtrl"
                         th Student Attribute
 
                     tr ng-repeat="subcategory in list_subcategories"
-                        td
+                        td ng-if="edit_id==subcategory.id"
+                            p
+
+                        td ng-if="edit_id==subcategory.id"
+                            button type="button" class="btn btn-default" ng-click="update()" Update
+
+                        /Display the Normal Category
+                        td ng-if="!(edit_id==subcategory.id)"
                             p
                                 | {{ subcategory.sub_category_name }}
-                        td
+                        td ng-if="!(edit_id==subcategory.id)"
                             p
                                 | {{ subcategory.attribute_type}}
-                        td
+                        td ng-if="!(edit_id==subcategory.id)"
                             p
                                 | {{ subcategory.placeholder}}
-                        td
+                        td ng-if="!(edit_id==subcategory.id)"
                             p
                                 | {{ subcategory.upper_limit}}
-                        td
+                        td ng-if="!(edit_id==subcategory.id)"
                             p
                                 | {{ subcategory.lower_limit}}
-                        td
+                        td ng-if="!(edit_id==subcategory.id)"
                             p
                                 | {{ subcategory.regex}}
-                        td
+                        td ng-if="!(edit_id==subcategory.id)"
                             p
                                 | {{ subcategory.student_attribute}}
-                        td
-                            button type="button" class="btn btn-default" edit
+                        td ng-if="!(edit_id==subcategory.id)"
+                            button type="button" class="btn btn-default" ng-click="edit(subcategory)" Edit
+

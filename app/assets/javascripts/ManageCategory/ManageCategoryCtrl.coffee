@@ -37,6 +37,21 @@ controllerFunction = ($scope, RequirementCategory, RequirementSubcategory) ->
         regex: ""
         input_placeholder: ""
         student_attribute: 0
+    #Edit Subcategory
+    $scope.edit_id = null
+    $scope.edit_type = null
+    
+    # --- Edit SubCategory ---
+
+    $scope.edit = (subcategory) ->
+        $scope.edit_id = subcategory.id
+        $scope.edit_type = subcategory.attribute_type
+
+    # --- Update SubCategory ---
+
+    $scope.update = ->
+        $scope.edit_id = null
+        $scope.edit_type = null
 
     # --- Create SubCategory ---
 
