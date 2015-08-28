@@ -1,4 +1,4 @@
-controllerFunction = ($scope, requestService, modalService, $stateParams) ->
+controllerFunction = ($scope, requestService, modalService, $stateParams, Reference) ->
 
     $scope.modalService = modalService
 
@@ -16,9 +16,9 @@ controllerFunction = ($scope, requestService, modalService, $stateParams) ->
         requestService.service($scope.sendParams).success((data) ->
             $scope.applications = data)
 
-
     $scope.getProjectApplications()
+
 
 angular
 .module('dcsupp')
-.controller('YourApplicationsCtrl', ['$scope', 'requestService', 'modalService', '$stateParams', controllerFunction])
+.controller('YourApplicationsCtrl', ['$scope', 'requestService', 'modalService', '$stateParams', 'Reference', controllerFunction])

@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     resources :requirement_subcategories, only: [:create, :update, :destroy, :show]
     resources :project_applications, only: [:create, :update, :destroy, :show]
     resources :references, only: [:create]
+    resources :ratings, only: [:create]
+    resources :student_attributes, only: [:create, :destroy, :show]
 
     root to: "application#introduction"
 
@@ -56,6 +58,13 @@ Rails.application.routes.draw do
     post "/get_reference_requests_of_professor" => 'references#get_reference_requests_of_professor'
     post "/process_reference_approval" => 'references#process_reference_approval'
     post "/add_professor_reference_text" => 'references#add_professor_reference_text'
+    post "/get_by_project_application" => 'references#get_by_project_application'
+    post "/get_student_approved_by_project_application" => 'references#get_student_approved_by_project_application'
+
+    #Ratings Routes
+    post "/get_ratings_of_student" => 'ratings#get_ratings_of_student'
+
+
 
     #URL Routing Path
     get "/*path" => redirect("/?goto=%{path}")

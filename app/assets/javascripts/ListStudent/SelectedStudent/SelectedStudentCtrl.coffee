@@ -1,4 +1,4 @@
-controllerFunction = ($scope, requestService, $stateParams) ->
+controllerFunction = ($scope, requestService, $stateParams, Rating) ->
     $scope.sendParams =
         url: '/users/' + $stateParams.id + '.json'
         method: 'GET'
@@ -27,8 +27,25 @@ controllerFunction = ($scope, requestService, $stateParams) ->
             $scope.getStudent())
         return
 
+    $scope.getRatings = () ->
+        payload =
+            student : $stateParams.id
+        Rating.getRatingsOfStudent(payload).success((data) ->
+            $scope.ratings  = data
+        )
+
+#    $scope.addRating = () ->
+#        payload =
+#            student : $stateParams.id
+#            rating : $scope.rating
+#        Rating.create(payload).success((dat) ->
+#            $scope.getRatings
+#        )
+
     $scope.getUser();
+    $scope.getRatings();
+
 
 angular
 .module('dcsupp')
-.controller('SelectedStudentCtrl', ['$scope', 'requestService', '$stateParams', controllerFunction])
+.controller('SelectedStudentCtrl', ['$scope', 'requestService', '$stateParams', 'Rating', controllerFunction])

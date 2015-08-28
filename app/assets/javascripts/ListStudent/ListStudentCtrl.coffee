@@ -1,4 +1,4 @@
-ListStudentFunction = ($scope, $modal, modalService, requestService) ->
+ListStudentFunction = ($scope, $modal, modalService, requestService, RequirementSubcategory) ->
         
     $scope.modalService = modalService
     
@@ -7,6 +7,9 @@ ListStudentFunction = ($scope, $modal, modalService, requestService) ->
     $scope.direction = 0
     $scope.students = null
     $scope.pagenumber = 1
+    $scope.requirements = []
+    $scope.subcategories = []
+
 
     $scope.items = [
         'item1'
@@ -38,11 +41,24 @@ ListStudentFunction = ($scope, $modal, modalService, requestService) ->
             else
                 $scope.pagenumber = 1
 
+    $scope.loadSubcategories = () ->
+        RequirementSubcategory.getAll().success((data) ->
+            for item in data
+                $scope.subcategories.push({name: item.sub_category_name, id: item.id})
+        )
+
+    $scope.loadTags = () ->
+        return $scope.subcategories
+
+
+
+
     # --- JQuery Initialization Code --- 
     $('[data-toggle="tooltip"]').tooltip()
     $scope.flip(0)
+    $scope.loadSubcategories()
 
 angular
     .module('dcsupp')
-    .controller('ListStudentCtrl', ['$scope', '$modal', 'modalService', 'requestService', ListStudentFunction])
+    .controller('ListStudentCtrl', ['$scope', '$modal', 'modalService', 'requestService', 'RequirementSubcategory', ListStudentFunction])
     

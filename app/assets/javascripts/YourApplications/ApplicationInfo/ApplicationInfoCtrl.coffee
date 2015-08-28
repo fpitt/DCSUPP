@@ -1,5 +1,4 @@
-controllerFunction = ($scope, $stateParams, ProjectApplication, ProjectRequirement, RequirementSubcategory, StudentAttribute, Project) ->
-
+controllerFunction = ($scope, $stateParams, ProjectApplication, ProjectRequirement, RequirementSubcategory, StudentAttribute, Project, Reference, User) ->
 
 
     $scope.loadApplicationInfo = ->
@@ -24,6 +23,17 @@ controllerFunction = ($scope, $stateParams, ProjectApplication, ProjectRequireme
             )
         )
 
+    $scope.getAllReferences = () ->
+        payload =
+            projectApplication : $stateParams.id
+        Reference.getByProjectApplication(payload).success((data) ->
+            $scope.allReferences = data
+
+            for reference in $scope.allReferences
+                User.getById(reference.user_id).success((data) ->
+                    reference.professor = data;
+                )
+        )
 
     $scope.processOffer = (approved) ->
         payload =
@@ -35,12 +45,32 @@ controllerFunction = ($scope, $stateParams, ProjectApplication, ProjectRequireme
             $scope.loadApplicationInfo()
         )
 
+    $scope.processReferenceApproval = (reference, val) ->
+        payload =
+            id: reference.id
+            approved: val
+        Reference.processReferenceApproval(payload).success((data) ->
+            $scope.getAllReferences()
+        )
+
+    $scope.getStudentApprovedReferences = () ->
+        payload =
+            projectApplication : $stateParams.id
+        Reference.getStudentApprovedByProjectApplication(payload).success((data) ->
+            $scope.studentApprovedReferences = data
+
+            for reference in $scope.studentApprovedReferences
+                User.getById(reference.user_id).success((data) ->
+                    reference.professor = data;
+                )
+        )
+
 
     $scope.loadApplicationInfo()
-
-
+    $scope.getAllReferences()
+    $scope.getStudentApprovedReferences()
 
 
 angular
 .module('dcsupp')
-.controller('ApplicationInfoCtrl', ['$scope', '$stateParams', 'ProjectApplication', 'ProjectRequirement', 'RequirementSubcategory', 'StudentAttribute', 'Project', controllerFunction])
+.controller('ApplicationInfoCtrl', ['$scope', '$stateParams', 'ProjectApplication', 'ProjectRequirement', 'RequirementSubcategory', 'StudentAttribute', 'Project', 'Reference', 'User', controllerFunction])
