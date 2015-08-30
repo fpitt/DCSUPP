@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150830044914) do
+ActiveRecord::Schema.define(version: 20150830172414) do
 
   create_table "professor_settings", force: :cascade do |t|
     t.datetime "created_at",                       null: false
@@ -112,7 +112,6 @@ ActiveRecord::Schema.define(version: 20150830044914) do
     t.datetime "updated_at",                 null: false
     t.integer  "requirement_subcategory_id"
     t.integer  "user_id"
-    t.string   "value_array"
     t.string   "value"
     t.integer  "requirement_category_id"
   end

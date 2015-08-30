@@ -50,6 +50,12 @@ AccountFunction = ($scope, $modal, modalService, requestService, User, $state, R
         input_text: ""
         input_boolean: false
         input_date: new Date()
+    #edit Global Blank
+    $scope.editBlank =
+        input_number: 0
+        input_text: ""
+        input_boolean: false
+        input_date: new Date()
 
     #Student Attribute SubCategory Information [Pulled from backend]
     $scope.attribute_subcategory = null
@@ -76,6 +82,30 @@ AccountFunction = ($scope, $modal, modalService, requestService, User, $state, R
                     category.edit = false
                     $scope.merged_category.push(category)
         console.log($scope.merged_category)
+
+    # --- Update Entry ---
+
+    $scope.update = ->
+
+        #Clear the Edit Form from Frontend + Send Information to Backend
+        $scope.edit = angular.copy($scope.editBlank)
+
+        for category in $scope.merged_category
+            if (category.edit)
+                category.edit = false
+        return
+
+    # --- Edit Entry ---
+
+    $scope.edit_entry = (id) ->
+        $scope.edit = angular.copy($scope.editBlank)
+
+        for category in $scope.merged_category
+            if (category.id == id)
+                category.edit = true
+            else if (category.edit)
+                category.edit = false
+        return
 
     # --- Get User ---
 
