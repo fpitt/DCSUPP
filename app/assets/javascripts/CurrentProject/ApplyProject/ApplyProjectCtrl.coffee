@@ -8,6 +8,8 @@ controllerFunction = ($scope, modalService, $stateParams, $state, ProjectApplica
         payload =
             application:
                 $scope.application
+            file:
+                $scope.resume
             requirements:
                 $scope.requirements
             project:

@@ -12,6 +12,12 @@ div
                     | Message
                 td
                     textarea ng-model="application.message" type="text" class="form-control"
+            tr
+                td
+                    | Resume
+                td
+                    input type="file"
+                        ngf-select ng-model="application.resume"
 
             tr ng-repeat="requirement in requirements"
                 td

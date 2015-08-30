@@ -22,6 +22,7 @@
 //= require angular-ui-router
 //= require angular-permission
 //= require ng-tags-input
+//= require ng-file-upload-shim
+//= require ng-file-upload
 //= require app
 //= require_tree .
-

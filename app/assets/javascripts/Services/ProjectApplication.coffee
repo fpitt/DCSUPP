@@ -1,10 +1,19 @@
-ServiceFunction = (requestService) ->
+ServiceFunction = (requestService, Upload) ->
 
     create: (payload) ->
-        sendParams =
+#        sendParams =
+#            url: '/project_applications.json'
+#            method: 'POST'
+#        return requestService.service(sendParams, payload)
+
+        Upload.upload(
             url: '/project_applications.json'
             method: 'POST'
-        return requestService.service(sendParams, payload)
+            file: payload.resume
+            application: payload.application
+            project: payload.project
+            requirements: payload.requirements
+        );
 
     patch: (id, payload) ->
         return

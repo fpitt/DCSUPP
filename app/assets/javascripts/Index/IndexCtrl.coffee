@@ -3,6 +3,7 @@ angular.module('dcsupp').controller 'IndexCtrl', [
     '$scope'
     '$state'
     ($stateParams, $scope, $state) ->
+        #Parse URL and go to state
         if $stateParams.goto
             path = $stateParams.goto.split('/')
             state = path[0]
