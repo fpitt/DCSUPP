@@ -43,16 +43,39 @@ AccountFunction = ($scope, $modal, modalService, requestService, User, $state, R
     $scope.categories = null
     #Current Selected Category in Left-Side Navigation
     $scope.selectCategory = null
-    #SubCategories within the Selected Category
-    $scope.subcateogories = null
+
     #Edit SubCategory
     $scope.edit =
         input_number: 0
         input_text: ""
         input_boolean: false
         input_date: new Date()
+
     #Student Attribute SubCategory Information [Pulled from backend]
     $scope.attribute_subcategory = null
+    #SubCategories within the Selected Category
+    $scope.subcategories = null
+    $scope.merged_category = []
+
+    # --- Merge Attribute + Categories ---
+    # Merge the SubCategories with the student attributes for display purposes
+    $scope.mergeCategories = ->
+        #Emtpy the subcategories array
+        $scope.merged_category.length = 0
+
+        for category in $scope.subcategories
+            if category.student_attribute
+                if $scope.studentAttribute(category.id)
+                    #The student Attribute is availble
+                    append_category = studentAttribute(category.id)
+                    append_category.type = "attribute"
+                    append_category.edit = false
+                    $scope.merged_category.push(append_category)
+                else
+                    category.type = "category"
+                    category.edit = false
+                    $scope.merged_category.push(category)
+        console.log($scope.merged_category)
 
     # --- Get User ---
 
@@ -79,6 +102,7 @@ AccountFunction = ($scope, $modal, modalService, requestService, User, $state, R
     $scope.userAttributes = (category_id)->
         StudentAttribute.getallUserAttribute($scope.user.id, category_id).success (data) ->
             $scope.attribute_subcategory = data
+            $scope.mergeCategories()
         return
 
     # --- Grab SubCategories ---
@@ -89,11 +113,10 @@ AccountFunction = ($scope, $modal, modalService, requestService, User, $state, R
 
         # Selected SubCategory
         $scope.selectCategory = category
-        RequirementSubcategory.getAllOfCategory(payload).success((data) ->
-            $scope.subcateogories = data)
-
-        #Get the User's Attributes wih the SubCategory
-        $scope.userAttributes(category.id)
+        RequirementSubcategory.getAllOfCategory(payload).success (data) ->
+            $scope.subcategories = data
+            $scope.userAttributes(category.id)
+        return
 
     # --- Check Student Attribute ---
 
@@ -101,7 +124,7 @@ AccountFunction = ($scope, $modal, modalService, requestService, User, $state, R
         #Iterate Over the Array
         for category of $scope.attribute_subcategory
             if (category.id == id)
-                return true
+                return category
         return false
 
     # --- Submit Student Attribute

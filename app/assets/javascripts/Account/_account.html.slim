@@ -39,14 +39,13 @@ div class="row"
 
             table class="table"
                 thead
-                    tr ng-repeat="subcategory in subcateogories"
-
-                        /The Student Setting is not set
+                    tr ng-repeat="subcategory in merged_category"
                         td
                             p
                                 | {{ subcategory.sub_category_name}}
 
-                        td
+                        /Case 1: The Student Attribute has no Input + Not Selected for Edit
+                        td ng-if="subcategory.edit"
                             div ng-if="subcategory.attribute_type=='Number'"
                                 input type="number" class="form-control" placeholder="{{subcategory.placeholder}}"
 
@@ -59,8 +58,7 @@ div class="row"
                             div ng-if="subcategory.attribute_type=='Input Field'"
                                 input type="text" class="form-control" placeholder="{{subcategory.placeholder}}"
                         td
-                            button type="button" class="btn btn-default" Submit
-
+                            button type="button" class="btn btn-default" Update
 
     div class="col-xs-2"
         div class="btn-group" role="group" aria-label="Default button group"
