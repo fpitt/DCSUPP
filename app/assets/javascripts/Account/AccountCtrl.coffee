@@ -98,6 +98,11 @@ AccountFunction = ($scope, $modal, modalService, requestService, User, $state, R
     # --- Check Student Attribute ---
 
     $scope.studentAttribute = (id) ->
+        #Iterate Over the Array
+        for category of $scope.attribute_subcategory
+            if (category.id == id)
+                return true
+        return false
 
     # --- Submit Student Attribute
 
