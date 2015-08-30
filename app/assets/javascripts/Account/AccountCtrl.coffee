@@ -39,13 +39,21 @@ AccountFunction = ($scope, $modal, modalService, requestService, User, $state, R
     $scope.user = {}
     #Page Number in Left-Side Navigation (Categories listed below Prev [pageNumber] Next)
     $scope.pagenumber = 1
-    #Catgeogires in the Left-Side Navigation
+    #List of Categories in Left-Side Navigation
     $scope.categories = null
-    #Current Selected Category in the Navigation
+    #Current Selected Category in Left-Side Navigation
     $scope.selectCategory = null
-    #SubCategories within the current Selected Category
+    #SubCategories within the Selected Category
     $scope.subcateogories = null
-    
+    #Edit SubCategory
+    $scope.edit =
+        input_number: 0
+        input_text: ""
+        input_boolean: false
+        input_date: new Date()
+
+    #Student Attribute SubCategory
+    $Scope.attribute_subcategory = null
 
     # --- Get User ---
 
