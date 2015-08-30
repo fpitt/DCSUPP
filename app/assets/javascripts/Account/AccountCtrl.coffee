@@ -1,32 +1,51 @@
 
-# ---------------------------------------------------------
+# -------------------------------------------------------------------------------------------------------
 # Page 2: Account Page
 #
-# This is the Account Page for DCSUPP. It contains the
-# student settings and allows students to change their 
-# personal informations.
-# ---------------------------------------------------------
+# Summary:
+# This is the Account Page for DCSUPP. It contains the student settings and allows students to change their 
+# personal information. The student settings can be added, removed or modified in the Manage Categories
+# tab and all categories containing Student Settings are listed on the left and all subcategories within
+# the categories that are student settings are listed on the right. The information is populated using
+# angular $http calls and stored as scope variables.
+#
+# Page Placement [Referred to in the Comments]:
+#
+# [Left-Side]
+# The Navigation panel with [prev][pagenumber][next]. The main categories are listed here.
+
+# [Right-Side]
+# The SubCategories within the main categories are listed here. SubCategories can be modified 
+#
+# [Top-right]
+# Popup button, displays the Information and Settings Popup menus.
+# -------------------------------------------------------------------------------------------------------
 
 
 AccountFunction = ($scope, $modal, modalService, requestService, User, $state, RequirementSubcategory) ->
         
+    # --- Page Variables ----
+
+    #Scope Varaible Used in Popup Identification
     $scope.modalService = modalService
 
-    # --- Page Variables ----
-        
     $scope.items = [
         'item1'
         'item2'
         'item3'
     ]
 
-    $scope.nameCollapsed = $scope.emailCollapsed = true
+    #Javascript Object Storing Current User Information
     $scope.user = {}
+    #Page Number in Left-Side Navigation (Categories listed below Prev [pageNumber] Next)
     $scope.pagenumber = 1
+    #Catgeogires in the Left-Side Navigation
     $scope.categories = null
-    #SubCategory Identication
-    $scope.subcateogories = null
+    #Current Selected Category in the Navigation
     $scope.selectCategory = null
+    #SubCategories within the current Selected Category
+    $scope.subcateogories = null
+    
 
     # --- Get User ---
 
