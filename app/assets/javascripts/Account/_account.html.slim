@@ -40,9 +40,8 @@ div class="row"
             table class="table"
                 thead
                     tr ng-repeat="subcategory in subcateogories"
-                        td
-                            p
-                                | {{ subcategory.sub_category_name }}
+
+                        /The Student Setting is not selected
                         td
                             div ng-if="subcategory.attribute_type=='Number'"
                                 input type="number" class="form-control" placeholder="{{subcategory.placeholder}}"

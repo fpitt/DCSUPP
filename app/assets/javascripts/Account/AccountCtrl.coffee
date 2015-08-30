@@ -22,7 +22,7 @@
 # -------------------------------------------------------------------------------------------------------
 
 
-AccountFunction = ($scope, $modal, modalService, requestService, User, $state, RequirementSubcategory) ->
+AccountFunction = ($scope, $modal, modalService, requestService, User, $state, RequirementSubcategory, StudentAttribute) ->
         
     # --- Page Variables ----
 
@@ -36,7 +36,7 @@ AccountFunction = ($scope, $modal, modalService, requestService, User, $state, R
     ]
 
     #Javascript Object Storing Current User Information
-    $scope.user = {}
+    $scope.user = null
     #Page Number in Left-Side Navigation (Categories listed below Prev [pageNumber] Next)
     $scope.pagenumber = 1
     #List of Categories in Left-Side Navigation
@@ -51,19 +51,17 @@ AccountFunction = ($scope, $modal, modalService, requestService, User, $state, R
         input_text: ""
         input_boolean: false
         input_date: new Date()
-
-    #Student Attribute SubCategory
-    $Scope.attribute_subcategory = null
+    #Student Attribute SubCategory Information [Pulled from backend]
+    $scope.attribute_subcategory = null
 
     # --- Get User ---
 
     $scope.getUser = ->
-        User.getUser().success((data) ->
+        User.getUser().success (data) ->
             $scope.user = data
-            $scope.payload = jQuery.extend(true, {}, data))
         return
 
-    # --- Patch User --- 
+    # --- Patch User ---
 
     $scope.patchUser = ->
         patchSendParams =
@@ -75,17 +73,27 @@ AccountFunction = ($scope, $modal, modalService, requestService, User, $state, R
 
     $scope.updateProject = ->
         $state.go('update_project', {id: 1})
-    
+
+    # --- Grab User Settings ---
+
+    $scope.userAttributes = (category_id)->
+        StudentAttribute.getallUserAttribute($scope.user.id, category_id).success (data) ->
+            $scope.attribute_subcategory = data
+        return
+
     # --- Grab SubCategories ---
 
     $scope.loadSubcategories = (category)->
         payload =
             target_id: category.id
 
+        # Selected SubCategory
         $scope.selectCategory = category
-
         RequirementSubcategory.getAllOfCategory(payload).success((data) ->
             $scope.subcateogories = data)
+
+        #Get the User's Attributes wih the SubCategory
+        $scope.userAttributes(category.id)
 
     # --- Submit Student Attribute
 
@@ -122,8 +130,8 @@ AccountFunction = ($scope, $modal, modalService, requestService, User, $state, R
                 $scope.pagenumber = 1
 
     # --- Jquery Initialization --- 
-    $scope.getUser()
     $scope.flip(0)
+    $scope.getUser()
 
 angular.module('dcsupp').controller('AccountCtrl', ['$scope',
-    '$modal', 'modalService', 'requestService', 'User', '$state', 'RequirementSubcategory', AccountFunction])
+    '$modal', 'modalService', 'requestService', 'User', '$state', 'RequirementSubcategory', 'StudentAttribute', AccountFunction])

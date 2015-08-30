@@ -24,6 +24,15 @@ ServiceFunction = (requestService) ->
             url: '/get_attribute_by_user_and_subcategory.json'
         return requestService.service(sendParams, payload)
 
+    getallUserAttribute: (id, category_id) ->
+        sendParams =
+            method: 'POST'
+            url: '/get_all_attributes.json'
+        autopayload =
+            user_id: id
+            category_id: category_id
+        requestService.service(sendParams, autopayload)
+
 
 
 angular

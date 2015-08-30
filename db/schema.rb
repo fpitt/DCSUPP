@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150824175756) do
+ActiveRecord::Schema.define(version: 20150830044914) do
 
   create_table "professor_settings", force: :cascade do |t|
     t.datetime "created_at",                       null: false
@@ -114,6 +114,7 @@ ActiveRecord::Schema.define(version: 20150824175756) do
     t.integer  "user_id"
     t.string   "value_array"
     t.string   "value"
+    t.integer  "requirement_category_id"
   end
 
   add_index "student_attributes", ["requirement_subcategory_id"], name: "index_student_attributes_on_requirement_subcategory_id"
