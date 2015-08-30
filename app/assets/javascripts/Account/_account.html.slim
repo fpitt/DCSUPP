@@ -41,7 +41,11 @@ div class="row"
                 thead
                     tr ng-repeat="subcategory in subcateogories"
 
-                        /The Student Setting is not selected
+                        /The Student Setting is not set
+                        td
+                            p
+                                | {{ subcategory.sub_category_name}}
+
                         td
                             div ng-if="subcategory.attribute_type=='Number'"
                                 input type="number" class="form-control" placeholder="{{subcategory.placeholder}}"

@@ -95,6 +95,10 @@ AccountFunction = ($scope, $modal, modalService, requestService, User, $state, R
         #Get the User's Attributes wih the SubCategory
         $scope.userAttributes(category.id)
 
+    # --- Check Student Attribute ---
+
+    $scope.studentAttribute = (id) ->
+
     # --- Submit Student Attribute
 
     ###
