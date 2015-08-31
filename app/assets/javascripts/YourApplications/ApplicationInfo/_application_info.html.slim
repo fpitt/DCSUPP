@@ -34,15 +34,21 @@ div
     table class="table table-hover"
         tr
             td
-                | Project
-            td
-                | {{ project.title }}
-        tr
-            td
                 | Title
             td
                 span
                     | {{ application.title }}
+        tr
+            td
+                | Name
+            td
+                a ui-sref="list_student.selected_student({id: application.student.id})"
+                    | {{ application.student.name }}
+        tr
+            td
+                | Project
+            td
+                | {{ project.title }}
         tr
             td
                 | Message

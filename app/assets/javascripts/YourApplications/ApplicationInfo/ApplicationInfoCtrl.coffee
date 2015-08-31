@@ -11,6 +11,10 @@ controllerFunction = ($scope, $stateParams, ProjectApplication, ProjectRequireme
                 $scope.project = data
             )
 
+            User.getById($scope.application.user_id).success((data) ->
+                $scope.application.student = data
+            )
+
             ProjectRequirement.getByProject(payload).success((projectRequirements) ->
                 for req in projectRequirements
                     RequirementSubcategory.getById(req.requirement_subcategory_id).success((subcategory) ->
