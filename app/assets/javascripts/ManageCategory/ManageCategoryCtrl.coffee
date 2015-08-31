@@ -31,8 +31,8 @@ controllerFunction = ($scope, RequirementCategory, RequirementSubcategory) ->
         number_max: 0
         number_min: 0
         #Case 2: Select Date
-        maxDate: "yyyy-MM-dd"
-        minDate: "yyyy-MM-dd"
+        maxDate: new Date()
+        minDate: new Date()
         #Case 4: Select Input
         regex: ""
         input_placeholder: ""
@@ -49,8 +49,8 @@ controllerFunction = ($scope, RequirementCategory, RequirementSubcategory) ->
         number_max: 0
         number_min: 0
         #Case 2: Select Date
-        maxDate: "yyyy-MM-dd"
-        minDate: "yyyy-MM-dd"
+        maxDate: new Date()
+        minDate: new Date()
         #Case 4: Select Input
         regex: ""
         input_placeholder: ""

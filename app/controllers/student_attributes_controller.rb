@@ -11,4 +11,18 @@ class StudentAttributesController < ApplicationController
             }
         end
     end
+
+    def user_attributes
+
+        respond_to do |format|
+            format.json{
+                puts params[:payload]
+
+                @student_attributes = StudentAttribute.where(:requirement_category_id => params[:payload][:category_id], :user_id => params[:payload][:user_id])
+
+                render :json => @student_attributes
+            }
+        end
+    end
+
 end

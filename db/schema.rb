@@ -116,8 +116,8 @@ ActiveRecord::Schema.define(version: 20150830174150) do
     t.datetime "updated_at",                 null: false
     t.integer  "requirement_subcategory_id"
     t.integer  "user_id"
-    t.string   "value_array"
     t.string   "value"
+    t.integer  "requirement_category_id"
   end
 
   add_index "student_attributes", ["requirement_subcategory_id"], name: "index_student_attributes_on_requirement_subcategory_id"
