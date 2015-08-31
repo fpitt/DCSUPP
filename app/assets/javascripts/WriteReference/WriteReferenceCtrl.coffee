@@ -9,7 +9,12 @@ controllerFunction = ($scope, modalService, $stateParams, $state, Reference) ->
             professorText: $scope.professorText
 
         Reference.addProfessorText(payload).success((data) ->
-            $state.go('your_reference_requests')
+            payload =
+                id: $stateParams.id
+                approved: true
+            Reference.processReferenceApproval(payload).success((data) ->
+                $state.go('your_reference_requests')
+            )
         )
 
 
