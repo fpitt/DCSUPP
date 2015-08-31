@@ -13,8 +13,8 @@ ServiceFunction = (requestService, Upload) ->
             url: '/upload_resume.json',
             method: 'POST',
             file: payload.file
-            field:
-                application : payload.id
+            fields:
+                application : payload.application
         )
 
     patch: (id, payload) ->
