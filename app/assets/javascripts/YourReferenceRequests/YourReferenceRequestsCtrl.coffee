@@ -11,18 +11,26 @@ controllerFunction = ($scope, modalService, $stateParams, Reference, Project, Pr
     $scope.getReferenceRequests = () ->
         Reference.getReferenceRequestsOfProfessor().success((data) ->
             $scope.references = data
-            for reference in $scope.references
+
+            async.each($scope.references, (reference, callback) ->
                 ProjectApplication.getById(reference.project_application_id).success((projectApplication) ->
                     User.getById(projectApplication.user_id).success((student) ->
                         reference.student =
                             name : student.name
-                    )
-                    Project.getById(projectApplication.project_id).success((project) ->
-                        reference.project =
-                            title : project.title
-                            id : project.id
+                        Project.getById(projectApplication.project_id).success((project) ->
+                            reference.project =
+                                title : project.title
+                                id : project.id
+
+                            callback()
+                        )
                     )
                 )
+
+
+            , (err) ->
+            )
+
         )
 
     $scope.rejectReference = (reference) ->
