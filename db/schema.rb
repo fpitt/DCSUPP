@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150830174150) do
+ActiveRecord::Schema.define(version: 20150831210536) do
 
   create_table "professor_settings", force: :cascade do |t|
     t.datetime "created_at",                       null: false
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20150830174150) do
     t.string   "resume_content_type"
     t.integer  "resume_file_size"
     t.datetime "resume_updated_at"
+    t.string   "resume_url"
   end
 
   add_index "project_applications", ["project_id"], name: "index_project_applications_on_project_id"

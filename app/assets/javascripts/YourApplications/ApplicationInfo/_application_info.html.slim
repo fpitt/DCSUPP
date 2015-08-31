@@ -49,6 +49,12 @@ div
             td
                 span
                     | {{ application.message }}
+        tr
+            td
+                | Resume
+            td
+                a href="{{ application.resume_url }}" target="_blank"
+                    | {{ application.resume_file_name }}
 
         tr ng-repeat="attribute in attributes"
             td
