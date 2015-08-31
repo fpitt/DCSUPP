@@ -39,6 +39,7 @@ class ProjectApplicationsController < ApplicationController
                 @project_application = ProjectApplication.find_by_id(param[:application])
                 if @project_application
                     @project_application.update_attribute(:resume, param[:file])
+                     @project_application.update_attribute(:resume_url, @project_application.resume.url)
                     @project_application.save
                     render :json => @project_application
                 else
