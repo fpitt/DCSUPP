@@ -16,8 +16,7 @@ div
                 td
                     | Resume
                 td
-                    input type="file"
-                        ngf-select ng-model="application.resume"
+                    input accept="application/pdf" name="file" ng-model="resume" ngf-max-size="2MB" ngf-select="" type="file" /
 
             tr ng-repeat="requirement in requirements"
                 td

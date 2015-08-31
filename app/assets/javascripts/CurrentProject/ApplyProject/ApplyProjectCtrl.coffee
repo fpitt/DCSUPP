@@ -1,4 +1,4 @@
-controllerFunction = ($scope, modalService, $stateParams, $state, ProjectApplication, ProjectRequirement, RequirementSubcategory, StudentAttribute) ->
+controllerFunction = ($scope, modalService, $stateParams, $state, ProjectApplication, ProjectRequirement, RequirementSubcategory, StudentAttribute, Upload) ->
     $scope.modalService = modalService
 
     $scope.application = {}
@@ -8,15 +8,20 @@ controllerFunction = ($scope, modalService, $stateParams, $state, ProjectApplica
         payload =
             application:
                 $scope.application
-            file:
-                $scope.resume
             requirements:
                 $scope.requirements
             project:
                 $stateParams.id
 
         ProjectApplication.create(payload).success((data) ->
-            $state.go('your_applications.application_info', {id: data.id}))
+            payload =
+                file:
+                    $scope.resume
+                application:
+                    data.id
+            ProjectApplication.uploadResume(payload).success((data) ->
+                $state.go('your_applications.application_info', {id: data.id}))
+            )
         return
 
     $scope.loadRequirements = () ->
@@ -47,4 +52,4 @@ angular
 .module('dcsupp')
 .controller('ApplyProjectCtrl',
     ['$scope', 'modalService', '$stateParams', '$state', 'ProjectApplication', 'ProjectRequirement',
-     'RequirementSubcategory', 'StudentAttribute', controllerFunction])
+     'RequirementSubcategory', 'StudentAttribute', 'Upload', controllerFunction])

@@ -35,8 +35,8 @@ controllerFunction = ($scope, modalService, User, Project, RequirementCategory, 
 			for item in data
 				$scope.subcategories.push({name: item.sub_category_name, id: item.id})
 			)
-		$scope.subcategories.push({name: 'Completed', id: 0})
-		$scope.subcategories.push({name: 'In progress', id: 0})
+#		$scope.subcategories.push({name: 'Completed', id: 0})
+#		$scope.subcategories.push({name: 'In progress', id: 0})
 
 	$scope.loadTags = () ->
 		return $scope.subcategories

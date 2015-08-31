@@ -1,19 +1,21 @@
 ServiceFunction = (requestService, Upload) ->
 
     create: (payload) ->
-#        sendParams =
-#            url: '/project_applications.json'
-#            method: 'POST'
-#        return requestService.service(sendParams, payload)
-
-        Upload.upload(
+        sendParams =
             url: '/project_applications.json'
             method: 'POST'
-            file: payload.resume
-            application: payload.application
-            project: payload.project
-            requirements: payload.requirements
-        );
+        return requestService.service(sendParams, payload)
+
+
+    uploadResume: (payload) ->
+        # Using ngFileUpload instead of requestService.
+        return Upload.upload(
+            url: '/upload_resume.json',
+            method: 'POST',
+            file: payload.file
+            field:
+                application : payload.id
+        )
 
     patch: (id, payload) ->
         return

@@ -32,6 +32,22 @@ class ProjectApplicationsController < ApplicationController
         end
     end
 
+    def upload_resume
+        respond_to do |format|
+            param = params
+            format.json {
+                @project_application = ProjectApplication.find_by_id(param[:application])
+                if @project_application
+                    @project_application.update_attribute(:resume, param[:file])
+                    @project_application.save
+                    render :json => @project_application
+                else
+                    render :nothing => true, :status => 200, :content_type => 'text/html'
+                end
+            }
+        end
+    end
+
     def get_require_administrator_approval_applications
         respond_to do |format|
             param = params[:payload]
