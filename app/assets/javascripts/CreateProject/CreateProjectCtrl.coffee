@@ -16,11 +16,15 @@
 # -------------------------------------------------------------------------------------------------------
 
 controllerFunction = ($scope, modalService, User, Project, RequirementCategory, RequirementSubcategory, $state, $q) ->
+	#	pop-up service for page settings + information
 	$scope.modalService = modalService
+
+	#	project form information
 	$scope.project = {}
+	#	required subcategories of this project
 	$scope.project.requirements =  []
 
-	# create the project
+	#	create the project
 	$scope.createProject = ->
 		Project.create($scope.project)
 		.success((data) ->
@@ -28,7 +32,7 @@ controllerFunction = ($scope, modalService, User, Project, RequirementCategory, 
 			$state.go('your_projects.project_info', {id : data.id})
 		)
 
-	# load the requirement subcategories that match what the user has entered.
+	#	load the requirement subcategories that match what the user has entered.
 	$scope.loadTags = (query) ->
 		deferred = $q.defer();
 		RequirementSubcategory.RequirementSubcategoriesWithKeyword(keyword : query)
