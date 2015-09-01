@@ -64,7 +64,19 @@ controllerFunction = ($scope, RequirementCategory, RequirementSubcategory) ->
     # --- Update SubCategory ---
 
     $scope.update = ->
-        $scope.edit_category = null
+        payload =
+            sub_category_name: $scope.category.sub_category_name
+            attribute_type: $scope.category.attribute_type
+            upper_limit: input_upper_limit
+            lower_limit: input_lower_limit
+            regex: $scope.category.regex
+            placeholder: input_placeholder
+            student_attribute: $scope.category.student_attribute           
+
+        RequirementSubcategory.update(payload).success (data) ->
+            $scope.edit_category = null
+            #Reload the Current SubCategory with the Updates
+            $scope.loadSubcategories($scope.current_category_id)
 
     # --- Create SubCategory ---
 
