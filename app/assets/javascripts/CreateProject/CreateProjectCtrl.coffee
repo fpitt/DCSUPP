@@ -19,10 +19,9 @@ controllerFunction = ($scope, modalService, User, Project, RequirementCategory, 
 	$scope.modalService = modalService
 	$scope.project = {}
 	$scope.project.requirements =  []
-	$scope.subcategories = []
 
 	# create the project
-	$scope.create = ->
+	$scope.createProject = ->
 		Project.create($scope.project)
 		.success((data) ->
 			# redirect to new page once project has been successfully added
