@@ -55,6 +55,7 @@ Rails.application.routes.draw do
     post "/get_all_subcategories" => 'requirement_subcategories#show_all'
     post "/get_all_attributes" => 'student_attributes#user_attributes'
     post "/requirement_subcategories_with_keyword" => 'requirement_subcategories#requirement_subcategories_with_keyword'
+    post "get_student_attribute_subcategories_of_project" => 'requirement_subcategories#get_student_attribute_subcategories_of_project'
 
     #References Routes
     post "/get_by_project" => 'references#get_by_project'

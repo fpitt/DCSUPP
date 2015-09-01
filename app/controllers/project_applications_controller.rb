@@ -5,8 +5,8 @@ class ProjectApplicationsController < ApplicationController
             format.json {
                 param = params[:payload]
                 @project_application = ProjectApplication.new()
-                @project_application.update_attribute(:title, param[:application][:title])
-                @project_application.update_attribute(:message, param[:application][:message])
+                @project_application.update_attribute(:title, param[:title])
+                @project_application.update_attribute(:message, param[:message])
                 @project_application.update_attribute(:project, Project.find_by_id(param[:project]))
                 @project_application.update_attribute(:user, @current_user)
 

@@ -12,10 +12,10 @@ ServiceFunction = (requestService) ->
 
     # Creates a new Project object.
     # payload format:
-    #   title : String
-    #   description : String
-    #   deadline : Date Object
-    #   requirements : [ list of requirement subcategories ]
+    #   title: String
+    #   text: String
+    #   deadline: Date Object
+    #   requirements: [ list of requirement subcategories ]
     create: (payload) ->
         sendParams =
             url: '/projects.json'

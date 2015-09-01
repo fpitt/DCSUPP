@@ -2,7 +2,7 @@
 # Page: Create Project Page
 #
 # Summary:
-# This is the Create Project for DCSUPP. It allows professors to add research project
+# This is the Create Project page for DCSUPP. It allows professors to add research project
 # opportunities. Professor can also add additional attributes to the project
 # such as specifying that the position is a volunteer position, and requirements
 # for the project application such as a particular course grade (this is done by
@@ -29,17 +29,17 @@ controllerFunction = ($scope, modalService, User, Project, RequirementCategory, 
 		Project.create($scope.project)
 		.success((data) ->
 			# redirect to new page once project has been successfully added
-			$state.go('your_projects.project_info', {id : data.id})
+			$state.go('your_projects.project_info', {id: data.id})
 		)
 
 	#	load the requirement subcategories that match what the user has entered.
 	$scope.loadTags = (query) ->
 		deferred = $q.defer();
-		RequirementSubcategory.RequirementSubcategoriesWithKeyword(keyword : query)
+		RequirementSubcategory.RequirementSubcategoriesWithKeyword(keyword: query)
 		.success((data) ->
 			deferred.resolve(data.map((val) ->
-				name : val.sub_category_name
-				id : val.id
+				name: val.sub_category_name
+				id: val.id
 			)))
 		return deferred.promise
 

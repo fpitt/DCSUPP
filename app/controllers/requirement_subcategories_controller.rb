@@ -66,5 +66,27 @@ class RequirementSubcategoriesController < ApplicationController
         end
     end
 
+    def get_student_attribute_subcategories_of_project
+        respond_to do |format|
+            format.json {
+                @subcategories = Array.new
+                param = params[:payload]
+                @requirements = ProjectRequirement.where(:project_id => param[:project])
+
+                if @requirements
+                    for req in @requirements
+                        @subcategory = RequirementSubcategory.find_by_id(req.requirement_subcategory_id)
+                            if @subcategory.student_attribute
+                                @subcategories.push(@subcategory)
+                            end
+                    end
+                    render :json => @subcategories
+                else
+                    render :nothing => true, :status => 200, :content_type => 'text/html'
+                end
+            }
+        end
+    end
+
 	
 end

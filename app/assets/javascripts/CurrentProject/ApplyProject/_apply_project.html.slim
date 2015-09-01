@@ -1,38 +1,35 @@
 div
     h3 Application
-    form
+    form ng-submit="createApplication()"
         table class="table"
             tr
                 td
                     | Title
                 td
-                    input ng-model="application.title" type="text" class="form-control"
+                    input ng-model="application.title" type="text" class="form-control" required="true"
             tr
                 td
                     | Message
                 td
-                    textarea ng-model="application.message" type="text" class="form-control"
+                    textarea ng-model="application.message" type="text" class="form-control" required="true"
             tr
                 td
                     | Resume
                 td
-                    input accept="application/pdf" name="file" ng-model="resume" ngf-max-size="2MB" ngf-select="" type="file" /
-
-            tr ng-repeat="requirement in requirements"
+                    input accept="application/pdf" name="file" ng-model="resume" ngf-max-size="2MB" ngf-select="" type="file" required="true"
+            tr ng-repeat="requirement in application.requirements"
                 td
                     | {{ requirement.sub_category_name }}
-                td ng-show="requirement.attribute_type == 'Number'"
-                    input ng-model="requirement.value" type="number" class="form-control"
-                td ng-show="requirement.attribute_type == 'Boolean'"
-                    input type="radio" value="True" ng-model="requirement.value"
+                td ng-if="requirement.attribute_type == 'Number'"
+                    input ng-model="requirement.value" type="number" class="form-control" required="true"
+                td ng-if="requirement.attribute_type == 'Boolean'"
+                    input type="radio" value="True" ng-model="requirement.value" required="true"
                         | True
-                    input type="radio" value="False" ng-model="requirement.value"
+                    input type="radio" value="False" ng-model="requirement.value" required="true"
                         | False
-                td ng-show="requirement.attribute_type == 'Input Field'"
-                    input ng-model="requirement.value" type="text" class="form-control"
-                td ng-show="requirement.attribute_type == 'Date'"
-                    input type="date" class="form-control" ng-model="requirement.value"
-
-    br
-
-    button style="margin: auto; width: 50%" access="administrator student" restrict="" class="btn btn-default btn-lg" ng-click="createApplication()" Submit
+                td ng-if="requirement.attribute_type == 'Input Field'"
+                    input ng-model="requirement.value" type="text" class="form-control" required="true"
+                td ng-if="requirement.attribute_type == 'Date'"
+                    input type="date" class="form-control" ng-model="requirement.value" required="true"
+        br
+        button type="submit" value="submit" access="administrator student" restrict="" class="btn btn-default btn-lg" Submit

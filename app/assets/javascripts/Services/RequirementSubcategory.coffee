@@ -42,12 +42,21 @@ ServiceFunction = (requestService) ->
 
     # Get all subcategories with name containing given string.
     # payload format:
-    #   keyword : String
+    #   keyword: String
     RequirementSubcategoriesWithKeyword: (payload) ->
         sendParams =
             method: 'POST'
             url: 'requirement_subcategories_with_keyword.json'
         requestService.service(sendParams, payload)
+
+    #   get all subcategories of a project that are student attributes
+    #   payload format:
+    #       project: Integer
+    getStudentAttributeSubcategoriesOfProject: (payload) ->
+        sendParams =
+            method: 'POST'
+            url: 'get_student_attribute_subcategories_of_project.json'
+        return requestService.service(sendParams, payload)
 
 
 angular
