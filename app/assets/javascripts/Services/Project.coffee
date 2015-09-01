@@ -1,5 +1,21 @@
+# ---------------------------------------------------------
+# Service Function Calls: Projects
+#
+# These are the server function calls for the projects.
+# We define the method, url and payload
+# as services and call these methods using controller
+# functions in the various folders.
+# ---------------------------------------------------------
+
+
 ServiceFunction = (requestService) ->
 
+    # Creates a new Project object.
+    # payload format:
+    #   title : String
+    #   description : String
+    #   deadline : Date Object
+    #   requirements : [ list of requirement subcategories ]
     create: (payload) ->
         sendParams =
             url: '/projects.json'

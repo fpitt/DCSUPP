@@ -1,16 +1,16 @@
 ServiceFunction = (requestService) ->
 
-    create: (payload) ->
-        return
-
-    patch: (id, payload) ->
-        return
-
-    getAll: () ->
-        return
-
-    getById: (id) ->
-        return
+#    create: (payload) ->
+#        return
+#
+#    patch: (id, payload) ->
+#        return
+#
+#    getAll: () ->
+#        return
+#
+#    getById: (id) ->
+#        return
 
     getByCurrentUser: () ->
         sendParams =
@@ -33,6 +33,12 @@ ServiceFunction = (requestService) ->
             category_id: category_id
         requestService.service(sendParams, autopayload)
 
+
+    flipStudentSettings: (payload) ->
+        sendParams =
+            method: 'POST'
+            url: '/flip_student_settings.json'
+        requestService.service(sendParams, payload)
 
 
 angular

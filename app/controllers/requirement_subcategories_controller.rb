@@ -62,5 +62,21 @@ class RequirementSubcategoriesController < ApplicationController
             }
         end
     end
+
+
+    def requirement_subcategories_with_keyword
+        respond_to do |format|
+            format.json {
+                param = params[:payload]
+                    @requirement_subcategories = RequirementSubcategory.where('sub_category_name LIKE ?', '%' + param[:keyword] + '%').all
+                    if @requirement_subcategories
+                        render :json => @requirement_subcategories
+                    else
+                        render :nothing => true, :status => 200, :content_type => 'text/html'
+                    end
+            }
+        end
+    end
+
 	
 end
