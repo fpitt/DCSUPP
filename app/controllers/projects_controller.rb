@@ -6,9 +6,9 @@ class ProjectsController < ApplicationController
                 param = params[:payload]
 
                 @project = Project.new()
-                @project.update_attribute(:title, param[:project][:title])
-                @project.update_attribute(:text, param[:project][:text])
-                @project.update_attribute(:deadline_date, param[:project][:deadline_date])
+                @project.update_attribute(:title, param[:title])
+                @project.update_attribute(:text, param[:text])
+                @project.update_attribute(:deadline_date, param[:deadline])
                 @project.update_attribute(:user, @current_user)
                 @project.update_attribute(:completed, false)
 

@@ -1,9 +1,8 @@
-
 # -------------------------------------------------------------------------------------------------------
 # Page 2: Account Page
 #
 # Summary:
-# This is the Account Page for DCSUPP. It contains the student settings and allows students to change their 
+# This is the Account Page for DCSUPP. It contains the student settings and allows students to change their
 # personal information. The student settings can be added, removed or modified in the Manage Categories
 # tab and all categories containing Student Settings are listed on the left and all subcategories within
 # the categories that are student settings are listed on the right. The information is populated using
@@ -15,7 +14,7 @@
 # The Navigation panel with [prev][pagenumber][next]. The main categories are listed here.
 
 # [Right-Side]
-# The SubCategories within the main categories are listed here. SubCategories can be modified 
+# The SubCategories within the main categories are listed here. SubCategories can be modified
 #
 # [Top-right]
 # Popup button, displays the Information and Settings Popup menus.
@@ -23,10 +22,10 @@
 
 
 AccountFunction = ($scope, $modal, modalService, requestService, User, $state, RequirementSubcategory, StudentAttribute) ->
-        
-    # --- Page Variables ----
 
-    #Scope Varaible Used in Popup Identification
+# --- Page Variables ----
+
+#Scope Varaible Used in Popup Identification
     $scope.modalService = modalService
 
     $scope.items = [
@@ -72,7 +71,7 @@ AccountFunction = ($scope, $modal, modalService, requestService, User, $state, R
         for category in $scope.subcategories
             if category.student_attribute
                 if $scope.studentAttribute(category.id)
-                    #The student Attribute is availble
+#The student Attribute is availble
                     append_category = studentAttribute(category.id)
                     append_category.type = "attribute"
                     append_category.edit = false
@@ -87,7 +86,7 @@ AccountFunction = ($scope, $modal, modalService, requestService, User, $state, R
 
     $scope.update = ->
 
-        #Clear the Edit Form from Frontend + Send Information to Backend
+#Clear the Edit Form from Frontend + Send Information to Backend
         $scope.edit = angular.copy($scope.editBlank)
 
         for category in $scope.merged_category
@@ -116,13 +115,13 @@ AccountFunction = ($scope, $modal, modalService, requestService, User, $state, R
 
     # --- Patch User ---
 
-    $scope.patchUser = ->
-        patchSendParams =
-            url: '/users/' + $scope.user.id + '.json'
-            method: 'PATCH'
-        requestService.service(patchSendParams, $scope.payload).success((data) ->
-            $scope.getUser())
-        return
+#    $scope.patchUser = ->
+#        patchSendParams =
+#            url: '/users/' + $scope.user.id + '.json'
+#            method: 'PATCH'
+#        requestService.service(patchSendParams, $scope.payload).success((data) ->
+#            $scope.getUser())
+#        return
 
     $scope.updateProject = ->
         $state.go('update_project', {id: 1})
@@ -151,7 +150,7 @@ AccountFunction = ($scope, $modal, modalService, requestService, User, $state, R
     # --- Check Student Attribute ---
 
     $scope.studentAttribute = (id) ->
-        #Iterate Over the Array
+#Iterate Over the Array
         for category of $scope.attribute_subcategory
             if (category.id == id)
                 return category
@@ -171,29 +170,26 @@ AccountFunction = ($scope, $modal, modalService, requestService, User, $state, R
     # --- Settings Navigation --- 
 
     $scope.flip = (pushDirection) ->
-        payload = 
+        payload =
             direction: pushDirection
             pagenumber: $scope.pagenumber
-        sendParams =
-            method: 'POST'
-            url: '/flip_student_settings.json'
         $scope.direction = pushDirection
+        StudentAttribute.flipStudentSettings(payload).success((data) ->
+            if (data)
+                $scope.categories = data
+                if $scope.direction > 0
+                    $scope.pagenumber += 1
+                else if $scope.direction < 0
+                    $scope.pagenumber -= 1
+                else
+                    $scope.pagenumber = 1
+        )
 
-        requestService.service(sendParams, payload).success(flipSuccess)
-
-    flipSuccess = (data) ->
-        if (data)
-            $scope.categories = data
-            if $scope.direction > 0
-                $scope.pagenumber += 1
-            else if $scope.direction < 0
-                $scope.pagenumber -= 1
-            else
-                $scope.pagenumber = 1
 
     # --- Jquery Initialization --- 
     $scope.flip(0)
     $scope.getUser()
 
 angular.module('dcsupp').controller('AccountCtrl', ['$scope',
-    '$modal', 'modalService', 'requestService', 'User', '$state', 'RequirementSubcategory', 'StudentAttribute', AccountFunction])
+                                                    '$modal', 'modalService', 'requestService', 'User', '$state',
+                                                    'RequirementSubcategory', 'StudentAttribute', AccountFunction])

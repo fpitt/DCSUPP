@@ -8,28 +8,28 @@ div ng-controller="CreateProjectCtrl"
 			h3 Project Information
 			hr
 
-			form
+			form ng-submit="create()"
 				div class="form-group"
 					label for="exampleInputEmail" Project Title
-					input class="form-control" placeholder="Project Title" ng-model="project.title"
+					input class="form-control" placeholder="Project Title" ng-model="project.title" required="true"
 
 				div class="form-group"
 					label for="exampleInputEmail" Project Description
-					textarea class="form-control" rows="5" placeholder="Project Description" ng-model="project.text"
+					textarea class="form-control" rows="5" placeholder="Project Description" ng-model="project.text" required="true"
 
 				div class="form-group"
 					label for="exampleInputEmail" Deadline
-					input type="date" class="form-control" ng-model="project.deadline_date" placeholder="yyyy-MM-dd"
+					input type="date" class="form-control" ng-model="project.deadline" placeholder="yyyy-MM-dd" required="true"
 
 				div class="form-group"
 					label for="exampleInputRequirements" Project Requirements
-					tags-input class="bootstrap" ng-model="requirements" display_property="name"
-						auto-complete source="loadTags()"
+					tags-input class="bootstrap" ng-model="project.requirements" display_property="name" add-from-autocomplete-only="true"
+						auto-complete source="loadTags($query)"
 
 					span E.g. 'CSC148 Grade', 'Volunteer', 'Resume', 'Unofficial transcript', etc.
 				br
 				div class="form-group"
-					button type="submit" class="btn btn-default" ng-click="create()" Create Project
+					button type="submit" value="submit" class="btn btn-default" Create Project
 
 		div class="col-xs-2"
 			div class="row" style="height:15px"

@@ -40,6 +40,16 @@ ServiceFunction = (requestService) ->
         requestService.service(sendParams)
 
 
+    # Get all subcategories with name containing given string.
+    # payload format:
+    #   keyword : String
+    RequirementSubcategoriesWithKeyword: (payload) ->
+        sendParams =
+            method: 'POST'
+            url: 'requirement_subcategories_with_keyword.json'
+        requestService.service(sendParams, payload)
+
+
 angular
 .module('dcsupp')
 .service('RequirementSubcategory', ServiceFunction)
