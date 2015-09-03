@@ -46,6 +46,7 @@ ServiceFunction = (requestService) ->
         return requestService.service(sendParams)
 
     #   get all Projects belonging to the current user
+    #   only professors (and admins, for testing purposes) have access to this function
     getByCurrentUser: () ->
         sendParams =
             method: 'POST'

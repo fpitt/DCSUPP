@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
-	
+
+	#   create a new project
     def create
         respond_to do |format|
             format.json {
@@ -12,6 +13,7 @@ class ProjectsController < ApplicationController
                 @project.update_attribute(:user, @current_user)
                 @project.update_attribute(:completed, false)
 
+                #   add project requirements to project
                 if param[:requirements]
                     for requirement in param[:requirements]
                         @requirement = ProjectRequirement.new()
@@ -31,6 +33,7 @@ class ProjectsController < ApplicationController
         end
     end
 
+    #   get a page of 10 projects ("Current Projects" page)
     def grab_project
         project_size = Project.all.length
         current_offset = (params[:payload][:pagenumber] - 1)*10
@@ -52,7 +55,6 @@ class ProjectsController < ApplicationController
     end
 
     def grab_in_progress_project
-
         respond_to do |format|
             format.json {
                 project_size = Project.where(:completed => false).length
@@ -90,6 +92,7 @@ class ProjectsController < ApplicationController
         end
     end
 
+    #   update a project
     def update
         respond_to do |format|
             format.json {
@@ -118,6 +121,8 @@ class ProjectsController < ApplicationController
         end
     end
 
+    #   get all projects belonging to the current user
+    #   only professors (and admins, for testing purposes) have access to this endpoint
     def get_projects_of_user
         respond_to do |format|
             format.json {
@@ -159,6 +164,7 @@ class ProjectsController < ApplicationController
         end
     end
 
+    #   get project by its id
     def show 
         respond_to do |format|
             format.json {
@@ -174,22 +180,7 @@ class ProjectsController < ApplicationController
         end
     end
 
-    def close_project
-        respond_to do |format|
-            format.json {
-
-                @project = Project.find_by_id(params[:paylod][:project])
-
-                if @project
-                    @project.update_attribute(:open, false)
-                    render :json => @project
-                else
-                    render :nothing => true, :status => 200, :content_type => 'text/html'
-                end
-            }
-        end
-    end
-
+    #   set project as being completed
     def set_project_completed
         respond_to do |format|
             format.json {

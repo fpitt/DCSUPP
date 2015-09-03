@@ -1,5 +1,6 @@
 class ProjectApplicationsController < ApplicationController
 
+    #   create a new project application
     def create
         respond_to do |format|
             format.json {
@@ -10,9 +11,12 @@ class ProjectApplicationsController < ApplicationController
                 @project_application.update_attribute(:project, Project.find_by_id(param[:project]))
                 @project_application.update_attribute(:user, @current_user)
 
+
+                #   add student attributes to project application
                 if param[:requirements]
                     for requirement in param[:requirements]
                         if StudentAttribute.find_by_requirement_subcategory_id_and_user_id(requirement[:id], @current_user.id)
+                        #   create a new student attribute if it doesn't already exist
                         else
                             @student_attribute = StudentAttribute.new()
                             @student_attribute.update_attribute(:requirement_subcategory, RequirementSubcategory.find_by_id(requirement[:id]))
@@ -32,6 +36,7 @@ class ProjectApplicationsController < ApplicationController
         end
     end
 
+    #   attach resume to this application
     def upload_resume
         respond_to do |format|
             param = params
@@ -49,6 +54,8 @@ class ProjectApplicationsController < ApplicationController
         end
     end
 
+    #   get all student-professor project assignments (i.e project application objects that
+    #   have both been accepted by student and professor) that still require admin's approval
     def get_require_administrator_approval_applications
         respond_to do |format|
             param = params[:payload]
@@ -63,6 +70,8 @@ class ProjectApplicationsController < ApplicationController
         end
     end
 
+    #   get all student-professor project assignments   (i.e project application objects that
+    #   have both been accepted by student and professor)
     def get_project_assignments
         respond_to do |format|
             param = params[:payload]
@@ -77,6 +86,7 @@ class ProjectApplicationsController < ApplicationController
         end
     end
 
+    #   get all applications belonging to current user
     def get_applications_of_user
         respond_to do |format|
             format.json {
@@ -90,6 +100,7 @@ class ProjectApplicationsController < ApplicationController
         end
     end
 
+    #   get all applications for a project
     def get_applications_of_project
         respond_to do |format|
             param = params[:payload]
@@ -104,6 +115,10 @@ class ProjectApplicationsController < ApplicationController
         end
     end
 
+    #   saved user's decision to accept/reject application
+    #   if user is student: update student_approved
+    #   if user is professor: update professor_approved
+    #   if user is admin: update administrator_approved
     def process_offer
         respond_to do |format|
             format.json {
@@ -129,6 +144,7 @@ class ProjectApplicationsController < ApplicationController
         end
     end
 
+    #   get a project application by its id
     def show
         respond_to do |format|
             format.json {

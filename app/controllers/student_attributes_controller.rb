@@ -1,4 +1,6 @@
 class StudentAttributesController < ApplicationController
+
+    #   get the current user's student attribute give given subcategory
     def get_attribute_by_user_and_subcategory
         respond_to do |format|
             format.json {
@@ -12,8 +14,8 @@ class StudentAttributesController < ApplicationController
         end
     end
 
+    #   get all of this user's student attributes for a given category
     def user_attributes
-
         respond_to do |format|
             format.json{
                 puts params[:payload]

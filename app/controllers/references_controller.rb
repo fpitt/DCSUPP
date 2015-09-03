@@ -1,5 +1,6 @@
 class ReferencesController < ApplicationController
 
+    #   create a reference request
     def create
         respond_to do |format|
             format.json {
@@ -19,6 +20,7 @@ class ReferencesController < ApplicationController
         end
     end
 
+    #   get all reference requests for a particular project application
     def get_by_project_application
         respond_to do |format|
             format.json {
@@ -35,12 +37,14 @@ class ReferencesController < ApplicationController
         end
     end
 
+    #   get all reference requests that the student has decided to user
+    #   for a particular project application
     def get_student_approved_by_project_application
         respond_to do |format|
             format.json {
                 param = params[:payload]
 
-                @reference = Reference.where(:project_application_id => param[:projectApplication])
+                @reference = Reference.where(:project_application_id => param[:application])
 
                 if @reference
                     render :json => @reference
@@ -51,6 +55,8 @@ class ReferencesController < ApplicationController
         end
     end
 
+    #   get the current user's pending reference requests
+    #   only professors (and admins, for testing purposes) have access to this endpoint
     def get_reference_requests_of_professor
         respond_to do |format|
             format.json {
@@ -64,6 +70,8 @@ class ReferencesController < ApplicationController
         end
     end
 
+    #   save user's decision to accept reference request (if professor)
+    #   or user reference in project application (if student)
     def process_reference_approval
         respond_to do |format|
             format.json {
@@ -87,6 +95,7 @@ class ReferencesController < ApplicationController
         end
     end
 
+    #   attach professor's message to reference
     def add_professor_reference_text
         respond_to do |format|
             format.json {

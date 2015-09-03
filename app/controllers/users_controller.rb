@@ -12,6 +12,7 @@ class UsersController < ApplicationController
 		
 	end
 
+	#   get a page of 10 students (used in List Student page)
 	def students
         student_size = User.all.length
         current_offset = (params[:payload][:pagenumber] - 1)*10
@@ -30,6 +31,7 @@ class UsersController < ApplicationController
         end
 	end
 
+    #   get student by id
     def show
         respond_to do |format|
             format.json {
@@ -45,6 +47,7 @@ class UsersController < ApplicationController
         end
     end
 
+    #   return the current user
     def get_current_user
         respond_to do |format|
             format.json {
@@ -59,6 +62,7 @@ class UsersController < ApplicationController
             }
         end
     end
+
 
     def update
         respond_to do |format|
@@ -76,6 +80,7 @@ class UsersController < ApplicationController
         end
     end
 
+    #   return a page of 10 professors (used in List Professor page)
     def grab_professors
         professor_size = User.where(:professor => true).length
         current_offset = (params[:payload][:pagenumber] - 1)*10
@@ -96,6 +101,7 @@ class UsersController < ApplicationController
         end
     end
 
+    #   return all processors with name containing keyword
     def get_professor_containing_keyword
         respond_to do |format|
             format.json {

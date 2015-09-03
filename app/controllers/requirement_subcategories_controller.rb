@@ -1,7 +1,7 @@
 class RequirementSubcategoriesController < ApplicationController
 
+    #   create a new requirement subcategory
 	def create
-
 		respond_to do |format|
 	    	format.json {
 				puts params[:payload]
@@ -21,6 +21,7 @@ class RequirementSubcategoriesController < ApplicationController
 	    end
 	end
 
+    #   get requirement subcategory by id
     def show
         respond_to do |format|
             format.json {
@@ -36,6 +37,7 @@ class RequirementSubcategoriesController < ApplicationController
         end
     end
 
+    #   get all requirement subcategories
     def show_all
         respond_to do |format|
             format.json {
@@ -51,7 +53,7 @@ class RequirementSubcategoriesController < ApplicationController
         end
     end
 
-
+    #   get all subcategories with name containing keyword
     def requirement_subcategories_with_keyword
         respond_to do |format|
             format.json {
@@ -66,6 +68,7 @@ class RequirementSubcategoriesController < ApplicationController
         end
     end
 
+    #   get all subcategories that are student attributes for a given project
     def get_student_attribute_subcategories_of_project
         respond_to do |format|
             format.json {
