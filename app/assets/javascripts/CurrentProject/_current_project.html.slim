@@ -36,7 +36,7 @@ div class="row"
             div ng-repeat="project in projects"
                 ul class="nav nav-pills nav-stacked"
                     li
-                        a ui-sref="current_project.selected_project({id: project.id})"
+                        a ui-sref="current_project.project_info({id: project.id})"
                             | {{ project.title }}
 
     div class="row" style="height:5px"
