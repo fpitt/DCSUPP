@@ -24,16 +24,14 @@ controllerFunction = ($scope, $stateParams, ProjectApplication, ProjectRequireme
 
             #   get student attributes
             $scope.attributes = []
-            ProjectRequirement.getByProject(payload).success((projectRequirements) ->
-                for req in projectRequirements
-                    RequirementSubcategory.getById(req.requirement_subcategory_id).success((subcategory) ->
-                        if (subcategory.student_attribute)
-                            payload = subcategory: subcategory.id
-                            StudentAttribute.getBySubcategoryAndCurrentUser(payload).success((studentAttribute) ->
-                                $scope.attributes.push(attribute_type: subcategory.attribute_type, sub_category_name:
-                                subcategory.sub_category_name, value: studentAttribute.value)
-                            )
+            RequirementSubcategory.getStudentAttributeSubcategoriesOfProject(project: $scope.application.project_id).success((data) ->
+                async.each(data, (req, callback) ->
+                    StudentAttribute.getBySubcategoryAndCurrentUser(subcategory: req.id).success((attr) ->
+                        $scope.attributes.push(attribute_type: req.attribute_type,
+                            sub_category_name:req.sub_category_name, value: attr.value)
+                        callback()
                     )
+                )
             )
         )
 
@@ -78,9 +76,8 @@ controllerFunction = ($scope, $stateParams, ProjectApplication, ProjectRequireme
 
 
     #   run this code when page loads
-    $scope.getpplicationInfo()
+    $scope.getApplicationInfo()
     $scope.getAllReferences()
-    $scope.getStudentApprovedReferences()
 
 
 angular
