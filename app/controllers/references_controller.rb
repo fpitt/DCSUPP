@@ -68,7 +68,7 @@ class ReferencesController < ApplicationController
         respond_to do |format|
             format.json {
                 param = params[:payload]
-                @reference = Reference.find_by_id(param[:id])
+                @reference = Reference.find_by_id(param[:reference])
 
                 if @reference
                     if @current_user.professor
@@ -91,10 +91,10 @@ class ReferencesController < ApplicationController
         respond_to do |format|
             format.json {
                 param = params[:payload]
-                @reference = Reference.find_by_id(param[:id])
+                @reference = Reference.find_by_id(param[:reference])
 
                 if @reference
-                    @reference.update_attribute(:professor_text, param[:professorText])
+                    @reference.update_attribute(:professor_text, param[:professor_text])
                     @reference.save
 
 

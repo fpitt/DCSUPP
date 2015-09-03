@@ -36,7 +36,7 @@ controllerFunction = ($scope, modalService, $stateParams, Reference, Project, Pr
 
     #   reject a reference request
     $scope.rejectReference = (reference) ->
-        Reference.processReferenceApproval(id: reference.id, approved: false).success((data) ->
+        Reference.processReferenceApproval(reference: reference.id, approved: false).success((data) ->
             $scope.getReferenceRequests()
         )
 

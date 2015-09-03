@@ -11,9 +11,9 @@ controllerFunction = ($scope, $stateParams, Reference, User, $q, $state, Project
 
     #   create a reference request
     $scope.createReference = () ->
-        Reference.create(reference : $scope.reference,
-            professor : $scope.professor,
-            projectApplication : $stateParams.id).success((data) ->
+        Reference.create(student_text : $scope.student_text,
+            professor : $scope.professor.id,
+            application : $stateParams.id).success((data) ->
             #   redirect to new page
             $state.go('your_applications.application_info', {id: $stateParams.id})
             )

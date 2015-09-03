@@ -8,7 +8,7 @@ class ProjectsController < ApplicationController
                 @project = Project.new()
                 @project.update_attribute(:title, param[:title])
                 @project.update_attribute(:text, param[:text])
-                @project.update_attribute(:deadline_date, param[:deadline])
+                @project.update_attribute(:deadline_date, param[:deadline_date])
                 @project.update_attribute(:user, @current_user)
                 @project.update_attribute(:completed, false)
 

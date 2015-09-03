@@ -31,13 +31,13 @@ controllerFunction = ($scope, $stateParams, Project, ProjectRequirement, Require
             ProjectRequirement.getByProject(payload).success((projectRequirements) -> # get project's subcategories
                 for req in projectRequirements
                     RequirementSubcategory.getById(req.requirement_subcategory_id).success((subcategory) ->
-                        $scope.project.subcategories.push({name: subcategory.sub_category_name, id: subcategory.id})
+                        $scope.project.requirements.push({name: subcategory.sub_category_name, id: subcategory.id})
                     )
             )
         )
 
 
-    # saved updated project and go to your_projects.project_info state
+    # save updated project and go to your_projects.project_info state
     $scope.patchProject = ->
         Project.patch($stateParams.id, $scope.project).success((data) ->
             $state.go('your_projects.project_info', {id: $stateParams.id})
@@ -48,12 +48,19 @@ controllerFunction = ($scope, $stateParams, Project, ProjectRequirement, Require
     $scope.loadSubcategories = ()->
         RequirementSubcategory.getAll().success((data) ->
             for item in data
-                $scope.subcategories.push({name: item.sub_category_name, id: item.id})
+                $scope.requirements.push({name: item.sub_category_name, id: item.id})
         )
 
-    # get all subcategories, used with ng tags input for adding subcategories
-    $scope.loadTags = () ->
-        return $scope.subcategories
+    # get all subcategories matching search term "query"
+    $scope.loadTags = (query) ->
+        deferred = $q.defer();
+        RequirementSubcategory.RequirementSubcategoriesWithKeyword(keyword: query)
+        .success((data) ->
+            deferred.resolve(data.map((val) ->
+                name: val.sub_category_name
+                id: val.id
+            )))
+        return deferred.promise
 
 
     # run these functions when controller loads

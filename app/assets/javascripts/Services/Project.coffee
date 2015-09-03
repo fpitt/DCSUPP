@@ -10,27 +10,34 @@
 
 ServiceFunction = (requestService) ->
 
-    # Creates a new Project object.
-    # payload format:
-    #   title: String
-    #   text: String
-    #   deadline: Date Object
-    #   requirements: [ list of requirement subcategories ]
+    #   create a new Project object
+    #   payload format:
+    #       title: String (title of project)
+    #       text: String (project description)
+    #       deadline_date: Date Object (application submission deadline)
+    #       requirements: [ list of requirement subcategories ]
     create: (payload) ->
         sendParams =
             url: '/projects.json'
             method: "POST"
         return requestService.service(sendParams, payload)
 
+
+    #   update a Project object
+    #   id: Integer (id of project)
+    #   payload format:
+    #       title: String (title of project)
+    #       text:   String (project description)
+    #       deadline_date: Date Object (application submission deadline)
+    #       requirementsL [ list of requirement subcategories ]
     patch: (id, payload) ->
         sendParams =
             url: '/projects/' + id + '.json'
             method: 'PATCH'
         return requestService.service(sendParams, payload)
 
-    getAll: () ->
-        return
-
+    #   get a Project by its id
+    #   id: Integer (id of project)
     getById: (id) ->
         sendParams =
             url: '/projects/' + id + '.json'
@@ -38,6 +45,7 @@ ServiceFunction = (requestService) ->
 
         return requestService.service(sendParams)
 
+    #   get all Projects belonging to the current user
     getByCurrentUser: () ->
         sendParams =
             method: 'POST'
@@ -55,6 +63,7 @@ ServiceFunction = (requestService) ->
             method: 'POST'
             url: 'get_completed_projects_of_current_user.json'
         return requestService.service(sendParams)
+
 
     flip: (payload) ->
         sendParams =
@@ -75,6 +84,9 @@ ServiceFunction = (requestService) ->
             url: '/flip_completed_direction.json'
         requestService.service(sendParams, payload)
 
+    #   mark a Project as being completed
+    #   payload format:
+    #       project: Integer (id of project)
     setCompleted: (payload) ->
         sendParams =
             method: 'POST'

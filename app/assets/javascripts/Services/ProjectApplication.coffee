@@ -11,9 +11,9 @@ ServiceFunction = (requestService, Upload) ->
 
     #   create new ProjectApplication object
     #   payload format:
-    #       title: String
-    #       message: String
-    #       project: Integer
+    #       title: String (project application title)
+    #       message: String (project application message)
+    #       project: Integer (project id)
     #       requirements: [ list of requirement subcategories with their values filled in ]
     create: (payload) ->
         sendParams =
@@ -21,7 +21,10 @@ ServiceFunction = (requestService, Upload) ->
             method: 'POST'
         return requestService.service(sendParams, payload)
 
-
+    #   attach resume to project application
+    #   payload format:
+    #       file: File Object (pdf resume)
+    #       application: Integer (project application id)
     uploadResume: (payload) ->
         # Using ngFileUpload instead of requestService.
         return Upload.upload(
@@ -32,12 +35,8 @@ ServiceFunction = (requestService, Upload) ->
                 application : payload.application
         )
 
-    patch: (id, payload) ->
-        return
-
-    getAll: () ->
-        return
-
+    #   get project application by its id
+    #   id: Integer (project application id)
     getById: (id) ->
         sendParams =
             url: '/project_applications/' + id + '.json'
@@ -45,19 +44,26 @@ ServiceFunction = (requestService, Upload) ->
 
         return requestService.service(sendParams)
 
+    #   get all project applications belonging to current user
     getByCurrentUser: () ->
         sendParams =
             method: 'POST'
             url: '/get_applications_of_user.json'
         return requestService.service(sendParams)
 
+    #   get all project applications for a project
     getByProject: (payload) ->
         sendParams =
             method: 'POST'
             url: '/get_applications_of_project.json'
         return requestService.service(sendParams, payload)
 
-
+    #   save current user's decision to reject/accept project application
+    #   used by student to accept offer of position, professors to accept offers,
+    #   and admins to approve student-professor project assignments
+    #   payload format:
+    #       approved: Boolean (true for accept, false for reject)
+    #       application: Integer (id of application)
     processOffer: (payload) ->
         sendParams =
             method: 'POST'
@@ -65,6 +71,7 @@ ServiceFunction = (requestService, Upload) ->
 
         return requestService.service(sendParams, payload)
 
+    #   get all project assignments requiring admin approval
     getProjectAssignments: () ->
         sendParams =
             method: 'POST'

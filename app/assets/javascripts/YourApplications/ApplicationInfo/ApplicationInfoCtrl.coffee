@@ -50,14 +50,14 @@ controllerFunction = ($scope, $stateParams, ProjectApplication, ProjectRequireme
     #   save student's approval/rejection of position offer
     $scope.processOffer = (approved) ->
         ProjectApplication.processOffer(approved: approved,
-            id: $scope.application.id).success((data) ->
+            application: $scope.application.id).success((data) ->
             #   reload application info
             $scope.loadApplicationInfo()
         )
 
     #   save student's decision to use reference letter
     $scope.processReferenceApproval = (reference, val) ->
-        Reference.processReferenceApproval(id: reference.id, approved: val).success((data) ->
+        Reference.processReferenceApproval(reference: reference.id, approved: val).success((data) ->
             #   reload reference requests
             $scope.getAllReferences()
         )

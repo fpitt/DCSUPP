@@ -108,7 +108,7 @@ class ProjectApplicationsController < ApplicationController
         respond_to do |format|
             format.json {
                 param = params[:payload]
-                @project_application = ProjectApplication.find_by_id(param[:id])
+                @project_application = ProjectApplication.find_by_id(param[:application])
 
                 if @project_application
                     if @current_user.administrator

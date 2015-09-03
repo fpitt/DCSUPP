@@ -31,7 +31,7 @@ controllerFunction = ($scope, modalService, $stateParams, ProjectApplication, Pr
     #   save the administrator's decision (approve/deny) the
     #   selected project assignment
     $scope.processOffer = (assignment, approved) ->
-        ProjectApplication.processOffer(approved: approved, id: assignment).success((data) ->
+        ProjectApplication.processOffer(approved: approved, application: assignment).success((data) ->
             #   reload project assignments to reflect changes
             $scope.getProjectAssignments()
         )

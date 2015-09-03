@@ -1,16 +1,22 @@
+# ---------------------------------------------------------
+# Service Function Calls: User
+#
+# These are the server function calls for the users.
+# We define the method, url and payload
+# as services and call these methods using controller
+# functions in the various folders.
+# ---------------------------------------------------------
 ServiceFunction = (requestService) ->
 
+    #   get the current user
     getUser : ->
-        sendParams = undefined
         sendParams =
             url: '/current_user.json'
             method: 'POST'
         requestService.service(sendParams)
 
-#    getAccessLevel : ->
-#        getUser().then (data) ->
-#            data
-
+    #   get a user by id
+    #   id: Integer (user id)
     getById : (id) ->
         sendParams =
             url: '/users/' + id + '.json'
@@ -23,15 +29,14 @@ ServiceFunction = (requestService) ->
             method: 'POST'
         requestService.service(sendParams, payload)
 
-    getStudents : ->
-
+    #   get all professors whose name contains keyword
+    #   payload format:
+    #       keyword: String (search term)
     getProfessorContainingKeyword : (payload) ->
         sendParams =
             url: '/get_professor_containing_keyword.json'
             method: 'POST'
         requestService.service(sendParams, payload)
-
-#    patchUser : (payload) ->
 
 angular.module('dcsupp').service('User', ServiceFunction)
 

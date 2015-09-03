@@ -1,3 +1,10 @@
+//  Directive: restrict
+//  Restricts unauthorized users from viewing
+//  HTML elements.
+
+// E.g. button access="administrator student" restrict="" Apply
+// The button above can only be seen by admins and students
+
 angular.module('dcsupp').directive('restrict', function(User){
     return{
         restrict: 'A',
