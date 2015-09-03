@@ -1,7 +1,19 @@
+# -------------------------------------------------------------------------------------------------------
+# Page: Update Project Page
+#
+# Summary:
+# This is the update project page for DCSUPP for professors
+# to add changes to their project information.
+#
+# Page Placement [Referred to in the Comments]:
+#
+# [Top-right]
+# Popup button, displays the Information and Settings Popup menus.
+# -------------------------------------------------------------------------------------------------------
 controllerFunction = ($scope, $stateParams, Project, ProjectRequirement, RequirementSubcategory, $state) ->
     # project info
     $scope.project = {}
-    # all subcategories
+    # project's project requirements
     $scope.subcategories = []
 
     # get current project information

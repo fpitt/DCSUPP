@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     post "/current_user" => 'users#get_current_user'
     post "/students" => 'users#students'
     post "/flip_professor_direction" => 'users#grab_professors'
-    post "/get_professor_by_name" => 'users#get_professor_by_name'
+    post "/get_professor_containing_keyword" => 'users#get_professor_containing_keyword'
 
     #Requirement Categories Routes
     post '/flip_direction' => 'requirement_categories#flip_direction'

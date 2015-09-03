@@ -25,9 +25,9 @@ ServiceFunction = (requestService) ->
 
     getStudents : ->
 
-    getProfessorByName : (payload) ->
+    getProfessorContainingKeyword : (payload) ->
         sendParams =
-            url: '/get_professor_by_name.json'
+            url: '/get_professor_containing_keyword.json'
             method: 'POST'
         requestService.service(sendParams, payload)
 

@@ -96,7 +96,7 @@ class UsersController < ApplicationController
         end
     end
 
-    def get_professor_by_name
+    def get_professor_containing_keyword
         respond_to do |format|
             format.json {
                 param = params[:payload]

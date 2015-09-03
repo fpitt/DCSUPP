@@ -1,18 +1,13 @@
-controllerFunction = ($scope, modalService, $stateParams, $state, Reference) ->
-    $scope.modalService = modalService
-
+controllerFunction = ($scope, $stateParams, $state, Reference) ->
+    #   professor's letter of reference
     $scope.professorText = ''
 
+    #   add professor's reference to student application
+    #   and set the reference request as approved. Note:
+    #   student has ability to use/not use the reference letter
     $scope.writeReference = () ->
-        payload =
-            id: $stateParams.id
-            professorText: $scope.professorText
-
         Reference.addProfessorText(payload).success((data) ->
-            payload =
-                id: $stateParams.id
-                approved: true
-            Reference.processReferenceApproval(payload).success((data) ->
+            Reference.processReferenceApproval(id: $stateParams.id, approved: true).success((data) ->
                 $state.go('your_reference_requests')
             )
         )
@@ -21,4 +16,4 @@ controllerFunction = ($scope, modalService, $stateParams, $state, Reference) ->
 angular
 .module('dcsupp')
 .controller('WriteReferenceCtrl',
-    ['$scope', 'modalService', '$stateParams', '$state', 'Reference', controllerFunction])
+    ['$scope', '$stateParams', '$state', 'Reference', controllerFunction])

@@ -1,13 +1,8 @@
-controllerFunction = ($scope, requestService, $stateParams, User) ->
+controllerFunction = ($scope, $stateParams, User) ->
     $scope.sendParams =
         url: '/users/' + $stateParams.id + '.json'
         method: 'GET'
 
-    $scope.items = [
-        'item1'
-        'item2'
-        'item3'
-    ]
 
     $scope.nameCollapsed = $scope.emailCollapsed = true
     $scope.user = {}

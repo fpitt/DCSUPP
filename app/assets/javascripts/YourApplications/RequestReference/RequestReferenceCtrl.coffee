@@ -1,34 +1,31 @@
-controllerFunction = ($scope, modalService, $stateParams, Reference, User, $q, $state, ProjectApplication) ->
+# ---------------------------------------------------------
+# Page 3: Request Reference
+#
+# This is the request reference page for the application for
+# students to submit a reference request to a professor.
+# ---------------------------------------------------------
+controllerFunction = ($scope, $stateParams, Reference, User, $q, $state, ProjectApplication) ->
 
-    $scope.modalService = modalService
+    #   reference request form info
     $scope.reference = {}
-    $scope.projectId = {}
-    $scope.items = [
-        'item1'
-        'item2'
-        'item3'
-    ]
 
+    #   create a reference request
     $scope.createReference = () ->
-        payload =
-            reference : $scope.reference
-            professor : $scope.professor
-            projectApplication : $stateParams.id
-
-        Reference.create(payload).success((data) ->
+        Reference.create(reference : $scope.reference,
+            professor : $scope.professor,
+            projectApplication : $stateParams.id).success((data) ->
+            #   redirect to new page
             $state.go('your_applications.application_info', {id: $stateParams.id})
             )
 
+    #   get all professors with names matching keyword "name"
     $scope.getProfessors = (name) ->
-        payload =
-            professor: name
-
         deferred = $q.defer();
-        User.getProfessorByName(payload).success((data) ->
+        User.getProfessorContainingKeyword(professor: name).success((data) ->
             deferred.resolve(data) )
         return deferred.promise
 
 
 angular
 .module('dcsupp')
-.controller('RequestReferenceCtrl', ['$scope', 'modalService', '$stateParams', 'Reference', 'User', '$q', '$state', 'ProjectApplication', controllerFunction])
+.controller('RequestReferenceCtrl', ['$scope', '$stateParams', 'Reference', 'User', '$q', '$state', 'ProjectApplication', controllerFunction])

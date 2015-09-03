@@ -1,3 +1,6 @@
+# -------------------------------------------------------------------------------------------------------
+# UI-Router state declaration for Your Reference Requests page.
+# -------------------------------------------------------------------------------------------------------
 angular.module('dcsupp').config ($stateProvider) ->
     $stateProvider.state 'your_reference_requests',
         url: '/your_reference_requests'

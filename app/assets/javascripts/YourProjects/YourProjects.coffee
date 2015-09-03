@@ -1,3 +1,6 @@
+# -------------------------------------------------------------------------------------------------------
+# UI-Router state declaration for Your Projects page.
+# -------------------------------------------------------------------------------------------------------
 angular.module('dcsupp').config ($stateProvider) ->
     $stateProvider.state 'your_projects',
         url: '/your_projects'
