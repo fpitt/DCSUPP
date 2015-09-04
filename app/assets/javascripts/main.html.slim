@@ -1,0 +1,47 @@
+div
+
+    li access="student" restrict=""
+        a ui-sref="your_applications" Your Applications
+    div class="container"
+        div style="height:60px"
+            h1 DCSUPP
+
+        div class="row"
+            nav class="navbar navbar-default"
+                div class="container-fluid"
+                /Brand and toggle get grouped for better mobile display
+
+                div class="navbar-header"
+                    button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+                    span class="sr-only" Toggle navigation
+                    span class="icon-bar"
+                    span class="icon-bar"
+                    span class="icon-bar"
+
+                / Collect the nav links, forms, and other content for toggling
+                div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"
+                    ul class="nav navbar-nav"
+                        li
+                            a ui-sref="intro" Introduction DCSUPP
+                        li
+                            a ui-sref="account" Account
+                        li
+                            a ui-sref="current_project" Current Projects
+                        li  access="administrator professor" restrict=""
+                            a ui-sref="create_project" Create Project
+                        li  access="administrator professor student" restrict=""
+                            a ui-sref="manage_category" Manage Cateogories
+                        li  access="administrator professor" restrict=""
+                            a ui-sref="list_student" Find Student
+                        li  access="administrator professor" restrict=""
+                            a ui-sref="your_projects" Your Projects
+                        li  access="student" restrict=""
+                            a ui-sref="your_applications" Your Applications
+                        li  access="administrator" restrict=""
+                            a ui-sref="project_assignments" Project Assignments
+                        /li  access="" restrict=""
+                        /    a ui-sref="list_professor" Find Professor
+                        li  access="administrator professor" restrict=""
+                            a ui-sref="your_reference_requests" Your Reference Requests
+
+        ui-view

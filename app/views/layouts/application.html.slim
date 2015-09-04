@@ -10,7 +10,6 @@ html
     body
 
         div ng-app="dcsupp"
-
             div class="container"
                 div style="height:60px"
                     h1 DCSUPP
@@ -23,7 +22,7 @@ html
                         div class="navbar-header"
                             button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
                             span class="sr-only" Toggle navigation
-                            span class="icon-bar" 
+                            span class="icon-bar"
                             span class="icon-bar"
                             span class="icon-bar"
 
@@ -36,21 +35,22 @@ html
                                     a ui-sref="account" Account
                                 li
                                     a ui-sref="current_project" Current Projects
-                                li
+                                li access="administrator professor" restrict=""
                                     a ui-sref="create_project" Create Project
-                                li
-                                    a ui-sref="manage_category" Manage Cateogories
-                                li
+                                li access="administrator professor student" restrict=""
+                                    a ui-sref="manage_category" Manage Categories
+                                li access="administrator professor" restrict=""
                                     a ui-sref="list_student" Find Student
-                                li
+                                li access="administrator professor" restrict=""
                                     a ui-sref="your_projects" Your Projects
-                                li
+                                li access="administrator student" restrict=""
                                     a ui-sref="your_applications" Your Applications
-                                li
+                                li access="administrator" restrict=""
                                     a ui-sref="project_assignments" Project Assignments
-                                li
-                                    a ui-sref="list_professor" Find Professor
-                                li
+                                /li  access="" restrict=""
+                                /    a ui-sref="list_professor" Find Professor
+                                li access="administrator professor" restrict=""
                                     a ui-sref="your_reference_requests" Your Reference Requests
 
                 ui-view
+
