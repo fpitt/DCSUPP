@@ -1,3 +1,4 @@
+
 # ---------------------------------------------------------
 # Service Function Calls: Requirement Subcategories
 #
@@ -6,6 +7,8 @@
 # as services and call these methods using controller
 # functions in the various folders.
 # ---------------------------------------------------------
+
+
 ServiceFunction = (requestService) ->
 
     #   create a new requirement subcategory
@@ -23,11 +26,22 @@ ServiceFunction = (requestService) ->
         sendParams=
             method: 'POST'
             url: '/requirement_subcategories.json'
+
         return requestService.service(sendParams, payload)
 
     #   get all subcategories that belong to a given category
     #   payload format:
     #       target_id: id (category id)
+    patch: (id, payload) ->
+        return
+
+    update: (id, payload) ->
+        sendParams=
+            method: 'PATCH'
+            url: '/requirement_subcategories/' + id + '.json'
+
+        return requestService.service(sendParams, payload)
+
     getAllOfCategory: (payload) ->
         sendParams =
             method: 'POST'

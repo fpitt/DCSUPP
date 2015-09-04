@@ -113,7 +113,7 @@ div ng-controller="ManageCategoryCtrl"
                     tr ng-repeat="subcategory in list_subcategories"
                         /Edit the SubCategory
                         td ng-if="edit_category.id==subcategory.id"
-                            input type="text" class="form-control" placeholder="{{subcategory.sub_category_name}}" ng-model="edit_category.input_placeholder"
+                            input type="text" class="form-control" placeholder="{{subcategory.sub_category_name}}" ng-model="edit_category.sub_category_name"
 
                         td ng-if="edit_category.id==subcategory.id"
                             select class="form-control" ng-model="edit_category.attribute_type"

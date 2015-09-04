@@ -35,11 +35,11 @@ with the system.
 We have worked to ensure the DCSUPP is very simple to use and reduces 
 unnecessary attribute entries.
 
-### 3. Contacts
+### 3. Contact/ Links
 
 * Online Demo Link: <http://dry-forest-3722.herokuapp.com/>
-* Developer Contact: Alan Yuan <alan[dot]yuan[at]mail[dot]utoronto[dot]ca>
 * Faculty Supervisor: François Pitt <fpitt[at]cs[dot]utoronto[dot]ca>
+
 
 ### 4. Framework Overview
 
@@ -52,4 +52,6 @@ such wonderful frameworks and libraries.
 
 The project is supervised by Professor François Pitt.
 
-Developers: Alan Yuan, Christina Chung
+Developers:
+* Alan Yuan: <alan[dot]yuan[at]mail[dot]utoronto[dot]ca>
+* Christina Chung <cachungchristina[at]gmail[dot]com>

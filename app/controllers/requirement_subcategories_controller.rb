@@ -22,6 +22,18 @@ class RequirementSubcategoriesController < ApplicationController
 	end
 
     #   get requirement subcategory by id
+    def update
+        respond_to do |format|
+            format.json{
+                puts params[:payload]
+
+                @requirement_subcategory = RequirementSubcategory.update_attributes()
+
+                render :nothing => true, :status => 200, :content_type => 'text/html'
+            }
+        end
+    end
+
     def show
         respond_to do |format|
             format.json {
