@@ -24,21 +24,6 @@ div
                 span
                     | {{ project.deadline_date | date: 'dd-MM-yyyy' }}
 
-        tr
-            td
-                | Details
-            td
-                ul
-                    li ng-repeat="subcategory in project.studentAttributes"
-                        | {{ subcategory.sub_category_name }}
-
-        tr
-            td
-                | Requirements
-            td
-                ul
-                    li ng-repeat="subcategory in project.nonStudentAttributes"
-                        | {{ subcategory.sub_category_name }}
 
     br
 

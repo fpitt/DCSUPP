@@ -63,13 +63,22 @@ ServiceFunction = (requestService) ->
             url: '/requirement_subcategories/' + id + '.json'
         requestService.service(sendParams)
 
-    #   Get all subcategories with name containing given string.
+    #   Get all student attribute subcategories with name containing given string.
     #   payload format:
     #       keyword: String (search term)
-    RequirementSubcategoriesWithKeyword: (payload) ->
+    studentAttributeRequirementSubcategoriesWithKeyword: (payload) ->
         sendParams =
             method: 'POST'
-            url: 'requirement_subcategories_with_keyword.json'
+            url: '/student_attribute_requirement_subcategories_with_keyword.json'
+        requestService.service(sendParams, payload)
+
+    #   Get all non student attribute subcategories with name containing given string.
+    #   payload format:
+    #       keyword: String (search term)
+    nonStudentAttributeRequirementSubcategoriesWithKeyword: (payload) ->
+        sendParams =
+            method: 'POST'
+            url: '/non_student_attribute_requirement_subcategories_with_keyword.json'
         requestService.service(sendParams, payload)
 
     #   get all subcategories of a project that are student attributes

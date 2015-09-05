@@ -16,6 +16,7 @@ ServiceFunction = (requestService) ->
     #       text: String (project description)
     #       deadline_date: Date Object (application submission deadline)
     #       requirements: [ list of requirement subcategories ]
+    #       details: [ list of non student attribute requirement subcategories ]
     create: (payload) ->
         sendParams =
             url: '/projects.json'

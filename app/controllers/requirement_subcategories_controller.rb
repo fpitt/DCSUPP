@@ -2,6 +2,7 @@ class RequirementSubcategoriesController < ApplicationController
 
     #   create a new requirement subcategory
 	def create
+
 		respond_to do |format|
 	    	format.json {
 				puts params[:payload]
@@ -65,12 +66,27 @@ class RequirementSubcategoriesController < ApplicationController
         end
     end
 
-    #   get all subcategories with name containing keyword
-    def requirement_subcategories_with_keyword
+    #   get all non student attribute subcategories with name containing keyword
+    def non_student_attribute_requirement_subcategories_with_keyword
         respond_to do |format|
             format.json {
                 param = params[:payload]
-                    @requirement_subcategories = RequirementSubcategory.where('sub_category_name LIKE ?', '%' + param[:keyword] + '%').all
+                    @requirement_subcategories = RequirementSubcategory.where('sub_category_name LIKE ?', '%' + param[:keyword] + '%').where(:student_attribute => false)
+                    if @requirement_subcategories
+                        render :json => @requirement_subcategories
+                    else
+                        render :nothing => true, :status => 200, :content_type => 'text/html'
+                    end
+            }
+        end
+    end
+
+    #   get all student attribute subcategories with name containing keyword
+    def student_attribute_requirement_subcategories_with_keyword
+        respond_to do |format|
+            format.json {
+                param = params[:payload]
+                    @requirement_subcategories = RequirementSubcategory.where('sub_category_name LIKE ?', '%' + param[:keyword] + '%').where(:student_attribute => true)
                     if @requirement_subcategories
                         render :json => @requirement_subcategories
                     else

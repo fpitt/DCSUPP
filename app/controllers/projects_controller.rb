@@ -14,6 +14,8 @@ class ProjectsController < ApplicationController
                 @project.update_attribute(:completed, false)
 
                 #   add project requirements to project
+
+                #   add student attribute project requirements to project
                 if param[:requirements]
                     for requirement in param[:requirements]
                         @requirement = ProjectRequirement.new()
@@ -23,6 +25,16 @@ class ProjectsController < ApplicationController
                     end
                 end
 
+                # add non student attribute project requirements to project
+                if param[:details]
+                    for detail in param[:details]
+                        @requirement = ProjectRequirement.new()
+                        @requirement.update_attribute(:requirement_subcategory, RequirementSubcategory.find_by_id(detail[:id]))
+                        @requirement.update_attribute(:value, detail[:value])
+                        @requirement.update_attribute(:project, @project)
+                        @requirement.save
+                    end
+                end
 
                 if @project.save
                     render :json => @project

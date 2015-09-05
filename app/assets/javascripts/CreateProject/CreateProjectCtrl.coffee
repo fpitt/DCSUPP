@@ -21,8 +21,10 @@ controllerFunction = ($scope, modalService, User, Project, RequirementCategory, 
 
 	#	project form information
 	$scope.project = {}
-	#	required subcategories of this project
+	#	required student attributes of this project
 	$scope.project.requirements =  []
+	#	additional details of this project (default details are title, supervisor, deadline, description)
+	$scope.project.details = []
 
 	#	create the project
 	$scope.createProject = ->
@@ -32,14 +34,41 @@ controllerFunction = ($scope, modalService, User, Project, RequirementCategory, 
 			$state.go('your_projects.project_info', {id: data.id})
 		)
 
-	#	load the requirement subcategories that match what the user has entered.
-	$scope.loadTags = (query) ->
+	#	add additional detail to project
+	$scope.addDetail = ->
+		#	disallow duplicate detail items in list
+		if !$scope.containedInDetails($scope.detailSelected)
+			$scope.project.details.push($scope.detailSelected)
+
+	#	check if given detail is already in list
+	$scope.containedInDetails = (detail) ->
+		for detailItem in $scope.project.details
+			if detailItem.name == detail.name
+				return true
+		return false
+
+	#	load non student attribute subcategories with name that contains viewValue for typeahead
+	$scope.loadDetails = (viewValue) ->
 		deferred = $q.defer();
-		RequirementSubcategory.RequirementSubcategoriesWithKeyword(keyword: query)
+		RequirementSubcategory.nonStudentAttributeRequirementSubcategoriesWithKeyword(keyword: viewValue)
 		.success((data) ->
 			deferred.resolve(data.map((val) ->
 				name: val.sub_category_name
 				id: val.id
+				attribute_type: val.attribute_type
+			)))
+		return deferred.promise
+
+
+	#	load the student attribute requirement subcategories with name that contains query for ng-tags-input.
+	$scope.loadTags = (query) ->
+		deferred = $q.defer();
+		RequirementSubcategory.studentAttributeRequirementSubcategoriesWithKeyword(keyword: query)
+		.success((data) ->
+			deferred.resolve(data.map((val) ->
+				name: val.sub_category_name
+				id: val.id
+				attribute_type: val.attribute_type
 			)))
 		return deferred.promise
 
