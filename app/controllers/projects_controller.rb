@@ -116,12 +116,24 @@ class ProjectsController < ApplicationController
                     @project.update_attribute(:deadline_date, param[:deadline_date])
                     @project.update_attribute(:user, @current_user)
 
-                    if param[:subcategories]
-                        for subcategory in param[:subcategories]
+                     #   add project requirements to project
+
+                     #   add student attribute project requirements to project
+                    if param[:requirements]
+                        for subcategory in param[:requirements]
                             @requirement = ProjectRequirement.where(:requirement_subcategory => RequirementSubcategory.find_by_id(subcategory[:id]), :project => @project).first_or_create
                             @requirement.save
                         end
                     end
+
+                    #   add non student attribute project requirements to project
+                    if param[:details]
+                        for subcategory in param[:details]
+                            @requirement = ProjectRequirement.where(:requirement_subcategory => RequirementSubcategory.find_by_id(subcategory[:id]), :project => @project).first_or_create
+                            @requirement.update_attribute(:value, subcategory[:value])
+                            @requirement.save
+                            end
+                        end
 
                     if @project.save
                         render :json => @user

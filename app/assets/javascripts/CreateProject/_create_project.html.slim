@@ -43,7 +43,7 @@ div ng-controller="CreateProjectCtrl"
 									input class="form-control" type="radio" value="False" ng-model="detail.value" required="true" False
 					br
 					div class="form-group"
-						input class="form-control" type="text" ng-model="detailSelected" placeholder="Detail name" typeahead="detail as detail.name for detail in loadDetails($viewValue)"
+						input class="form-control" type="text" ng-model="detailSelected" placeholder="Detail name" typeahead="detail as detail.name for detail in loadDetails($viewValue)" typeahead-select-on-exact="true"
 						span class="btn btn-default" ng-click="addDetail()" Add Detail
 
 				br

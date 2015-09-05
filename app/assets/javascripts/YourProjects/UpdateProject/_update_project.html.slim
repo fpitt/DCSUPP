@@ -6,25 +6,56 @@ div
             h3 Project Information
             hr
 
-            form
+            form ng-submit="patchProject()"
                 div class="form-group"
                     label for="exampleInputEmail" Project Title
-                    input class="form-control" placeholder="Project Title" ng-model="project.title"
+                    input class="form-control" placeholder="Project Title" ng-model="project.title" required="true"
 
                 div class="form-group"
                     label for="exampleInputEmail" Project Description
-                    textarea class="form-control" rows="5" placeholder="Project Description" ng-model="project.text"
+                    textarea class="form-control" rows="5" placeholder="Project Description" ng-model="project.text" required="true"
 
                 div class="form-group"
                     label for="exampleInputEmail" Deadline
-                    p
-                    input type="date" class="form-control" ng-model="project.deadline_date" placeholder="yyyy-MM-dd"
+                    input type="date" class="form-control" ng-model="project.deadline_date" placeholder="yyyy-MM-dd" required="true"
 
                 div class="form-group"
                     label for="exampleInputRequirements" Project Requirements
-                    tags-input class="bootstrap" ng-model="project.requirements" display_property="name"
-                        auto-complete source="loadTags()"
+                    tags-input class="bootstrap" ng-model="project.requirements" display_property="name" add-from-autocomplete-only="true"
+                        auto-complete source="loadTags($query)"
+
                     span E.g. 'CSC148 Grade', 'Volunteer', 'Resume', 'Unofficial transcript', etc.
+
+                div class="form-group"
+                    label Additional Details
+                    table class="table"
+                        tr ng-repeat="detail in project.details"
+                            td
+                                | {{ detail.name }}
+                            td
+                                input ng-if="detail.attribute_type == 'Input Field'" class="form-control" type="text" ng-model="detail.value" required="true"
+                                input ng-if="detail.attribute_type == 'Number'" class="form-control" type="number" ng-model="detail.value" required="true"
+                                input ng-if="detail.attribute_type == 'Date'" class="form-control" type="date" ng-model="detail.value" required="true"
+                                div ng-if="detail.attribute_type == 'Boolean'"
+                                    input class="form-control" type="radio" value="True" ng-model="detail.value" required="true" True
+                                    input class="form-control" type="radio" value="False" ng-model="detail.value" required="true" False
+                    br
+                    div class="form-group"
+                        input class="form-control" type="text" ng-model="detailSelected" placeholder="Detail name" typeahead="detail as detail.name for detail in loadDetails($viewValue)" typeahead-select-on-exact="true"
+                        span class="btn btn-default" ng-click="addDetail()" Add Detail
+
                 br
                 div class="form-group"
-                    button type="submit" class="btn btn-default" ng-click="patchProject()" Update Project
+                    button type="submit" value="submit" class="btn btn-default" Update Project
+
+        /div class="col-xs-2"
+        /    div class="row" style="height:15px"
+        /
+        /    div class="btn-group" role="group" aria-label="Default button group"
+        /        /Button 1: Information
+        /        button ng-click="modalService.open('CreateProject/CreateProjectSettings/create_project_settings.html', 'CreateProjectSettingsCtrl', items)" type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Information"
+        /            span class="glyphicon glyphicon-info-sign" aria-hidden="true"
+        /
+        /        /Button 2: Account Settings
+        /        button ng-click="modalService.open('CreateProject/CreateProjectSettings/create_project_settings.html','CreateProjectSettingsCtrl', items)" type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Settings"
+        /            span class="glyphicon glyphicon-tasks" aria-hidden="true"

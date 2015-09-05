@@ -119,5 +119,32 @@ class RequirementSubcategoriesController < ApplicationController
         end
     end
 
+    #   get all subcategories that are non student attributes for a given project
+    def get_non_student_attribute_subcategories_of_project
+        respond_to do |format|
+            format.json {
+                @subcategories = Array.new
+                param = params[:payload]
+                @requirements = ProjectRequirement.where(:project_id => param[:project])
+
+                if @requirements
+                    for req in @requirements
+                        @subcategory = RequirementSubcategory.find_by_id(req.requirement_subcategory_id)
+                            if @subcategory.student_attribute == false
+                                @entry = Hash.new
+                                @entry[:id] = @subcategory.id
+                                @entry[:sub_category_name] = @subcategory.sub_category_name
+                                @entry[:attribute_type] = @subcategory.attribute_type
+                                @entry[:value] = req.value
+                                @subcategories.push(@entry)
+                            end
+                    end
+                    render :json => @subcategories
+                else
+                    render :nothing => true, :status => 200, :content_type => 'text/html'
+                end
+            }
+        end
+    end
 	
 end
