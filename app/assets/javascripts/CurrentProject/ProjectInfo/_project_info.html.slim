@@ -23,9 +23,12 @@ div
             td
                 span
                     | {{ project.deadline_date | date: 'dd-MM-yyyy' }}
+        tr ng-repeat="detail in details"
+            td
+                | {{ detail.sub_category_name }}
+            td
+                | {{ detail.value }}
 
-
-    br
 
     div ng-show="acceptingApplications"
         button style="margin: auto; width: 50%" access="administrator student" restrict="" class="btn btn-default btn-lg" ui-sref="current_project.apply_project({id: project.id})" Apply

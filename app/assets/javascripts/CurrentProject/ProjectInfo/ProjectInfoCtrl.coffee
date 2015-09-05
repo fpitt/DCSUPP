@@ -39,22 +39,9 @@ controllerFunction = ($scope, $stateParams, Project, ProjectRequirement, Require
             dead = $scope.project.deadline_date
             #   check if deadline date is due
             $scope.acceptingApplications = new Date(parseInt(dead.substring(0,4)), parseInt(dead.substring(5, 7)) - 1, parseInt(dead.substring(8,10))) >= new Date()
-
-            #   subcategories of this project that are student attributes
-            $scope.project.studentAttributes = []
-            #   subcategories of this project that aren't student attributes
-            $scope.project.nonStudentAttributes = []
-            payload = project: $stateParams.id
-            #   get all subcategories of this project
-            ProjectRequirement.getByProject(payload).success((projectRequirements) ->
-                for req in projectRequirements
-                    RequirementSubcategory.getById(req.requirement_subcategory_id).success((subcategory) ->
-                        #   separate student attribute subcategories from non student attribute subcategories
-                        if subcategory.student_attribute
-                            $scope.project.studentAttributes.push(subcategory)
-                        else
-                            $scope.project.nonStudentAttributes.push(subcategory)
-                    )
+            #   get all non student attribute subcategories of this project
+            RequirementSubcategory.getNonStudentAttributeSubcategoriesOfProject(project: $stateParams.id).success((data) ->
+                $scope.details = data
             )
         )
 
