@@ -27,8 +27,10 @@ controllerFunction = ($scope, $stateParams, ProjectApplication, ProjectRequireme
             RequirementSubcategory.getStudentAttributeSubcategoriesOfProject(project: $scope.application.project_id).success((data) ->
                 async.each(data, (req, callback) ->
                     StudentAttribute.getBySubcategoryAndCurrentUser(subcategory: req.id).success((attr) ->
-                        $scope.attributes.push(attribute_type: req.attribute_type,
-                            sub_category_name:req.sub_category_name, value: attr.value)
+                        $scope.attributes.push(
+                            attribute_type: req.attribute_type
+                            sub_category_name:req.sub_category_name
+                            value: attr.value)
                         callback()
                     )
                 )

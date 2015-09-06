@@ -15,15 +15,9 @@ class ProjectApplicationsController < ApplicationController
                 #   add student attributes to project application
                 if param[:requirements]
                     for requirement in param[:requirements]
-                        if StudentAttribute.find_by_requirement_subcategory_id_and_user_id(requirement[:id], @current_user.id)
-                        #   create a new student attribute if it doesn't already exist
-                        else
-                            @student_attribute = StudentAttribute.new()
-                            @student_attribute.update_attribute(:requirement_subcategory, RequirementSubcategory.find_by_id(requirement[:id]))
-                            @student_attribute.update_attribute(:user, @current_user)
-                            @student_attribute.update_attribute(:value, requirement[:value])
-                            @student_attribute.save
-                        end
+                        @student_attribute = StudentAttribute.where(:requirement_subcategory_id => requirement[:id], :user_id => @current_user.id).first_or_create
+                        @student_attribute.update_attribute(:value, requirement[:value])
+                        @student_attribute.save
                     end
                 end
 
