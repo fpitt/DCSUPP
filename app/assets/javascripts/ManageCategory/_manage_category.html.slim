@@ -2,16 +2,16 @@ div ng-controller="ManageCategoryCtrl"
 
     div class="row"
         div class="col-xs-4"
-            h3 Create Requirement Category
-            hr
-
-            form
-                div class="form-group"
-                label for="exampleInputEmail" Requirement Category Title
-                input class="form-control" placeholder="Category Name" ng-model="category_name"
-                br
-                div class="form-group"
-                    button type="submit" class="btn btn-default" ng-click="createCategory()" Create Category
+            div access="administrator" restrict=""
+                h3 Create Requirement Category
+                hr
+                form
+                    div class="form-group"
+                    label for="exampleInputEmail" Requirement Category Title
+                    input class="form-control" placeholder="Category Name" ng-model="category_name"
+                    br
+                    div class="form-group"
+                        button type="submit" class="btn btn-default" ng-click="createCategory()" Create Category
 
             div class="row" style="height:20px"
 
@@ -34,70 +34,71 @@ div ng-controller="ManageCategoryCtrl"
         div class="col-xs-8"
             h3 Requirement SubCategories
 
-            table class="table"
-                thead
-                    tr
-                        th #
-                        th Input Type
-                        th Field Name
-                        /Case 1: Selected Number
-                        th ng-if="category.attribute_type=='Number'" Place Holder
-                        th ng-if="category.attribute_type=='Number'" Max Value
-                        th ng-if="category.attribute_type=='Number'" Min Value
-                        /Case 2: Selected Date
-                        th ng-if="category.attribute_type=='Date'" Max Date
-                        th ng-if="category.attribute_type=='Date'" Min Date
-                        /Case 3: Selected Boolean
-                        /Nothing
-                        /Case 4: Selected Input Field
-                        th ng-if="category.attribute_type=='Input Field'" Place Holder
-                        th ng-if="category.attribute_type=='Input Field'" REGEX Expression
+            div access="administrator" restrict=""
+                table class="table"
+                    thead
+                        tr
+                            th #
+                            th Input Type
+                            th Field Name
+                            /Case 1: Selected Number
+                            th ng-if="category.attribute_type=='Number'" Place Holder
+                            th ng-if="category.attribute_type=='Number'" Max Value
+                            th ng-if="category.attribute_type=='Number'" Min Value
+                            /Case 2: Selected Date
+                            th ng-if="category.attribute_type=='Date'" Max Date
+                            th ng-if="category.attribute_type=='Date'" Min Date
+                            /Case 3: Selected Boolean
+                            /Nothing
+                            /Case 4: Selected Input Field
+                            th ng-if="category.attribute_type=='Input Field'" Place Holder
+                            th ng-if="category.attribute_type=='Input Field'" REGEX Expression
 
-                        th Student Attribute
+                            th Student Attribute
 
-                tbody
-                    /Top Row, Add Category Row
-                    tr
-                        th scope="row"
-                            button type="submit" class="btn btn-default" ng-click="create_subcategory()"
-                                span class="glyphicon glyphicon glyphicon-plus" aria-hidden="true"
-                        td
-                            select class="form-control" ng-model="category.attribute_type"
-                                option value="Number" Number
-                                option value="Date" Date
-                                option value="Boolean" Boolean
-                                option value="Input Field" Input Field
-                        td
-                            input type="text" class="form-control" placeholder="Input Name" ng-model="category.sub_category_name"
+                    tbody
+                        /Top Row, Add Category Row
+                        tr
+                            th scope="row"
+                                button type="submit" class="btn btn-default" ng-click="create_subcategory()"
+                                    span class="glyphicon glyphicon glyphicon-plus" aria-hidden="true"
+                            td
+                                select class="form-control" ng-model="category.attribute_type"
+                                    option value="Number" Number
+                                    option value="Date" Date
+                                    option value="Boolean" Boolean
+                                    option value="Input Field" Input Field
+                            td
+                                input type="text" class="form-control" placeholder="Input Name" ng-model="category.sub_category_name"
 
-                        /Case 1: Select Number
-                        td ng-if="category.attribute_type=='Number'"
-                            input type="number" class="form-control" placeholder="Number Placeholder" ng-model="category.number_placeholder"
-                        td ng-if="category.attribute_type=='Number'"
-                            input type="number" class="form-control" placeholder="Max" ng-model="category.number_max"
-                        td ng-if="category.attribute_type=='Number'"
-                            input type="number" class="form-control" placeholder="Min" ng-model="category.number_min"
+                            /Case 1: Select Number
+                            td ng-if="category.attribute_type=='Number'"
+                                input type="number" class="form-control" placeholder="Number Placeholder" ng-model="category.number_placeholder"
+                            td ng-if="category.attribute_type=='Number'"
+                                input type="number" class="form-control" placeholder="Max" ng-model="category.number_max"
+                            td ng-if="category.attribute_type=='Number'"
+                                input type="number" class="form-control" placeholder="Min" ng-model="category.number_min"
 
-                        /Case 2: Select Date
-                        td ng-if="category.attribute_type=='Date'"
-                            input type="date" class="form-control" placeholder="yyyy-MM-dd" ng-model="category.maxDate"
-                        td ng-if="category.attribute_type=='Date'"
-                            input type="date" class="form-control" placeholder="yyyy-MM-dd" ng-model="category.minDate"
+                            /Case 2: Select Date
+                            td ng-if="category.attribute_type=='Date'"
+                                input type="date" class="form-control" placeholder="yyyy-MM-dd" ng-model="category.maxDate"
+                            td ng-if="category.attribute_type=='Date'"
+                                input type="date" class="form-control" placeholder="yyyy-MM-dd" ng-model="category.minDate"
 
-                        /Case 3: Select Boolean
-                        /Display Nothing
+                            /Case 3: Select Boolean
+                            /Display Nothing
 
-                        /Case 4: Selected Input Field
-                        td ng-if="category.attribute_type=='Input Field'"
-                            input type="text" class="form-control" placeholder="Place Holder" ng-model="category.input_placeholder"
-                        td ng-if="category.attribute_type=='Input Field'"
-                            input type="text" class="form-control" placeholder="REGEX Expression" ng-model="category.regex"
+                            /Case 4: Selected Input Field
+                            td ng-if="category.attribute_type=='Input Field'"
+                                input type="text" class="form-control" placeholder="Place Holder" ng-model="category.input_placeholder"
+                            td ng-if="category.attribute_type=='Input Field'"
+                                input type="text" class="form-control" placeholder="REGEX Expression" ng-model="category.regex"
 
-                        td
-                            div ng-if="category.student_attribute == 0"
-                                button type="button" class="btn btn-default" ng-click="category.student_attribute = 1" False
-                            div ng-if="category.student_attribute == 1"
-                                button type="button" class="btn btn-primary" ng-click="category.student_attribute = 0" True
+                            td
+                                div ng-if="category.student_attribute == 0"
+                                    button type="button" class="btn btn-default" ng-click="category.student_attribute = 1" False
+                                div ng-if="category.student_attribute == 1"
+                                    button type="button" class="btn btn-primary" ng-click="category.student_attribute = 0" True
 
             table class="table"
                 thead

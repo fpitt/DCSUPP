@@ -5,4 +5,4 @@ angular.module('dcsupp').config ($stateProvider) ->
         controller: 'ManageCategoryCtrl'
         data:
             permissions:
-                only: ['administrator']
+                only: ['administrator', 'professor', 'student']
