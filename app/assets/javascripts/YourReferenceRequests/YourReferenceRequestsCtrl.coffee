@@ -16,18 +16,27 @@ controllerFunction = ($scope, modalService, $stateParams, Reference, Project, Pr
 
             #   for each reference request, get student's name and project title and id
             async.each($scope.references, (reference, callback) ->
-                ProjectApplication.getById(reference.project_application_id).success((projectApplication) ->
-                    User.getById(projectApplication.user_id).success((student) ->
-                        reference.student =
-                            name : student.name
-                        Project.getById(projectApplication.project_id).success((project) ->
-                            reference.project =
-                                title : project.title
-                                id : project.id
-
-                            callback()
-                        )
-                    )
+                async.waterfall([
+                        (callback) ->
+                            ProjectApplication.getById(reference.project_application_id).success((projectApplication) ->
+                                callback(null, projectApplication)
+                            )
+                        (projectApplication, callback) ->
+                            User.getById(projectApplication.user_id).success((student) ->
+                                reference.student =
+                                    name : student.name
+                                callback(null, projectApplication)
+                            )
+                        (projectApplication, callback) ->
+                            Project.getById(projectApplication.project_id).success((project) ->
+                                reference.project =
+                                    title : project.title
+                                    id : project.id
+                                callback(null)
+                            )
+                    ],
+                    (err) ->
+                        callback()
                 )
             , (err) ->
             )

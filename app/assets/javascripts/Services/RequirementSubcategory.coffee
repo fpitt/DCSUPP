@@ -88,7 +88,7 @@ ServiceFunction = (requestService) ->
         sendParams =
             method: 'POST'
             url: 'get_student_attribute_subcategories_of_project.json'
-        return requestService.service(sendParams, payload)
+        requestService.service(sendParams, payload)
 
     #   get all subcategories of a project that are not student attributes
     #   payload format:
@@ -97,7 +97,7 @@ ServiceFunction = (requestService) ->
         sendParams =
             method: 'POST'
             url: 'get_non_student_attribute_subcategories_of_project.json'
-        return requestService.service(sendParams, payload)
+        requestService.service(sendParams, payload)
 
 
 angular

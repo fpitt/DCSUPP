@@ -39,6 +39,7 @@ Rails.application.routes.draw do
     post "/get_in_progress_projects_of_current_user" => 'projects#get_in_progress_projects_of_current_user'
     post "/get_completed_projects_of_current_user" => 'projects#get_completed_projects_of_current_user'
     post "/set_project_completed" => 'projects#set_project_completed'
+    post "/filter_projects" => 'projects#filter_projects'
 
     #Project Application Routes
     post "/get_applications_of_user" => 'project_applications#get_applications_of_user'

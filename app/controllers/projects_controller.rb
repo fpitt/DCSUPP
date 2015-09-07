@@ -221,6 +221,50 @@ class ProjectsController < ApplicationController
         end
     end
 
+    #   get filtered list of projects by student attributes
+    def filter_projects
+        respond_to do |format|
+            format.json {
+                @projects = Project.all
+                param = params[:payload]
+
+                #   go through each filter and get projects matching all filters
+                if param[:filter]
+                    for filter in param[:filter]
+
+                        #   get projects matching current filter
+                        if filter[:name] == 'In progress'
+                            @filter_project = Project.where(:completed => false)
+                        elsif filter[:name] == 'Completed'
+                            @filter_project = Project.where(:completed => true)
+                        else
+                            @project_requirements = ProjectRequirement.where(:requirement_subcategory_id => filter[:id])
+                            @filter_project = Array.new
+                            for req in @project_requirements
+                                @filter_project.push(Project.find_by_id(req.project_id))
+                            end
+                        end
+
+                        @new_project_list = Array.new
+                        for item in @filter_project
+                            if @projects.include?(item)
+                                @new_project_list.push(item)
+                            end
+                        end
+                        @projects = @new_project_list
+                    end
+                end
+
+                if @projects
+                    render :json => @projects
+                else
+                    render :nothing => true, :status => 200, :content_type => 'text/html'
+                end
+            }
+        end
+    end
+
+
 
 end
 

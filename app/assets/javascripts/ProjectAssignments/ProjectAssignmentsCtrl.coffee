@@ -16,15 +16,28 @@ controllerFunction = ($scope, modalService, $stateParams, ProjectApplication, Pr
             $scope.assignments = data
             #   get professor, project title, and student for each
             #   project assignment
-            for application in $scope.assignments
-                Project.getById(application.project_id).success((project) ->
-                    application.project = { title: project.title }
-                    User.getById(project.user_id).success((professor) ->
-                        application.professor = { name: professor.name, id: professor.id }
-                    )
+            async.each($scope.assignments, (application, callback) ->
+                async.waterfall([
+                        (callback) ->
+                            Project.getById(application.project_id).success((project) ->
+                                application.project = { title: project.title }
+                                callback(null, project)
+                            )
+                        (project, callback) ->
+                            User.getById(project.user_id).success((professor) ->
+                                application.professor = { name: professor.name, id: professor.id }
+                                callback(null)
+                            )
+                        (callback) ->
+                            User.getById(application.user_id).success((student) ->
+                                application.student = { name: student.name, id: student.id }
+                                callback(null)
+                            )
+                    ],
+                    (err) ->
+                        callback()
                 )
-            User.getById(application.user_id).success((student) ->
-                application.student = { name: student.name, id: student.id }
+            , (err) ->
             )
         )
 
