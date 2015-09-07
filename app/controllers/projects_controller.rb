@@ -233,7 +233,7 @@ class ProjectsController < ApplicationController
                     for filter in param[:filter]
 
                         #   get projects matching current filter
-                        if filter[:name] == 'In progress'
+                        if filter[:name] == 'In-progress'
                             @filter_project = Project.where(:completed => false)
                         elsif filter[:name] == 'Completed'
                             @filter_project = Project.where(:completed => true)

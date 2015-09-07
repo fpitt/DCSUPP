@@ -22,60 +22,19 @@ controllerFunction = ($scope, modalService, Project, RequirementSubcategory, $q)
 	]
 	$scope.pagenumber = {current: 0, completed: 0, inProgress: 0}
 
-#	$scope.flipInProgress = (pushDirection) ->
-#		payload =
-#			direction: pushDirection
-#			pagenumber: $scope.pagenumber.inProgress
-#		$scope.direction = pushDirection
-#
-#		Project.flipInProgress(payload).success((data) ->
-#			if (data)
-#				$scope.projects = data
-#				if $scope.direction > 0
-#					$scope.pagenumber.inProgress += 1
-#				else if $scope.direction < 0
-#					$scope.pagenumber.inProgress -= 1
-#				else
-#					$scope.pagenumber.inProgress = 1
-#
-#				$scope.pagenumber.current = $scope.pagenumber.inProgress
-#		)
-#
-#	$scope.flipCompleted = (pushDirection) ->
-#		payload =
-#			direction: pushDirection
-#			pagenumber: $scope.pagenumber.completed
-#		$scope.direction = pushDirection
-#
-#		Project.flipCompleted(payload).success((data) ->
-#			if (data)
-#				$scope.projects = data
-#				if $scope.direction > 0
-#					$scope.pagenumber.completed += 1
-#				else if $scope.direction < 0
-#					$scope.pagenumber.completed -= 1
-#				else
-#					$scope.pagenumber.completed = 1
-#				$scope.pagenumber.current = $scope.pagenumber.inProgress
-#		)
-
-#	$scope.loadSubcategories = () ->
-#		RequirementSubcategory.getAll().success((data) ->
-#			for item in data
-#				$scope.subcategories.push({name: item.sub_category_name, id: item.id})
-#		)
-
-
 	#	get Project filter tags by keyword
 	$scope.loadTags = (query) ->
 		deferred = $q.defer();
 		RequirementSubcategory.studentAttributeRequirementSubcategoriesWithKeyword(keyword: query)
 		.success((data) ->
-
-			deferred.resolve(data.map((val) ->
+			tags = data.map((val) ->
 				name: val.sub_category_name
-				id: val.id
-			)))
+				id: val.id)
+			if 'in progress'.indexOf(query.toLowerCase()) != -1
+				tags.push({name: 'In progress', id:'0'})
+			else if 'completed'.indexOf(query.toLowerCase()) != -1
+				tags.push({name: 'Completed', id:'0'})
+			deferred.resolve(tags))
 		return deferred.promise
 
 	#	filter list of projects
