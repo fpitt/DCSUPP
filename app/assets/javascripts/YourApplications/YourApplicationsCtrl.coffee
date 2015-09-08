@@ -15,6 +15,12 @@ controllerFunction = ($scope, ProjectApplication, modalService) ->
             $scope.applications = data
         )
 
+    #   flip page
+    $scope.flip = () ->
+        ProjectApplication.flip().success((data) ->
+            $scope.applications = data
+        )
+
     #   run this code when page loads
     $scope.getProjectApplications()
 

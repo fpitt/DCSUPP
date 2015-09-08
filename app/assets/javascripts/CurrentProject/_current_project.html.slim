@@ -1,6 +1,5 @@
 link href="/assets/ng-tags-input/ng-tags-input.min.css" rel="stylesheet" type="text/css"
 
-
 div class="row"
     div class="col-xs-4"
 
@@ -17,6 +16,8 @@ div class="row"
                 /        a ng-click="pagenumber.inProgress = 0;filter = 'In progress';flipInProgress(10)" In progress
                 /    li role="menuitem"
                 /        a ng-click="pagenumber.completed = 0;filter = 'Completed';flipCompleted(10)" Completed
+
+            span Refine your search:
             tags-input class="bootstrap" ng-model="requirements" display_property="name"
                 auto-complete source="loadTags($query)"
             button class="btn btn-default" ng-click="filterProjects()" Search
@@ -50,9 +51,6 @@ div class="row"
 
         div class="btn-group" role="group" aria-label="Default button group"
             /Button 1: Information
-            button ng-click="modalService.open('CurrentProject/CurrentProjectSettings/current_project_info.html', 'CurrentProjectSettingsCtrl', items)" type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Information"
+            button ng-click="modalService.open('InfoPopup/info.html', 'InfoCtrl')" type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Information"
                 span class="glyphicon glyphicon-info-sign" aria-hidden="true"
 
-            /Button 2: Account Settings
-            button ng-click="modalService.open('CurrentProject/CurrentProjectSettings/current_project_settings.html', 'CurrentProjectSettingsCtrl', items)"type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Settings"
-                span class="glyphicon glyphicon-tasks" aria-hidden="true"

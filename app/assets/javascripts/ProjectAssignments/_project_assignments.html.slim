@@ -1,21 +1,34 @@
-table class="table table-striped"
-    tr
-        th Project
-        th Professor
-        th Student
-        th Administrator Approved
-        th Actions
-    tr ng-repeat="assignment in assignments"
-        td
-            a ui-sref="current_project.selected_project({id: assignment.project_id})"
-                | {{ assignment.project.title }}
-        td
-            | {{ assignment.professor.name }}
-        td
-            a ui-sref="list_student.selected_student({id: assignment.student.id})"
-                | {{ assignment.student.name }}
-        td
-            | {{ assignment.administrator_approved || 'Pending' }}
-        td
-            button class="btn btn-default" ng-click="processOffer(assignment.id, true)" Accept
-            button class="btn btn-default" ng-click="processOffer(assignment.id, false)" Reject
+div
+    div
+        div class="row" style="height:15px"
+
+        div id="assignments-info" class="btn-group" role="group" aria-label="Default button group"
+            /Button 1: Information
+            button ng-click="modalService.open('InfoPopup/info.html', 'InfoCtrl')" type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Information"
+                span class="glyphicon glyphicon-info-sign" aria-hidden="true"
+
+    br
+    br
+
+    div
+        table class="table table-striped"
+            tr
+                th Project
+                th Professor
+                th Student
+                th Administrator Approved
+                th Actions
+            tr ng-repeat="assignment in assignments"
+                td
+                    a ui-sref="current_project.selected_project({id: assignment.project_id})"
+                        | {{ assignment.project.title }}
+                td
+                    | {{ assignment.professor.name }}
+                td
+                    a ui-sref="list_student.selected_student({id: assignment.student.id})"
+                        | {{ assignment.student.name }}
+                td
+                    | {{ assignment.administrator_approved || 'Pending' }}
+                td
+                    button class="btn btn-default" ng-click="processOffer(assignment.id, true)" Accept
+                    button class="btn btn-default" ng-click="processOffer(assignment.id, false)" Reject

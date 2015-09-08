@@ -1,19 +1,33 @@
-table class="table table-striped"
-    tr
-        th Student
-        th Project
-        th Student Message
-        th Actions
-    tr ng-repeat="reference in references"
-        td
-            a ui-sref="list_student.selected_student({id: reference.student.id})"
-                | {{ reference.student.name }}
-        td
-            a ui-sref="current_project.selected_project({id: reference.project.id})"
-                | {{ reference.project.title }}
-        td
-            span
-                | {{ reference.student_text }}
-        td
-            button class="btn btn-default" ng-click="rejectReference(reference)" Reject
-            button class="btn btn-default" ui-sref="write_reference({id: reference.id})" Write Reference
+div
+    div
+        div class="row" style="height:15px"
+
+        div id="reference-info" class="btn-group" role="group" aria-label="Default button group"
+            /Button 1: Information
+            button ng-click="modalService.open('InfoPopup/info.html', 'InfoCtrl')" type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Information"
+                span class="glyphicon glyphicon-info-sign" aria-hidden="true"
+
+    br
+    br
+
+    div
+        table class="table table-striped"
+            tr
+                th Student
+                th Project
+                th Student Message
+                th Actions
+            tr ng-repeat="reference in references"
+                td
+                    a ui-sref="list_student.selected_student({id: reference.student.id})"
+                        | {{ reference.student.name }}
+                td
+                    a ui-sref="current_project.selected_project({id: reference.project.id})"
+                        | {{ reference.project.title }}
+                td
+                    span
+                        | {{ reference.student_text }}
+                td
+                    button class="btn btn-default" ng-click="rejectReference(reference)" Reject
+                    button class="btn btn-default" ui-sref="write_reference({id: reference.id})" Write Reference
+

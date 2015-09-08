@@ -8,9 +8,9 @@
 # ---------------------------------------------------------
 
 
-controllerFunction = ($scope, RequirementCategory, RequirementSubcategory) ->
+controllerFunction = ($scope, RequirementCategory, modalService, RequirementSubcategory) ->
 
-    #$scope.modalService = modalSDaervice
+    $scope.modalService = modalService
 
     # --- Page Variables ----
 
@@ -159,5 +159,5 @@ controllerFunction = ($scope, RequirementCategory, RequirementSubcategory) ->
 
 angular
     .module('dcsupp')
-    .controller('ManageCategoryCtrl', ['$scope', 'RequirementCategory', 'RequirementSubcategory',  controllerFunction])
+    .controller('ManageCategoryCtrl', ['$scope', 'RequirementCategory', 'modalService', 'RequirementSubcategory',  controllerFunction])
 

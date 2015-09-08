@@ -23,16 +23,10 @@
 
 AccountFunction = ($scope, $modal, modalService, requestService, User, $state, RequirementSubcategory, StudentAttribute) ->
 
-# --- Page Variables ----
+    # --- Page Variables ----
 
-#Scope Varaible Used in Popup Identification
+    #Scope Variable Used in Popup Identification
     $scope.modalService = modalService
-
-    $scope.items = [
-        'item1'
-        'item2'
-        'item3'
-    ]
 
     #Javascript Object Storing Current User Information
     $scope.user = null

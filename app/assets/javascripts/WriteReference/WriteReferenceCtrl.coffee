@@ -5,7 +5,9 @@
 # This is the Write Reference page for DCSUPP for
 # professors to write reference letters.
 # -------------------------------------------------------------------------------------------------------
-controllerFunction = ($scope, $stateParams, $state, Reference) ->
+controllerFunction = ($scope, $stateParams, $state, Reference, modalService) ->
+    $scope.modalService = modalService;
+
     #   professor's letter of reference
     $scope.professor_text = ''
 
@@ -23,4 +25,4 @@ controllerFunction = ($scope, $stateParams, $state, Reference) ->
 angular
 .module('dcsupp')
 .controller('WriteReferenceCtrl',
-    ['$scope', '$stateParams', '$state', 'Reference', controllerFunction])
+    ['$scope', '$stateParams', '$state', 'Reference', 'modalService', controllerFunction])
