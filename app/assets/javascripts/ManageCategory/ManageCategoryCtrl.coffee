@@ -76,7 +76,7 @@ controllerFunction = ($scope, RequirementCategory, modalService, RequirementSubc
         RequirementSubcategory.update(payload).success (data) ->
             $scope.edit_category = null
             #Reload the Current SubCategory with the Updates
-            $scope.loadSubcategories($scope.current_category_id)
+            $scope.loadSubcategories($scope.selectedCategory)
 
     # --- Create SubCategory ---
 
@@ -111,16 +111,15 @@ controllerFunction = ($scope, RequirementCategory, modalService, RequirementSubc
         RequirementSubcategory.create(payload).success((data) ->
             $scope.category = angular.copy($scope.GlobalDefault)
             #Reset the Default category
-            $scope.loadSubcategories($scope.current_category_id))
+            $scope.loadSubcategories($scope.selectedCategory))
 
     # --- Get SubCategory ---
 
-    $scope.loadSubcategories = (id)->
-        payload =
-            target_id: id
-        $scope.current_category_id = id
+    $scope.loadSubcategories = (category) ->
+        $scope.current_category_id = category.id
+        $scope.selectedCategory = category
 
-        RequirementSubcategory.getAllOfCategory(payload).success((data) ->
+        RequirementSubcategory.getAllOfCategory(target_id: category.id).success((data) ->
             $scope.list_subcategories = data)
 
     # --- Create Category --- 
