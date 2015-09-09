@@ -1,3 +1,10 @@
+=begin
+
+Model: StudentAttribute
+
+The StudentAttribute model stores information about a student.
+I.e. their grade in a course.
+=end
 class StudentAttribute < ActiveRecord::Base
 
 	belongs_to :requirement_subcategory
