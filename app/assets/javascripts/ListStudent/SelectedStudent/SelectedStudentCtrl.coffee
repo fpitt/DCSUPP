@@ -1,51 +1,39 @@
-controllerFunction = ($scope, requestService, $stateParams, Rating) ->
-    $scope.sendParams =
-        url: '/users/' + $stateParams.id + '.json'
-        method: 'GET'
+# ---------------------------------------------------------
+# Page: Selected Student Page
+#
+# This is the selected student page for the DCSUPP.
+# It displays information about a student.
+# ---------------------------------------------------------
 
-    $scope.items = [
-        'item1'
-        'item2'
-        'item3'
-    ]
-
-    $scope.nameCollapsed = $scope.emailCollapsed = true
-    $scope.user = {}
-    $scope.payload = {}
-
+controllerFunction = ($scope, requestService, $stateParams, StudentAttribute, RequirementSubcategory, User) ->
+    #   get the current student
     $scope.getUser = ->
-        requestService.service($scope.sendParams).success((data) ->
+        User.getById($stateParams.id).success((data) ->
             $scope.user = data
-            $scope.payload = jQuery.extend(true, {}, data))
-        return
-
-    $scope.patchUser = ->
-        patchSendParams =
-            url: '/users/' + $scope.user.id + '.json'
-            method: 'PATCH'
-        requestService.service(patchSendParams, $scope.payload).success((data) ->
-            $scope.getStudent())
-        return
-
-    $scope.getRatings = () ->
-        payload =
-            student : $stateParams.id
-        Rating.getRatingsOfStudent(payload).success((data) ->
-            $scope.ratings  = data
         )
 
-#    $scope.addRating = () ->
-#        payload =
-#            student : $stateParams.id
-#            rating : $scope.rating
-#        Rating.create(payload).success((dat) ->
-#            $scope.getRatings
-#        )
+    #   get this student's student attributes
+    $scope.getStudentAttributes = ->
+        #   get student attributes
+        $scope.attributes = []
+        StudentAttribute.getStudentAttributesOfStudent(student: $stateParams.id).success((data) ->
+            async.each(data, (attr, callback) ->
+                RequirementSubcategory.getById(attr.requirement_subcategory_id)
+                .success((subcategory) ->
+                    $scope.attributes.push(
+                        attribute_type: subcategory.attribute_type
+                        sub_category_name: subcategory.sub_category_name
+                        value: attr.value)
+                    callback()
+                )
+            )
+        )
 
     $scope.getUser();
-    $scope.getRatings();
+    $scope.getStudentAttributes();
 
 
 angular
 .module('dcsupp')
-.controller('SelectedStudentCtrl', ['$scope', 'requestService', '$stateParams', 'Rating', controllerFunction])
+.controller('SelectedStudentCtrl', ['$scope', 'requestService', '$stateParams', 'StudentAttribute',
+                                    'RequirementSubcategory', 'User', controllerFunction])

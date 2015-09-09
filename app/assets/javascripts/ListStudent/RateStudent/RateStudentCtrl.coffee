@@ -1,3 +1,5 @@
+# NOT USED AT THE MOMENT
+
 controllerFunction = ($scope, $state, modalService, Rating, $stateParams) ->
 
     $scope.rating = {}

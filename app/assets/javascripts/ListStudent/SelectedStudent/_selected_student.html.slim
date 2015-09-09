@@ -5,34 +5,12 @@ table class="table table-hover"
         td
             | Name
         td
-            span ng-show="nameCollapsed"
+            span
                 | {{ user.name }}
-            input ng-show="!nameCollapsed" class="form-control" ng-model="payload.name" placeholder="Name"
+    tr ng-repeat="attribute in attributes"
         td
-            div access="administrator" restrict=""
-                button ng-show="nameCollapsed" class="btn btn-default" ng-click="nameCollapsed = !nameCollapsed" Edit
-                button ng-show="!nameCollapsed" class="btn btn-default" ng-click="nameCollapsed = !nameCollapsed; patchUser()" Update
-
-    tr
-        td
-            | E-mail
-        td
-            span ng-show="emailCollapsed"
-                | {{ user.email }}
-            input ng-show="!emailCollapsed" class="form-control" ng-model="payload.email" placeholder="E-mail"
-        td
-            div access="administrator" restrict=""
-                button ng-show="emailCollapsed" class="btn btn-default" ng-click="emailCollapsed = !emailCollapsed" Edit
-                button ng-show="!emailCollapsed" class="btn btn-default" ng-click="emailCollapsed = !emailCollapsed; patchUser()" Update
-
-h3 Ratings
-table class="table"
-    tr ng-repeat="rating in ratings"
-        td
-            rating ng-model="rating.rating" max="5" readonly="true"
-            br
-            | {{ rating.comment }}
-
-
-/div access="administrator professor" restrict=""
-/    button class="btn btn-default" ui-sref="list_student.rate_student({id: user.id})" Rate This Student
+            | {{ attribute.sub_category_name }}
+        td ng-show="attribute.attribute_type != 'Date'"
+            | {{ attribute.value }}
+        td ng-show="attribute.attribute_type == 'Date'"
+            | {{ attribute.value | date: "yyyy-MMM-dd" }}
