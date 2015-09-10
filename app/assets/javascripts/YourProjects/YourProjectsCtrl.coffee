@@ -4,25 +4,27 @@ controllerFunction = ($scope, modalService, $state, User, Project, ProjectApplic
     $scope.showProject = false;
     $scope.pagenumber = 1
     $scope.projects = null
-    $scope.selectedProject = {}
-    $scope.filtr = 'In progress'
-    $scope.items = [
-        'item1'
-        'item2'
-        'item3'
-    ]
+    $scope.selectedProject = null
+    $scope.applications = null
+    $scope.filter = 'In progress'
 
-#    $scope.loadProjects = () ->
-#        Project.getByCurrentUser().success((data) ->
-#            $scope.projects = data)
 
+    ###
+    Clear all current information in the view.
+    ###
+    $scope.clearAll = () ->
+        $scope.selectedProject = null;
+        $scope.applications = null
+        $scope.projects = null;
 
     $scope.getInProgressProjects = () ->
+        $scope.clearAll()
         $scope.filter = 'In progress'
         Project.getInProgressProjectsOfCurrentUser().success((data) ->
             $scope.projects = data)
 
     $scope.getCompletedProjects = () ->
+        $scope.clearAll()
         $scope.filter = 'Completed'
         Project.getCompletedProjectsOfCurrentUser().success((data) ->
             $scope.projects = data)
