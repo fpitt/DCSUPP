@@ -41,6 +41,20 @@ ServiceFunction = (requestService) ->
             url: '/flip_student_settings.json'
         requestService.service(sendParams, payload)
 
+    createAttribute: (payload) ->
+        sendParams =
+            method: 'POST'
+            url: '/student_attributes.json'
+        requestService.service(sendParams, payload)
+
+    updateAttribute: (user_id, category_id, payload) ->
+        sendParams =
+            method: 'PATCH'
+            url: '/student_attributes/' + category_id + '.json'
+        autopayload =
+            user_id: user_id
+            subcategory_id: category_id
+        requestService.service(sendParams, autopayload)
 
 angular
 .module('dcsupp')

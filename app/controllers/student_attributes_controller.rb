@@ -27,4 +27,13 @@ class StudentAttributesController < ApplicationController
         end
     end
 
+    #Update/ Create Student Attribute
+    def update
+
+    end
+
+    def create
+
+    end
+
 end

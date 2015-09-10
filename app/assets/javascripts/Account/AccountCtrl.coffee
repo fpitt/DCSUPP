@@ -40,14 +40,17 @@ AccountFunction = ($scope, $modal, modalService, requestService, User, $state, R
     #Current Selected Category in Left-Side Navigation
     $scope.selectCategory = null
 
-    # -- SubCategory Attributes -- 
-    #Attributes Registered by the User
+    # -- SubCategory Attributes --
+    #Current SubCategory Selected for Edit
+    $scope.selectsubCategory = null
+    #Requirement Attributes added by the User
     $scope.attribute_subcategory = null
     #List of all Requirement Attribute SubCategories
     $scope.subcategories = null
     #Merged List of Categories with attributes and empty categories [For Display]
     $scope.merged_category = []
 
+    # -- Angular Models for Input/ Reset --
     #Edit SubCategory
     $scope.edit =
         input_number: 0
@@ -69,8 +72,8 @@ AccountFunction = ($scope, $modal, modalService, requestService, User, $state, R
 
         for category in $scope.subcategories
             if category.student_attribute
-                if $scope.studentAttribute(category.id)
-#The student Attribute is availble
+                if $scope.studentAttributeCreated(category.id)
+                    #The student Attribute is availble
                     append_category = studentAttribute(category.id)
                     append_category.type = "attribute"
                     append_category.edit = false
@@ -79,48 +82,53 @@ AccountFunction = ($scope, $modal, modalService, requestService, User, $state, R
                     category.type = "category"
                     category.edit = false
                     $scope.merged_category.push(category)
-        console.log($scope.merged_category)
 
     # --- Update Entry ---
-
+    #Send the SubCategory Information to the backend
     $scope.update = ->
+        #Clear the Edit Form from Frontend
+        
+        #Check if we need to create/ update
+        if $scope.studentAttributeCreated($scope.selectsubCategory.id)
+            #Update the studentAttribute
+            StudentAttribute.updateAttribute($scope.user.id, $scope.selectsubCategory.id, $scope.edit).success (data)->
+                $scope.unselectEdit()
+        else
+            #Create the studentAttribute
+            StudentAttribute.createAttribute($scope.edit).success (data)->
+                $scope.unselectEdit()
 
-#Clear the Edit Form from Frontend + Send Information to Backend
-        $scope.edit = angular.copy($scope.editBlank)
 
+    # --- Unselect Edit ---
+    $scope.unselectEdit = ->
+        #Change the Category Edit to false
         for category in $scope.merged_category
             if (category.edit)
                 category.edit = false
+        $scope.selectsubCategory = null
+        $scope.edit = angular.copy($scope.editBlank)
         return
 
     # --- Edit Entry ---
-
+    #Enable Editing for the selected SubCategory
     $scope.edit_entry = (id) ->
         $scope.edit = angular.copy($scope.editBlank)
+        $scope.selectsubCategory = null
 
         for category in $scope.merged_category
             if (category.id == id)
+                $scope.selectsubCategory = category
                 category.edit = true
             else if (category.edit)
                 category.edit = false
         return
 
     # --- Get User ---
-
+    #Grab the user Attribute
     $scope.getUser = ->
         User.getUser().success (data) ->
             $scope.user = data
         return
-
-    # --- Patch User ---
-
-#    $scope.patchUser = ->
-#        patchSendParams =
-#            url: '/users/' + $scope.user.id + '.json'
-#            method: 'PATCH'
-#        requestService.service(patchSendParams, $scope.payload).success((data) ->
-#            $scope.getUser())
-#        return
 
     $scope.updateProject = ->
         $state.go('update_project', {id: 1})
@@ -148,23 +156,12 @@ AccountFunction = ($scope, $modal, modalService, requestService, User, $state, R
 
     # --- Check Student Attribute ---
 
-    $scope.studentAttribute = (id) ->
+    $scope.studentAttributeCreated = (attribute_id) ->
     #Iterate Over the Array
         for category of $scope.attribute_subcategory
-            if (category.id == id)
+            if (category.id == attribute_id)
                 return category
         return false
-
-    # --- Submit Student Attribute
-
-    ###
-    $scope.submit = () ->
-        value = null
-        payload =
-            url: '/student_attributes.json'
-            value: value
-
-    ###
 
     # --- Settings Navigation --- 
 
@@ -173,7 +170,7 @@ AccountFunction = ($scope, $modal, modalService, requestService, User, $state, R
             direction: pushDirection
             pagenumber: $scope.pagenumber
         $scope.direction = pushDirection
-        StudentAttribute.flipStudentSettings(payload).success((data) ->
+        StudentAttribute.flipStudentSettings(payload).success (data) ->
             if (data)
                 $scope.categories = data
                 if $scope.direction > 0
@@ -182,7 +179,7 @@ AccountFunction = ($scope, $modal, modalService, requestService, User, $state, R
                     $scope.pagenumber -= 1
                 else
                     $scope.pagenumber = 1
-        )
+        return
 
 
     # --- Jquery Initialization --- 
