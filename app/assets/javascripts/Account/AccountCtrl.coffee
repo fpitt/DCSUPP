@@ -28,14 +28,25 @@ AccountFunction = ($scope, $modal, modalService, requestService, User, $state, R
     #Scope Variable Used in Popup Identification
     $scope.modalService = modalService
 
+    # -- Track User/ Page State --
     #Javascript Object Storing Current User Information
     $scope.user = null
     #Page Number in Left-Side Navigation (Categories listed below Prev [pageNumber] Next)
     $scope.pagenumber = 1
+
+    # -- List Navigation Category --
     #List of Categories in Left-Side Navigation
     $scope.categories = null
     #Current Selected Category in Left-Side Navigation
     $scope.selectCategory = null
+
+    # -- SubCategory Attributes -- 
+    #Attributes Registered by the User
+    $scope.attribute_subcategory = null
+    #List of all Requirement Attribute SubCategories
+    $scope.subcategories = null
+    #Merged List of Categories with attributes and empty categories [For Display]
+    $scope.merged_category = []
 
     #Edit SubCategory
     $scope.edit =
@@ -49,12 +60,6 @@ AccountFunction = ($scope, $modal, modalService, requestService, User, $state, R
         input_text: ""
         input_boolean: false
         input_date: new Date()
-
-    #Student Attribute SubCategory Information [Pulled from backend]
-    $scope.attribute_subcategory = null
-    #SubCategories within the Selected Category
-    $scope.subcategories = null
-    $scope.merged_category = []
 
     # --- Merge Attribute + Categories ---
     # Merge the SubCategories with the student attributes for display purposes
@@ -144,7 +149,7 @@ AccountFunction = ($scope, $modal, modalService, requestService, User, $state, R
     # --- Check Student Attribute ---
 
     $scope.studentAttribute = (id) ->
-#Iterate Over the Array
+    #Iterate Over the Array
         for category of $scope.attribute_subcategory
             if (category.id == id)
                 return category
