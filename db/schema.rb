@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150831210536) do
+ActiveRecord::Schema.define(version: 20150909194323) do
 
   create_table "professor_settings", force: :cascade do |t|
     t.datetime "created_at",                       null: false
@@ -83,7 +83,7 @@ ActiveRecord::Schema.define(version: 20150831210536) do
   create_table "references", force: :cascade do |t|
     t.string   "student_text"
     t.string   "professor_text"
-    t.string   "professor_approved"
+    t.boolean  "professor_approved"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
     t.integer  "user_id"

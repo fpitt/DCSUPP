@@ -41,6 +41,17 @@ ServiceFunction = (requestService) ->
             url: '/flip_student_settings.json'
         requestService.service(sendParams, payload)
 
+    ###
+        get all student attributes for a given student
+        payload format:
+            student: Integer (student's id)
+    ###
+    getStudentAttributesOfStudent: (payload) ->
+        sendParams =
+            method: 'POST'
+            url: '/get_student_attributes_of_student.json'
+        requestService.service(sendParams, payload)
+
 
 angular
 .module('dcsupp')

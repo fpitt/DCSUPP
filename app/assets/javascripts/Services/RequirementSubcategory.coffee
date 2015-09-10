@@ -99,6 +99,17 @@ ServiceFunction = (requestService) ->
             url: 'get_non_student_attribute_subcategories_of_project.json'
         requestService.service(sendParams, payload)
 
+    ###
+        get a given student attribute's requirement subcategory
+        payload format:
+            subcategory: Integer (subcategory id)
+    ###
+#    getSubcategoryOfStudentAttribute: (payload) ->
+#        sendParams =
+#            method: 'POST'
+#            url: 'get_subcategory_of_student_attribute.json'
+#        requestService.service(sendParams, payload)
+
 
 angular
 .module('dcsupp')

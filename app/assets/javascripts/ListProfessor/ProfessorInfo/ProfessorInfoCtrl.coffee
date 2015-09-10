@@ -1,3 +1,5 @@
+# NOT USED AT THE MOMENT
+
 controllerFunction = ($scope, $stateParams, User) ->
     $scope.sendParams =
         url: '/users/' + $stateParams.id + '.json'

@@ -15,7 +15,7 @@ div
         button ng-show="application.professor_approved == true" class="btn btn-default" ng-click="processOffer(true)" Accept Offer
         button ng-show="application.professor_approved == true" class="btn btn-default" ng-click="processOffer(false)" Reject Offer
 
-    div access="administrator profess" restrict=""
+    div access="administrator professor" restrict=""
         span ng-show="application.professor_approved == true"
             | Status:
         span ng-show="application.professor_approved == true && application.student_approved == null"
@@ -70,6 +70,32 @@ div
             td ng-show="attribute.attribute_type == 'Date'"
                 | {{ attribute.value | date: "yyyy-MMM-dd" }}
     br
+
+
+    h3 Reference Requests
+    table restrict="" access="administrator student" class="table"
+        tr ng-repeat="reference in allReferences"
+            td
+                p
+                    | Request to: {{ reference.professor.name }}
+                p ng-if="reference.professor_approved == null"
+                    | This request is still pending.
+                p ng-if="reference.professor_approved == false"
+                    | This request has been rejected.
+                div ng-if="reference.professor_approved == true"
+                    p
+                        | Professor's message: {{ reference.professor_text }}
+                    button ng-if="reference.student_approved == null || reference.student_approved == false" class="btn btn-default" ng-click="processReferenceApproval(true)" Use
+                    button ng-if="reference.student_approved == true" class="btn btn-default" ng-click="processReferenceApproval(false)" Discard
+
+    table restrict="" access="administrator professor" class="table"
+        tr ng-repeat="reference in studentApprovedReferences"
+            td
+                p
+                    | By: {{ reference.professor.name }
+                p
+                    | Message: {{ reference.professor_text }}
+
     button ui-sref="your_applications.request_reference({id: application.id})" class="btn btn-default" Request Reference
 
 
