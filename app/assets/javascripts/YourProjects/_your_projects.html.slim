@@ -19,15 +19,15 @@ div
                 a class="list-group-item" ng-repeat="project in projects" ng-click="selectProject(project)"
                     | {{ project.title }}
 
-            alert type="success" ng-show="projects.length == 0" You don't have {{ filter }} projects.
+            alert ng-show="projects.length == 0" You don't have {{ filter }} projects.
 
             div ng-show="selectedProject"
                 div class="text-center"
                     h4  Student Applications For {{ selectedProject.title }}
-                div class="list-group" ng-repeat="application in applications"
-                    a class="list-group-item" ui-sref="your_projects.application_info({id: application.id})"
+                div class="list-group"
+                    a ng-repeat="application in applications" class="list-group-item" ui-sref="your_projects.application_info({id: application.id})"
                         | {{application.title }}
-                alert type="success" ng-show="applications.length == 0" None at the moment.
+                alert ng-show="applications.length == 0" None at the moment.
 
 
         div class="row" style="height:5px"

@@ -63,32 +63,34 @@ div
             span class="glyphicon glyphicon-plus" aria-hidden="true"
             span New Request
 
-    table restrict="" access="administrator student" class="table"
-        tr ng-repeat="reference in allReferences"
-
-            td
-                div class="row"
-                    div class="col-xs-10"
-                        p
-                            | Request to: {{ reference.professor.name }}
-                        p ng-show="reference.professor_approved == null"
-                            | This request is still pending.
-                        p ng-show="reference.professor_approved == false"
-                            | This request has been rejected.
-                        p ng-show="reference.professor_approved == true"
-                            | Professor's message: {{ reference.professor_text }}
-                    div class="col-xs-2"
-                        div ng-show="reference.professor_approved == true"
-                            button ng-show="reference.student_approved == null || reference.student_approved == false" class="btn btn-default btn-sm" ng-click="processReferenceApproval(reference, true)" Use
-                            button ng-show="reference.student_approved == true" class="btn btn-default btn-sm" ng-click="processReferenceApproval(reference, false)" Discard
-
-    table restrict="" access="administrator professor" class="table"
-        tr ng-repeat="reference in studentApprovedReferences"
-            td
-                p
-                    | By: {{ reference.professor.name }}
-                p
-                    | Message: {{ reference.professor_text }}
+    div restrict="" access="administrator student"
+        alert ng-show="allReferences.length == 0" None at the moment.
+        table class="table"
+            tr ng-repeat="reference in allReferences"
+                td
+                    div class="row"
+                        div class="col-xs-10"
+                            p
+                                | Request to: {{ reference.professor.name }}
+                            p ng-show="reference.professor_approved == null"
+                                | This request is still pending.
+                            p ng-show="reference.professor_approved == false"
+                                | This request has been rejected.
+                            p ng-show="reference.professor_approved == true"
+                                | Professor's message: {{ reference.professor_text }}
+                        div class="col-xs-2"
+                            div ng-show="reference.professor_approved == true"
+                                button ng-show="reference.student_approved == null || reference.student_approved == false" class="btn btn-default btn-sm" ng-click="processReferenceApproval(reference, true)" Use
+                                button ng-show="reference.student_approved == true" class="btn btn-default btn-sm" ng-click="processReferenceApproval(reference, false)" Discard
+    div restrict="" access="administrator professor"
+        alert ng-show="studentApprovedReferences.length == 0" None at the moment.
+        table class="table"
+            tr ng-repeat="reference in studentApprovedReferences"
+                td
+                    p
+                        | By: {{ reference.professor.name }}
+                    p
+                        | Message: {{ reference.professor_text }}
 
 
 
