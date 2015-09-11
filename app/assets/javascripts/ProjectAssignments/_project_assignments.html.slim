@@ -34,6 +34,8 @@ div class="row"
                     button class="btn btn-default button-margin-10" ng-click="processOffer(assignment.id, true)" Accept
                     button class="btn btn-default" ng-click="processOffer(assignment.id, false)" Reject
 
+        alert ng-show="assignments.length == 0" None at the moment.
+
     div id="assignments-info" class="btn-group col-xs-2" role="group" aria-label="Default button group"
         /Button 1: Information
         button ng-click="modalService.open('InfoPopup/info.html', 'InfoCtrl')" type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Information"
