@@ -35,6 +35,8 @@ controllerFunction = ($scope, $stateParams, ProjectApplication, ProjectRequireme
                     )
                 )
             )
+
+            $scope.determineStatus()
         )
 
     #   get all reference requests that this student
@@ -73,13 +75,29 @@ controllerFunction = ($scope, $stateParams, ProjectApplication, ProjectRequireme
         Reference.getStudentApprovedByProjectApplication(application : $stateParams.id).success((data) ->
             $scope.studentApprovedReferences = data
             #   get professor info
-            async.each($scope.allReferences, (reference, callback) ->
+            async.each($scope.studentApprovedReferences, (reference, callback) ->
                 User.getById(reference.user_id).success((data) ->
                     reference.professor = data;
                 )
             )
         )
 
+    #   determine the application status
+    $scope.determineStatus = () ->
+        if $scope.application.professor_approved == null
+            $scope.status = "Awaiting professor's response."
+        else if $scope.application.professor_approved == true && $scope.application.student_approved == null
+            $scope.status = "Awaiting student's response."
+        else if $scope.application.professor_approved == false
+            $scope.status = "Application has rejected by the professor."
+        else if $scope.application.student_approved == false
+            $scope.status = "Application has been rejected by the student."
+        else if $scope.application.student_approved == true && $scope.administrator_approved == null
+            $scope.status = "Student has accepted offer, awaiting administrator's approval."
+        else if $scope.adminstrator_approved == false
+            $scope.status = "Administrator has rejected this project assignment."
+        else
+            $scope.status = "Administrator has approved this project assignment."
 
     #   run this code when page loads
     $scope.getApplicationInfo()
