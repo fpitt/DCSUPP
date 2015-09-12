@@ -12,7 +12,6 @@ angular.module('dcsupp').controller 'IntroCtrl', [
     '$state'
     ($scope, $state) ->
         $scope.page = 'intro page'
-        console.log($.cache)
         $state.go 'intro.1'
         return
 ]

@@ -245,6 +245,8 @@ class ProjectsController < ApplicationController
                             end
                         end
 
+                        #   exclude projects
+                        #   that don't have current filter from list
                         @new_project_list = Array.new
                         for item in @filter_project
                             if @projects.include?(item)
@@ -255,8 +257,12 @@ class ProjectsController < ApplicationController
                     end
                 end
 
-                if @projects
-                    render :json => @projects
+                #   grab a page of projects (10)
+                current_offset = (params[:payload][:pagenumber] - 1)*10
+
+                if @projects and current_offset + direction < @projects.length && current_offset + direction >= 0
+                    offset = current_offset + direction
+                    render :json => @projects[offset, offset + 10]
                 else
                     render :nothing => true, :status => 200, :content_type => 'text/html'
                 end

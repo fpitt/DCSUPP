@@ -10,17 +10,13 @@ controllerFunction = ($scope, modalService, Project, RequirementSubcategory, $q)
 
 	$scope.modalService = modalService
 	$scope.projects = null
-	$scope.direction = 0
+
 	$scope.filter = 'In progress'
 	$scope.subcategories = []
 	$scope.requirements = []
 
-	$scope.items = [
-		'item1'
-		'item2'
-		'item3'
-	]
-	$scope.pagenumber = {current: 0, completed: 0, inProgress: 0}
+	$scope.pagenumber = 1;
+	$scope.direction = 0
 
 	#	get Project filter tags by keyword
 	$scope.loadTags = (query) ->
@@ -38,9 +34,23 @@ controllerFunction = ($scope, modalService, Project, RequirementSubcategory, $q)
 		return deferred.promise
 
 	#	filter list of projects
-	$scope.filterProjects = () ->
-		Project.filterProjects(filter: $scope.requirements).success((data) ->
-			$scope.projects = data
+	$scope.filterProjects = (tagsChanged, direction) ->
+		if tagsChanged
+			$scope.pagenumber = 0
+
+		Project.filterProjects(
+			pagenumber: $scope.pagenumber
+			filter: $scope.requirements
+			direction: direction
+		).success((data) ->
+			if (data)
+				$scope.projects = data
+				if direction > 0
+					$scope.pagenumber += 1
+				else if direction < 0
+					$scope.pagenumber -= 1
+				else
+					$scope.pagenumber = 1
 		)
 
 
@@ -48,7 +58,7 @@ controllerFunction = ($scope, modalService, Project, RequirementSubcategory, $q)
 
 	$('[data-toggle="tooltip"]').tooltip()
 #	$scope.loadSubcategories()
-	$scope.filterProjects();
+	$scope.filterProjects(false, 0);
 
 
 angular
