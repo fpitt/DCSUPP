@@ -153,4 +153,23 @@ class ProjectApplicationsController < ApplicationController
             }
         end
     end
+
+    #   return a page of project applications belonging to user
+    def flip_applications_of_user
+        application_size = ProjectApplication.where(:user_id => @current_user.id).length
+        current_offset = (params[:payload][:pagenumber] - 1)*10
+        direction = params[:payload][:direction]
+        respond_to do |format|
+            format.json {
+                if current_offset + direction < application_size && current_offset + direction >= 0
+                    offset = current_offset + direction
+                    @project_applications = ProjectApplication.where(:user_id => @current_user.id).offset(offset).take(10)
+                    render :json => @project_applications
+                else
+                    render :nothing => true, :status => 200, :content_type => 'text/html'
+                end
+            }
+        end
+    end
+
 end

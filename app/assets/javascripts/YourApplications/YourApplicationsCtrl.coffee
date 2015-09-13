@@ -9,20 +9,30 @@ controllerFunction = ($scope, ProjectApplication, modalService) ->
     #   pop-up service for page settings and info
     $scope.modalService = modalService
 
+    #   current page number
+    $scope.pagenumber = 1
+
     #   get all project applications that this user has submitted
-    $scope.getProjectApplications = () ->
-        ProjectApplication.getByCurrentUser().success((data) ->
-            $scope.applications = data
-        )
+    #    $scope.getProjectApplications = () ->
+    #        ProjectApplication.getByCurrentUser().success((data) ->
+    #            $scope.applications = data
+    #        )
 
     #   flip page
-    $scope.flip = () ->
-        ProjectApplication.flip().success((data) ->
-            $scope.applications = data
+    $scope.flip = (direction) ->
+        ProjectApplication.flipApplicationsOfUser(direction: direction, pagenumber: $scope.pagenumber).success((data) ->
+            if (data)
+                $scope.applications = data
+                if direction > 0
+                    $scope.pagenumber += 1
+                else if direction < 0
+                    $scope.pagenumber -= 1
+                else
+                    $scope.pagenumber = 1
         )
 
     #   run this code when page loads
-    $scope.getProjectApplications()
+    $scope.flip(0)
 
 angular
 .module('dcsupp')

@@ -85,6 +85,19 @@ ServiceFunction = (requestService, Upload) ->
             url: '/get_require_administrator_approval_applications.json'
         return requestService.service(sendParams)
 
+    ###
+    get a page of project applications
+    payload format:
+        pagenumber: Integer (current pagenumber)
+        direction: Integer (-10 to go back one page, 10 to go forward one page)
+    ###
+    flipApplicationsOfUser: (payload) ->
+    flipApplicationsOfUser: (payload) ->
+        sendParams =
+            method: 'POST'
+            url: '/flip_applications_of_user.json'
+        return requestService.service(sendParams, payload)
+
 
 angular
 .module('dcsupp')
