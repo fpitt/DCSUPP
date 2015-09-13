@@ -1,4 +1,4 @@
-link href="/assets/ng-tags-input/ng-tags-input.min.css" rel="stylesheet" type="text/css"
+/link href="/assets/ng-tags-input/ng-tags-input.min.css" rel="stylesheet" type="text/css"
 
 div class="row"
     div class="col-xs-4"
@@ -7,18 +7,15 @@ div class="row"
         div class="text-center"
             h3 Current Projects
             span Refine your search:
-            tags-input class="bootstrap" ng-model="requirements" display_property="name"
-                auto-complete source="loadTags($query)" on-tag-added="filterProjects(true, 0)"
-            /button class="btn btn-default" ng-click="filterProjects()" Search
-
-
+            tags-input class="bootstrap" ng-model="requirements" display_property="name" on-tag-removed="filterProjects(true, 0)" on-tag-added="filterProjects(true, 0)"
+                auto-complete source="loadTags($query)"
         br
 
         div class="text-center"
             div class="btn-group"
                 button class="btn btn-default" ng-click="filterProjects(false, -10)" Prev
                 button class="btn btn-default disabled"
-                    | {{ pagenumber.current }}
+                    | {{ pagenumber }}
                 button class="btn btn-default" ng-click="filterProjects(false, 10)" Next
             br
             br

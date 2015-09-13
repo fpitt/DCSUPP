@@ -258,6 +258,7 @@ class ProjectsController < ApplicationController
                 end
 
                 #   grab a page of projects (10)
+                direction = param[:direction]
                 current_offset = (params[:payload][:pagenumber] - 1)*10
 
                 if @projects and current_offset + direction < @projects.length && current_offset + direction >= 0

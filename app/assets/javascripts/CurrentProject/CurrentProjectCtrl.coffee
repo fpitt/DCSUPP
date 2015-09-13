@@ -36,7 +36,9 @@ controllerFunction = ($scope, modalService, Project, RequirementSubcategory, $q)
 	#	filter list of projects
 	$scope.filterProjects = (tagsChanged, direction) ->
 		if tagsChanged
-			$scope.pagenumber = 0
+			$scope.pagenumber = 1
+
+		$scope.projects = null
 
 		Project.filterProjects(
 			pagenumber: $scope.pagenumber
