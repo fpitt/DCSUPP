@@ -4,7 +4,7 @@
 angular.module('dcsupp').config ($stateProvider) ->
     $stateProvider.state('intro',
         url: '/intro'
-        templateUrl: 'Intro/_.html'
+        templateUrl: 'Intro/_intro.html'
         controller: 'IntroCtrl').state('intro.1',
         url: '/1'
         templateUrl: 'Intro/_1.html').state('intro.2',
