@@ -32,6 +32,9 @@ controllerFunction = ($scope, modalService, User, Project, RequirementCategory, 
 		.success((data) ->
 			# redirect to new page once project has been successfully added
 			$state.go('your_projects.project_info', {id: data.id})
+
+			# display updated list in parent state
+			$scope.getInProgressProjects()
 		)
 
 	#	add additional detail to project
