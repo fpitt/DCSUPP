@@ -30,6 +30,7 @@ Rails.application.routes.draw do
 
     #Student Attributes Routes
     post '/get_attribute_by_user_and_subcategory' => 'student_attributes#get_attribute_by_user_and_subcategory'
+    post "get_student_attributes_of_student" => 'student_attributes#get_student_attributes_of_student'
 
     #Projects Routes
     post '/flip_project_direction' => 'projects#grab_project'

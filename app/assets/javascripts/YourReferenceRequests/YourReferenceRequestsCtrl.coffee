@@ -11,6 +11,7 @@ controllerFunction = ($scope, modalService, $stateParams, Reference, Project, Pr
 
     #   get all reference requests for this professor
     $scope.getReferenceRequests = () ->
+        $scope.references = []
         Reference.getReferenceRequestsOfProfessor().success((data) ->
             $scope.references = data
 

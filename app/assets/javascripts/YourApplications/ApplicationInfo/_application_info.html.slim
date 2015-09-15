@@ -1,35 +1,26 @@
 div
-    h3 style="display:inline-block" Application Details
-    br
-    br
-    div access="administrator student" restrict=""
+    h3
+        | {{ application.title }} (for project:
+        a  href="" ui-sref="current_project.project_info({id: project.id})" {{ project.title }}
+        |)
+    hr
+    div class="text-center"
         span
-            | Status:
-        span ng-show="application.professor_approved == null"
-            | Pending
-        span ng-show="application.professor_approved == true"
-            | Accepted
-        span ng-show="application.professor_approved == false"
-            | Rejected
-
-        button ng-show="application.professor_approved == true" class="btn btn-default" ng-click="processOffer(true)" Accept Offer
-        button ng-show="application.professor_approved == true" class="btn btn-default" ng-click="processOffer(false)" Reject Offer
-
-    div access="administrator profess" restrict=""
-        span ng-show="application.professor_approved == true"
-            | Status:
-        span ng-show="application.professor_approved == true && application.student_approved == null"
-            | Pending
-        span ng-show="application.student_approved == true"
-            | Accepted
-        span ng-show="application.professor_approved == true && student.student_approved == false"
-            | Rejected
-
+            | Application status: {{ status }}
         br
-        button  class="btn btn-default" ng-click="processOffer('true')" Accept Offer
-        button  class="btn btn-default" ng-click="processOffer('false')" Reject Offer
+        br
+        div access="administrator student" restrict=""
+            div ng-show="status == 'Awaiting student\'s response.'"
+                button  class="btn btn-default button-margin-10" ng-click="processOffer(true)" Accept
+                button class="btn btn-default button-margin-10" ng-click="processOffer(false)" Reject
 
+        div access="administrator professor" restrict=""
+            div ng-show="status == 'Awaiting professor\'s response.'"
+                button  class="btn btn-default button-margin-10" ng-click="processOffer(true)" Accept
+                button  class="btn btn-default button-margin-10" ng-click="processOffer(false)" Reject
+    hr
     br
+    h4 style="display:inline-block" Details
     br
     table class="table table-hover"
         tr
@@ -44,11 +35,6 @@ div
             td
                 a ui-sref="list_student.selected_student({id: application.student.id})"
                     | {{ application.student.name }}
-        tr
-            td
-                | Project
-            td
-                | {{ project.title }}
         tr
             td
                 | Message
@@ -70,7 +56,42 @@ div
             td ng-show="attribute.attribute_type == 'Date'"
                 | {{ attribute.value | date: "yyyy-MMM-dd" }}
     br
-    button ui-sref="your_applications.request_reference({id: application.id})" class="btn btn-default" Request Reference
+
+    div
+        h4 id="reference-request-header" References
+        button type="button" ui-sref="your_applications.request_reference({id: application.id})" class="btn btn-default btn-sm"
+            span class="glyphicon glyphicon-plus" aria-hidden="true"
+            span New Request
+
+    div restrict="" access="administrator student"
+        alert ng-show="allReferences.length == 0" None at the moment.
+        table class="table"
+            tr ng-repeat="reference in allReferences"
+                td
+                    div class="row"
+                        div class="col-xs-10"
+                            p
+                                | Request to: {{ reference.professor.name }}
+                            p ng-show="reference.professor_approved == null"
+                                | This request is still pending.
+                            p ng-show="reference.professor_approved == false"
+                                | This request has been rejected.
+                            p ng-show="reference.professor_approved == true"
+                                | Professor's message: {{ reference.professor_text }}
+                        div class="col-xs-2"
+                            div ng-show="reference.professor_approved == true"
+                                button ng-show="reference.student_approved == null || reference.student_approved == false" class="btn btn-default btn-sm" ng-click="processReferenceApproval(reference, true)" Use
+                                button ng-show="reference.student_approved == true" class="btn btn-default btn-sm" ng-click="processReferenceApproval(reference, false)" Discard
+    div restrict="" access="administrator professor"
+        alert ng-show="studentApprovedReferences.length == 0" None at the moment.
+        table class="table"
+            tr ng-repeat="reference in studentApprovedReferences"
+                td
+                    p
+                        | By: {{ reference.professor.name }}
+                    p
+                        | Message: {{ reference.professor_text }}
+
 
 
 

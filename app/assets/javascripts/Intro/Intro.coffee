@@ -5,10 +5,6 @@ angular.module('dcsupp').config ($stateProvider) ->
     $stateProvider.state('intro',
         url: '/intro'
         templateUrl: 'Intro/_intro.html'
-#        data:
-#            permissions:
-#                only: ['administrator', 'professor',
-#                       'student', 'anonymous']
         controller: 'IntroCtrl').state('intro.1',
         url: '/1'
         templateUrl: 'Intro/_1.html').state('intro.2',

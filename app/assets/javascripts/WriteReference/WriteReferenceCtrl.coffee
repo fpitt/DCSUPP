@@ -15,7 +15,7 @@ controllerFunction = ($scope, $stateParams, $state, Reference, modalService) ->
     #   and set the reference request as approved. Note:
     #   student has ability to use/not use the reference letter
     $scope.writeReference = () ->
-        Reference.addProfessorText(professor_text: $scope.professor_text).success((data) ->
+        Reference.addProfessorText(reference: $stateParams.id, professor_text: $scope.professor_text).success((data) ->
             Reference.processReferenceApproval(reference: $stateParams.id, approved: true).success((data) ->
                 $state.go('your_reference_requests')
             )

@@ -71,13 +71,32 @@ ServiceFunction = (requestService, Upload) ->
 
         return requestService.service(sendParams, payload)
 
-    #   get all project assignments requiring admin approval
+    #   get all project assignments
     getProjectAssignments: () ->
         sendParams =
             method: 'POST'
             url: '/get_project_assignments.json'
         return requestService.service(sendParams);
 
+    #   get all project assignments requiring admin approval
+    getRequireAdministratorApprovalAssignments: () ->
+        sendParams =
+            method: 'POST'
+            url: '/get_require_administrator_approval_applications.json'
+        return requestService.service(sendParams)
+
+    ###
+    get a page of project applications
+    payload format:
+        pagenumber: Integer (current pagenumber)
+        direction: Integer (-10 to go back one page, 10 to go forward one page)
+    ###
+    flipApplicationsOfUser: (payload) ->
+    flipApplicationsOfUser: (payload) ->
+        sendParams =
+            method: 'POST'
+            url: '/flip_applications_of_user.json'
+        return requestService.service(sendParams, payload)
 
 
 angular

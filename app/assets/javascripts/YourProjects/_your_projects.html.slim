@@ -1,47 +1,35 @@
 div
     div class="row"
-        div class="col-xs-4"
-            div class="text-center"
-                h3 Your Current Projects
+        br
+        div class="col-xs-4 text-center"
+            button ui-sref="your_projects.create_project" class="btn btn-default" Create New Project
 
-                .btn-group dropdown="" is-open="status.isopen"
-                    button#single-button.btn.btn-primary dropdown-toggle="" ng-disabled="disabled" type="button"
-                        | {{ filter }}
-                        span.caret
-                    ul.dropdown-menu aria-labelledby="single-button" role="menu"
-                        li role="menuitem"
-                            a ng-click="getInProgressProjects()" In progress
-                        li role="menuitem"
-                            a ng-click="getCompletedProjects()" Completed
+            hr
+
+            h3 Your Projects
+
+            div class="btn-group" role="group" aria-label="Default button group"
+                button class="btn btn-default" ng-click="getInProgressProjects()" In progress
+                button class="btn btn-default" ng-click="getCompletedProjects()" Completed
 
             br
+            br
 
-            div class="list-group" style="overflow:scroll; max-height:150px"
-                div ng-repeat="project in projects"
-                    ul class="nav nav-pills nav-stacked"
-                        li
-                            a ng-click="selectProject(project)"
-                                | {{ project.title }}
+            div id="your-projects-list" class="list-group"
+                a class="list-group-item" ng-repeat="project in projects" ng-click="selectProject(project)"
+                    | {{ project.title }}
 
-            div
+            alert ng-show="projects.length == 0" You don't have {{ filter }} projects.
+
+            div ng-show="selectedProject"
                 div class="text-center"
-                    h4 Project Information
-                a ui-sref="your_projects.project_info({id: selectedProject.id})"
-                    | {{ selectedProject.title }}
-
+                    h4  Student Applications For {{ selectedProject.title }}
                 div class="list-group"
-                    ul class="nav nav-pills nav-stacked"
-                        li
+                    a ng-repeat="application in applications" class="list-group-item" ui-sref="your_projects.application_info({id: application.id})"
+                        | {{application.title }}
+                alert ng-show="applications.length == 0" None at the moment.
 
-                div class="text-center"
-                    h4  Applications
-                div ng-repeat="application in applications"
-                    ul class="nav nav-pills nav-stacked"
-                        li
-                            a ui-sref="your_projects.application_info({id: application.id})"
-                                | {{application.title }}
 
-            button ui-sref="create_project" class="btn btn-default btn-lg" Create New
         div class="row" style="height:5px"
 
         div class="col-xs-6"

@@ -146,5 +146,5 @@ class RequirementSubcategoriesController < ApplicationController
             }
         end
     end
-	
+
 end

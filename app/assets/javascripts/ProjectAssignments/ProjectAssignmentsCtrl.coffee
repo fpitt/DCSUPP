@@ -12,7 +12,7 @@ controllerFunction = ($scope, modalService, $stateParams, ProjectApplication, Pr
     #   get all pending student-professor project assignments
     $scope.getProjectAssignments = () ->
         #   get all project assignments that require approval
-        ProjectApplication.getProjectAssignments().success((data) ->
+        ProjectApplication. getRequireAdministratorApprovalAssignments().success((data) ->
             $scope.assignments = data
             #   get professor, project title, and student for each
             #   project assignment
