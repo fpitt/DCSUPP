@@ -120,16 +120,19 @@ AccountFunction = ($scope, $modal, modalService, requestService, User, $state, R
 
         $scope.selectsubCategory = null
 
+        #Set the selected SubCategory
+        for category in $scope.subcategories
+            if (category.id == subcategory.requirement_subcategory_id)
+                $scope.selectsubCategory = category
+
+        #Set the attribute to edit true
         for category in $scope.merged_category
             if (category.id == subcategory.id)
-                $scope.selectsubCategory = category
                 category.edit = true
             else if (category.edit)
                 category.edit = false
-        return
 
-    # --- Find Requirement ---
-    #Find the Requirement SubCategory for Edit
+        return
 
     # --- Get User ---
     #Grab the user Attribute
