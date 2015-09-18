@@ -113,17 +113,32 @@ AccountFunction = ($scope, $modal, modalService, requestService, User, $state, R
     $scope.edit_entry = (subcategory) ->
 
         #If Attribute was previously created, set the default value
-        if (subcategory.category == "category")
-            $scope.edit = angular.copy($scope.editBlank)
-        else if (subcategory.category == "attribute")
-            $scope.edit = angular.copy($scope.editBlank)
-
+        $scope.edit = angular.copy($scope.editBlank)
         $scope.selectsubCategory = null
 
-        #Set the selected SubCategory
-        for category in $scope.subcategories
-            if (category.id == subcategory.requirement_subcategory_id)
-                $scope.selectsubCategory = category
+        if (subcategory.type == 'attribute')
+            #Set the selected is an attribute
+            for category in $scope.subcategories
+                if (category.id == subcategory.requirement_subcategory_id)
+                    $scope.selectsubCategory = category
+
+            #Set the Edit to the previous default value
+            if ($scope.selectsubCategory.attribute_type == "Number")
+                $scope.edit.input_number = parseInt(subcategory.value)
+            else if ($scope.selectsubCategory.attribute_type == "Date")
+                $scope.edit.input_date = new Date(subcategory.value)
+            else if ($scope.selectsubCategory.attribute_type == "Boolean")
+                if (subcategory.value == 't')
+                    $scope.edit.input_boolean = true
+                else
+                    $scope.edit.input_boolean = false
+            else if ($scope.selectsubCategory.attribute_type == "Input Field")
+                $scope.edit.input_text = subcategory.value
+        else
+            #Select is a category
+            for category in $scope.subcategories
+                if (category.id == subcategory.id)
+                    $scope.selectsubCategory = category
 
         #Set the attribute to edit true
         for category in $scope.merged_category
