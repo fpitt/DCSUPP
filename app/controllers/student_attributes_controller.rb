@@ -52,55 +52,25 @@ class StudentAttributesController < ApplicationController
                 @requirement_subcategory = RequirementSubcategory.find_by_id(@payload[:subcategory_id])
                 @requirement_category = RequirementCategory.find_by_id(@payload[:category_id])
 
-                @attribute = StudentAttribute.where(requirement_subcategory_id: @requirement_subcategory.id, requirement_category_id: @requirement_category.id)
+                @attribute = StudentAttribute.find_or_create_by(requirement_subcategory_id: @requirement_subcategory.id, requirement_category_id: @requirement_category.id)
 
-                if @attribute
-                    #The Attribute is already created, we update it
-                    @attribute.each do |attribute|
-                        if (@requirement_subcategory.attribute_type == "Date")
-                            attribute.update_attribute(:value, @payload[:payload][:input_date].to_date)
-                        elsif (@requirement_subcategory.attribute_type == "Number")
-                            attribute.update_attribute(:value, @payload[:payload][:input_number].to_i)
-                        elsif (@requirement_subcategory.attribute_type == "Boolean")
-                            attribute.update_attribute(:value, @payload[:payload][:input_boolean])
-                        elsif (@requirement_subcategory.attribute_type == "Input Field")
-                            attribute.update_attribute(:value, @payload[:payload][:input_text])
-                        end
+                if (@requirement_subcategory.attribute_type == "Date")
+                    @attribute.update_attribute(:value, @payload[:payload][:input_date].to_date)
+                elsif (@requirement_subcategory.attribute_type == "Number")
+                    @attribute.update_attribute(:value, @payload[:payload][:input_number].to_i)
+                elsif (@requirement_subcategory.attribute_type == "Boolean")
+                    @attribute.update_attribute(:value, @payload[:payload][:input_boolean])
+                elsif (@requirement_subcategory.attribute_type == "Input Field")
+                    @attribute.update_attribute(:value, @payload[:payload][:input_text])
+                end
 
-                        if attribute.save
-                            #continue
-                        else
-                            #We got an error
-                            render :nothing => true, :status => 200, :content_type => 'text/html'
-                        end
-                    end
+                @attribute.update_attribute(:user_id, @current_user.id)
 
+                if @attribute.save
                     render :json => @attribute
-
                 else
-                    #The attribute is not created, we need to create it
-                    @student_attribute = StudentAttribute.new()
-                    @student_attribute.update_attribute(:requirement_subcategory_id, @requirement_subcategory.id)
-                    @student_attribute.update_attribute(:requirement_category_id, @requirement_category.id)
-                    @student_attribute.update_attribute(:user_id, @current_user.id)
-
-                    if (@requirement_subcategory.attribute_type == "Date")
-                        @student_attribute.update_attribute(:value, @payload[:payload][:input_date].to_date)
-                    elsif (@requirement_subcategory.attribute_type == "Number")
-                        @student_attribute.update_attribute(:value, @payload[:payload][:input_number].to_i)
-                    elsif (@requirement_subcategory.attribute_type == "Boolean")
-                        @student_attribute.update_attribute(:value, @payload[:payload][:input_boolean])
-                    elsif (@requirement_subcategory.attribute_type == "Input Field")
-                        @student_attribute.update_attribute(:value, @payload[:payload][:input_text])
-                    else
-                        render :nothing => true, :status => 200, :content_type => 'text/html'
-                    end
-
-                    if @student_attribute.save
-                        render :json => @student_attributes
-                    else
-                        render :nothing => true, :status => 200, :content_type => 'text/html'
-                    end
+                    #We got an error
+                    render :nothing => true, :status => 200, :content_type => 'text/html'
                 end
             }
         end
