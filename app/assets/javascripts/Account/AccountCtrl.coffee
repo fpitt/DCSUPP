@@ -87,15 +87,15 @@ AccountFunction = ($scope, $modal, modalService, requestService, User, $state, R
     #Send the SubCategory Information to the backend
     $scope.update = ->
         #Clear the Edit Form from Frontend
-        
+
         #Check if we need to create/ update
         if $scope.studentAttributeCreated($scope.selectsubCategory.id)
             #Update the studentAttribute
-            StudentAttribute.updateAttribute($scope.user.id, $scope.selectsubCategory.id, $scope.edit).success (data)->
+            StudentAttribute.updateAttribute($scope.user.id, $scope.selectsubCategory.id, $scope.edit, $scope.selectCategory.id).success (data)->
                 $scope.unselectEdit()
         else
             #Create the studentAttribute
-            StudentAttribute.createAttribute($scope.user.id, $scope.selectsubCategory.id, $scope.edit).success (data)->
+            StudentAttribute.createAttribute($scope.user.id, $scope.selectsubCategory.id, $scope.edit, $scope.selectCategory.id).success (data)->
                 $scope.unselectEdit()
 
 
@@ -137,6 +137,7 @@ AccountFunction = ($scope, $modal, modalService, requestService, User, $state, R
 
     $scope.userAttributes = (category_id)->
         StudentAttribute.getallUserAttribute($scope.user.id, category_id).success (data) ->
+            console.log(data)
             $scope.attribute_subcategory = data
             $scope.mergeCategories()
         return

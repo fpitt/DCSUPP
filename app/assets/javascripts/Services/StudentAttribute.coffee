@@ -52,23 +52,25 @@ ServiceFunction = (requestService) ->
             url: '/get_student_attributes_of_student.json'
         requestService.service(sendParams, payload)
 
-    createAttribute: (user_id, category_id, payload) ->
+    createAttribute: (user_id, subcategory_id, payload, category_id) ->
         sendParams =
             method: 'POST'
             url: '/student_attributes.json'
         autopayload =
             user_id: user_id
-            subcategory_id: category_id
+            subcategory_id: subcategory_id
+            category_id: category_id
             payload: payload
         requestService.service(sendParams, autopayload)
 
-    updateAttribute: (user_id, category_id, payload) ->
+    updateAttribute: (user_id, subcategory_id, payload, category_id) ->
         sendParams =
             method: 'PATCH'
-            url: '/student_attributes/' + category_id + '.json'
+            url: '/student_attributes/' + subcategory_id + '.json'
         autopayload =
             user_id: user_id
-            subcategory_id: category_id
+            subcategory_id: subcategory_id
+            category_id: category_id
         requestService.service(sendParams, autopayload)
 
 angular

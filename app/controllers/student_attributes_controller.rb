@@ -19,8 +19,9 @@ class StudentAttributesController < ApplicationController
         respond_to do |format|
             format.json{
                 puts params[:payload]
+                @payload = params[:payload]
 
-                @student_attributes = StudentAttribute.where(:requirement_category_id => params[:payload][:category_id], :user_id => params[:payload][:user_id])
+                @student_attributes = StudentAttribute.where(:requirement_category_id => @payload[:category_id], :user_id => @payload[:user_id])
                 render :json => @student_attributes
             }
         end
@@ -49,9 +50,11 @@ class StudentAttributesController < ApplicationController
             format.json{
                 @payload = params[:payload]
                 @requirement_subcategory = RequirementSubcategory.find_by_id(@payload[:subcategory_id])
+                @requirement_category = RequirementCategory.find_by_id(@payload[:category_id])
 
                 @student_attribute = StudentAttribute.new()
                 @student_attribute.update_attribute(:requirement_subcategory_id, @requirement_subcategory.id)
+                @student_attribute.update_attribute(:requirement_category_id, @requirement_category.id)
                 @student_attribute.update_attribute(:user_id, @current_user.id)
 
                 if (@requirement_subcategory.attribute_type == "Date")
