@@ -58,20 +58,17 @@ div class="row"
                             div ng-if="subcategory.attribute_type=='Input Field'"
                                 input type="text" class="form-control" placeholder="{{subcategory.placeholder}}" ng-model="edit.input_text"
                         td ng-if="subcategory.edit"
-                            button type="button" ng-click="create()" class="btn btn-default" Add Entry
+                            button type="button" ng-click="create()" class="btn btn-default" Update
 
                         /Case 2: The Student Attribute is already available
-                        td ng-if="subcategory.type=='attribute'"
+                        td ng-if="subcategory.type=='attribute' && !(subcategory.edit)"
                             p
                                 | {{subcategory.value}}
-                        td ng-if="subcategory.type=='attribute'"
-                            button type="button" class="btn btn-default" ng-click="edit_entry(subcategory)" Edit
-
                         /Case 3: The Attribute is not available and not set to edit
                         td ng-if="subcategory.type=='category' && !(subcategory.edit)"
                             p -
-                        td ng-if="subcategory.type=='category' && !(subcategory.edit)"
-                            button type="button" ng-click="edit_entry(subcategory)" class="btn btn-default" Update
+                        td ng-if="subcategory.type=='attribute' && !(subcategory.edit)"
+                            button type="button" class="btn btn-default" ng-click="edit_entry(subcategory)" Edit
 
     div class="col-xs-2"
         div class="btn-group" role="group" aria-label="Default button group"
