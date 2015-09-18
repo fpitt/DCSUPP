@@ -95,7 +95,7 @@ AccountFunction = ($scope, $modal, modalService, requestService, User, $state, R
                 $scope.unselectEdit()
         else
             #Create the studentAttribute
-            StudentAttribute.createAttribute($scope.edit).success (data)->
+            StudentAttribute.createAttribute($scope.user.id, $scope.selectsubCategory.id, $scope.edit).success (data)->
                 $scope.unselectEdit()
 
 
