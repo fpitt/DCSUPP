@@ -88,16 +88,17 @@ AccountFunction = ($scope, $modal, modalService, requestService, User, $state, R
     # --- Update Entry ---
     #Send the SubCategory Information to the backend
     $scope.update = ->
-        console.log($scope.merged_category)
         #Check if we need to create/ update
         if $scope.studentAttributeCreated($scope.selectsubCategory.id)
             #Update the studentAttribute
             StudentAttribute.updateAttribute($scope.user.id, $scope.selectsubCategory.id, $scope.edit, $scope.selectCategory.id).success (data)->
                 $scope.unselectEdit()
+                $scope.userAttributes($scope.selectCategory.id)
         else
             #Create the studentAttribute
             StudentAttribute.createAttribute($scope.user.id, $scope.selectsubCategory.id, $scope.edit, $scope.selectCategory.id).success (data)->
                 $scope.unselectEdit()
+                $scope.userAttributes($scope.selectCategory.id)
 
     # --- Unselect Edit ---
     $scope.unselectEdit = ->
