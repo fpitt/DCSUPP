@@ -31,8 +31,8 @@ controllerFunction = ($scope, RequirementCategory, modalService, RequirementSubc
         number_max: 0
         number_min: 0
         #Case 2: Select Date
-        maxDate: Date.now()
-        minDate: Date.now()
+        maxDate: new Date()
+        minDate: new Date()
         #Case 4: Select Input
         regex: ""
         input_placeholder: ""
@@ -49,8 +49,8 @@ controllerFunction = ($scope, RequirementCategory, modalService, RequirementSubc
         number_max: 0
         number_min: 0
         #Case 2: Select Date
-        maxDate: Date.now()
-        minDate: Date.now()
+        maxDate: new Date()
+        minDate: new Date()
         #Case 4: Select Input
         regex: ""
         input_placeholder: ""
