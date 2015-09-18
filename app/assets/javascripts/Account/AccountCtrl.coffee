@@ -44,7 +44,7 @@ AccountFunction = ($scope, $modal, modalService, requestService, User, $state, R
     #Current SubCategory Selected for Edit
     $scope.selectsubCategory = null
     #Requirement Attributes added by the User
-    $scope.attribute_subcategory = null
+    $scope.attribute_subcategory = []
     #List of all Requirement Attribute SubCategories
     $scope.subcategories = null
     #Merged List of Categories with attributes and empty categories [For Display]
@@ -71,10 +71,11 @@ AccountFunction = ($scope, $modal, modalService, requestService, User, $state, R
         $scope.merged_category.length = 0
 
         for category in $scope.subcategories
+            #Filter out the none Student Attributes
             if category.student_attribute
                 if $scope.studentAttributeCreated(category.id)
                     #The student Attribute is availble
-                    append_category = studentAttribute(category.id)
+                    append_category = $scope.studentAttributeCreated(category.id)
                     append_category.type = "attribute"
                     append_category.edit = false
                     $scope.merged_category.push(append_category)
@@ -86,8 +87,7 @@ AccountFunction = ($scope, $modal, modalService, requestService, User, $state, R
     # --- Update Entry ---
     #Send the SubCategory Information to the backend
     $scope.update = ->
-        #Clear the Edit Form from Frontend
-
+        console.log($scope.merged_category)
         #Check if we need to create/ update
         if $scope.studentAttributeCreated($scope.selectsubCategory.id)
             #Update the studentAttribute
@@ -97,7 +97,6 @@ AccountFunction = ($scope, $modal, modalService, requestService, User, $state, R
             #Create the studentAttribute
             StudentAttribute.createAttribute($scope.user.id, $scope.selectsubCategory.id, $scope.edit, $scope.selectCategory.id).success (data)->
                 $scope.unselectEdit()
-
 
     # --- Unselect Edit ---
     $scope.unselectEdit = ->
@@ -137,7 +136,6 @@ AccountFunction = ($scope, $modal, modalService, requestService, User, $state, R
 
     $scope.userAttributes = (category_id)->
         StudentAttribute.getallUserAttribute($scope.user.id, category_id).success (data) ->
-            console.log(data)
             $scope.attribute_subcategory = data
             $scope.mergeCategories()
         return
@@ -158,9 +156,9 @@ AccountFunction = ($scope, $modal, modalService, requestService, User, $state, R
     # --- Check Student Attribute ---
 
     $scope.studentAttributeCreated = (attribute_id) ->
-    #Iterate Over the Array
-        for category of $scope.attribute_subcategory
-            if (category.id == attribute_id)
+    #Iterate Over the Array [The Array is JSON]
+        for key, category of $scope.attribute_subcategory
+            if (category.requirement_subcategory_id == attribute_id)
                 return category
         return false
 
