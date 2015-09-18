@@ -76,6 +76,7 @@ AccountFunction = ($scope, $modal, modalService, requestService, User, $state, R
                 if $scope.studentAttributeCreated(category.id)
                     #The student Attribute is availble
                     append_category = $scope.studentAttributeCreated(category.id)
+                    append_category.sub_category_name = category.sub_category_name
                     append_category.type = "attribute"
                     append_category.edit = false
                     $scope.merged_category.push(append_category)
