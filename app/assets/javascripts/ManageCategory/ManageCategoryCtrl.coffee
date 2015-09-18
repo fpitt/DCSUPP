@@ -31,8 +31,8 @@ controllerFunction = ($scope, RequirementCategory, modalService, RequirementSubc
         number_max: 0
         number_min: 0
         #Case 2: Select Date
-        maxDate: new Date()
-        minDate: new Date()
+        maxDate: Date.now()
+        minDate: Date.now()
         #Case 4: Select Input
         regex: ""
         input_placeholder: ""
@@ -49,8 +49,8 @@ controllerFunction = ($scope, RequirementCategory, modalService, RequirementSubc
         number_max: 0
         number_min: 0
         #Case 2: Select Date
-        maxDate: new Date()
-        minDate: new Date()
+        maxDate: Date.now()
+        minDate: Date.now()
         #Case 4: Select Input
         regex: ""
         input_placeholder: ""
@@ -85,7 +85,6 @@ controllerFunction = ($scope, RequirementCategory, modalService, RequirementSubc
         input_upper_limit = null
         input_lower_limit = null
         input_placeholder = null
-        console.log($scope.category.attribute_type)
         #Set the Client-Side Attributes
         if ($scope.category.attribute_type == "Number")
             input_upper_limit = $scope.category.number_max

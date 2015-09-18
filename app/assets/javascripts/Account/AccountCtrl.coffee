@@ -120,7 +120,7 @@ AccountFunction = ($scope, $modal, modalService, requestService, User, $state, R
             if ($scope.selectsubCategory.attribute_type == "Number")
                 $scope.edit.input_number = parseInt(subcategory.value)
             else if ($scope.selectsubCategory.attribute_type == "Date")
-                $scope.edit.input_date = new Date(subcategory.value)
+                $scope.edit.input_date = new Date()
             else if ($scope.selectsubCategory.attribute_type == "Boolean")
                 if (subcategory.value == 't')
                     $scope.edit.input_boolean = true
