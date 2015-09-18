@@ -87,18 +87,16 @@ AccountFunction = ($scope, $modal, modalService, requestService, User, $state, R
 
     # --- Update Entry ---
     #Send the SubCategory Information to the backend
-    $scope.update = ->
-        #Check if we need to create/ update
-        if $scope.studentAttributeCreated($scope.selectsubCategory.id)
-            #Update the studentAttribute
-            StudentAttribute.updateAttribute($scope.user.id, $scope.selectsubCategory.id, $scope.edit, $scope.selectCategory.id).success (data)->
-                $scope.unselectEdit()
-                $scope.userAttributes($scope.selectCategory.id)
-        else
-            #Create the studentAttribute
-            StudentAttribute.createAttribute($scope.user.id, $scope.selectsubCategory.id, $scope.edit, $scope.selectCategory.id).success (data)->
-                $scope.unselectEdit()
-                $scope.userAttributes($scope.selectCategory.id)
+    $scope.create = ->
+        StudentAttribute.createAttribute($scope.user.id, $scope.selectsubCategory.id, $scope.edit, $scope.selectCategory.id).success (data)->
+            $scope.unselectEdit()
+            $scope.userAttributes($scope.selectCategory.id)
+    
+    #Create the studentAttribute
+    $scope.send_update = ->
+        StudentAttribute.updateAttribute($scope.user.id, $scope.selectsubCategory.id, $scope.edit, $scope.selectCategory.id).success (data)->
+            $scope.unselectEdit()
+            $scope.userAttributes($scope.selectCategory.id)
 
     # --- Unselect Edit ---
     $scope.unselectEdit = ->
@@ -112,12 +110,18 @@ AccountFunction = ($scope, $modal, modalService, requestService, User, $state, R
 
     # --- Edit Entry ---
     #Enable Editing for the selected SubCategory
-    $scope.edit_entry = (id) ->
-        $scope.edit = angular.copy($scope.editBlank)
+    $scope.edit_entry = (subcategory) ->
+
+        #If Attribute was previously created, set the default value
+        if (subcategory.category == "category")
+            $scope.edit = angular.copy($scope.editBlank)
+        else if (subcategory.category == "attribute")
+            $scope.edit = angular.copy($scope.editBlank)
+
         $scope.selectsubCategory = null
 
         for category in $scope.merged_category
-            if (category.id == id)
+            if (category.id == subcategory.id)
                 $scope.selectsubCategory = category
                 category.edit = true
             else if (category.edit)
