@@ -87,17 +87,11 @@ AccountFunction = ($scope, $modal, modalService, requestService, User, $state, R
 
     # --- Update Entry ---
     #Send the SubCategory Information to the backend
-    $scope.create = ->
+    $scope.update = ->
         StudentAttribute.createAttribute($scope.user.id, $scope.selectsubCategory.id, $scope.edit, $scope.selectCategory.id).success (data)->
             $scope.unselectEdit()
             $scope.userAttributes($scope.selectCategory.id)
     
-    #Create the studentAttribute
-    $scope.send_update = ->
-        StudentAttribute.updateAttribute($scope.user.id, $scope.selectsubCategory.id, $scope.edit, $scope.selectCategory.id).success (data)->
-            $scope.unselectEdit()
-            $scope.userAttributes($scope.selectCategory.id)
-
     # --- Unselect Edit ---
     $scope.unselectEdit = ->
         #Change the Category Edit to false

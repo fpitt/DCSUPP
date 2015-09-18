@@ -63,16 +63,6 @@ ServiceFunction = (requestService) ->
             payload: payload
         requestService.service(sendParams, autopayload)
 
-    updateAttribute: (user_id, subcategory_id, payload, category_id) ->
-        sendParams =
-            method: 'PATCH'
-            url: '/student_attributes/' + subcategory_id + '.json'
-        autopayload =
-            user_id: user_id
-            subcategory_id: subcategory_id
-            category_id: category_id
-        requestService.service(sendParams, autopayload)
-
 angular
 .module('dcsupp')
 .service('StudentAttribute', ServiceFunction)
