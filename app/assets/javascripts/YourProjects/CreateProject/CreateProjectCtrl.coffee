@@ -40,7 +40,7 @@ controllerFunction = ($scope, modalService, User, Project, RequirementCategory, 
 	#	add additional detail to project
 	$scope.addDetail = ->
 		#	disallow duplicate detail items in list
-		if !$scope.containedInDetails($scope.detailSelected)
+		if $scope.detailSelected && !$scope.containedInDetails($scope.detailSelected)
 			$scope.project.details.push($scope.detailSelected)
 
 	#	check if given detail is already in list

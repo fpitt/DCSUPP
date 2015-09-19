@@ -1,5 +1,4 @@
 div class="row"
-    div class="col-xs-4"
     div class="col-xs-6"
         h3 Your Reference Requests
         br
@@ -23,13 +22,13 @@ div class="row"
                         | {{ reference.student_text }}
                     br
                     div class="text-center"
-                        button class="btn btn-default btn-sm button-margin-10" ng-click="rejectReference(reference)" Reject
+                        button class="btn btn-default btn-sm button-margin-10" ng-really-message="Are you sure? You will not be able to change your decision." ng-really-click="rejectReference(reference)" Reject
                         button class="btn btn-default btn-sm button-margin-10" ui-sref="write_reference({id: reference.id})" Write Reference
 
-    div class="col-xs-2"
-        div class="row" style="height:15px"
-
-        div id="reference-info" class="btn-group" role="group" aria-label="Default button group"
-            /Button 1: Information
-            button ng-click="modalService.open('InfoPopup/info.html', 'InfoCtrl')" type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Information"
-                span class="glyphicon glyphicon-info-sign" aria-hidden="true"
+    /div class="col-xs-2"
+    /    div class="row" style="height:15px"
+    /
+    /    div id="reference-info" class="btn-group" role="group" aria-label="Default button group"
+    /        /Button 1: Information
+    /        button ng-click="modalService.open('InfoPopup/info.html', 'InfoCtrl')" type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Information"
+    /            span class="glyphicon glyphicon-info-sign" aria-hidden="true"
