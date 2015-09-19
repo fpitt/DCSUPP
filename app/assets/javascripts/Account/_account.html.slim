@@ -33,12 +33,21 @@ div class="row"
                             h3 class="panel-title" Student Information and Prerequisites 
 
                         div class="panel-body"
-                            br
-                            p Please update your personal information and prerequisites to help us match your expertises and interests with potential research projects.
-                            br
-                            p Your information can only be viewed by the specific projects you have applied for. We will never disclose your personal information without your permission.
-                            br
-                            p For more information, please contact dcsupp[at]cs[dot]toronto[dot]edu and we will get back to you as soon as possible.
+                            div class="bs-example" data-example-id="horizontal-dl"
+                                dl class="dl-horizontal"
+
+                                    p Please update your personal information and prerequisites to help us match your expertises and interests with potential research projects.
+
+                                    dt Information Disclosure
+                                    dd Your information can only be viewed by the specific projects you have applied for. We will never disclose your personal information without your permission.
+
+                                    dt Reuse Components
+                                    dd Our system will reuse your information added into our system for mutiple project applications. We will like to save you the hassle of having to submit the same information for mutiple forms.
+
+                                    dt Information Contact
+                                    dd For any questions or concerns, please email: dcsupp[at]cs[dot]toronto[dot]edu
+
+
 
 
         div ng-if="selectCategory"
