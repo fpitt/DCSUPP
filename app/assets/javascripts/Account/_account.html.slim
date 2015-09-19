@@ -21,7 +21,7 @@ div class="row"
 
     div class="row" style="height:10px"
 
-    div class="col-xs-7"
+    div class="col-xs-8"
 
         div ng-if="!selectCategory"
             h3 Student Prerequisites and Information
@@ -35,40 +35,43 @@ div class="row"
         div ng-if="selectCategory"
             h3 
                 | {{selectCategory.category_name}}
-            hr
 
-            table class="table"
+            table class="table table-striped"
                 thead
+                    tr
+                        th Name
+                        th Value
+
                     tr ng-repeat="subcategory in merged_category"
                         td
                             p
                                 | {{ subcategory.sub_category_name}}
 
-                        /Case 1: The Student Attribute has no Input + Selected from Edit
-                        td ng-if="subcategory.edit"
-                            div ng-if="selectsubCategory.attribute_type=='Number'"
-                                input type="number" class="form-control" placeholder="{{subcategory.placeholder}}" ng-model="edit.input_number"
+                        /Case 2: The Display/ Update Tab
+                        td 
+                            div ng-if="!(subcategory.edit)"
+                                p
+                                    | {{subcategory.value}}
+                            div ng-if="subcategory.edit"
+                                div ng-if="selectsubCategory.attribute_type=='Number'"
+                                    input type="number" class="form-control" placeholder="{{subcategory.placeholder}}" ng-model="edit.input_number"
 
-                            div ng-if="selectsubCategory.attribute_type=='Date'"
-                                input type="date" class="form-control" placeholder="yyyy-MM-dd" ng-model="edit.input_date"
+                                div ng-if="selectsubCategory.attribute_type=='Date'"
+                                    input type="date" class="form-control" placeholder="yyyy-MM-dd" ng-model="edit.input_date"
 
-                            div ng-if="selectsubCategory.attribute_type=='Boolean'"
-                                input type="checkbox" class="form-control" ng-model="edit.input_boolean"
+                                div ng-if="selectsubCategory.attribute_type=='Boolean'"
+                                    input type="checkbox" ng-model="edit.input_boolean"
 
-                            div ng-if="selectsubCategory.attribute_type=='Input Field'"
-                                input type="text" class="form-control" placeholder="{{subcategory.placeholder}}" ng-model="edit.input_text"
-                        td ng-if="subcategory.edit"
-                            button type="button" class="btn btn-default" ng-click="update()" Update
+                                div ng-if="selectsubCategory.attribute_type=='Input Field'"
+                                    input type="text" class="form-control" placeholder="{{subcategory.placeholder}}" ng-model="edit.input_text"
+                        td 
+                            div ng-if="subcategory.edit"
+                                button type="button" class="btn btn-default" ng-click="update()" Update
 
-                        /Case 2: The Student Attribute is already available
-                        td ng-if="subcategory.type=='attribute' && !(subcategory.edit)"
-                            p
-                                | {{subcategory.value}}
-                        td ng-if="subcategory.type=='attribute' && !(subcategory.edit)"
-                            button type="button" class="btn btn-default" ng-click="edit_entry(subcategory)" Edit
-                        /Case 3: The Attribute is not available and not set to edit
-                        td ng-if="subcategory.type=='category' && !(subcategory.edit)"
-                            p -
-                        td ng-if="subcategory.type=='category' && !(subcategory.edit)"
-                            button type="button" class="btn btn-default" ng-click="edit_entry(subcategory)" Add Entry
+                            div ng-if="!(subcategory.edit)"
+                                div ng-if="subcategory.type=='attribute'"
+                                    button type="button" class="btn btn-default" ng-click="edit_entry(subcategory)" Edit
+
+                                div ng-if="subcategory.type=='category'"
+                                    button type="button" class="btn btn-default" ng-click="edit_entry(subcategory)" Add Entry
 

@@ -23,43 +23,31 @@ controllerFunction = ($scope, RequirementCategory, modalService, RequirementSubc
     $scope.category_name = ""
     $scope.current_category_id = -1
     $scope.category =
-        #Global Category Name
         sub_category_name: ""
         attribute_type: "Number"
-        #Case 1: Select Number
-        number_placeholder: ""
-        number_max: 0
-        number_min: 0
-        #Case 2: Select Date
-        maxDate: new Date()
-        minDate: new Date()
-        #Case 4: Select Input
+        placeholder: ""
         regex: ""
-        input_placeholder: ""
         student_attribute: 0
     #Edit Subcategory
     $scope.edit_category = null
     #Global Empty => Empty Category used to reset the Input/ Edit Models
     $scope.GlobalDefault =
-        #Global Category Name
         sub_category_name: ""
         attribute_type: "Number"
-        #Case 1: Select Number
-        number_placeholder: ""
-        number_max: 0
-        number_min: 0
-        #Case 2: Select Date
-        maxDate: new Date()
-        minDate: new Date()
-        #Case 4: Select Input
+        placeholder: ""
         regex: ""
-        input_placeholder: ""
         student_attribute: 0
 
     # --- Edit SubCategory ---
 
     $scope.edit = (subcategory) ->
         $scope.edit_category = subcategory
+        if ($scope.edit_category.attribute_type == 'Number')
+            $scope.edit_category.number_max = parseInt(subcategory.upper_limit)
+            $scope.edit_category.number_min = parseInt(subcategory.lower_limit)
+        if ($scope.edit_category.attribute_type == 'Date')
+            $scope.edit_category.maxDate = new Date()
+            $scope.edit_category.minDate = new Date()
 
     # --- Update SubCategory ---
 
