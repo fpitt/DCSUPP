@@ -40,7 +40,7 @@ div ng-controller="ManageCategoryCtrl"
                     | {{ selectedCategory.category_name }}
 
                 div access="administrator" restrict=""
-                    table class="table"
+                    table class="table table-striped"
                         thead
                             /The Header Row displays depending on the selected attribute type
                             tr ng-if="category.attribute_type=='Number'" 
