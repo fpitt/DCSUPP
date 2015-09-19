@@ -11,13 +11,13 @@ div
         br
         div access="administrator student" restrict=""
             div ng-show="status == 'Awaiting student\'s response.'"
-                button  class="btn btn-default button-margin-10" ng-click="processOffer(true)" Accept
-                button class="btn btn-default button-margin-10" ng-click="processOffer(false)" Reject
+                button  class="btn btn-default button-margin-10" ng-really-message="Are you sure? You will not be able to change your decision." ng-really-click="processOffer(true)" Accept
+                button class="btn btn-default button-margin-10" ng-really-message="Are you sure? You will not be able to change your decision." ng-really-click="processOffer(false)" Reject
 
         div access="administrator professor" restrict=""
             div ng-show="status == 'Awaiting professor\'s response.'"
-                button  class="btn btn-default button-margin-10" ng-click="processOffer(true)" Accept
-                button  class="btn btn-default button-margin-10" ng-click="processOffer(false)" Reject
+                button  class="btn btn-default button-margin-10" ng-really-message="Are you sure? You will not be able to change your decision." ng-really-click="processOffer(true)" Accept
+                button  class="btn btn-default button-margin-10" ng-really-message="Are you sure? You will not be able to change your decision." ng-really-click="processOffer(false)" Reject
     hr
     br
     h4 style="display:inline-block" Details
