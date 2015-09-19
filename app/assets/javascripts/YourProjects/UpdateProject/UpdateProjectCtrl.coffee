@@ -18,11 +18,18 @@ controllerFunction = ($scope, $stateParams, Project, ProjectRequirement, Require
     # project's non student attribute subcategories
     $scope.project.details = []
 
+    #   true iff something on this page resulted in an error to alert error message
+    $scope.error = false
+
     # save updated project and go to your_projects.project_info state
     $scope.patchProject = ->
         Project.patch($stateParams.id, $scope.project).success((data) ->
+            $scope.error = false
             $state.go('your_projects.project_info', {id: $stateParams.id})
+        ).error((data) ->
+            $scope.error = true
         )
+
 
     # get current project information
     $scope.getProject = ->

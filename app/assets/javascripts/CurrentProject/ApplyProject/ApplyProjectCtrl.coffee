@@ -13,6 +13,9 @@
 
 controllerFunction = ($scope, modalService, $stateParams, $state, ProjectApplication,
                       ProjectRequirement, RequirementSubcategory, StudentAttribute, Upload) ->
+
+    #   true iff adding application resulted in error, to signal alert pop-up
+    $scope.error = false
     #	pop-up service for page settings + information
     $scope.modalService = modalService
     #   application form info
@@ -37,7 +40,11 @@ controllerFunction = ($scope, modalService, $stateParams, $state, ProjectApplica
             ],
             #   redirect to new page once waterfall tasks complete
             (err, data) ->
-                $state.go('your_applications.application_info', {id: data.id})
+                if err
+                    $scope.error = true
+                else
+                    $scope.error = false
+                    $state.go('your_applications.application_info', {id: data.id})
         )
         return
 

@@ -9,6 +9,9 @@ controllerFunction = ($scope, modalService, $stateParams, ProjectApplication, Pr
     #   pop-up service for page settings and info
     $scope.modalService = modalService
 
+    #   true iff an error on this page on occurred alert error message
+    $scope.error = false
+
     #   get all pending student-professor project assignments
     $scope.getProjectAssignments = () ->
         #   get all project assignments that require approval
@@ -38,6 +41,7 @@ controllerFunction = ($scope, modalService, $stateParams, ProjectApplication, Pr
                         callback()
                 )
             , (err) ->
+                $scope.error = error != null
             )
         )
 
@@ -45,8 +49,11 @@ controllerFunction = ($scope, modalService, $stateParams, ProjectApplication, Pr
     #   selected project assignment
     $scope.processOffer = (assignment, approved) ->
         ProjectApplication.processOffer(approved: approved, application: assignment).success((data) ->
+            $scope.error = false
             #   reload project assignments to reflect changes
             $scope.getProjectAssignments()
+        ).error((data) ->
+            $scope.error = true
         )
 
 

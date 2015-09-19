@@ -1,3 +1,6 @@
+div
+    alert type="danger" ng-show="error" Something went wrong. You may have entered an invalid professor name.
+br
 div class="row"
     div class="col-xs-6"
         h3 Your Reference Requests
@@ -8,12 +11,12 @@ div class="row"
                 td
                     label
                         | Student: &nbsp;
-                    a href="" ui-sref="list_student.selected_student({id: reference.student.id})"
+                    a style="text-decoration:none" href="" ui-sref="list_student.selected_student({id: reference.student.id})"
                         | {{ reference.student.name }}
                     br
                     label
                         | Project: &nbsp;
-                    a href="" ui-sref="current_project.selected_project({id: reference.project.id})"
+                    a style="text-decoration:none" href="" ui-sref="current_project.selected_project({id: reference.project.id})"
                         | {{ reference.project.title }}
                     br
                     label
@@ -24,11 +27,3 @@ div class="row"
                     div class="text-center"
                         button class="btn btn-default btn-sm button-margin-10" ng-really-message="Are you sure? You will not be able to change your decision." ng-really-click="rejectReference(reference)" Reject
                         button class="btn btn-default btn-sm button-margin-10" ui-sref="write_reference({id: reference.id})" Write Reference
-
-    /div class="col-xs-2"
-    /    div class="row" style="height:15px"
-    /
-    /    div id="reference-info" class="btn-group" role="group" aria-label="Default button group"
-    /        /Button 1: Information
-    /        button ng-click="modalService.open('InfoPopup/info.html', 'InfoCtrl')" type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Information"
-    /            span class="glyphicon glyphicon-info-sign" aria-hidden="true"
