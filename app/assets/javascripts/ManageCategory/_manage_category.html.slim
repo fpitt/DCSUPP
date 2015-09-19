@@ -163,7 +163,7 @@ div ng-controller="ManageCategoryCtrl"
                                 div ng-if="edit_category.id==subcategory.id"
                                     div ng-if="subcategory.attribute_type=='Number'"
                                         input type="text" class="form-control" ng-model="edit_category.placeholder"
-                                    div ng-if="subcategory.attribute_type=='Input'"
+                                    div ng-if="subcategory.attribute_type=='Input Field'"
                                         input type="text" class="form-control" ng-model="edit_category.placeholder"
 
                             /Entry 4: Max
@@ -177,7 +177,7 @@ div ng-controller="ManageCategoryCtrl"
                                     div ng-if="subcategory.attribute_type=='Number'"
                                         input type="text" class="form-control" placeholder="{{subcategory.number_max}}" ng-model="edit_category.number_max"
                                     div ng-if="subcategory.attribute_type=='Date'"
-                                        input type="text" class="form-control" placeholder="{{subcategory.maxDate}}" ng-model="edit_category.maxDate"
+                                        input type="date" class="form-control" placeholder="{{subcategory.maxDate}}" ng-model="edit_category.maxDate"
 
                             /Entry 5: Min
                             td 
@@ -190,7 +190,7 @@ div ng-controller="ManageCategoryCtrl"
                                     div ng-if="subcategory.attribute_type=='Number'"
                                         input type="text" class="form-control" placeholder="{{subcategory.number_min}}" ng-model="edit_category.number_min"
                                     div ng-if="subcategory.attribute_type=='Date'"
-                                        input type="text" class="form-control" placeholder="{{subcategory.minDate}}" ng-model="edit_category.minDate"
+                                        input type="date" class="form-control" placeholder="{{subcategory.minDate}}" ng-model="edit_category.minDate"
 
                             /Entry 6: REGEX
                             td
