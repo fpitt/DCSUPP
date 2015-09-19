@@ -122,65 +122,90 @@ div ng-controller="ManageCategoryCtrl"
                 table class="table"
                     thead
                         tr
-                            th Name
                             th Type
+                            th Name
                             th Placeholder
                             th Max
                             th Min
                             th REGEX
                             th Student Attribute
                         tr ng-repeat="subcategory in list_subcategories"
-                            /Case 1: Edit Selected, Add Input Forms
-                            div class="row12"
-                                /Case 1a: Edit Category is Number
-                                td
-                                    p 
-                                        | {{ edit_category.id }}
-                                td 
-                                    p 
-                                        | {{ subcategory.id }}
-                                td
-                                    input type="text" class="form-control" placeholder="{{subcategory.sub_category_name}}" ng-model="edit_category.sub_category_name"
-                                td
+                            /Entry 1: SubCategory Type
+                            td
+                                /Category is Display Mode
+                                div ng-if="!(edit_category.id==subcategory.id)"
+                                    p
+                                        | {{ subcategory.attribute_type}}
+                                /Category is Edit Mode
+                                div ng-if="edit_category.id==subcategory.id"
                                     select class="form-control" ng-model="edit_category.attribute_type"
                                         option value="Number" Number
                                         option value="Date" Date
                                         option value="Boolean" Boolean
                                         option value="Input Field" Input Field
-                                td
-                                    input type="text" class="form-control" placeholder="{{subcategory.placeholder}}" ng-model="edit_category.number_placeholder"
-
-                                td 
-                                    input type="text" class="form-control" placeholder="{{subcategory.placeholder}}" ng-model="edit_category.input_placeholder"
-
-                                td 
-                                    button type="button" class="btn btn-default" ng-click="update()" Update
-
-                            /Case 2: Display Information Normally
-                            div ng-if="!(edit_category.id==subcategory.id)"
-                                td
+                            /Entry 2: SubCategory Name
+                            td
+                                /Category is Display Mode
+                                div ng-if="!(edit_category.id==subcategory.id)"
                                     p
                                         | {{ subcategory.sub_category_name }}
-                                td
-                                    p
-                                        | {{ subcategory.attribute_type}}
-                                td
+                                /Category is Edit Mode
+                                div ng-if="edit_category.id==subcategory.id"
+                                    input type="text" class="form-control" ng-model="edit_category.sub_category_name"
+
+                            /Entry 3: PlaceHolder
+                            td
+                                /Display Mode
+                                div ng-if="!(edit_category.id==subcategory.id)"
                                     p
                                         | {{ subcategory.placeholder}}
-                                td
+                                /Category is Edit Mode
+                                div ng-if="edit_category.id==subcategory.id"
+                                    div ng-if="subcategory.attribute_type=='Number'"
+                                        input type="text" class="form-control" ng-model="edit_category.placeholder"
+                                    div ng-if="subcategory.attribute_type=='Input'"
+                                        input type="text" class="form-control" ng-model="edit_category.placeholder"
+
+                            /Entry 4: Max
+                            td 
+                                /Display Mode
+                                div ng-if="!(edit_category.id==subcategory.id)"
                                     p
                                         | {{ subcategory.upper_limit}}
-                                td
+                                /Category is Edit Mode
+                                div ng-if="edit_category.id==subcategory.id"
+                                    div ng-if="subcategory.attribute_type=='Number'"
+                                        input type="text" class="form-control" placeholder="{{subcategory.number_max}}" ng-model="edit_category.number_max"
+                                    div ng-if="subcategory.attribute_type=='Date'"
+                                        input type="text" class="form-control" placeholder="{{subcategory.maxDate}}" ng-model="edit_category.maxDate"
+
+                            /Entry 5: Min
+                            td 
+                                /Display Mode
+                                div ng-if="!(edit_category.id==subcategory.id)"
                                     p
                                         | {{ subcategory.lower_limit}}
-                                td
+                                /Category is Edit Mode
+                                div ng-if="edit_category.id==subcategory.id"
+                                    div ng-if="subcategory.attribute_type=='Number'"
+                                        input type="text" class="form-control" placeholder="{{subcategory.number_min}}" ng-model="edit_category.number_min"
+                                    div ng-if="subcategory.attribute_type=='Date'"
+                                        input type="text" class="form-control" placeholder="{{subcategory.minDate}}" ng-model="edit_category.minDate"
+
+                            /Entry 6: REGEX
+                            td
+                                /Display Mode
+                                div ng-if="!(edit_category.id==subcategory.id)"
                                     p
                                         | {{ subcategory.regex}}
-                                td
-                                    p
-                                        | {{ subcategory.student_attribute}}
-                                td
-                                    button type="button" class="btn btn-default" ng-click="edit(subcategory)" Edit
+                                /Category is Edit Mode
+                                div ng-if="edit_category.id==subcategory.id"
+                                    input type="text" class="form-control" placeholder="{{subcategory.regex}}" ng-model="edit_category.regex"                           
+
+                            td
+                                button type="button" class="btn btn-default" ng-click="update()" Update
+                            td
+                                button type="button" class="btn btn-default" ng-click="edit(subcategory)" Edit
 
         div class="col-xs-1"
             div class="btn-group" role="group" aria-label="Default button group"

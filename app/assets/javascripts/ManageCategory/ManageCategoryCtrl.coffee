@@ -27,7 +27,7 @@ controllerFunction = ($scope, RequirementCategory, modalService, RequirementSubc
         sub_category_name: ""
         attribute_type: "Number"
         #Case 1: Select Number
-        number_placeholder: ""
+        placeholder: ""
         number_max: 0
         number_min: 0
         #Case 2: Select Date
@@ -35,7 +35,6 @@ controllerFunction = ($scope, RequirementCategory, modalService, RequirementSubc
         minDate: new Date()
         #Case 4: Select Input
         regex: ""
-        input_placeholder: ""
         student_attribute: 0
     #Edit Subcategory
     $scope.edit_category = null
@@ -45,7 +44,7 @@ controllerFunction = ($scope, RequirementCategory, modalService, RequirementSubc
         sub_category_name: ""
         attribute_type: "Number"
         #Case 1: Select Number
-        number_placeholder: ""
+        placeholder: ""
         number_max: 0
         number_min: 0
         #Case 2: Select Date
@@ -53,13 +52,14 @@ controllerFunction = ($scope, RequirementCategory, modalService, RequirementSubc
         minDate: new Date()
         #Case 4: Select Input
         regex: ""
-        input_placeholder: ""
         student_attribute: 0
 
     # --- Edit SubCategory ---
 
     $scope.edit = (subcategory) ->
         $scope.edit_category = subcategory
+        if ($scope.edit_category.attribute_type == 'Number')
+            $scope.edit_category.number_max = subcategory.upper_limit
 
     # --- Update SubCategory ---
 
