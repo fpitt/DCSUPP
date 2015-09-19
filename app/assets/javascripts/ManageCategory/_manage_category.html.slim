@@ -1,3 +1,6 @@
+
+
+
 div ng-controller="ManageCategoryCtrl"
 
     div class="row"
@@ -75,7 +78,7 @@ div ng-controller="ManageCategoryCtrl"
                         tbody
                             /Top Row, Add Category Row
                             tr
-                                th scope="row"
+                                td
                                     button type="submit" class="btn btn-default" ng-click="create_subcategory()"
                                         span class="glyphicon glyphicon glyphicon-plus" aria-hidden="true"
                                 td
@@ -119,82 +122,42 @@ div ng-controller="ManageCategoryCtrl"
                 table class="table"
                     thead
                         tr
-                            th Category Name
-                            th Attribute Type
+                            th Name
+                            th Type
                             th Placeholder
                             th Max
                             th Min
-                            th Regex
+                            th REGEX
                             th Student Attribute
-
                         tr ng-repeat="subcategory in list_subcategories"
-                            /Edit the SubCategory
-                            td ng-if="edit_category.id==subcategory.id"
-                                input type="text" class="form-control" placeholder="{{subcategory.sub_category_name}}" ng-model="edit_category.sub_category_name"
-
-                                select class="form-control" ng-model="edit_category.attribute_type"
-                                    option value="Number" Number
-                                    option value="Date" Date
-                                    option value="Boolean" Boolean
-                                    option value="Input Field" Input Field
-
-                                /Input Field
-                                td ng-if="subcategory.attribute_type=='Number'"
+                            /Case 1: Edit Selected, Add Input Forms
+                            div class="row12"
+                                /Case 1a: Edit Category is Number
+                                td
+                                    p 
+                                        | {{ edit_category.id }}
+                                td 
+                                    p 
+                                        | {{ subcategory.id }}
+                                td
+                                    input type="text" class="form-control" placeholder="{{subcategory.sub_category_name}}" ng-model="edit_category.sub_category_name"
+                                td
+                                    select class="form-control" ng-model="edit_category.attribute_type"
+                                        option value="Number" Number
+                                        option value="Date" Date
+                                        option value="Boolean" Boolean
+                                        option value="Input Field" Input Field
+                                td
                                     input type="text" class="form-control" placeholder="{{subcategory.placeholder}}" ng-model="edit_category.number_placeholder"
 
-                                td ng-if="subcategory.attribute_type=='Input Field'"
-                                    input type="text" class="form-control" placeholder="{{subcategory.placeholder}}" ng-model="edit_category.input_placeholder"
-
-                                /Input Field [Empty]
-                                td ng-if="subcategory.attribute_type=='Date'"
-                                    p
-                                td ng-if="subcategory.attribute_type=='Boolean'"
-                                    p
-
-                                /Input Max
-                                td ng-if="subcategory.attribute_type=='Date'"
-                                    input type="date" class="form-control" placeholder="{{subcategory.maxDate}}" ng-model="edit_category.maxDate"
-
-                                td ng-if="subcategory.attribute_type=='Number'"
-                                    input type="number" class="form-control" placeholder="{{subcategory.number_max}}" ng-model="edit_category.number_max"
-
-                                td ng-if="subcategory.attribute_type=='Input Field'"
-                                    p
-                                td ng-if="subcategory.attribute_type=='Boolean'"
-                                    p
-
-                                /Input Min
-                                td ng-if="subcategory.attribute_type=='Date'"
-                                    input type="date" class="form-control" placeholder="{{subcategory.minDate}}" ng-model="edit_category.minDate"
-
-                                td ng-if="subcategory.attribute_type=='Number'"
-                                    input type="number" class="form-control" placeholder="{{subcategory.number_min}}" ng-model="edit_category.number_min"
-
-                                td ng-if="subcategory.attribute_type=='Input Field'"
-                                    p
-                                td ng-if="subcategory.attribute_type=='Boolean'"
-                                    p
-
-                                /Input Regex
-                                td ng-if="subcategory.attribute_type=='Input Field'"
-                                    input type="number" class="form-control" placeholder="{{subcategory.regex}}" ng-model="edit_category.regex"
-
-                                td ng-if="subcategory.attribute_type=='Number'"
-                                    p
-                                td ng-if="subcategory.attribute_type=='Date'"
-                                    p
-                                td ng-if="ubcategory.attribute_type=='Boolean'"
-                                    p
-
-                                /Input Boolean
                                 td 
-                                    input type="checkbox" class="form-control" placeholder="{{subcategory.student_attribute}}" ng-model="edit_input.student_attribute"
+                                    input type="text" class="form-control" placeholder="{{subcategory.placeholder}}" ng-model="edit_category.input_placeholder"
 
                                 td 
                                     button type="button" class="btn btn-default" ng-click="update()" Update
 
+                            /Case 2: Display Information Normally
                             div ng-if="!(edit_category.id==subcategory.id)"
-                                /Display the Normal Category
                                 td
                                     p
                                         | {{ subcategory.sub_category_name }}
