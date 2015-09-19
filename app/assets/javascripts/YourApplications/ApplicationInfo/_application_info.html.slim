@@ -1,7 +1,7 @@
 div
     h3
         | {{ application.title }} (for project:
-        a  href="" ui-sref="current_project.project_info({id: project.id})" {{ project.title }}
+        a style="text-decoration:none" href="" ui-sref="current_project.project_info({id: project.id})" {{ project.title }}
         |)
     hr
     div class="text-center"
@@ -33,7 +33,7 @@ div
             td
                 | Name
             td
-                a ui-sref="list_student.selected_student({id: application.student.id})"
+                a style="text-decoration:none" ui-sref="list_student.selected_student({id: application.student.id})"
                     | {{ application.student.name }}
         tr
             td
@@ -45,7 +45,7 @@ div
             td
                 | Resume
             td
-                a href="{{ application.resume_url }}" target="_blank"
+                a style="text-decoration:none" href="{{ application.resume_url }}" target="_blank"
                     | {{ application.resume_file_name }}
 
         tr ng-repeat="attribute in attributes"

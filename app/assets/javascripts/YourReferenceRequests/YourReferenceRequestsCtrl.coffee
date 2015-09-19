@@ -9,6 +9,9 @@ controllerFunction = ($scope, modalService, $stateParams, Reference, Project, Pr
     #   pop-up service for page settings + information
     $scope.modalService = modalService
 
+    #   true iff something on this page resulted in an error to alert error message
+    $scope.error = false
+
     #   get all reference requests for this professor
     $scope.getReferenceRequests = () ->
         $scope.references = []
@@ -40,6 +43,7 @@ controllerFunction = ($scope, modalService, $stateParams, Reference, Project, Pr
                         callback()
                 )
             , (err) ->
+                $scope.error = error != null
             )
 
         )
@@ -47,7 +51,10 @@ controllerFunction = ($scope, modalService, $stateParams, Reference, Project, Pr
     #   reject a reference request
     $scope.rejectReference = (reference) ->
         Reference.processReferenceApproval(reference: reference.id, approved: false).success((data) ->
+            $scope.error = false
             $scope.getReferenceRequests()
+        ).error((data) ->
+            $scope.error = true
         )
 
     # run this code when page loads

@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     post "/students" => 'users#students'
     post "/flip_professor_direction" => 'users#grab_professors'
     post "/get_professor_containing_keyword" => 'users#get_professor_containing_keyword'
+    post "/filter_students" => 'users#filter_students'
 
     #Requirement Categories Routes
     post '/flip_direction' => 'requirement_categories#flip_direction'

@@ -26,15 +26,21 @@ controllerFunction = ($scope, modalService, User, Project, RequirementCategory, 
 	#	additional details of this project (default details are title, supervisor, deadline, description)
 	$scope.project.details = []
 
+	#   true iff something on this page resulted in an error to alert error message
+	$scope.error = false
+
 	#	create the project
 	$scope.createProject = ->
 		Project.create($scope.project)
 		.success((data) ->
+			$scope.error = true
 			# redirect to new page once project has been successfully added
 			$state.go('your_projects.project_info', {id: data.id})
 
 			# display updated list in parent state
 			$scope.getInProgressProjects()
+		).error((data) ->
+			$scope.error = true
 		)
 
 	#	add additional detail to project

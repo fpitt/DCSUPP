@@ -6,6 +6,9 @@
 # ---------------------------------------------------------
 controllerFunction = ($scope, $stateParams, Reference, User, $q, $state, ProjectApplication) ->
 
+    #   true iff reference request was successful, to alert error message
+    $scope.error = false;
+
     #   reference request form info
     $scope.reference = {}
 
@@ -17,7 +20,9 @@ controllerFunction = ($scope, $stateParams, Reference, User, $q, $state, Project
             application : $stateParams.id).success((data) ->
             #   redirect to new page
             $state.go('your_applications.application_info', {id: $stateParams.id})
-            )
+            ).error((data) ->
+                $scope.error = true
+        )
 
     #   get all professors with names matching keyword "name"
     $scope.getProfessors = (name) ->
