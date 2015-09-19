@@ -29,6 +29,7 @@ controllerFunction = ($scope, $stateParams, Project, ProjectRequirement, Require
         payload = project: $stateParams.id
         Project.setCompleted(payload).success((projectInfo) ->
             $scope.getProject()
+            $scope.getInProgressProjects()
         )
 
     #   get project information

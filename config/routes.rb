@@ -49,6 +49,7 @@ Rails.application.routes.draw do
     post "/get_require_administrator_approval_applications" =>  'project_applications#get_require_administrator_approval_applications'
     post "/get_project_assignments" => 'project_applications#get_project_assignments'
     post "/upload_resume" => 'project_applications#upload_resume'
+    post "/flip_applications_of_user" => 'project_applications#flip_applications_of_user'
 
     #Project Requirement Routes
     post "/get_requirements_of_project" => 'project_requirements#get_requirements_of_project'
