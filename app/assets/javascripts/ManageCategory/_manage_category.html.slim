@@ -1,6 +1,3 @@
-
-
-
 div ng-controller="ManageCategoryCtrl"
 
     div class="row"
@@ -34,27 +31,40 @@ div ng-controller="ManageCategoryCtrl"
 
         div class="col-xs-8"
             div ng-if="!selectedCategory"
-                div class="row" style="height:10vh"
+                div class="row" style="height:2vh"
                 div class="row"
                     div class="col-xs-10 col-xs-offset-1"
                         /Information Panel when none is clicked
                         div class="panel panel-info"
                             div class="panel-heading"
-                                h3 class="panel-title" Student Information and Prerequisites 
+                                h3 class="panel-title" Manage Requirement Categories
 
                             div class="panel-body"
                                 div class="bs-example" data-example-id="horizontal-dl"
                                     dl class="dl-horizontal"
 
-                                        p Please update your personal information and prerequisites to help us match your expertises and interests with potential research projects.
+                                        p This page is for the DCSUPP administrators to update or add Requirement Categories for student and projects.
 
-                                        dt Information Disclosure
-                                        dd Your information can only be viewed by the specific projects you have applied for. We will never disclose your personal information without your permission.
+                                        dt Categories
+                                        dd Requirement Categories are the dividers to organize large numbers of Requirement SubCategories.
 
-                                        dt Reuse Components
-                                        dd Our system will reuse your information added into our system for mutiple project applications. We will like to save you the hassle of having to submit the same information for mutiple forms.
+                                        dt SubCategories
+                                        dd Requirement SubCategories are Student Attributes or Project Information that professors or researchers can add to their projects to automate and standardize the matching process.
 
-                                        dt Information Contact
+                                        dt Example
+                                        dd
+                                            b CSC 4th Year Grades (Category)
+                                            ol 
+                                                li CSC 494 Grade (SubCategory + Student Attribute)
+                                                li CSC 411 Grade (SubCategory + Student Attribute)
+                                                li CSC 412 Grade (SubCategory + Student Attribute)
+                                            b Project Information (Category)
+                                            ol 
+                                                li Project Link (SubCategory)
+                                                li Project Deadline (SubCategory)
+                                            p In this case, the CSC 4th Year Grades are Student Attributes, but the Project Informations are not student attributes for matching and is only used to add information to the project.
+
+                                        dt Contact
                                         dd For any questions or concerns, please email: dcsupp[at]cs[dot]toronto[dot]edu
 
             div ng-if="selectedCategory"
