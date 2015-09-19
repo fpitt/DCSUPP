@@ -24,13 +24,17 @@ div class="row"
     div class="col-xs-8"
 
         div ng-if="!selectCategory"
-            h3 Student Prerequisites and Information
-            hr
-            p Please update your individual prerequisites to help DCSUPP to identity potential research projects that are suitable for your academic strengths and interests.
+            div class="row" style="height:10vh"
+            div class="row"
+                div class="col-xs-10 col-xs-offset-1"
+                    /Information Panel when none is clicked
+                    div class="panel panel-info"
+                        div class="panel-heading"
+                            h3 class="panel-title" Student Prerequisites and Information
 
-            spam
-                b Note:
-                p This information will remain private and can only be accessed by certified administrators and professors registered with DCSUPP.
+                        div class="panel-body"
+                            p Please update your individual prerequisites to help DCSUPP to identity potential research projects that are suitable for your academic strengths and interests.
+
 
         div ng-if="selectCategory"
             h3 
