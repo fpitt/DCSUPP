@@ -32,13 +32,32 @@ div ng-controller="ManageCategoryCtrl"
                                 a id="{{ category.id }}"
                                     | {{ category.category_name }}
 
-        div class="row" style="height:10px"
-
         div class="col-xs-8"
-            div ng-if="selectedCategory"
-                h3
-                    | {{ selectedCategory.category_name }}
+            div ng-if="!selectedCategory"
+                div class="row" style="height:10vh"
+                div class="row"
+                    div class="col-xs-10 col-xs-offset-1"
+                        /Information Panel when none is clicked
+                        div class="panel panel-info"
+                            div class="panel-heading"
+                                h3 class="panel-title" Student Information and Prerequisites 
 
+                            div class="panel-body"
+                                div class="bs-example" data-example-id="horizontal-dl"
+                                    dl class="dl-horizontal"
+
+                                        p Please update your personal information and prerequisites to help us match your expertises and interests with potential research projects.
+
+                                        dt Information Disclosure
+                                        dd Your information can only be viewed by the specific projects you have applied for. We will never disclose your personal information without your permission.
+
+                                        dt Reuse Components
+                                        dd Our system will reuse your information added into our system for mutiple project applications. We will like to save you the hassle of having to submit the same information for mutiple forms.
+
+                                        dt Information Contact
+                                        dd For any questions or concerns, please email: dcsupp[at]cs[dot]toronto[dot]edu
+
+            div ng-if="selectedCategory"
                 div access="administrator" restrict=""
                     table class="table table-striped"
                         thead
@@ -118,6 +137,9 @@ div ng-controller="ManageCategoryCtrl"
                                         button type="button" class="btn btn-default" ng-click="category.student_attribute = 1" False
                                     div ng-if="category.student_attribute == 1"
                                         button type="button" class="btn btn-primary" ng-click="category.student_attribute = 0" True
+
+                h3
+                    | {{ selectedCategory.category_name }}
 
                 table class="table"
                     thead
