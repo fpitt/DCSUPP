@@ -54,7 +54,12 @@ ServiceFunction = (requestService) ->
             url: '/get_projects_of_user.json'
         return requestService.service(sendParams)
 
-
+    ###
+        return a filtered page (10 rows) of projects based on filter tags
+    	pagenumber: Integer (current page number)
+		filter: [ list of requirement subcategories with form: {name: subcategory name, id: object id} ]
+		direction: Integer (+10 to go forward a page, -10 to go backward a page)
+    ###
     filterProjects: (payload) ->
         sendParams =
             method: 'POST'
@@ -72,26 +77,6 @@ ServiceFunction = (requestService) ->
             method: 'POST'
             url: 'get_completed_projects_of_current_user.json'
         return requestService.service(sendParams)
-#
-#
-#    flip: (payload) ->
-#        sendParams =
-#            method: 'POST'
-#            url: '/flip_project_direction.json'
-#
-#        requestService.service(sendParams, payload)
-#
-#    flipInProgress: (payload) ->
-#        sendParams =
-#            method: 'POST'
-#            url: '/flip_in_progress_direction.json'
-#        requestService.service(sendParams, payload)
-#
-#    flipCompleted: (payload) ->
-#        sendParams =
-#            method: 'POST'
-#            url: '/flip_completed_direction.json'
-#        requestService.service(sendParams, payload)
 
     #   mark a Project as being completed
     #   payload format:

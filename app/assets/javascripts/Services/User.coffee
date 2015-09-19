@@ -23,6 +23,7 @@ ServiceFunction = (requestService) ->
             method: 'GET'
         requestService.service(sendParams)
 
+    #   not used
     flipProfessors : (payload) ->
         sendParams =
             url: '/flip_professor_direction.json'
@@ -36,6 +37,18 @@ ServiceFunction = (requestService) ->
         sendParams =
             url: '/get_professor_containing_keyword.json'
             method: 'POST'
+        requestService.service(sendParams, payload)
+
+    ###
+        return a filtered page (10 rows) of students based on filter tags
+    	pagenumber: Integer (current page number)
+		filter: [ list of requirement subcategories with form: {name: subcategory name, id: object id} ]
+		direction: Integer (+10 to go forward a page, -10 to go backward a page)
+    ###
+    filterStudents: (payload) ->
+        sendParams =
+            method: 'POST'
+            url: '/filter_students.json'
         requestService.service(sendParams, payload)
 
 angular.module('dcsupp').service('User', ServiceFunction)

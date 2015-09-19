@@ -117,4 +117,50 @@ class UsersController < ApplicationController
 
     end
 
+
+
+    #   get filtered list of projects by subcategories
+    def filter_students
+        respond_to do |format|
+            format.json {
+                @students = User.where(:professor => false, :administrator => false)
+                param = params[:payload]
+
+                #   go through each filter and get students matching all filters
+                if param[:filter]
+                    for filter in param[:filter]
+
+                        #   get student matching current filter
+                        @student_attributes = StudentAttribute.where(:requirement_subcategory_id => filter[:id])
+                        @filter_student = Array.new
+                        for attr in @student_attributes
+                            @filter_student.push(User.find_by_id(attr.user_id))
+                        end
+
+                        #   exclude students
+                        #   that don't have current filter from list
+                        @new_student_list = Array.new
+                        for item in @filter_student
+                            if @students.include?(item)
+                                @new_student_list.push(item)
+                            end
+                        end
+                        @students = @new_student_list
+                    end
+                end
+
+                #   grab a page of students (10)
+                direction = param[:direction]
+                current_offset = (params[:payload][:pagenumber] - 1)*10
+
+                if @students and current_offset + direction < @students.length && current_offset + direction >= 0
+                    offset = current_offset + direction
+                    render :json => @students[offset, offset + 10]
+                else
+                    render :nothing => true, :status => 200, :content_type => 'text/html'
+                end
+            }
+        end
+    end
+
 end

@@ -1,20 +1,19 @@
-
 div class="row"
     div class="col-xs-4"
 
         div class="text-center"
             h3 Student List
-            tags-input class="bootstrap" ng-model="requirements" display_property="name"
-                auto-complete source="loadTags()"
-            span E.g. 'CSC148 Grade', 'Volunteer', 'Resume', 'Unofficial transcript', etc.
+            span Refine your search:
+            tags-input class="bootstrap" ng-model="requirements" display_property="name" on-tag-removed="filterStudents(true, 0)" on-tag-added="filterStudents(true, 0)" add-from-autocomplete-only="true"
+                auto-complete source="loadTags($query)"
         div class="row" style="height:20px"
 
         div class="text-center"
             div class="btn-group"
-                button class="btn btn-default" ng-click="flip(-10)" Prev
+                button class="btn btn-default" ng-click="filterStudents(false, -10)" Prev
                 button class="btn btn-default disabled"
                     | {{ pagenumber }}
-                button class="btn btn-default" ng-click="flip(10)" Next
+                button class="btn btn-default" ng-click="filterStudents(false, 10)" Next
             br
             br
         div class="list-group"
@@ -29,11 +28,3 @@ div class="row"
     div class="col-xs-6"
         div class="panel-content"
             ui-view
-
-/    div class="col-xs-2"
-//div class="row" style="height:15px"
-/        /
-/        /div class="btn-group" role="group" aria-label="Default button group"
-/        /    /Button 1: Information
-/        /    button ng-click="modalService.open('InfoPopup/info.html', 'InfoCtrl')" type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Information"
-/        /        span class="glyphicon glyphicon-info-sign" aria-hidden="true"

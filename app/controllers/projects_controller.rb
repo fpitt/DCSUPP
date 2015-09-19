@@ -221,7 +221,7 @@ class ProjectsController < ApplicationController
         end
     end
 
-    #   get filtered list of projects by student attributes
+    #   get filtered list of projects by subcategories
     def filter_projects
         respond_to do |format|
             format.json {
