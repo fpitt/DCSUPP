@@ -20,9 +20,7 @@ angular.module('dcsupp').controller 'IndexCtrl', [
     '$stateParams'
     '$scope'
     '$state'
-    'modalService'
-    ($stateParams, $scope, $state, modalService) ->
-        $scope.modalService = modalService;
+    ($stateParams, $scope, $state) ->
 
         #   If application is being initialized: go to intro page
         #   If application is being refreshed//URL is being

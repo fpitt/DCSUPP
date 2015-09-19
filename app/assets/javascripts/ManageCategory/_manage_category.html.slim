@@ -164,6 +164,7 @@ div ng-controller="ManageCategoryCtrl"
                             th Min
                             th REGEX
                             th Student Attribute
+                            th Input Control
                         tr ng-repeat="subcategory in list_subcategories"
                             /Entry 1: SubCategory Type
                             td
@@ -219,7 +220,7 @@ div ng-controller="ManageCategoryCtrl"
                                 /Display Mode
                                 div ng-if="!(edit_category.id==subcategory.id)"
                                     p
-                                        | {{ subcategory.lower_limit}}
+                                        | {{ subcategory.lower_limit}}                                        
                                 /Category is Edit Mode
                                 div ng-if="edit_category.id==subcategory.id"
                                     div ng-if="subcategory.attribute_type=='Number'"
