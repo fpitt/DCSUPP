@@ -200,9 +200,23 @@ div ng-controller="ManageCategoryCtrl"
                                         | {{ subcategory.regex}}
                                 /Category is Edit Mode
                                 div ng-if="edit_category.id==subcategory.id"
-                                    input type="text" class="form-control" placeholder="{{subcategory.regex}}" ng-model="edit_category.regex"                           
+                                    div ng-if="subcategory.attribute_type=='Input Field'"
+                                        input type="text" class="form-control" placeholder="{{subcategory.regex}}" ng-model="edit_category.regex"
+
+                            /Entry 7: Student Attribute
+                            td
+                                /Display Mode
+                                div ng-if="!(edit_category.id==subcategory.id)"
+                                    p
+                                        | {{ subcategory.student_attribute}}
+                                /Category is Edit Mode
+                                div ng-if="edit_category.id==subcategory.id"
+                                    input type="checkbox" placeholder="{{subcategory.student_attribute}}" ng-model="edit_category.student_attribute"                      
 
                             td
-                                button type="button" class="btn btn-default" ng-click="update()" Update
-                            td
-                                button type="button" class="btn btn-default" ng-click="edit(subcategory)" Edit
+                                /Update Button
+                                div ng-if="edit_category.id==subcategory.id"
+                                    button type="button" class="btn btn-default" ng-click="update()" Update
+                                /Edit Button
+                                div ng-if="!(edit_category.id==subcategory.id)"
+                                    button type="button" class="btn btn-default" ng-click="edit(subcategory)" Edit
