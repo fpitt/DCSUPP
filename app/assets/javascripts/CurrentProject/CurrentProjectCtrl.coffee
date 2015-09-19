@@ -11,8 +11,7 @@ controllerFunction = ($scope, modalService, Project, RequirementSubcategory, $q)
 	$scope.modalService = modalService
 	$scope.projects = null
 
-	$scope.filter = 'In progress'
-	$scope.subcategories = []
+	#	filter tags
 	$scope.requirements = []
 
 	$scope.pagenumber = 1;
