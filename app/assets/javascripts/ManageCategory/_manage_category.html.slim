@@ -29,6 +29,8 @@ div ng-controller="ManageCategoryCtrl"
                                 a id="{{ category.id }}"
                                     | {{ category.category_name }}
 
+        div class="row" style="height:10px"
+
         div class="col-xs-7"
             div ng-if="selectedCategory"
                 h3
@@ -218,14 +220,8 @@ div ng-controller="ManageCategoryCtrl"
                                     button type="button" class="btn btn-default" ng-click="edit(subcategory)" Edit
 
         div class="col-xs-1"
-            div
-                div class="row" style="height:15px"
-
-                div id="reference-info" class="btn-group" role="group" aria-label="Default button group"
-                    /Button 1: Information
-                    button ng-click="modalService.open('InfoPopup/info.html', 'InfoCtrl')" type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Information"
-                        span class="glyphicon glyphicon-info-sign" aria-hidden="true"
-            br
-            br
-
+            div class="btn-group" role="group" aria-label="Default button group"
+                /Button 1: Information
+                button ng-click="modalService.open('InfoPopup/info.html', 'InfoCtrl')" type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Information"
+                    span class="glyphicon glyphicon-info-sign" aria-hidden="true"
 
