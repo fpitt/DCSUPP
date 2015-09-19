@@ -29,45 +29,47 @@ div ng-controller="ManageCategoryCtrl"
                                 a id="{{ category.id }}"
                                     | {{ category.category_name }}
 
+        div class="row" style="height:10px"
 
-
-        div class="col-xs-8"
-            div
-                div class="row" style="height:15px"
-
-                div id="reference-info" class="btn-group" role="group" aria-label="Default button group"
-                    /Button 1: Information
-                    button ng-click="modalService.open('InfoPopup/info.html', 'InfoCtrl')" type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Information"
-                        span class="glyphicon glyphicon-info-sign" aria-hidden="true"
-
-            br
-            br
-
+        div class="col-xs-7"
             div ng-if="selectedCategory"
                 h3
                     | {{ selectedCategory.category_name }}
 
-
                 div access="administrator" restrict=""
                     table class="table"
                         thead
-                            tr
+                            /The Header Row displays depending on the selected attribute type
+                            tr ng-if="category.attribute_type=='Number'" 
+                                /Case 1: Selected is Number
                                 th #
-                                th Input Type
-                                th Field Name
-                                /Case 1: Selected Number
-                                th ng-if="category.attribute_type=='Number'" Place Holder
-                                th ng-if="category.attribute_type=='Number'" Max Value
-                                th ng-if="category.attribute_type=='Number'" Min Value
-                                /Case 2: Selected Date
-                                th ng-if="category.attribute_type=='Date'" Max Date
-                                th ng-if="category.attribute_type=='Date'" Min Date
-                                /Case 3: Selected Boolean
-                                /Nothing
-                                /Case 4: Selected Input Field
-                                th ng-if="category.attribute_type=='Input Field'" Place Holder
-                                th ng-if="category.attribute_type=='Input Field'" REGEX Expression
-
+                                th Type
+                                th Name
+                                th Placeholder
+                                th Max
+                                th Min
+                                th Student Attribute
+                            tr ng-if="category.attribute_type=='Date'" 
+                                /Case 2: Select is Date
+                                th #
+                                th Type
+                                th Name
+                                th Max
+                                th Min
+                                th Student Attribute
+                            tr ng-if="category.attribute_type=='Boolean'"
+                                /Case 3: Select is Boolean
+                                th #
+                                th Type
+                                th Name
+                                th Student Attribute
+                            tr ng-if="category.attribute_type=='Input Field'"
+                                /Case 4: Select is Input Field
+                                th #
+                                th Type
+                                th Name
+                                th Placeholder
+                                th REGEX
                                 th Student Attribute
 
                         tbody
@@ -130,91 +132,96 @@ div ng-controller="ManageCategoryCtrl"
                             td ng-if="edit_category.id==subcategory.id"
                                 input type="text" class="form-control" placeholder="{{subcategory.sub_category_name}}" ng-model="edit_category.sub_category_name"
 
-                            td ng-if="edit_category.id==subcategory.id"
                                 select class="form-control" ng-model="edit_category.attribute_type"
                                     option value="Number" Number
                                     option value="Date" Date
                                     option value="Boolean" Boolean
                                     option value="Input Field" Input Field
 
-                            /Input Field
-                            td ng-if="edit_category.id==subcategory.id && subcategory.attribute_type=='Number'"
-                                input type="text" class="form-control" placeholder="{{subcategory.placeholder}}" ng-model="edit_category.number_placeholder"
+                                /Input Field
+                                td ng-if="subcategory.attribute_type=='Number'"
+                                    input type="text" class="form-control" placeholder="{{subcategory.placeholder}}" ng-model="edit_category.number_placeholder"
 
-                            td ng-if="edit_category.id==subcategory.id && subcategory.attribute_type=='Input Field'"
-                                input type="text" class="form-control" placeholder="{{subcategory.placeholder}}" ng-model="edit_category.input_placeholder"
+                                td ng-if="subcategory.attribute_type=='Input Field'"
+                                    input type="text" class="form-control" placeholder="{{subcategory.placeholder}}" ng-model="edit_category.input_placeholder"
 
-                            /Input Field [Empty]
-                            td ng-if="edit_category.id==subcategory.id && subcategory.attribute_type=='Date'"
-                                p
-                            td ng-if="edit_category.id==subcategory.id && subcategory.attribute_type=='Boolean'"
-                                p
+                                /Input Field [Empty]
+                                td ng-if="subcategory.attribute_type=='Date'"
+                                    p
+                                td ng-if="subcategory.attribute_type=='Boolean'"
+                                    p
 
-                            /Input Max
-                            td ng-if="edit_category.id==subcategory.id && subcategory.attribute_type=='Date'"
-                                input type="date" class="form-control" placeholder="{{subcategory.maxDate}}" ng-model="edit_category.maxDate"
+                                /Input Max
+                                td ng-if="subcategory.attribute_type=='Date'"
+                                    input type="date" class="form-control" placeholder="{{subcategory.maxDate}}" ng-model="edit_category.maxDate"
 
-                            td ng-if="edit_category.id==subcategory.id && subcategory.attribute_type=='Number'"
-                                input type="number" class="form-control" placeholder="{{subcategory.number_max}}" ng-model="edit_category.number_max"
+                                td ng-if="subcategory.attribute_type=='Number'"
+                                    input type="number" class="form-control" placeholder="{{subcategory.number_max}}" ng-model="edit_category.number_max"
 
-                            td ng-if="edit_category.id==subcategory.id && subcategory.attribute_type=='Input Field'"
-                                p
-                            td ng-if="edit_category.id==subcategory.id && subcategory.attribute_type=='Boolean'"
-                                p
+                                td ng-if="subcategory.attribute_type=='Input Field'"
+                                    p
+                                td ng-if="subcategory.attribute_type=='Boolean'"
+                                    p
 
-                            /Input Min
-                            td ng-if="edit_category.id==subcategory.id && subcategory.attribute_type=='Date'"
-                                input type="date" class="form-control" placeholder="{{subcategory.minDate}}" ng-model="edit_category.minDate"
+                                /Input Min
+                                td ng-if="subcategory.attribute_type=='Date'"
+                                    input type="date" class="form-control" placeholder="{{subcategory.minDate}}" ng-model="edit_category.minDate"
 
-                            td ng-if="edit_category.id==subcategory.id && subcategory.attribute_type=='Number'"
-                                input type="number" class="form-control" placeholder="{{subcategory.number_min}}" ng-model="edit_category.number_min"
+                                td ng-if="subcategory.attribute_type=='Number'"
+                                    input type="number" class="form-control" placeholder="{{subcategory.number_min}}" ng-model="edit_category.number_min"
 
-                            td ng-if="edit_category.id==subcategory.id && subcategory.attribute_type=='Input Field'"
-                                p
-                            td ng-if="edit_category.id==subcategory.id && subcategory.attribute_type=='Boolean'"
-                                p
+                                td ng-if="subcategory.attribute_type=='Input Field'"
+                                    p
+                                td ng-if="subcategory.attribute_type=='Boolean'"
+                                    p
 
-                            /Input Regex
-                            td ng-if="edit_category.id==subcategory.id && subcategory.attribute_type=='Input Field'"
-                                input type="number" class="form-control" placeholder="{{subcategory.regex}}" ng-model="edit_category.regex"
+                                /Input Regex
+                                td ng-if="subcategory.attribute_type=='Input Field'"
+                                    input type="number" class="form-control" placeholder="{{subcategory.regex}}" ng-model="edit_category.regex"
 
-                            td ng-if="edit_category.id==subcategory.id && subcategory.attribute_type=='Number'"
-                                p
-                            td ng-if="edit_category.id==subcategory.id && subcategory.attribute_type=='Date'"
-                                p
-                            td ng-if="edit_category.id==subcategory.id && subcategory.attribute_type=='Boolean'"
-                                p
+                                td ng-if="subcategory.attribute_type=='Number'"
+                                    p
+                                td ng-if="subcategory.attribute_type=='Date'"
+                                    p
+                                td ng-if="ubcategory.attribute_type=='Boolean'"
+                                    p
 
-                            /Input Boolean
-                            td ng-if="edit_category.id==subcategory.id"
-                                input type="checkbox" class="form-control" placeholder="{{subcategory.student_attribute}}" ng-model="edit_input.student_attribute"
+                                /Input Boolean
+                                td 
+                                    input type="checkbox" class="form-control" placeholder="{{subcategory.student_attribute}}" ng-model="edit_input.student_attribute"
 
-                            td ng-if="edit_category.id==subcategory.id"
-                                button type="button" class="btn btn-default" ng-click="update()" Update
+                                td 
+                                    button type="button" class="btn btn-default" ng-click="update()" Update
 
-                            /Display the Normal Category
-                            td ng-if="!(edit_category.id==subcategory.id)"
-                                p
-                                    | {{ subcategory.sub_category_name }}
-                            td ng-if="!(edit_category.id==subcategory.id)"
-                                p
-                                    | {{ subcategory.attribute_type}}
-                            td ng-if="!(edit_category.id==subcategory.id)"
-                                p
-                                    | {{ subcategory.placeholder}}
-                            td ng-if="!(edit_category.id==subcategory.id)"
-                                p
-                                    | {{ subcategory.upper_limit}}
-                            td ng-if="!(edit_category.id==subcategory.id)"
-                                p
-                                    | {{ subcategory.lower_limit}}
-                            td ng-if="!(edit_category.id==subcategory.id)"
-                                p
-                                    | {{ subcategory.regex}}
-                            td ng-if="!(edit_category.id==subcategory.id)"
-                                p
-                                    | {{ subcategory.student_attribute}}
-                            td ng-if="!(edit_category.id==subcategory.id)"
-                                button type="button" class="btn btn-default" ng-click="edit(subcategory)" Edit
+                            div ng-if="!(edit_category.id==subcategory.id)"
+                                /Display the Normal Category
+                                td
+                                    p
+                                        | {{ subcategory.sub_category_name }}
+                                td
+                                    p
+                                        | {{ subcategory.attribute_type}}
+                                td
+                                    p
+                                        | {{ subcategory.placeholder}}
+                                td
+                                    p
+                                        | {{ subcategory.upper_limit}}
+                                td
+                                    p
+                                        | {{ subcategory.lower_limit}}
+                                td
+                                    p
+                                        | {{ subcategory.regex}}
+                                td
+                                    p
+                                        | {{ subcategory.student_attribute}}
+                                td
+                                    button type="button" class="btn btn-default" ng-click="edit(subcategory)" Edit
 
+        div class="col-xs-1"
+            div class="btn-group" role="group" aria-label="Default button group"
+                /Button 1: Information
+                button ng-click="modalService.open('InfoPopup/info.html', 'InfoCtrl')" type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Information"
+                    span class="glyphicon glyphicon-info-sign" aria-hidden="true"
 
