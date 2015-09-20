@@ -1,27 +1,30 @@
 div class="row"
     div class="col-xs-4"
+        div class="row"
+            div class="col-xs-11 col-xs-offset-1 background-grey"
+                div
+                    h3 class="text-blue"
+                        b Students
+                    hr
+                    label Refine your search
+                    tags-input class="bootstrap" ng-model="requirements" display_property="name" on-tag-removed="filterStudents(true, 0)" on-tag-added="filterStudents(true, 0)" add-from-autocomplete-only="true"
+                        auto-complete source="loadTags($query)"
+                    hr
 
-        div class="text-center"
-            h3 Student List
-            span Refine your search:
-            tags-input class="bootstrap" ng-model="requirements" display_property="name" on-tag-removed="filterStudents(true, 0)" on-tag-added="filterStudents(true, 0)" add-from-autocomplete-only="true"
-                auto-complete source="loadTags($query)"
-        div class="row" style="height:20px"
-
-        div class="text-center"
-            div class="btn-group"
-                button class="btn btn-default" ng-click="filterStudents(false, -10)" Prev
-                button class="btn btn-default disabled"
-                    | {{ pagenumber }}
-                button class="btn btn-default" ng-click="filterStudents(false, 10)" Next
-            br
-            br
-        div class="list-group"
-            div ng-repeat="student in students"
-                ul class="nav nav-pills nav-stacked"
-                    li
-                        a ui-sref=".selected_student({id: student.id})"
-                            | {{ student.name }}
+                div class="text-center"
+                    div class="btn-group"
+                        button class="btn btn-default" ng-click="filterStudents(false, -10)" Prev
+                        button class="btn btn-default disabled"
+                            | {{ pagenumber }}
+                        button class="btn btn-default" ng-click="filterStudents(false, 10)" Next
+                    br
+                    br
+                div class="list-group"
+                    div ng-repeat="student in students"
+                        ul class="nav nav-pills nav-stacked"
+                            li
+                                a ui-sref=".selected_student({id: student.id})"
+                                    | {{ student.name }}
 
     div class="row" style="height:5px"
 
