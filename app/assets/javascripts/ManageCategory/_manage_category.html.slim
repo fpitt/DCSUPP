@@ -3,9 +3,9 @@ div ng-controller="ManageCategoryCtrl"
     div class="row"
         div class="col-xs-4"  
             div class="row"
-                div class="col-xs-11 col-xs-offset-1" style="background-color:rgb(250, 250, 250)"
+                div class="col-xs-11 col-xs-offset-1 background-grey" 
                     div access="administrator" restrict=""
-                        h3 style="color:rgb(1,25,73)"
+                        h3 class="text-blue "
                             b Requirement Category
                         hr
                         form
@@ -29,7 +29,7 @@ div ng-controller="ManageCategoryCtrl"
                         div ng-repeat="category in categories"
                             ul class="nav nav-pills nav-stacked"
                                 li ng-click="loadSubcategories(category)"
-                                    a id="{{ category.id }}" style="color:rgb(0,128,168)"
+                                    a id="{{ category.id }}" class="text-teal"
                                         | {{ category.category_name }}
 
         div class="col-xs-8"
@@ -151,10 +151,10 @@ div ng-controller="ManageCategoryCtrl"
                                         button type="button" class="btn btn-primary" ng-click="category.student_attribute = 0" True
 
                 h3
-                    b style="color:rgb(1,25,73)"
+                    b class="text-blue"
                         | {{ selectedCategory.category_name }}
 
-                table class="table table-condensed"
+                table class="table table-condensed table-striped"
                     thead
                         tr
                             th Type
@@ -171,7 +171,7 @@ div ng-controller="ManageCategoryCtrl"
                             td
                                 /Category is Display Mode
                                 div ng-if="!(edit_category.id==subcategory.id)"
-                                    p
+                                    b
                                         | {{ subcategory.attribute_type}}
                                 /Category is Edit Mode
                                 div ng-if="edit_category.id==subcategory.id"
