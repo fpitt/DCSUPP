@@ -1,28 +1,23 @@
+div ng-show="error"
+    alert type="danger"  Something went wrong. You may have entered an invalid professor name.
+    br
 div
-    alert type="danger" ng-show="error" Something went wrong. You may have entered an invalid professor name.
-br
-div
-    h3 Reference Request
+    h3 class="text-blue"
+        b Reference Request
     form
         table class="table"
             tr
                 td
-                    | Select Professor
+                    b
+                        | Select Professor
 
                 td
                     input class="form-control" type="text" ng-model="professor" typeahead="professor as professor.name for professor in getProfessors($viewValue)" typeahead-select-on-exact="true" required="true"
-                    //typeahead-loading="loading" typeahead-no-results="noResults"
-
-                    /i ng-show="loading" class="glyphicon gylphicon-refresh"
-                    /
-                    /div ng-show="noResults"
-                    /    i class="glyphicon gylphicon-remove" No Results Found
-
             tr
                 td
-                    | Message
+                    b
+                        | Message
                 td
                     textarea ng-model="student_text" type="text" class="form-control" required="true"
-    br
-
-    button style="margin: auto; width: 50%" access="administrator student" restrict="" class="btn btn-default btn-lg" ng-click="createReference()" Submit
+    div class="text-center"
+        button restrict="" class="btn btn-default btn-lg" ng-click="createReference()" Submit

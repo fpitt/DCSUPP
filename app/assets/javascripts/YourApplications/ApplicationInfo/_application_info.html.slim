@@ -1,56 +1,68 @@
-div
-    h3
-        | {{ application.title }} (for project:
-        a style="text-decoration:none" href="" ui-sref="current_project.project_info({id: project.id})" {{ project.title }}
-        |)
-    hr
-    div class="text-center"
-        span
+div class="text-center"
+    alert type="info"
+        b
             | Application status: {{ status }}
         br
         br
+
         div access="administrator student" restrict=""
             div ng-show="status == 'Awaiting student\'s response.'"
-                button  class="btn btn-default button-margin-10" ng-really-message="Are you sure? You will not be able to change your decision." ng-really-click="processOffer(true)" Accept
+                button class="btn btn-default button-margin-10" ng-really-message="Are you sure? You will not be able to change your decision." ng-really-click="processOffer(true)" Accept
                 button class="btn btn-default button-margin-10" ng-really-message="Are you sure? You will not be able to change your decision." ng-really-click="processOffer(false)" Reject
 
         div access="administrator professor" restrict=""
             div ng-show="status == 'Awaiting professor\'s response.'"
-                button  class="btn btn-default button-margin-10" ng-really-message="Are you sure? You will not be able to change your decision." ng-really-click="processOffer(true)" Accept
-                button  class="btn btn-default button-margin-10" ng-really-message="Are you sure? You will not be able to change your decision." ng-really-click="processOffer(false)" Reject
-    hr
+                button class="btn btn-default button-margin-10" ng-really-message="Are you sure? You will not be able to change your decision." ng-really-click="processOffer(true)" Accept
+                button class="btn btn-default button-margin-10" ng-really-message="Are you sure? You will not be able to change your decision." ng-really-click="processOffer(false)" Reject
+
+div
+    h3 class="text-blue"
+        b
+            | {{ application.title }}
+    label for project: &nbsp;
+    a style="text-decoration:none" href="" ui-sref="current_project.project_info({id: project.id})" {{ project.title }}
     br
-    h4 style="display:inline-block" Details
     br
+    h4 class="text-blue"
+        b Application Details
     table class="table table-hover"
+        thead
+            tr
+                th #
+                th Information
         tr
             td
-                | Title
+                b
+                    | Title
             td
                 span
                     | {{ application.title }}
         tr
             td
-                | Name
+                b
+                    | Name
             td
                 a style="text-decoration:none" ui-sref="list_student.selected_student({id: application.student.id})"
                     | {{ application.student.name }}
         tr
             td
-                | Message
+                b
+                    | Message
             td
                 span
                     | {{ application.message }}
         tr
             td
-                | Resume
+                b
+                    | Resume
             td
                 a style="text-decoration:none" href="{{ application.resume_url }}" target="_blank"
                     | {{ application.resume_file_name }}
 
         tr ng-repeat="attribute in attributes"
             td
-                | {{ attribute.sub_category_name }}
+                b
+                    | {{ attribute.sub_category_name }}
             td ng-show="attribute.attribute_type != 'Date'"
                 | {{ attribute.value }}
             td ng-show="attribute.attribute_type == 'Date'"
@@ -58,14 +70,18 @@ div
     br
 
     div
-        h4 id="reference-request-header" References
+        h4 class="text-blue" id="reference-request-header"
+            b References
         button type="button" ui-sref="your_applications.request_reference({id: application.id})" class="btn btn-default btn-sm"
             span class="glyphicon glyphicon-plus" aria-hidden="true"
             span New Request
 
     div restrict="" access="administrator student"
         alert ng-show="allReferences.length == 0" None at the moment.
-        table class="table"
+        table class="table table-striped"
+            thead
+                tr
+                    th #
             tr ng-repeat="reference in allReferences"
                 td
                     div class="row"

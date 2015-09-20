@@ -6,7 +6,6 @@ div class="row"
         h3 class="text-blue"
             b Your Reference Requests
         br
-        alert ng-show="references.length == 0" None at the moment.
         table class="table table-striped"
             thead
                 tr
@@ -31,3 +30,5 @@ div class="row"
                     div class="text-center"
                         button class="btn btn-default btn-sm button-margin-10" ng-really-message="Are you sure? You will not be able to change your decision." ng-really-click="rejectReference(reference)" Reject
                         button class="btn btn-default btn-sm button-margin-10" ui-sref="write_reference({id: reference.id})" Write Reference
+
+        alert ng-show="references.length == 0" None at the moment.
