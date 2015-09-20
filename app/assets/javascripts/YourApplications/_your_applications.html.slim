@@ -1,30 +1,32 @@
 div class="row"
-    div class="col-xs-10"
-        div class="col-xs-4 text-center"
-            h3 Your Applications
-            br
-            div class="btn-group"
-                button class="btn btn-default" ng-click="flip(-10)" Prev
-                button class="btn btn-default disabled"
-                    | {{ pagenumber }}
-                button class="btn btn-default" ng-click="flip(10)" Next
-            br
-            br
-             alert type="success" ng-show="applications.length == 0" You don't have any applications.
-            div class="list-group" 
-                div ng-repeat="application in applications"
-                    ul class="nav nav-pills nav-stacked"
-                        li
-                            a ui-sref="your_applications.application_info({id: application.id})"
-                                | {{ application.title }}
-        div class="col-xs-8"
-            div class="panel-content"
-                ui-view
+    div class="col-xs-4"
+        div class="row"
+            div class="col-xs-11 col-xs-offset-1 background-grey"
+                h3 class="text-blue"
+                    b Your Applications
+                br
+                div class="text-center"
+                    div class="btn-group"
+                        button class="btn btn-default" ng-click="flip(-10)" Prev
+                        button class="btn btn-default disabled"
+                            | {{ pagenumber }}
+                        button class="btn btn-default" ng-click="flip(10)" Next
+                br
+                    alert type="success" ng-show="applications.length == 0" You don't have any applications.
+                div class="list-group"
+                    div ng-repeat="application in applications"
+                        ul class="nav nav-pills nav-stacked"
+                            li
+                                a ui-sref="your_applications.application_info({id: application.id})"
+                                    | {{ application.title }}
+    div class="col-xs-8"
+        div class="panel-content"
+            ui-view
 
-    /div class="col-xs-2"
-    /    div class="row" style="height:15px"
-    /
-    /    div class="btn-group" role="group" aria-label="Default button group"
-    /        /Button 1: Information
-    /        button ng-click="modalService.open('InfoPopup/info.html', 'InfoCtrl')" type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Information"
-    /            span class="glyphicon glyphicon-info-sign" aria-hidden="true"
+                /div class="col-xs-2"
+                /    div class="row" style="height:15px"
+                /
+                /    div class="btn-group" role="group" aria-label="Default button group"
+                /        /Button 1: Information
+                /        button ng-click="modalService.open('InfoPopup/info.html', 'InfoCtrl')" type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Information"
+                /            span class="glyphicon glyphicon-info-sign" aria-hidden="true"

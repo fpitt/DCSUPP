@@ -38,17 +38,6 @@ div
                                         | {{application.title }}
                         alert ng-show="applications.length == 0" None at the moment.
 
-
-        div class="row" style="height:5px"
-
-        div class="col-xs-6"
+        div class="col-xs-9"
             div class="panel-content"
                 ui-view
-
-        /div class="col-xs-2"
-        /    div class="row" style="height:15px"
-        /
-        /    div class="btn-group" role="group" aria-label="Default button group"
-        /        /Button 1: Information
-        /        button ng-click="modalService.open('InfoPopup/info.html', 'InfoCtrl')" type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Information"
-        /            span class="glyphicon glyphicon-info-sign" aria-hidden="true"
