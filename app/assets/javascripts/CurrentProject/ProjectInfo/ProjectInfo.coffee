@@ -11,3 +11,6 @@ angular.module('dcsupp').config ($stateProvider) ->
         data:
             permissions:
                 only: ['professor', 'student', 'administrator']
+    .state 'current_project.default_project',
+    	templateUrl: 'CurrentProject/ProjectInfo/_default_project.html'
+    	url: ''
