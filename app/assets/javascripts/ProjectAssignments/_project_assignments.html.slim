@@ -3,14 +3,16 @@ div class="row"
 br
 div class="row"
     div class="col-xs-6"
-        h3 Project Assignments Awaiting Approval
+        h3 class="text-blue"
+            b Project Assignments Awaiting Approval
         br
-        table class="table"
-            tr
-                th Project
-                th Professor
-                th Student
-                th Actions
+        table class="table table-striped"
+            thead
+                tr
+                    th Project
+                    th Professor
+                    th Student
+                    th Actions
             tr ng-repeat="assignment in assignments"
                 td
                     a style="text-decoration:none" ui-sref="current_project.selected_project({id: assignment.project_id})"

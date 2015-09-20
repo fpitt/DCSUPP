@@ -3,10 +3,14 @@ div
 br
 div class="row"
     div class="col-xs-6"
-        h3 Your Reference Requests
+        h3 class="text-blue"
+            b Your Reference Requests
         br
         alert ng-show="references.length == 0" None at the moment.
-        table class="table"
+        table class="table table-striped"
+            thead
+                tr
+                    th #
             tr ng-repeat="reference in references"
                 td
                     label
