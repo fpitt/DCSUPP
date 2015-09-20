@@ -1,16 +1,21 @@
-h3 Personal Information
+h3 class="text-blue"
+    b Personal Information
 br
 table class="table table-hover"
+    thead
+        tr
+            th #
+            th Information
     tr
         td
             | Name
         td
             span
                 | {{ user.name }}
-    tr ng-repeat="attribute in attributes"
-        td
-            | {{ attribute.sub_category_name }}
-        td ng-show="attribute.attribute_type != 'Date'"
-            | {{ attribute.value }}
-        td ng-show="attribute.attribute_type == 'Date'"
-            | {{ attribute.value | date: "yyyy-MMM-dd" }}
+    /tr ng-repeat="attribute in attributes"
+    /    td
+    /        | {{ attribute.sub_category_name }}
+    /    td ng-show="attribute.attribute_type != 'Date'"
+    /        | {{ attribute.value }}
+    /    td ng-show="attribute.attribute_type == 'Date'"
+    /        | {{ attribute.value | date: "yyyy-MMM-dd" }}
