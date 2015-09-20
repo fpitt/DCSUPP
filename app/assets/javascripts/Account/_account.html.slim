@@ -1,23 +1,25 @@
 div class="row"
     div class="col-xs-4"
-        h3 
-            b Student Prerequisites
-        hr
+        div class="row"
+            div class="col-xs-11 col-xs-offset-1 background-grey" 
+                h3 class="text-blue "
+                    b Student Prerequisites
+                hr
 
-        div class="text-center"
-            div class="btn-group"
-                button class="btn btn-default" ng-click="flip(-10)" Prev
-                button class="btn btn-default disabled"
-                    | {{ pagenumber }}
-                button class="btn btn-default" ng-click="flip(10)" Next
-            br
-            br
-        div class="list-group"
-            div ng-repeat="category in categories"
-                ul class="nav nav-pills nav-stacked"
-                    li ng-click="loadSubcategories(category)"
-                        a id="{{ category.id }}"
-                            | {{ category.category_name }}
+                div class="text-center"
+                    div class="btn-group"
+                        button class="btn btn-default" ng-click="flip(-10)" Prev
+                        button class="btn btn-default disabled"
+                            | {{ pagenumber }}
+                        button class="btn btn-default" ng-click="flip(10)" Next
+                    br
+                    br
+                div class="list-group"
+                    div ng-repeat="category in categories"
+                        ul class="nav nav-pills nav-stacked"
+                            li ng-click="loadSubcategories(category)"
+                                a id="{{ category.id }}" class="text-teal"
+                                    | {{ category.category_name }}
 
     div class="col-xs-8"
 
@@ -45,15 +47,18 @@ div class="row"
                                     dd For any questions or concerns, please email: dcsupp[at]cs[dot]toronto[dot]edu
 
         div ng-if="selectCategory"
-            h3 
-                | {{selectCategory.category_name}}
+            h3 class="text-blue"
+                b
+                    | {{selectCategory.category_name}}
 
-            table class="table table-striped"
+            table class="table table-striped table-condensed"
                 thead
                     tr
                         th Name
                         th Value
+                        th Input Control
 
+                tbody
                     tr ng-repeat="subcategory in merged_category"
                         td
                             p

@@ -1,5 +1,6 @@
 div
-    h3 id="project-info-title" Project Information
+    h3 id="project-info-title" class="text-blue" 
+        b Project Information 
     button class="button-margin-10" access="administrator professor" restrict="" class="btn btn-default" ui-sref="your_projects.update_project({id: project.id})"
         span class="gylphicon glyphicon-pencil" aria-hidden="true"
         span Edit
@@ -10,21 +11,28 @@ div
     br
     br
     table class="table table-hover"
+        thead
+            tr
+                th #
+                th Information
         tr
             td
-                | Title
+                b
+                    | Title
             td
                 span
                     | {{ project.title }}
         tr
             td
-                | Description
+                b
+                    | Description
             td
                 span
                     | {{ project.text }}
         tr
             td
-               | Deadline
+                b
+                    | Deadline
             td
                 span
                     | {{ project.deadline_date | date: 'dd-MM-yyyy' }}
@@ -38,4 +46,5 @@ div
         div ng-show="acceptingApplications"
             button access="administrator student" restrict="" class="btn btn-default btn-lg" ui-sref="current_project.apply_project({id: project.id})" Apply Now
         div ng-show="!acceptingApplications"
-            span The application period is over.
+            b class="text-blue"
+                span The application period is over.
