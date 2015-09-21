@@ -1,28 +1,37 @@
+div ng-show="error"
+    alert type="danger"  Something went wrong. You may have entered an invalid professor name.
+    br
 div
-    alert type="danger" ng-show="error" Something went wrong. You may have entered an invalid professor name.
-br
-div
-    h3 Application
+    h3 class="text-blue"
+        b Application
     form ng-submit="createApplication()"
         table class="table"
+            thead
+                tr
+                    th #
+                    th Form Field
             tr
                 td
-                    | Title
+                    b
+                        | Title
                 td
                     input ng-model="application.title" type="text" class="form-control" required="true"
             tr
                 td
-                    | Message
+                    b
+                        | Message
                 td
                     textarea ng-model="application.message" type="text" class="form-control" required="true"
             tr
                 td
-                    | Resume
+                    b
+                        | Resume
                 td
                     input accept="application/pdf" name="file" ng-model="resume" ngf-max-size="2MB" ngf-select="" type="file" required="true"
             tr ng-repeat="requirement in application.requirements"
                 td
-                    | {{ requirement.sub_category_name }}
+                    b
+                        | {{ requirement.sub_category_name }}
                 td ng-if="requirement.attribute_type == 'Number'"
                     input ng-model="requirement.value" type="number" class="form-control" required="true"
                 td ng-if="requirement.attribute_type == 'Boolean'"
