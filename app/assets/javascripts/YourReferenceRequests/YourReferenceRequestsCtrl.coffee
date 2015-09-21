@@ -43,7 +43,7 @@ controllerFunction = ($scope, modalService, $stateParams, Reference, Project, Pr
                         callback()
                 )
             , (err) ->
-                $scope.err = error != null
+                $scope.error = err != null
             )
 
         )
