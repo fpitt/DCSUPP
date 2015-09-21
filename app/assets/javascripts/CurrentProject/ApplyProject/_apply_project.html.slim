@@ -2,7 +2,8 @@ div
     alert type="danger" ng-show="error" Something went wrong. You may have entered an invalid professor name.
 br
 div
-    h3 Application
+    h3 class="text-blue"
+        b Application
     form ng-submit="createApplication()"
         table class="table"
             tr
@@ -35,5 +36,5 @@ div
                 td ng-if="requirement.attribute_type == 'Date'"
                     input type="date" class="form-control" ng-model="requirement.value" required="true"
         br
-        div class="text-center"
+        div
             button type="submit" value="submit" access="administrator student" restrict="" class="btn btn-default"  Submit
