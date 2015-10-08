@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
 
-  attr_accessible :name
+  attr_accessible :name, :contact_email, :introduction
 
   has_many :project_applications
 

@@ -7,7 +7,7 @@ div class="row"
                 hr
 
                 div class="text-center"
-                    button class="btn btn-default" Edit Personal Introduction
+                    button ui-sref="account.personal_introduction()" class="btn btn-default" Edit Personal Introduction
                     hr
 
 
@@ -22,8 +22,8 @@ div class="row"
                 div class="list-group"
                     div ng-repeat="category in categories"
                         ul class="nav nav-pills nav-stacked"
-                            li ui-sref="account.attribute_subcategory({id: category.id})" 
-                                a class="text-teal"
+                            li 
+                                a class="text-teal" ui-sref="account.attribute_subcategory({id: category.id})" 
                                     | {{ category.category_name }}
 
     div class="col-xs-8"

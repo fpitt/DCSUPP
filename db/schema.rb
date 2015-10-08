@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150909194323) do
+ActiveRecord::Schema.define(version: 20151008050908) do
 
   create_table "professor_settings", force: :cascade do |t|
     t.datetime "created_at",                       null: false
@@ -140,6 +140,8 @@ ActiveRecord::Schema.define(version: 20150909194323) do
     t.string   "name"
     t.boolean  "professor",     default: false
     t.boolean  "administrator", default: false
+    t.string   "contact_email"
+    t.text     "introduction"
   end
 
 end
