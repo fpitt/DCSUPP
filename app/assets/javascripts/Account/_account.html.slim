@@ -22,13 +22,12 @@ div class="row"
                 div class="list-group"
                     div ng-repeat="category in categories"
                         ul class="nav nav-pills nav-stacked"
-                            li ng-click="loadSubcategories(category)"
-                                a id="{{ category.id }}" class="text-teal"
+                            li ui-sref="account.attribute_subcategory({id: category.id})" 
+                                a class="text-teal"
                                     | {{ category.category_name }}
 
     div class="col-xs-8"
-
-        div ng-if="!selectCategory"
+        ui-view
             div class="row"
                 div class="col-xs-12"
                     /Information Panel when none is clicked
@@ -55,50 +54,3 @@ div class="row"
                                     p 
                                             | The University of Toronto respects your privacy. Personal information that you provide to the University is collected pursuant to section 2(14) of the University of Toronto Act, 1971. It is collected for the purpose of administering admissions, registration, academic programs, university-related student activities, activities of student societies, safety, financial assistance and awards, graduation and university advancement, and reporting to government agencies for statistical purposes. At all times it will be protected in accordance with the Freedom of Information and Protection of Privacy Act. If you do have questions, please refer to 
                                             a href="http://www.utoronto.ca/privacy" www.utoronto.ca/privacy.
-
-        div ng-if="selectCategory"
-            h3 class="text-blue"
-                b
-                    | {{selectCategory.category_name}}
-
-            table class="table table-striped table-condensed"
-                thead
-                    tr
-                        th Name
-                        th Value
-                        th Input Control
-
-                tbody
-                    tr ng-repeat="subcategory in merged_category"
-                        td
-                            p
-                                | {{ subcategory.sub_category_name}}
-
-                        /Case 2: The Display/ Update Tab
-                        td 
-                            div ng-if="!(subcategory.edit)"
-                                p
-                                    | {{subcategory.value}}
-                            div ng-if="subcategory.edit"
-                                div ng-if="selectsubCategory.attribute_type=='Number'"
-                                    input type="text" class="form-control" placeholder="{{subcategory.placeholder}}" ng-model="edit.input_number"
-
-                                div ng-if="selectsubCategory.attribute_type=='Date'"
-                                    input type="date" class="form-control" placeholder="yyyy-MM-dd" ng-model="edit.input_date"
-
-                                div ng-if="selectsubCategory.attribute_type=='Boolean'"
-                                    input type="checkbox" ng-model="edit.input_boolean"
-
-                                div ng-if="selectsubCategory.attribute_type=='Input Field'"
-                                    input type="text" class="form-control" placeholder="{{subcategory.placeholder}}" ng-model="edit.input_text"
-                        td 
-                            div ng-if="subcategory.edit"
-                                button type="button" class="btn btn-default" ng-click="update()" Update
-
-                            div ng-if="!(subcategory.edit)"
-                                div ng-if="subcategory.type=='attribute'"
-                                    button type="button" class="btn btn-default" ng-click="edit_entry(subcategory)" Edit
-
-                                div ng-if="subcategory.type=='category'"
-                                    button type="button" class="btn btn-default" ng-click="edit_entry(subcategory)" Add Entry
-
