@@ -1,8 +1,8 @@
 div
     h3 class="text-blue"
         b Personal Information
-    form
-        table class="table"
+    form name="informationForm" ng-submit="informationForm.$valid && updateUser()"
+        table class="table"  
             thead
                 tr
                     th #
@@ -12,13 +12,13 @@ div
                     b
                         | Contact Email
                 td
-                    input type="text" class="form-control" required="true" ng-model="userInformation.input_email"
+                    input type="email" placeholder="Input Contact Email" class="form-control" required="true" ng-model="userInformation.input_email"
             tr
                 td
                     b
                         | Personal Introduction
                 td
-                    textarea type="text" class="form-control" required="true" ng-model="userInformation.input_text"
+                    textarea type="text" placeholder="Introduce About Yourself" class="form-control" required="true" ng-model="userInformation.input_text"
 
         div
-            button type="submit" value="submit" access="administrator student" restrict="" class="btn btn-default" ng-click="updateUser()" Submit
+            button type="submit" value="submit" access="administrator student" restrict="" class="btn btn-default" Submit

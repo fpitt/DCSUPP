@@ -10,22 +10,20 @@ PersonalIntroductionFunction = ($scope, $modal, modalService, requestService, Us
         input_email: ""
         input_text: ""
 
-    #Edit SubCategory Empty
-    $scope.userInformationBlank =
-        input_email: ""
-        input_text: ""   
-
     # --- Get User ---
-    # Grab the user Attribute
+    # Grab the User Attribute
     $scope.getUser = ->
         User.getUser().success (data) ->
             $scope.user = data
+            #Get Previous User Information
+            $scope.userInformation.input_email = $scope.user.contact_email
+            $scope.userInformation.input_text = $scope.user.introduction
         return
 
     # --- Update User ---
     # Update the User's Information
     $scope.updateUser = ->
-        User.updateUser($scope.user.id, $scope.userInformation).success (data) ->
+        User.updateUser($scope.userInformation).success (data) ->
             $scope.userInformation = angular.copy($scope.userInformationBlank)
         return
 

@@ -16,7 +16,7 @@ ServiceFunction = (requestService) ->
         requestService.service(sendParams)
 
     #   update user information
-    updateUser : (id, payload)->
+    updateUser : (payload)->
         sendParams =
             url: '/user_information.json'
             method: 'POST'
