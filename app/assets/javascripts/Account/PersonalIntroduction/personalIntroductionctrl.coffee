@@ -24,6 +24,7 @@ PersonalIntroductionFunction = ($scope, $modal, modalService, requestService, Us
 
     # --- Update User ---
     $scope.updateUser = ->
+        console.log($scope.userInformation)
         User.updateUser($scope.user.id, $scope.userInformation).success (data) ->
             $scope.edit = angular.copy($scope.userInformationBlank)
         return
@@ -31,6 +32,6 @@ PersonalIntroductionFunction = ($scope, $modal, modalService, requestService, Us
     # --- Jquery Initialization --- 
     $scope.getUser()
 
-angular.module('dcsupp').controller('AttributeSubCategoryCtrl', ['$scope',
+angular.module('dcsupp').controller('PersonalIntroductionCtrl', ['$scope',
                                                     '$modal', 'modalService', 'requestService', 'User', '$state',
                                                     'StudentAttribute', PersonalIntroductionFunction])

@@ -12,13 +12,13 @@ div
                     b
                         | Contact Email
                 td
-                    input ng-model="introduction.title" type="text" class="form-control" required="true" ng-model="userInformation.input_date"
+                    input type="text" class="form-control" required="true" ng-model="userInformation.input_date"
             tr
                 td
                     b
                         | Personal Introduction
                 td
-                    textarea ng-model="intrdoction.message" type="text" class="form-control" required="true" ng-model="userInformation.input_text"
+                    textarea type="text" class="form-control" required="true" ng-model="userInformation.input_text"
 
         div
-            button type="submit" value="submit" access="administrator student" restrict="" class="btn btn-default"  Submit
+            button type="submit" value="submit" access="administrator student" restrict="" class="btn btn-default" ng-click="updateUser()" Submit

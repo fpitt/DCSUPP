@@ -12,6 +12,14 @@ class UsersController < ApplicationController
 		
 	end
 
+    def information
+        respond_to do |format|
+            format.json{
+                render :nothing => true, :status => 200, :content_type => 'text/html'
+            }
+        end
+    end
+
 	#   get a page of 10 students (used in List Student page)
 	def students
         student_size = User.all.length
