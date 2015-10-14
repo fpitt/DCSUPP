@@ -15,6 +15,13 @@ ServiceFunction = (requestService) ->
             method: 'POST'
         requestService.service(sendParams)
 
+    #   update user information
+    updateUser : (id, payload)->
+        sendParams =
+            url: '/users' + id + '.json'
+            method: 'PATCH'
+        requestService.service(sendParams, payload)
+
     #   get a user by id
     #   id: Integer (user id)
     getById : (id) ->
