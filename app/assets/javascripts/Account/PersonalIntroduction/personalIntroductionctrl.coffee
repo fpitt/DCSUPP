@@ -1,8 +1,6 @@
 # -------------------------------------------------------------------------------------------------------
 # UI-View of the subcategoryListing
 # -------------------------------------------------------------------------------------------------------
-
-
 PersonalIntroductionFunction = ($scope, $modal, modalService, requestService, User, $state, StudentAttribute) ->
 
     #Edit Mode on
