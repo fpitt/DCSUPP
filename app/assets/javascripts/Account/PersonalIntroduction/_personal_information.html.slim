@@ -1,4 +1,5 @@
-div
+/Edit Mode
+div ng-if="edit"
     h3 class="text-blue"
         b Personal Information
     form name="informationForm" ng-submit="informationForm.$valid && updateUser()"
@@ -18,7 +19,46 @@ div
                     b
                         | Personal Introduction
                 td
-                    textarea type="text" placeholder="Introduce About Yourself" class="form-control" required="true" ng-model="userInformation.input_text"
+                    textarea type="text" placeholder="Introduce About Yourself" class="form-control" required="true" ng-model="userInformation.input_text" rows="5"
 
         div
             button type="submit" value="submit" access="administrator student" restrict="" class="btn btn-default" Submit
+
+/Display Mode
+div ng-if="!(edit)"
+    h3 class="text-blue"
+        b Personal Information
+    br
+    table class="table table-hover"
+        thead
+            tr
+                th #
+                th Information
+        tr
+            td
+                b
+                    | Name
+            td
+                span
+                    | {{ user.name }}
+        tr
+            td
+                b
+                    | Contact Email
+            td
+                span ng-if="user.contact_email"
+                    | {{ user.contact_email}}
+                span ng-if="!(user.contact_email)"
+                    | [No Contact Email Available]
+        tr
+            td
+                b
+                    | Personal Introduction
+            td
+                span ng-if="user.introduction" class="preserve_newline"
+                    | {{ user.introduction }}
+                span ng-if="!(user.introduction)"
+                    | [No User Introduction]
+    form
+        div
+            button type="button" access="administrator student" restrict="" class="btn btn-default" ng-click="editEnable()" Edit

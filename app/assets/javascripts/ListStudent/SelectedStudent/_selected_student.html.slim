@@ -27,7 +27,7 @@ table class="table table-hover"
             b
                 | Personal Introduction
         td
-            span ng-if="user.introduction"
+            span ng-if="user.introduction" class="preserve_newline"
                 | {{ user.introduction }}
             span ng-if="!(user.introduction)"
                 | [No User Introduction]

@@ -5,10 +5,17 @@
 
 PersonalIntroductionFunction = ($scope, $modal, modalService, requestService, User, $state, StudentAttribute) ->
 
+    #Edit Mode on
+    $scope.edit = false
+
     #Edit SubCategory
     $scope.userInformation =
         input_email: ""
         input_text: ""
+
+    # --- Edit ---
+    $scope.editEnable = ->
+        $scope.edit = true
 
     # --- Get User ---
     # Grab the User Attribute
@@ -24,7 +31,8 @@ PersonalIntroductionFunction = ($scope, $modal, modalService, requestService, Us
     # Update the User's Information
     $scope.updateUser = ->
         User.updateUser($scope.userInformation).success (data) ->
-            $scope.userInformation = angular.copy($scope.userInformationBlank)
+            $scope.getUser()
+            $scope.edit = false
         return
 
     # --- Jquery Initialization --- 
