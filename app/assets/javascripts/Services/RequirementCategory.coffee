@@ -19,7 +19,6 @@ ServiceFunction = (requestService) ->
         return requestService.service(sendParams, payload).success((data) ->
             return data)
 
-
     #   return 10 requirement categories
     #   used for Manage Category page to navigate through all categories
     #   payload format:

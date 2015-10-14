@@ -30,7 +30,7 @@ ServiceFunction = (requestService) ->
         requestService.service(sendParams, autopayload)
 
 
-    #   display 10 student attributes
+    #   display 10 requirement categories (with student settings only)
     #   used in Account page to navigate through all attributes
     #   payload format:
     #       direction: Integer (10 to go forward one page, -10 to go back one page)
@@ -40,6 +40,7 @@ ServiceFunction = (requestService) ->
             method: 'POST'
             url: '/flip_student_settings.json'
         requestService.service(sendParams, payload)
+
 
     ###
         get all student attributes for a given student
