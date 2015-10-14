@@ -3,6 +3,6 @@
 # -------------------------------------------------------------------------------------------------------
 angular.module('dcsupp').config ($stateProvider) ->
     $stateProvider.state 'account.personal_introduction',
-        url: '/personal_introduction/:id'
+        url: '/personal_introduction'
         templateUrl: 'Account/PersonalIntroduction/_personal_information.html'
         controller: 'PersonalIntroductionCtrl'

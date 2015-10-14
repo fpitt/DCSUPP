@@ -29,7 +29,6 @@ ServiceFunction = (requestService) ->
             category_id: category_id
         requestService.service(sendParams, autopayload)
 
-
     #   display 10 requirement categories (with student settings only)
     #   used in Account page to navigate through all attributes
     #   payload format:
@@ -40,7 +39,6 @@ ServiceFunction = (requestService) ->
             method: 'POST'
             url: '/flip_student_settings.json'
         requestService.service(sendParams, payload)
-
 
     ###
         get all student attributes for a given student

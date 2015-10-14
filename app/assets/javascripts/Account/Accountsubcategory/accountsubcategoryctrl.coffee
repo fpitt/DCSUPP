@@ -1,10 +1,8 @@
 # -------------------------------------------------------------------------------------------------------
 # UI-View of the subcategoryListing
 # -------------------------------------------------------------------------------------------------------
-
-
-AttributeSubCategoryFunction = ($scope, $modal, modalService, requestService, User, $state, RequirementSubcategory, StudentAttribute) ->
-
+AttributeSubCategoryFunction = ($scope, modalService, $stateParams, $state, requestService, User,
+        RequirementSubcategory, StudentAttribute) ->
     # --- Page Variables ----
 
     #Scope Variable Used in Popup Identification
@@ -168,6 +166,7 @@ AttributeSubCategoryFunction = ($scope, $modal, modalService, requestService, Us
     # --- Settings Navigation --- 
 
     $scope.flip = (pushDirection) ->
+        console.log($stateParams.id)
         payload =
             direction: pushDirection
             pagenumber: $scope.pagenumber
@@ -188,6 +187,6 @@ AttributeSubCategoryFunction = ($scope, $modal, modalService, requestService, Us
     $scope.flip(0)
     $scope.getUser()
 
-angular.module('dcsupp').controller('AttributeSubCategoryCtrl', ['$scope',
-                                                    '$modal', 'modalService', 'requestService', 'User', '$state',
-                                                    'RequirementSubcategory', 'StudentAttribute', AttributeSubCategoryFunction])
+angular.module('dcsupp').controller('AttributeSubCategoryCtrl', 
+    ['$scope', 'modalService', '$stateParams', '$state',  'requestService', 'User',
+    'RequirementSubcategory', 'StudentAttribute', AttributeSubCategoryFunction])

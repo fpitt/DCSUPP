@@ -18,7 +18,7 @@
 # -------------------------------------------------------------------------------------------------------
 
 
-AccountFunction = ($scope, $modal, modalService, requestService, $state, User, RequirementSubcategory, StudentAttribute) ->
+AccountFunction = ($scope, $modal, modalService, requestService, $state, User, StudentAttribute) ->
 
     # --- Page Variables ----
     #Scope Variable Used in Popup Identification
@@ -54,6 +54,6 @@ AccountFunction = ($scope, $modal, modalService, requestService, $state, User, R
     # --- Jquery Initialization --- 
     $scope.flip(0)
 
-angular.module('dcsupp').controller('AccountCtrl', ['$scope',
-                                                    '$modal', 'modalService', 'requestService', 'User', '$state',
-                                                    'RequirementSubcategory', 'StudentAttribute', AccountFunction])
+angular.module('dcsupp').controller('AccountCtrl', 
+    ['$scope','$modal', 'modalService', 'requestService','$state', 'User',
+    'StudentAttribute', AccountFunction])
