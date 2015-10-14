@@ -16,8 +16,6 @@
 # [Right-Side]
 # Nested View to update student information. Check folder[Accountsubcategory] for the nested view
 # -------------------------------------------------------------------------------------------------------
-
-
 AccountFunction = ($scope, $state, StudentAttribute) ->
 
     # -- Page Variables --

@@ -19,15 +19,6 @@ configFunction = ($stateProvider, $urlRouterProvider, $locationProvider) ->
 
 
 runFunction = (Permission, User, $q) ->
-#	User.getUser().success (data) ->
-#		if (!data.professor && !data.administrator)
-#			User.role = 'student'
-#		else if (data.professor && !data.administrator)
-#			User.role = 'professor'
-#		else if (data.administrator)
-#			User.role = 'administrator'
-#		return
-
 	Permission
 		.defineRole 'student', (stateParams) ->
 			deferred = $q.defer()
