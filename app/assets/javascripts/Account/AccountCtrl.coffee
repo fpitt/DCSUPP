@@ -18,13 +18,9 @@
 # -------------------------------------------------------------------------------------------------------
 
 
-AccountFunction = ($scope, $modal, modalService, requestService, $state, User, StudentAttribute) ->
+AccountFunction = ($scope, $state, StudentAttribute) ->
 
-    # --- Page Variables ----
-    #Scope Variable Used in Popup Identification
-    $scope.modalService = modalService
-
-    # -- Track User/ Page State --
+    # -- Page Variables --
     #Page Number in Left-Side Navigation (Categories listed below Prev [pageNumber] Next)
     $scope.pagenumber = 1
     #List of Categories in Left-Side Navigation
@@ -33,7 +29,6 @@ AccountFunction = ($scope, $modal, modalService, requestService, $state, User, S
     $scope.direction = 0
 
     # --- Settings Navigation --- 
-
     $scope.flip = (pushDirection) ->
         payload =
             direction: pushDirection
@@ -50,10 +45,8 @@ AccountFunction = ($scope, $modal, modalService, requestService, $state, User, S
                     $scope.pagenumber = 1
         return
 
-
     # --- Jquery Initialization --- 
     $scope.flip(0)
 
 angular.module('dcsupp').controller('AccountCtrl', 
-    ['$scope','$modal', 'modalService', 'requestService','$state', 'User',
-    'StudentAttribute', AccountFunction])
+    ['$scope','$state', 'StudentAttribute', AccountFunction])
