@@ -16,17 +16,17 @@ PersonalIntroductionFunction = ($scope, $modal, modalService, requestService, Us
         input_text: ""   
 
     # --- Get User ---
-    #Grab the user Attribute
+    # Grab the user Attribute
     $scope.getUser = ->
         User.getUser().success (data) ->
             $scope.user = data
         return
 
     # --- Update User ---
+    # Update the User's Information
     $scope.updateUser = ->
-        console.log($scope.userInformation)
         User.updateUser($scope.user.id, $scope.userInformation).success (data) ->
-            $scope.edit = angular.copy($scope.userInformationBlank)
+            $scope.userInformation = angular.copy($scope.userInformationBlank)
         return
 
     # --- Jquery Initialization --- 

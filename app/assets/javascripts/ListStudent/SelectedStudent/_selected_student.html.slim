@@ -13,6 +13,24 @@ table class="table table-hover"
         td
             span
                 | {{ user.name }}
+    tr
+        td
+            b
+                | Contact Email
+        td
+            span ng-if="user.contact_email"
+                | {{ user.contact_email}}
+            span ng-if="!(user.contact_email)"
+                | [No Contact Email Available]
+    tr
+        td
+            b
+                | Personal Introduction
+        td
+            span ng-if="user.introduction"
+                | {{ user.introduction }}
+            span ng-if="!(user.introduction)"
+                | [No User Introduction]
     /tr ng-repeat="attribute in attributes"
     /    td
     /        | {{ attribute.sub_category_name }}

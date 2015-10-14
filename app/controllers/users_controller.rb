@@ -15,7 +15,15 @@ class UsersController < ApplicationController
     def information
         respond_to do |format|
             format.json{
-                render :nothing => true, :status => 200, :content_type => 'text/html'
+                param = params[:payload]
+                @current_user.update_attribute(:contact_email, param[:input_email])
+                @current_user.update_attribute(:introduction, param[:input_text])
+
+                if @current_user.save
+                    render :json => @current_user
+                else
+                    render :nothing => true, :status => 200, :content_type => 'text/html'
+                end
             }
         end
     end
