@@ -1,28 +1,16 @@
 # -------------------------------------------------------------------------------------------------------
 # UI-View of the subcategoryListing
 # -------------------------------------------------------------------------------------------------------
-AttributeSubCategoryFunction = ($scope, modalService, $stateParams, $state, requestService, User,
+AttributeSubCategoryFunction = ($scope, $stateParams, $state, User,
         RequirementSubcategory, StudentAttribute) ->
-    # --- Page Variables ----
 
-    #Scope Variable Used in Popup Identification
-    $scope.modalService = modalService
 
-    # -- Track User/ Page State --
-    #Javascript Object Storing Current User Information
+    # -- Page Variable --
     $scope.user = null
-    #Page Number in Left-Side Navigation (Categories listed below Prev [pageNumber] Next)
-    $scope.pagenumber = 1
-
-    # -- List Navigation Category --
-    #List of Categories in Left-Side Navigation
-    $scope.categories = null
-    #Current Selected Category in Left-Side Navigation
-    $scope.selectCategory = null
-
-    # -- SubCategory Attributes --
     #Current SubCategory Selected for Edit
     $scope.selectsubCategory = null
+
+    # -- SubCategories --
     #Requirement Attributes added by the User
     $scope.attribute_subcategory = []
     #List of all Requirement Attribute SubCategories
@@ -30,7 +18,7 @@ AttributeSubCategoryFunction = ($scope, modalService, $stateParams, $state, requ
     #Merged List of Categories with attributes and empty categories [For Display]
     $scope.merged_category = []
 
-    # -- Angular Models for Input/ Reset --
+    # -- Edit/Update Model --
     #Edit SubCategory
     $scope.edit =
         input_number: 0
@@ -85,7 +73,6 @@ AttributeSubCategoryFunction = ($scope, modalService, $stateParams, $state, requ
     # --- Edit Entry ---
     #Enable Editing for the selected SubCategory
     $scope.edit_entry = (subcategory) ->
-
         #If Attribute was previously created, set the default value
         $scope.edit = angular.copy($scope.editBlank)
         $scope.selectsubCategory = null
@@ -130,11 +117,7 @@ AttributeSubCategoryFunction = ($scope, modalService, $stateParams, $state, requ
             $scope.user = data
         return
 
-    $scope.updateProject = ->
-        $state.go('update_project', {id: 1})
-
     # --- Grab User Settings ---
-
     $scope.userAttributes = (category_id)->
         StudentAttribute.getallUserAttribute($scope.user.id, category_id).success (data) ->
             $scope.attribute_subcategory = data
@@ -142,7 +125,6 @@ AttributeSubCategoryFunction = ($scope, modalService, $stateParams, $state, requ
         return
 
     # --- Grab SubCategories ---
-
     $scope.loadSubcategories = (category)->
         payload =
             target_id: category.id
@@ -155,7 +137,6 @@ AttributeSubCategoryFunction = ($scope, modalService, $stateParams, $state, requ
         return
 
     # --- Check Student Attribute ---
-
     $scope.studentAttributeCreated = (attribute_id) ->
     #Iterate Over the Array [The Array is JSON]
         for key, category of $scope.attribute_subcategory
@@ -164,9 +145,7 @@ AttributeSubCategoryFunction = ($scope, modalService, $stateParams, $state, requ
         return false
 
     # --- Settings Navigation --- 
-
     $scope.flip = (pushDirection) ->
-        console.log($stateParams.id)
         payload =
             direction: pushDirection
             pagenumber: $scope.pagenumber
@@ -188,5 +167,5 @@ AttributeSubCategoryFunction = ($scope, modalService, $stateParams, $state, requ
     $scope.getUser()
 
 angular.module('dcsupp').controller('AttributeSubCategoryCtrl', 
-    ['$scope', 'modalService', '$stateParams', '$state',  'requestService', 'User',
+    ['$scope','$stateParams', '$state', 'User',
     'RequirementSubcategory', 'StudentAttribute', AttributeSubCategoryFunction])

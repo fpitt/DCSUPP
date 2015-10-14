@@ -13,7 +13,7 @@ ServiceFunction = ($modal)->
     modal.open = (templateUrl, controller, data) ->
         
         modalInstance = $modal.open(
-            animation: true
+            animation: false
             templateUrl: templateUrl
             controller: controller
             resolve: items: ->
