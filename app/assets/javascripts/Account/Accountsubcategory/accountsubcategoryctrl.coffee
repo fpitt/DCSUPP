@@ -16,6 +16,8 @@ AttributeSubCategoryFunction = ($scope, $stateParams, $state, User,
     $scope.subcategories = null
     #Merged List of Categories with attributes and empty categories [For Display]
     $scope.merged_category = []
+    #Category Currently Edited
+    $scope.edit_subcategory = null
 
     # -- Edit/Update Model --
     #Edit SubCategory
@@ -24,19 +26,17 @@ AttributeSubCategoryFunction = ($scope, $stateParams, $state, User,
         input_text: ""
         input_boolean: false
         input_date: new Date()
-        category_id: 0
     #edit Global Blank
     $scope.editBlank =
         input_number: 0
         input_text: ""
         input_boolean: false
         input_date: new Date()
-        category_id: 0
 
     # --- Update Entry ---
     #Send the SubCategory Information to the backend
     $scope.update = ()->
-        StudentAttribute.createAttribute($scope.edit.category_id, $scope.edit, $scope.category.id).success (data)->
+        StudentAttribute.createAttribute($scope.edit_subcategory.id, $scope.edit, $scope.category.id).success (data)->
             $scope.unselectEdit()
     
     # --- Unselect Edit ---
@@ -55,7 +55,7 @@ AttributeSubCategoryFunction = ($scope, $stateParams, $state, User,
         #If Attribute was previously created, set the default value
         $scope.edit = angular.copy($scope.editBlank)
         $scope.selectsubCategory = null
-        $scope.edit.category_id = subcategory.id
+        $scope.edit_subcategory = subcategory
 
         if (subcategory.type == 'attribute')
             #Set the selected is an attribute
