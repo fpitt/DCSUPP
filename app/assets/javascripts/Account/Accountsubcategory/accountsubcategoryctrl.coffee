@@ -16,6 +16,8 @@ AttributeSubCategoryFunction = ($scope, $stateParams, $state, User,
     $scope.merged_category = []
     #Category Currently Edited
     $scope.edit_subcategory = null
+    #Selected SubCategory Parameter list
+    $scope.selectsubCategory = null
 
     # -- Edit/Update Model --
     #Edit SubCategory
