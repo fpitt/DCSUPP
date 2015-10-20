@@ -9,8 +9,7 @@ class RequirementCategoriesController < ApplicationController
 	  			if @category.save
 	  				render :json => @category
 	  			else
-	  				puts @category.errors
-	  				render :json => { :errors => @category.errors.as_json, :status => 406 } 
+	  				render :json => { :msg => "Category Already Exists", :status => 406 } 
 	    		end
 	    	}
 	    end
