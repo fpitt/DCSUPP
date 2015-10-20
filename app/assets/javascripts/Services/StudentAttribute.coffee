@@ -20,12 +20,11 @@ ServiceFunction = (requestService) ->
     #   all of attributes of the given user and requirement category
     #   id: Integer (user's id)
     #   category_id: Integer (category's id)
-    getallUserAttribute: (id, category_id) ->
+    getallUserAttribute: (category_id) ->
         sendParams =
             method: 'POST'
             url: '/get_all_attributes.json'
         autopayload =
-            user_id: id
             category_id: category_id
         requestService.service(sendParams, autopayload)
 

@@ -29,6 +29,7 @@ Rails.application.routes.draw do
     post '/get_categories' => 'requirement_categories#getcategories'
     post '/get_subcategories' => 'requirement_categories#subcategories'
     post '/flip_student_settings' => 'requirement_categories#flip_students'
+    post '/get_category' => 'requirement_categories#getcategory'
 
     #Student Attributes Routes
     post '/get_attribute_by_user_and_subcategory' => 'student_attributes#get_attribute_by_user_and_subcategory'

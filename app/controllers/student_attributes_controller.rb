@@ -21,7 +21,7 @@ class StudentAttributesController < ApplicationController
                 puts params[:payload]
                 @payload = params[:payload]
 
-                @student_attributes = StudentAttribute.where(:requirement_category_id => @payload[:category_id], :user_id => @payload[:user_id])
+                @student_attributes = StudentAttribute.where(:requirement_category_id => @payload[:category_id], :user_id => @current_user.id)
                 render :json => @student_attributes
             }
         end

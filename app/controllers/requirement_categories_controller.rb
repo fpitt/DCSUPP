@@ -16,6 +16,21 @@ class RequirementCategoriesController < ApplicationController
 
 	end
 
+	def getcategory
+		param = params[:payload]
+		@category = RequirementCategory.find_by_id(param[:id])
+
+		respond_to do |format|
+			format.json {
+				if @category
+					render :json => @category
+				else
+					render :nothing => true, :status => 200, :content_type => 'text/html'
+				end
+			}
+		end
+	end
+
 	#	get a page of 10 requirement categories (used in "Manage Categories" page)
 	def getcategories
         category_size = RequirementCategory.all.length
@@ -79,7 +94,6 @@ class RequirementCategoriesController < ApplicationController
 				puts category.id
 
 				@subcategory = category.requirement_subcategories
-
 	      		render :json => @subcategory
 	      	}
 	    end		

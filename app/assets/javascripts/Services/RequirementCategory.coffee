@@ -30,6 +30,12 @@ ServiceFunction = (requestService) ->
             url: '/get_categories.json'
         requestService.service(sendParams, payload)
 
+    category: (payload) ->
+        sendParams =
+            method: 'POST'
+            url: 'get_category.json'
+        requestService.service(sendParams, payload)
+
 
 angular
 .module('dcsupp')
