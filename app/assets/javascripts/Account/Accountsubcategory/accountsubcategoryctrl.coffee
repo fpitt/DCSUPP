@@ -4,7 +4,6 @@
 AttributeSubCategoryFunction = ($scope, $stateParams, $state, User,
         RequirementSubcategory, StudentAttribute) ->
 
-
     # -- Page Variable --
     $scope.user = null
     #Current SubCategory Selected for Edit
