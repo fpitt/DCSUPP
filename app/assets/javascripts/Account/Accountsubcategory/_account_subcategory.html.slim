@@ -34,7 +34,7 @@ table class="table table-striped table-condensed"
                         input type="text" class="form-control" placeholder="{{subcategory.placeholder}}" ng-model="edit.input_text"
             td 
                     div ng-if="subcategory.edit"
-                        button type="button" class="btn btn-default" ng-click="update()" Update
+                        button type="button" class="btn btn-default" ng-click="update(subcategory.id)" Update
 
                     div ng-if="!(subcategory.edit)"
                         div ng-if="subcategory.type=='attribute'"

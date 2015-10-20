@@ -17,75 +17,78 @@ AttributeSubCategoryFunction = ($scope, $stateParams, $state, User,
     #Merged List of Categories with attributes and empty categories [For Display]
     $scope.merged_category = []
 
-    # # -- Edit/Update Model --
-    # #Edit SubCategory
-    # $scope.edit =
-    #     input_number: 0
-    #     input_text: ""
-    #     input_boolean: false
-    #     input_date: new Date()
-    # #edit Global Blank
-    # $scope.editBlank =
-    #     input_number: 0
-    #     input_text: ""
-    #     input_boolean: false
-    #     input_date: new Date()
+    # -- Edit/Update Model --
+    #Edit SubCategory
+    $scope.edit =
+        input_number: 0
+        input_text: ""
+        input_boolean: false
+        input_date: new Date()
+        category_id: 0
+    #edit Global Blank
+    $scope.editBlank =
+        input_number: 0
+        input_text: ""
+        input_boolean: false
+        input_date: new Date()
+        category_id: 0
 
-    # # --- Update Entry ---
-    # #Send the SubCategory Information to the backend
-    # $scope.update = ->
-    #     StudentAttribute.createAttribute($scope.user.id, $scope.selectsubCategory.id, $scope.edit, $scope.selectCategory.id).success (data)->
-    #         $scope.unselectEdit()
+    # --- Update Entry ---
+    #Send the SubCategory Information to the backend
+    $scope.update = ()->
+        StudentAttribute.createAttribute($scope.edit.category_id, $scope.edit, $scope.category.id).success (data)->
+            $scope.unselectEdit()
     
-    # # --- Unselect Edit ---
-    # $scope.unselectEdit = ->
-    #     #Change the Category Edit to false
-    #     for category in $scope.merged_category
-    #         if (category.edit)
-    #             category.edit = false
-    #     $scope.selectsubCategory = null
-    #     $scope.edit = angular.copy($scope.editBlank)
-    #     return
+    # --- Unselect Edit ---
+    $scope.unselectEdit = ->
+        #Change the Category Edit to false
+        for category in $scope.merged_category
+            if (category.edit)
+                category.edit = false
+        $scope.edit = angular.copy($scope.editBlank)
+        $scope.getCategory()
+        return
 
-    # # --- Edit Entry ---
-    # #Enable Editing for the selected SubCategory
-    # $scope.edit_entry = (subcategory) ->
-    #     #If Attribute was previously created, set the default value
-    #     $scope.edit = angular.copy($scope.editBlank)
-    #     $scope.selectsubCategory = null
+    # --- Edit Entry ---
+    #Enable Editing for the selected SubCategory
+    $scope.edit_entry = (subcategory) ->
+        #If Attribute was previously created, set the default value
+        $scope.edit = angular.copy($scope.editBlank)
+        $scope.selectsubCategory = null
+        $scope.edit.category_id = subcategory.id
 
-    #     if (subcategory.type == 'attribute')
-    #         #Set the selected is an attribute
-    #         for category in $scope.subcategories
-    #             if (category.id == subcategory.requirement_subcategory_id)
-    #                 $scope.selectsubCategory = category
+        if (subcategory.type == 'attribute')
+            #Set the selected is an attribute
+            for category in $scope.subcategories
+                if (category.id == subcategory.requirement_subcategory_id)
+                    $scope.selectsubCategory = category
 
-    #         #Set the Edit to the previous default value
-    #         if ($scope.selectsubCategory.attribute_type == "Number")
-    #             $scope.edit.input_number = parseInt(subcategory.value)
-    #         else if ($scope.selectsubCategory.attribute_type == "Date")
-    #             $scope.edit.input_date = new Date()
-    #         else if ($scope.selectsubCategory.attribute_type == "Boolean")
-    #             if (subcategory.value == 't')
-    #                 $scope.edit.input_boolean = true
-    #             else
-    #                 $scope.edit.input_boolean = false
-    #         else if ($scope.selectsubCategory.attribute_type == "Input Field")
-    #             $scope.edit.input_text = subcategory.value
-    #     else
-    #         #Select is a category
-    #         for category in $scope.subcategories
-    #             if (category.id == subcategory.id)
-    #                 $scope.selectsubCategory = category
+            #Set the Edit to the previous default value
+            if ($scope.selectsubCategory.attribute_type == "Number")
+                $scope.edit.input_number = parseInt(subcategory.value)
+            else if ($scope.selectsubCategory.attribute_type == "Date")
+                $scope.edit.input_date = new Date()
+            else if ($scope.selectsubCategory.attribute_type == "Boolean")
+                if (subcategory.value == 't')
+                    $scope.edit.input_boolean = true
+                else
+                    $scope.edit.input_boolean = false
+            else if ($scope.selectsubCategory.attribute_type == "Input Field")
+                $scope.edit.input_text = subcategory.value
+        else
+            #Select is a category
+            for category in $scope.subcategories
+                if (category.id == subcategory.id)
+                    $scope.selectsubCategory = category
 
-    #     #Set the attribute to edit true
-    #     for category in $scope.merged_category
-    #         if (category.id == subcategory.id)
-    #             category.edit = true
-    #         else if (category.edit)
-    #             category.edit = false
+        #Set the attribute to edit true
+        for category in $scope.merged_category
+            if (category.id == subcategory.id)
+                category.edit = true
+            else if (category.edit)
+                category.edit = false
 
-    #     return
+        return
 
     ### ---------------------------- Variable Initialization ---------------------------- ###
    
