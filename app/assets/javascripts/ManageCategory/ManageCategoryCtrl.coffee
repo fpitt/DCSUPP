@@ -28,7 +28,7 @@ controllerFunction = ($scope, RequirementCategory, RequirementSubcategory) ->
     $scope.disable_success = (error_msg) ->
         $("#form_feedback").removeClass("has-success")
         $("#form_feedback").addClass("has-error")
-        $("#input_label").text(error_msg.category_name[0])
+        $("#input_label").text("Category Already Exists")
 
     # --- Create Category --- 
     $scope.createCategory = ->
@@ -42,7 +42,7 @@ controllerFunction = ($scope, RequirementCategory, RequirementSubcategory) ->
                 $scope.flip(0)
 
                 if (data.errors)
-                    $scope.disable_success(data.errors)
+                    $scope.disable_success()
                 else
                     $scope.enable_success()
 
