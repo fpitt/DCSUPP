@@ -6,8 +6,6 @@ AttributeSubCategoryFunction = ($scope, $stateParams, $state, User,
 
     ### ----------------------------- Page Variables ----------------------------- ###
 
-    #User Variable
-    $scope.user = null
     #Current SubCategory selected for Edit
     $scope.category = null
     #Requirement Attributes added by the User
@@ -22,21 +20,21 @@ AttributeSubCategoryFunction = ($scope, $stateParams, $state, User,
     # -- Edit/Update Model --
     #Edit SubCategory
     $scope.edit =
-        input_number: 0
-        input_text: ""
+        input_number: null
+        input_text: null
         input_boolean: false
         input_date: new Date()
     #edit Global Blank
     $scope.editBlank =
-        input_number: 0
-        input_text: ""
+        input_number: null
+        input_text: null
         input_boolean: false
         input_date: new Date()
 
     # --- Update Entry ---
     #Send the SubCategory Information to the backend
     $scope.update = ()->
-        StudentAttribute.createAttribute($scope.edit_subcategory.id, $scope.edit, $scope.category.id).success (data)->
+        StudentAttribute.createAttribute($scope.edit_subcategory, $scope.edit).success (data)->
             $scope.unselectEdit()
     
     # --- Unselect Edit ---
@@ -148,14 +146,9 @@ AttributeSubCategoryFunction = ($scope, $stateParams, $state, User,
             $scope.userAttributes($scope.category)
         return
 
-    # --- Get User ---
-    $scope.getUser = ->
-        User.getUser().success (data) ->
-            $scope.user = data
-        return
-
-    # --- Jquery Initialization --- 
-    $scope.getUser()
+    # --- Jquery Initialization ---
+    #The program will only initiate a new JSON call after the previous variable
+    #has been retrived. This is to avoid race conditions.
     $scope.getCategory()
 
 angular.module('dcsupp').controller('AttributeSubCategoryCtrl', 
