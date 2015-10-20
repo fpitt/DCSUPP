@@ -8,13 +8,13 @@ div ng-controller="ManageCategoryCtrl"
                         h3 class="text-blue"
                             b Requirement Category
                         hr
-                        form
-                            div class="form-group"
-                            label Requirement Category Title
-                            input class="form-control" placeholder="Category Name" ng-model="category_name"
-                            br
-                            div class="form-group"
-                                button type="submit" class="btn btn-default" ng-click="createCategory()" Create Category
+                        form name="category"
+                            /Input Form if Successful
+                            div id="form_feedback" class="form-group has-feedback"
+                                label id="input_label" class="control-label text-blue" for="categoryInput" Requirement Category Title 
+                                input type="text" class="form-control" placeholder="Category Name" id="categoryInput" name="name" ng-model="category_name"describedby="categoryInputBlock" required="true"
+                                br
+                                    button type="submit" class="btn btn-default" ng-click="createCategory()" Create Category
                     hr
 
                     div class="text-center"

@@ -9,7 +9,8 @@ class RequirementCategoriesController < ApplicationController
 	  			if @category.save
 	  				render :json => @category
 	  			else
-	  				render :nothing => true, :status => 200, :content_type => 'text/html'
+	  				puts @category.errors
+	  				render :json => { :errors => @category.errors.as_json, :status => 406 } 
 	    		end
 	    	}
 	    end
