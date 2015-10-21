@@ -43,7 +43,7 @@ AccountFunction = ($scope, $state, StudentAttribute) ->
                     $scope.pagenumber = 1
         return
 
-    # --- Jquery Initialization --- 
+    # --- Controller Initialization --- 
     $scope.flip(0)
 
 angular.module('dcsupp').controller('AccountCtrl', 

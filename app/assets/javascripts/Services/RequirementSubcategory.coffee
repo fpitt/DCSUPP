@@ -1,4 +1,3 @@
-
 # ---------------------------------------------------------
 # Service Function Calls: Requirement Subcategories
 #
@@ -7,8 +6,6 @@
 # as services and call these methods using controller
 # functions in the various folders.
 # ---------------------------------------------------------
-
-
 ServiceFunction = (requestService) ->
 
     #   create a new requirement subcategory

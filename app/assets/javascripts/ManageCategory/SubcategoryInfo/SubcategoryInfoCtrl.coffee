@@ -1,4 +1,3 @@
-
 # ---------------------------------------------------------
 # Page 5: Subcategory Info Page
 #
@@ -6,35 +5,28 @@
 # can dynamically add new project/ student subcategories which
 # students can dynamically change their settings.
 # ---------------------------------------------------------
-
-
-controllerFunction = ($scope, $stateParams, RequirementCategory, modalService, RequirementSubcategory) ->
-
-    $scope.modalService = modalService
-
-    # --- Page Variables ----
+controllerFunction = ($scope, $stateParams, RequirementCategory, RequirementSubcategory) ->
 
     #Store Category List
     $scope.list_subcategories = null
-
+    #Edit Subcategory
+    $scope.edit_category = null
+    #Input Category    
     $scope.category =
         sub_category_name: ""
         attribute_type: "Number"
-        placeholder: ""
-        regex: ""
-        student_attribute: 0
-    #Edit Subcategory
-    $scope.edit_category = null
+        placeholder: null
+        regex: null
+        student_attribute: false
     #Global Empty => Empty Category used to reset the Input/ Edit Models
     $scope.GlobalDefault =
         sub_category_name: ""
         attribute_type: "Number"
-        placeholder: ""
-        regex: ""
-        student_attribute: 0
+        placeholder: null
+        regex: null
+        student_attribute: false
 
     # --- Edit SubCategory ---
-
     $scope.edit = (subcategory) ->
         $scope.edit_category = subcategory
         if ($scope.edit_category.attribute_type == 'Number')
@@ -45,7 +37,6 @@ controllerFunction = ($scope, $stateParams, RequirementCategory, modalService, R
             $scope.edit_category.minDate = new Date()
 
     # --- Update SubCategory ---
-
     $scope.update = ->
         payload =
             sub_category_name: $scope.category.sub_category_name
@@ -62,50 +53,47 @@ controllerFunction = ($scope, $stateParams, RequirementCategory, modalService, R
             $scope.loadSubcategories($scope.selectedCategory)
 
     # --- Create SubCategory ---
-
-    $scope.create_subcategory = ->
-#The Input Categories will be arranged Client-Sides
+    $scope.create_subcategory = (category)->
         input_upper_limit = null
         input_lower_limit = null
         input_placeholder = null
         #Set the Client-Side Attributes
-        if ($scope.category.attribute_type == "Number")
-            input_upper_limit = $scope.category.number_max
-            input_lower_limit = $scope.category.number_min
-            input_placeholder = $scope.category.number_placeholder
-        else if ($scope.category.attribute_type == "Date")
-            input_upper_limit = $scope.category.maxDate
-            input_lower_limit = $scope.category.minDate
-        else if ($scope.category.attribute_type == "Input Field")
-            input_placeholder = $scope.category.input_placeholder
+        if (category.attribute_type == "Number")
+            input_upper_limit = category.number_max
+            input_lower_limit = category.number_min
+            input_placeholder = category.number_placeholder
+        else if (category.attribute_type == "Date")
+            input_upper_limit = category.maxDate
+            input_lower_limit = category.minDate
+        else if (category.attribute_type == "Input Field")
+            input_placeholder = category.input_placeholder
+        console.log(category)
 
         payload =
             subcategory:
-                sub_category_name: $scope.category.sub_category_name
-                attribute_type: $scope.category.attribute_type
+                sub_category_name: category.sub_category_name
+                attribute_type: category.attribute_type
                 upper_limit: input_upper_limit
                 lower_limit: input_lower_limit
-                regex: $scope.category.regex
+                regex: category.regex
                 placeholder: input_placeholder
-                student_attribute: $scope.category.student_attribute
-            target_id: $scope.current_category_id
+                student_attribute: category.student_attribute
 
-        RequirementSubcategory.create(payload).success((data) ->
-            $scope.category = angular.copy($scope.GlobalDefault)
+        RequirementSubcategory.create(payload).success (data) ->
             #Reset the Default category
-            $scope.loadSubcategories($scope.selectedCategory))
+            $scope.category = angular.copy($scope.GlobalDefault)
+            $scope.loadSubcategories()
 
     # --- Get SubCategory ---
-
     $scope.loadSubcategories = () ->
         RequirementSubcategory.getAllOfCategory(target_id: $stateParams.id).success((data) ->
             $scope.list_subcategories = data)
 
-
-    # run this code when controller loads
+    # --- Controller Initialization --- 
     $scope.loadSubcategories()
 
 angular
-.module('dcsupp')
-.controller('SubcategoryInfoCtrl', ['$scope', '$stateParams', 'RequirementCategory', 'modalService', 'RequirementSubcategory',  controllerFunction])
+    .module('dcsupp')
+    .controller('SubcategoryInfoCtrl', ['$scope', '$stateParams', 'RequirementCategory', 
+    'RequirementSubcategory',  controllerFunction])
 

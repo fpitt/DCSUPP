@@ -1,71 +1,69 @@
-div ng-controller="ManageCategoryCtrl"
-
-    div class="row"
-        div class="col-xs-4"  
-            div class="row"
-                div class="col-xs-11 col-xs-offset-1 background-grey" 
-                    div access="administrator" restrict=""
-                        h3 class="text-blue"
-                            b Requirement Category
-                        hr
-                        form name="category"
-                            /Input Form if Successful
-                            div id="form_feedback" class="form-group has-feedback"
-                                label id="input_label" class="control-label text-blue" for="categoryInput" Requirement Category Title 
-                                input type="text" class="form-control" placeholder="Category Name" id="categoryInput" name="name" ng-model="category_name"describedby="categoryInputBlock" required="true"
-                                br
-                                    button type="submit" class="btn btn-default" ng-click="createCategory()" Create Category
+div class="row"
+    div class="col-xs-4"  
+        div class="row"
+            div class="col-xs-11 col-xs-offset-1 background-grey" 
+                div access="administrator" restrict=""
+                    h3 class="text-blue"
+                        b Requirement Category
                     hr
+                    form name="category"
+                        /Input Form if Successful
+                        div id="form_feedback" class="form-group has-feedback"
+                            label id="input_label" class="control-label text-blue" for="categoryInput" Requirement Category Title 
+                            input type="text" class="form-control" placeholder="Category Name" id="categoryInput" name="name" ng-model="category_name"describedby="categoryInputBlock" required="true"
+                            br
+                                button type="submit" class="btn btn-default" ng-click="createCategory()" Create Category
+                hr
 
-                    div class="text-center"
-                        div class="btn-group"
-                            button class="btn btn-default" ng-click="flip(-10)" Prev
-                            button class="btn btn-default disabled"
-                                | {{ pagenumber }}
-                            button class="btn btn-default" ng-click="flip(10)" Next
+                div class="text-center"
+                    div class="btn-group"
+                        button class="btn btn-default" ng-click="flip(-10)" Prev
+                        button class="btn btn-default disabled"
+                            | {{ pagenumber }}
+                        button class="btn btn-default" ng-click="flip(10)" Next
 
-                    br
-                    div class="list-group" 
-                        div ng-repeat="category in categories"
-                            ul class="nav nav-pills nav-stacked"
-                                li
-                                    a ui-sref="manage_category.subcategory_info({id: category.id})" class="text-teal"
-                                        | {{ category.category_name }}
+                br
+                div class="list-group" 
+                    div ng-repeat="category in categories"
+                        ul class="nav nav-pills nav-stacked"
+                            li
+                                a ui-sref="manage_category.subcategory_info({id: category.id})" class="text-teal"
+                                    | {{ category.category_name }}
 
-        div class="col-xs-8"
-            ui-view
-                div
-                    div class="row"
-                        div class="col-xs-12"
-                            /Information Panel when none is clicked
-                            div class="panel panel-info"
-                                div class="panel-heading"
-                                    h3 class="panel-title" Manage Requirement Categories
+    div class="col-xs-8"
+        ui-view
+            div
+                div class="row"
+                    div class="col-xs-12"
+                        /Information Panel when none is clicked
+                        div class="panel panel-info"
+                            div class="panel-heading"
+                                h3 class="panel-title" Manage Requirement Categories
 
-                                div class="panel-body"
-                                    div class="bs-example" data-example-id="horizontal-dl"
-                                        dl class="dl-horizontal"
+                            div class="panel-body"
+                                div class="bs-example" data-example-id="horizontal-dl"
+                                    dl class="dl-horizontal"
 
-                                            p This page is for the DCSUPP administrators to update or add Requirement Categories for student and projects.
+                                        p This page is for the DCSUPP administrators to update or add Requirement Categories for student and projects.
 
-                                            dt Categories
-                                            dd Requirement Categories are the dividers to organize large numbers of Requirement SubCategories.
+                                        dt Categories
+                                        dd Requirement Categories are the dividers to organize large numbers of Requirement SubCategories.
 
-                                            dt SubCategories
-                                            dd Requirement SubCategories are Student Attributes or Project Information that professors or researchers can add to their projects to automate and standardize the matching process.
+                                        dt SubCategories
+                                        dd Requirement SubCategories are Student Attributes or Project Information that professors or researchers can add to their projects to automate and standardize the matching process.
 
-                                            dt Example
-                                            dd
-                                                b CSC 4th Year Grades (Category)
-                                                ol
-                                                    li CSC 494 Grade (SubCategory + Student Attribute)
-                                                    li CSC 411 Grade (SubCategory + Student Attribute)
-                                                    li CSC 412 Grade (SubCategory + Student Attribute)
-                                                b Project Information (Category)
-                                                ol
-                                                    li Project Link (SubCategory)
-                                                    li Project Deadline (SubCategory)
-                                                p In this case, the CSC 4th Year Grades are Student Attributes, but the Project Informations are not student attributes for matching and is only used to add information to the project.
+                                        dt Example
+                                        dd
+                                            b CSC 4th Year Grades (Category)
+                                            ol
+                                                li CSC 494 Grade (SubCategory + Student Attribute)
+                                                li CSC 411 Grade (SubCategory + Student Attribute)
+                                                li CSC 412 Grade (SubCategory + Student Attribute)
+                                            b Project Information (Category)
+                                            ol
+                                                li Project Link (SubCategory)
+                                                li Project Deadline (SubCategory)
+                                            p In this case, the CSC 4th Year Grades are Student Attributes, but the Project Informations are not student attributes for matching and is only used to add information to the project.
 
-                                            dt Contact
-                                            dd For any questions or concerns, please email: dcsupp[at]cs[dot]toronto[dot]edu
+                                        dt Contact
+                                        dd For any questions or concerns, please email: dcsupp[at]cs[dot]toronto[dot]edu
