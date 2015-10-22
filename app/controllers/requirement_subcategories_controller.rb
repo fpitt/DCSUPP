@@ -5,12 +5,29 @@ class RequirementSubcategoriesController < ApplicationController
 
 		respond_to do |format|
 	    	format.json {
-				puts params[:payload]
-				@subcategory = RequirementSubcategory.new(params[:payload][:subcategory])
-				@category = RequirementCategory.find_by_id(params[:payload][:target_id])
+                payload = params[:payload]
+                @category = RequirementCategory.find_by_id(payload[:requirementCategory_id])
+                attrs = {:sub_category_name => payload[:sub_category_name], 
+                    :attribute_type => payload[:attribute_type], :placeholder => payload[:placeholder],
+                    :regex => payload[:regex], :student_attribute => payload[:student_attribute]}
+				@subcategory = RequirementSubcategory.new(attrs)
+                # Need to Itemize the inputs 1 by 1
+                if payload[:number_max]
+                    @subcategory.upper_limit = payload[:number_max]
+                end
+                if payload[:number_min]
+                    @subcategory.lower_limit = payload[:number_min]
+                end
+                if payload[:maxDate]
+                    @subcategory.upper_limit = payload[:maxDate]
+                end
+                if payload[:minDate]
+                    @subcategory.lower_limit = payload[:minDate]
+                end
+                
 	    		if @subcategory.save
 	    			if @category
-		    			puts "-----"
+		    			puts "save is successful"
 		    			@subcategory.requirement_category = @category
 		    			@subcategory.save
 		  				render :json => @subcategory

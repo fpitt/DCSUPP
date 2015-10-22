@@ -25,6 +25,8 @@ controllerFunction = ($scope, $stateParams, RequirementCategory, RequirementSubc
         placeholder: ""
         regex: ""
         student_attribute: false
+    #Category Error Objecy
+    $scope.categoryError = ""
 
     # --- Edit SubCategory ---
     $scope.edit = (subcategory) ->
@@ -54,20 +56,30 @@ controllerFunction = ($scope, $stateParams, RequirementCategory, RequirementSubc
 
     # --- Create SubCategory ---
     $scope.create_subcategory = (category)->
+        category.requirementCategory_id = parseInt($stateParams.id)
         console.log(category)
 
         RequirementSubcategory.create(category).success (data) ->
             #Reset the Default category
             if (data.status == 406)
-                console.log(data.error)
+                $scope.process(data.error)
             else
+                $scope.categoryError = null
                 $scope.category = angular.copy($scope.GlobalDefault)
                 $scope.loadSubcategories()
 
+    # --- Process Errors ---
+    #Process the Errors according and display the Erros under the submit form
+    $scope.process = (error) ->
+        #Process for each Error
+        error_obj = JSON.parse(error)
+        if error_obj.sub_category_name
+            $scope.categoryError = "Error: Subcategory name has already been taken"
+
     # --- Get SubCategory ---
     $scope.loadSubcategories = () ->
-        RequirementSubcategory.getAllOfCategory(target_id: $stateParams.id).success((data) ->
-            $scope.list_subcategories = data)
+        RequirementSubcategory.getAllOfCategory(target_id: $stateParams.id).success (data) ->
+            $scope.list_subcategories = data
 
     # --- Controller Initialization --- 
     $scope.loadSubcategories()
@@ -76,4 +88,3 @@ angular
     .module('dcsupp')
     .controller('SubcategoryInfoCtrl', ['$scope', '$stateParams', 'RequirementCategory', 
     'RequirementSubcategory',  controllerFunction])
-
