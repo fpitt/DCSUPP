@@ -1,6 +1,5 @@
-ListStudentFunction = ($scope, $modal, modalService, requestService, RequirementSubcategory, User, $q) ->
+ListStudentFunction = ($scope, requestService, RequirementSubcategory, User, $q) ->
 
-    $scope.modalService = modalService
 
     # --- Page Variables --- 
 
@@ -52,5 +51,5 @@ ListStudentFunction = ($scope, $modal, modalService, requestService, Requirement
 
 angular
     .module('dcsupp')
-    .controller('ListStudentCtrl', ['$scope', '$modal', 'modalService', 'requestService', 'RequirementSubcategory', 'User', '$q', ListStudentFunction])
+    .controller('ListStudentCtrl', ['$scope', 'requestService', 'RequirementSubcategory', 'User', '$q', ListStudentFunction])
     

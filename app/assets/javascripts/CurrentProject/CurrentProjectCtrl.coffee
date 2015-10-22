@@ -6,9 +6,8 @@
 # includes the requirements students will need to access.
 # ---------------------------------------------------------
 
-controllerFunction = ($scope, modalService, Project, RequirementSubcategory, $q) ->
+controllerFunction = ($scope, Project, RequirementSubcategory, $q) ->
 
-	$scope.modalService = modalService
 	$scope.projects = null
 
 	#	filter tags
@@ -57,11 +56,10 @@ controllerFunction = ($scope, modalService, Project, RequirementSubcategory, $q)
 
 	# --- JQuery Initialization Code ---
 
-	$('[data-toggle="tooltip"]').tooltip()
 #	$scope.loadSubcategories()
 	$scope.filterProjects(false, 0);
 
 
 angular
 .module('dcsupp')
-.controller('CurrentProjectCtrl', ['$scope', 'modalService', 'Project', 'RequirementSubcategory','$q', controllerFunction])
+.controller('CurrentProjectCtrl', ['$scope', 'Project', 'RequirementSubcategory','$q', controllerFunction])

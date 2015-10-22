@@ -134,8 +134,12 @@ div
                 td
                     /Display Mode
                     div ng-if="!(edit_category.id==subcategory.id)"
-                        p
-                            | {{ subcategory.upper_limit}}
+                        div ng-if="subcategory.attribute_type != 'Date'"
+                            p
+                                | {{ subcategory.upper_limit}}
+                        div ng-if="subcategory.attribute_type == 'Date'"
+                            p
+                                | {{ subcategory.upper_limit | date:'yyyy-MM-dd'}}
                     /Category is Edit Mode
                     div ng-if="edit_category.id==subcategory.id"
                         div ng-if="subcategory.attribute_type=='Number'"
@@ -147,8 +151,12 @@ div
                 td
                     /Display Mode
                     div ng-if="!(edit_category.id==subcategory.id)"
-                        p
-                            | {{ subcategory.lower_limit}}
+                        div ng-if="subcategory.attribute_type != 'Date'"
+                            p
+                                | {{ subcategory.lower_limit}}
+                        div ng-if="subcategory.attribute_type == 'Date'"
+                            p
+                                | {{ subcategory.lower_limit | date:'yyyy-MM-dd'}}
                     /Category is Edit Mode
                     div ng-if="edit_category.id==subcategory.id"
                         div ng-if="subcategory.attribute_type=='Number'"
@@ -156,7 +164,7 @@ div
                         div ng-if="subcategory.attribute_type=='Date'"
                             input type="date" class="form-control" placeholder="{{subcategory.minDate}}" ng-model="edit_category.minDate"
 
-                /Entry 6: REGEX
+                /Entry 6: REGEX 
                 td
                     /Display Mode
                     div ng-if="!(edit_category.id==subcategory.id)"

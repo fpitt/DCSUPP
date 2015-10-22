@@ -11,6 +11,7 @@ PersonalIntroductionFunction = ($scope, $modal, modalService, requestService,
     $scope.userInformation =
         input_email: ""
         input_text: ""
+        input_viewing: false
 
     # --- Edit ---
     $scope.editEnable = ->
