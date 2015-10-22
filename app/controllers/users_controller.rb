@@ -171,7 +171,9 @@ class UsersController < ApplicationController
 
                 if @students and current_offset + direction < @students.length && current_offset + direction >= 0
                     offset = current_offset + direction
-                    render :json => @students[offset, offset + 10]
+                    initial = offset
+                    terminate = offset + 9
+                    render :json => @students[initial..terminate]
                 else
                     render :nothing => true, :status => 200, :content_type => 'text/html'
                 end

@@ -29,7 +29,6 @@ ListStudentFunction = ($scope, requestService, RequirementSubcategory, User, $q)
             $scope.pagenumber = 1
             $scope.students = null
 
-
         User.filterStudents(
             pagenumber: $scope.pagenumber
             filter: $scope.requirements
@@ -51,5 +50,6 @@ ListStudentFunction = ($scope, requestService, RequirementSubcategory, User, $q)
 
 angular
     .module('dcsupp')
-    .controller('ListStudentCtrl', ['$scope', 'requestService', 'RequirementSubcategory', 'User', '$q', ListStudentFunction])
+    .controller('ListStudentCtrl', ['$scope', 'requestService', 
+        'RequirementSubcategory', 'User', '$q', ListStudentFunction])
     

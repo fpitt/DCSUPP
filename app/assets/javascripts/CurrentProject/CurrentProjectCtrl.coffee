@@ -55,11 +55,10 @@ controllerFunction = ($scope, Project, RequirementSubcategory, $q) ->
 
 
 	# --- JQuery Initialization Code ---
-
-#	$scope.loadSubcategories()
 	$scope.filterProjects(false, 0);
 
 
 angular
 .module('dcsupp')
-.controller('CurrentProjectCtrl', ['$scope', 'Project', 'RequirementSubcategory','$q', controllerFunction])
+.controller('CurrentProjectCtrl', ['$scope', 'Project', 
+	'RequirementSubcategory','$q', controllerFunction])
