@@ -16,7 +16,7 @@ class RequirementSubcategoriesController < ApplicationController
 		  				render :json => @subcategory
 		  			end
 	  			else
-	  				render :nothing => true, :status => 200, :content_type => 'text/html'
+	  				render :json => { :error => @subcategory.errors.to_json, :status => 406 } 
 	    		end
 	    	}
 	    end

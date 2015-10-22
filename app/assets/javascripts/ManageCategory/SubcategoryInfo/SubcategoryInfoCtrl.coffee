@@ -15,15 +15,15 @@ controllerFunction = ($scope, $stateParams, RequirementCategory, RequirementSubc
     $scope.category =
         sub_category_name: ""
         attribute_type: "Number"
-        placeholder: null
-        regex: null
+        placeholder: ""
+        regex: ""
         student_attribute: false
     #Global Empty => Empty Category used to reset the Input/ Edit Models
     $scope.GlobalDefault =
         sub_category_name: ""
         attribute_type: "Number"
-        placeholder: null
-        regex: null
+        placeholder: ""
+        regex: ""
         student_attribute: false
 
     # --- Edit SubCategory ---
@@ -54,35 +54,15 @@ controllerFunction = ($scope, $stateParams, RequirementCategory, RequirementSubc
 
     # --- Create SubCategory ---
     $scope.create_subcategory = (category)->
-        input_upper_limit = null
-        input_lower_limit = null
-        input_placeholder = null
-        #Set the Client-Side Attributes
-        if (category.attribute_type == "Number")
-            input_upper_limit = category.number_max
-            input_lower_limit = category.number_min
-            input_placeholder = category.number_placeholder
-        else if (category.attribute_type == "Date")
-            input_upper_limit = category.maxDate
-            input_lower_limit = category.minDate
-        else if (category.attribute_type == "Input Field")
-            input_placeholder = category.input_placeholder
         console.log(category)
 
-        payload =
-            subcategory:
-                sub_category_name: category.sub_category_name
-                attribute_type: category.attribute_type
-                upper_limit: input_upper_limit
-                lower_limit: input_lower_limit
-                regex: category.regex
-                placeholder: input_placeholder
-                student_attribute: category.student_attribute
-
-        RequirementSubcategory.create(payload).success (data) ->
+        RequirementSubcategory.create(category).success (data) ->
             #Reset the Default category
-            $scope.category = angular.copy($scope.GlobalDefault)
-            $scope.loadSubcategories()
+            if (data.status == 406)
+                console.log(data.error)
+            else
+                $scope.category = angular.copy($scope.GlobalDefault)
+                $scope.loadSubcategories()
 
     # --- Get SubCategory ---
     $scope.loadSubcategories = () ->

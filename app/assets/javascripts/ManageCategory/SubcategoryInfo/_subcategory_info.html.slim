@@ -52,7 +52,7 @@ div
 
                         /Case 1: Select Number
                         td ng-if="category.attribute_type=='Number'"
-                            input type="text" class="form-control" placeholder="Number Placeholder" ng-model="category.number_placeholder"
+                            input type="text" class="form-control" placeholder="Number Placeholder" ng-model="category.placeholder"
                         td ng-if="category.attribute_type=='Number'"
                             input type="number" class="form-control" placeholder="Max" ng-model="category.number_max"
                         td ng-if="category.attribute_type=='Number'"
@@ -69,7 +69,7 @@ div
 
                         /Case 4: Selected Input Field
                         td ng-if="category.attribute_type=='Input Field'"
-                            input type="text" class="form-control" placeholder="Place Holder" ng-model="category.input_placeholder"
+                            input type="text" class="form-control" placeholder="Place Holder" ng-model="category.placeholder"
                         td ng-if="category.attribute_type=='Input Field'"
                             input type="text" class="form-control" placeholder="REGEX Expression" ng-model="category.regex"
 

@@ -9,16 +9,7 @@
 ServiceFunction = (requestService) ->
 
     #   create a new requirement subcategory
-    #   payload format:
-    #       subcategory:
-    #           sub_category_name: String
-    #           attribute_type: String
-    #           upper_limit: Integer
-    #           lower_limit: Integer
-    #           regex: String
-    #           placeholder: String
-    #           student_attribute: Boolean
-    #       target_id: Integer
+    #   payload is the new subcategory object
     create: (payload) ->
         sendParams=
             method: 'POST'
