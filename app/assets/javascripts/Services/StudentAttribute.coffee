@@ -50,13 +50,13 @@ ServiceFunction = (requestService) ->
             url: '/get_student_attributes_of_student.json'
         requestService.service(sendParams, payload)
 
-    createAttribute: (subcategory, payload) ->
+    createAttribute: (subcategory_id, category_id, payload) ->
         sendParams =
             method: 'POST'
             url: '/student_attributes.json'
         autopayload =
-            subcategory_id: subcategory.requirement_subcategory_id
-            category_id: subcategory.requirement_category_id
+            subcategory_id: subcategory_id
+            category_id: category_id
             payload: payload
         requestService.service(sendParams, autopayload)
 
