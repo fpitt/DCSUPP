@@ -50,15 +50,11 @@ ServiceFunction = (requestService) ->
             url: '/get_student_attributes_of_student.json'
         requestService.service(sendParams, payload)
 
-    createAttribute: (subcategory_id, category_id, payload) ->
+    createAttribute: (payload) ->
         sendParams =
             method: 'POST'
             url: '/student_attributes.json'
-        autopayload =
-            subcategory_id: subcategory_id
-            category_id: category_id
-            payload: payload
-        requestService.service(sendParams, autopayload)
+        requestService.service(sendParams, payload)
 
 angular
 .module('dcsupp')

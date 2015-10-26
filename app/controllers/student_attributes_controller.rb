@@ -48,23 +48,25 @@ class StudentAttributesController < ApplicationController
 
         respond_to do |format|
             format.json{
-                @payload = params[:payload]
-                @requirement_subcategory = RequirementSubcategory.find_by_id(@payload[:subcategory_id])
-                @requirement_category = RequirementCategory.find_by_id(@payload[:category_id])
+                param = params[:payload]
 
-                @attribute = StudentAttribute.find_or_create_by(requirement_subcategory_id: @requirement_subcategory.id, requirement_category_id: @requirement_category.id)
+                @requirement_subcategory = RequirementSubcategory.find_by_id(param[:subcategory_id])
+                @requirement_category = RequirementCategory.find_by_id(param[:category_id])
+
+                @attribute = StudentAttribute.find_or_create_by(requirement_subcategory_id: 
+                    @requirement_subcategory.id, requirement_category_id: @requirement_category.id)
 
                 if (@requirement_subcategory.attribute_type == "Date")
-                    @attribute.update_attribute(:value, @payload[:payload][:input_date].to_date)
+                    @attribute.value = param[:input_date]
                 elsif (@requirement_subcategory.attribute_type == "Number")
-                    @attribute.update_attribute(:value, @payload[:payload][:input_number].to_i)
+                    @attribute.value = param[:input_number]
                 elsif (@requirement_subcategory.attribute_type == "Boolean")
-                    @attribute.update_attribute(:value, @payload[:payload][:input_boolean])
+                    @attribute.value = param[:input_boolean]
                 elsif (@requirement_subcategory.attribute_type == "Input Field")
-                    @attribute.update_attribute(:value, @payload[:payload][:input_text])
+                    @attribute.value = param[:input_text]
                 end
 
-                @attribute.update_attribute(:user_id, @current_user.id)
+                @attribute.user_id = @current_user.id
 
                 if @attribute.save
                     render :json => @attribute

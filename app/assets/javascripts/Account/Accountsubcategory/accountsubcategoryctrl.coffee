@@ -36,7 +36,11 @@ AttributeSubCategoryFunction = ($scope, $stateParams, $state, User,
     # --- Update Entry ---
     #Send the SubCategory Information to the backend
     $scope.update = ()->
-        StudentAttribute.createAttribute($scope.edit_subcategory.id, $stateParams.id, $scope.edit).success (data)->
+        $scope.edit.subcategory_id = $scope.edit_subcategory.id
+        $scope.edit.category_id = parseInt($stateParams.id)
+        console.log($scope.edit)
+
+        StudentAttribute.createAttribute($scope.edit).success (data)->
             $scope.unselectEdit()
     
     # --- Unselect Edit ---
