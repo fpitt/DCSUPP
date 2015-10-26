@@ -36,9 +36,8 @@ AttributeSubCategoryFunction = ($scope, $stateParams, $state, User,
     # --- Update Entry ---
     #Send the SubCategory Information to the backend
     $scope.update = ()->
-        $scope.edit.subcategory_id = $scope.edit_subcategory.id
-        $scope.edit.category_id = parseInt($stateParams.id)
-        console.log($scope.edit)
+        $scope.edit.subcategory_id = $scope.edit_subcategory.requirement_subcategory_id
+        $scope.edit.category_id = $scope.edit_subcategory.requirement_category_id
 
         StudentAttribute.createAttribute($scope.edit).success (data)->
             $scope.unselectEdit()
@@ -60,6 +59,7 @@ AttributeSubCategoryFunction = ($scope, $stateParams, $state, User,
         $scope.edit = angular.copy($scope.editBlank)
         $scope.selectsubCategory = null
         $scope.edit_subcategory = subcategory
+        console.log($scope.edit_subcategory)
 
         if (subcategory.type == 'attribute')
             #Set the selected is an attribute

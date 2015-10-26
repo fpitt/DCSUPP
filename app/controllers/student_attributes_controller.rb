@@ -48,22 +48,22 @@ class StudentAttributesController < ApplicationController
 
         respond_to do |format|
             format.json{
-                param = params[:payload]
+                input_data = params[:payload]
 
-                @requirement_subcategory = RequirementSubcategory.find_by_id(param[:subcategory_id])
-                @requirement_category = RequirementCategory.find_by_id(param[:category_id])
+                @requirement_subcategory = RequirementSubcategory.find_by_id(input_data[:subcategory_id])
+                @requirement_category = RequirementCategory.find_by_id(input_data[:category_id])
 
                 @attribute = StudentAttribute.find_or_create_by(requirement_subcategory_id: 
-                    @requirement_subcategory.id, requirement_category_id: @requirement_category.id)
+                    input_data[:subcategory_id], requirement_category_id: input_data[:category_id])
 
                 if (@requirement_subcategory.attribute_type == "Date")
-                    @attribute.value = param[:input_date]
+                    @attribute.value = input_data[:input_date]
                 elsif (@requirement_subcategory.attribute_type == "Number")
-                    @attribute.value = param[:input_number]
+                    @attribute.value = input_data[:input_number]
                 elsif (@requirement_subcategory.attribute_type == "Boolean")
-                    @attribute.value = param[:input_boolean]
+                    @attribute.value = input_data[:input_boolean]
                 elsif (@requirement_subcategory.attribute_type == "Input Field")
-                    @attribute.value = param[:input_text]
+                    @attribute.value = input_data[:input_text]
                 end
 
                 @attribute.user_id = @current_user.id
