@@ -40,29 +40,21 @@ controllerFunction = ($scope, $stateParams, RequirementCategory, RequirementSubc
 
     # --- Update SubCategory ---
     $scope.update = (category)->
-        payload =
-            sub_category_name: $scope.category.sub_category_name
-            attribute_type: $scope.category.attribute_type
-            upper_limit: input_upper_limit
-            lower_limit: input_lower_limit
-            regex: $scope.category.regex
-            placeholder: input_placeholder
-            student_attribute: $scope.category.student_attribute
+        category.requirementCategory_id = parseInt($stateParams.id)
 
-        RequirementSubcategory.update(payload).success (data) ->
+        RequirementSubcategory.update(category).success (data) ->
             $scope.edit_category = null
             #Reload the Current SubCategory with the Updates
             $scope.loadSubcategories($scope.selectedCategory)
 
     # --- Create SubCategory ---
     $scope.create_subcategory = (category)->
-        console.log(category)
         category.requirementCategory_id = parseInt($stateParams.id)
 
         RequirementSubcategory.create(category).success (data) ->
             #Reset the Default category
             if (data.status == 406)
-                $scope.process(data.error)
+                $scope.process_error(data.error)
             else
                 $scope.categoryError = null
                 $scope.category = angular.copy($scope.GlobalDefault)
@@ -70,7 +62,7 @@ controllerFunction = ($scope, $stateParams, RequirementCategory, RequirementSubc
 
     # --- Process Errors ---
     #Process the Errors according and display the Erros under the submit form
-    $scope.process = (error) ->
+    $scope.process_error = (error) ->
         #Process for each Error
         error_obj = JSON.parse(error)
         if error_obj.sub_category_name
