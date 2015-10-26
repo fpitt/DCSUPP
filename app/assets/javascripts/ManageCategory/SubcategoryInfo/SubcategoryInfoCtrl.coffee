@@ -11,6 +11,8 @@ controllerFunction = ($scope, $stateParams, RequirementCategory, RequirementSubc
     $scope.list_subcategories = null
     #Edit Subcategory
     $scope.edit_category = null
+    #Category Error Objecy
+    $scope.categoryError = ""
     #Input Category    
     $scope.category =
         sub_category_name: ""
@@ -25,8 +27,6 @@ controllerFunction = ($scope, $stateParams, RequirementCategory, RequirementSubc
         placeholder: ""
         regex: ""
         student_attribute: false
-    #Category Error Objecy
-    $scope.categoryError = ""
 
     # --- Edit SubCategory ---
     $scope.edit = (subcategory) ->
@@ -39,7 +39,7 @@ controllerFunction = ($scope, $stateParams, RequirementCategory, RequirementSubc
             $scope.edit_category.minDate = new Date()
 
     # --- Update SubCategory ---
-    $scope.update = ->
+    $scope.update = (category)->
         payload =
             sub_category_name: $scope.category.sub_category_name
             attribute_type: $scope.category.attribute_type
@@ -56,8 +56,8 @@ controllerFunction = ($scope, $stateParams, RequirementCategory, RequirementSubc
 
     # --- Create SubCategory ---
     $scope.create_subcategory = (category)->
-        category.requirementCategory_id = parseInt($stateParams.id)
         console.log(category)
+        category.requirementCategory_id = parseInt($stateParams.id)
 
         RequirementSubcategory.create(category).success (data) ->
             #Reset the Default category

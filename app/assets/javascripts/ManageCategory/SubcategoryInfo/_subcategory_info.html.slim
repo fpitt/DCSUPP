@@ -39,8 +39,8 @@ div
                 form name="addCategory"
                     tr
                         td
-                            button type="submit" value="submit" class="btn btn-default"
-                                span class="glyphicon glyphicon glyphicon-plus" ng-click="create_subcategory(category)"
+                            button type="button" class="btn btn-default" ng-click="create_subcategory(category)"
+                                span class="glyphicon glyphicon glyphicon-plus" 
                         td
                             select class="form-control" ng-model="category.attribute_type" name="inputOption"
                                 option value="Number" Number
@@ -188,7 +188,7 @@ div
                 td
                     /Update Button
                     div ng-if="edit_category.id==subcategory.id"
-                        button type="button" class="btn btn-default" ng-click="update()" Update
+                        button type="button" class="btn btn-default" ng-click="update(subcategory)" Update
                     /Edit Button
                     div ng-if="!(edit_category.id==subcategory.id)"
                         button type="button" class="btn btn-default" ng-click="edit(subcategory)" Edit
