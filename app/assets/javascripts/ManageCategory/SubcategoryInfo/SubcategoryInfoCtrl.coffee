@@ -51,6 +51,7 @@ controllerFunction = ($scope, $stateParams, RequirementCategory, RequirementSubc
             if (data.status == 406)
                 $scope.process_update_error(data.error)
             else
+                $scope.categoryError = null
                 $scope.edit_category = null
                 $scope.loadSubcategories($scope.selectedCategory)
 
@@ -72,7 +73,8 @@ controllerFunction = ($scope, $stateParams, RequirementCategory, RequirementSubc
     $scope.process_update_error = (error) ->
         #Process for each Error
         error_obj = JSON.parse(error)
-        console.log(error_obj)
+        if error_obj.sub_category_name
+            $scope.categoryError = "Error: Subcategory name has already been taken"
 
     # --- Process Create Errors ---
     #Process the Errors according and display the Errors under the submit form
