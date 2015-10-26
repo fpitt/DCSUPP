@@ -48,11 +48,22 @@ class RequirementSubcategoriesController < ApplicationController
                 @subcategory = RequirementSubcategory.find_by_id(payload[:id])
                 #Update the Variables
                 @subcategory.sub_category_name = payload[:sub_category_name]
+                @subcategory.student_attribute = payload[:student_attribute]
+                if payload[:attribute_type] == "Number"
+                    @subcategory.upper_limit = payload[:number_max]
+                    @subcategory.lower_limit = payload[:number_min]
+                    @subcategory.placeholder = payload[:placeholder]
+                elsif payload[:attribute_type] == "Date"
+                    @subcategory.upper_limit = payload[:maxDate]
+                    @subcategory.lower_limit = payload[:minDate]
+                elsif payload[:attribute_type] == "Input Field"
+                    @subcategory.regex = payload[:regex]
+                end
 
                 if @subcategory.save
                     render :json => @subcategory
                 else
-                    render :nothing => true, :status => 200, :content_type => 'text/html'
+                    render :json => { :error => @subcategory.errors.to_json, :status => 406 } 
                 end
             }
         end
