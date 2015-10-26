@@ -53,5 +53,5 @@ such wonderful frameworks and libraries.
 The project is supervised by Professor François Pitt.
 
 Developers:
-* Alan Yuan: <alan[dot]yuan[at]mail[dot]utoronto[dot]ca>
-* Christina Chung <cachungchristina[at]gmail[dot]com>
+* Alan Yuan alan[dot]yuan[at]mail[dot]utoronto[dot]ca
+* Christina Chung cachungchristina[at]gmail[dot]com
