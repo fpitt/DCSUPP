@@ -1,33 +1,47 @@
-div
-    h3 Application
-    form
-        table class="table"
-            tr
-                td
-                    | Title
-                td
-                    input ng-model="application.title" type="text" class="form-control"
-            tr
-                td
-                    | Message
-                td
-                    textarea ng-model="application.message" type="text" class="form-control"
-
-            tr ng-repeat="requirement in requirements"
-                td
-                    | {{ requirement.sub_category_name }}
-                td ng-show="requirement.attribute_type == 'Number'"
-                    input ng-model="requirement.value" type="number" class="form-control"
-                td ng-show="requirement.attribute_type == 'Boolean'"
-                    input type="radio" value="True" ng-model="requirement.value"
-                        | True
-                    input type="radio" value="False" ng-model="requirement.value"
-                        | False
-                td ng-show="requirement.attribute_type == 'Input Field'"
-                    input ng-model="requirement.value" type="text" class="form-control"
-                td ng-show="requirement.attribute_type == 'Date'"
-                    input type="date" class="form-control" ng-model="requirement.value"
-
+div ng-show="error"
+    alert type="danger"  Something went wrong. You may have entered an invalid professor name.
     br
-
-    button style="margin: auto; width: 50%" access="administrator student" restrict="" class="btn btn-default btn-lg" ng-click="createApplication()" Submit
+div
+    h3 class="text-blue"
+        b Application
+    form ng-submit="createApplication()"
+        table class="table"
+            thead
+                tr
+                    th #
+                    th Form Field
+            tr
+                td
+                    b
+                        | Title
+                td
+                    input ng-model="application.title" type="text" class="form-control" required="true"
+            tr
+                td
+                    b
+                        | Message
+                td
+                    textarea ng-model="application.message" type="text" class="form-control" required="true"
+            tr
+                td
+                    b
+                        | Resume
+                td
+                    input accept="application/pdf" name="file" ng-model="resume" ngf-max-size="2MB" ngf-select="" type="file" required="true"
+            tr ng-repeat="requirement in application.requirements"
+                td
+                    b
+                        | {{ requirement.sub_category_name }}
+                td ng-if="requirement.attribute_type == 'Number'"
+                    input ng-model="requirement.value" type="number" class="form-control" required="true"
+                td ng-if="requirement.attribute_type == 'Boolean'"
+                    input type="radio" value="True" ng-model="requirement.value" required="true"
+                        | True
+                    input type="radio" value="False" ng-model="requirement.value" required="true"
+                        | False
+                td ng-if="requirement.attribute_type == 'Input Field'"
+                    input ng-model="requirement.value" type="text" class="form-control" required="true"
+                td ng-if="requirement.attribute_type == 'Date'"
+                    input type="date" class="form-control" ng-model="requirement.value" required="true"
+        div
+            button type="submit" value="submit" access="administrator student" restrict="" class="btn btn-default"  Submit

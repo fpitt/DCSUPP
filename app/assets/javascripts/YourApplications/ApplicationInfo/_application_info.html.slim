@@ -1,64 +1,115 @@
-div
-    h3 style="display:inline-block" Application Details
-    br
-    br
-    div access="administrator student" restrict=""
-        span
-            | Status:
-        span ng-show="application.professor_approved == null"
-            | Pending
-        span ng-show="application.professor_approved == true"
-            | Accepted
-        span ng-show="application.professor_approved == false"
-            | Rejected
-
-        button ng-show="application.professor_approved == true" class="btn btn-default" ng-click="processOffer(true)" Accept Offer
-        button ng-show="application.professor_approved == true" class="btn btn-default" ng-click="processOffer(false)" Reject Offer
-
-    div access="administrator profess" restrict=""
-        span ng-show="application.professor_approved == true"
-            | Status:
-        span ng-show="application.professor_approved == true && application.student_approved == null"
-            | Pending
-        span ng-show="application.student_approved == true"
-            | Accepted
-        span ng-show="application.professor_approved == true && student.student_approved == false"
-            | Rejected
-
+div class="text-center"
+    alert type="info"
+        b
+            | Application status: {{ status }}
         br
-        button  class="btn btn-default" ng-click="processOffer('true')" Accept Offer
-        button  class="btn btn-default" ng-click="processOffer('false')" Reject Offer
+        br
 
+        div ng-show="status == 'Awaiting student\'s response.'"
+            div  access="administrator student" restrict=""
+                button class="btn btn-default button-margin-10" ng-really-message="Are you sure? You will not be able to change your decision." ng-really-click="processOffer(true)" Accept
+                button class="btn btn-default button-margin-10" ng-really-message="Are you sure? You will not be able to change your decision." ng-really-click="processOffer(false)" Reject
+
+        div ng-show="status == 'Awaiting professor\'s response.'"
+            div access="administrator professor" restrict=""
+                button class="btn btn-default button-margin-10" ng-really-message="Are you sure? You will not be able to change your decision." ng-really-click="processOffer(true)" Accept
+                button class="btn btn-default button-margin-10" ng-really-message="Are you sure? You will not be able to change your decision." ng-really-click="processOffer(false)" Reject
+
+div
+    h3 class="text-blue"
+        b
+            | {{ application.title }}
+    label for project: &nbsp;
+    a style="text-decoration:none" href="" ui-sref="current_project.project_info({id: project.id})" {{ project.title }}
     br
     br
+    h4 class="text-blue"
+        b Application Details
     table class="table table-hover"
+        thead
+            tr
+                th #
+                th Information
         tr
             td
-                | Project
-            td
-                | {{ project.title }}
-        tr
-            td
-                | Title
+                b
+                    | Title
             td
                 span
                     | {{ application.title }}
         tr
             td
-                | Message
+                b
+                    | Name
+            td
+                a style="text-decoration:none" ui-sref="list_student.selected_student({id: application.student.id})"
+                    | {{ application.student.name }}
+        tr
+            td
+                b
+                    | Message
             td
                 span
                     | {{ application.message }}
+        tr
+            td
+                b
+                    | Resume
+            td
+                a style="text-decoration:none" href="{{ application.resume_url }}" target="_blank"
+                    | {{ application.resume_file_name }}
 
         tr ng-repeat="attribute in attributes"
             td
-                | {{ attribute.sub_category_name }}
+                b
+                    | {{ attribute.sub_category_name }}
             td ng-show="attribute.attribute_type != 'Date'"
                 | {{ attribute.value }}
             td ng-show="attribute.attribute_type == 'Date'"
                 | {{ attribute.value | date: "yyyy-MMM-dd" }}
     br
-    button ui-sref="your_applications.request_reference({id: application.id})" class="btn btn-default" Request Reference
 
+    div
+        h4 class="text-blue" id="reference-request-header"
+            b References
+        button type="button" ui-sref="your_applications.request_reference({id: application.id})" class="btn btn-default btn-sm"
+            span class="glyphicon glyphicon-plus" aria-hidden="true"
+            span  New Request
+
+    div restrict="" access="administrator student"
+        table class="table table-striped"
+            thead
+                tr
+                    th #
+            tr ng-repeat="reference in allReferences"
+                td
+                    div class="row"
+                        div class="col-xs-10"
+                            p
+                                | Request to: {{ reference.professor.name }}
+                            p ng-show="reference.professor_approved == null"
+                                | This request is still pending.
+                            p ng-show="reference.professor_approved == false"
+                                | This request has been rejected.
+                            p ng-show="reference.professor_approved == true"
+                                | Professor's message: {{ reference.professor_text }}
+                        div class="col-xs-2"
+                            div ng-show="reference.professor_approved == true"
+                                button ng-show="reference.student_approved == null || reference.student_approved == false" class="btn btn-default btn-sm" ng-click="processReferenceApproval(reference, true)" Use
+                                button ng-show="reference.student_approved == true" class="btn btn-default btn-sm" ng-click="processReferenceApproval(reference, false)" Discard
+        alert ng-show="allReferences.length == 0" None at the moment.
+    div restrict="" access="administrator professor"
+        table class="table table-striped"
+            thread
+                tr
+                    th #
+            tr ng-repeat="reference in studentApprovedReferences"
+
+                td
+                    p
+                        | By: {{ reference.professor.name }}
+                    p
+                        | Message: {{ reference.professor_text }}
+        alert ng-show="studentApprovedReferences.length == 0" None at the moment.
 
 

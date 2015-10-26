@@ -1,3 +1,14 @@
+# ---------------------------------------------------------
+
+# NOT BEING USED IN APPLICATION
+
+# Service Function Calls: Rating
+#
+# These are the server function calls for the ratings.
+# We define the method, url and payload
+# as services and call these methods using controller
+# functions in the various folders.
+# ---------------------------------------------------------
 ServiceFunction = (requestService) ->
 
     create: (payload) ->

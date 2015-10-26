@@ -1,3 +1,12 @@
+=begin
+
+Model: RequirementSubcategory
+
+The RequirementSubcategory model stores information about
+either a
+project detail (i.e. compensation type) or student attribute
+(i.e. a course grade).
+=end
 class RequirementSubcategory < ActiveRecord::Base
 
 	belongs_to :requirement_category

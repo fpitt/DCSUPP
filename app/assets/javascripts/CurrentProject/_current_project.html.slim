@@ -1,58 +1,50 @@
-link href="/assets/ng-tags-input/ng-tags-input.min.css" rel="stylesheet" type="text/css"
-
+/link href="/assets/ng-tags-input/ng-tags-input.min.css" rel="stylesheet" type="text/css"
 
 div class="row"
     div class="col-xs-4"
+        div class="row"
+            div class="col-xs-11 col-xs-offset-1 background-grey" 
+                div
+                    h3 class="text-blue"
+                        b Current Projects
+                    hr
+                    label Refine your search
+                    tags-input class="bootstrap" ng-model="requirements" display_property="name" on-tag-removed="filterProjects(true, 0)" on-tag-added="filterProjects(true, 0)" add-from-autocomplete-only="true"
+                        auto-complete source="loadTags($query)"
+                hr
 
+                div class="text-center"
+                    div class="btn-group" role="group"
+                        button class="btn btn-default" ng-click="filterProjects(false, -10)" Prev
+                        button class="btn btn-default disabled"
+                            | {{ pagenumber }}
+                        button class="btn btn-default" ng-click="filterProjects(false, 10)" Next
+                br
+                div class="list-group"
+                    div ng-repeat="project in projects"
+                        ul class="nav nav-pills nav-stacked"
+                            li class="text-teal"
+                                a ui-sref="current_project.project_info({id: project.id})"
+                                    | {{ project.title }}
 
-        div class="text-center"
-            h3 Current Projects
+    div class="col-xs-8"
+        div class="row"
+            div class="col-xs-12"
+                div class="panel-content"
+                    ui-view
+                         div class="panel panel-info"
+                            div class="panel-heading"
+                                h3 class="panel-title" Current Projects
 
-            /.btn-group dropdown="" is-open="status.isopen"
-            /    button#single-button.btn.btn-primary dropdown-toggle="" ng-disabled="disabled" type="button"
-            /        | {{ filter }}
-            /        span.caret
-            /    ul.dropdown-menu aria-labelledby="single-button" role="menu"
-            /        li role="menuitem"
-            /            a ng-click="pagenumber.inProgress = 0;filter = 'In progress';flipInProgress(10)" In progress
-            /        li role="menuitem"
-            /            a ng-click="pagenumber.completed = 0;filter = 'Completed';flipCompleted(10)" Completed
-            tags-input class="bootstrap" ng-model="requirements" display_property="name"
-                auto-complete source="loadTags()"
-            span E.g. 'CSC148 Grade', 'Volunteer', 'Resume', 'Unofficial transcript', etc.
-
-
-        br
-
-        div class="text-center"
-            div class="btn-group"
-                button class="btn btn-default" ng-click="flip(-10)" Prev
-                button class="btn btn-default disabled"
-                    | {{ pagenumber.current }}
-                button class="btn btn-default" ng-click="flip(10)" Next
-            br
-            br
-        div class="list-group"
-            div ng-repeat="project in projects"
-                ul class="nav nav-pills nav-stacked"
-                    li
-                        a ui-sref="current_project.selected_project({id: project.id})"
-                            | {{ project.title }}
-
-    div class="row" style="height:5px"
-
-    div class="col-xs-6"
-        div class="panel-content"
-            ui-view
-
-    div class="col-xs-2"
-        div class="row" style="height:15px"
-
-        div class="btn-group" role="group" aria-label="Default button group"
-            /Button 1: Information
-            button ng-click="modalService.open('CurrentProject/CurrentProjectSettings/current_project_info.html', 'CurrentProjectSettingsCtrl', items)" type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Information"
-                span class="glyphicon glyphicon-info-sign" aria-hidden="true"
-
-            /Button 2: Account Settings
-            button ng-click="modalService.open('CurrentProject/CurrentProjectSettings/current_project_settings.html', 'CurrentProjectSettingsCtrl', items)"type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Settings"
-                span class="glyphicon glyphicon-tasks" aria-hidden="true"
+                            div class="panel-body"
+                                div class="bs-example" data-example-id="horizontal-dl"
+                                    dl class="dl-horizontal"
+                                        p Here is the list of all the current projects on the DCSUPP webpage. Students can filter for projects based on their prerequisites
+                                        dt Applying for Project
+                                        dd
+                                            | Students whom meet the neccessary prerequisites can apply for specific projects that meet their interests. 
+                                        dt Listing Requirements
+                                        dd
+                                            | The projects listed on DCSUPP must orginiate from a verified graduate or research project with significant academic value.
+                                        dt Contact
+                                        dd For any questions or concerns, please email: dcsupp[at]cs[dot]toronto[dot]edu

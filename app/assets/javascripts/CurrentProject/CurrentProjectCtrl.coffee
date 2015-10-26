@@ -1,4 +1,3 @@
-
 # ---------------------------------------------------------
 # Page 3: Current Project
 #
@@ -7,75 +6,59 @@
 # includes the requirements students will need to access.
 # ---------------------------------------------------------
 
-controllerFunction = ($scope, modalService, Project, RequirementSubcategory) ->
+controllerFunction = ($scope, Project, RequirementSubcategory, $q) ->
 
-	$scope.modalService = modalService
 	$scope.projects = null
-	$scope.direction = 0
-	$scope.filter = 'In progress'
-	$scope.subcategories = []
+
+	#	filter tags
 	$scope.requirements = []
 
-	$scope.items = [
-		'item1'
-		'item2'
-		'item3'
-	]
-	$scope.pagenumber = {current: 0, completed: 0, inProgress: 0}
+	$scope.pagenumber = 1;
+	$scope.direction = 0
 
-	$scope.flipInProgress = (pushDirection) ->
-		payload =
-			direction: pushDirection
-			pagenumber: $scope.pagenumber.inProgress
-		$scope.direction = pushDirection
+	#	get Project filter tags by keyword
+	$scope.loadTags = (query) ->
+		deferred = $q.defer();
+		RequirementSubcategory.studentAttributeRequirementSubcategoriesWithKeyword(keyword: query)
+		.success((data) ->
+			tags = data.map((val) ->
+				name: val.sub_category_name
+				id: val.id)
+			if 'in progress'.indexOf(query.toLowerCase()) != -1
+				tags.push({name: 'In progress', id:'0'})
+			else if 'completed'.indexOf(query.toLowerCase()) != -1
+				tags.push({name: 'Completed', id:'0'})
+			deferred.resolve(tags))
+		return deferred.promise
 
-		Project.flipInProgress(payload).success((data) ->
+	#	filter list of projects
+	$scope.filterProjects = (tagsChanged, direction) ->
+		if tagsChanged
+			$scope.pagenumber = 1
+			$scope.projects = null
+
+
+		Project.filterProjects(
+			pagenumber: $scope.pagenumber
+			filter: $scope.requirements
+			direction: direction
+		).success((data) ->
 			if (data)
 				$scope.projects = data
-				if $scope.direction > 0
-					$scope.pagenumber.inProgress += 1
-				else if $scope.direction < 0
-					$scope.pagenumber.inProgress -= 1
+				if direction > 0
+					$scope.pagenumber += 1
+				else if direction < 0
+					$scope.pagenumber -= 1
 				else
-					$scope.pagenumber.inProgress = 1
-
-				$scope.pagenumber.current = $scope.pagenumber.inProgress
+					$scope.pagenumber = 1
 		)
 
-	$scope.flipCompleted = (pushDirection) ->
-		payload =
-			direction: pushDirection
-			pagenumber: $scope.pagenumber.completed
-		$scope.direction = pushDirection
-
-		Project.flipCompleted(payload).success((data) ->
-			if (data)
-				$scope.projects = data
-				if $scope.direction > 0
-					$scope.pagenumber.completed += 1
-				else if $scope.direction < 0
-					$scope.pagenumber.completed -= 1
-				else
-					$scope.pagenumber.completed = 1
-				$scope.pagenumber.current = $scope.pagenumber.inProgress
-		)
-
-	$scope.loadSubcategories = () ->
-		RequirementSubcategory.getAll().success((data) ->
-			for item in data
-				$scope.subcategories.push({name: item.sub_category_name, id: item.id})
-		)
-
-	$scope.loadTags = () ->
-		return $scope.subcategories
 
 	# --- JQuery Initialization Code ---
-
-	$('[data-toggle="tooltip"]').tooltip()
-	$scope.flipInProgress(10)
-	$scope.loadSubcategories()
+	$scope.filterProjects(false, 0);
 
 
 angular
 .module('dcsupp')
-.controller('CurrentProjectCtrl', ['$scope', 'modalService', 'Project', 'RequirementSubcategory', controllerFunction])
+.controller('CurrentProjectCtrl', ['$scope', 'Project', 
+	'RequirementSubcategory','$q', controllerFunction])

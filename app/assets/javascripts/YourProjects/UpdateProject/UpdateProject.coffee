@@ -1,3 +1,6 @@
+# -------------------------------------------------------------------------------------------------------
+# UI-Router state declaration for Update Project page.
+# -------------------------------------------------------------------------------------------------------
 angular.module('dcsupp').config ($stateProvider) ->
     $stateProvider.state 'your_projects.update_project',
         url: '/update_project/:id'

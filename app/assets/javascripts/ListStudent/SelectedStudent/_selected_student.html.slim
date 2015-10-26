@@ -1,38 +1,33 @@
-h3 Personal Information
+h3 class="text-blue"
+    b Personal Information
 br
 table class="table table-hover"
+    thead
+        tr
+            th #
+            th Information
     tr
         td
-            | Name
+            b
+                | Name
         td
-            span ng-show="nameCollapsed"
+            span
                 | {{ user.name }}
-            input ng-show="!nameCollapsed" class="form-control" ng-model="payload.name" placeholder="Name"
-        td
-            div access="administrator" restrict=""
-                button ng-show="nameCollapsed" class="btn btn-default" ng-click="nameCollapsed = !nameCollapsed" Edit
-                button ng-show="!nameCollapsed" class="btn btn-default" ng-click="nameCollapsed = !nameCollapsed; patchUser()" Update
-
     tr
         td
-            | E-mail
+            b
+                | Contact Email
         td
-            span ng-show="emailCollapsed"
-                | {{ user.email }}
-            input ng-show="!emailCollapsed" class="form-control" ng-model="payload.email" placeholder="E-mail"
+            span ng-if="user.contact_email"
+                | {{ user.contact_email}}
+            span ng-if="!(user.contact_email)"
+                | [No Contact Email Available]
+    tr
         td
-            div access="administrator" restrict=""
-                button ng-show="emailCollapsed" class="btn btn-default" ng-click="emailCollapsed = !emailCollapsed" Edit
-                button ng-show="!emailCollapsed" class="btn btn-default" ng-click="emailCollapsed = !emailCollapsed; patchUser()" Update
-
-h3 Ratings
-table class="table"
-    tr ng-repeat="rating in ratings"
+            b
+                | Personal Introduction
         td
-            rating ng-model="rating.rating" max="5" readonly="true"
-            br
-            | {{ rating.comment }}
-
-
-div access="administrator professor" restrict=""
-    button class="btn btn-default" ui-sref="list_student.rate_student({id: user.id})" Rate This Student
+            span ng-if="user.introduction" class="preserve_newline"
+                | {{ user.introduction }}
+            span ng-if="!(user.introduction)"
+                | [No User Introduction]

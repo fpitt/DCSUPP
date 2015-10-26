@@ -19,15 +19,6 @@ configFunction = ($stateProvider, $urlRouterProvider, $locationProvider) ->
 
 
 runFunction = (Permission, User, $q) ->
-	User.getUser().success (data) ->
-		if (!data.professor && !data.administrator)
-			User.role = 'student'
-		else if (data.professor && !data.administrator)
-			User.role = 'professor'
-		else if (data.administrator)
-			User.role = 'administrator'
-		return
-
 	Permission
 		.defineRole 'student', (stateParams) ->
 			deferred = $q.defer()
@@ -76,6 +67,6 @@ runFunction = (Permission, User, $q) ->
 
 
 angular
-	.module('dcsupp', ['ui.bootstrap', 'ui.router', 'templates', 'permission', 'ngTagsInput'])
+	.module('dcsupp', ['ui.bootstrap', 'ui.router', 'templates', 'permission', 'ngTagsInput', 'ngFileUpload'])
 	.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', configFunction])
 	.run(runFunction)

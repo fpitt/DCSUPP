@@ -1,48 +1,85 @@
-controllerFunction = ($scope, modalService, $stateParams, $state, ProjectApplication, ProjectRequirement, RequirementSubcategory, StudentAttribute) ->
+# -------------------------------------------------------------------------------------------------------
+# Page: Apply Project Page
+#
+# Summary:
+# This is the Apply Project page for DCSUPP. It allows students
+# to submit applications for projects.
+#
+# Page Placement [Referred to in the Comments]:
+#
+# [Top-right]
+# Popup button, displays the Information and Settings Popup menus.
+# -------------------------------------------------------------------------------------------------------
+
+controllerFunction = ($scope, modalService, $stateParams, $state, ProjectApplication,
+                      ProjectRequirement, RequirementSubcategory, StudentAttribute, Upload) ->
+
+    #   true iff adding application resulted in error, to signal alert pop-up
+    $scope.error = false
+    #	pop-up service for page settings + information
     $scope.modalService = modalService
-
+    #   application form info
     $scope.application = {}
-    $scope.requirements = []
+    #   application project requirements
+    $scope.application.requirements = []
 
+    #   create a new project application
     $scope.createApplication = () ->
-        payload =
-            application:
-                $scope.application
-            requirements:
-                $scope.requirements
-            project:
-                $stateParams.id
-
-        ProjectApplication.create(payload).success((data) ->
-            $state.go('your_applications.application_info', {id: data.id}))
+        async.waterfall([
+                #   create project application
+                (callback) ->
+                    $scope.application.project = $stateParams.id
+                    ProjectApplication.create($scope.application).success((data) ->
+                        callback(null, data)
+                    )
+                #   upload resume
+                (data, callback) ->
+                    ProjectApplication.uploadResume(file: $scope.resume, application: data.id).success((data) ->
+                        callback(null, data)
+                    )
+            ],
+            #   redirect to new page once waterfall tasks complete
+            (err, data) ->
+                if err
+                    $scope.error = true
+                else
+                    $scope.error = false
+                    $state.go('your_applications.application_info', {id: data.id})
+        )
         return
 
-    $scope.loadRequirements = () ->
-        payload = project: $stateParams.id
-        ProjectRequirement.getByProject(payload).success((projectRequirements) ->
-            for req in projectRequirements
-                RequirementSubcategory.getById(req.requirement_subcategory_id).success((subcategory) ->
-                    if subcategory.student_attribute
-                        payload = subcategory: subcategory.id
-                        StudentAttribute.getBySubcategoryAndCurrentUser(payload).success((studentAttribute) ->
-                            attr = id: subcategory.id, attribute_type: subcategory.attribute_type, sub_category_name: subcategory.sub_category_name
-                            if studentAttribute.id
-                                if subcategory.attribute_type == 'Number'
-                                    attr.value = parseInt(studentAttribute.value)
-                                else if subcategory.attribute_type == 'Date'
-                                    attr.value = new Date(studentAttribute.value)
-                                else
-                                    attr.value = studentAttribute.value
-                            $scope.requirements.push(attr)
-                        )
+    #   load the project's requirements that are student attributes for the form fields
+    $scope.getStudentAttributes = () ->
+        # get student attribute requirements
+        RequirementSubcategory.getStudentAttributeSubcategoriesOfProject(project: $stateParams.id).success((data) ->
+            async.each(data, (req, callback) ->
+                # check if student has already filled in this attribute, and if so, get
+                # the students attribute value
+                StudentAttribute.getBySubcategoryAndCurrentUser(subcategory: req.id).success((data) ->
+                    attr =
+                        id: req.id,
+                        attribute_type: req.attribute_type,
+                        sub_category_name: req.sub_category_name
+                    if data.id
+                        if req.attribute_type == 'Number'
+                            attr.value = parseInt(data.value)
+                        else if req.attribute_type == 'Date'
+                            attr.value = new Date(data.value)
+                        else
+                            attr.value = data.value
+                    $scope.application.requirements.push(attr)
+                    callback()
                 )
+            , (err) ->
+            )
         )
 
-    $scope.loadRequirements()
+    #   run this code when page loads
+    $scope.getStudentAttributes()
 
 
 angular
 .module('dcsupp')
 .controller('ApplyProjectCtrl',
     ['$scope', 'modalService', '$stateParams', '$state', 'ProjectApplication', 'ProjectRequirement',
-     'RequirementSubcategory', 'StudentAttribute', controllerFunction])
+     'RequirementSubcategory', 'StudentAttribute', 'Upload', controllerFunction])

@@ -1,3 +1,4 @@
+# NOT USED AT THE MOMENT
 controllerFunction = ($scope, $modal, modalService, User, requestService) ->
 
     $scope.modalService = modalService

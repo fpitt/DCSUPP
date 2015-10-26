@@ -13,9 +13,10 @@ ServiceFunction = ($modal)->
     modal.open = (templateUrl, controller, data) ->
         
         modalInstance = $modal.open(
-            animation: true
-            templateUrl: 'CreateProject/CreateProjectSettings/create_project_settings.html'
-            controller: 'CreateProjectSettingsCtrl'
+            animation: false
+            templateUrl: templateUrl
+            size: 'lg'
+            controller: controller
             resolve: items: ->
                 data
         )

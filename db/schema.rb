@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150824175756) do
+ActiveRecord::Schema.define(version: 20151008050908) do
 
   create_table "professor_settings", force: :cascade do |t|
     t.datetime "created_at",                       null: false
@@ -33,6 +33,11 @@ ActiveRecord::Schema.define(version: 20150824175756) do
     t.boolean  "professor_approved"
     t.boolean  "student_approved"
     t.boolean  "administrator_approved"
+    t.string   "resume_file_name"
+    t.string   "resume_content_type"
+    t.integer  "resume_file_size"
+    t.datetime "resume_updated_at"
+    t.string   "resume_url"
   end
 
   add_index "project_applications", ["project_id"], name: "index_project_applications_on_project_id"
@@ -78,7 +83,7 @@ ActiveRecord::Schema.define(version: 20150824175756) do
   create_table "references", force: :cascade do |t|
     t.string   "student_text"
     t.string   "professor_text"
-    t.string   "professor_approved"
+    t.boolean  "professor_approved"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
     t.integer  "user_id"
@@ -112,8 +117,8 @@ ActiveRecord::Schema.define(version: 20150824175756) do
     t.datetime "updated_at",                 null: false
     t.integer  "requirement_subcategory_id"
     t.integer  "user_id"
-    t.string   "value_array"
     t.string   "value"
+    t.integer  "requirement_category_id"
   end
 
   add_index "student_attributes", ["requirement_subcategory_id"], name: "index_student_attributes_on_requirement_subcategory_id"
@@ -135,6 +140,8 @@ ActiveRecord::Schema.define(version: 20150824175756) do
     t.string   "name"
     t.boolean  "professor",     default: false
     t.boolean  "administrator", default: false
+    t.string   "contact_email"
+    t.text     "introduction"
   end
 
 end

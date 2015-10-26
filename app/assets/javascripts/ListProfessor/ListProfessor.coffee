@@ -1,3 +1,9 @@
+# -------------------------------------------------------------------------------------------------------
+#
+# NOT USED AT THE MOMENT
+#
+# UI-Router state declaration for List Professor page.
+# -------------------------------------------------------------------------------------------------------
 angular.module('dcsupp').config ($stateProvider) ->
     $stateProvider.state 'list_professor',
         url: '/list_professor'

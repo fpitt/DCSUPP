@@ -93,3 +93,55 @@ html{
   color: #262626;
   background-color: #ffff00;
 }
+
+#input-detail-name {
+  max-width: 300px;
+}
+
+#toggle-add-detail {
+ margin: 5px;
+}
+
+.centered {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.button-margin-10 {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.no-underline {
+  text-decoration: none;
+}
+
+.text-teal {
+  color:rgb(0,128,168)
+}
+
+.text-blue {
+  color:rgb(1,25,73)
+}
+
+.background-grey {
+  background-color:rgb(250, 250, 250)
+}
+
+.preserve_newline {
+  white-space: pre-wrap;
+}
+
+.table-fixed {
+  table-layout: fixed;
+}
+
+.input_width {
+  width:90%
+}
+
+.uoft_logo {
+    width: 100%;
+    padding-top: 20px;
+    min-width: 120px;
+}

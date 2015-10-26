@@ -94,3 +94,6 @@ gem 'angular-rails-templates'
 gem 'sprockets', '~> 2.12.3'
 
 gem 'coffee-script-source', '1.8.0'
+
+gem "paperclip", "~> 4.3"
+gem "paperclip", "~> 4.3"

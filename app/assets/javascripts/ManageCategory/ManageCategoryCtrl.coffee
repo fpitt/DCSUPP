@@ -1,4 +1,3 @@
-
 # ---------------------------------------------------------
 # Page 5: Manage Cateogires Page
 #
@@ -6,141 +5,47 @@
 # can dynamically add new project/ student categories which
 # students can dynamically change their settings.
 # ---------------------------------------------------------
-
-
 controllerFunction = ($scope, RequirementCategory, RequirementSubcategory) ->
 
-    #$scope.modalService = modalSDaervice
-
     # --- Page Variables ----
-
+    #Current page of the navigation
     $scope.pagenumber = 1
+    #Direction of the navigation
     $scope.direction = 0
-    #Store Category List
+    #List of Navigation Category
     $scope.categories = null
-    $scope.list_subcategories = null
-    #Category Identification
+    #Create Requirement Category Model
     $scope.category_name = ""
-    $scope.current_category_id = -1
-    $scope.category =
-        #Global Category Name
-        sub_category_name: ""
-        attribute_type: "Number"
-        #Case 1: Select Number
-        number_placeholder: ""
-        number_max: 0
-        number_min: 0
-        #Case 2: Select Date
-        maxDate: "yyyy-MM-dd"
-        minDate: "yyyy-MM-dd"
-        #Case 4: Select Input
-        regex: ""
-        input_placeholder: ""
-        student_attribute: 0
-    #Edit Subcategory
-    $scope.edit_category = null
-    $scope.edit_input =
-        #Global Category Name
-        sub_category_name: ""
-        attribute_type: "Number"
-        #Case 1: Select Number
-        number_placeholder: ""
-        number_max: 0
-        number_min: 0
-        #Case 2: Select Date
-        maxDate: "yyyy-MM-dd"
-        minDate: "yyyy-MM-dd"
-        #Case 4: Select Input
-        regex: ""
-        input_placeholder: ""
-        student_attribute: 0
-    #Global Empty => Empty Category used to reset the Input/ Edit Models
-    $scope.GlobalDefault =
-        #Global Category Name
-        sub_category_name: ""
-        attribute_type: "Number"
-        #Case 1: Select Number
-        number_placeholder: ""
-        number_max: 0
-        number_min: 0
-        #Case 2: Select Date
-        maxDate: "yyyy-MM-dd"
-        minDate: "yyyy-MM-dd"
-        #Case 4: Select Input
-        regex: ""
-        input_placeholder: ""
-        student_attribute: 0
 
-    # --- Edit SubCategory ---
+    # --- Enable Success ---
+    $scope.enable_success = ->
+        $("#form_feedback").removeClass("has-error")
+        $("#form_feedback").addClass("has-success")
+        $("#input_label").text("Category Created")
 
-    $scope.edit = (subcategory) ->
-        $scope.edit_category = subcategory
-        $scope.edit_input = angular.copy($scope.GlobalDefault)
-
-    # --- Update SubCategory ---
-
-    $scope.update = ->
-        $scope.edit_category = null
-        $scope.edit_input = angular.copy($scope.GlobalDefault)
-
-    # --- Create SubCategory ---
-
-    $scope.create_subcategory = ->
-        #The Input Categories will be arranged Client-Sides
-        input_upper_limit = null
-        input_lower_limit = null
-        input_placeholder = null
-        console.log($scope.category.attribute_type)
-        #Set the Client-Side Attributes
-        if ($scope.category.attribute_type == "Number")
-            input_upper_limit = $scope.category.number_max
-            input_lower_limit = $scope.category.number_min
-            input_placeholder = $scope.category.number_placeholder
-        else if ($scope.category.attribute_type == "Date")
-            input_upper_limit = $scope.category.maxDate
-            input_lower_limit = $scope.category.minDate
-        else if ($scope.category.attribute_type == "Input Field")
-            input_placeholder = $scope.category.input_placeholder
-
-        payload =
-            subcategory:
-                sub_category_name: $scope.category.sub_category_name
-                attribute_type: $scope.category.attribute_type
-                upper_limit: input_upper_limit
-                lower_limit: input_lower_limit
-                regex: $scope.category.regex
-                placeholder: input_placeholder
-                student_attribute: $scope.category.student_attribute
-            target_id: $scope.current_category_id
-
-        RequirementSubcategory.create(payload).success((data) ->
-            $scope.category = angular.copy($scope.GlobalDefault)
-            #Reset the Default category
-            $scope.loadSubcategories($scope.current_category_id))
-
-    # --- Get SubCategory ---
-
-    $scope.loadSubcategories = (id)->
-        payload =
-            target_id: id
-        $scope.current_category_id = id
-
-        RequirementSubcategory.getAllOfCategory(payload).success((data) ->
-            $scope.list_subcategories = data)
+    # --- Disable Success ---
+    $scope.disable_success = (error_msg) ->
+        $("#form_feedback").removeClass("has-success")
+        $("#form_feedback").addClass("has-error")
+        $("#input_label").text(error_msg)
 
     # --- Create Category --- 
-
     $scope.createCategory = ->
         payload = 
             requirement_category:
                 category_name: $scope.category_name
-        RequirementCategory.create(payload).success((data) ->
-            category_nameDefault = ""
-            $scope.category_name = angular.copy(category_nameDefault)
-            $scope.flip(0))
+        RequirementCategory.create(payload)
+            .success (data) ->
+                category_nameDefault = ""
+                $scope.category_name = angular.copy(category_nameDefault)
+                $scope.flip(0)
+
+                if (data.msg)
+                    $scope.disable_success(data.msg)
+                else
+                    $scope.enable_success()
 
     # --- Category Navigation --- 
-
     $scope.flip = (pushDirection) ->
         payload = 
             direction: pushDirection
@@ -158,11 +63,10 @@ controllerFunction = ($scope, RequirementCategory, RequirementSubcategory) ->
                     $scope.pagenumber = 1)
 
     # --- JQuery Initialization Code --- 
-
-    $('[data-toggle="tooltip"]').tooltip()
     $scope.flip(0)
 
 angular
     .module('dcsupp')
-    .controller('ManageCategoryCtrl', ['$scope', 'RequirementCategory', 'RequirementSubcategory',  controllerFunction])
+    .controller('ManageCategoryCtrl', ['$scope', 'RequirementCategory', 
+        'RequirementSubcategory',  controllerFunction])
 

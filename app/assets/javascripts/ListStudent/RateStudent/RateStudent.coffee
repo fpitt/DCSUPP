@@ -1,3 +1,5 @@
+# NOT USED AT THE MOMENT
+
 angular.module('dcsupp').config ($stateProvider) ->
     $stateProvider.state 'list_student.rate_student',
         url: '/rate_student/:id'

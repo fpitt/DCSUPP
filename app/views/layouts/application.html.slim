@@ -1,19 +1,26 @@
 doctype html
 html
     head
-        title DCSUPP
+        title DCS Undergraduate Project Portal
         = stylesheet_link_tag    'application', media: 'all'
         = javascript_include_tag 'application'
         = csrf_meta_tags
         base href="/"
+        meta name="viewport" content="width=device-width, initial-scale=1"
 
     body
 
-        div ng-app="dcsupp"
-
+        div ng-app="dcsupp" ng-controller="ApplicationCtrl"
             div class="container"
-                div style="height:60px"
-                    h1 DCSUPP
+                div class="row"
+                    div class="col-xs-10"
+                        div style="text-align:right"
+                            h1 class="text-blue"
+                                b
+                                    | DCS 
+                                    span class="text-teal" Undergraduate Project Portal
+                    div class="col-xs-2"
+                        img src="/assets/compsci_ublue.jpg" alt="University of Toronto Logo" class="uoft_logo"
 
                 div class="row"
                     nav class="navbar navbar-default"
@@ -22,35 +29,38 @@ html
 
                         div class="navbar-header"
                             button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
-                            span class="sr-only" Toggle navigation
-                            span class="icon-bar" 
-                            span class="icon-bar"
-                            span class="icon-bar"
+                                span class="sr-only" Toggle navigation
+                                span class="icon-bar"
+                                span class="icon-bar"
+                                span class="icon-bar"
 
                         / Collect the nav links, forms, and other content for toggling
                         div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"
                             ul class="nav navbar-nav"
-                                li 
-                                    a ui-sref="intro" Introduction DCSUPP
-                                li 
+                                li
+                                    a ui-sref="intro" About
+                                li
                                     a ui-sref="account" Account
-                                li 
-                                    a ui-sref="current_project" Current Projects
-                                li 
-                                    a ui-sref="create_project" Create Project
-                                li 
-                                    a ui-sref="manage_category" Manage Cateogories
-                                li 
-                                    a ui-sref="list_student" Find Student
                                 li
+                                    a ui-sref="current_project" Projects
+                                li access="administrator professor" restrict=""
+                                    a ui-sref="manage_category" Manage Categories
+                                li access="administrator professor" restrict=""
+                                    a ui-sref="list_student" Find Students
+                                li access="administrator professor" restrict=""
                                     a ui-sref="your_projects" Your Projects
-                                li
+                                li access="administrator student" restrict=""
                                     a ui-sref="your_applications" Your Applications
-                                li
+                                li access="administrator" restrict=""
                                     a ui-sref="project_assignments" Project Assignments
-                                li
-                                    a ui-sref="list_professor" Find Professor
-                                li
-                                    a ui-sref="your_reference_requests" Your Reference Requests
+                                /li  access="" restrict=""
+                                /    a ui-sref="list_professor" Find Professor
+                                li access="administrator professor" restrict=""
+                                    a ui-sref="your_reference_requests" Reference Requests
+                            
+                            form class="navbar-form navbar-left" role="search"
+                                button type="submit" class="btn btn-default" href="" ng-click="modalService.open('InfoPopup/info.html', 'InfoCtrl')" title="Information"
+                                    span class="glyphicon glyphicon-info-sign" aria-hidden="true"
 
                 ui-view
+

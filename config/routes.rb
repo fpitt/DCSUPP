@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     resources :project_applications, only: [:create, :update, :destroy, :show]
     resources :references, only: [:create]
     resources :ratings, only: [:create]
-    resources :student_attributes, only: [:create, :destroy, :show]
+    resources :student_attributes, only: [:create, :destroy, :show, :update]
 
     root to: "application#introduction"
 
@@ -20,16 +20,20 @@ Rails.application.routes.draw do
     post "/current_user" => 'users#get_current_user'
     post "/students" => 'users#students'
     post "/flip_professor_direction" => 'users#grab_professors'
-    post "/get_professor_by_name" => 'users#get_professor_by_name'
+    post "/get_professor_containing_keyword" => 'users#get_professor_containing_keyword'
+    post "/filter_students" => 'users#filter_students'
+    post "/user_information" => 'users#information'
 
     #Requirement Categories Routes
     post '/flip_direction' => 'requirement_categories#flip_direction'
     post '/get_categories' => 'requirement_categories#getcategories'
     post '/get_subcategories' => 'requirement_categories#subcategories'
     post '/flip_student_settings' => 'requirement_categories#flip_students'
+    post '/get_category' => 'requirement_categories#getcategory'
 
     #Student Attributes Routes
     post '/get_attribute_by_user_and_subcategory' => 'student_attributes#get_attribute_by_user_and_subcategory'
+    post "get_student_attributes_of_student" => 'student_attributes#get_student_attributes_of_student'
 
     #Projects Routes
     post '/flip_project_direction' => 'projects#grab_project'
@@ -39,6 +43,7 @@ Rails.application.routes.draw do
     post "/get_in_progress_projects_of_current_user" => 'projects#get_in_progress_projects_of_current_user'
     post "/get_completed_projects_of_current_user" => 'projects#get_completed_projects_of_current_user'
     post "/set_project_completed" => 'projects#set_project_completed'
+    post "/filter_projects" => 'projects#filter_projects'
 
     #Project Application Routes
     post "/get_applications_of_user" => 'project_applications#get_applications_of_user'
@@ -46,12 +51,19 @@ Rails.application.routes.draw do
     post "/process_offer" => 'project_applications#process_offer'
     post "/get_require_administrator_approval_applications" =>  'project_applications#get_require_administrator_approval_applications'
     post "/get_project_assignments" => 'project_applications#get_project_assignments'
+    post "/upload_resume" => 'project_applications#upload_resume'
+    post "/flip_applications_of_user" => 'project_applications#flip_applications_of_user'
 
     #Project Requirement Routes
     post "/get_requirements_of_project" => 'project_requirements#get_requirements_of_project'
 
     #Requirement SubCategories Routes
     post "/get_all_subcategories" => 'requirement_subcategories#show_all'
+    post "/get_all_attributes" => 'student_attributes#user_attributes'
+    post "/student_attribute_requirement_subcategories_with_keyword" => 'requirement_subcategories#student_attribute_requirement_subcategories_with_keyword'
+    post "/non_student_attribute_requirement_subcategories_with_keyword" => 'requirement_subcategories#non_student_attribute_requirement_subcategories_with_keyword'
+    post "get_student_attribute_subcategories_of_project" => 'requirement_subcategories#get_student_attribute_subcategories_of_project'
+    post "get_non_student_attribute_subcategories_of_project" => 'requirement_subcategories#get_non_student_attribute_subcategories_of_project'
 
     #References Routes
     post "/get_by_project" => 'references#get_by_project'

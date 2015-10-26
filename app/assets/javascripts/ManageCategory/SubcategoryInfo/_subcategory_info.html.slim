@@ -1,0 +1,186 @@
+div
+    div access="administrator" restrict=""
+        table class="table table-striped"
+            thead
+                /The Header Row displays depending on the selected attribute type
+                tr ng-if="category.attribute_type=='Number'"
+                    /Case 1: Selected is Number
+                    th #
+                    th Type
+                    th Name
+                    th Placeholder
+                    th Max
+                    th Min
+                    th Student Attribute
+                tr ng-if="category.attribute_type=='Date'"
+                    /Case 2: Select is Date
+                    th #
+                    th Type
+                    th Name
+                    th Max
+                    th Min
+                    th Student Attribute
+                tr ng-if="category.attribute_type=='Boolean'"
+                    /Case 3: Select is Boolean
+                    th #
+                    th Type
+                    th Name
+                    th Student Attribute
+                tr ng-if="category.attribute_type=='Input Field'"
+                    /Case 4: Select is Input Field
+                    th #
+                    th Type
+                    th Name
+                    th Placeholder
+                    th REGEX
+                    th Student Attribute
+            tbody
+                /Top Row, Add Category Row
+                form name="addCategory"
+                    tr
+                        td
+                            button type="button" class="btn btn-default" ng-click="create_subcategory(category)"
+                                span class="glyphicon glyphicon glyphicon-plus" 
+                        td
+                            select class="form-control" ng-model="category.attribute_type" name="inputOption"
+                                option value="Number" Number
+                                option value="Date" Date
+                                option value="Boolean" Boolean
+                                option value="Input Field" Input Field
+                        td
+                            input type="text" class="form-control" placeholder="Input Name" ng-model="category.sub_category_name" name="inputName" 
+
+                        /Case 1: Select Number
+                        td ng-if="category.attribute_type=='Number'"
+                            input type="text" class="form-control" placeholder="Number Placeholder" ng-model="category.placeholder"
+                        td ng-if="category.attribute_type=='Number'"
+                            input type="number" class="form-control" placeholder="Max" ng-model="category.number_max"
+                        td ng-if="category.attribute_type=='Number'"
+                            input type="number" class="form-control" placeholder="Min" ng-model="category.number_min"
+
+                        /Case 2: Select Date
+                        td ng-if="category.attribute_type=='Date'"
+                            input type="date" class="form-control" placeholder="yyyy-MM-dd" ng-model="category.maxDate"
+                        td ng-if="category.attribute_type=='Date'"
+                            input type="date" class="form-control" placeholder="yyyy-MM-dd" ng-model="category.minDate"
+
+                        /Case 3: Select Boolean
+                        /Display Nothing
+
+                        /Case 4: Selected Input Field
+                        td ng-if="category.attribute_type=='Input Field'"
+                            input type="text" class="form-control" placeholder="Place Holder" ng-model="category.placeholder"
+                        td ng-if="category.attribute_type=='Input Field'"
+                            input type="text" class="form-control" placeholder="REGEX Expression" ng-model="category.regex"
+
+                        td style="text-align:center"
+                            div class="checkbox"
+                                label
+                                    input type="checkbox" name="studentAttribute" ng-model="category.student_attribute"
+
+        b class="text-blue"
+            | {{categoryError}}
+
+    table class="table table-condensed table-striped table-fixed"
+        thead
+            tr
+                th Type
+                th Name
+                th Placeholder
+                th Max
+                th Min
+                th REGEX
+                th Student Attribute
+                th Input Control
+        tbody
+            tr ng-repeat="subcategory in list_subcategories"
+                /Entry 1: SubCategory Type
+                td
+                    b
+                        | {{ subcategory.attribute_type}}
+                    /Switching categories will messed up backend structure
+                /Entry 2: SubCategory Name
+                td
+                    /Category is Display Mode
+                    div ng-if="!(edit_category.id==subcategory.id)"
+                        p
+                            | {{ subcategory.sub_category_name }}
+                    /Category is Edit Mode
+                    div ng-if="edit_category.id==subcategory.id"
+                        input type="text" class="form-control" ng-model="edit_category.sub_category_name"
+
+                /Entry 3: PlaceHolder
+                td
+                    /Display Mode
+                    div ng-if="!(edit_category.id==subcategory.id)"
+                        p
+                            | {{ subcategory.placeholder}}
+                    /Category is Edit Mode
+                    div ng-if="edit_category.id==subcategory.id"
+                        div ng-if="subcategory.attribute_type=='Number'"
+                            input type="text" class="form-control" ng-model="edit_category.placeholder"
+                        div ng-if="subcategory.attribute_type=='Input Field'"
+                            input type="text" class="form-control" ng-model="edit_category.placeholder"
+
+                /Entry 4: Max
+                td
+                    /Display Mode
+                    div ng-if="!(edit_category.id==subcategory.id)"
+                        div ng-if="subcategory.attribute_type != 'Date'"
+                            p
+                                | {{ subcategory.upper_limit}}
+                        div ng-if="subcategory.attribute_type == 'Date'"
+                            p
+                                | {{ subcategory.upper_limit | date:'yyyy-MM-dd'}}
+                    /Category is Edit Mode
+                    div ng-if="edit_category.id==subcategory.id"
+                        div ng-if="subcategory.attribute_type=='Number'"
+                            input type="number" class="form-control" placeholder="{{subcategory.number_max}}" ng-model="edit_category.number_max"
+                        div ng-if="subcategory.attribute_type=='Date'"
+                            input type="date" class="form-control" placeholder="{{subcategory.maxDate}}" ng-model="edit_category.maxDate"
+
+                /Entry 5: Min
+                td
+                    /Display Mode
+                    div ng-if="!(edit_category.id==subcategory.id)"
+                        div ng-if="subcategory.attribute_type != 'Date'"
+                            p
+                                | {{ subcategory.lower_limit}}
+                        div ng-if="subcategory.attribute_type == 'Date'"
+                            p
+                                | {{ subcategory.lower_limit | date:'yyyy-MM-dd'}}
+                    /Category is Edit Mode
+                    div ng-if="edit_category.id==subcategory.id"
+                        div ng-if="subcategory.attribute_type=='Number'"
+                            input type="number" class="form-control" placeholder="{{subcategory.number_min}}" ng-model="edit_category.number_min"
+                        div ng-if="subcategory.attribute_type=='Date'"
+                            input type="date" class="form-control" placeholder="{{subcategory.minDate}}" ng-model="edit_category.minDate"
+
+                /Entry 6: REGEX 
+                td
+                    /Display Mode
+                    div ng-if="!(edit_category.id==subcategory.id)"
+                        p
+                            | {{ subcategory.regex}}
+                    /Category is Edit Mode
+                    div ng-if="edit_category.id==subcategory.id"
+                        div ng-if="subcategory.attribute_type=='Input Field'"
+                            input type="text" class="form-control" placeholder="{{subcategory.regex}}" ng-model="edit_category.regex"
+
+                /Entry 7: Student Attribute
+                td
+                    /Display Mode
+                    div ng-if="!(edit_category.id==subcategory.id)"
+                        p
+                            | {{ subcategory.student_attribute}}
+                    /Category is Edit Mode
+                    div ng-if="edit_category.id==subcategory.id"
+                        input type="checkbox" placeholder="{{subcategory.student_attribute}}" ng-model="edit_category.student_attribute"
+
+                td
+                    /Update Button
+                    div ng-if="edit_category.id==subcategory.id"
+                        button type="button" class="btn btn-default" ng-click="update()" Update
+                    /Edit Button
+                    div ng-if="!(edit_category.id==subcategory.id)"
+                        button type="button" class="btn btn-default" ng-click="edit(subcategory)" Edit

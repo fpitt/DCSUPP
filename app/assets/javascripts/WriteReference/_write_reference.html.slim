@@ -1,16 +1,16 @@
-div
-    div class="row"
-        div class="col-xs-4"
+div ng-show="error"
+    alert type="danger"  Something went wrong.
+    br
+div class="row"
+    div class="col-xs-8"
+        h3 class="text-blue"
+            b Reference
+        hr
 
-        div class="col-xs-6"
-            h3 Reference
-            hr
+        form ng-submit="writeReference()"
+            div class="form-group"
+                label Message
+                textarea class="form-control" placeholder="Message" ng-model="professor_text" required="true"
 
-            form
-                div class="form-group"
-                    label Message
-                    textarea class="form-control" placeholder="Message" ng-model="professorText"
-
-
-                button class="btn btn-default" ng-click="writeReference()" Submit
-
+            div
+                button class="btn btn-default" type="submit" value="submit" Submit

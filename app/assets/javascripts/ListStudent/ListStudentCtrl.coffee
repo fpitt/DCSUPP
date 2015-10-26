@@ -1,64 +1,55 @@
-ListStudentFunction = ($scope, $modal, modalService, requestService, RequirementSubcategory) ->
-        
-    $scope.modalService = modalService
-    
+ListStudentFunction = ($scope, requestService, RequirementSubcategory, User, $q) ->
+
+
     # --- Page Variables --- 
 
     $scope.direction = 0
     $scope.students = null
     $scope.pagenumber = 1
+
+    #   filter tags
     $scope.requirements = []
-    $scope.subcategories = []
-
-
-    $scope.items = [
-        'item1'
-        'item2'
-        'item3'
-    ]
 
     # --- Page Navigation ---
 
-    $scope.flip = (pushDirection) ->
-        payload = 
-            direction: pushDirection
+    #	get Project filter tags by keyword
+    $scope.loadTags = (query) ->
+        deferred = $q.defer();
+        RequirementSubcategory.studentAttributeRequirementSubcategoriesWithKeyword(keyword: query)
+        .success((data) ->
+            tags = data.map((val) ->
+                name: val.sub_category_name
+                id: val.id)
+            deferred.resolve(tags))
+        return deferred.promise
+
+    #	filter list of students
+    $scope.filterStudents = (tagsChanged, direction) ->
+        if tagsChanged
+            $scope.pagenumber = 1
+            $scope.students = null
+
+        User.filterStudents(
             pagenumber: $scope.pagenumber
-        sendParams =
-            method: 'POST'
-            url: '/students.json'
-        $scope.direction = pushDirection
-
-        requestService.service(sendParams, payload).success(flipSuccess)
-
-    flipSuccess = (data) ->
-        if (data)
-            $scope.students = data
-            console.log($scope.students)
-            if $scope.direction > 0
-                $scope.pagenumber += 1
-            else if $scope.direction < 0
-                $scope.pagenumber -= 1
-            else
-                $scope.pagenumber = 1
-
-    $scope.loadSubcategories = () ->
-        RequirementSubcategory.getAll().success((data) ->
-            for item in data
-                $scope.subcategories.push({name: item.sub_category_name, id: item.id})
+            filter: $scope.requirements
+            direction: direction
+        ).success((data) ->
+            if (data)
+                $scope.students = data
+                if direction > 0
+                    $scope.pagenumber += 1
+                else if direction < 0
+                    $scope.pagenumber -= 1
+                else
+                    $scope.pagenumber = 1
         )
 
-    $scope.loadTags = () ->
-        return $scope.subcategories
+    #   run this code when controller loads
+    $scope.filterStudents(false, 0)
 
-
-
-
-    # --- JQuery Initialization Code --- 
-    $('[data-toggle="tooltip"]').tooltip()
-    $scope.flip(0)
-    $scope.loadSubcategories()
 
 angular
     .module('dcsupp')
-    .controller('ListStudentCtrl', ['$scope', '$modal', 'modalService', 'requestService', 'RequirementSubcategory', ListStudentFunction])
+    .controller('ListStudentCtrl', ['$scope', 'requestService', 
+        'RequirementSubcategory', 'User', '$q', ListStudentFunction])
     

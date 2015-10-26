@@ -1,5 +1,5 @@
 class RequirementCategoriesController < ApplicationController
-
+	#	create a requirement category
 	def create
 		param = params[:payload]
 		@category = RequirementCategory.new(param[:requirement_category])
@@ -9,13 +9,29 @@ class RequirementCategoriesController < ApplicationController
 	  			if @category.save
 	  				render :json => @category
 	  			else
-	  				render :nothing => true, :status => 200, :content_type => 'text/html'
+	  				render :json => { :msg => "Category Already Exists", :status => 406 } 
 	    		end
 	    	}
 	    end
 
 	end
 
+	def getcategory
+		param = params[:payload]
+		@category = RequirementCategory.find_by_id(param[:id])
+
+		respond_to do |format|
+			format.json {
+				if @category
+					render :json => @category
+				else
+					render :nothing => true, :status => 200, :content_type => 'text/html'
+				end
+			}
+		end
+	end
+
+	#	get a page of 10 requirement categories (used in "Manage Categories" page)
 	def getcategories
         category_size = RequirementCategory.all.length
         current_offset = (params[:payload][:pagenumber] - 1)*10
@@ -36,6 +52,7 @@ class RequirementCategoriesController < ApplicationController
 
 	end
 
+	#	get a page of 10 student attributes (used in "Account" page)
 	def flip_students
 		@student_attributes = RequirementCategory.find_by_sql(
 			"SELECT DISTINCT requirement_categories.category_name, requirement_categories.id
@@ -65,9 +82,9 @@ class RequirementCategoriesController < ApplicationController
 
 	      	}
 	    end
-
 	end
 
+	#	get all subcategories belonging to given requirement category
 	def subcategories
 		respond_to do |format|
 	    	format.json {
@@ -77,7 +94,6 @@ class RequirementCategoriesController < ApplicationController
 				puts category.id
 
 				@subcategory = category.requirement_subcategories
-
 	      		render :json => @subcategory
 	      	}
 	    end		

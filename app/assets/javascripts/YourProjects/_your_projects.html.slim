@@ -1,61 +1,58 @@
 div
     div class="row"
         div class="col-xs-4"
-            div class="text-center"
-                h3 Your Current Projects
+            div class="row"
+                div class="col-xs-11 col-xs-offset-1 background-grey"
+                    h3 class="text-blue"
+                        b Your Projects
 
-                .btn-group dropdown="" is-open="status.isopen"
-                    button#single-button.btn.btn-primary dropdown-toggle="" ng-disabled="disabled" type="button"
-                        | {{ filter }}
-                        span.caret
-                    ul.dropdown-menu aria-labelledby="single-button" role="menu"
-                        li role="menuitem"
-                            a ng-click="getInProgressProjects()" In progress
-                        li role="menuitem"
-                            a ng-click="getCompletedProjects()" Completed
+                    div class="text-center"
+                        hr
+                        button ui-sref="your_projects.create_project" class="btn btn-default" Create New Project
+                        hr
 
-            br
 
-            div class="list-group" style="overflow:scroll; max-height:150px"
-                div ng-repeat="project in projects"
-                    ul class="nav nav-pills nav-stacked"
-                        li
-                            a ng-click="selectProject(project)"
-                                | {{ project.title }}
+                        div class="btn-group text-center" role="group" aria-label="Default button group"
+                            button class="btn btn-default" ng-click="getInProgressProjects()" In progress
+                            button class="btn btn-default" ng-click="getCompletedProjects()" Completed
 
-            div
-                div class="text-center"
-                    h4 Project Information
-                a ui-sref="your_projects.project_info({id: selectedProject.id})"
-                    | {{ selectedProject.title }}
+                        br
+                        br
 
-                div class="list-group"
-                    ul class="nav nav-pills nav-stacked"
-                        li
+                    div id="your-projects-list" class="list-group"
+                        ul class="nav nav-pills nav-stacked"
+                            li ng-repeat="project in projects"
+                                a ng-click="selectProject(project)"
+                                    | {{ project.title }}
 
-                div class="text-center"
-                    h4  Applications
-                div ng-repeat="application in applications"
-                    ul class="nav nav-pills nav-stacked"
-                        li
-                            a ui-sref="your_projects.application_info({id: application.id})"
-                                | {{application.title }}
+                    alert ng-show="projects.length == 0" You don't have {{ filter }} projects.
+                    div ng-show="selectedProject"
+                        div class="text-center"
+                            h4 class="text-blue"
+                                b Applications For {{ selectedProject.title }}
+                        div class="list-group"
+                            ul class="nav nav-pills nav-stacked"
+                                li ng-repeat="application in applications"
+                                    a ui-sref="your_projects.application_info({id: application.id})"
+                                        | {{application.title }}
+                        alert ng-show="applications.length == 0" None at the moment.
 
-            button ui-sref="create_project" class="btn btn-default btn-lg" Create New
-        div class="row" style="height:5px"
-
-        div class="col-xs-6"
+        div class="col-xs-8"
             div class="panel-content"
                 ui-view
+                    div class="panel panel-info"
+                        div class="panel-heading"
+                            h3 class="panel-title" Your Projects
 
-        div class="col-xs-2"
-            div class="row" style="height:15px"
-
-            div class="btn-group" role="group" aria-label="Default button group"
-                /Button 1: Information
-                button ng-click="modalService.open('CurrentProject/CurrentProjectSettings/current_project_info.html', 'CurrentProjectSettingsCtrl', items)" type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Information"
-                    span class="glyphicon glyphicon-info-sign" aria-hidden="true"
-
-                /Button 2: Account Settings
-                button ng-click="modalService.open('CurrentProject/CurrentProjectSettings/current_project_settings.html', 'CurrentProjectSettingsCtrl', items)"type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Settings"
-                    span class="glyphicon glyphicon-tasks" aria-hidden="true"
+                        div class="panel-body"
+                            div class="bs-example" data-example-id="horizontal-dl"
+                                dl class="dl-horizontal"
+                                    p Here you can keep track off and manage all your posted projects.
+                                    dt Edit Project
+                                    dd
+                                        | Professors can edit their currently posted projects
+                                    dt Set as Complete
+                                    dd
+                                        | Professors can also set the project application deadline as complete.
+                                    dt Contact
+                                    dd For any questions or concerns, please email: dcsupp[at]cs[dot]toronto[dot]edu

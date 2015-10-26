@@ -1,5 +1,5 @@
 class ProjectRequirementsController < ApplicationController
-
+    #   get this project's project requirement
     def get_requirements_of_project
         respond_to do |format|
             format.json {
@@ -14,6 +14,4 @@ class ProjectRequirementsController < ApplicationController
             }
         end
     end
-
-
 end

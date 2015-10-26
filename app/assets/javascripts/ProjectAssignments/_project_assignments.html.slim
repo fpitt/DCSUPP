@@ -1,21 +1,31 @@
-table class="table table-striped"
-    tr
-        th Project
-        th Professor
-        th Student
-        th Administrator Approved
-        th Actions
-    tr ng-repeat="assignment in assignments"
-        td
-            a ui-sref="current_project.selected_project({id: assignment.project_id})"
-                | {{ assignment.project.title }}
-        td
-            | {{ assignment.professor.name }}
-        td
-            a ui-sref="list_student.selected_student({id: assignment.student.id})"
-                | {{ assignment.student.name }}
-        td
-            | {{ assignment.administrator_approved || 'Pending' }}
-        td
-            button class="btn btn-default" ng-click="processOffer(assignment.id, true)" Accept
-            button class="btn btn-default" ng-click="processOffer(assignment.id, false)" Reject
+div class="row"
+    alert type="danger" ng-show="error" Something went wrong.
+div class="row"
+    div class="col-xs-4"
+    div class="col-xs-8"
+        div class="row"
+            div class="col-xs-12"
+                h3 class="text-blue"
+                    b Project Assignments Awaiting Approval
+                br
+                table class="table table-striped"
+                    thead
+                        tr
+                            th Project
+                            th Professor
+                            th Student
+                            th Actions
+                    tr ng-repeat="assignment in assignments"
+                        td
+                            a style="text-decoration:none" ui-sref="current_project.selected_project({id: assignment.project_id})"
+                                | {{ assignment.project.title }}
+                        td
+                            | {{ assignment.professor.name }}
+                        td
+                            a style="text-decoration:none" ui-sref="list_student.selected_student({id: assignment.student.id})"
+                                | {{ assignment.student.name }}
+                        td
+                            button class="btn btn-default button-margin-10" ng-click="processOffer(assignment.id, true)" Accept
+                            button class="btn btn-default" ng-click="processOffer(assignment.id, false)" Reject
+
+                alert ng-show="assignments.length == 0" None at the moment.

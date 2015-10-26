@@ -1,24 +1,39 @@
-controllerFunction = ($scope, requestService, modalService, $stateParams, Reference) ->
-
+# -------------------------------------------------------------------------------------------------------
+# Page: Your Applications Page
+#
+# Summary:
+# This is the your applications page for DCSUPP
+# for students to view all of the applications that they have submitted.
+# -------------------------------------------------------------------------------------------------------
+controllerFunction = ($scope, ProjectApplication, modalService) ->
+    #   pop-up service for page settings and info
     $scope.modalService = modalService
 
-    $scope.sendParams =
-        method: 'POST'
-        url: '/get_applications_of_user.json'
+    #   current page number
+    $scope.pagenumber = 1
 
-    $scope.items = [
-        'item1'
-        'item2'
-        'item3'
-    ]
+    #   get all project applications that this user has submitted
+    #    $scope.getProjectApplications = () ->
+    #        ProjectApplication.getByCurrentUser().success((data) ->
+    #            $scope.applications = data
+    #        )
 
-    $scope.getProjectApplications = () ->
-        requestService.service($scope.sendParams).success((data) ->
-            $scope.applications = data)
+    #   flip page
+    $scope.flip = (direction) ->
+        ProjectApplication.flipApplicationsOfUser(direction: direction, pagenumber: $scope.pagenumber).success((data) ->
+            if (data)
+                $scope.applications = data
+                if direction > 0
+                    $scope.pagenumber += 1
+                else if direction < 0
+                    $scope.pagenumber -= 1
+                else
+                    $scope.pagenumber = 1
+        )
 
-    $scope.getProjectApplications()
-
+    #   run this code when page loads
+    $scope.flip(0)
 
 angular
 .module('dcsupp')
-.controller('YourApplicationsCtrl', ['$scope', 'requestService', 'modalService', '$stateParams', 'Reference', controllerFunction])
+.controller('YourApplicationsCtrl', ['$scope', 'ProjectApplication', 'modalService', controllerFunction])
