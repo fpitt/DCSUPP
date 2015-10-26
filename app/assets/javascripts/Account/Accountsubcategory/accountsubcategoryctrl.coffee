@@ -37,7 +37,6 @@ AttributeSubCategoryFunction = ($scope, $stateParams, $state, User,
     #Send the SubCategory Information to the backend
     $scope.update = ()->
         if ($scope.edit_subcategory.student_attribute)
-            console.log($scope.edit_subcategory)
             $scope.edit.subcategory_id = $scope.edit_subcategory.id
         else
             $scope.edit.subcategory_id = $scope.edit_subcategory.requirement_subcategory_id
@@ -45,6 +44,7 @@ AttributeSubCategoryFunction = ($scope, $stateParams, $state, User,
 
         StudentAttribute.createAttribute($scope.edit).success (data)->
             $scope.unselectEdit()
+
     
     # --- Unselect Edit ---
     $scope.unselectEdit = ->
@@ -101,7 +101,7 @@ AttributeSubCategoryFunction = ($scope, $stateParams, $state, User,
    
     # --- Check Student Attribute ---
     $scope.student_attribute_available = (attribute_id) ->
-    #Iterate Over the Array [The Array is JSON]
+        #Iterate Over the Array [The Array is JSON]
         for key, category of $scope.attribute_subcategory
             if (category.requirement_subcategory_id == attribute_id)
                 return category
