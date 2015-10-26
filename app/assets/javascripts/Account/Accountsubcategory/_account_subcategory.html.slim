@@ -26,7 +26,7 @@ table class="table table-striped table-condensed table-fixed"
                             input type="number" name="input_number" class="form-control input_width" placeholder="{{subcategory.placeholder}}" ng-model="edit.input_number" required="true" min="{{selectsubCategory.lower_limit}}" max="{{selectsubCategory.upper_limit}}"
 
                         div ng-if="selectsubCategory.attribute_type=='Date'"
-                            input type="date" name="input_date" class="form-control input_width" ng-model="edit.input_date" required="true"
+                            input type="date" name="input_date" class="form-control input_width" ng-model="edit.input_date" required="true" min="{{selectsubCategory.lower_limit}}" max="{{selectsubCategory.upper_limit}}"
 
                         div ng-if="selectsubCategory.attribute_type=='Boolean'"
                             input type="checkbox" ng-model="edit.input_boolean"
@@ -55,4 +55,8 @@ table class="table table-striped table-condensed table-fixed"
                             b ng-show="inputForm.input_number.$invalid && inputForm.input_number.$error.max" Maximum Value Exceeded (max: {{selectsubCategory.upper_limit}})
 
                             b ng-show="inputForm.input_number.$invalid && inputForm.input_number.$error.min" Minimum Value Exceeded (min: {{selectsubCategory.lower_limit}})
+
+                            b ng-show="inputForm.input_date.$invalid && inputForm.input_date.$error.max" Maximum Value Exceeded (max: {{selectsubCategory.upper_limit | date:'yyyy-MM-dd' }})
+
+                            b ng-show="inputForm.input_date.$invalid && inputForm.input_date.$error.min" Minimum Value Exceeded (min: {{selectsubCategory.lower_limit | date:'yyyy-MM-dd'}})
             
