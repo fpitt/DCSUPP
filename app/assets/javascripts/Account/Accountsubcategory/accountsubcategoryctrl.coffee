@@ -45,7 +45,6 @@ AttributeSubCategoryFunction = ($scope, $stateParams, $state, User,
         StudentAttribute.createAttribute($scope.edit).success (data)->
             $scope.unselectEdit()
 
-    
     # --- Unselect Edit ---
     $scope.unselectEdit = ->
         #Change the Category Edit to false
@@ -69,6 +68,8 @@ AttributeSubCategoryFunction = ($scope, $stateParams, $state, User,
             for category in $scope.subcategories
                 if (category.id == subcategory.requirement_subcategory_id)
                     $scope.selectsubCategory = category
+
+            console.log($scope.selectsubCategory)
 
             #Set the Edit to the previous default value
             if ($scope.selectsubCategory.attribute_type == "Number")
