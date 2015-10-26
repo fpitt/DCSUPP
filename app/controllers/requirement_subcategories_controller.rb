@@ -44,10 +44,16 @@ class RequirementSubcategoriesController < ApplicationController
         respond_to do |format|
             format.json{
                 puts params[:payload]
+                payload = params[:payload]
+                @subcategory = RequirementSubcategory.find_by_id(payload[:id])
+                #Update the Variables
+                @subcategory.sub_category_name = payload[:sub_category_name]
 
-                @requirement_subcategory = RequirementSubcategory.update_attributes()
-
-                render :nothing => true, :status => 200, :content_type => 'text/html'
+                if @subcategory.save
+                    render :json => @subcategory
+                else
+                    render :nothing => true, :status => 200, :content_type => 'text/html'
+                end
             }
         end
     end

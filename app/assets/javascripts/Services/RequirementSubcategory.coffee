@@ -23,10 +23,10 @@ ServiceFunction = (requestService) ->
     patch: (id, payload) ->
         return
 
-    update: (id, payload) ->
+    update: (payload) ->
         sendParams=
             method: 'PATCH'
-            url: '/requirement_subcategories/' + id + '.json'
+            url: '/requirement_subcategories/' + payload.id + '.json'
 
         return requestService.service(sendParams, payload)
 

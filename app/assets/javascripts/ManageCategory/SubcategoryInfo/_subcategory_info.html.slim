@@ -96,17 +96,9 @@ div
             tr ng-repeat="subcategory in list_subcategories"
                 /Entry 1: SubCategory Type
                 td
-                    /Category is Display Mode
-                    div ng-if="!(edit_category.id==subcategory.id)"
-                        b
-                            | {{ subcategory.attribute_type}}
-                    /Category is Edit Mode
-                    div ng-if="edit_category.id==subcategory.id"
-                        select class="form-control" ng-model="edit_category.attribute_type"
-                            option value="Number" Number
-                            option value="Date" Date
-                            option value="Boolean" Boolean
-                            option value="Input Field" Input Field
+                    b
+                        | {{ subcategory.attribute_type}}
+                    /Switching categories will messed up backend structure
                 /Entry 2: SubCategory Name
                 td
                     /Category is Display Mode
@@ -188,7 +180,7 @@ div
                 td
                     /Update Button
                     div ng-if="edit_category.id==subcategory.id"
-                        button type="button" class="btn btn-default" ng-click="update(subcategory)" Update
+                        button type="button" class="btn btn-default" ng-click="update()" Update
                     /Edit Button
                     div ng-if="!(edit_category.id==subcategory.id)"
                         button type="button" class="btn btn-default" ng-click="edit(subcategory)" Edit
