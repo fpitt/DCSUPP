@@ -6,18 +6,18 @@ AttributeSubCategoryFunction = ($scope, $stateParams, $state, User,
 
     ### ----------------------------- Page Variables ----------------------------- ###
 
-    #Current SubCategory selected for Edit
+    #Current SubCategory (Requirement Category)
     $scope.category = null
-    #Requirement Attributes added by the User
-    $scope.attribute_subcategory = []
-    #List of all Requirement Attribute SubCategories within the Category
-    $scope.subcategories = null
-    #Merged List of Categories with attributes and empty categories [For Display]
-    $scope.merged_category = []
-    #Category Currently Edited
-    $scope.edit_subcategory = null
     #Selected SubCategory Parameter list
     $scope.selectsubCategory = null
+
+    # -- Attribute Arrays ---
+    #List of all Requirement Attribute SubCategories within the Category
+    $scope.subcategories = []
+    #Requirement Attributes added by the User
+    $scope.attribute_subcategory = []
+    #Merged List of Categories with attributes and empty categories [For Display]
+    $scope.merged_category = []
 
     # -- Edit/Update Model --
     #Edit SubCategory
@@ -36,10 +36,10 @@ AttributeSubCategoryFunction = ($scope, $stateParams, $state, User,
     # --- Update Entry ---
     #Send the SubCategory Information to the backend
     $scope.update = ()->
-        if ($scope.edit_subcategory.student_attribute)
-            $scope.edit.subcategory_id = $scope.edit_subcategory.id
+        if ($scope.selectsubCategory.student_attribute)
+            $scope.edit.subcategory_id = $scope.selectsubCategory.id
         else
-            $scope.edit.subcategory_id = $scope.edit_subcategory.requirement_subcategory_id
+            $scope.edit.subcategory_id = $scope.selectsubCategory.requirement_subcategory_id
         $scope.edit.category_id = $stateParams.id
 
         StudentAttribute.createAttribute($scope.edit).success (data)->
@@ -60,8 +60,6 @@ AttributeSubCategoryFunction = ($scope, $stateParams, $state, User,
     $scope.edit_entry = (subcategory) ->
         #If Attribute was previously created, set the default value
         $scope.edit = angular.copy($scope.editBlank)
-        $scope.selectsubCategory = null
-        $scope.edit_subcategory = subcategory
 
         if (subcategory.type == 'attribute')
             #Set the selected is an attribute
