@@ -69,8 +69,6 @@ AttributeSubCategoryFunction = ($scope, $stateParams, $state, User,
                 if (category.id == subcategory.requirement_subcategory_id)
                     $scope.selectsubCategory = category
 
-            console.log($scope.selectsubCategory)
-
             #Set the Edit to the previous default value
             if ($scope.selectsubCategory.attribute_type == "Number")
                 $scope.edit.input_number = parseInt(subcategory.value)

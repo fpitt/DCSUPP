@@ -42,18 +42,35 @@ controllerFunction = ($scope, $stateParams, RequirementCategory, RequirementSubc
         delete $scope.edit_category.upper_limit
         delete $scope.edit_category.lower_limit
 
+    # --- Check Min < Max Valid ---
+    $scope.min_max_valid = () ->
+        if ($scope.edit_category.attribute_type == "Number")
+            if ($scope.edit_category.number_max <= $scope.edit_category.number_min)
+                $scope.categoryError = "The Minimum Value cannot be 
+                larger or equal to the Maximum Value"
+                return false
+        else if ($scope.edit_category.attribute_type == "Date")
+            if ($scope.edit_category.maxDate <= $scope.edit_category.minDate)
+                $scope.categoryError = "The earliest Date cannot be 
+                earlier than the latest date"
+                return false    
+        return true
+
     # --- Update SubCategory ---
     $scope.update = ()->
         category.requirementCategory_id = parseInt($stateParams.id)
-
-        RequirementSubcategory.update($scope.edit_category).success (data) ->
-            #Reset the Update to Default
-            if (data.status == 406)
-                $scope.process_update_error(data.error)
-            else
-                $scope.categoryError = null
-                $scope.edit_category = null
-                $scope.loadSubcategories($scope.selectedCategory)
+        checkValid = $scope.min_max_valid()
+        console.log(checkValid)
+        
+        if (checkValid)
+            RequirementSubcategory.update($scope.edit_category).success (data) ->
+                #Reset the Update to Default
+                if (data.status == 406)
+                    $scope.process_update_error(data.error)
+                else
+                    $scope.categoryError = null
+                    $scope.edit_category = null
+                    $scope.loadSubcategories($scope.selectedCategory)
 
     # --- Create SubCategory ---
     $scope.create_subcategory = (category)->
