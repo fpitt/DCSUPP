@@ -13,7 +13,6 @@ div class="row"
                         button class="btn btn-default" ng-click="flip(10)" Next
                     br
                     br
-                    alert type="success" ng-show="applications.length == 0" You don't have any applications.
                 div class="list-group"
                     div ng-repeat="application in applications"
                         ul class="nav nav-pills nav-stacked"
@@ -25,7 +24,9 @@ div class="row"
             ui-view
                 div class="panel panel-info"
                     div class="panel-heading"
-                        h3 class="panel-title" Your Applications
+                        h3 class="panel-title" 
+                            b
+                                | Your Applications
 
                     div class="panel-body"
                         div class="bs-example" data-example-id="horizontal-dl"

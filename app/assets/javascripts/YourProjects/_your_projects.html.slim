@@ -25,7 +25,6 @@ div
                                 a ng-click="selectProject(project)"
                                     | {{ project.title }}
 
-                    alert ng-show="projects.length == 0" You don't have {{ filter }} projects.
                     div ng-show="selectedProject"
                         div class="text-center"
                             h4 class="text-blue"
@@ -42,7 +41,9 @@ div
                 ui-view
                     div class="panel panel-info"
                         div class="panel-heading"
-                            h3 class="panel-title" Your Projects
+                            h3 class="panel-title" 
+                                b
+                                    | Your Projects
 
                         div class="panel-body"
                             div class="bs-example" data-example-id="horizontal-dl"
