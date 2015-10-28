@@ -7,12 +7,16 @@ div class="row"
                 div
                     h3 class="text-blue"
                         b Current Projects
-                    hr
-                    label Refine your search
-                    tags-input class="bootstrap" ng-model="requirements" display_property="name" on-tag-removed="filterProjects(true, 0)" on-tag-added="filterProjects(true, 0)" add-from-autocomplete-only="true"
-                        auto-complete source="loadTags($query)"
                 hr
+                div class="text-center"
+                    button ui-sref="account.personal_introduction()" class="btn btn-primary"
+                        span class="glyphicon glyphicon-th-list"
+                        |  Browse Projects
+                    button ui-sref="account.personal_introduction()" class="btn btn-default"
+                        span class="glyphicon glyphicon-filter"
+                        |  Add Project Filter
 
+                hr
                 div class="text-center"
                     div class="btn-group" role="group"
                         button class="btn btn-default" ng-click="filterProjects(false, -10)" Prev
