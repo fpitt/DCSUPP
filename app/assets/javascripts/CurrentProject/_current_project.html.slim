@@ -9,12 +9,13 @@ div class="row"
                         b Current Projects
                 hr
                 div class="text-center"
-                    button ui-sref="account.personal_introduction()" class="btn btn-primary"
-                        span class="glyphicon glyphicon-th-list"
-                        |  Browse Projects
-                    button ui-sref="account.personal_introduction()" class="btn btn-default"
-                        span class="glyphicon glyphicon-filter"
-                        |  Add Project Filter
+                    div class="btn-group"
+                        button ui-sref="account.personal_introduction()" class="btn btn-primary"
+                            span class="glyphicon glyphicon-th-list"
+                            |  Browse Projects
+                        button ui-sref="account.personal_introduction()" class="btn btn-default"
+                            span class="glyphicon glyphicon-filter"
+                            |  Add Project Filter
 
                 hr
                 div class="text-center"
@@ -38,7 +39,9 @@ div class="row"
                     ui-view
                          div class="panel panel-info"
                             div class="panel-heading"
-                                h3 class="panel-title" Current Projects
+                                h3 class="panel-title" 
+                                    b
+                                        | Current Projects
 
                             div class="panel-body"
                                 div class="bs-example" data-example-id="horizontal-dl"
