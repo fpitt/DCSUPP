@@ -13,11 +13,12 @@ div class="row"
                     div class="col-xs-10"
                         p Registered Researchers and Faculty can search or filter for students, post projects, and accept applications to projects through DCSUPP
                 hr
-                div class="row"
-                    div class="align-center"
-                        div class="btn-group"
-                            button type="button" class="btn btn-success" Create Project
-                            button type="button" class="btn btn-info" Browse Students
+                div ng-if="user.professor"
+                    div class="row"
+                        div class="align-center"
+                            div class="btn-group"
+                                button type="button" ui-sref="your_projects.create_project" class="btn btn-success" Create Project
+                                button type="button" ui-sref="list_student" class="btn btn-info" Browse Students
  
     div class="col-xs-4"
         div class="row"
@@ -33,11 +34,12 @@ div class="row"
                     div class="col-xs-10"
                         p Students can update their individual profiles and application requirements as well as browse and apply for approved projects
                 hr
-                div class="row"
-                    div class="align-center"
-                        div class="btn-group"
-                            button type="button" class="btn btn-success" Update Profile
-                            button type="button" class="btn btn-info" Browse Projects
+                div ng-if="!(user.professor) && !(user.administrator)"
+                    div class="row"
+                        div class="align-center"
+                            div class="btn-group"
+                                button type="button" ui-sref="account" class="btn btn-success" Update Profile
+                                button type="button" ui-sref="current_project" class="btn btn-info" Browse Projects
 
     dav class="col-xs-4"
         div class="row"
@@ -53,11 +55,12 @@ div class="row"
                     div class="col-xs-10"
                         p DCSUPP Administrators can update categories on student category settings and approve student applications to projects
                 hr
-                div class="row"
-                    div class="align-center"
-                        div class="btn-group"
-                            button type="button" class="btn btn-success" Manage Categoriess
-                            button type="button" class="btn btn-info" Manage Applications
+                div ng-if="user.administrator"
+                    div class="row"
+                        div class="align-center"
+                            div class="btn-group"
+                                button type="button" ui-sref="manage_category" class="btn btn-success" Manage Categories
+                                button type="button" ui-sref="project_assignments" class="btn btn-info" Manage Applications
 
 div class="row"
     br
