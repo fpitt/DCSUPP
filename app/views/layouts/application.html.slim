@@ -23,6 +23,7 @@ html
                         img src="/assets/compsci_ublue.jpg" alt="University of Toronto Logo" class="uoft_logo"
 
                 div class="row"
+
                     nav class="navbar navbar-default"
                         div class="container-fluid"
                         /Brand and toggle get grouped for better mobile display
@@ -38,15 +39,15 @@ html
                         div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"
                             ul class="nav navbar-nav"
                                 li
-                                    a ui-sref="intro" Intro
+                                    a ui-sref="intro" About Page
                                 li
-                                    a ui-sref="account" Account
+                                    a ui-sref="account" Update Profile
                                 li
-                                    a ui-sref="current_project" Projects
+                                    a ui-sref="current_project" Browse Projects
                                 li access="administrator professor" restrict=""
                                     a ui-sref="manage_category" Manage Categories
                                 li access="administrator professor" restrict=""
-                                    a ui-sref="list_student" Find Students
+                                    a ui-sref="list_student" Browse Students
                                 li access="administrator professor" restrict=""
                                     a ui-sref="your_projects" Your Projects
                                 li access="administrator student" restrict=""
@@ -58,7 +59,7 @@ html
                                 li access="administrator professor" restrict=""
                                     a ui-sref="your_reference_requests" Reference Requests
                             
-                            form class="navbar-form navbar-left" role="search"
+                            form class="navbar-form navbar-right"
                                 button type="submit" class="btn btn-default" href="" ng-click="modalService.open('InfoPopup/info.html', 'InfoCtrl')" title="Information"
                                     span class="glyphicon glyphicon-info-sign" aria-hidden="true"
 
