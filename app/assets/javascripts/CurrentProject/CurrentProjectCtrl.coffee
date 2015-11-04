@@ -17,6 +17,13 @@ controllerFunction = ($scope, Project, RequirementSubcategory, $q) ->
 	$scope.project_browse = (input) ->
 		$scope.browse = input
 
+		if (input == false)
+			$("#browse").removeClass("btn-primary").addClass("btn-default")
+			$("#filter").addClass("btn-primary").removeClass("btn-default")
+		else
+			$("#filter").removeClass("btn-primary").addClass("btn-default")
+			$("#browse").addClass("btn-primary").removeClass("btn-default")
+
 	#	filter list of projects
 	$scope.filterProjects = (tagsChanged, direction) ->
 		if tagsChanged
