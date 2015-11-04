@@ -2,33 +2,39 @@ div class="row"
     div class="col-md-4"
         div class="row"
             div class="col-xs-10 col-xs-offset-1 background-grey" 
-                div
+                div ng-if="browse"
                     h3 class="text-blue"
                         b Browse Projects
+                div ng-if="!(browse)"
+                    h3 class="text-blue"
+                        b Add Project Filter
                 hr
                 div class="text-center"
                     div class="btn-group"
-                        button class="btn btn-primary"
+                        button class="btn btn-primary" ng-click="project_browse(true)"
                             span class="glyphicon glyphicon-th-list"
                             |  Browse Projects
-                        button class="btn btn-default"
+                        button class="btn btn-default" ng-click="project_browse(false)"
                             span class="glyphicon glyphicon-filter"
                             |  Add Filter
 
-                hr
-                div class="text-center"
-                    div class="btn-group" role="group"
-                        button class="btn btn-default" ng-click="filterProjects(false, -10)" Prev
-                        button class="btn btn-default disabled"
-                            | {{ pagenumber }}
-                        button class="btn btn-default" ng-click="filterProjects(false, 10)" Next
-                br
-                div class="list-group"
-                    div ng-repeat="project in projects"
-                        ul class="nav nav-pills nav-stacked"
-                            li class="text-teal"
-                                a ui-sref="current_project.project_info({id: project.id})"
-                                    | {{ project.title }}
+                    hr
+                div ng-if="browse"
+                    div class="text-center"
+                        div class="btn-group" role="group"
+                            button class="btn btn-default" ng-click="filterProjects(false, -10)" Prev
+                            button class="btn btn-default disabled"
+                                | {{ pagenumber }}
+                            button class="btn btn-default" ng-click="filterProjects(false, 10)" Next
+                    br
+                    div class="list-group"
+                        div ng-repeat="project in projects"
+                            ul class="nav nav-pills nav-stacked"
+                                li class="text-teal"
+                                    a ui-sref="current_project.project_info({id: project.id})"
+                                        | {{ project.title }}
+                div ng-if="!(browse)"
+
 
     div class="col-md-8"
         div class="row"

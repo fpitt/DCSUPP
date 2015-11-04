@@ -8,35 +8,20 @@
 
 controllerFunction = ($scope, Project, RequirementSubcategory, $q) ->
 
-	$scope.projects = null
-
-	#	filter tags
-	$scope.requirements = []
-
+	$scope.browse = true;
+	$scope.projects = null;
 	$scope.pagenumber = 1;
-	$scope.direction = 0
+	$scope.direction = 0;
 
-	#	get Project filter tags by keyword
-	$scope.loadTags = (query) ->
-		deferred = $q.defer();
-		RequirementSubcategory.studentAttributeRequirementSubcategoriesWithKeyword(keyword: query)
-		.success((data) ->
-			tags = data.map((val) ->
-				name: val.sub_category_name
-				id: val.id)
-			if 'in progress'.indexOf(query.toLowerCase()) != -1
-				tags.push({name: 'In progress', id:'0'})
-			else if 'completed'.indexOf(query.toLowerCase()) != -1
-				tags.push({name: 'Completed', id:'0'})
-			deferred.resolve(tags))
-		return deferred.promise
+	# Change Browse
+	$scope.project_browse = (input) ->
+		$scope.browse = input
 
 	#	filter list of projects
 	$scope.filterProjects = (tagsChanged, direction) ->
 		if tagsChanged
 			$scope.pagenumber = 1
 			$scope.projects = null
-
 
 		Project.filterProjects(
 			pagenumber: $scope.pagenumber
