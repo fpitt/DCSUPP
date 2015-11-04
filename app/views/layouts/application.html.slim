@@ -40,12 +40,15 @@ html
                                 ul class="nav navbar-nav"
                                     li
                                         a ui-sref="intro" About Page
-                                    li
+                                    li access="student" restrict=""
                                         a ui-sref="account" Update Profile
                                     li
                                         a ui-sref="current_project" Browse Projects
-                                    li access="administrator professor" restrict=""
+                                    li access="administrator" restrict=""
                                         a ui-sref="manage_category" Manage Categories
+                                    / Same ui-sref, different name for professor
+                                    li access="professor" restrict=""
+                                        a ui-sref="manage_category" Browse Categories
                                     li access="administrator professor" restrict=""
                                         a ui-sref="list_student" Browse Students
                                     li access="administrator professor" restrict=""

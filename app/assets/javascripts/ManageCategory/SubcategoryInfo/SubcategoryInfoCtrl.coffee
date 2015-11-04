@@ -5,7 +5,7 @@
 # can dynamically add new project/ student subcategories which
 # students can dynamically change their settings.
 # ---------------------------------------------------------
-controllerFunction = ($scope, $stateParams, RequirementCategory, RequirementSubcategory) ->
+controllerFunction = ($scope, $stateParams, RequirementCategory, RequirementSubcategory, User) ->
 
     #Store Category List
     $scope.list_subcategories = null
@@ -106,10 +106,17 @@ controllerFunction = ($scope, $stateParams, RequirementCategory, RequirementSubc
         RequirementSubcategory.getAllOfCategory(target_id: $stateParams.id).success (data) ->
             $scope.list_subcategories = data
 
+    # --- Get User ---
+    $scope.getUser = ->
+        User.getUser().success (data) ->
+            $scope.user = data
+        return
+
     # --- Controller Initialization --- 
     $scope.loadSubcategories()
+    $scope.getUser()
 
 angular
     .module('dcsupp')
     .controller('SubcategoryInfoCtrl', ['$scope', '$stateParams', 'RequirementCategory', 
-    'RequirementSubcategory',  controllerFunction])
+    'RequirementSubcategory', 'User', controllerFunction])

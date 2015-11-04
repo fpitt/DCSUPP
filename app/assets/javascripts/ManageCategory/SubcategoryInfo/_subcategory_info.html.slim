@@ -91,7 +91,7 @@ div
                 th Min
                 th REGEX
                 th Student Attribute
-                th Input Control
+                th ng-if="user.administrator" Input Control
         tbody
             tr ng-repeat="subcategory in list_subcategories"
                 /Entry 1: SubCategory Type
@@ -178,9 +178,10 @@ div
                         input type="checkbox" placeholder="{{subcategory.student_attribute}}" ng-model="edit_category.student_attribute"
 
                 td
-                    /Update Button
-                    div ng-if="edit_category.id==subcategory.id"
-                        button type="button" class="btn btn-default" ng-click="update()" Update
-                    /Edit Button
-                    div ng-if="!(edit_category.id==subcategory.id)"
-                        button type="button" class="btn btn-default" ng-click="edit(subcategory)" Edit
+                    div ng-if="user.administrator"
+                        /Update Button
+                        div ng-if="edit_category.id==subcategory.id"
+                            button type="button" class="btn btn-default" ng-click="update()" Update
+                        /Edit Button
+                        div ng-if="!(edit_category.id==subcategory.id)"
+                            button type="button" class="btn btn-default" ng-click="edit(subcategory)" Edit
