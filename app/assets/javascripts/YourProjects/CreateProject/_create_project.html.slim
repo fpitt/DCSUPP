@@ -16,31 +16,7 @@ div
             label for="exampleInputEmail" Deadline
             input type="date" class="form-control" ng-model="project.deadline_date" placeholder="yyyy-MM-dd" required="true"
 
-        div class="form-group"
-            label for="exampleInputRequirements" Project Requirements
-            tags-input class="bootstrap" ng-model="project.requirements" display_property="name" add-from-autocomplete-only="true"
-                auto-complete source="loadTags($query)"
-
-        div class="form-group"
-            label Additional Details
-            div ng-if="project.details.length == 0"
-                alert None at the moment.
-            table class="table"
-                tr ng-repeat="detail in project.details"
-                    td
-                        | {{ detail.name }}
-                    td
-                        input ng-if="detail.attribute_type == 'Input Field'" class="form-control" type="text" ng-model="detail.value" required="true"
-                        input ng-if="detail.attribute_type == 'Number'" class="form-control" type="number" ng-model="detail.value" required="true"
-                        input ng-if="detail.attribute_type == 'Date'" class="form-control" type="date" ng-model="detail.value" required="true"
-                        div ng-if="detail.attribute_type == 'Boolean'"
-                            input class="form-control" type="radio" value="True" ng-model="detail.value" required="true" True
-                            input class="form-control" type="radio" value="False" ng-model="detail.value" required="true" False
-            div class="input-group"
-                input class="form-control" type="text" ng-model="detailSelected" placeholder="Detail name" typeahead="detail as detail.name for detail in loadDetails($viewValue)" typeahead-select-on-exact="true"
-                span class="input-group-btn"
-                    button class="btn btn-default" type="button" ng-click="addDetail()" Add
 
         br
         div class="form-group"
-            button type="submit" value="submit" class="btn btn-default btn-lg" Create Project
+            button type="submit" value="submit" class="btn btn-default btn-md" Create Project

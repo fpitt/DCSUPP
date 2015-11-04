@@ -10,8 +10,11 @@ IntroductionCtrl = ($scope, $state, User) ->
 	$scope.user = null
 
 	#Get User Attribute on initialization
-	User.getUser().success (data) ->
-		$scope.user = data
+	$scope.getUser = ->
+		User.getUser().success (data) ->
+			$scope.user = data
+
+	$scope.getUser()
 
 angular.module('dcsupp').controller('IntroCtrl', 
 	['$scope', '$state', 'User', IntroductionCtrl])

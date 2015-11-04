@@ -2,25 +2,37 @@ div class="row"
     div class="col-md-4"
         div class="row"
             div class="col-xs-10 col-xs-offset-1 background-grey"
-                div
+                div ng-if="browse"
                     h3 class="text-blue"
                         b Browse Students
-                    hr
-
+                div ng-if="!(browse)"
+                    h3 class="text-blue"
+                        b Add Filter
+                hr
                 div class="text-center"
                     div class="btn-group"
-                        button class="btn btn-default" ng-click="filterStudents(false, -10)" Prev
-                        button class="btn btn-default disabled"
-                            | {{ pagenumber }}
-                        button class="btn btn-default" ng-click="filterStudents(false, 10)" Next
-                    br
-                    br
-                div class="list-group"
-                    div ng-repeat="student in students"
-                        ul class="nav nav-pills nav-stacked"
-                            li
-                                a ui-sref=".selected_student({id: student.id})"
-                                    | {{ student.name }}
+                        button id="browse" class="btn btn-primary" ng-click="student_browse(true)"
+                            span class="glyphicon glyphicon-th-list"
+                            |  Browse Students
+                        button id="filter" class="btn btn-default" ng-click="student_browse(false)"
+                            span class="glyphicon glyphicon-filter"
+                            |  Add Filter
+                    hr
+                div ng-if="browse"
+                    div class="text-center"
+                        div class="btn-group"
+                            button class="btn btn-default" ng-click="filterStudents(false, -10)" Prev
+                            button class="btn btn-default disabled"
+                                | {{ pagenumber }}
+                            button class="btn btn-default" ng-click="filterStudents(false, 10)" Next
+                        br
+                        br
+                    div class="list-group"
+                        div ng-repeat="student in students"
+                            ul class="nav nav-pills nav-stacked"
+                                li
+                                    a ui-sref=".selected_student({id: student.id})"
+                                        | {{ student.name }}
 
     div class="col-md-8"
         div class="panel-content"
