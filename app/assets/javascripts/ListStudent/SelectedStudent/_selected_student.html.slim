@@ -19,7 +19,7 @@ table class="table table-hover"
                 | Contact Email
         td
             span ng-if="user.contact_email"
-                | {{ user.input_email}}
+                | {{ user.contact_email}}
             span ng-if="!(user.contact_email)"
                 | [No Contact Email Available]
     tr
@@ -28,6 +28,6 @@ table class="table table-hover"
                 | Personal Introduction
         td
             span ng-if="user.introduction" class="preserve_newline"
-                | {{ user.input_text }}
+                | {{ user.introduction }}
             span ng-if="!(user.introduction)"
                 | [No User Introduction]

@@ -1,27 +1,11 @@
 ListStudentFunction = ($scope, requestService, RequirementSubcategory, User, $q) ->
 
-
     # --- Page Variables --- 
-
     $scope.direction = 0
     $scope.students = null
     $scope.pagenumber = 1
 
-    #   filter tags
-    $scope.requirements = []
-
     # --- Page Navigation ---
-
-    #	get Project filter tags by keyword
-    $scope.loadTags = (query) ->
-        deferred = $q.defer();
-        RequirementSubcategory.studentAttributeRequirementSubcategoriesWithKeyword(keyword: query)
-        .success((data) ->
-            tags = data.map((val) ->
-                name: val.sub_category_name
-                id: val.id)
-            deferred.resolve(tags))
-        return deferred.promise
 
     #	filter list of students
     $scope.filterStudents = (tagsChanged, direction) ->
@@ -31,7 +15,6 @@ ListStudentFunction = ($scope, requestService, RequirementSubcategory, User, $q)
 
         User.filterStudents(
             pagenumber: $scope.pagenumber
-            filter: $scope.requirements
             direction: direction
         ).success((data) ->
             if (data)
@@ -51,5 +34,5 @@ ListStudentFunction = ($scope, requestService, RequirementSubcategory, User, $q)
 angular
     .module('dcsupp')
     .controller('ListStudentCtrl', ['$scope', 'requestService', 
-        'RequirementSubcategory', 'User', '$q', ListStudentFunction])
+        'RequirementSubcategory', 'User','$q', ListStudentFunction])
     
