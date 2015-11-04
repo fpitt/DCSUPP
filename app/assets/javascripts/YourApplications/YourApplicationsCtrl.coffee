@@ -5,9 +5,7 @@
 # This is the your applications page for DCSUPP
 # for students to view all of the applications that they have submitted.
 # -------------------------------------------------------------------------------------------------------
-controllerFunction = ($scope, ProjectApplication, modalService) ->
-    #   pop-up service for page settings and info
-    $scope.modalService = modalService
+controllerFunction = ($scope, ProjectApplication) ->
 
     #   current page number
     $scope.pagenumber = 1

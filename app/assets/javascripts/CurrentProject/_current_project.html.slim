@@ -1,9 +1,7 @@
-/link href="/assets/ng-tags-input/ng-tags-input.min.css" rel="stylesheet" type="text/css"
-
 div class="row"
-    div class="col-xs-4"
+    div class="col-md-4"
         div class="row"
-            div class="col-xs-11 col-xs-offset-1 background-grey" 
+            div class="col-xs-10 col-xs-offset-1 background-grey" 
                 div
                     h3 class="text-blue"
                         b Browse Projects
@@ -15,7 +13,7 @@ div class="row"
                             |  Browse Projects
                         button class="btn btn-default"
                             span class="glyphicon glyphicon-filter"
-                            |  Add Project Filter
+                            |  Add Filter
 
                 hr
                 div class="text-center"
@@ -32,11 +30,11 @@ div class="row"
                                 a ui-sref="current_project.project_info({id: project.id})"
                                     | {{ project.title }}
 
-    div class="col-xs-8"
+    div class="col-md-8"
         div class="row"
             div class="col-xs-12"
-                div class="panel-content"
-                    ui-view
+                ui-view
+                    div class="panel-content"
                          div class="panel panel-info"
                             div class="panel-heading"
                                 h3 class="panel-title" 

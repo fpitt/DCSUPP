@@ -1,85 +1,88 @@
-div class="row" style="height:4em;"
+div class="row hidden-xs" style="height:4em;"
 
 div class="row"
-    div class="col-xs-4"
+    div class="col-md-4"
         div class="row"
             div class="col-xs-10 col-xs-offset-1"
                 h4 class="text-blue text-center"
+                    span class="glyphicon glyphicon-question-sign"
                     b
-                        | For Researchers and Faculty:
+                        |  Researchers and Faculty
                 hr
                 div class="row"
-                    div class="col-xs-2"
+                    div class="col-xs-2 hidden-xs"
                         h2
                             span class="glyphicon glyphicon-hdd"
                     div class="col-xs-10"
                         p Registered Researchers and Faculty can search or filter for students, post projects, and accept applications to projects through DCSUPP
                 hr
                 div ng-if="user.professor"
-                    div class="row"
+                    div class="row hidden-xs"
                         div class="align-center"
                             div class="btn-group"
                                 button type="button" ui-sref="your_projects.create_project" class="btn btn-success" Create Project
                                 button type="button" ui-sref="list_student" class="btn btn-info" Browse Students
  
-    div class="col-xs-4"
+    div class="col-md-4"
         div class="row"
             div class="col-xs-10 col-xs-offset-1"
-                h4 class="text-blue text-center" 
+                h4 class="text-blue text-center"
+                    span class="glyphicon glyphicon-question-sign"
                     b
-                        | For Students:
+                        |  Students
                 hr
                 div class="row"
-                    div class="col-xs-2"
+                    div class="col-xs-2 hidden-xs"
                         h2
                             span class="glyphicon glyphicon-education"
                     div class="col-xs-10"
                         p Students can update their individual profiles and application requirements as well as browse and apply for approved projects
                 hr
                 div ng-if="!(user.professor) && !(user.administrator)"
-                    div class="row"
+                    div class="row hidden-xs"
                         div class="align-center"
                             div class="btn-group"
                                 button type="button" ui-sref="account" class="btn btn-success" Update Profile
                                 button type="button" ui-sref="current_project" class="btn btn-info" Browse Projects
 
-    dav class="col-xs-4"
+    div class="col-md-4"
         div class="row"
             div class="col-xs-10 col-xs-offset-1"
                 h4 class="text-blue text-center"
+                    span class="glyphicon glyphicon-question-sign"
                     b
-                        | For Program Administrators:
+                        |  Program Administrators
                 hr
                 div class="row"
-                    div class="col-xs-2"
+                    div class="col-xs-2 hidden-xs"
                         h2
                             span class="glyphicon glyphicon-briefcase"
                     div class="col-xs-10"
                         p DCSUPP Administrators can update categories on student category settings and approve student applications to projects
                 hr
                 div ng-if="user.administrator"
-                    div class="row"
+                    div class="row hidden-xs"
                         div class="align-center"
                             div class="btn-group"
                                 button type="button" ui-sref="manage_category" class="btn btn-success" Manage Categories
                                 button type="button" ui-sref="project_assignments" class="btn btn-info" Manage Applications
 
-div class="row" style="height:4em;"
+div class="row hidden-xs" style="height:6em;"
 
 div class="row"
-    div class="col-xs-4"
+    div class="col-md-4"
         div class="row"
-            div class="col-xs-11 col-xs-offset-1"
-                h3 class="text-blue" 
+            div class="col-xs-10 col-xs-offset-1"
+                h3 class="text-blue text-center"
                     b
                         | Development Information
                 hr
-                p 
+                p class="text-center"
                     |The DCS Undergraduate Project Portal is developed by students at the University of Toronto. The source code of the project is availabe on 
                     a href="https://github.com/fpitt/DCSUPP" Github
 
         div class="row"
-            div class="col-xs-11 col-xs-offset-1"
+            div class="col-xs-10 col-xs-offset-1 text-center"
                 h3 class="text-blue"
                     b
                         | Contact Information 
@@ -102,7 +105,7 @@ div class="row"
                     | ug[at]cs[dot]toronto[dot]edu
 
 
-    div class="col-xs-8"
+    div class="col-md-8"
         br
         div class="panel panel-info"
             div class="panel-heading"

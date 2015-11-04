@@ -5,7 +5,7 @@ div
         span class="gylphicon glyphicon-pencil" aria-hidden="true"
         span  Edit
     span ng-show="project.completed == false"
-        button access="administrator professor" restrict="" class="btn btn-default" ng-really-message="Are you sure? You will not be able to change your decision." ng-really-click="setCompleted()"
+        button access="administrator professor" restrict="" class="btn btn-default" ng-click="setCompleted()"
             span class="glyphicon glyphicon-ok" aria-hidden="true"
             span  Set As Completed
     br
@@ -36,6 +36,9 @@ div
             td
                 span
                     | {{ project.deadline_date | date: 'dd-MM-yyyy' }}
+
+    h4 class="text-blue" 
+        b Project Requirements
 
     table class="table table-condensed table-striped"
         tbody
