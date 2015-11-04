@@ -1,19 +1,19 @@
-div class="text-center"
-    alert type="info"
-        b
-            | Application status: {{ status }}
-        br
-        br
+/ div class="text-center"
+/     alert type="info"
+/         b
+/             | Application status: {{ status }}
+/         br
+/         br
 
-        div ng-show="status == 'Awaiting student\'s response.'"
-            div  access="administrator student" restrict=""
-                button class="btn btn-default button-margin-10" ng-really-message="Are you sure? You will not be able to change your decision." ng-really-click="processOffer(true)" Accept
-                button class="btn btn-default button-margin-10" ng-really-message="Are you sure? You will not be able to change your decision." ng-really-click="processOffer(false)" Reject
+        / div ng-show="status == 'Awaiting student\'s response.'"
+        /     div  access="administrator student" restrict=""
+        /         button class="btn btn-default button-margin-10" ng-really-message="Are you sure? You will not be able to change your decision." ng-really-click="processOffer(true)" Accept
+        /         button class="btn btn-default button-margin-10" ng-really-message="Are you sure? You will not be able to change your decision." ng-really-click="processOffer(false)" Reject
 
-        div ng-show="status == 'Awaiting professor\'s response.'"
-            div access="administrator professor" restrict=""
-                button class="btn btn-default button-margin-10" ng-really-message="Are you sure? You will not be able to change your decision." ng-really-click="processOffer(true)" Accept
-                button class="btn btn-default button-margin-10" ng-really-message="Are you sure? You will not be able to change your decision." ng-really-click="processOffer(false)" Reject
+        / div ng-show="status == 'Awaiting professor\'s response.'"
+        /     div access="administrator professor" restrict=""
+        /         button class="btn btn-default button-margin-10" ng-really-message="Are you sure? You will not be able to change your decision." ng-really-click="processOffer(true)" Accept
+        /         button class="btn btn-default button-margin-10" ng-really-message="Are you sure? You will not be able to change your decision." ng-really-click="processOffer(false)" Reject
 
 div
     h3 class="text-blue"
@@ -76,11 +76,13 @@ div
             span class="glyphicon glyphicon-plus" aria-hidden="true"
             span  New Request
 
+    br
+
     div restrict="" access="administrator student"
         table class="table table-striped"
-            thead
-                tr
-                    th #
+            tr
+                th 
+                    b # Your Reference Requests
             tr ng-repeat="reference in allReferences"
                 td
                     div class="row"
@@ -97,19 +99,15 @@ div
                             div ng-show="reference.professor_approved == true"
                                 button ng-show="reference.student_approved == null || reference.student_approved == false" class="btn btn-default btn-sm" ng-click="processReferenceApproval(reference, true)" Use
                                 button ng-show="reference.student_approved == true" class="btn btn-default btn-sm" ng-click="processReferenceApproval(reference, false)" Discard
-        alert ng-show="allReferences.length == 0" None at the moment.
+
     div restrict="" access="administrator professor"
         table class="table table-striped"
-            thread
-                tr
-                    th #
+            tr
+                th 
+                    b # References from Professors
             tr ng-repeat="reference in studentApprovedReferences"
-
                 td
                     p
                         | By: {{ reference.professor.name }}
                     p
                         | Message: {{ reference.professor_text }}
-        alert ng-show="studentApprovedReferences.length == 0" None at the moment.
-
-

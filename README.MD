@@ -37,7 +37,6 @@ unnecessary attribute entries.
 
 ### 3. Contact/ Links
 
-* Online Demo Link: <http://dry-forest-3722.herokuapp.com/>
 * Faculty Supervisor: François Pitt <fpitt[at]cs[dot]utoronto[dot]ca>
 
 
@@ -54,4 +53,4 @@ The project is supervised by Professor François Pitt.
 
 Developers:
 * Alan Yuan: alan[dot]yuan[at]mail[dot]utoronto[dot]ca
-* Christina: Chung cachungchristina[at]gmail[dot]com
+* Christina Chung: cachungchristina[at]gmail[dot]com

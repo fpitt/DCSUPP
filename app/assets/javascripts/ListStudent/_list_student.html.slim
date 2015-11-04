@@ -34,6 +34,9 @@ div class="row"
                                     a ui-sref=".selected_student({id: student.id})"
                                         | {{ student.name }}
 
+                div ng-if="!(browse)"
+                    alert Currently Under Implementation
+
     div class="col-md-8"
         div class="panel-content"
             ui-view
