@@ -14,7 +14,43 @@ div
 
         div class="form-group"
             label for="exampleInputEmail" Deadline
-            input type="date" class="form-control" ng-model="project.deadline_date" placeholder="yyyy-MM-dd" required="true"
+            input type="date" class="form-control span40" ng-model="project.deadline_date" placeholder="yyyy-MM-dd" required="true"
+
+        b Project Requirements
+
+        div class="span70"
+            table class="table table-condensed table-striped table-fixed"
+                thead
+                    tr
+                        th #
+                        th Type
+                        th Value
+                        th Comparison
+                tbody
+                    /Top Row, Add Category Row
+                    form name="addCategory" 
+                        tr
+                            td
+                                button type="button" class="btn btn-default" ng-click="add_requirement(project_requirement)"
+                                    span class="glyphicon glyphicon glyphicon-plus" 
+                            td
+                                select class="form-control" ng-model="project_requirement.attribute_type" name="inputOption"
+                                    option value="Number" Number
+                                    option value="Date" Date
+                                    option value="Boolean" Boolean
+                                    option value="Input Field" Input Field
+                            td
+                                if ng-if="project_requirement.attribute_type=='Number'"
+                                    input type="number" class="form-control" placeholder="Input Value" ng-model="project_requirement.sub_category_name" name="inputName"
+                                if ng-if="project_requirement.attribute_type=='Date'"
+                                    input type="date" class="form-control" placeholder="yyyy-MM-dd" ng-model="category.maxDate"
+                            td
+                                if ng-if="project_requirement.attribute_type=='Number' ||project_requirement.attribute_type=='Date' "
+                                    select class="form-control" ng-model="project_requirement.comparison" name="inputOption"
+                                        option value="None" [None]
+                                        option value="Date" Date
+                                        option value="Boolean" Boolean
+                                        option value="Input Field" Input Field
 
 
         br
