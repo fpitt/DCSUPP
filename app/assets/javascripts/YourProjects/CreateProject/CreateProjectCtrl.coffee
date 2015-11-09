@@ -55,7 +55,7 @@ controllerFunction = ($scope, User, Project, RequirementCategory, RequirementSub
 		if ($scope.requirement_input && $scope.requirement_input.id)
 			#Set the project requirement variables
 			$scope.project_requirement.name = $scope.requirement_input.sub_category_name
-			$scope.project_requirement.category_id = $scope.requirement_input.requirement_subcategory_id
+			$scope.project_requirement.category_id = $scope.requirement_input.id
 			$scope.requirement_list.push($scope.project_requirement)
 
 			#Reset the input states
@@ -65,6 +65,15 @@ controllerFunction = ($scope, User, Project, RequirementCategory, RequirementSub
 			console.log($scope.requirement_list)
 		else
 			$scope.requirement_input_error = "Please select a Requirement SubCategory"
+
+	#	Remove Category from Array
+	$scope.removeCategory = (category) ->
+		console.log(category.category_id)
+		index = 0
+		for requirement in $scope.requirement_list
+			if requirement.category_id == category.category_id
+				$scope.requirement_list.splice(index, 1)
+			index = index + 1
 
 	#	create the project
 	$scope.createProject = ->
