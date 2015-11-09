@@ -52,6 +52,7 @@ controllerFunction = ($scope, User, Project, RequirementCategory, RequirementSub
             deferred.resolve(data)
         return deferred.promise
 
+    $('.collapse').collapse()
 
 angular
 	.module('dcsupp')
