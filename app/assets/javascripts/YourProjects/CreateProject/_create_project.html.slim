@@ -13,7 +13,7 @@ div
             textarea class="form-control" rows="5" placeholder="Project Description" ng-model="project.text" required="true"
 
         div class="form-group"
-            label for="exampleInputEmail" Deadline
+            label for="exampleInputEmail" Project Application Deadline
             input type="date" class="form-control span40" ng-model="project.deadline_date" placeholder="yyyy-MM-dd" required="true"
 
         div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true"
@@ -28,7 +28,7 @@ div
                     div class="panel-body"
                         div class="row"
                             div class="col-xs-8"
-                                p Left
+                                p The project requirements will be displayed under the project description with their specific requirements. In addition, DCSUPP will match students with specific project requirements.
                             div class="col-xs-4"
                                 button class="btn btn-default" ui-sref="manage_category"
                                     span class="glyphicon glyphicon glyphicon-question-sign" aria-hidden="true"
@@ -36,46 +36,90 @@ div
 
         div class="row"
             div class="col-xs-8"
+                b class="text-blue"
+                    | {{ requirement_input_error }}
+
                 table class="table table-condensed"
                     thead
                         tr
                             th #
                             th Category Name
                             th ng-if="requirement_input.attribute_type=='Number' ||requirement_input.attribute_type=='Date'" Comparison
-                            th Value
+                            th ng-if="requirement_input.id" Value  
+
                     tbody
                         /Top Row, Add Category Row
                         form name="addCategory" 
                             tr
                                 td
-                                    button type="button" class="btn btn-default"    
+                                    button type="button" class="btn btn-default" ng-click="addCategory()" 
                                         span class="glyphicon glyphicon glyphicon-plus"
                                 td
-                                    input class="form-control" type="text" ng-model="requirement_input" typeahead="subcategory as subcategory.sub_category_name for subcategory in getSubCategories($viewValue)" typeahead-select-on-exact="true" required="true" ng-click="isComplete()" placeholder="Category Name"
+                                    input class="form-control" type="text" ng-model="requirement_input" typeahead="subcategory as subcategory.sub_category_name for subcategory in getSubCategories($viewValue)" typeahead-select-on-exact="true" required="true" placeholder="Category Name"
+
+                                td ng-if="requirement_input.attribute_type=='Number' ||requirement_input.attribute_type=='Date' "
+                                    select class="form-control" ng-model="project_requirement.comparison" name="inputOption"
+                                        option value="None" [None]
+                                        option value="equal" Equal Value
+                                        option value="Greater" Greater Than Value
+                                        option value="Less" Less Than Value
+                                        option value="GreaterEqual" Greater Than or Equal Value
+                                        option value="LessEqual" Less Than or Equal Value
 
                                 td
-                                    if ng-if="requirement_input.attribute_type=='Number' ||requirement_input.attribute_type=='Date' "
-                                        select class="form-control" ng-model="project_requirement.comparison" name="inputOption"
-                                            option value="None" [None]
-                                            option value="equal" Equal Value
-                                            option value="Greater" Greater Than Value
-                                            option value="Less" Less Than Value
-                                            option value="GreaterEqual" Greater Than or Equal Value
-                                            option value="LessEqual" Less Than or Equal Value
-
-
+                                    if ng-if="requirement_input.attribute_type=='Number'"
+                                        input type="number" class="form-control" placeholder="Input Value" ng-model="project_requirement.value_input" name="inputName"
+                                    if ng-if="requirement_input.attribute_type=='Date'"
+                                        input type="date" class="form-control" placeholder="yyyy-MM-dd" ng-model="project_requirement.value_date"
+                                    if ng-if="requirement_input.attribute_type=='Input Field'"
+                                        input type="text" class="form-control" placeholder="Input Requirement" ng-model="project_requirement.value_input"
+                                    if ng-if="requirement_input.attribute_type=='Boolean'"
+                                        div style="text-align:center"
+                                            div class="checkbox"
+                                                label
+                                                    input type="checkbox" name="studentAttribute" ng-model="project_requirement.value_boolean"
+                
+                div ng-if="requirement_list.length != 0"
+                    label for="exampleInputEmail" Project Title
+                    table class="table table-condensed"
+                        thead
+                        tr
+                            th #
+                            th Category Name
+                            th Comparison
+                            th Value
+                        tbody
+                            tr ng-repeat="requirement in requirement_list"
                                 td
-                                    if ng-if="project_requirement.attribute_type=='Number'"
-                                        input type="number" class="form-control" placeholder="Input Value" ng-model="project_requirement.sub_category_name" name="inputName"
-                                    if ng-if="project_requirement.attribute_type=='Date'"
-                                        input type="date" class="form-control" placeholder="yyyy-MM-dd" ng-model="category.maxDate"
+                                    p
+                                        | Remove
+                                td
+                                    p 
+                                        | {{ requirement.attribute_type }}
+                                td
+                                    p
+                                        | {{ requirement.comparison }}
+                                td
+                                    p
+                                        | {{ requirement.value_number }}
+
+
             div class="col-xs-4"
                 div ng-if="requirement_input.sub_category_name"
                     h4 class="text-blue"
                         b Selected Requirement
                     p
+                        b Name: 
                         | {{ requirement_input.sub_category_name }}
-
+                    p
+                        b Type: 
+                        | {{ requirement_input.attribute_type }}
+                    p ng-if="requirement_input.upper_limit"
+                        b Upper Limit: 
+                        | {{ requirement_input.upper_limit }}
+                    p ng-if="requirement_input.lower_limit"
+                        b Upper Limit: 
+                        | {{ requirement_input.lower_limit }}
 
         br
         div class="form-group"

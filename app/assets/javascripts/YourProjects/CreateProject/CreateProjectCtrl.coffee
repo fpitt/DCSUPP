@@ -21,16 +21,41 @@ controllerFunction = ($scope, User, Project, RequirementCategory, RequirementSub
 	#	project form information
 	$scope.project = {}
 	#	required student attributes of this project
-	$scope.project_requirements =  []
+	$scope.requirement_list =  []
 	#	Project Requirement
 	$scope.project_requirement = 
 		attribute_type: "Number"
-		value: ""
+		value_number: null
+		value_date: new Date()
+		value_boolean: false
+		value_input: ""
+		comparison: "None"
+	#	Default Empty
+	$scope.project_requirement_empty = 
+		attribute_type: "Number"
+		value_number: null
+		value_date: new Date()
+		value_boolean: false
+		value_input: ""
 		comparison: "None"
 
 	# --- Search Requirement Category ---
 	#	Requirement Input
 	$scope.requirement_input = ""
+	#	Requirement Input Error
+	$scope.requirement_input_error = ""
+
+	#	Add Requirement Category
+	$scope.addCategory = ->
+		#Check if the Input Exists
+		if ($scope.requirement_input && $scope.requirement_input.id)
+			$scope.requirement_list.push($scope.project_requirement)
+			$scope.project_requirement = angular.copy($scope.project_requirement_empty)
+			$scope.requirement_input = ""
+			$scope.requirement_input_error = ""
+			console.log($scope.requirement_list)
+		else
+			$scope.requirement_input_error = "Please select a Requirement SubCategory"
 
 	#	create the project
 	$scope.createProject = ->
@@ -52,7 +77,7 @@ controllerFunction = ($scope, User, Project, RequirementCategory, RequirementSub
             deferred.resolve(data)
         return deferred.promise
 
-    $('.collapse').collapse()
+    $('.collapse').collapse()	
 
 angular
 	.module('dcsupp')
