@@ -29,7 +29,7 @@ controllerFunction = ($scope, User, Project, RequirementCategory, RequirementSub
 		value_date: new Date()
 		value_boolean: false
 		value_input: ""
-		comparison: "None"
+		comparison: "Equal"
 		name: ""
 		category_id: null
 	#	Default Empty
@@ -39,7 +39,7 @@ controllerFunction = ($scope, User, Project, RequirementCategory, RequirementSub
 		value_date: new Date()
 		value_boolean: false
 		value_input: ""
-		comparison: "None"
+		comparison: "Equal"
 		name: ""
 		category_id: null
 
@@ -71,8 +71,21 @@ controllerFunction = ($scope, User, Project, RequirementCategory, RequirementSub
 
 	#Validate Input
 	$scope.validateInput = ->
-		if ($scope.requirement_input.attribute_type == 'Number' && $scope.project_requirement.value_number == null)
-			$scope.requirement_input_error = "Input Number Cannot be Null"
+		if ($scope.requirement_input.attribute_type == 'Number')
+			if ($scope.project_requirement.value_number == null)
+				$scope.requirement_input_error = "Input Number Cannot be Null"
+				return false
+			if ($scope.requirement_input.upper_limit)
+				if (parseInt($scope.requirement_input.upper_limit) < $scope.project_requirement.value_number)
+					$scope.requirement_input_error = "Comparison Value cannot be greater than the Upper Limit"
+					return false
+			if ($scope.requirement_input.lower_limit)
+				if (parseInt($scope.requirement_input.lower_limit) > $scope.project_requirement.value_number)
+					$scope.requirement_input_error = "Comparison Value cannot be Less than the Lower Limit"
+					return false
+
+		if ($scope.requirement_input.attribute_type == 'Input Field' && $scope.project_requirement.value_input == null)
+			$scope.requirement_input_error = "Input Field Cannot be Null"
 			return false
 
 		return true
