@@ -153,6 +153,22 @@ class RequirementSubcategoriesController < ApplicationController
         end
     end
 
+    #   return all processors with name containing keyword
+    def get_subcategories_containing_keyword
+        respond_to do |format|
+            format.json {
+                param = params[:payload]
+                    @category = RequirementSubcategory.where('sub_category_name LIKE ?', '%' + param[:subcategory] + '%').take(8)
+                    if @category
+                        render :json => @category
+                    else
+                        render :nothing => true, :status => 200, :content_type => 'text/html'
+                    end
+            }
+        end
+
+    end
+
     #   get all subcategories that are non student attributes for a given project
     def get_non_student_attribute_subcategories_of_project
         respond_to do |format|

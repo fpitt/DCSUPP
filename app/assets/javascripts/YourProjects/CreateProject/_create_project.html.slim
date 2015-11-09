@@ -16,41 +16,52 @@ div
             label for="exampleInputEmail" Deadline
             input type="date" class="form-control span40" ng-model="project.deadline_date" placeholder="yyyy-MM-dd" required="true"
 
-        b Project Requirements
+        br
+        div class="row"
+            div class="col-xs-9"
+                h4 class="text-blue"
+                    b Project Requirements
+            div class="col-xs-3 align-right"
+                button class="btn btn-default" ui-sref="manage_category"
+                    span class="glyphicon glyphicon glyphicon-question-sign" aria-hidden="true"
+                    span  Browse Requirements
 
-        div class="span70"
-            table class="table table-condensed table-striped table-fixed"
-                thead
-                    tr
-                        th #
-                        th Type
-                        th Value
-                        th Comparison
-                tbody
-                    /Top Row, Add Category Row
-                    form name="addCategory" 
+
+        div class="row"
+            div class="col-xs-9"
+                table class="table table-condensed"
+                    thead
                         tr
-                            td
-                                button type="button" class="btn btn-default" ng-click="add_requirement(project_requirement)"
-                                    span class="glyphicon glyphicon glyphicon-plus" 
-                            td
-                                select class="form-control" ng-model="project_requirement.attribute_type" name="inputOption"
-                                    option value="Number" Number
-                                    option value="Date" Date
-                                    option value="Boolean" Boolean
-                                    option value="Input Field" Input Field
-                            td
-                                if ng-if="project_requirement.attribute_type=='Number'"
-                                    input type="number" class="form-control" placeholder="Input Value" ng-model="project_requirement.sub_category_name" name="inputName"
-                                if ng-if="project_requirement.attribute_type=='Date'"
-                                    input type="date" class="form-control" placeholder="yyyy-MM-dd" ng-model="category.maxDate"
-                            td
-                                if ng-if="project_requirement.attribute_type=='Number' ||project_requirement.attribute_type=='Date' "
-                                    select class="form-control" ng-model="project_requirement.comparison" name="inputOption"
-                                        option value="None" [None]
-                                        option value="Date" Date
-                                        option value="Boolean" Boolean
-                                        option value="Input Field" Input Field
+                            th #
+                            th Category Name
+                            th Comparison
+                            th Value
+                    tbody
+                        /Top Row, Add Category Row
+                        form name="addCategory" 
+                            tr
+                                td
+                                    button type="button" class="btn btn-default"    
+                                        span class="glyphicon glyphicon glyphicon-plus"
+                                td
+                                    input class="form-control" type="text" ng-model="requirement_input" typeahead="subcategory as subcategory.sub_category_name for subcategory in getSubCategories($viewValue)" typeahead-select-on-exact="true" required="true" ng-click="isComplete()" placeholder="Category Name"
+
+                                td
+                                    if ng-if="project_requirement.attribute_type=='Number' ||project_requirement.attribute_type=='Date' "
+                                        select class="form-control" ng-model="project_requirement.comparison" name="inputOption"
+                                            option value="None" [None]
+                                            option value="GreaterEqual" >= 
+                                            option value="LessEqual" <=
+                                            option value="Greater" >
+                                td
+                                    if ng-if="project_requirement.attribute_type=='Number'"
+                                        input type="number" class="form-control" placeholder="Input Value" ng-model="project_requirement.sub_category_name" name="inputName"
+                                    if ng-if="project_requirement.attribute_type=='Date'"
+                                        input type="date" class="form-control" placeholder="yyyy-MM-dd" ng-model="category.maxDate"
+            div class="col-xs-3"
+                div ng-if="requirement_input.sub_category_name"
+                    p
+                        | {{ requirement_input.sub_category_name }}
 
 
         br

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151008050908) do
+ActiveRecord::Schema.define(version: 20151109164148) do
 
   create_table "professor_settings", force: :cascade do |t|
     t.datetime "created_at",                       null: false
@@ -48,8 +48,8 @@ ActiveRecord::Schema.define(version: 20151008050908) do
     t.datetime "updated_at",                 null: false
     t.integer  "requirement_subcategory_id"
     t.integer  "project_id"
-    t.string   "value_array"
     t.string   "value"
+    t.string   "comparison"
   end
 
   add_index "project_requirements", ["project_id"], name: "index_project_requirements_on_project_id"

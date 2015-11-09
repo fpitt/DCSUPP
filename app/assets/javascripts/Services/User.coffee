@@ -58,5 +58,15 @@ ServiceFunction = (requestService) ->
             url: '/filter_students.json'
         requestService.service(sendParams, payload)
 
+    #   get all subcategories whose name contains keyword
+    #   payload format:
+    #       keyword: String (search term)
+    getSubCategoryContainingKeyword : (payload) ->
+        sendParams =
+            url: '/requirement_suggestion.json'
+            method: 'POST'
+        requestService.service(sendParams, payload)
+
+
 angular.module('dcsupp').service('User', ServiceFunction)
 

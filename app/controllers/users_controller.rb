@@ -133,8 +133,6 @@ class UsersController < ApplicationController
 
     end
 
-
-
     #   get filtered list of projects by subcategories
     def filter_students
         respond_to do |format|

@@ -28,6 +28,10 @@ controllerFunction = ($scope, User, Project, RequirementCategory, RequirementSub
 		value: ""
 		comparison: "None"
 
+	# --- Search Requirement Category ---
+	#	Requirement Input
+	$scope.requirement_input = ""
+
 	#	create the project
 	$scope.createProject = ->
 		Project.create($scope.project)
@@ -40,6 +44,14 @@ controllerFunction = ($scope, User, Project, RequirementCategory, RequirementSub
 		).error((data) ->
 			$scope.error = true
 		)
+
+	#   get all professors with names matching keyword "name"
+	$scope.getSubCategories = (name) ->
+		deferred = $q.defer()
+		User.getSubCategoryContainingKeyword(subcategory: name).success (data) ->
+            deferred.resolve(data)
+        return deferred.promise
+
 
 angular
 	.module('dcsupp')

@@ -64,6 +64,7 @@ Rails.application.routes.draw do
     post "/non_student_attribute_requirement_subcategories_with_keyword" => 'requirement_subcategories#non_student_attribute_requirement_subcategories_with_keyword'
     post "get_student_attribute_subcategories_of_project" => 'requirement_subcategories#get_student_attribute_subcategories_of_project'
     post "get_non_student_attribute_subcategories_of_project" => 'requirement_subcategories#get_non_student_attribute_subcategories_of_project'
+    post "/requirement_suggestion" => "requirement_subcategories#get_subcategories_containing_keyword"
 
     #References Routes
     post "/get_by_project" => 'references#get_by_project'
