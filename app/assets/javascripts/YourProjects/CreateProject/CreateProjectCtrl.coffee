@@ -30,6 +30,8 @@ controllerFunction = ($scope, User, Project, RequirementCategory, RequirementSub
 		value_boolean: false
 		value_input: ""
 		comparison: "None"
+		name: ""
+		category_id: null
 	#	Default Empty
 	$scope.project_requirement_empty = 
 		attribute_type: "Number"
@@ -38,6 +40,8 @@ controllerFunction = ($scope, User, Project, RequirementCategory, RequirementSub
 		value_boolean: false
 		value_input: ""
 		comparison: "None"
+		name: ""
+		category_id: null
 
 	# --- Search Requirement Category ---
 	#	Requirement Input
@@ -49,7 +53,12 @@ controllerFunction = ($scope, User, Project, RequirementCategory, RequirementSub
 	$scope.addCategory = ->
 		#Check if the Input Exists
 		if ($scope.requirement_input && $scope.requirement_input.id)
+			#Set the project requirement variables
+			$scope.project_requirement.name = $scope.requirement_input.sub_category_name
+			$scope.project_requirement.category_id = $scope.requirement_input.requirement_subcategory_id
 			$scope.requirement_list.push($scope.project_requirement)
+
+			#Reset the input states
 			$scope.project_requirement = angular.copy($scope.project_requirement_empty)
 			$scope.requirement_input = ""
 			$scope.requirement_input_error = ""

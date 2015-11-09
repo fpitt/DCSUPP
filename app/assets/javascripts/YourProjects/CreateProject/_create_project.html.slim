@@ -60,11 +60,11 @@ div
                                 td ng-if="requirement_input.attribute_type=='Number' ||requirement_input.attribute_type=='Date' "
                                     select class="form-control" ng-model="project_requirement.comparison" name="inputOption"
                                         option value="None" [None]
-                                        option value="equal" Equal Value
-                                        option value="Greater" Greater Than Value
-                                        option value="Less" Less Than Value
-                                        option value="GreaterEqual" Greater Than or Equal Value
-                                        option value="LessEqual" Less Than or Equal Value
+                                        option value="equal" Equal
+                                        option value="Greater" Greater
+                                        option value="Less" Less
+                                        option value="GreaterEqual" Greater or Equal
+                                        option value="LessEqual" Less or Value
 
                                 td
                                     if ng-if="requirement_input.attribute_type=='Number'"
@@ -91,17 +91,16 @@ div
                         tbody
                             tr ng-repeat="requirement in requirement_list"
                                 td
-                                    p
-                                        | Remove
+                                    button type="button" class="btn btn-default" ng-click="removeCategory(requirement)" Remove 
                                 td
                                     p 
-                                        | {{ requirement.attribute_type }}
+                                        | {{ requirement.name }}
                                 td
                                     p
                                         | {{ requirement.comparison }}
                                 td
                                     p
-                                        | {{ requirement.value_number }}
+                                        | {{ requirement.value_input }}
 
 
             div class="col-xs-4"
