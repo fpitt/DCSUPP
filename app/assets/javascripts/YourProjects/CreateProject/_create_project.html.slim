@@ -21,14 +21,12 @@ div
                 div class="panel-heading" role="tab" id="headingOne"
                     h4 class="panel-title"
                         a role="button" data-toggle="collapse" data-parent="#accordion" href="#project_Information" aria-expanded="false" aria-controls="collapseOne" class="collapsed" 
-                            b class="text-blue"
-                                span class="glyphicon glyphicon glyphicon-question-sign" 
-                                b  Project Requirements Information
+                            b  Project Requirements Information
                 div id="project_Information" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne" aria-expanded="false" style="height: 0px;"
                     div class="panel-body"
                         div class="row"
                             div class="col-xs-8"
-                                p The project requirements will be displayed under the project description with their specific requirements. In addition, DCSUPP will match students with specific project requirements.
+                                p The project requirements will be displayed under the project description with their specific requirements. In addition, DCSUPP will match students with specific project requirements. 
                             div class="col-xs-4"
                                 button class="btn btn-default" ui-sref="manage_category"
                                     span class="glyphicon glyphicon glyphicon-question-sign" aria-hidden="true"
@@ -55,7 +53,7 @@ div
                                     button type="button" class="btn btn-default" ng-click="addCategory()" 
                                         span class="glyphicon glyphicon glyphicon-plus"
                                 td
-                                    input class="form-control" type="text" ng-model="requirement_input" typeahead="subcategory as subcategory.sub_category_name for subcategory in getSubCategories($viewValue)" typeahead-select-on-exact="true" required="true" placeholder="Category Name"
+                                    input class="form-control" type="text" ng-model="requirement_input" typeahead="subcategory as subcategory.sub_category_name for subcategory in getSubCategories($viewValue)" typeahead-select-on-exact="true" placeholder="Category Name"
 
                                 td ng-if="requirement_input.attribute_type=='Number' ||requirement_input.attribute_type=='Date' "
                                     select class="form-control" ng-model="project_requirement.comparison" name="inputOption"
@@ -68,7 +66,7 @@ div
 
                                 td
                                     if ng-if="requirement_input.attribute_type=='Number'"
-                                        input type="number" class="form-control" placeholder="Input Value" ng-model="project_requirement.value_input" name="inputName"
+                                        input type="number" class="form-control" placeholder="Input Value" ng-model="project_requirement.value_number" name="inputName"
                                     if ng-if="requirement_input.attribute_type=='Date'"
                                         input type="date" class="form-control" placeholder="yyyy-MM-dd" ng-model="project_requirement.value_date"
                                     if ng-if="requirement_input.attribute_type=='Input Field'"
@@ -100,7 +98,7 @@ div
                                         | {{ requirement.comparison }}
                                 td
                                     p
-                                        | {{ requirement.value_input }}
+                                        | {{ requirement.value_number }}
 
 
             div class="col-xs-4"

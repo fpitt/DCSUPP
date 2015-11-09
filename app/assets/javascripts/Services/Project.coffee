@@ -17,10 +17,13 @@ ServiceFunction = (requestService) ->
     #       deadline_date: Date Object (application submission deadline)
     #       requirements: [ list of requirement subcategories ]
     #       details: [ list of non student attribute requirement subcategories ]
-    create: (payload) ->
+    create: (project, requirement) ->
         sendParams =
             url: '/projects.json'
             method: "POST"
+        payload =
+            project: project
+            requirement: requirement
         return requestService.service(sendParams, payload)
 
 

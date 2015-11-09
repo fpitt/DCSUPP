@@ -51,6 +51,10 @@ controllerFunction = ($scope, User, Project, RequirementCategory, RequirementSub
 
 	#	Add Requirement Category
 	$scope.addCategory = ->
+		if (!$scope.validateInput())
+			console.log("false")
+			return false
+
 		#Check if the Input Exists
 		if ($scope.requirement_input && $scope.requirement_input.id)
 			#Set the project requirement variables
@@ -62,13 +66,19 @@ controllerFunction = ($scope, User, Project, RequirementCategory, RequirementSub
 			$scope.project_requirement = angular.copy($scope.project_requirement_empty)
 			$scope.requirement_input = ""
 			$scope.requirement_input_error = ""
-			console.log($scope.requirement_list)
 		else
 			$scope.requirement_input_error = "Please select a Requirement SubCategory"
 
+	#Validate Input
+	$scope.validateInput = ->
+		if ($scope.requirement_input.attribute_type == 'Number' && $scope.project_requirement.value_number == null)
+			$scope.requirement_input_error = "Input Number Cannot be Null"
+			return false
+
+		return true
+
 	#	Remove Category from Array
 	$scope.removeCategory = (category) ->
-		console.log(category.category_id)
 		index = 0
 		for requirement in $scope.requirement_list
 			if requirement.category_id == category.category_id
@@ -77,16 +87,14 @@ controllerFunction = ($scope, User, Project, RequirementCategory, RequirementSub
 
 	#	create the project
 	$scope.createProject = ->
-		Project.create($scope.project)
-		.success((data) ->
-			$scope.error = true
+		Project.create($scope.project, $scope.requirement_list)
+		.success (data) ->
 			# redirect to new page once project has been successfully added
 			$state.go('your_projects.project_info', {id: data.id})
 			# display updated list in parent state
 			$scope.getInProgressProjects()
-		).error((data) ->
+		.error (data) ->
 			$scope.error = true
-		)
 
 	#   get all professors with names matching keyword "name"
 	$scope.getSubCategories = (name) ->
