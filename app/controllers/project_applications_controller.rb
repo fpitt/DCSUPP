@@ -7,8 +7,11 @@ class ProjectApplicationsController < ApplicationController
                 param = params[:payload]
                 @project_application = ProjectApplication.new()
                 @project_application.assign_attributes({:title => param[:title],
-                    :message => param[:message], :project => Project.find_by_id(param[:project]),
-                    :user => @current_user}, :without_protection => true)
+                    :message => param[:message]}, :without_protection => true)
+
+                @project = Project.find_by_id(param[:project])
+                @project_application.project = @project 
+                @project_application.user = @current_user
 
                 #   add student attributes to project application
                 if param[:requirements]
@@ -35,13 +38,11 @@ class ProjectApplicationsController < ApplicationController
             format.json {
                 @project_application = ProjectApplication.find_by_id(param[:application])
                 if @project_application
-                    @project_application.resume = param[:file] 
-                    @project_application.resume_url = @project_application.resume.url
-                    if @project_application.save
+                    @project_application.update_attribute(:resume, param[:file])
+                    @project_application.update_attribute(:resume_url, @project_application.resume.url)
+
+                    @project_application.save
                         render :json => @project_application
-                    else
-                        render :nothing => true, :status => 200, :content_type => 'text/html'
-                    end
                 else
                     render :nothing => true, :status => 200, :content_type => 'text/html'
                 end
