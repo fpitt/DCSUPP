@@ -6,17 +6,15 @@ class ProjectApplicationsController < ApplicationController
             format.json {
                 param = params[:payload]
                 @project_application = ProjectApplication.new()
-                @project_application.update_attribute(:title, param[:title])
-                @project_application.update_attribute(:message, param[:message])
-                @project_application.update_attribute(:project, Project.find_by_id(param[:project]))
-                @project_application.update_attribute(:user, @current_user)
-
+                @project_application.assign_attributes({:title => param[:title],
+                    :message => param[:message], :project => Project.find_by_id(param[:project]),
+                    :user => @current_user}, :without_protection => true)
 
                 #   add student attributes to project application
                 if param[:requirements]
                     for requirement in param[:requirements]
                         @student_attribute = StudentAttribute.where(:requirement_subcategory_id => requirement[:id], :user_id => @current_user.id).first_or_create
-                        @student_attribute.update_attribute(:value, requirement[:value])
+                        @student_attribute.value = requirement[:value]
                         @student_attribute.save
                     end
                 end
@@ -37,10 +35,13 @@ class ProjectApplicationsController < ApplicationController
             format.json {
                 @project_application = ProjectApplication.find_by_id(param[:application])
                 if @project_application
-                    @project_application.update_attribute(:resume, param[:file])
-                     @project_application.update_attribute(:resume_url, @project_application.resume.url)
-                    @project_application.save
-                    render :json => @project_application
+                    @project_application.resume = param[:file] 
+                    @project_application.resume_url = @project_application.resume.url
+                    if @project_application.save
+                        render :json => @project_application
+                    else
+                        render :nothing => true, :status => 200, :content_type => 'text/html'
+                    end
                 else
                     render :nothing => true, :status => 200, :content_type => 'text/html'
                 end
@@ -121,16 +122,18 @@ class ProjectApplicationsController < ApplicationController
 
                 if @project_application
                     if @current_user.administrator
-                        @project_application.update_attribute(:administrator_approved, param[:approved])
+                        @project_application.administrator_approved = param[:approved]
                     elsif @current_user.professor
-                        @project_application.update_attribute(:professor_approved, param[:approved])
+                        @project_application.professor_approved = param[:approved]
                     else
-                         @project_application.update_attribute(:student_approved, param[:approved])
+                         @project_application.student_approved = param[:approved]
                     end
 
-                    @project_application.save
-
-                    render :json => @project_application
+                    if @project_application.save
+                        render :json => @project_application
+                    else
+                        render :nothing => true, :status => 200, :content_type => 'text/html'
+                    end
                 else
                     render :nothing => true, :status => 200, :content_type => 'text/html'
                 end

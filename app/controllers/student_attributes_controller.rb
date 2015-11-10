@@ -56,17 +56,19 @@ class StudentAttributesController < ApplicationController
                 @attribute = StudentAttribute.find_or_create_by(requirement_subcategory_id: 
                     input_data[:subcategory_id], requirement_category_id: input_data[:category_id])
 
-                if (@requirement_subcategory.attribute_type == "Date")
-                    @attribute.value = input_data[:input_date]
-                elsif (@requirement_subcategory.attribute_type == "Number")
-                    @attribute.value = input_data[:input_number]
-                elsif (@requirement_subcategory.attribute_type == "Boolean")
-                    @attribute.value = input_data[:input_boolean]
-                elsif (@requirement_subcategory.attribute_type == "Input Field")
-                    @attribute.value = input_data[:input_text]
+                case @requirement_subcategory.attribute_type
+                when "Date"
+                    data = input_data[:input_date]
+                when "Number"
+                    data = input_data[:input_number]
+                when "Boolean"
+                    data = input_data[:input_boolean]
+                when "Input Field"
+                    data = input_data[:input_text]
                 end
 
-                @attribute.user_id = @current_user.id
+                @attribute.value = data
+                @attribute.user = @current_user
 
                 if @attribute.save
                     render :json => @attribute

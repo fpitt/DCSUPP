@@ -25,6 +25,8 @@ class Project < ActiveRecord::Base
 
 	attr_accessible :title, :text
 
+	attr_protected :user
+
   	validates :title, presence: true, allow_blank: false
   	validates :text, presence: true, allow_blank: false
 

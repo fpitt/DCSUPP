@@ -17,4 +17,6 @@ class ProjectRequirement < ActiveRecord::Base
 
 	belongs_to :project
 	belongs_to :requirement_subcategory
+
+	attr_accessible :category_name, :comparison, :project_id, :subcategory_name
 end

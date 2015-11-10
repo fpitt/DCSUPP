@@ -1,4 +1,4 @@
-div
+div class="col-xs-12"
     h3 id="project-info-title" class="text-blue" 
         b Project Information 
     button class="button-margin-10" access="administrator professor" restrict="" class="btn btn-default" ui-sref="your_projects.update_project({id: project.id})"
@@ -37,7 +37,8 @@ div
                 span
                     | {{ project.deadline_date | date: 'dd-MM-yyyy' }}
 
-    h4 class="text-blue" 
+div class="col-xs-8"
+    h4 class="text-teal"
         b Project Requirements
 
     table class="table table-condensed"

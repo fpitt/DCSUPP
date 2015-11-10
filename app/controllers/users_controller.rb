@@ -16,8 +16,8 @@ class UsersController < ApplicationController
         respond_to do |format|
             format.json{
                 param = params[:payload]
-                @current_user.update_attribute(:contact_email, param[:input_email])
-                @current_user.update_attribute(:introduction, param[:input_text])
+                @current_user.contact_email = param[:input_email]
+                @current_user.introduction = param[:input_text]
 
                 if @current_user.save
                     render :json => @current_user
@@ -85,8 +85,8 @@ class UsersController < ApplicationController
             format.json {
                 param = params[:payload]
                 @user = User.find_by_id(param[:id])
-                @user.update_attribute(:name, param[:name])
-                @user.update_attribute(:email, param[:email])
+                @user.name = param[:name]
+                @user.email = param[:email]
                 if @user.save
                     render :json => @user
                 else

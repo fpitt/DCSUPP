@@ -8,34 +8,38 @@ class ProjectsController < ApplicationController
 
                 #   add project requirements to project
                 @project = Project.new()
-                @project.update_attribute(:title, param[:title])
-                @project.update_attribute(:text, param[:text])
-                @project.update_attribute(:deadline_date, param[:deadline_date])
-                @project.update_attribute(:user, @current_user)
-                @project.update_attribute(:completed, false)
+                @project.assign_attributes({:title => param[:title],
+                    :text => param[:text], :deadline_date => param[:deadline_date],
+                    :user => @current_user, :completed => false}, :without_protection => true)
 
                 #   add student attribute project requirements to project
                 if params[:payload][:requirement]
                     for requirement in params[:payload][:requirement]
+                        @subcategory = RequirementSubcategory.find_by_id(requirement[:category_id])
+
                         @requirement = ProjectRequirement.new()
-                        @requirement.update_attribute(:requirement_subcategory_id, requirement[:category_id])
-                        @requirement.update_attribute(:subcategory_name, requirement[:name])
-                        @requirement.update_attribute(:comparison, requirement[:comparison])
-                        @requirement.update_attribute(:project_id, @project.id)
-                        if requirement[:attribute_type] == 'Number'
-                            @requirement.update_attribute(:value, requirement[:value_number])
-                        elsif requirement[:attribute_type] == 'Date'
-                            @requirement.update_attribute(:value, requirement[:value_date])
-                        elsif requirement[:attribute_type] == 'Input Field'
-                            @requirement.update_attribute(:value, requirement[:value_input])
-                        else
-                            @requirement.update_attribute(:value, requirement[:value_boolean])
+                        @requirement.assign_attributes({
+                            :subcategory_name => requirement[:name],
+                            :comparison => requirement[:comparison]
+                            }, :without_protection => true)
+                        @requirement.project = @project
+                        @requirement.requirement_subcategory = @subcategory
+
+                        case requirement[:attribute_type] 
+                        when 'Number'
+                            update = requirement[:value_number]
+                        when 'Date'
+                            update = requirement[:value_date]
+                        when 'Input Field'
+                            update = requirement[:value_input]
+                        when 'Boolean'
+                            update = requirement[:value_boolean]
                         end
 
+                        @requirement.value = update
                         @requirement.save
                     end
                 end
-
 
                 if @project.save
                     render :json => @project
@@ -112,10 +116,10 @@ class ProjectsController < ApplicationController
                 param = params[:payload]
                 @project = Project.find_by_id(param[:id])
                 if @project
-                    @project.update_attribute(:title, param[:title])
-                    @project.update_attribute(:text, param[:text])
-                    @project.update_attribute(:deadline_date, param[:deadline_date])
-                    @project.update_attribute(:user, @current_user)
+                    @project.assign_attributes({
+                        :title => param[:title], :text => param[:text],
+                        :deadline_date => param[:deadline_date]
+                        }, :without_protection => true)
 
                      #   add project requirements to project
 
@@ -131,7 +135,7 @@ class ProjectsController < ApplicationController
                     if param[:details]
                         for subcategory in param[:details]
                             @requirement = ProjectRequirement.where(:requirement_subcategory => RequirementSubcategory.find_by_id(subcategory[:id]), :project => @project).first_or_create
-                            @requirement.update_attribute(:value, subcategory[:value])
+                            @requirement.value = subcategory[:value]
                             @requirement.save
                             end
                         end

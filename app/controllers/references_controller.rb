@@ -7,9 +7,9 @@ class ReferencesController < ApplicationController
                 param = params[:payload]
 
                 @reference = Reference.new()
-                @reference.update_attribute(:student_text, param[:student_text])
-                @reference.update_attribute(:project_application_id, param[:application])
-                @reference.update_attribute(:user_id, param[:professor])
+                @reference.student_text = param[:student_text]
+                @reference.project_application_id = param[:application]
+                @reference.user_id = param[:professor]
 
                 if @reference.save
                     render :json => @reference
@@ -80,9 +80,9 @@ class ReferencesController < ApplicationController
 
                 if @reference
                     if @current_user.professor
-                        @reference.update_attribute(:professor_approved, param[:approved])
+                        @reference.professor_approved = param[:approved]
                     else
-                         @reference.update_attribute(:student_approved, param[:approved])
+                         @reference.student_approved = param[:approved]
                     end
 
                     @reference.save
@@ -103,7 +103,7 @@ class ReferencesController < ApplicationController
                 @reference = Reference.find_by_id(param[:reference])
 
                 if @reference
-                    @reference.update_attribute(:professor_text, param[:professor_text])
+                    @reference.professor_text = param[:professor_text]
                     @reference.save
 
 
