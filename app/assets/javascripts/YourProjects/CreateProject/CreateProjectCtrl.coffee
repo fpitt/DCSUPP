@@ -52,7 +52,6 @@ controllerFunction = ($scope, User, Project, RequirementCategory, RequirementSub
 	#	Add Requirement Category
 	$scope.addCategory = ->
 		if (!$scope.validateInput())
-			console.log("false")
 			return false
 
 		#Check if the Input Exists
@@ -60,6 +59,7 @@ controllerFunction = ($scope, User, Project, RequirementCategory, RequirementSub
 			#Set the project requirement variables
 			$scope.project_requirement.name = $scope.requirement_input.sub_category_name
 			$scope.project_requirement.category_id = $scope.requirement_input.id
+			$scope.project_requirement.attribute_type =  $scope.requirement_input.attribute_type
 			$scope.requirement_list.push($scope.project_requirement)
 
 			#Reset the input states
@@ -82,7 +82,7 @@ controllerFunction = ($scope, User, Project, RequirementCategory, RequirementSub
 			if ($scope.requirement_input.lower_limit)
 				if (parseInt($scope.requirement_input.lower_limit) > $scope.project_requirement.value_number)
 					$scope.requirement_input_error = "Comparison Value cannot be Less than the Lower Limit"
-					return false
+					return false	
 
 		if ($scope.requirement_input.attribute_type == 'Input Field' && $scope.project_requirement.value_input == null)
 			$scope.requirement_input_error = "Input Field Cannot be Null"
