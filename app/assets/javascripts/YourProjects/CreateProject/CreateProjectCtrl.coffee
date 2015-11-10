@@ -24,21 +24,21 @@ controllerFunction = ($scope, User, Project, RequirementCategory, RequirementSub
 	$scope.requirement_list =  []
 	#	Project Requirement
 	$scope.project_requirement = 
-		attribute_type: "Number"
 		value_number: null
 		value_date: new Date()
 		value_boolean: false
 		value_input: ""
+		attribute_type: "Number"
 		comparison: "Equal"
 		name: ""
 		category_id: null
 	#	Default Empty
 	$scope.project_requirement_empty = 
-		attribute_type: "Number"
 		value_number: null
 		value_date: new Date()
 		value_boolean: false
 		value_input: ""
+		attribute_type: "Number"
 		comparison: "Equal"
 		name: ""
 		category_id: null

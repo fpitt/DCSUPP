@@ -4,8 +4,9 @@ class ProjectsController < ApplicationController
     def create
         respond_to do |format|
             format.json {
-                param = params[:payload]
+                param = params[:payload][:project]
 
+                #   add project requirements to project
                 @project = Project.new()
                 @project.update_attribute(:title, param[:title])
                 @project.update_attribute(:text, param[:text])
@@ -13,28 +14,26 @@ class ProjectsController < ApplicationController
                 @project.update_attribute(:user, @current_user)
                 @project.update_attribute(:completed, false)
 
-                #   add project requirements to project
-
                 #   add student attribute project requirements to project
-                if param[:requirements]
-                    for requirement in param[:requirements]
+                if params[:payload][:requirement]
+                    for requirement in params[:payload][:requirement]
                         @requirement = ProjectRequirement.new()
-                        @requirement.update_attribute(:requirement_subcategory, RequirementSubcategory.find_by_id(requirement[:id]))
-                        @requirement.update_attribute(:project, @project)
+                        @requirement.update_attribute(:requirement_subcategory_id, requirement[:category_id])
+                        @requirement.update_attribute(:comparison, requirement[:comparison])
+                        if requirement[:attribute_type] == 'Number'
+                            @requirement.update_attribute(:value, requirement[:value_number])
+                        elsif requirement[:attribute_type] == 'Date'
+                            @requirement.update_attribute(:value, requirement[:value_date])
+                        elsif requirement[:attribute_type] == 'Input Field'
+                            @requirement.update_attribute(:value, requirement[:value_input])
+                        else
+                            @requirement.update_attribute(:value, requirement[:value_boolean])
+                        end
+
                         @requirement.save
                     end
                 end
 
-                # add non student attribute project requirements to project
-                if param[:details]
-                    for detail in param[:details]
-                        @requirement = ProjectRequirement.new()
-                        @requirement.update_attribute(:requirement_subcategory, RequirementSubcategory.find_by_id(detail[:id]))
-                        @requirement.update_attribute(:value, detail[:value])
-                        @requirement.update_attribute(:project, @project)
-                        @requirement.save
-                    end
-                end
 
                 if @project.save
                     render :json => @project
