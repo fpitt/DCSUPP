@@ -19,7 +19,9 @@ class ProjectsController < ApplicationController
                     for requirement in params[:payload][:requirement]
                         @requirement = ProjectRequirement.new()
                         @requirement.update_attribute(:requirement_subcategory_id, requirement[:category_id])
+                        @requirement.update_attribute(:subcategory_name, requirement[:name])
                         @requirement.update_attribute(:comparison, requirement[:comparison])
+                        @requirement.update_attribute(:project_id, @project.id)
                         if requirement[:attribute_type] == 'Number'
                             @requirement.update_attribute(:value, requirement[:value_number])
                         elsif requirement[:attribute_type] == 'Date'

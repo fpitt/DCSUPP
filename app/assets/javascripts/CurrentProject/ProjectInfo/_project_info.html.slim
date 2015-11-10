@@ -40,15 +40,21 @@ div
     h4 class="text-blue" 
         b Project Requirements
 
-    table class="table table-condensed table-striped"
+    table class="table table-condensed"
         tbody
-            tr ng-repeat="detail in details"
+            tr ng-repeat="requirement in requirements"
                 td
-                    b
-                        | {{ detail.sub_category_name }}
+                    p 
+                        | {{ requirement.subcategory_name }}
                 td
-                    span
-                        | {{ detail.value }}
+                    p
+                        | {{ requirement.comparison }}
+                td
+                    p ng-if="!(requirement.attribute_type == 'Date')"
+                        | {{ requirement.value }}
+                    p ng-if="requirement.attribute_type == 'Date'"
+                        | {{ requirement.value | date:'yyyy-MM-dd'}}
+
 
     div class="text-center"
         div ng-show="acceptingApplications"

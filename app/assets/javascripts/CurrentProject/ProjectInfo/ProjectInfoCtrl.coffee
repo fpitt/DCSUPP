@@ -23,6 +23,8 @@
 controllerFunction = ($scope, $stateParams, Project, ProjectRequirement, RequirementSubcategory) ->
     #   project information
     $scope.project = {}
+    #   Project  Requirements
+    $scope.requirements = []
 
     #   set this project as being completed
     $scope.setCompleted = ->
@@ -35,7 +37,7 @@ controllerFunction = ($scope, $stateParams, Project, ProjectRequirement, Require
     #   get project information
     $scope.getProject = ->
         #   get project object with id $stateParams.id
-        Project.getById($stateParams.id).success((projectInfo) ->
+        Project.getById($stateParams.id).success (projectInfo) ->
             $scope.project = projectInfo
             dead = $scope.project.deadline_date
             #   check if deadline date is due
@@ -44,11 +46,15 @@ controllerFunction = ($scope, $stateParams, Project, ProjectRequirement, Require
             RequirementSubcategory.getNonStudentAttributeSubcategoriesOfProject(project: $stateParams.id).success((data) ->
                 $scope.details = data
             )
-        )
+            $scope.getByProject()
 
+    $scope.getByProject = ->
+        ProjectRequirement.getByProject($scope.project).success (data) ->
+            $scope.requirements = data
 
     #   get project information when controller loads
     $scope.getProject()
+    
 
 angular
 .module('dcsupp')

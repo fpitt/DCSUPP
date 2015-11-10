@@ -3,9 +3,8 @@ class ProjectRequirementsController < ApplicationController
     def get_requirements_of_project
         respond_to do |format|
             format.json {
-                param = params[:payload]
 
-                @requirements = ProjectRequirement.where(:project_id => param[:project])
+                @requirements = ProjectRequirement.where(:project_id => params[:payload][:id])
                 if @requirements
                     render :json => @requirements
                 else
