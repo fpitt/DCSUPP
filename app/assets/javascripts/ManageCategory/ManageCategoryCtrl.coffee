@@ -71,5 +71,5 @@ angular
         'RequirementSubcategory',  controllerFunction])
 
 
-ManageCategoryCtrl.$injector = ['$scope', 'RequirementCategory', 
+controllerFunction.$injector = ['$scope', 'RequirementCategory', 
         'RequirementSubcategory']

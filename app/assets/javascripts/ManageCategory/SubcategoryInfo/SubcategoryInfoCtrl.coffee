@@ -121,5 +121,5 @@ angular
     .controller('SubcategoryInfoCtrl', ['$scope', '$stateParams', 'RequirementCategory', 
     'RequirementSubcategory', 'User', controllerFunction])
 
-SubcategoryInfoCtrl.$injector = ['$scope', '$stateParams', 'RequirementCategory', 
+controllerFunction.$injector = ['$scope', '$stateParams', 'RequirementCategory', 
     'RequirementSubcategory', 'User']

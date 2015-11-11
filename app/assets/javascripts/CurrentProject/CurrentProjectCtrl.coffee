@@ -55,5 +55,5 @@ angular
 .controller('CurrentProjectCtrl', ['$scope', 'Project', 
 	'RequirementSubcategory','$q', controllerFunction])
 
-CurrentProjectCtrl.$inject = ['$scope', 'Project', 
+controllerFunction.$inject = ['$scope', 'Project', 
 	'RequirementSubcategory','$q']

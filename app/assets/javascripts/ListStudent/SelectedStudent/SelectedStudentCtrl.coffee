@@ -38,5 +38,5 @@ angular
 .controller('SelectedStudentCtrl', ['$scope', 'requestService', '$stateParams', 'StudentAttribute',
                                     'RequirementSubcategory', 'User', controllerFunction])
 
-SelectedStudentCtrl.$injector = ['$scope', 'requestService', '$stateParams', 'StudentAttribute',
+controllerFunction.$injector = ['$scope', 'requestService', '$stateParams', 'StudentAttribute',
                                     'RequirementSubcategory', 'User']

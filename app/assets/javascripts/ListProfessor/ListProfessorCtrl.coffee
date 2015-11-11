@@ -45,5 +45,5 @@ angular
 .controller('ListProfessorCtrl', ['$scope', '$modal', 'modalService', 'User', 
     'requestService', controllerFunction])
 
-ListProfessorCtrl.$injector = ['$scope', '$modal', 'modalService', 'User', 
+controllerFunction.$injector = ['$scope', '$modal', 'modalService', 'User', 
     'requestService']

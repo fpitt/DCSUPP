@@ -32,4 +32,4 @@ angular
 .controller('WriteReferenceCtrl',
     ['$scope', '$stateParams', '$state', 'Reference', 'modalService', controllerFunction])
 
-WriteReferenceCtrl.$injector = ['$scope', '$stateParams', '$state', 'Reference', 'modalService']
+controllerFunction.$injector = ['$scope', '$stateParams', '$state', 'Reference', 'modalService']

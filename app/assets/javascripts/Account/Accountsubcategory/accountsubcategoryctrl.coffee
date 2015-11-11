@@ -160,5 +160,5 @@ angular.module('dcsupp').controller('AttributeSubCategoryCtrl',
     ['$scope','$stateParams', '$state', 'User','RequirementSubcategory', 
     'RequirementCategory', 'StudentAttribute', AttributeSubCategoryFunction])
 
-AttributeSubCategoryCtrl.$inject = ['$scope','$stateParams', '$state', 'User',
+AttributeSubCategoryFunction.$inject = ['$scope','$stateParams', '$state', 'User',
     'RequirementSubcategory', 'RequirementCategory', 'StudentAttribute' ]

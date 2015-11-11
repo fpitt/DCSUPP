@@ -37,4 +37,4 @@ angular
 .controller('YourApplicationsCtrl', ['$scope', 'ProjectApplication', 
     'modalService', controllerFunction])
 
-YourApplicationsCtrl.$injector = ['$scope', 'ProjectApplication', 'modalService']
+controllerFunction.$injector = ['$scope', 'ProjectApplication', 'modalService']

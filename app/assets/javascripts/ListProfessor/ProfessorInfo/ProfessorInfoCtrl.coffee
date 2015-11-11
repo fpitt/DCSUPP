@@ -31,4 +31,4 @@ angular
 .controller('ProfessorInfoCtrl', ['$scope', 'requestService', '$stateParams', 
     'User', controllerFunction])
 
-ProfessorInfoCtrl.$injector = ['$scope', 'requestService', '$stateParams', 'User']
+controllerFunction.$injector = ['$scope', 'requestService', '$stateParams', 'User']

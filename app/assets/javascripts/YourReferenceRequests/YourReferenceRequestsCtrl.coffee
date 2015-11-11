@@ -65,5 +65,5 @@ angular
 .controller('YourReferenceRequestsCtrl', ['$scope', 'modalService', '$stateParams', 
     'Reference', 'Project', 'ProjectApplication', 'User', controllerFunction])
 
-YourReferenceRequestsCtrl.$injector = ['$scope', 'modalService', '$stateParams', 
+controllerFunction.$injector = ['$scope', 'modalService', '$stateParams', 
     'Reference', 'Project', 'ProjectApplication', 'User']

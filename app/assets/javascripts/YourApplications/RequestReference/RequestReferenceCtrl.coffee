@@ -37,5 +37,5 @@ angular
 .controller('RequestReferenceCtrl', ['$scope', '$stateParams', 'Reference', 'User', 
     '$q', '$state', 'ProjectApplication', controllerFunction])
 
-RequestReferenceCtrl.$injector = ['$scope', '$stateParams', 'Reference', 'User', 
+controllerFunction.$injector = ['$scope', '$stateParams', 'Reference', 'User', 
     '$q', '$state', 'ProjectApplication']

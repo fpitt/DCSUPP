@@ -49,5 +49,5 @@ angular
 .controller('YourProjectsCtrl', ['$scope', 'modalService', '$state', 'User', 
     'Project', 'ProjectApplication', controllerFunction])
 
-YourProjectsCtrl.$injector = ['$scope', 'modalService', '$state', 'User', 
+controllerFunction.$injector = ['$scope', 'modalService', '$state', 'User', 
     'Project', 'ProjectApplication']

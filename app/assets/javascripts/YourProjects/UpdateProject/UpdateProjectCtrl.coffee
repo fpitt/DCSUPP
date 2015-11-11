@@ -114,5 +114,5 @@ angular
     ['$scope', '$stateParams', 'Project', 'ProjectRequirement', 'RequirementSubcategory', 
     '$state', '$q', controllerFunction])
 
-UpdateProjectCtrl.$injector = ['$scope', '$stateParams', 'Project', 'ProjectRequirement', 
+controllerFunction.$injector = ['$scope', '$stateParams', 'Project', 'ProjectRequirement', 
     'RequirementSubcategory', '$state', '$q']

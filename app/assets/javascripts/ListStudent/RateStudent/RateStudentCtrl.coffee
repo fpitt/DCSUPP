@@ -20,5 +20,5 @@ angular
 .controller('RateStudentCtrl', ['$scope', '$state', 'modalService', 'Rating', 
     '$stateParams', controllerFunction])
     
-RateStudentCtrl.$injector = ['$scope', '$state', 'modalService', 'Rating', 
+controllerFunction.$injector = ['$scope', '$state', 'modalService', 'Rating', 
     '$stateParams']

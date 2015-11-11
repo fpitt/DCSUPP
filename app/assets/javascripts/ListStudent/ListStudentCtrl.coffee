@@ -48,5 +48,5 @@ angular
     .controller('ListStudentCtrl', ['$scope', 'requestService', 
         'RequirementSubcategory', 'User','$q', ListStudentFunction])
     
-ListStudentCtrl.$injector = ['$scope', 'requestService', 
+ListStudentFunction.$injector = ['$scope', 'requestService', 
         'RequirementSubcategory', 'User','$q']

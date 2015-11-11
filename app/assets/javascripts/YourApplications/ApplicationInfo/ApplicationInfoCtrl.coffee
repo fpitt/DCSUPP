@@ -111,6 +111,6 @@ angular
     'ProjectRequirement', 'RequirementSubcategory', 'StudentAttribute', 'Project', 
     'Reference', 'User', controllerFunction])
 
-ApplicationInfoCtrl.$injector = ['$scope', '$stateParams', 'ProjectApplication', 
+controllerFunction.$injector = ['$scope', '$stateParams', 'ProjectApplication', 
     'ProjectRequirement', 'RequirementSubcategory', 'StudentAttribute', 'Project', 
     'Reference', 'User']

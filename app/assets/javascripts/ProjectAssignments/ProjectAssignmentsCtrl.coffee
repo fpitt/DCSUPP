@@ -65,5 +65,5 @@ angular
 .controller('ProjectAssignmentsCtrl', ['$scope', 'modalService', '$stateParams', 
     'ProjectApplication', 'Project', 'User', controllerFunction])
 
-ProjectAssignmentsCtrl.$injector = ['$scope', 'modalService', '$stateParams', 
+controllerFunction.$injector = ['$scope', 'modalService', '$stateParams', 
     'ProjectApplication', 'Project', 'User']

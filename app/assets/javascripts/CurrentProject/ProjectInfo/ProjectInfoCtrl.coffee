@@ -61,5 +61,5 @@ angular
 .controller('ProjectInfoCtrl', ['$scope', '$stateParams', 'Project', 
     'ProjectRequirement', 'RequirementSubcategory', controllerFunction])
 
-ProjectInfoCtrl.$injector = ['$scope', '$stateParams', 'Project', 
+controllerFunction.$injector = ['$scope', '$stateParams', 'Project', 
     'ProjectRequirement', 'RequirementSubcategory']
