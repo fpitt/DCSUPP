@@ -5,8 +5,6 @@ class CreateStudentAttributes < ActiveRecord::Migration
       t.timestamps null: false
       t.belongs_to :requirement_subcategory, index: true
       t.belongs_to :user, index: true
-
-      t.string :value_array, array: true, :null => true
       t.string :value, :null => true
 
     end

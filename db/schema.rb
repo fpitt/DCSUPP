@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151110063917) do
+ActiveRecord::Schema.define(version: 20150830174150) do
 
   create_table "professor_settings", force: :cascade do |t|
     t.datetime "created_at",                       null: false
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20151110063917) do
     t.integer  "project_id"
     t.text     "message"
     t.string   "title"
+    t.string   "resume_url"
     t.boolean  "professor_approved"
     t.boolean  "student_approved"
     t.boolean  "administrator_approved"
@@ -37,7 +38,6 @@ ActiveRecord::Schema.define(version: 20151110063917) do
     t.string   "resume_content_type"
     t.integer  "resume_file_size"
     t.datetime "resume_updated_at"
-    t.string   "resume_url"
   end
 
   add_index "project_applications", ["project_id"], name: "index_project_applications_on_project_id"
@@ -49,8 +49,8 @@ ActiveRecord::Schema.define(version: 20151110063917) do
     t.integer  "requirement_subcategory_id"
     t.integer  "project_id"
     t.string   "value"
-    t.string   "comparison"
     t.string   "subcategory_name"
+    t.string   "comparison"
   end
 
   add_index "project_requirements", ["project_id"], name: "index_project_requirements_on_project_id"
@@ -141,8 +141,8 @@ ActiveRecord::Schema.define(version: 20151110063917) do
     t.string   "name"
     t.boolean  "professor",     default: false
     t.boolean  "administrator", default: false
-    t.string   "contact_email"
     t.text     "introduction"
+    t.string   "contact_email"
   end
 
 end
