@@ -123,3 +123,5 @@ angular
 	.controller('CreateProjectCtrl', ['$scope', 'User', 'Project', 
 		'RequirementCategory', 'RequirementSubcategory', '$state', '$q', controllerFunction])
 
+CreateProjectCtrl.$injector = ['$scope', 'User', 'Project', 
+		'RequirementCategory', 'RequirementSubcategory', '$state', '$q']

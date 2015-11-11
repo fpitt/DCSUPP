@@ -42,4 +42,8 @@ controllerFunction = ($scope, $modal, modalService, User, requestService) ->
 
 angular
 .module('dcsupp')
-.controller('ListProfessorCtrl', ['$scope', '$modal', 'modalService', 'User', 'requestService', controllerFunction])
+.controller('ListProfessorCtrl', ['$scope', '$modal', 'modalService', 'User', 
+    'requestService', controllerFunction])
+
+ListProfessorCtrl.$injector = ['$scope', '$modal', 'modalService', 'User', 
+    'requestService']

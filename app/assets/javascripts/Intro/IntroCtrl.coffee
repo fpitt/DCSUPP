@@ -18,3 +18,5 @@ IntroductionCtrl = ($scope, $state, User) ->
 
 angular.module('dcsupp').controller('IntroCtrl', 
 	['$scope', '$state', 'User', IntroductionCtrl])
+
+IntroCtrl.$injector = ['$scope', '$state', 'User']

@@ -17,5 +17,8 @@ controllerFunction = ($scope, $state, modalService, Rating, $stateParams) ->
 
 angular
 .module('dcsupp')
-.controller('RateStudentCtrl', ['$scope', '$state', 'modalService', 'Rating', '$stateParams', controllerFunction])
+.controller('RateStudentCtrl', ['$scope', '$state', 'modalService', 'Rating', 
+    '$stateParams', controllerFunction])
     
+RateStudentCtrl.$injector = ['$scope', '$state', 'modalService', 'Rating', 
+    '$stateParams']

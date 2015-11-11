@@ -62,4 +62,8 @@ controllerFunction = ($scope, modalService, $stateParams, Reference, Project, Pr
 
 angular
 .module('dcsupp')
-.controller('YourReferenceRequestsCtrl', ['$scope', 'modalService', '$stateParams', 'Reference', 'Project', 'ProjectApplication', 'User', controllerFunction])
+.controller('YourReferenceRequestsCtrl', ['$scope', 'modalService', '$stateParams', 
+    'Reference', 'Project', 'ProjectApplication', 'User', controllerFunction])
+
+YourReferenceRequestsCtrl.$injector = ['$scope', 'modalService', '$stateParams', 
+    'Reference', 'Project', 'ProjectApplication', 'User']

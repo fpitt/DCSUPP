@@ -31,3 +31,5 @@ angular
 .module('dcsupp')
 .controller('WriteReferenceCtrl',
     ['$scope', '$stateParams', '$state', 'Reference', 'modalService', controllerFunction])
+
+WriteReferenceCtrl.$injector = ['$scope', '$stateParams', '$state', 'Reference', 'modalService']

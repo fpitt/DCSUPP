@@ -39,5 +39,8 @@ PersonalIntroductionFunction = ($scope, $modal, modalService, requestService,
     $scope.getUser()
 
 angular.module('dcsupp').controller('PersonalIntroductionCtrl', ['$scope',
-                                                    '$modal', 'modalService', 'requestService', 'User', '$state',
-                                                    'StudentAttribute', PersonalIntroductionFunction])
+    '$modal', 'modalService', 'requestService', 'User', '$state',
+    'StudentAttribute', PersonalIntroductionFunction])
+
+PersonalIntroductionCtrl.$inject = ['$scope', '$modal', 'modalService', 
+    'requestService', 'User', '$state','StudentAttribute']

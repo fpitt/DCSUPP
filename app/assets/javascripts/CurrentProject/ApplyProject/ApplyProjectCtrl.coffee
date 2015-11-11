@@ -83,3 +83,6 @@ angular
 .controller('ApplyProjectCtrl',
     ['$scope', 'modalService', '$stateParams', '$state', 'ProjectApplication', 'ProjectRequirement',
      'RequirementSubcategory', 'StudentAttribute', 'Upload', controllerFunction])
+
+ApplyProjectCtrl.$injector = ['$scope', 'modalService', '$stateParams', '$state', 
+    'ProjectApplication', 'ProjectRequirement', 'RequirementSubcategory', 'StudentAttribute', 'Upload' ]

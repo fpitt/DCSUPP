@@ -46,4 +46,8 @@ controllerFunction = ($scope, modalService, $state, User, Project, ProjectApplic
 
 angular
 .module('dcsupp')
-.controller('YourProjectsCtrl', ['$scope', 'modalService', '$state', 'User', 'Project', 'ProjectApplication', controllerFunction])
+.controller('YourProjectsCtrl', ['$scope', 'modalService', '$state', 'User', 
+    'Project', 'ProjectApplication', controllerFunction])
+
+YourProjectsCtrl.$injector = ['$scope', 'modalService', '$state', 'User', 
+    'Project', 'ProjectApplication']

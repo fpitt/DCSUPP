@@ -70,3 +70,6 @@ angular
 	.module('dcsupp', ['ui.bootstrap', 'ui.router', 'templates', 'permission', 'ngTagsInput', 'ngFileUpload'])
 	.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', configFunction])
 	.run(runFunction)
+
+runFunction.$injector = ['Permission', 'User', '$q']
+configFunction.$injector = ['$stateProvider', '$urlRouterProvider', '$locationProvider']

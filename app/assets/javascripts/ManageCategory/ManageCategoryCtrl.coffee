@@ -70,3 +70,6 @@ angular
     .controller('ManageCategoryCtrl', ['$scope', 'RequirementCategory', 
         'RequirementSubcategory',  controllerFunction])
 
+
+ManageCategoryCtrl.$injector = ['$scope', 'RequirementCategory', 
+        'RequirementSubcategory']

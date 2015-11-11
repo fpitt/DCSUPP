@@ -120,3 +120,6 @@ angular
     .module('dcsupp')
     .controller('SubcategoryInfoCtrl', ['$scope', '$stateParams', 'RequirementCategory', 
     'RequirementSubcategory', 'User', controllerFunction])
+
+SubcategoryInfoCtrl.$injector = ['$scope', '$stateParams', 'RequirementCategory', 
+    'RequirementSubcategory', 'User']

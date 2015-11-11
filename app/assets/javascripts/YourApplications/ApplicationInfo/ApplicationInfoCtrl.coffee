@@ -107,4 +107,10 @@ controllerFunction = ($scope, $stateParams, ProjectApplication, ProjectRequireme
 
 angular
 .module('dcsupp')
-.controller('ApplicationInfoCtrl', ['$scope', '$stateParams', 'ProjectApplication', 'ProjectRequirement', 'RequirementSubcategory', 'StudentAttribute', 'Project', 'Reference', 'User', controllerFunction])
+.controller('ApplicationInfoCtrl', ['$scope', '$stateParams', 'ProjectApplication', 
+    'ProjectRequirement', 'RequirementSubcategory', 'StudentAttribute', 'Project', 
+    'Reference', 'User', controllerFunction])
+
+ApplicationInfoCtrl.$injector = ['$scope', '$stateParams', 'ProjectApplication', 
+    'ProjectRequirement', 'RequirementSubcategory', 'StudentAttribute', 'Project', 
+    'Reference', 'User']

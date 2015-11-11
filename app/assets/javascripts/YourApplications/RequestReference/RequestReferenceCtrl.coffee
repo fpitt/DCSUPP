@@ -34,4 +34,8 @@ controllerFunction = ($scope, $stateParams, Reference, User, $q, $state, Project
 
 angular
 .module('dcsupp')
-.controller('RequestReferenceCtrl', ['$scope', '$stateParams', 'Reference', 'User', '$q', '$state', 'ProjectApplication', controllerFunction])
+.controller('RequestReferenceCtrl', ['$scope', '$stateParams', 'Reference', 'User', 
+    '$q', '$state', 'ProjectApplication', controllerFunction])
+
+RequestReferenceCtrl.$injector = ['$scope', '$stateParams', 'Reference', 'User', 
+    '$q', '$state', 'ProjectApplication']

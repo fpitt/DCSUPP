@@ -28,4 +28,7 @@ controllerFunction = ($scope, $stateParams, User) ->
 
 angular
 .module('dcsupp')
-.controller('ProfessorInfoCtrl', ['$scope', 'requestService', '$stateParams', 'User', controllerFunction])
+.controller('ProfessorInfoCtrl', ['$scope', 'requestService', '$stateParams', 
+    'User', controllerFunction])
+
+ProfessorInfoCtrl.$injector = ['$scope', 'requestService', '$stateParams', 'User']

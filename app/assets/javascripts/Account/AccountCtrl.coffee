@@ -48,3 +48,5 @@ AccountFunction = ($scope, $state, StudentAttribute) ->
 
 angular.module('dcsupp').controller('AccountCtrl', 
     ['$scope','$state', 'StudentAttribute', AccountFunction])
+
+AccountFunction.$inject = ['$scope','$state', 'StudentAttribute'];

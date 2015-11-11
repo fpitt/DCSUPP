@@ -54,3 +54,6 @@ angular
 .module('dcsupp')
 .controller('CurrentProjectCtrl', ['$scope', 'Project', 
 	'RequirementSubcategory','$q', controllerFunction])
+
+CurrentProjectCtrl.$inject = ['$scope', 'Project', 
+	'RequirementSubcategory','$q']

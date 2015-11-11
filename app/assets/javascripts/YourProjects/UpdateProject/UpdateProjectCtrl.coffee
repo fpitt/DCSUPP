@@ -111,4 +111,8 @@ controllerFunction = ($scope, $stateParams, Project, ProjectRequirement, Require
 angular
 .module('dcsupp')
 .controller('UpdateProjectCtrl',
-    ['$scope', '$stateParams', 'Project', 'ProjectRequirement', 'RequirementSubcategory', '$state', '$q', controllerFunction])
+    ['$scope', '$stateParams', 'Project', 'ProjectRequirement', 'RequirementSubcategory', 
+    '$state', '$q', controllerFunction])
+
+UpdateProjectCtrl.$injector = ['$scope', '$stateParams', 'Project', 'ProjectRequirement', 
+    'RequirementSubcategory', '$state', '$q']
