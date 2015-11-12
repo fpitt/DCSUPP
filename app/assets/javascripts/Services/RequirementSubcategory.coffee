@@ -8,7 +8,7 @@
 # ---------------------------------------------------------
 angular
 .module('dcsupp')
-.service 'RequirementSubcategory', (requestService) ->
+.service 'RequirementSubcategory', ['requestService', (requestService) ->
 
     #   create a new requirement subcategory
     #   payload is the new subcategory object
@@ -99,3 +99,4 @@ angular
 #            method: 'POST'
 #            url: 'get_subcategory_of_student_attribute.json'
 #        requestService.service(sendParams, payload)
+    ]

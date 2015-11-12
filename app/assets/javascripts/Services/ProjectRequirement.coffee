@@ -8,7 +8,7 @@
 # ---------------------------------------------------------
 angular
 .module('dcsupp')
-.service 'ProjectRequirement', (requestService) ->
+.service 'ProjectRequirement', ['requestService', (requestService) ->
 
     #   get all project requirements for a given project
     #   payload format:
@@ -18,4 +18,4 @@ angular
             method: 'POST'
             url: '/get_requirements_of_project.json'
         return requestService.service(sendParams, payload)
-
+    ]

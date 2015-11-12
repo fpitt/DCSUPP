@@ -4,7 +4,6 @@ angular
 .controller 'ListProfessorCtrl', ['$scope', '$modal', 'modalService', 'User', 
     'requestService', ($scope, $modal, modalService, User, requestService) ->
 
-
         $scope.modalService = modalService
 
         # --- Page Variables ---

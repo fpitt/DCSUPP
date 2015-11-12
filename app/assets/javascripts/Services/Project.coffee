@@ -8,7 +8,7 @@
 # ---------------------------------------------------------
 angular
 .module('dcsupp')
-.service 'Project', (requestService) ->
+.service 'Project', ['requestService', (requestService) ->
 
     #   create a new Project object
     #   payload format:
@@ -89,5 +89,4 @@ angular
             method: 'POST'
             url: '/set_project_completed.json'
         requestService.service(sendParams, payload)
-
-
+    ]

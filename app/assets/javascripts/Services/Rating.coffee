@@ -11,7 +11,7 @@
 # ---------------------------------------------------------
 angular
 .module('dcsupp')
-.service 'Rating', (requestService) ->
+.service 'Rating', ['requestService', (requestService) ->
 
     create: (payload) ->
         sendParams =
@@ -24,6 +24,4 @@ angular
             url: '/get_ratings_of_student.json'
             method: 'POST'
         return requestService.service(sendParams, payload)
-
-
-
+    ]

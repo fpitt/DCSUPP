@@ -7,7 +7,7 @@
 # ---------------------------------------------------------
 angular
     .module('dcsupp')
-    .service 'modalService', ($modal)->
+    .service 'modalService', ['$modal', ($modal)->
         
         modal = {}
 
@@ -29,3 +29,4 @@ angular
             return
 
         return modal
+    ]

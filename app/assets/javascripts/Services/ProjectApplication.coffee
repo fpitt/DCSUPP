@@ -8,7 +8,7 @@
 # ---------------------------------------------------------
 angular
 .module('dcsupp')
-.service 'ProjectApplication', (requestService, Upload) ->
+.service 'ProjectApplication', ['requestService', 'Upload', (requestService, Upload) ->
 
     #   create new ProjectApplication object
     #   payload format:
@@ -97,3 +97,4 @@ angular
             method: 'POST'
             url: '/flip_applications_of_user.json'
         return requestService.service(sendParams, payload)
+    ]

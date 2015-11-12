@@ -8,7 +8,7 @@
 # ---------------------------------------------------------
 angular
 .module('dcsupp')
-.service 'Reference', (requestService) ->
+.service 'Reference', ['requestService', (requestService) ->
 
     #   create a reference request
     #   payload format:
@@ -66,4 +66,4 @@ angular
             url: 'get_by_project_application.json'
             method: 'POST'
         return requestService.service(sendParams, payload)
-
+    ]

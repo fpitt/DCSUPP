@@ -8,7 +8,7 @@
 # ---------------------------------------------------------
 angular
 .module('dcsupp')
-.service 'RequirementCategory', (requestService) ->
+.service 'RequirementCategory', ['requestService', (requestService) ->
 
     #   create a requirement category
     #   payload format:
@@ -37,3 +37,4 @@ angular
             method: 'POST'
             url: 'get_category.json'
         requestService.service(sendParams, payload)
+    ]

@@ -8,7 +8,7 @@
 # ---------------------------------------------------------
 angular
 .module('dcsupp')
-.service 'StudentAttribute', (requestService) ->
+.service 'StudentAttribute', ['requestService', (requestService) ->
 
     #   get the current user's student attribute
     #   for a given subcategory (i.e. if subcategory
@@ -57,3 +57,4 @@ angular
             method: 'POST'
             url: '/student_attributes.json'
         requestService.service(sendParams, payload)
+    ]

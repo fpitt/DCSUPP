@@ -10,7 +10,7 @@
 # -------------------------------------------------------------------------------------------------------
 angular
 	.module('dcsupp')
-	.service 'requestService', ($http) ->
+	.service 'requestService', ['$http', ($http) ->
 
 		#	make a request
 		service: (sendParams, autopayload = []) ->
@@ -24,6 +24,4 @@ angular
 					payload: autopayload
 
 			return $http(request)
-
-
-
+	]
