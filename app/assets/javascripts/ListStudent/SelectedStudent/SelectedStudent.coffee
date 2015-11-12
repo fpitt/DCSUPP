@@ -2,7 +2,7 @@
 # State: Selected Student
 # ---------------------------------------------------------
 
-angular.module('dcsupp').config(['$stateProvider', ($stateProvider) ->
+angular.module('dcsupp').config ['$stateProvider', ($stateProvider) ->
     $stateProvider.state 'list_student.selected_student',
         url: '/selected_student/:id'
         templateUrl: 'ListStudent/SelectedStudent/_selected_student.html'
@@ -10,4 +10,4 @@ angular.module('dcsupp').config(['$stateProvider', ($stateProvider) ->
         data:
             permissions:
                 only: ['administrator', 'professor']
-])
+]
