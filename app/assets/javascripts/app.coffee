@@ -21,7 +21,7 @@ angular
 		$locationProvider.html5Mode(true).hashPrefix('!')
 	]
 
-.run(['Permission', 'User', '$q', (Permission, User, $q) ->
+.run ['Permission', 'User', '$q', (Permission, User, $q) ->
 	Permission.defineRole 'student', (stateParams) ->
 			deferred = $q.defer()
 
@@ -66,4 +66,4 @@ angular
 					deferred.reject(false)
 			
 			return deferred.promise
-])
+]
