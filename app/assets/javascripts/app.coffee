@@ -53,7 +53,7 @@ angular
 
 			return deferred.promise
 
-		.defineRole 'professor', (stateParams) ->
+		.defineRole 'professor', () ->
 			deferred = $q.defer()
 
 			User.getUser()
