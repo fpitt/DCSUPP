@@ -6,4 +6,4 @@ PopupCtrl = ($scope, $modalInstance) ->
 angular.module('dcsupp').controller('InfoCtrl', 
 	['$scope', '$modalInstance', PopupCtrl])
 
-InfoCtrl.$injector = ['$scope', '$modalInstance']
+PopupCtrl.$injector = ['$scope', '$modalInstance']
