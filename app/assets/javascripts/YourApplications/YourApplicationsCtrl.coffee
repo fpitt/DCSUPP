@@ -7,7 +7,7 @@
 # -------------------------------------------------------------------------------------------------------
 angular
 .module('dcsupp')
-.controller 'YourApplicationsCtrl', ['$scope', 'ProjectApplication', 'modalService', 
+.controller 'YourApplicationsCtrl', ['$scope', 'ProjectApplication', 
     ($scope, ProjectApplication) ->
 
         #   current page number

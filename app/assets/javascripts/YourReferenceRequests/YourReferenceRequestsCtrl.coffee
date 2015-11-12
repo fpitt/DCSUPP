@@ -7,11 +7,9 @@
 # -------------------------------------------------------------------------------------------------------
 angular
 .module('dcsupp')
-.controller 'YourReferenceRequestsCtrl', ['$scope', 'modalService', '$stateParams', 
+.controller 'YourReferenceRequestsCtrl', ['$scope', '$stateParams', 
     'Reference', 'Project', 'ProjectApplication', 'User', 
-    ($scope, modalService, $stateParams, Reference, Project, ProjectApplication, User) ->
-        #   pop-up service for page settings + information
-        $scope.modalService = modalService
+    ($scope, $stateParams, Reference, Project, ProjectApplication, User) ->
 
         #   true iff something on this page resulted in an error to alert error message
         $scope.error = false

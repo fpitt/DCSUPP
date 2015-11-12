@@ -1,7 +1,7 @@
 # NOT USED AT THE MOMENT
 angular
 .module('dcsupp')
-.controller 'ProfessorInfoCtrl', ['$scope', 'requestService', '$stateParams', 
+.controller 'ProfessorInfoCtrl', ['$scope', '$stateParams', 
     'User', ($scope, $stateParams, User) ->
 
         $scope.sendParams =

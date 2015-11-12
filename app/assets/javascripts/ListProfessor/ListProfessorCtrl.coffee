@@ -1,11 +1,8 @@
 # NOT USED AT THE MOMENT
 angular
 .module('dcsupp')
-.controller 'ListProfessorCtrl', ['$scope', '$modal', 'modalService', 'User', 
-    'requestService', ($scope, $modal, modalService, User, requestService) ->
-
-        $scope.modalService = modalService
-
+.controller 'ListProfessorCtrl', ['$scope', '$modal', 'User', 
+    'requestService', ($scope, $modal, User, requestService) ->
         # --- Page Variables ---
 
         $scope.direction = 0

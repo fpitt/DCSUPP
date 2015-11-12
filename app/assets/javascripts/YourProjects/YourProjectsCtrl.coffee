@@ -1,8 +1,8 @@
 angular
 .module('dcsupp')
-.controller 'YourProjectsCtrl', ['$scope', 'modalService', '$state', 'User', 
+.controller 'YourProjectsCtrl', ['$scope', '$state', 'User', 
     'Project', 'ProjectApplication', 
-    ($scope, modalService, $state, User, Project, ProjectApplication) ->
+    ($scope, $state, User, Project, ProjectApplication) ->
 
         $scope.modalService = modalService
         $scope.showProject = false;

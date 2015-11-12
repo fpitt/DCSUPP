@@ -13,10 +13,9 @@
 angular
 .module('dcsupp')
 .controller 'ApplyProjectCtrl',
-    ['$scope', 'modalService', '$stateParams', '$state', 'ProjectApplication', 'ProjectRequirement',
+    ['$scope', '$stateParams', '$state', 'ProjectApplication', 'ProjectRequirement',
      'RequirementSubcategory', 'StudentAttribute', 'Upload',
-     ($scope, modalService, $stateParams, $state, ProjectApplication,
-        ProjectRequirement, RequirementSubcategory, StudentAttribute, Upload) ->
+     ($scope, $stateParams, $state, ProjectApplication, ProjectRequirement, RequirementSubcategory, StudentAttribute, Upload) ->
 
         $scope.error = false
         #	pop-up service for page settings + information

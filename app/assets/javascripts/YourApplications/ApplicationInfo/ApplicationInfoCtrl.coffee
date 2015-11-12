@@ -9,8 +9,8 @@ angular
 .module('dcsupp')
 .controller 'ApplicationInfoCtrl', ['$scope', '$stateParams', 'ProjectApplication', 
     'ProjectRequirement', 'RequirementSubcategory', 'StudentAttribute', 'Project', 
-    'Reference', 'User', ($scope, $stateParams, ProjectApplication, ProjectRequirement, 
-    RequirementSubcategory, StudentAttribute, Project, Reference, User) ->
+    'Reference', 'User', 
+    ($scope, $stateParams, ProjectApplication, ProjectRequirement, RequirementSubcategory, StudentAttribute, Project, Reference, User) ->
 
         #   get the application's information
         $scope.getApplicationInfo = ->

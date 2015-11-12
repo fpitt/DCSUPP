@@ -3,8 +3,8 @@
 # -------------------------------------------------------------------------------------------------------
 angular.module('dcsupp').controller 'AttributeSubCategoryCtrl', 
     ['$scope','$stateParams', '$state', 'User','RequirementSubcategory', 
-    'RequirementCategory', 'StudentAttribute', ($scope, $stateParams, $state, User,
-        RequirementSubcategory, RequirementCategory, StudentAttribute) ->
+    'RequirementCategory', 'StudentAttribute', 
+    ($scope, $stateParams, $state, User, RequirementSubcategory, RequirementCategory, StudentAttribute) ->
 
         #Current SubCategory (Requirement Category)
         $scope.category = null

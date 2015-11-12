@@ -8,8 +8,8 @@
 angular
 .module('dcsupp')
 .controller 'WriteReferenceCtrl',
-    ['$scope', '$stateParams', '$state', 'Reference', 'modalService', 
-    ($scope, $stateParams, $state, Reference, modalService) ->
+    ['$scope', '$stateParams', '$state', 'Reference', 
+    ($scope, $stateParams, $state, Reference) ->
 
         $scope.modalService = modalService;
         #   true iff something on this page resulted in an error to alert error message

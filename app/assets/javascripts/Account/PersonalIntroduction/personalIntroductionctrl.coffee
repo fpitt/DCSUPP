@@ -3,8 +3,8 @@
 # -------------------------------------------------------------------------------------------------------
 
 angular.module('dcsupp').controller 'PersonalIntroductionCtrl', ['$scope',
-    '$modal', 'modalService', 'requestService', 'User', '$state', 'StudentAttribute', 
-    ($scope, $modal, modalService, requestService, User, $state, StudentAttribute) ->
+    'requestService', 'User', '$state', 'StudentAttribute', 
+    ($scope, requestService, User, $state, StudentAttribute) ->
 
         #Edit Mode on
         $scope.edit = false
