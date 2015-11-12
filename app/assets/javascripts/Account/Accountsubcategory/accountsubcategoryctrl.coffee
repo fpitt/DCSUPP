@@ -1,13 +1,10 @@
-# --------------------------------------------------------------------------------------
+# -------------------------------------------------------------------------------------------------------
 # UI-View of the subcategoryListing
-# --------------------------------------------------------------------------------------
-angular
-    .module('dcsupp')
-    .controller('AttributeSubCategoryCtrl',  ['$scope','$stateParams', '$state', 'User',
-        'RequirementSubcategory', 'RequirementCategory', 'StudentAttribute', 
-    ($scope, $stateParams, $state, User, RequirementSubcategory, RequirementCategory, StudentAttribute) ->
-
-    ### ----------------------------- Page Variables ----------------------------- ###
+# -------------------------------------------------------------------------------------------------------
+angular.module('dcsupp').controller 'AttributeSubCategoryCtrl', 
+    ['$scope','$stateParams', '$state', 'User','RequirementSubcategory', 
+    'RequirementCategory', 'StudentAttribute', ($scope, $stateParams, $state, User,
+        RequirementSubcategory, RequirementCategory, StudentAttribute) ->
 
     #Current SubCategory (Requirement Category)
     $scope.category = null
@@ -96,9 +93,6 @@ angular
                 category.edit = false
 
         return
-
-    ### ---------------------------- Variable Initialization ---------------------------- ###
-   
     # --- Check Student Attribute ---
     $scope.student_attribute_available = (attribute_id) ->
         #Iterate Over the Array [The Array is JSON]
@@ -158,5 +152,4 @@ angular
     #The program will only initiate a new JSON call after the previous variable
     #has been retrived. This is to avoid race conditions.
     $scope.getCategory()
-
-])
+    ]
