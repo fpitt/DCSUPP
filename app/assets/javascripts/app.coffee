@@ -23,7 +23,7 @@ angular
 
 .run(['Permission', 'User', '$q', (Permission, User, $q) ->
 	Permission
-		.defineRole 'student', () ->
+		.defineRole 'student', (stateParams) ->
 			deferred = $q.defer()
 
 			User.getUser()
@@ -38,7 +38,7 @@ angular
 
 			return deferred.promise
 
-		.defineRole 'administrator', () ->
+		.defineRole 'administrator', (stateParams) ->
 			deferred = $q.defer()
 
 			User.getUser()
@@ -53,7 +53,7 @@ angular
 
 			return deferred.promise
 
-		.defineRole 'professor', () ->
+		.defineRole 'professor', (stateParams) ->
 			deferred = $q.defer()
 
 			User.getUser()
