@@ -92,7 +92,6 @@ ServiceFunction = (requestService, Upload) ->
         direction: Integer (-10 to go back one page, 10 to go forward one page)
     ###
     flipApplicationsOfUser: (payload) ->
-    flipApplicationsOfUser: (payload) ->
         sendParams =
             method: 'POST'
             url: '/flip_applications_of_user.json'

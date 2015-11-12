@@ -1,6 +1,6 @@
 # NOT USED AT THE MOMENT
 
-controllerFunction = ($scope, $state, modalService, Rating, $stateParams) ->
+controllerFunction = ($scope, $state, Rating, $stateParams) ->
 
     $scope.rating = {}
     $scope.project_rating = false
@@ -17,8 +17,7 @@ controllerFunction = ($scope, $state, modalService, Rating, $stateParams) ->
 
 angular
 .module('dcsupp')
-.controller('RateStudentCtrl', ['$scope', '$state', 'modalService', 'Rating', 
+.controller('RateStudentCtrl', ['$scope', '$state', 'Rating', 
     '$stateParams', controllerFunction])
     
-controllerFunction.$injector = ['$scope', '$state', 'modalService', 'Rating', 
-    '$stateParams']
+controllerFunction.$injector = ['$scope', '$state', 'Rating', '$stateParams']
