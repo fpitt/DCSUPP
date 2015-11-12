@@ -1,7 +1,7 @@
 # -------------------------------------------------------------------------------------------------------
 # UI-Router state declaration for Apply Project page.
 # -------------------------------------------------------------------------------------------------------
-angular.module('dcsupp').config ($stateProvider) ->
+angular.module('dcsupp').config(['$stateProvider', ($stateProvider) ->
     $stateProvider.state 'current_project.apply_project',
         url: '/apply_project/:id'
         templateUrl: 'CurrentProject/ApplyProject/_apply_project.html'
@@ -9,3 +9,4 @@ angular.module('dcsupp').config ($stateProvider) ->
         data:
             permissions:
                 only: ['student', 'administrator']
+])

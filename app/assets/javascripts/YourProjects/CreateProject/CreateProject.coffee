@@ -1,4 +1,4 @@
-angular.module('dcsupp').config ($stateProvider) ->
+angular.module('dcsupp').config(['$stateProvider', ($stateProvider) ->
     $stateProvider.state 'your_projects.create_project',
         url: '/create_project'
         templateUrl: 'YourProjects/CreateProject/_create_project.html'
@@ -6,4 +6,4 @@ angular.module('dcsupp').config ($stateProvider) ->
         data:
             permissions:
                 only: ['professor', 'administrator']
-
+])

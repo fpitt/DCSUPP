@@ -1,7 +1,7 @@
 # -------------------------------------------------------------------------------------------------------
 # UI-Router state declaration for Application Info page.
 # -------------------------------------------------------------------------------------------------------
-angular.module('dcsupp').config ($stateProvider) ->
+angular.module('dcsupp').config(['$stateProvider', ($stateProvider) ->
     $stateProvider.state 'your_applications.application_info',
         url: '/application_info/:id'
         templateUrl: 'YourApplications/ApplicationInfo/_application_info.html'
@@ -9,3 +9,4 @@ angular.module('dcsupp').config ($stateProvider) ->
         data:
             permissions:
                 only: ['administrator', 'student']
+])

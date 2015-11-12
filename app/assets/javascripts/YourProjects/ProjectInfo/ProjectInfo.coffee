@@ -4,7 +4,7 @@
 # also being used by
 # by current_projects.project_info state.
 # -------------------------------------------------------------------------------------------------------
-angular.module('dcsupp').config ($stateProvider) ->
+angular.module('dcsupp').config(['$stateProvider', ($stateProvider) ->
     $stateProvider.state 'your_projects.project_info',
         url: '/project_info/:id'
         templateUrl: 'CurrentProject/ProjectInfo/_project_info.html'
@@ -12,3 +12,4 @@ angular.module('dcsupp').config ($stateProvider) ->
         data:
             permissions:
                 only: ['administrator', 'professor']
+])

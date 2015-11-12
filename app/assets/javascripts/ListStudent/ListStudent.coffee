@@ -1,4 +1,4 @@
-angular.module('dcsupp').config ($stateProvider) ->
+angular.module('dcsupp').config(['$stateProvider', ($stateProvider) ->
     $stateProvider.state 'list_student',
         url: '/list_student'
         templateUrl: 'ListStudent/_list_student.html'
@@ -6,3 +6,4 @@ angular.module('dcsupp').config ($stateProvider) ->
         data:
             permissions:
                 only: ['administrator', 'professor']
+])
