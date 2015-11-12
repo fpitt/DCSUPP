@@ -1,46 +1,42 @@
 # -------------------------------------------------------------------------------------------------------
 # UI-View of the subcategoryListing
 # -------------------------------------------------------------------------------------------------------
-PersonalIntroductionFunction = ($scope, $modal, modalService, requestService, 
-                                User, $state, StudentAttribute) ->
 
-    #Edit Mode on
-    $scope.edit = false
+angular.module('dcsupp').controller 'PersonalIntroductionCtrl', ['$scope',
+    '$modal', 'modalService', 'requestService', 'User', '$state', 'StudentAttribute', 
+    ($scope, $modal, modalService, requestService, User, $state, StudentAttribute) ->
 
-    #Edit SubCategory
-    $scope.userInformation =
-        input_email: ""
-        input_text: ""
-        input_viewing: false
+        #Edit Mode on
+        $scope.edit = false
 
-    # --- Edit ---
-    $scope.editEnable = ->
-        $scope.edit = true
+        #Edit SubCategory
+        $scope.userInformation =
+            input_email: ""
+            input_text: ""
+            input_viewing: false
 
-    # --- Get User ---
-    # Grab the User Attribute
-    $scope.getUser = ->
-        User.getUser().success (data) ->
-            $scope.user = data
-            #Get Previous User Information
-            $scope.userInformation.input_email = $scope.user.contact_email
-            $scope.userInformation.input_text = $scope.user.introduction
-        return
+        # --- Edit ---
+        $scope.editEnable = ->
+            $scope.edit = true
 
-    # --- Update User ---
-    # Update the User's Information
-    $scope.updateUser = ->
-        User.updateUser($scope.userInformation).success (data) ->
-            $scope.getUser()
-            $scope.edit = false
-        return
+        # --- Get User ---
+        # Grab the User Attribute
+        $scope.getUser = ->
+            User.getUser().success (data) ->
+                $scope.user = data
+                #Get Previous User Information
+                $scope.userInformation.input_email = $scope.user.contact_email
+                $scope.userInformation.input_text = $scope.user.introduction
+            return
 
-    # --- Jquery Initialization --- 
-    $scope.getUser()
+        # --- Update User ---
+        # Update the User's Information
+        $scope.updateUser = ->
+            User.updateUser($scope.userInformation).success (data) ->
+                $scope.getUser()
+                $scope.edit = false
+            return
 
-angular.module('dcsupp').controller('PersonalIntroductionCtrl', ['$scope',
-    '$modal', 'modalService', 'requestService', 'User', '$state',
-    'StudentAttribute', PersonalIntroductionFunction])
-
-PersonalIntroductionFunction.$inject = ['$scope', '$modal', 'modalService', 
-    'requestService', 'User', '$state','StudentAttribute']
+        # --- Jquery Initialization --- 
+        $scope.getUser()
+    ]   

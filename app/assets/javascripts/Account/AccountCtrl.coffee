@@ -16,37 +16,35 @@
 # [Right-Side]
 # Nested View to update student information. Check folder[Accountsubcategory] for the nested view
 # -------------------------------------------------------------------------------------------------------
-AccountFunction = ($scope, $state, StudentAttribute) ->
+angular.module('dcsupp').controller 'AccountCtrl', 
+    ['$scope','$state', 'StudentAttribute', 
+    ($scope, $state, StudentAttribute) ->
 
-    # -- Page Variables --
-    #Page Number in Left-Side Navigation (Categories listed below Prev [pageNumber] Next)
-    $scope.pagenumber = 1
-    #List of Categories in Left-Side Navigation
-    $scope.categories = null
-    #Flip Direction[Used to Evaluate the edge case]
-    $scope.direction = 0
+        # -- Page Variables --
+        #Page Number in Left-Side Navigation (Categories listed below Prev [pageNumber] Next)
+        $scope.pagenumber = 1
+        #List of Categories in Left-Side Navigation
+        $scope.categories = null
+        #Flip Direction[Used to Evaluate the edge case]
+        $scope.direction = 0
 
-    # --- Settings Navigation --- 
-    $scope.flip = (pushDirection) ->
-        payload =
-            direction: pushDirection
-            pagenumber: $scope.pagenumber
-        $scope.direction = pushDirection
-        StudentAttribute.flipStudentSettings(payload).success (data) ->
-            if (data)
-                $scope.categories = data
-                if $scope.direction > 0
-                    $scope.pagenumber += 1
-                else if $scope.direction < 0
-                    $scope.pagenumber -= 1
-                else
-                    $scope.pagenumber = 1
-        return
+        # --- Settings Navigation --- 
+        $scope.flip = (pushDirection) ->
+            payload =
+                direction: pushDirection
+                pagenumber: $scope.pagenumber
+            $scope.direction = pushDirection
+            StudentAttribute.flipStudentSettings(payload).success (data) ->
+                if (data)
+                    $scope.categories = data
+                    if $scope.direction > 0
+                        $scope.pagenumber += 1
+                    else if $scope.direction < 0
+                        $scope.pagenumber -= 1
+                    else
+                        $scope.pagenumber = 1
+            return
 
-    # --- Controller Initialization --- 
-    $scope.flip(0)
-
-angular.module('dcsupp').controller('AccountCtrl', 
-    ['$scope','$state', 'StudentAttribute', AccountFunction])
-
-AccountFunction.$inject = ['$scope','$state', 'StudentAttribute'];
+        # --- Controller Initialization --- 
+        $scope.flip(0)
+    ]
