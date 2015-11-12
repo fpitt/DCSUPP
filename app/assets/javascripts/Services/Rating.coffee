@@ -27,3 +27,5 @@ ServiceFunction = (requestService) ->
 angular
 .module('dcsupp')
 .service('Rating', ServiceFunction)
+
+ServiceFunction.$injector = ['requestService']

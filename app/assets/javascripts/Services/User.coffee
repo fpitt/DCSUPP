@@ -70,3 +70,4 @@ ServiceFunction = (requestService) ->
 
 angular.module('dcsupp').service('User', ServiceFunction)
 
+ServiceFunction.$injector = ['requestService']

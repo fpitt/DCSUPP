@@ -102,3 +102,5 @@ ServiceFunction = (requestService, Upload) ->
 angular
 .module('dcsupp')
 .service('ProjectApplication', ServiceFunction)
+
+ServiceFunction.$injector = ['requestService', 'Upload']

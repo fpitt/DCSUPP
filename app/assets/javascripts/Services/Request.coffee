@@ -27,3 +27,5 @@ ServiceFunction = ($http) ->
 angular
 	.module('dcsupp')
 	.service('requestService', ServiceFunction)
+
+ServiceFunction.$injector = ['$http']

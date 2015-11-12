@@ -32,3 +32,5 @@ ServiceFunction = ($modal)->
 angular
     .module('dcsupp')
     .service('modalService', ServiceFunction)
+
+ServiceFunction.$injector = ['$modal']
