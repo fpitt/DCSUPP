@@ -31,8 +31,9 @@ div class="col-xs-12"
                     | {{ project.deadline_date | date: 'dd-MM-yyyy' }}
         tr
             td
-                b
-                    | Description
+                span
+                    b class="preserve_newline"
+                        | Description
             td
                 span
                     | {{ project.text }}
@@ -61,7 +62,7 @@ div class="col-xs-12"
     h4 class="text-blue"
         b Additional Requirements
     hr
-    p 
+    span class="preserve_newline"
         | {{ project.additional_requirement }}
 
     div class="text-center"
