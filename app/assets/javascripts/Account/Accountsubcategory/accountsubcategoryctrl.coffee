@@ -1,8 +1,11 @@
-# -------------------------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------
 # UI-View of the subcategoryListing
-# -------------------------------------------------------------------------------------------------------
-AttributeSubCategoryFunction = ($scope, $stateParams, $state, User,
-        RequirementSubcategory, RequirementCategory, StudentAttribute) ->
+# --------------------------------------------------------------------------------------
+angular
+    .module('dcsupp')
+    .controller('AttributeSubCategoryCtrl',  ['$scope','$stateParams', '$state', 'User',
+        'RequirementSubcategory', 'RequirementCategory', 'StudentAttribute', 
+    ($scope, $stateParams, $state, User, RequirementSubcategory, RequirementCategory, StudentAttribute) ->
 
     ### ----------------------------- Page Variables ----------------------------- ###
 
@@ -156,9 +159,4 @@ AttributeSubCategoryFunction = ($scope, $stateParams, $state, User,
     #has been retrived. This is to avoid race conditions.
     $scope.getCategory()
 
-angular.module('dcsupp').controller('AttributeSubCategoryCtrl', 
-    ['$scope','$stateParams', '$state', 'User','RequirementSubcategory', 
-    'RequirementCategory', 'StudentAttribute', AttributeSubCategoryFunction])
-
-AttributeSubCategoryFunction.$inject = ['$scope','$stateParams', '$state', 'User',
-    'RequirementSubcategory', 'RequirementCategory', 'StudentAttribute' ]
+])
