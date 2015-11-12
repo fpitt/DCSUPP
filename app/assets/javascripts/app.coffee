@@ -24,7 +24,7 @@ angular
 .run ['Permission', 'User', '$q', (Permission, User, $q) ->
 	Permission.defineRole 'student', (stateParams) ->
 			deferred = $q.defer()
-
+ 
 			User.getUser()
 				.then (data) ->
 					if (!data.data.professor && !data.data.administrator)
