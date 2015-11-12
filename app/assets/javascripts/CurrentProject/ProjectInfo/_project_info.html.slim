@@ -58,7 +58,7 @@ div class="col-xs-8" ng-if="requirements.length != 0"
                     p ng-if="requirement.attribute_type == 'Date'"
                         | {{ requirement.value | date:'yyyy-MM-dd'}}
 
-div class="col-xs-12" 
+div class="col-xs-12" ng-if="project.additional_requirement"
     h4 class="text-blue"
         b Additional Requirements
     hr

@@ -120,7 +120,8 @@ class ProjectsController < ApplicationController
                 if @project
                     @project.assign_attributes({
                         :title => param[:title], :text => param[:text],
-                        :deadline_date => param[:deadline_date]
+                        :deadline_date => param[:deadline_date],
+                        :additional_requirement => param[:additional_requirement]
                         }, :without_protection => true)
 
                      #   add project requirements to project
