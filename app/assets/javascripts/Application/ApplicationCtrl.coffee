@@ -7,4 +7,4 @@ angular
 	.module('dcsupp')
 	.controller('ApplicationCtrl', ['$scope','modalService', controllerFunction])
 
-ApplicationCtrl.$inject = ['$scope','modalService']
+controllerFunction.$inject = ['$scope','modalService']
