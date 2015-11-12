@@ -15,7 +15,6 @@
 //= require ckeditor/init
 //= require bootstrap-sprockets
 //= require angular
-//= require bootstrap
 //= require angular-bootstrap
 //= require angular-rails-templates
 //= require angular-ui-router
