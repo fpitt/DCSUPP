@@ -5,18 +5,15 @@
 # The page is accessible without a login and contains the 
 # information for the project. The page is 3 button navs.
 # --------------------------------------------------------
-IntroductionCtrl = ($scope, $state, User) ->
+angular.module('dcsupp').controller 'IntroCtrl', 
+	['$scope', '$state', 'User', ($scope, $state, User) ->
 
-	$scope.user = null
+		$scope.user = null
 
-	#Get User Attribute on initialization
-	$scope.getUser = ->
-		User.getUser().success (data) ->
-			$scope.user = data
+		#Get User Attribute on initialization
+		$scope.getUser = ->
+			User.getUser().success (data) ->
+				$scope.user = data
 
-	$scope.getUser()
-
-angular.module('dcsupp').controller('IntroCtrl', 
-	['$scope', '$state', 'User', IntroductionCtrl])
-
-IntroductionCtrl.$injector = ['$scope', '$state', 'User']
+		$scope.getUser()
+	]

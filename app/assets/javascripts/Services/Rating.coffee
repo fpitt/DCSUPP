@@ -9,7 +9,9 @@
 # as services and call these methods using controller
 # functions in the various folders.
 # ---------------------------------------------------------
-ServiceFunction = (requestService) ->
+angular
+.module('dcsupp')
+.service 'Rating', (requestService) ->
 
     create: (payload) ->
         sendParams =
@@ -24,8 +26,4 @@ ServiceFunction = (requestService) ->
         return requestService.service(sendParams, payload)
 
 
-angular
-.module('dcsupp')
-.service('Rating', ServiceFunction)
 
-ServiceFunction.$injector = ['requestService']

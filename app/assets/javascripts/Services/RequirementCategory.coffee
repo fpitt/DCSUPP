@@ -6,7 +6,9 @@
 # as services and call these methods using controller
 # functions in the various folders.
 # ---------------------------------------------------------
-ServiceFunction = (requestService) ->
+angular
+.module('dcsupp')
+.service 'RequirementCategory', (requestService) ->
 
     #   create a requirement category
     #   payload format:
@@ -35,10 +37,3 @@ ServiceFunction = (requestService) ->
             method: 'POST'
             url: 'get_category.json'
         requestService.service(sendParams, payload)
-
-
-angular
-.module('dcsupp')
-.service('RequirementCategory', ServiceFunction)
-
-ServiceFunction.$injector = ['requestService']

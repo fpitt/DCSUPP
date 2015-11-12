@@ -6,7 +6,9 @@
 # as services and call these methods using controller
 # functions in the various folders.
 # ---------------------------------------------------------
-ServiceFunction = (requestService) ->
+angular
+.module('dcsupp')
+.service 'StudentAttribute', (requestService) ->
 
     #   get the current user's student attribute
     #   for a given subcategory (i.e. if subcategory
@@ -55,9 +57,3 @@ ServiceFunction = (requestService) ->
             method: 'POST'
             url: '/student_attributes.json'
         requestService.service(sendParams, payload)
-
-angular
-.module('dcsupp')
-.service('StudentAttribute', ServiceFunction)
-
-ServiceFunction.$injector = ['requestService']

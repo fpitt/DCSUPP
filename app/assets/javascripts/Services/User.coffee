@@ -6,7 +6,7 @@
 # as services and call these methods using controller
 # functions in the various folders.
 # ---------------------------------------------------------
-ServiceFunction = (requestService) ->
+angular.module('dcsupp').service 'User', (requestService) ->
 
     #   get the current user
     getUser : ->
@@ -66,8 +66,3 @@ ServiceFunction = (requestService) ->
             url: '/requirement_suggestion.json'
             method: 'POST'
         requestService.service(sendParams, payload)
-
-
-angular.module('dcsupp').service('User', ServiceFunction)
-
-ServiceFunction.$injector = ['requestService']

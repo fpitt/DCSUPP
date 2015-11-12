@@ -6,8 +6,9 @@
 # as services and call these methods using controller
 # functions in the various folders.
 # ---------------------------------------------------------
-
-ServiceFunction = (requestService, Upload) ->
+angular
+.module('dcsupp')
+.service 'ProjectApplication', (requestService, Upload) ->
 
     #   create new ProjectApplication object
     #   payload format:
@@ -96,10 +97,3 @@ ServiceFunction = (requestService, Upload) ->
             method: 'POST'
             url: '/flip_applications_of_user.json'
         return requestService.service(sendParams, payload)
-
-
-angular
-.module('dcsupp')
-.service('ProjectApplication', ServiceFunction)
-
-ServiceFunction.$injector = ['requestService', 'Upload']

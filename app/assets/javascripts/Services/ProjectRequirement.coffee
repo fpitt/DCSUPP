@@ -6,7 +6,9 @@
 # as services and call these methods using controller
 # functions in the various folders.
 # ---------------------------------------------------------
-ServiceFunction = (requestService) ->
+angular
+.module('dcsupp')
+.service 'ProjectRequirement', (requestService) ->
 
     #   get all project requirements for a given project
     #   payload format:
@@ -17,8 +19,3 @@ ServiceFunction = (requestService) ->
             url: '/get_requirements_of_project.json'
         return requestService.service(sendParams, payload)
 
-angular
-.module('dcsupp')
-.service('ProjectRequirement', ServiceFunction)
-
-ServiceFunction.$injector ['requestService']

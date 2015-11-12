@@ -8,24 +8,22 @@
 #	method: String representing type of request, i.e. "GET", "POST", "PATCH"
 # autopayload: an optional Javascript object to include in the request body.
 # -------------------------------------------------------------------------------------------------------
-ServiceFunction = ($http) ->
-
-	#	make a request
-	service: (sendParams, autopayload = []) ->
-
-		request =
-			method: sendParams.method
-			url: sendParams.url
-			headers:
-				'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
-			data:
-				payload: autopayload
-
-		return $http(request)
-
-
 angular
 	.module('dcsupp')
-	.service('requestService', ServiceFunction)
+	.service 'requestService', ($http) ->
 
-ServiceFunction.$injector = ['$http']
+		#	make a request
+		service: (sendParams, autopayload = []) ->
+
+			request =
+				method: sendParams.method
+				url: sendParams.url
+				headers:
+					'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+				data:
+					payload: autopayload
+
+			return $http(request)
+
+
+

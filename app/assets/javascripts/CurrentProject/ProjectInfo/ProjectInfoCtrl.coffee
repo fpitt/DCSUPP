@@ -19,47 +19,42 @@
 # [Top-right]
 # Popup button, displays the Information and Settings Popup menus.
 # -------------------------------------------------------------------------------------------------------
-
-controllerFunction = ($scope, $stateParams, Project, ProjectRequirement, RequirementSubcategory) ->
-    #   project information
-    $scope.project = {}
-    #   Project  Requirements
-    $scope.requirements = []
-
-    #   set this project as being completed
-    $scope.setCompleted = ->
-        payload = project: $stateParams.id
-        Project.setCompleted(payload).success((projectInfo) ->
-            $scope.getProject()
-            $scope.getInProgressProjects()
-        )
-
-    #   get project information
-    $scope.getProject = ->
-        #   get project object with id $stateParams.id
-        Project.getById($stateParams.id).success (projectInfo) ->
-            $scope.project = projectInfo
-            dead = $scope.project.deadline_date
-            #   check if deadline date is due
-            $scope.acceptingApplications = new Date(parseInt(dead.substring(0,4)), parseInt(dead.substring(5, 7)) - 1, parseInt(dead.substring(8,10))) >= new Date()
-            #   get all non student attribute subcategories of this project
-            RequirementSubcategory.getNonStudentAttributeSubcategoriesOfProject(project: $stateParams.id).success((data) ->
-                $scope.details = data
-            )
-            $scope.getByProject()
-
-    $scope.getByProject = ->
-        ProjectRequirement.getByProject($scope.project).success (data) ->
-            $scope.requirements = data
-
-    #   get project information when controller loads
-    $scope.getProject()
-    
-
 angular
 .module('dcsupp')
-.controller('ProjectInfoCtrl', ['$scope', '$stateParams', 'Project', 
-    'ProjectRequirement', 'RequirementSubcategory', controllerFunction])
+.controller 'ProjectInfoCtrl', ['$scope', '$stateParams', 'Project', 
+    'ProjectRequirement', 'RequirementSubcategory',
+    ($scope, $stateParams, Project, ProjectRequirement, RequirementSubcategory) ->
+        #   project information
+        $scope.project = {}
+        #   Project  Requirements
+        $scope.requirements = []
 
-controllerFunction.$injector = ['$scope', '$stateParams', 'Project', 
-    'ProjectRequirement', 'RequirementSubcategory']
+        #   set this project as being completed
+        $scope.setCompleted = ->
+            payload = project: $stateParams.id
+            Project.setCompleted(payload).success((projectInfo) ->
+                $scope.getProject()
+                $scope.getInProgressProjects()
+            )
+
+        #   get project information
+        $scope.getProject = ->
+            #   get project object with id $stateParams.id
+            Project.getById($stateParams.id).success (projectInfo) ->
+                $scope.project = projectInfo
+                dead = $scope.project.deadline_date
+                #   check if deadline date is due
+                $scope.acceptingApplications = new Date(parseInt(dead.substring(0,4)), parseInt(dead.substring(5, 7)) - 1, parseInt(dead.substring(8,10))) >= new Date()
+                #   get all non student attribute subcategories of this project
+                RequirementSubcategory.getNonStudentAttributeSubcategoriesOfProject(project: $stateParams.id).success((data) ->
+                    $scope.details = data
+                )
+                $scope.getByProject()
+
+        $scope.getByProject = ->
+            ProjectRequirement.getByProject($scope.project).success (data) ->
+                $scope.requirements = data
+
+        #   get project information when controller loads
+        $scope.getProject()
+    ]

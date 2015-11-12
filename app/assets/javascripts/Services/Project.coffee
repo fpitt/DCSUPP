@@ -6,9 +6,9 @@
 # as services and call these methods using controller
 # functions in the various folders.
 # ---------------------------------------------------------
-
-
-ServiceFunction = (requestService) ->
+angular
+.module('dcsupp')
+.service 'Project', (requestService) ->
 
     #   create a new Project object
     #   payload format:
@@ -90,8 +90,4 @@ ServiceFunction = (requestService) ->
             url: '/set_project_completed.json'
         requestService.service(sendParams, payload)
 
-angular
-.module('dcsupp')
-.service('Project', ServiceFunction)
 
-ServiceFunction.$injector = ['requestService']

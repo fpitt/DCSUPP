@@ -6,8 +6,9 @@
 # as services and call these methods using controller
 # functions in the various folders.
 # ---------------------------------------------------------
-ServiceFunction = (requestService) ->
-
+angular
+.module('dcsupp')
+.service 'Reference', (requestService) ->
 
     #   create a reference request
     #   payload format:
@@ -65,8 +66,4 @@ ServiceFunction = (requestService) ->
             url: 'get_by_project_application.json'
             method: 'POST'
         return requestService.service(sendParams, payload)
-angular
-.module('dcsupp')
-.service('Reference', ServiceFunction)
 
-ServiceFunction.$injector = ['requestService']

@@ -9,16 +9,19 @@
 # Future Note: Keep only initialization function in this file
 # ---------------------------------------------------------
 
-configFunction = ($stateProvider, $urlRouterProvider, $locationProvider) -> 
-	$urlRouterProvider.otherwise ($injector) ->
-		$state = $injector.get("$state")
-		$state.go('intro')
-		return
+angular
+.module('dcsupp', ['ui.bootstrap', 'ui.router', 'templates', 'permission', 'ngTagsInput', 'ngFileUpload'])
+.config ['$stateProvider', '$urlRouterProvider', '$locationProvider', 
+	($stateProvider, $urlRouterProvider, $locationProvider) -> 
+		$urlRouterProvider.otherwise ($injector) ->
+			$state = $injector.get("$state")
+			$state.go('intro')
+			return
 
-	$locationProvider.html5Mode(true).hashPrefix('!')
+		$locationProvider.html5Mode(true).hashPrefix('!')
+	]
 
-
-runFunction = (Permission, User, $q) ->
+.run (Permission, User, $q) ->
 	Permission
 		.defineRole 'student', (stateParams) ->
 			deferred = $q.defer()
@@ -65,11 +68,3 @@ runFunction = (Permission, User, $q) ->
 			
 			return deferred.promise
 
-
-angular
-	.module('dcsupp', ['ui.bootstrap', 'ui.router', 'templates', 'permission', 'ngTagsInput', 'ngFileUpload'])
-	.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', configFunction])
-	.run(runFunction)
-
-runFunction.$injector = ['Permission', 'User', '$q']
-configFunction.$injector = ['$stateProvider', '$urlRouterProvider', '$locationProvider']
