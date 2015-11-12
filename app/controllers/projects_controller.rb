@@ -10,7 +10,9 @@ class ProjectsController < ApplicationController
                 @project = Project.new()
                 @project.assign_attributes({:title => param[:title],
                     :text => param[:text], :deadline_date => param[:deadline_date],
-                    :user => @current_user, :completed => false}, :without_protection => true)
+                    :user => @current_user, :completed => false, 
+                    :additional_requirement => param[:additional_text],
+                    }, :without_protection => true)
 
                 #   add student attribute project requirements to project
                 if params[:payload][:requirement]

@@ -26,7 +26,7 @@ div
                     div class="panel-body"
                         div class="row"
                             div class="col-xs-8"
-                                p The project requirements will be displayed under the project description with their specific requirements. In addition, DCSUPP will match students with specific project requirements. 
+                                p The project requirements will be displayed under the project description with their specific requirements. Categorized Project Requirements can be used by students to filter for specific projects or allows the DCSUPP system to match students with potential projects. 
                             div class="col-xs-4"
                                 button class="btn btn-default" ui-sref="manage_category"
                                     span class="glyphicon glyphicon glyphicon-question-sign" aria-hidden="true"
@@ -41,7 +41,7 @@ div
                     thead
                         tr
                             th #
-                            th Category Name
+                            th Project Requirement Category Name
                             th ng-if="requirement_input.attribute_type=='Number' ||requirement_input.attribute_type=='Date'" Comparison
                             th ng-if="requirement_input.id" Value  
 
@@ -124,6 +124,12 @@ div
                     p ng-if="requirement_input.lower_limit"
                         b Lower Limit: 
                         | {{ requirement_input.lower_limit }}
+
+        div class='row'
+            div class="col-xs-12"
+                div class="form-group"
+                    label for="exampleInputEmail" Additional Project Requirements
+                    textarea class="form-control" rows="3" placeholder="Additional Requirements" ng-model="project.additional_text"
 
         br
         div class="form-group"

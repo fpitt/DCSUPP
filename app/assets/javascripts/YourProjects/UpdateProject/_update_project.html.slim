@@ -21,6 +21,10 @@ div
                     label for="exampleInputEmail" Deadline
                     input type="date" class="form-control" ng-model="project.deadline_date" placeholder="yyyy-MM-dd" required="true"
 
+                div class="form-group"
+                    label for="exampleInputEmail" Additional Project Requirements
+                    textarea class="form-control" rows="3" placeholder="Project Description" ng-model="project.additional_text" required="true"
+
                 br
                 div class="form-group"
                     button type="submit" value="submit" class="btn btn-default btn-md" Update Project

@@ -23,7 +23,7 @@ class Project < ActiveRecord::Base
 	has_many :project_application
 	has_many :project_requirement
 
-	attr_accessible :title, :text
+	attr_accessible :title, :text, :additional_requirement
 
 	attr_protected :user
 
