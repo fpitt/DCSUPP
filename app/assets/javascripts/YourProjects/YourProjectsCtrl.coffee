@@ -4,7 +4,6 @@ angular
     'Project', 'ProjectApplication', 
     ($scope, $state, User, Project, ProjectApplication) ->
 
-        $scope.modalService = modalService
         $scope.showProject = false;
         $scope.pagenumber = 1
         $scope.projects = null
