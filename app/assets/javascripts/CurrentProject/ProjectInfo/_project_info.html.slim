@@ -46,7 +46,7 @@ div class="col-xs-12"
                     | {{ project.additional_requirement }}
 
 
-div class="col-xs-8" ng-if="requirements.length != 0"
+div class="col-xs-12" ng-if="requirements.length != 0"
     b class="text-teal" Project Requirements
 
     table class="table table-condensed"
@@ -64,9 +64,10 @@ div class="col-xs-8" ng-if="requirements.length != 0"
                     p ng-if="requirement.attribute_type == 'Date'"
                         | {{ requirement.value | date:'yyyy-MM-dd'}}
 
-div class="text-center"
-    div ng-show="acceptingApplications"
-        button ng-if="!(user.administrator || user.professor)" class="btn btn-default" ui-sref="current_project.apply_project({id: project.id})" Apply Now
-    div ng-show="!acceptingApplications"
-        b class="text-blue"
-            span The application period is over.
+div class="col-xs-12"
+    div class="text-center"
+        div ng-show="acceptingApplications"
+            button ng-if="!(user.administrator || user.professor)" class="btn btn-default" ui-sref="current_project.apply_project({id: project.id})" Apply Now
+        div ng-show="!acceptingApplications"
+            b class="text-blue"
+                span The application period is over.

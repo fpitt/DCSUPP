@@ -25,20 +25,6 @@ div
                         | Resume
                 td
                     input accept="application/pdf" name="file" ng-model="resume" ngf-max-size="2MB" ngf-select="" type="file" required="true"
-            tr ng-repeat="requirement in application.requirements"
-                td
-                    b
-                        | {{ requirement.sub_category_name }}
-                td ng-if="requirement.attribute_type == 'Number'"
-                    input ng-model="requirement.value" type="number" class="form-control" required="true"
-                td ng-if="requirement.attribute_type == 'Boolean'"
-                    input type="radio" value="True" ng-model="requirement.value" required="true"
-                        | True
-                    input type="radio" value="False" ng-model="requirement.value" required="true"
-                        | False
-                td ng-if="requirement.attribute_type == 'Input Field'"
-                    input ng-model="requirement.value" type="text" class="form-control" required="true"
-                td ng-if="requirement.attribute_type == 'Date'"
-                    input type="date" class="form-control" ng-model="requirement.value" required="true"
+
         div
             button type="submit" value="submit" access="administrator student" restrict="" class="btn btn-default"  Submit
