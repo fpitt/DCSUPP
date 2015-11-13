@@ -10,7 +10,7 @@ angular
     .controller 'SubcategoryInfoCtrl', ['$scope', '$stateParams', 'RequirementCategory', 
     'RequirementSubcategory', 'User', 
     ($scope, $stateParams, RequirementCategory, RequirementSubcategory, User) ->
-        #Store Category List
+
         $scope.list_subcategories = null
         #Edit Subcategory
         $scope.edit_category = null

@@ -87,6 +87,12 @@ angular
                 )
             )
 
+        # --- Get User ---
+        $scope.getUser = ->
+            User.getUser().success (data) ->
+                $scope.user = data
+            return
+
         #   determine the application status
         $scope.determineStatus = () ->
             if $scope.application.professor_approved == null
@@ -108,4 +114,5 @@ angular
         $scope.getApplicationInfo()
         $scope.getAllReferences()
         $scope.getStudentApprovedReferences()
+        $scope.getUser()
     ]

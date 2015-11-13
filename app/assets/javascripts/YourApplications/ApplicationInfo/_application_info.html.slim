@@ -78,7 +78,7 @@ div
 
     br
 
-    div restrict="" access="administrator student"
+    div ng-if="user.administrator || user.student"
         table class="table table-striped"
             tr
                 th 
@@ -100,7 +100,7 @@ div
                                 button ng-show="reference.student_approved == null || reference.student_approved == false" class="btn btn-default btn-sm" ng-click="processReferenceApproval(reference, true)" Use
                                 button ng-show="reference.student_approved == true" class="btn btn-default btn-sm" ng-click="processReferenceApproval(reference, false)" Discard
 
-    div restrict="" access="administrator professor"
+    div ng-if="user.administrator || user.professor"
         table class="table table-striped"
             tr
                 th 

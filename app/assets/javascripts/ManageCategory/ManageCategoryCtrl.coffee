@@ -11,14 +11,15 @@ angular
         'RequirementSubcategory', 'User'
     ($scope, RequirementCategory, RequirementSubcategory, User) ->
 
-        #Current page of the navigation
         $scope.pagenumber = 1
         #Direction of the navigation
         $scope.direction = 0
         #List of Navigation Category
         $scope.categories = null
         #Create Requirement Category Model
-        $scope.category_name = ""
+        $scope.categoryName = ""
+        #User Model
+        $scope.user = null
 
         # --- Enable Success ---
         $scope.enable_success = ->
@@ -33,14 +34,15 @@ angular
             $("#input_label").text(error_msg)
 
         # --- Create Category --- 
-        $scope.createCategory = ->
+        $scope.createCategory = ()->
+            console.log($scope.categoryName)
             payload = 
                 requirement_category:
-                    category_name: $scope.category_name
+                    category_name: $scope.categoryName
             RequirementCategory.create(payload)
                 .success (data) ->
                     category_nameDefault = ""
-                    $scope.category_name = angular.copy(category_nameDefault)
+                    $scope.categoryName = angular.copy(category_nameDefault)
                     $scope.flip(0)
 
                     if (data.msg)
@@ -64,6 +66,7 @@ angular
                         $scope.pagenumber -= 1
                     else
                         $scope.pagenumber = 1)
+            $scope.getUser()
 
         # --- Get User ---
         $scope.getUser = ->
@@ -73,5 +76,4 @@ angular
 
         # --- JQuery Initialization Code --- 
         $scope.flip(0)
-        $scope.getUser()
     ]
