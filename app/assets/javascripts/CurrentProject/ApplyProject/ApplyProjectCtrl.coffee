@@ -19,8 +19,6 @@ angular
 
         $scope.error = false
         #	pop-up service for page settings + information
-        $scope.modalService = modalService
-        #   application form info
         $scope.application = {}
         #   application project requirements
         $scope.application.requirements = []

@@ -22,12 +22,14 @@
 angular
 .module('dcsupp')
 .controller 'ProjectInfoCtrl', ['$scope', '$stateParams', 'Project', 
-    'ProjectRequirement', 'RequirementSubcategory',
-    ($scope, $stateParams, Project, ProjectRequirement, RequirementSubcategory) ->
+    'ProjectRequirement', 'RequirementSubcategory', 'User',
+    ($scope, $stateParams, Project, ProjectRequirement, RequirementSubcategory, User) ->
         #   project information
         $scope.project = {}
         #   Project  Requirements
         $scope.requirements = []
+        #User Model
+        $scope.user = null
 
         #   set this project as being completed
         $scope.setCompleted = ->
@@ -55,6 +57,14 @@ angular
             ProjectRequirement.getByProject($scope.project).success (data) ->
                 $scope.requirements = data
 
+
+        # --- Get User ---
+        $scope.getUser = ->
+            User.getUser().success (data) ->
+                $scope.user = data
+            return
+
         #   get project information when controller loads
         $scope.getProject()
+        $scope.getUser()
     ]
