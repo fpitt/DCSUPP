@@ -6,6 +6,7 @@ class CreateStudentAttributes < ActiveRecord::Migration
       t.belongs_to :requirement_subcategory, index: true
       t.belongs_to :user, index: true
       t.string :value, :null => true
+      t.integer :requirement_category_id
 
     end
   end

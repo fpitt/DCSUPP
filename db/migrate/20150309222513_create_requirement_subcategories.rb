@@ -9,6 +9,8 @@ class CreateRequirementSubcategories < ActiveRecord::Migration
       t.string :upper_limit, :null => true
       t.string :lower_limit, :null => true
       t.string :regex, :null => true
+      t.string :placeholder
+      t.boolean :student_attribute
 
     end
   end

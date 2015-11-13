@@ -8,6 +8,9 @@ class CreateProjects < ActiveRecord::Migration
       t.datetime :deadline_date
       t.text :text
       t.boolean :approval_status
+      t.boolean :completed
+      t.boolean :looking_for_students
+      t.text :additional_requirement
 
     end
   end

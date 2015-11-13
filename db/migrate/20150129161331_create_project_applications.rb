@@ -8,6 +8,9 @@ class CreateProjectApplications < ActiveRecord::Migration
       t.text :message
       t.string :title
       t.string :resume_url
+      t.boolean :professor_approved
+      t.boolean :student_approved
+      t.boolean :administrator_approved
 
     end
   end
