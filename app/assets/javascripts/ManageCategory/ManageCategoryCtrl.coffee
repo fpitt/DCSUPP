@@ -8,8 +8,8 @@
 angular
     .module('dcsupp')
     .controller 'ManageCategoryCtrl', ['$scope', 'RequirementCategory', 
-        'RequirementSubcategory', 
-    ($scope, RequirementCategory, RequirementSubcategory) ->
+        'RequirementSubcategory', 'User'
+    ($scope, RequirementCategory, RequirementSubcategory, User) ->
 
         #Current page of the navigation
         $scope.pagenumber = 1
@@ -65,6 +65,13 @@ angular
                     else
                         $scope.pagenumber = 1)
 
+        # --- Get User ---
+        $scope.getUser = ->
+            User.getUser().success (data) ->
+                $scope.user = data
+            return
+
         # --- JQuery Initialization Code --- 
         $scope.flip(0)
+        $scope.getUser()
     ]

@@ -7,7 +7,7 @@ div class="row"
                         b Manage Categories
                     hr
 
-                    div access="administrator" restrict=""
+                    div ng-if="user.administrator"
                         form name="category"
                             /Input Form if Successful
                             div id="form_feedback" class="form-group has-feedback"
