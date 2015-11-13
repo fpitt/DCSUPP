@@ -60,7 +60,7 @@ class RequirementCategoriesController < ApplicationController
 				WHERE ID in (SELECT requirement_category_id
 							FROM requirement_subcategories
 							WHERE student_attribute = 't')
-			ORDER BY requirement_categories.created_at desc")
+			ORDER BY requirement_categories.id desc")
 
 		puts @student_attributes.size
 
