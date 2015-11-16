@@ -25,6 +25,9 @@ angular
 
         #   create a new project application
         $scope.createApplication = () ->
+            # Disable Button so user cannot submit twice
+            $('#submit_button').prop('disabled', true)
+
             async.waterfall([
                     #   create project application
                     (callback) ->
@@ -42,6 +45,7 @@ angular
                 (err, data) ->
                     if err
                         $scope.error = true
+                        $('#submit_button').prop('disabled', false)
                     else
                         $scope.error = false
                         $state.go('your_applications.application_info', {id: data.id})
