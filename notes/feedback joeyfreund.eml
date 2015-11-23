@@ -1,0 +1,251 @@
+Return-path: <fpitt@cs.toronto.edu>
+Envelope-to: fpitt+@postbox.cs.toronto.edu
+Delivery-date: Sat, 21 Nov 2015 16:46:35 -0500
+Received: from fpitt by mailswitch.cs.toronto.edu with local (Exim 4.76)
+	(envelope-from <fpitt@cs.toronto.edu>)
+	id 1a0FzP-0002PF-6L
+	for fpitt+@postbox.cs.toronto.edu; Sat, 21 Nov 2015 16:46:35 -0500
+Received: from alkyone.cs.toronto.edu ([128.100.3.121] ident=Debian-exim)
+	by mailswitch.cs.toronto.edu with esmtp (Exim 4.76)
+	(envelope-from <joeyfreund@gmail.com>)
+	id 1a0FzP-0002P7-0d
+	for fpitt@cs.toronto.edu; Sat, 21 Nov 2015 16:46:35 -0500
+Received: from mail-qg0-f41.google.com ([209.85.192.41])
+	by alkyone.cs.toronto.edu with esmtps (TLS1.0:RSA_ARCFOUR_SHA1:16)
+	(Exim 4.76)
+	(envelope-from <joeyfreund@gmail.com>)
+	id 1a0FzN-0006bd-H1
+	for fpitt@cs.toronto.edu; Sat, 21 Nov 2015 16:46:34 -0500
+Received: by qgeb1 with SMTP id b1so94656480qge.1
+        for <fpitt@cs.toronto.edu>; Sat, 21 Nov 2015 13:46:16 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :content-type;
+        bh=9CuBDEJ+ygq1Z0GoApvEp+YAsVaH/8yeFA1SKUMlu48=;
+        b=Rn1KgoNgAgrZzCiMzBs79b61ZEQhWAfSLhInNK3rptB9t2Z+NNIEnCP6J64q21EUSv
+         uBWCrQovQoPMMP+lKXutDkJqv9dzbsW2dq2iWVcYmBKp9E4ISM2aSp7mfNqPTKl6SnTn
+         ko3pMVWpkk+YMAUGXuIfsF8/6Vp6s8kJhFLNQvORq/FwGYkVJFWm5FPLeKW4FYL6eSZP
+         QeXp/MYi0M9BhWSA6uHDwXk/jbP48bLyEEHShv7BCnKl0R3pSnYpzE1gosz0F2q+8mCK
+         8sSxCPU6OyAaqKv/ikZ79rgJ8y1GNmyfh9g3RuT6Xn4pEAK0A7lP6eq+Dps9Ygv0PIW3
+         dfmA==
+MIME-Version: 1.0
+X-Received: by 10.140.30.180 with SMTP id d49mr19449712qgd.48.1448142375990;
+ Sat, 21 Nov 2015 13:46:15 -0800 (PST)
+Received: by 10.55.20.224 with HTTP; Sat, 21 Nov 2015 13:46:15 -0800 (PST)
+In-Reply-To: <564F9D40.9060404@cs.toronto.edu>
+References: <20151119210826.7DE5B2805EF@apps3.cs.toronto.edu>
+	<564F9D40.9060404@cs.toronto.edu>
+Date: Sat, 21 Nov 2015 16:46:15 -0500
+Message-ID: <CALcYy=oehGSuAYp-Ndv2GgyD2JiFEhbMc3E+gD9G7n-aBZ=A1Q@mail.gmail.com>
+Subject: Re: DCSUPP website for UG research projects
+From: Joey Freund <joeyfreund@gmail.com>
+To: Francois Pitt <fpitt@cs.toronto.edu>
+Content-Type: multipart/alternative; boundary=001a113a5bc6e7ba9e052513eb71
+X-CS-PMX-Spam: Gauge=IIIIIIII, Probability=8%, Report='
+ HTML_50_70 0.1, BODYTEXTH_SIZE_10000_LESS 0, BODYTEXTP_SIZE_3000_LESS 0, BODY_SIZE_10000_PLUS 0, CTYPE_MULTIPART_NO_QUOTE 0, DATE_TZ_NA 0, DKIM_SIGNATURE 0, REFERENCES 0, WEBMAIL_SOURCE 0, __ANY_URI 0, __BOUNCE_CHALLENGE_SUBJ 0, __BOUNCE_NDR_SUBJ_EXEMPT 0, __C230066_P5 0, __CP_URI_IN_BODY 0, __CT 0, __CTYPE_HAS_BOUNDARY 0, __CTYPE_MULTIPART 0, __CTYPE_MULTIPART_ALT 0, __DQ_NEG_HEUR 0, __DQ_NEG_IP 0, __FORWARDED_MSG 0, __FRAUD_CONTACT_NUM 0, __FRAUD_WEBMAIL 0, __FRAUD_WEBMAIL_FROM 0, __FROM_GMAIL 0, __HAS_FROM 0, __HAS_HTML 0, __HAS_MSGID 0, __HIGHBITS 0, __HTML_AHREF_TAG 0, __HTTPS_URI 0, __IN_REP_TO 0, __MIME_HTML 0, __MIME_VERSION 0, __MULTIPLE_URI_HTML 0, __MULTIPLE_URI_TEXT 0, __PHISH_PHRASE1_B 0, __PHISH_SPEAR_HTTP_RECEIVED 0, __PHISH_SPEAR_STRUCTURE_1 0, __RATWARE_SIGNATURE_3_N1 0, __RDNS_GMAIL 0, __REFERENCES 0, __SANE_MSGID 0, __SUBJ_ALPHA_END 0, __SUBJ_ALPHA_NEGATE 0,
+ __TO_MALFORMED_2 0, __URI_IN_BODY 0, __URI_NS , __YOUTUBE_RCVD 0'
+Sender: Francois Pitt <fpitt@cs.toronto.edu>
+
+--001a113a5bc6e7ba9e052513eb71
+Content-Type: text/plain; charset=UTF-8
+
+Hi Francois,
+
+I started looking at the site, and it looks like a great initiative.
+I logged in as a student, so I couldn't create any test projects yet, but I
+have a few comments related to UI/UX (all very minor issues).
+Here we go ...
+
+
+The header (DCS Undergraduate Project Portal) is center-aligned, while the
+navigation bar (immediately below it) is left-aligned.
+It's obviously a very minor point, but still ... it's "visual noise".
+
+
+The top navigation bar:
+* Seems like the information from the "About Page" and the "info" (the "i"
+icon on the right) should be on one page.
+* The order of the items is a bit non-standard (alternates between public
+and personal pages)
+* Terminology suggestions:
+   About page --> Home
+   Update Profile --> Profile
+
+
+The *About Page* contains some redundant information/components.
+ * Example 1: "Students can update their individual profiles and
+application requirements as well as browse and apply for approved projects",
+I already knew that from the navigation bar.
+ * Example 2: There are "Update Profile" and "Browse Projects" buttons
+(green & blue), although we can get there from the navigation bar.
+
+
+In the *Browse Projects* page
+* I am not sure what the purpose of the *Browse Projects* button is.
+* The *Add Filter* is "currently under implementation". Showing "under
+construction" message to user is a bit dated (please ignore this comment if
+you're not planning to have it when the site goes live).
+
+
+
+
+OK, I'll stop here.
+If that's not the type of feedback you were looking for (i.e. you were only
+interested in functional testing, not UI/UX feedback), please ignore this
+email.
+That being said, I hope you find it useful.
+
+
+Cheers,
+Joey
+
+
+
+
+On Fri, Nov 20, 2015 at 5:22 PM, Francois Pitt <fpitt@cs.toronto.edu> wrote:
+
+> Hi everyone,
+>
+> If you head over to https://dcsupp.cdf.toronto.edu/ you can see our
+> new DCS Undergraduate Project Portal (DCSUPP) for helping UG students
+> find research projects.
+>
+> You can log in with your UTORid credentials, but the first time you
+> do, your account will be set up with the "student" role. Please email
+> Alan Rosenthal (CCed) your UTORid so he can update your status to
+> "professor".
+>
+> Please give it a spin: make up some fake projects, etc. And let us
+> know your impressions and, more importantly, whether or not you find
+> anything that does not work. The database will be completely reset
+> before we go live so don't worry about silly fake projects cluttering
+> things up! :)
+>
+> Cheers,
+> --
+> Francois Pitt
+> Associate Professor, Teaching Stream &
+> Associate Chair, Undergraduate Studies
+> Department of Computer Science, University of Toronto
+> Room 4264, Bahen Centre for Information Technology, 40 St. George St.
+> tel:+1-416-978-3707
+> http://www.cs.utoronto.ca/~fpitt/
+>
+>
+>
+
+--001a113a5bc6e7ba9e052513eb71
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div class=3D"gmail_default" style=3D"font-family:arial,he=
+lvetica,sans-serif">Hi Francois,</div><div class=3D"gmail_default" style=3D=
+"font-family:arial,helvetica,sans-serif"><br></div><div class=3D"gmail_defa=
+ult" style=3D"font-family:arial,helvetica,sans-serif">I started looking at =
+the site, and it looks like a great initiative.</div><div class=3D"gmail_de=
+fault" style=3D"font-family:arial,helvetica,sans-serif">I logged in as a st=
+udent, so I couldn&#39;t create any test projects yet, but I have a few com=
+ments related to UI/UX (all very minor issues).</div><div class=3D"gmail_de=
+fault" style=3D"font-family:arial,helvetica,sans-serif">Here we go ...</div=
+><div class=3D"gmail_default" style=3D"font-family:arial,helvetica,sans-ser=
+if"><br></div><div class=3D"gmail_default" style=3D"font-family:arial,helve=
+tica,sans-serif"><br></div><div class=3D"gmail_default" style=3D"font-famil=
+y:arial,helvetica,sans-serif"><div class=3D"gmail_default">The header (DCS =
+Undergraduate Project Portal) is center-aligned, while the navigation bar (=
+immediately below it) is left-aligned.</div><div class=3D"gmail_default">It=
+&#39;s obviously a very minor point, but still ... it&#39;s &quot;visual no=
+ise&quot;.</div><div class=3D"gmail_default">=C2=A0<br></div><div class=3D"=
+gmail_default"><br></div><div class=3D"gmail_default">The top navigation ba=
+r:</div><div class=3D"gmail_default">* Seems like the information from the =
+&quot;About Page&quot; and the &quot;info&quot; (the &quot;i&quot; icon on =
+the right) should be on one page.</div><div class=3D"gmail_default">* The o=
+rder of the items is a bit non-standard (alternates between public and pers=
+onal pages)</div><div class=3D"gmail_default">* Terminology suggestions:</d=
+iv><div class=3D"gmail_default">=C2=A0 =C2=A0About page --&gt; Home</div><d=
+iv class=3D"gmail_default">=C2=A0 =C2=A0Update Profile --&gt; Profile</div>=
+<div class=3D"gmail_default">=C2=A0 =C2=A0</div><div class=3D"gmail_default=
+">=C2=A0=C2=A0=C2=A0</div><div class=3D"gmail_default">The=C2=A0<i>About Pa=
+ge</i>=C2=A0contains some redundant information/components.</div><div class=
+=3D"gmail_default" style=3D"font-family:arial,sans-serif"><font face=3D"ari=
+al, helvetica, sans-serif">=C2=A0* Example 1:=C2=A0</font>&quot;Students ca=
+n update their individual profiles and application requirements as well as =
+browse and apply for approved projects&quot;<font face=3D"arial, helvetica,=
+ sans-serif">, I already knew that from the navigation bar.</font></div><di=
+v class=3D"gmail_default" style=3D"font-family:arial,sans-serif"><font face=
+=3D"arial, helvetica, sans-serif">=C2=A0* Example 2: There are=C2=A0</font>=
+<span style=3D"font-family:arial,helvetica,sans-serif">&quot;Update Profile=
+&quot; and &quot;Browse Projects&quot; buttons (green &amp; blue), although=
+ we can get there from the navigation bar.</span></div><div class=3D"gmail_=
+default" style=3D"font-family:arial,sans-serif"><span style=3D"font-family:=
+arial,helvetica,sans-serif"><br></span></div></div><div class=3D"gmail_defa=
+ult" style=3D"font-family:arial,helvetica,sans-serif"><br></div><div class=
+=3D"gmail_default" style=3D"font-family:arial,helvetica,sans-serif">In the =
+<i>Browse Projects</i> page</div><div class=3D"gmail_default" style=3D"font=
+-family:arial,helvetica,sans-serif">* I am not sure what the purpose of the=
+ <i>Browse Projects</i> button is.</div><div class=3D"gmail_default" style=
+=3D"font-family:arial,helvetica,sans-serif">* The <i>Add Filter</i>=C2=A0is=
+ &quot;currently under implementation&quot;. Showing &quot;under constructi=
+on&quot; message to user is a bit dated (please ignore this comment if you&=
+#39;re not planning to have it when the site goes live).</div><div class=3D=
+"gmail_default" style=3D"font-family:arial,helvetica,sans-serif"><br></div>=
+<div class=3D"gmail_default" style=3D"font-family:arial,helvetica,sans-seri=
+f"><br></div><div class=3D"gmail_default" style=3D"font-family:arial,helvet=
+ica,sans-serif"><br></div><div class=3D"gmail_default" style=3D"font-family=
+:arial,helvetica,sans-serif"><br></div><div class=3D"gmail_default" style=
+=3D"font-family:arial,helvetica,sans-serif">OK, I&#39;ll stop here.</div><d=
+iv class=3D"gmail_default" style=3D"font-family:arial,helvetica,sans-serif"=
+>If that&#39;s not the type of feedback you were looking for (i.e. you were=
+ only interested in functional testing, not UI/UX feedback), please ignore =
+this email.</div><div class=3D"gmail_default" style=3D"font-family:arial,he=
+lvetica,sans-serif">That being said, I hope you find it useful.</div><div c=
+lass=3D"gmail_default" style=3D"font-family:arial,helvetica,sans-serif"><br=
+></div><div class=3D"gmail_default" style=3D"font-family:arial,helvetica,sa=
+ns-serif"><br></div><div class=3D"gmail_default" style=3D"font-family:arial=
+,helvetica,sans-serif">Cheers,</div><div class=3D"gmail_default" style=3D"f=
+ont-family:arial,helvetica,sans-serif">Joey</div><div class=3D"gmail_defaul=
+t" style=3D"font-family:arial,helvetica,sans-serif"><br></div><div class=3D=
+"gmail_default" style=3D"font-family:arial,helvetica,sans-serif"><br></div>=
+<div class=3D"gmail_default" style=3D"font-family:arial,helvetica,sans-seri=
+f"><br></div></div><div class=3D"gmail_extra"><br><div class=3D"gmail_quote=
+">On Fri, Nov 20, 2015 at 5:22 PM, Francois Pitt <span dir=3D"ltr">&lt;<a h=
+ref=3D"mailto:fpitt@cs.toronto.edu" target=3D"_blank">fpitt@cs.toronto.edu<=
+/a>&gt;</span> wrote:<br><blockquote class=3D"gmail_quote" style=3D"margin:=
+0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">Hi everyone,<br>
+<br>
+If you head over to <a href=3D"https://dcsupp.cdf.toronto.edu/" rel=3D"nore=
+ferrer" target=3D"_blank">https://dcsupp.cdf.toronto.edu/</a> you can see o=
+ur<br>
+new DCS Undergraduate Project Portal (DCSUPP) for helping UG students<br>
+find research projects.<br>
+<br>
+You can log in with your UTORid credentials, but the first time you<br>
+do, your account will be set up with the &quot;student&quot; role. Please e=
+mail<br>
+Alan Rosenthal (CCed) your UTORid so he can update your status to<br>
+&quot;professor&quot;.<br>
+<br>
+Please give it a spin: make up some fake projects, etc. And let us<br>
+know your impressions and, more importantly, whether or not you find<br>
+anything that does not work. The database will be completely reset<br>
+before we go live so don&#39;t worry about silly fake projects cluttering<b=
+r>
+things up! :)<br>
+<br>
+Cheers,<br>
+<span class=3D"HOEnZb"><font color=3D"#888888">--<br>
+Francois Pitt<br>
+Associate Professor, Teaching Stream &amp;<br>
+Associate Chair, Undergraduate Studies<br>
+Department of Computer Science, University of Toronto<br>
+Room 4264, Bahen Centre for Information Technology, 40 St. George St.<br>
+tel:<a href=3D"tel:%2B1-416-978-3707" value=3D"+14169783707">+1-416-978-370=
+7</a><br>
+<a href=3D"http://www.cs.utoronto.ca/~fpitt/" rel=3D"noreferrer" target=3D"=
+_blank">http://www.cs.utoronto.ca/~fpitt/</a><br>
+<br>
+<br>
+</font></span></blockquote></div><br></div>
+
+--001a113a5bc6e7ba9e052513eb71--
+
