@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150830174150) do
+ActiveRecord::Schema.define(version: 20151125180718) do
 
   create_table "professor_settings", force: :cascade do |t|
     t.datetime "created_at",                       null: false
@@ -144,6 +144,7 @@ ActiveRecord::Schema.define(version: 20150830174150) do
     t.boolean  "administrator", default: false
     t.text     "introduction"
     t.string   "contact_email"
+    t.string   "utor_id"
   end
 
 end

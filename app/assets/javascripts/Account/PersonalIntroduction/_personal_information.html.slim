@@ -11,6 +11,12 @@ div ng-if="edit"
             tr
                 td
                     b
+                        | Name
+                td
+                    input type="text" placeholder="Input Contact Email" class="form-control" required="true" ng-model="userInformation.input_name"
+            tr
+                td
+                    b
                         | Contact Email
                 td
                     input type="email" placeholder="Input Contact Email" class="form-control" required="true" ng-model="userInformation.input_email"

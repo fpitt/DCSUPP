@@ -11,9 +11,11 @@ class ApplicationController < ActionController::Base
 
         #   authenticate user
         def authenticate
+
             authenticate_or_request_with_http_basic do |username|
-                user = User.find_or_create_by(name: username)
-                user.name == username
+                user = User.find_or_create_by(utor_id: username)
+                user.name = username
+                #Initially set the User name to the UTOR ID, but change after
                 user.save
                 @current_user = user
             end
