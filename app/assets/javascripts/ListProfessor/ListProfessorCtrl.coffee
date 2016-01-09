@@ -1,4 +1,3 @@
-# NOT USED AT THE MOMENT
 angular
 .module('dcsupp')
 .controller 'ListProfessorCtrl', ['$scope', '$modal', 'User', 
@@ -27,7 +26,7 @@ angular
             
             requestService.service(params, payload).then((data) ->
                 if (data)
-                    $scope.professors = data
+                    $scope.professors = data.data
                     if $scope.direction > 0
                         $scope.pagenumber += 1
                     else if $scope.direction < 0

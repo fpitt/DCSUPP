@@ -47,6 +47,8 @@ html
                                     li ng-if="user.administrator"
                                         a ui-sref="manage_category" Manage Categories
                                     / Same ui-sref, different name for professor
+                                    li
+                                        a ui-sref="list_professor" Browse Professors
                                     li ng-if="user.professor"
                                         a ui-sref="manage_category" Browse Categories
                                     li ng-if="user.administrator || user.professor"
