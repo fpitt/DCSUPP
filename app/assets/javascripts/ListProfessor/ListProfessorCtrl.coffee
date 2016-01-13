@@ -8,12 +8,6 @@ angular
         $scope.professors = null
         $scope.pagenumber = 1
 
-        $scope.items = [
-            'item1'
-            'item2'
-            'item3'
-        ]
-
         # --- Page Navigation ---
 
         $scope.flip = (pushDirection) ->
