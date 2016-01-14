@@ -10,8 +10,10 @@ table class="table table-hover"
         td
             b
                 | Name
-        td
-            span
+        td 
+            span ng-if="user.fullname"
+                | {{ user.fullname }}
+            span ng-if="!(user.fullname)"
                 | {{ user.name }}
     tr
         td
