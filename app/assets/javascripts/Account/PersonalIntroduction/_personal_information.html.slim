@@ -45,9 +45,9 @@ div ng-if="!(edit)"
                 b
                     | Name
             td
-                span ng-if="user.utor_id"
-                    | {{ user.utor_id }}
-                span ng-if="!(user.contact_email)"
+                span ng-if="user.fullname"
+                    | {{ user.fullname }}
+                span ng-if="!(user.fullname)"
                     | [No Name Provided]
         tr
             td
@@ -69,4 +69,4 @@ div ng-if="!(edit)"
                     | [No User Introduction]
     form
         div
-            button type="button" access="administrator student" restrict="" class="btn btn-default" ng-click="editEnable()" Edit
+            button type="button" access="professor student" restrict="" class="btn btn-default" ng-click="editEnable()" Edit

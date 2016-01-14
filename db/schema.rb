@@ -140,7 +140,7 @@ ActiveRecord::Schema.define(version: 20150830174150) do
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
     t.string   "name"
-    t.string   "utor_id"
+    t.string   "fullname"
     t.boolean  "professor",     default: false
     t.boolean  "administrator", default: false
     t.text     "introduction"
