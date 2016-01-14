@@ -30,6 +30,8 @@ angular
         $scope.requirements = []
         #User Model
         $scope.user = null
+        #Professor Model
+        $scope.professor = null
 
         #   set this project as being completed
         $scope.setCompleted = ->
@@ -52,19 +54,25 @@ angular
                     $scope.details = data
                 )
                 $scope.getByProject()
+                $scope.getProfessor()
 
         $scope.getByProject = ->
             ProjectRequirement.getByProject($scope.project).success (data) ->
                 $scope.requirements = data
 
+        $scope.getProfessor = ->
+            User.getById($scope.project.user_id).success (user) ->
+                $scope.professor = user
+                console.log(user)
 
         # --- Get User ---
         $scope.getUser = ->
             User.getUser().success (data) ->
-                $scope.user = data
+                $scope.professor = data
             return
 
         #   get project information when controller loads
         $scope.getProject()
         $scope.getUser()
+        
     ]

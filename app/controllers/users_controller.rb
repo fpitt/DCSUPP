@@ -18,7 +18,7 @@ class UsersController < ApplicationController
                 param = params[:payload]
                 @current_user.contact_email = param[:input_email]
                 @current_user.introduction = param[:input_text]
-                @current_user.name = param[:input_name]
+                @current_user.utor_id = param[:input_name]
 
                 if @current_user.save
                     render :json => @current_user

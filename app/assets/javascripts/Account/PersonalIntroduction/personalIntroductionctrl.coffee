@@ -28,7 +28,7 @@ angular.module('dcsupp').controller 'PersonalIntroductionCtrl', ['$scope',
                 #Get Previous User Information
                 $scope.userInformation.input_email = $scope.user.contact_email
                 $scope.userInformation.input_text = $scope.user.introduction
-                $scope.userInformation.input_name = $scope.user.name
+                $scope.userInformation.input_name = $scope.user.utor_id
             return
 
         # --- Update User ---

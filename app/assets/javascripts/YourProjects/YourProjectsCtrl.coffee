@@ -32,7 +32,6 @@ angular
             Project.getCompletedProjectsOfCurrentUser().success((data) ->
                 $scope.projects = data)
 
-
         $scope.selectProject = (project) ->
             $scope.selectedProject = project
             $scope.loadProjectApplications(project);

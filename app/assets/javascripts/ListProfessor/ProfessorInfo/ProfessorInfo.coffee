@@ -1,6 +1,4 @@
 # -------------------------------------------------------------------------------------------------------
-# NOT USED AT THE MOMENT
-#
 # UI-Router state declaration for Professor Info page.
 # -------------------------------------------------------------------------------------------------------
 angular.module('dcsupp').config ['$stateProvider', ($stateProvider) ->
