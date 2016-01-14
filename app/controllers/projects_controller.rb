@@ -73,6 +73,20 @@ class ProjectsController < ApplicationController
         end
     end
 
+    #   Identify how many pages there are in the projects
+    def pages
+        project_size = Project.all.length
+
+        puts project_size
+
+        respond_to do |format|
+            format.json {
+                @pages = (project_size/10.0).ceil
+                render :json => @pages 
+            }
+        end
+    end
+
     def grab_in_progress_project
         respond_to do |format|
             format.json {
@@ -271,7 +285,9 @@ class ProjectsController < ApplicationController
 
                 if @projects and current_offset + direction < @projects.length && current_offset + direction >= 0
                     offset = current_offset + direction
-                    render :json => @projects[offset, offset + 10]
+                    @return_projects = @projects.offset(offset).take(10)
+
+                    render :json => @return_projects
                 else
                     render :nothing => true, :status => 200, :content_type => 'text/html'
                 end

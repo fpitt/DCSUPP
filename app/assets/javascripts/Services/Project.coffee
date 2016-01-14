@@ -26,6 +26,12 @@ angular
             requirement: requirement
         return requestService.service(sendParams, payload)
 
+    pages: ()->
+        sendParams =
+            url: '/project_page_number.json'
+            method: "POST"
+        return requestService.service(sendParams)
+
 
     #   update a Project object
     #   id: Integer (id of project)

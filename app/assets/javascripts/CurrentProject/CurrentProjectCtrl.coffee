@@ -15,6 +15,7 @@ angular
 		$scope.projects = null;
 		$scope.pagenumber = 1;
 		$scope.direction = 0;
+		$scope.pages = 0;
 
 		# Change Browse
 		$scope.project_browse = (input) ->
@@ -27,6 +28,10 @@ angular
 				$("#filter").removeClass("btn-primary").addClass("btn-default")
 				$("#browse").addClass("btn-primary").removeClass("btn-default")
 
+		$scope.get_pages = ->
+			Project.pages().success (data) ->
+				$scope.pages = data
+
 		#	filter list of projects
 		$scope.filterProjects = (tagsChanged, direction) ->
 			if tagsChanged
@@ -37,7 +42,7 @@ angular
 				pagenumber: $scope.pagenumber
 				filter: $scope.requirements
 				direction: direction
-			).success((data) ->
+			).success (data) ->
 				if (data)
 					$scope.projects = data
 					if direction > 0
@@ -46,9 +51,9 @@ angular
 						$scope.pagenumber -= 1
 					else
 						$scope.pagenumber = 1
-			)
 
 
 		# --- JQuery Initialization Code ---
 		$scope.filterProjects(false, 0);
+		$scope.get_pages();
 	]
