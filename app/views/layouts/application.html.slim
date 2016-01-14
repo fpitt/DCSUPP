@@ -53,7 +53,7 @@ html
                                         a ui-sref="manage_category" Browse Categories
                                     li ng-if="user.administrator || user.professor"
                                         a ui-sref="list_student" Browse Students
-                                    li ng-if="user.administrator || user.professor"
+                                    li ng-if="user.professor"
                                         a ui-sref="your_projects" Your Projects
                                     li ng-if="!(user.administrator || user.professor)"
                                         a ui-sref="your_applications" Your Applications
@@ -61,7 +61,7 @@ html
                                         a ui-sref="project_assignments" Project Assignments
                                     /li  access="" restrict=""
                                     /    a ui-sref="list_professor" Find Professor
-                                    li ng-if="user.administrator || user.professor"
+                                    li ng-if="user.professor"
                                         a ui-sref="your_reference_requests" Reference Requests
                                 
                                 form class="navbar-form navbar-right"

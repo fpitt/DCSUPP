@@ -68,7 +68,8 @@ angular
         # --- Get User ---
         $scope.getUser = ->
             User.getUser().success (data) ->
-                $scope.professor = data
+                $scope.user = data
+                console.log(data)
             return
 
         #   get project information when controller loads

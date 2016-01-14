@@ -10,10 +10,10 @@ div class="row"
                         b Add Project Filter
                 hr
                 div class="text-center"
-                    div class="btn-group"
+                    div class="btn-group" role="group"
                         button id="browse" class="btn btn-primary" ng-click="project_browse(true)"
                             span class="glyphicon glyphicon-th-list"
-                            |  Browse Projects
+                            |  List Projects
                         button id="filter" class="btn btn-default" ng-click="project_browse(false)"
                             span class="glyphicon glyphicon-filter"
                             |  Add Filter
@@ -22,10 +22,10 @@ div class="row"
                 div ng-if="browse"
                     div class="text-center"
                         div class="btn-group" role="group"
-                            button class="btn btn-default" ng-click="filterProjects(false, -10)" Prev
+                            button class="btn btn-default" id="prev_button" ng-click="filterProjects(false, -10)" Prev
                             button class="btn btn-default disabled"
                                 | {{ pagenumber }} / {{ pages }}
-                            button class="btn btn-default" ng-click="filterProjects(false, 10)" Next
+                            button class="btn btn-default" id="next_button" ng-click="filterProjects(false, 10)" Next
                     br
                     div class="list-group"
                         div ng-repeat="project in projects"
