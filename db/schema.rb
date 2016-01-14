@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151125180718) do
+ActiveRecord::Schema.define(version: 20150830174150) do
 
   create_table "professor_settings", force: :cascade do |t|
     t.datetime "created_at",                       null: false
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20151125180718) do
     t.integer  "project_id"
     t.text     "message"
     t.string   "title"
+    t.string   "resume_url"
     t.boolean  "professor_approved"
     t.boolean  "student_approved"
     t.boolean  "administrator_approved"
@@ -37,7 +38,6 @@ ActiveRecord::Schema.define(version: 20151125180718) do
     t.string   "resume_content_type"
     t.integer  "resume_file_size"
     t.datetime "resume_updated_at"
-    t.string   "resume_url"
   end
 
   add_index "project_applications", ["project_id"], name: "index_project_applications_on_project_id"
@@ -48,16 +48,17 @@ ActiveRecord::Schema.define(version: 20151125180718) do
     t.datetime "updated_at",                 null: false
     t.integer  "requirement_subcategory_id"
     t.integer  "project_id"
-    t.string   "value_array"
     t.string   "value"
+    t.string   "subcategory_name"
+    t.string   "comparison"
   end
 
   add_index "project_requirements", ["project_id"], name: "index_project_requirements_on_project_id"
   add_index "project_requirements", ["requirement_subcategory_id"], name: "index_project_requirements_on_requirement_subcategory_id"
 
   create_table "projects", force: :cascade do |t|
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.integer  "user_id"
     t.string   "title"
     t.datetime "deadline_date"
@@ -65,6 +66,7 @@ ActiveRecord::Schema.define(version: 20151125180718) do
     t.boolean  "approval_status"
     t.boolean  "completed"
     t.boolean  "looking_for_students"
+    t.text     "additional_requirement"
   end
 
   add_index "projects", ["user_id"], name: "index_projects_on_user_id"
@@ -84,11 +86,11 @@ ActiveRecord::Schema.define(version: 20151125180718) do
     t.string   "student_text"
     t.string   "professor_text"
     t.boolean  "professor_approved"
+    t.boolean  "student_approved"
+    t.integer  "references"
+    t.integer  "project_application_id"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
-    t.integer  "user_id"
-    t.integer  "project_application_id"
-    t.boolean  "student_approved"
   end
 
   create_table "requirement_categories", force: :cascade do |t|
@@ -138,9 +140,11 @@ ActiveRecord::Schema.define(version: 20151125180718) do
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
     t.string   "name"
+    t.string   "utor_id"
     t.boolean  "professor",     default: false
     t.boolean  "administrator", default: false
-    t.string   "utor_id"
+    t.text     "introduction"
+    t.string   "contact_email"
   end
 
 end

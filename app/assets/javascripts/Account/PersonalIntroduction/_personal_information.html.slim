@@ -28,7 +28,7 @@ div ng-if="edit"
                     textarea type="text" placeholder="Introduce About Yourself" class="form-control" required="true" ng-model="userInformation.input_text" rows="5"
 
         div
-            button type="submit" value="submit" access="administrator student" restrict="" class="btn btn-default" Submit
+            button type="submit" value="submit" access="professor student" restrict="" class="btn btn-default" Submit
 
 /Display Mode
 div ng-if="!(edit)"
@@ -45,8 +45,10 @@ div ng-if="!(edit)"
                 b
                     | Name
             td
-                span
+                span ng-if="user.utor_id"
                     | {{ user.utor_id }}
+                span ng-if="!(user.contact_email)"
+                    | [No Name Provided]
         tr
             td
                 b
