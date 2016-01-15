@@ -145,6 +145,7 @@ ActiveRecord::Schema.define(version: 20150830174150) do
     t.boolean  "administrator", default: false
     t.text     "introduction"
     t.string   "contact_email"
+    t.string   "fullname4"
   end
 
 end
