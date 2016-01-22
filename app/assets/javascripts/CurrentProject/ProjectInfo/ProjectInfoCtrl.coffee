@@ -63,7 +63,6 @@ angular
             payload = 
                 id: $scope.project.id
             ProjectApplication.getByProject(payload).success (data) ->
-                console.log(data)
                 $scope.applications = data
 
         $scope.getByProject = ->
