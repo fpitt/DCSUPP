@@ -88,3 +88,16 @@ div class="col-xs-12"
 
 div class="col-xs-12" ng-if="user.administrator"
     hr
+    table class="table table-hover"
+        thead
+            tr
+                th Title
+                th Date
+        tbody
+            tr ng-repeat="application in applications"
+                td
+                    span
+                        | {{ application.title }}
+                td
+                    span
+                        | {{ application.updated_at | date:'yyyy-MM-dd' }}

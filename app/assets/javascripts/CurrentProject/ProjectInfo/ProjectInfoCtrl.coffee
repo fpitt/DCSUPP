@@ -22,8 +22,8 @@
 angular
 .module('dcsupp')
 .controller 'ProjectInfoCtrl', ['$scope', '$stateParams', 'Project', 
-    'ProjectRequirement', 'RequirementSubcategory', 'User',
-    ($scope, $stateParams, Project, ProjectRequirement, RequirementSubcategory, User) ->
+    'ProjectRequirement', 'RequirementSubcategory', 'User', 'ProjectApplication',
+    ($scope, $stateParams, Project, ProjectRequirement, RequirementSubcategory, User, ProjectApplication) ->
         #   project information
         $scope.project = {}
         #   Project  Requirements
@@ -32,6 +32,8 @@ angular
         $scope.user = null
         #Professor Model
         $scope.professor = null
+        #Applications submitted to the project (for administrators)
+        $scope.applications = null
 
         #   set this project as being completed
         $scope.setCompleted = ->
@@ -55,6 +57,14 @@ angular
                 )
                 $scope.getByProject()
                 $scope.getProfessor()
+                $scope.getApplications()
+
+        $scope.getApplications = ->
+            payload = 
+                id: $scope.project.id
+            ProjectApplication.getByProject(payload).success (data) ->
+                console.log(data)
+                $scope.applications = data
 
         $scope.getByProject = ->
             ProjectRequirement.getByProject($scope.project).success (data) ->
@@ -63,13 +73,11 @@ angular
         $scope.getProfessor = ->
             User.getById($scope.project.user_id).success (user) ->
                 $scope.professor = user
-                console.log(user)
 
         # --- Get User ---
         $scope.getUser = ->
             User.getUser().success (data) ->
                 $scope.user = data
-                console.log(data)
             return
 
         #   get project information when controller loads
