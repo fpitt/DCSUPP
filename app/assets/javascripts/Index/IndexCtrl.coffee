@@ -57,6 +57,7 @@ angular.module('dcsupp').controller 'IndexCtrl', [
                 try
                     $state.go state2, id: path[path.length - 1]
                 catch err2
+                    $state.go 'intro'
         else
             $state.go 'intro'
 ]
