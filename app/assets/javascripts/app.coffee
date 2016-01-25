@@ -22,6 +22,8 @@ angular
 	]
 
 .run ['Permission', 'User', '$q', (Permission, User, $q) ->
+
+	Permission.$inject = ['stateParams']
 	Permission.defineRole 'student', (stateParams) ->
 
 		deferred = $q.defer()
@@ -38,6 +40,7 @@ angular
 
 		return deferred.promise
 
+	Permission.$inject = ['stateParams']
 	Permission.defineRole 'administrator', (stateParams) ->
 		deferred = $q.defer()
 
@@ -53,6 +56,7 @@ angular
 
 		return deferred.promise
 
+	Permission.$inject = ['stateParams']
 	Permission.defineRole 'professor', (stateParams) ->
 		deferred = $q.defer()
 
