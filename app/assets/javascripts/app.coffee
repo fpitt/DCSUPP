@@ -19,13 +19,12 @@ angular
 			return
 
 		$locationProvider.html5Mode(true).hashPrefix('!')
-	]
+]
 
 .run ['Permission', 'User', '$q', (Permission, User, $q) ->
 
 	StudentDeclaration = (stateParams) ->
 		deferred = $q.defer()
-
 		User.getUser()
 			.then (data) ->
 				if (!data.data.professor && !data.data.administrator)
@@ -43,7 +42,6 @@ angular
 
 	AdministratorDeclaration = (stateParams) ->
 		deferred = $q.defer()
-
 		User.getUser()
 			.then (data) ->
 				if (data.data.administrator)
@@ -61,7 +59,6 @@ angular
 
 	ProfessorDeclaration = (stateParams) ->
 		deferred = $q.defer()
-
 		User.getUser()
 			.then (data) ->
 				if (data.data.professor)
@@ -75,6 +72,6 @@ angular
 		return deferred.promise
 
 	ProfessorDeclaration.$inject = ['stateParams']
-	Permission.defineRole('professor', AdministratorDeclaration)
+	Permission.defineRole('professor', ProfessorDeclaration)
 
 ]
