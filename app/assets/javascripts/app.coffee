@@ -23,52 +23,51 @@ angular
 
 .run ['Permission', 'User', '$q', (Permission, User, $q) ->
 
-	Permission.$inject = ['stateParams']
-	Permission.defineRole 'student', (stateParams) ->
-
-		deferred = $q.defer()
-			
-		User.getUser()
-			.then (data) ->
-				if (!data.data.professor && !data.data.administrator)
-					deferred.resolve(true)
-				else
+	Permission
+		.defineRole 'student', (stateParams) ->
+			deferred = $q.defer()
+				
+			User.getUser()
+				.then (data) ->
+					if (!data.data.professor && !data.data.administrator)
+						deferred.resolve(true)
+					else
+						deferred.reject(false)
+					return
+				.catch ->
 					deferred.reject(false)
-				return
-			.catch ->
-				deferred.reject(false)
 
-		return deferred.promise
+			return deferred.promise
+
+		.defineRole 'administrator', (stateParams) ->
+			deferred = $q.defer()
+
+			User.getUser()
+				.then (data) ->
+					if (data.data.administrator)
+						deferred.resolve(true)
+					else
+						deferred.reject(false)
+					return
+				.catch ->
+					deferred.reject(false)
+
+			return deferred.promise
+
+		.defineRole 'professor', (stateParams) ->
+			deferred = $q.defer()
+
+			User.getUser()
+				.then (data) ->
+					if (data.data.professor)
+						deferred.resolve(true)
+					else
+						deferred.reject(false)
+					return
+				.catch ->
+					deferred.reject(false)
+				
+			return deferred.promise
 
 	Permission.$inject = ['stateParams']
-	Permission.defineRole 'administrator', (stateParams) ->
-		deferred = $q.defer()
-
-		User.getUser()
-			.then (data) ->
-				if (data.data.administrator)
-					deferred.resolve(true)
-				else
-					deferred.reject(false)
-				return
-			.catch ->
-				deferred.reject(false)
-
-		return deferred.promise
-
-	Permission.$inject = ['stateParams']
-	Permission.defineRole 'professor', (stateParams) ->
-		deferred = $q.defer()
-
-		User.getUser()
-			.then (data) ->
-				if (data.data.professor)
-					deferred.resolve(true)
-				else
-					deferred.reject(false)
-				return
-			.catch ->
-				deferred.reject(false)
-			
-		return deferred.promise
 ]
