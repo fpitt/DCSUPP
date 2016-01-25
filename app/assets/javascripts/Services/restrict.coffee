@@ -7,7 +7,7 @@
 #   Compile: Recompiles any illegal access
 ###
 
-angular.module('dcsupp').directive 'restrict', (User, $q) ->
+angular.module('dcsupp').directive 'restrict', ['User', '$q', (User, $q) ->
 
     restrict: 'A'
     prioriry: 100000
@@ -37,3 +37,4 @@ angular.module('dcsupp').directive 'restrict', (User, $q) ->
             deferred.resolve()
                 
         return deferred.promise
+]
