@@ -35,7 +35,6 @@ angular
 
         # --- Create Category --- 
         $scope.createCategory = ()->
-            console.log($scope.categoryName)
             payload = 
                 requirement_category:
                     category_name: $scope.categoryName

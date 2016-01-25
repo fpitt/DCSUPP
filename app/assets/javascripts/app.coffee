@@ -23,55 +23,46 @@ angular
 
 .run ['Permission', 'User', '$q', (Permission, User, $q) ->
 
-	StudentDeclaration = (stateParams) ->
-		deferred = $q.defer()
-		User.getUser()
-			.then (data) ->
-				if (!data.data.professor && !data.data.administrator)
-					deferred.resolve(true)
-				else
+	Permission
+		.defineRole 'student', () ->
+			deferred = $q.defer()
+			User.getUser()
+				.then (data) ->
+					if (!data.data.professor && !data.data.administrator)
+						deferred.resolve(true)
+					else
+						deferred.reject(false)
+					return
+				.catch ->
 					deferred.reject(false)
-				return
-			.catch ->
-				deferred.reject(false)
 
-		return deferred.promise
+			return deferred.promise
 
-	StudentDeclaration.$inject = ['stateParams']
-	Permission.defineRole('student', StudentDeclaration)
-
-	AdministratorDeclaration = (stateParams) ->
-		deferred = $q.defer()
-		User.getUser()
-			.then (data) ->
-				if (data.data.administrator)
-					deferred.resolve(true)
-				else
+		.defineRole 'administrator', () ->
+			deferred = $q.defer()
+			User.getUser()
+				.then (data) ->
+					if (data.data.administrator)
+						deferred.resolve(true)
+					else
+						deferred.reject(false)
+					return
+				.catch ->
 					deferred.reject(false)
-				return
-			.catch ->
-				deferred.reject(false)
 
-		return deferred.promise
+			return deferred.promise
 
-	AdministratorDeclaration.$inject = ['stateParams']
-	Permission.defineRole('administrator', AdministratorDeclaration)
-
-	ProfessorDeclaration = (stateParams) ->
-		deferred = $q.defer()
-		User.getUser()
-			.then (data) ->
-				if (data.data.professor)
-					deferred.resolve(true)
-				else
+		.defineRole 'professor', ()->
+			deferred = $q.defer()
+			User.getUser()
+				.then (data) ->
+					if (data.data.professor)
+						deferred.resolve(true)
+					else
+						deferred.reject(false)
+					return
+				.catch ->
 					deferred.reject(false)
-				return
-			.catch ->
-				deferred.reject(false)
-				
-		return deferred.promise
 
-	ProfessorDeclaration.$inject = ['stateParams']
-	Permission.defineRole('professor', ProfessorDeclaration)
-
+			return deferred.promise
 ]
