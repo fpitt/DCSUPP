@@ -4,6 +4,7 @@
 #   HTML elements.
 #   E.g. button access="administrator student" restrict="" Apply
 #   The button above can only be seen by admins and students
+#   Compile: Recompiles any illegal access
 ###
 
 angular.module('dcsupp').directive 'restrict', (User, $q) ->
