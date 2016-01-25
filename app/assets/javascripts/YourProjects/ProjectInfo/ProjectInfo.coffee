@@ -9,7 +9,4 @@ angular.module('dcsupp').config(['$stateProvider', ($stateProvider) ->
         url: '/project_info/:id'
         templateUrl: 'CurrentProject/ProjectInfo/_project_info.html'
         controller: 'ProjectInfoCtrl'
-        data:
-            permissions:
-                only: ['administrator', 'professor']
 ])

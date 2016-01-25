@@ -8,5 +8,5 @@ angular.module('dcsupp').config(['$stateProvider', ($stateProvider) ->
         controller: 'ApplicationInfoCtrl'
         data:
             permissions:
-                only: ['administrator', 'student']
+                only: ['student']
 ])

@@ -8,5 +8,6 @@ angular.module('dcsupp').config(['$stateProvider', ($stateProvider) ->
         controller: 'RequestReferenceCtrl'
         data:
             permissions:
-                only: ['administrator', 'student']
+                only: ['student']
+                redirectTo: 'intro'
 ])

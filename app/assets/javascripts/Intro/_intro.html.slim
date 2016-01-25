@@ -1,10 +1,10 @@
 div class="row"
     div class="col-md-10 col-xs-offset-1"
-        div class="panel panel-default text-center" ng-if="!(user.professor) && !(user.administrator)"
+        div class="panel panel-default text-center hidden_class" access="student" restrict=""
             div class="panel-body" 
                 span class="glyphicon glyphicon-user"
                 |  Your account is registered as a student account. If this is a mistake, please email dcsupp[at]cs[dot]toronto[dot]edu
-        div ng-if="user.professor || user.administrator" style="height:4em"
+        div access="professor administrator" restrict="" class="hidden_class" style="height:4em"
             //Placeholder
 
 div class="row"
@@ -23,7 +23,7 @@ div class="row"
                     div class="col-xs-10"
                         p Registered Researchers and Faculty can search or filter for students, post projects, and accept applications to projects through DCSUPP
                 hr
-                div ng-if="user.professor"
+                div access="professor" restrict="" class="hidden_class"
                     div class="row hidden-xs"
                         div class="align-center"
                             div class="btn-group"
@@ -45,7 +45,7 @@ div class="row"
                     div class="col-xs-10"
                         p Students can update their individual profiles and application requirements as well as browse and apply for approved projects
                 hr
-                div ng-if="!(user.professor) && !(user.administrator)"
+                div access="student" restrict="" class="hidden_class"
                     div class="row hidden-xs"
                         div class="align-center"
                             div class="btn-group"
@@ -67,7 +67,7 @@ div class="row"
                     div class="col-xs-10"
                         p DCSUPP Administrators can update categories on student category settings and approve student applications to projects
                 hr
-                div ng-if="user.administrator"
+                div access="administrator" restrict="" class="hidden_class"
                     div class="row hidden-xs"
                         div class="align-center"
                             div class="btn-group"

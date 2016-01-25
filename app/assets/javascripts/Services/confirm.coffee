@@ -4,7 +4,7 @@
 ###
 
 angular.module('dcsupp').directive 'ngReallyClick', [ ->
-    {
+    
     restrict: 'A'
     link: (scope, element, attrs) ->
         element.bind 'click', ->
@@ -13,6 +13,4 @@ angular.module('dcsupp').directive 'ngReallyClick', [ ->
                 scope.$apply attrs.ngReallyClick
             return
         return
-
-    }
 ]

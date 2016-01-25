@@ -9,4 +9,5 @@ angular.module('dcsupp').config(['$stateProvider', ($stateProvider) ->
         data:
             permissions:
                 only: ['professor', 'administrator']
+                redirectTo: 'intro'
 ])

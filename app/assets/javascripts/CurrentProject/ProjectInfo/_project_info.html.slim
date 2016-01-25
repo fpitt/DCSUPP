@@ -80,9 +80,9 @@ div class="col-xs-12" ng-if="requirements.length != 0"
 
 div class="col-xs-12"
     div class="text-center"
-        div ng-show="acceptingApplications"
+        div ng-if="acceptingApplications"
             button ng-if="!(user.administrator || user.professor)" class="btn btn-default" ui-sref="current_project.apply_project({id: project.id})" Apply Now
-        div ng-show="!acceptingApplications"
+        div ng-if="!acceptingApplications"
             b class="text-blue"
                 span The application period is over.
 
