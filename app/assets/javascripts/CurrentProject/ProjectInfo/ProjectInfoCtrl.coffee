@@ -52,9 +52,10 @@ angular
                 #   check if deadline date is due
                 $scope.acceptingApplications = new Date(parseInt(dead.substring(0,4)), parseInt(dead.substring(5, 7)) - 1, parseInt(dead.substring(8,10))) >= new Date()
                 #   get all non student attribute subcategories of this project
-                RequirementSubcategory.getNonStudentAttributeSubcategoriesOfProject(project: $stateParams.id).success((data) ->
+                RequirementSubcategory.getNonStudentAttributeSubcategoriesOfProject(project: $stateParams.id).success (data) ->
                     $scope.details = data
-                )
+                
+                #   Get additional project data
                 $scope.getByProject()
                 $scope.getProfessor()
                 $scope.getApplications()

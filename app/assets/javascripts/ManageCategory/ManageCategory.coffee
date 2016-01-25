@@ -3,6 +3,8 @@ angular.module('dcsupp').config ['$stateProvider', ($stateProvider) ->
         url: '/manage_category'
         templateUrl: 'ManageCategory/_manage_category.html'
         controller: 'ManageCategoryCtrl'
-        access:
-            requiredPermissions: ['administrator', 'professor']
+        data:
+            permissions: 
+            	only: ['administrator', 'professor']
+            	redirectTo: 'intro'
 ]
