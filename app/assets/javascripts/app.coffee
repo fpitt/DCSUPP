@@ -23,47 +23,48 @@ angular
 
 .run ['Permission', 'User', '$q', (Permission, User, $q) ->
 	Permission.defineRole 'student', (stateParams) ->
-			deferred = $q.defer()
- 
-			User.getUser()
-				.then (data) ->
-					if (!data.data.professor && !data.data.administrator)
-						deferred.resolve(true)
-					else
-						deferred.reject(false)
-					return
-				.catch ->
-					deferred.reject(false)
 
-			return deferred.promise
+		deferred = $q.defer()
+			
+		User.getUser()
+			.then (data) ->
+				if (!data.data.professor && !data.data.administrator)
+					deferred.resolve(true)
+				else
+					deferred.reject(false)
+				return
+			.catch ->
+				deferred.reject(false)
+
+		return deferred.promise
 
 	Permission.defineRole 'administrator', (stateParams) ->
-			deferred = $q.defer()
+		deferred = $q.defer()
 
-			User.getUser()
-				.then (data) ->
-					if (data.data.administrator)
-						deferred.resolve(true)
-					else
-						deferred.reject(false)
-					return
-				.catch ->
+		User.getUser()
+			.then (data) ->
+				if (data.data.administrator)
+					deferred.resolve(true)
+				else
 					deferred.reject(false)
+				return
+			.catch ->
+				deferred.reject(false)
 
-			return deferred.promise
+		return deferred.promise
 
 	Permission.defineRole 'professor', (stateParams) ->
-			deferred = $q.defer()
+		deferred = $q.defer()
 
-			User.getUser()
-				.then (data) ->
-					if (data.data.professor)
-						deferred.resolve(true)
-					else
-						deferred.reject(false)
-					return
-				.catch ->
+		User.getUser()
+			.then (data) ->
+				if (data.data.professor)
+					deferred.resolve(true)
+				else
 					deferred.reject(false)
+				return
+			.catch ->
+				deferred.reject(false)
 			
-			return deferred.promise
+		return deferred.promise
 ]
