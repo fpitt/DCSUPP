@@ -6,26 +6,23 @@ angular.module('dcsupp').controller 'AttributeSubCategoryCtrl',
     'RequirementCategory', 'StudentAttribute', 
     ($scope, $stateParams, $state, User, RequirementSubcategory, RequirementCategory, StudentAttribute) ->
 
-        #Current SubCategory (Requirement Category)
+        #   SINGLE OBJECT: Selected Category: AJAX populated
         $scope.category = null
-        #Selected SubCategory Parameter list
+        #   SINGLE OBJECT: Selected Category: ng-click populated
         $scope.selectsubCategory = null
-
-        # -- Attribute Arrays ---
-        #List of all Requirement Attribute SubCategories within the Category
+        #   LIST: SubCategories of $scope.category: AJAX populated
         $scope.subcategories = []
-        #Requirement Attributes added by the User
+        #   LIST: Attribute Categories of $scope.category: AJAX populated
         $scope.attribute_subcategory = []
-        #Merged List of Categories with attributes and empty categories [For Display]
+        #   LIST: Merge List of $scope.subcategories and $scope.attribute_subcategory: Angular Construct
         $scope.merged_category = []
-
-        # -- Edit/Update Model --
-        #Edit SubCategory
+        #   MODEL: ng-input model used by users to input describe attributes: ng-input populated
         $scope.edit =
             input_number: null
             input_text: null
             input_boolean: false
             input_date: new Date()
+
         #edit Global Blank
         $scope.editBlank =
             input_number: null
@@ -33,7 +30,7 @@ angular.module('dcsupp').controller 'AttributeSubCategoryCtrl',
             input_boolean: false
             input_date: new Date()
 
-        # --- Update Entry ---
+        # --- Update Entry --- (Scope Function)
         #Send the SubCategory Information to the backend
         $scope.update = ()->
             if ($scope.selectsubCategory.student_attribute)
@@ -101,8 +98,36 @@ angular.module('dcsupp').controller 'AttributeSubCategoryCtrl',
                     return category
             return false
 
-        # --- Merge Attribute + Categories ---
-        # Merge the SubCategories with the student attributes for display purposes
+        #---------------------------------------------
+        # Angular Controller Variable Initialization
+        #---------------------------------------------
+
+        # --- Get SubCategory --- (First Called)
+        $scope.getCategory = ->
+            payload =
+                id: $stateParams.id
+            RequirementCategory.category(payload).success (data) ->
+                $scope.category = data
+                $scope.loadSubcategories($scope.category)
+            return
+
+        # --- Grab SubCategories --- (Second Called)
+        $scope.loadSubcategories = (category)->
+            payload =
+                target_id: category.id
+            RequirementSubcategory.getAllOfCategory(payload).success (data) ->
+                $scope.subcategories = data
+                $scope.userAttributes($scope.category)
+            return
+
+        # --- Grab User Settings --- (Third Called)
+        $scope.userAttributes = (category)->
+            StudentAttribute.getallUserAttribute(category.id).success (data) ->
+                $scope.attribute_subcategory = data
+                $scope.mergeCategories()
+            return
+
+        # --- Merge Attribute and Categories --- (Fourth Called)
         $scope.mergeCategories = ->
             #Emtpy the subcategories array
             if $scope.merged_category
@@ -112,7 +137,6 @@ angular.module('dcsupp').controller 'AttributeSubCategoryCtrl',
                 #Filter out the none Student Attributes
                 if category.student_attribute
                     if $scope.student_attribute_available(category.id)
-                        #The student Attribute is availble
                         append_category = $scope.student_attribute_available(category.id)
                         append_category.sub_category_name = category.sub_category_name
                         append_category.type = "attribute"
@@ -123,33 +147,6 @@ angular.module('dcsupp').controller 'AttributeSubCategoryCtrl',
                         category.edit = false
                         $scope.merged_category.push(category)
 
-        # --- Grab User Settings ---
-        $scope.userAttributes = (category)->
-            StudentAttribute.getallUserAttribute(category.id).success (data) ->
-                $scope.attribute_subcategory = data
-                $scope.mergeCategories()
-            return
-
-        # --- Get SubCategory ---
-        $scope.getCategory = ->
-            payload =
-                id: $stateParams.id
-            RequirementCategory.category(payload).success (data) ->
-                $scope.category = data
-                $scope.loadSubcategories($scope.category)
-            return
-
-        # --- Grab SubCategories ---
-        $scope.loadSubcategories = (category)->
-            payload =
-                target_id: category.id
-            RequirementSubcategory.getAllOfCategory(payload).success (data) ->
-                $scope.subcategories = data
-                $scope.userAttributes($scope.category)
-            return
-
-        # --- Jquery Initialization ---
-        #The program will only initiate a new JSON call after the previous variable
-        #has been retrived. This is to avoid race conditions.
+        # --- Initialization ---
         $scope.getCategory()
     ]
