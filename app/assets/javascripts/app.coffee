@@ -10,7 +10,7 @@
 # ---------------------------------------------------------
 
 angular
-.module('dcsupp', ['ui.bootstrap', 'ui.router', 'templates', 'permission', 'ngTagsInput', 'ngFileUpload'])
+.module('dcsupp', ['ui.bootstrap', 'ui.router', 'templates', 'permission', 'ngTagsInput', 'ngFileUpload', 'ngMessages'])
 .config ['$stateProvider', '$urlRouterProvider', '$locationProvider', 
 	($stateProvider, $urlRouterProvider, $locationProvider) -> 
 		$urlRouterProvider.otherwise ($injector) ->

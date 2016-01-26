@@ -22,6 +22,7 @@
 //= require ng-tags-input
 //= require ng-file-upload-shim
 //= require ng-file-upload
+//= require angular-messages
 //= require async
 //= require app
 //= require_tree .
