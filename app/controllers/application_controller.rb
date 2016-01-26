@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
 
     #   render views/layouts/application when application launches
     def introduction
+        #DEFAULT ROUTE DO NOT DELETE
         render 'layouts/application'
     end
 

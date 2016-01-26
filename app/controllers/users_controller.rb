@@ -1,24 +1,12 @@
 class UsersController < ApplicationController
 
-	def student_page
-
-	end
-
-	def create_project
-
-	end
-
-	def manage_category
-		
-	end
-
     def information
         respond_to do |format|
             format.json{
                 param = params[:payload]
-                @current_user.contact_email = param[:input_email]
-                @current_user.introduction = param[:input_text]
-                @current_user.fullname = param[:input_name]
+                @current_user.contact_email = param[:contact_email]
+                @current_user.introduction = param[:introduction]
+                @current_user.fullname = param[:fullname]
 
                 if @current_user.save
                     render :json => @current_user

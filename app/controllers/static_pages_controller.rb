@@ -1,19 +1,7 @@
 class StaticPagesController < ApplicationController
 
-    before_action :find_user
-
-    def project
-    	
-    end
-
     def introduction
-
+        #DEFAULT ROUTE< DO NOT DELETE
     end
 
-    #Private Methods ----------->
-    private 
-
-        def find_user
-            @current_user = current_user
-        end
 end

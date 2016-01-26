@@ -47,18 +47,17 @@ table class="table table-striped table-condensed table-fixed"
                                     button type="button" class="btn btn-default" ng-click="edit_entry(subcategory)" Add Entry
 
                         /Error Messages
-                        div ng-show="inputForm.input_number.$dirty" ng-messages="inputForm.input_number.$error"
-                            div ng-message="required" Input Required
+                        div ng-messages="inputForm.input_number.$error"
+                            div ng-message="required" Cannot be Blank
                             div ng-message="number" Number Required
                             div ng-message="max" Max Value Exceeded (max: {{selectsubCategory.upper_limit}})
                             div ng-message="min" Min Value Exceeded (min: {{selectsubCategory.lower_limit}})
 
-                        div ng-show="inputForm.input_text.$dirty" ng-messages="inputForm.input_text.$error"
-                            div ng-message="required" Input Required
+                        div ng-messages="inputForm.input_text.$error"
+                            div ng-message="required" ICannot be Blank
                             div ng-message="maxlength" Input Too Long
  
-                        div ng-show="inputForm.input_date.$dirty" ng-messages="inputForm.input_date.$error"
+                        div ng-messages="inputForm.input_date.$error"
                             div ng-message="max" Max Value Exceeded (max: {{selectsubCategory.upper_limit | date:'yyyy-MM-dd' }})
-
                             div ng-message="min" Min Value Exceeded (min: {{selectsubCategory.lower_limit | date:'yyyy-MM-dd'}})
             

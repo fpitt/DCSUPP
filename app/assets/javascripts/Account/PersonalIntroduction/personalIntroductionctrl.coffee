@@ -6,30 +6,26 @@ angular.module('dcsupp').controller 'PersonalIntroductionCtrl', ['$scope',
     'requestService', 'User', '$state', 'StudentAttribute', 
     ($scope, requestService, User, $state, StudentAttribute) ->
 
-        #Edit Mode on
+        #------------------------------------------------------
+        #                   Scope Variables
+        #------------------------------------------------------
+        #   SINGLE OBJECT: Indicates if the Directive is for editing: Angular Construct
         $scope.edit = false
 
         #Edit SubCategory
         $scope.userInformation =
-            input_email: ""
-            input_text: ""
-            input_name: ""
+            contact_email: ""
+            introduction: ""
+            fullname: ""
             input_viewing: false
+
+        #------------------------------------------------------
+        #                   Scope Functions
+        #------------------------------------------------------
 
         # --- Edit ---
         $scope.editEnable = ->
             $scope.edit = true
-
-        # --- Get User ---
-        # Grab the User Attribute
-        $scope.getUser = ->
-            User.getUser().success (data) ->
-                $scope.user = data
-                #Get Previous User Information
-                $scope.userInformation.input_email = $scope.user.contact_email
-                $scope.userInformation.input_text = $scope.user.introduction
-                $scope.userInformation.input_name = $scope.user.fullname
-            return
 
         # --- Update User ---
         # Update the User's Information
@@ -39,6 +35,21 @@ angular.module('dcsupp').controller 'PersonalIntroductionCtrl', ['$scope',
                 $scope.edit = false
             return
 
-        # --- Jquery Initialization --- 
+        #------------------------------------------------------
+        #              Initialization Functions
+        #------------------------------------------------------
+
+        # --- Get User --- (Initiaization Function: 1)
+        # Grab the User Attribute
+        $scope.getUser = ->
+            User.getUser().success (data) ->
+                $scope.user = data
+                #Get Previous User Information
+                $scope.userInformation.contact_email = $scope.user.contact_email
+                $scope.userInformation.introduction = $scope.user.introduction
+                $scope.userInformation.fullname = $scope.user.fullname
+            return
+
+        # --- Initialization ---
         $scope.getUser()
     ]   

@@ -54,7 +54,6 @@ angular.module('dcsupp').controller 'AttributeSubCategoryCtrl',
         $scope.edit_entry = (subcategory) ->
             #If Attribute was previously created, set the default value
             $scope.edit = angular.copy($scope.editBlank)
-            console.log(subcategory)
 
             if (subcategory.type == 'attribute')
                 #Set the selected is an attribute

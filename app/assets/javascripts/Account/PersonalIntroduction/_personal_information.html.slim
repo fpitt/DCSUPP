@@ -14,22 +14,22 @@ div ng-if="edit"
                     b
                         | Name
                 td
-                    input type="text" placeholder="Input Contact Email" class="form-control" required="true" ng-model="userInformation.input_name"
+                    input type="text" placeholder="Input Full Name" class="form-control" required="true" ng-model="userInformation.fullname"
             tr
                 td
                     b
                         | Contact Email
                 td
-                    input type="email" placeholder="Input Contact Email" class="form-control" required="true" ng-model="userInformation.input_email"
+                    input type="email" placeholder="Input Contact Email" class="form-control" required="true" ng-model="userInformation.contact_email"
             tr
                 td
                     b
                         | Personal Introduction
                 td
-                    textarea type="text" placeholder="Introduce About Yourself" class="form-control" required="true" ng-model="userInformation.input_text" rows="5"
+                    textarea type="text" placeholder="Introduce About Yourself" class="form-control" required="true" ng-model="userInformation.introduction" rows="5"
 
         div
-            button type="submit" value="submit" access="professor student" restrict="" class="btn btn-default" Submit
+            button type="submit" value="submit" class="btn btn-default" Submit
 
 /Display Mode
 div ng-if="!(edit)"
@@ -70,4 +70,4 @@ div ng-if="!(edit)"
                     | [No User Introduction]
     form
         div
-            button type="button" access="professor student" restrict="" class="btn btn-default" ng-click="editEnable()" Edit Profile
+            button type="button" class="btn btn-default" ng-click="editEnable()" Edit Profile
