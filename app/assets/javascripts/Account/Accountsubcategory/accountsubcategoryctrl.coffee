@@ -6,6 +6,10 @@ angular.module('dcsupp').controller 'AttributeSubCategoryCtrl',
     'RequirementCategory', 'StudentAttribute', 
     ($scope, $stateParams, $state, User, RequirementSubcategory, RequirementCategory, StudentAttribute) ->
 
+        #------------------------------------------------------
+        #                   Scope Variables
+        #------------------------------------------------------
+
         #   SINGLE OBJECT: Selected Category: AJAX populated
         $scope.category = null
         #   SINGLE OBJECT: Selected Category: ng-click populated
@@ -22,15 +26,18 @@ angular.module('dcsupp').controller 'AttributeSubCategoryCtrl',
             input_text: null
             input_boolean: false
             input_date: new Date()
-
-        #edit Global Blank
+        #   MODEL: ng-input model used to reset $scope.edt: Angular Construct
         $scope.editBlank =
             input_number: null
             input_text: null
             input_boolean: false
             input_date: new Date()
 
-        # --- Update Entry --- (Scope Function)
+        #------------------------------------------------------
+        #                   Scope Functions
+        #------------------------------------------------------
+
+        # --- Update Entry --- 
         #Send the SubCategory Information to the backend
         $scope.update = ()->
             if ($scope.selectsubCategory.student_attribute)
@@ -42,21 +49,12 @@ angular.module('dcsupp').controller 'AttributeSubCategoryCtrl',
             StudentAttribute.createAttribute($scope.edit).success (data)->
                 $scope.unselectEdit()
 
-        # --- Unselect Edit ---
-        $scope.unselectEdit = ->
-            #Change the Category Edit to false
-            for category in $scope.merged_category
-                if (category.edit)
-                    category.edit = false
-            $scope.edit = angular.copy($scope.editBlank)
-            $scope.getCategory()
-            return
-
-        # --- Edit Entry ---
+        # --- Edit Entry --- 
         #Enable Editing for the selected SubCategory
         $scope.edit_entry = (subcategory) ->
             #If Attribute was previously created, set the default value
             $scope.edit = angular.copy($scope.editBlank)
+            console.log(subcategory)
 
             if (subcategory.type == 'attribute')
                 #Set the selected is an attribute
@@ -68,7 +66,7 @@ angular.module('dcsupp').controller 'AttributeSubCategoryCtrl',
                 if ($scope.selectsubCategory.attribute_type == "Number")
                     $scope.edit.input_number = parseInt(subcategory.value)
                 else if ($scope.selectsubCategory.attribute_type == "Date")
-                    $scope.edit.input_date = new Date()
+                    $scope.edit.input_date = new Date(subcategory.value)
                 else if ($scope.selectsubCategory.attribute_type == "Boolean")
                     if (subcategory.value == 't')
                         $scope.edit.input_boolean = true
@@ -90,6 +88,21 @@ angular.module('dcsupp').controller 'AttributeSubCategoryCtrl',
                     category.edit = false
 
             return
+
+        #------------------------------------------------------
+        #                   Helper Functions
+        #------------------------------------------------------
+
+        # --- Unselect Edit ---
+        $scope.unselectEdit = ->
+            #Change the Category Edit to false
+            for category in $scope.merged_category
+                if (category.edit)
+                    category.edit = false
+            $scope.edit = angular.copy($scope.editBlank)
+            $scope.getCategory()
+            return
+
         # --- Check Student Attribute ---
         $scope.student_attribute_available = (attribute_id) ->
             #Iterate Over the Array [The Array is JSON]
@@ -98,11 +111,11 @@ angular.module('dcsupp').controller 'AttributeSubCategoryCtrl',
                     return category
             return false
 
-        #---------------------------------------------
-        # Angular Controller Variable Initialization
-        #---------------------------------------------
+        #------------------------------------------------------
+        #              Initialization Functions
+        #------------------------------------------------------
 
-        # --- Get SubCategory --- (First Called)
+        # --- Get SubCategory --- (Initialization Function: 1)
         $scope.getCategory = ->
             payload =
                 id: $stateParams.id
@@ -111,7 +124,7 @@ angular.module('dcsupp').controller 'AttributeSubCategoryCtrl',
                 $scope.loadSubcategories($scope.category)
             return
 
-        # --- Grab SubCategories --- (Second Called)
+        # --- Grab SubCategories --- (Initialization Function: 2)
         $scope.loadSubcategories = (category)->
             payload =
                 target_id: category.id
@@ -120,19 +133,20 @@ angular.module('dcsupp').controller 'AttributeSubCategoryCtrl',
                 $scope.userAttributes($scope.category)
             return
 
-        # --- Grab User Settings --- (Third Called)
+        # --- Grab User Settings --- (Initialization Function: 3)
         $scope.userAttributes = (category)->
             StudentAttribute.getallUserAttribute(category.id).success (data) ->
                 $scope.attribute_subcategory = data
                 $scope.mergeCategories()
             return
 
-        # --- Merge Attribute and Categories --- (Fourth Called)
+        # --- Merge Attribute and Categories --- (Initialization Function: 4)
         $scope.mergeCategories = ->
             #Emtpy the subcategories array
             if $scope.merged_category
                 $scope.merged_category.length = 0
 
+            category_id = 1
             for category in $scope.subcategories
                 #Filter out the none Student Attributes
                 if category.student_attribute
@@ -141,11 +155,14 @@ angular.module('dcsupp').controller 'AttributeSubCategoryCtrl',
                         append_category.sub_category_name = category.sub_category_name
                         append_category.type = "attribute"
                         append_category.edit = false
+                        append_category.id = category_id
                         $scope.merged_category.push(append_category)
                     else
                         category.type = "category"
                         category.edit = false
+                        category.id = category_id
                         $scope.merged_category.push(category)
+                category_id = category_id + 1
 
         # --- Initialization ---
         $scope.getCategory()
