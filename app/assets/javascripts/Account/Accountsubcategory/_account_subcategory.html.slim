@@ -26,7 +26,7 @@ table class="table table-striped table-condensed table-fixed"
                             input type="number" name="input_number" class="form-control input_width" placeholder="{{subcategory.placeholder}}" ng-model="edit.input_number" required="true" min="{{selectsubCategory.lower_limit}}" max="{{selectsubCategory.upper_limit}}"
 
                         div ng-if="selectsubCategory.attribute_type=='Date'"
-                            input type="date" name="input_date" class="form-control input_width" ng-model="edit.input_date" required="true" min="{{selectsubCategory.lower_limit}}" max="{{selectsubCategory.upper_limit}}"
+                            input type="date" name="input_date" class="form-control input_width" ng-model="edit.input_date" required="true" placeholder="yyyy-MM-dd" min="{{selectsubCategory.lower_limit}}" max="{{selectsubCategory.upper_limit}}"
 
                         div ng-if="selectsubCategory.attribute_type=='Boolean'"
                             input type="checkbox" ng-model="edit.input_boolean"

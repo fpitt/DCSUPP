@@ -58,7 +58,8 @@ class StudentAttributesController < ApplicationController
 
                 case @requirement_subcategory.attribute_type
                 when "Date"
-                    data = input_data[:input_date]
+                    date = DateTime.parse(input_data[:input_date])
+                    data = date.strftime("%F")
                 when "Number"
                     data = input_data[:input_number]
                 when "Boolean"
