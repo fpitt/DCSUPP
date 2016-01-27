@@ -1,5 +1,5 @@
 div 
-    div access="administrator" restrict=""
+    div access="administrator" restrict="" class="hidden_class"
         table class="table table-striped"
             thead
                 /The Header Row displays depending on the selected attribute type
@@ -91,7 +91,7 @@ div
                 th Min
                 th REGEX
                 th Student Attribute
-                th access="administrator" restrict=""Input Control
+                th access="administrator" restrict="" class="hidden_class" Input Control
         tbody
             tr ng-repeat="subcategory in list_subcategories"
                 /Entry 1: SubCategory Type
@@ -178,7 +178,7 @@ div
                         input type="checkbox" placeholder="{{subcategory.student_attribute}}" ng-model="edit_category.student_attribute"
 
                 td
-                    div access="administrator" restrict=""
+                    div access="administrator" restrict="" class="hidden_class"
                         /Update Button
                         div ng-if="edit_category.id==subcategory.id"
                             button type="button" class="btn btn-default" ng-click="update()" Update

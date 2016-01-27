@@ -57,8 +57,6 @@ class UsersController < ApplicationController
         respond_to do |format|
             format.json {
 
-                puts @current_user.name
-
                 if @current_user                    
                     render :json => @current_user
                 else

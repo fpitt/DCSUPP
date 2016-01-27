@@ -7,7 +7,7 @@ div class="row"
                         b Manage Categories
                     hr
 
-                    form name="category" ng-hide="!(user.administrator)"
+                    form name="category" access="administrator" restrict="" class="hidden_class"
                         div id="form_feedback" class="form-group has-feedback"
                             label id="input_label" class="control-label text-blue" for="categoryInput" Requirement Category Title 
                             input type="text" class="form-control" placeholder="Category Name" required="true" ng-model="categoryName" name="name"
