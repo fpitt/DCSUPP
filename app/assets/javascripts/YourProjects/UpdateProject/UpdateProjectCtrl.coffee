@@ -13,9 +13,9 @@
 angular
 .module('dcsupp')
 .controller 'UpdateProjectCtrl',
-    ['$scope', '$stateParams', 'Project', 'ProjectRequirement', 'RequirementSubcategory', 
+    ['$scope', '$stateParams', 'Project', 'ProjectRequirement', 'RequirementSubcategory', 'User', 
     '$state', '$q', 
-    ($scope, $stateParams, Project, ProjectRequirement, RequirementSubcategory, $state, $q) ->
+    ($scope, $stateParams, Project, ProjectRequirement, RequirementSubcategory, User, $state, $q) ->
         # project info
         $scope.project = {}
         # project's student attribute subcategories
@@ -25,12 +25,16 @@ angular
 
         #   true iff something on this page resulted in an error to alert error message
         $scope.error = false
+        $scope.user = null
 
         # save updated project and go to your_projects.project_info state
         $scope.patchProject = ->
             Project.patch($stateParams.id, $scope.project).success((data) ->
                 $scope.error = false
-                $state.go('your_projects.project_info', {id: $stateParams.id})
+                if ($scope.user.professor)
+                    $state.go('your_projects.project_info', {id: $stateParams.id})
+                else
+                    $state.go('current_project.project_info', {id: $stateParams.id})
             ).error((data) ->
                 $scope.error = true
             )
@@ -109,6 +113,13 @@ angular
             return deferred.promise
 
 
-        # run these functions when controller loads
+        # --- Get User --- (Initiaization Function: 1)
+        $scope.getUser = ->
+            User.getUser().success (data) ->
+                $scope.user = data
+            return
+
+        # --- Initialization ---
+        $scope.getUser()
         $scope.getProject()
     ]
