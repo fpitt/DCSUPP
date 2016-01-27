@@ -29,6 +29,13 @@ div class="col-xs-12"
             td
                 span
                     | {{ professor.fullname }}
+        tr access="administrator" restrict="" class="hidden_class"
+            td
+                b
+                    | Faculty UTOR
+            td
+                span
+                    | {{ professor.name }}
         tr
             td
                 b
@@ -93,11 +100,14 @@ div class="col-xs-12" access="administrator" restrict="" class="hidden_class"
             tr
                 th Title
                 th Date
+                th Student
         tbody
             tr ng-repeat="application in applications"
                 td
-                    span
+                    a style="text-decoration:none" ui-sref="your_applications.application_info({id: application.id})"
                         | {{ application.title }}
                 td
                     span
                         | {{ application.updated_at | date:'yyyy-MM-dd' }}
+                td
+                    a style="text-decoration:none" ui-sref="list_student.selected_student({id: application.user_id})" View Student

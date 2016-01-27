@@ -1,19 +1,4 @@
-/ div class="text-center"
-/     alert type="info"
-/         b
-/             | Application status: {{ status }}
-/         br
-/         br
 
-        / div ng-show="status == 'Awaiting student\'s response.'"
-        /     div  access="administrator student" restrict=""
-        /         button class="btn btn-default button-margin-10" ng-really-message="Are you sure? You will not be able to change your decision." ng-really-click="processOffer(true)" Accept
-        /         button class="btn btn-default button-margin-10" ng-really-message="Are you sure? You will not be able to change your decision." ng-really-click="processOffer(false)" Reject
-
-        / div ng-show="status == 'Awaiting professor\'s response.'"
-        /     div access="administrator professor" restrict=""
-        /         button class="btn btn-default button-margin-10" ng-really-message="Are you sure? You will not be able to change your decision." ng-really-click="processOffer(true)" Accept
-        /         button class="btn btn-default button-margin-10" ng-really-message="Are you sure? You will not be able to change your decision." ng-really-click="processOffer(false)" Reject
 
 div
     h3 class="text-blue"
@@ -69,7 +54,7 @@ div
                 | {{ attribute.value | date: "yyyy-MMM-dd" }}
     br
 
-    div
+    div access="student" restrict="" class="hidden_class"
         h4 class="text-blue" id="reference-request-header"
             b References
         button type="button" ui-sref="your_applications.request_reference({id: application.id})" class="btn btn-default btn-sm"
@@ -78,7 +63,7 @@ div
 
     br
 
-    div access="student" restrict=""
+    div access="student" restrict="" class="hidden_class"
         table class="table table-striped"
             tr
                 th 
@@ -100,7 +85,7 @@ div
                                 button ng-show="reference.student_approved == null || reference.student_approved == false" class="btn btn-default btn-sm" ng-click="processReferenceApproval(reference, true)" Use
                                 button ng-show="reference.student_approved == true" class="btn btn-default btn-sm" ng-click="processReferenceApproval(reference, false)" Discard
 
-    div ng-if="user.administrator || user.professor"
+    div access="professor administrator" restrict="" class="hidden_class"
         table class="table table-striped"
             tr
                 th 

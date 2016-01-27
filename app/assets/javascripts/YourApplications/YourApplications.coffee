@@ -8,6 +8,6 @@ angular.module('dcsupp').config(['$stateProvider', ($stateProvider) ->
         controller: 'YourApplicationsCtrl'
         data:
             permissions:
-                only: ['student']
+                only: ['student', 'administrator']
                 redirectTo: 'intro'
 ])

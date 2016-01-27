@@ -6,8 +6,4 @@ angular.module('dcsupp').config(['$stateProvider', ($stateProvider) ->
         url: '/request_reference/:id'
         templateUrl: 'YourApplications/RequestReference/_request_reference.html'
         controller: 'RequestReferenceCtrl'
-        data:
-            permissions:
-                only: ['student']
-                redirectTo: 'intro'
 ])

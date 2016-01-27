@@ -65,6 +65,7 @@ angular
                 id: $scope.project.id
             ProjectApplication.getByProject(payload).success (data) ->
                 $scope.applications = data
+                console.log($scope.applications)
 
         $scope.getByProject = ->
             ProjectRequirement.getByProject($scope.project).success (data) ->

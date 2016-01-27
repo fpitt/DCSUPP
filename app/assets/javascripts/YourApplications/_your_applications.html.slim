@@ -1,6 +1,6 @@
 div class="row"
-    div class="col-md-4"
-        div class="row"
+    div class="col-md-4" 
+        div class="row" access="student" restrict="" class="hidden_class"
             div class="col-xs-10 col-xs-offset-1 background-grey"
                 h3 class="text-blue"
                     b Your Applications
@@ -19,6 +19,7 @@ div class="row"
                             li
                                 a ui-sref="your_applications.application_info({id: application.id})"
                                     | {{ application.title }}
+
     div class="col-md-8"
         div class="panel-content"
             ui-view
