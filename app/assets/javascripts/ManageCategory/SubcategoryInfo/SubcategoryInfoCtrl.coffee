@@ -63,7 +63,6 @@ angular
         $scope.update = ()->
             category.requirementCategory_id = parseInt($stateParams.id)
             checkValid = $scope.min_max_valid()
-            console.log(checkValid)
             
             if (checkValid)
                 RequirementSubcategory.update($scope.edit_category).success (data) ->

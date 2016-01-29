@@ -32,7 +32,6 @@ angular
             method: "POST"
         return requestService.service(sendParams)
 
-
     #   update a Project object
     #   id: Integer (id of project)
     #   payload format:

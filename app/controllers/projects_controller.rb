@@ -138,24 +138,6 @@ class ProjectsController < ApplicationController
                         :additional_requirement => param[:additional_requirement]
                         }, :without_protection => true)
 
-                     #   add project requirements to project
-
-                     #   add student attribute project requirements to project
-                    if param[:requirements]
-                        for subcategory in param[:requirements]
-                            @requirement = ProjectRequirement.where(:requirement_subcategory => RequirementSubcategory.find_by_id(subcategory[:id]), :project => @project).first_or_create
-                            @requirement.save
-                        end
-                    end
-
-                    #   add non student attribute project requirements to project
-                    if param[:details]
-                        for subcategory in param[:details]
-                            @requirement = ProjectRequirement.where(:requirement_subcategory => RequirementSubcategory.find_by_id(subcategory[:id]), :project => @project).first_or_create
-                            @requirement.value = subcategory[:value]
-                            @requirement.save
-                            end
-                        end
 
                     if @project.save
                         render :json => @user
