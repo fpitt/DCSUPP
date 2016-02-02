@@ -90,10 +90,9 @@ div class="col-xs-12" ng-if="requirements.length != 0"
 div class="col-xs-12"
     div ng-if="acceptingApplications"
         button access="student" restrict="" class="btn btn-default" ui-sref="current_project.apply_project({id: project.id})" Apply Now
-    div class="text-center"
-        div ng-if="!acceptingApplications"
-            b class="text-blue"
-                span The application period is over.
+    div ng-if="!acceptingApplications"
+        b class="text-blue"
+            span The application period is over.
 
 div class="col-xs-12" access="administrator" restrict="" class="hidden_class"
     hr
