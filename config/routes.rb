@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
     root to: 'application#introduction'
 
-    resources :users, only: [:create, :update, :destroy, :show]
+    resources :users, only: [:create, :show]
     controller :users do
         post "/current_user" => :get_current_user
         post "/students" => :students
@@ -13,7 +13,7 @@ Rails.application.routes.draw do
         post "/user_information" => :information
     end
 
-    resources :requirement_categories, only: [:create, :update, :destroy]
+    resources :requirement_categories, only: [:create]
     controller :requirement_categories do 
         post '/flip_direction' => :flip_direction
         post '/get_categories' => :getcategories
@@ -22,14 +22,14 @@ Rails.application.routes.draw do
         post '/get_category' => :getcategory
     end
 
-    resources :student_attributes, only: [:create, :destroy, :show, :update]
+    resources :student_attributes, only: [:create]
     controller :student_attributes do
         post "/get_all_attributes" => :user_attributes
         post '/get_attribute_by_user_and_subcategory' => :get_attribute_by_user_and_subcategory
         post '/get_student_attributes_of_student' => :get_student_attributes_of_student
     end
 
-    resources :projects, only: [:create, :update, :destroy, :show]
+    resources :projects, only: [:create, :update, :show]
     controller :projects do 
         post '/flip_project_direction' => :grab_project
         post "/get_projects_of_user" => :get_projects_of_user
@@ -42,7 +42,7 @@ Rails.application.routes.draw do
         post "/project_page_number" => :pages
     end
 
-    resources :project_applications, only: [:create, :update, :destroy, :show]
+    resources :project_applications, only: [:create, :update, :show]
     controller :project_applications do 
         post "/get_applications_of_user" => :get_applications_of_user
         post "/get_applications_of_project" => :get_applications_of_project
@@ -57,7 +57,7 @@ Rails.application.routes.draw do
         post "/get_requirements_of_project" => :get_requirements_of_project
     end
 
-    resources :requirement_subcategories, only: [:create, :update, :destroy, :show]
+    resources :requirement_subcategories, only: [:create, :update, :show]
     controller :requirement_subcategories do
         post "/get_all_subcategories" => :show_all
         post "/student_attribute_requirement_subcategories_with_keyword" => :student_attribute_requirement_subcategories_with_keyword

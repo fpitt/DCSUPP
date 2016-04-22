@@ -39,11 +39,6 @@ class StudentAttributesController < ApplicationController
     end
 
 
-    #Update/ Create Student Attribute
-    def update
-
-    end
-
     def create
 
         respond_to do |format|

@@ -13,31 +13,21 @@
 angular
 .module('dcsupp')
 .controller 'UpdateProjectCtrl',
-    ['$scope', '$stateParams', 'Project', 'ProjectRequirement', 'RequirementSubcategory', 'User', 
-    '$state', '$q', 
-    ($scope, $stateParams, Project, ProjectRequirement, RequirementSubcategory, User, $state, $q) ->
-        # project info
-        $scope.project = {}
-        # project's student attribute subcategories
-        $scope.project.requirements = []
-        # project's non student attribute subcategories
-        $scope.project.details = []
+    ['$scope', '$stateParams', 'Project', 'User', '$state', '$q', 
+    ($scope, $stateParams, Project, User, $state, $q) ->
 
-        #   true iff something on this page resulted in an error to alert error message
-        $scope.error = false
+        #   project info
+        $scope.project = {}
+        #   User Object
         $scope.user = null
 
         # save updated project and go to your_projects.project_info state
         $scope.patchProject = ->
-            Project.patch($stateParams.id, $scope.project).success((data) ->
-                $scope.error = false
-                if ($scope.user.professor)
-                    $state.go('your_projects.project_info', {id: $stateParams.id})
-                else
+            Project.patch($stateParams.id, $scope.project).success (data) ->
+                if ($scope.user.administrator)
                     $state.go('current_project.project_info', {id: $stateParams.id})
-            ).error((data) ->
-                $scope.error = true
-            )
+                else
+                    $state.go('your_projects.project_info', {id: $stateParams.id})
 
 
         # get current project information
@@ -48,70 +38,7 @@ angular
                 dead = $scope.project.deadline_date
                 $scope.project.deadline_date = new Date(parseInt(dead.substring(0, 4)), parseInt(dead.substring(5, 7)) - 1,
                         parseInt(dead.substring(8, 10))) #convert string repr of date to Javascript date
-
-                # project's student attribute subcategories
-                $scope.project.requirements = []
-                # project's non student attribute subcategories
-                $scope.project.details = []
-
-                #   get project requirements
-                $scope.loadStudentAttributeSubcategories()
-                $scope.loadNonStudentAttributeSubcategories()
             )
-
-        # get all student attribute subcategories and store in $scope.project.requirements
-        $scope.loadStudentAttributeSubcategories = ()->
-            RequirementSubcategory.getStudentAttributeSubcategoriesOfProject(project: $stateParams.id).success((data) ->
-                for item in data
-                    $scope.project.requirements.push({name: item.sub_category_name, id: item.id})
-            )
-
-        # get all non-student attribute subcategories and store in $scope.project.requirements
-        $scope.loadNonStudentAttributeSubcategories = ()->
-            RequirementSubcategory.getNonStudentAttributeSubcategoriesOfProject(project: $stateParams.id).success((data) ->
-                for item in data
-                    if item.attribute_type == 'Date'
-                        item.value = new Date(parseInt(dead.substring(0, 4)), parseInt(dead.substring(5, 7)) - 1,
-                            parseInt(dead.substring(8, 10))) #convert string repr of date to Javascript date
-                    $scope.project.details.push({name: item.sub_category_name, id: item.id, attribute_type: item.attribute_type, value: item.value})
-            )
-
-        # get all subcategories matching search term "query"
-        $scope.loadTags = (query) ->
-            deferred = $q.defer();
-            RequirementSubcategory.studentAttributeRequirementSubcategoriesWithKeyword(keyword: query)
-            .success((data) ->
-                deferred.resolve(data.map((val) ->
-                    name: val.sub_category_name
-                    id: val.id
-                )))
-            return deferred.promise
-
-        #	add additional detail to project
-        $scope.addDetail = ->
-        #	disallow duplicate detail items in list
-            if $scope.detailSelected && !$scope.containedInDetails($scope.detailSelected)
-                $scope.project.details.push($scope.detailSelected)
-
-        #	check if given detail is already in list
-        $scope.containedInDetails = (detail) ->
-            for detailItem in $scope.project.details
-                if detailItem.name == detail.name
-                    return true
-            return false
-
-        #	load non student attribute subcategories with name that contains viewValue for typeahead
-        $scope.loadDetails = (viewValue) ->
-            deferred = $q.defer();
-            RequirementSubcategory.nonStudentAttributeRequirementSubcategoriesWithKeyword(keyword: viewValue)
-            .success((data) ->
-                deferred.resolve(data.map((val) ->
-                    name: val.sub_category_name
-                    id: val.id
-                    attribute_type: val.attribute_type
-                )))
-            return deferred.promise
-
 
         # --- Get User --- (Initiaization Function: 1)
         $scope.getUser = ->

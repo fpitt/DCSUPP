@@ -67,22 +67,6 @@ class UsersController < ApplicationController
     end
 
 
-    def update
-        respond_to do |format|
-            format.json {
-                param = params[:payload]
-                @user = User.find_by_id(param[:id])
-                @user.name = param[:name]
-                @user.email = param[:email]
-                if @user.save
-                    render :json => @user
-                else
-                    render :nothing => true, :status => 200, :content_type => 'text/html'
-                end
-            }
-        end
-    end
-
     #   return a page of 10 professors (used in List Professor page)
     def grab_professors
         professor_size = User.where(:professor => true).length
