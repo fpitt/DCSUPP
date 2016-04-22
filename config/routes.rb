@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
     devise_for :users
 
-    root to: "application#introduction"
-    
+    root to: 'application#introduction'
+
     resources :users, only: [:create, :update, :destroy, :show]
     controller :users do
         post "/current_user" => :get_current_user
