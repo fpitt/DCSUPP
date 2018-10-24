@@ -1,5 +1,7 @@
 # DCS Undergraduate Project Portal
 
+**This project has been discontinued and has NOT been under development for over one year.**
+
 This is the source code for the DCS Undergraduate Project Portal (_DCSUPP_). 
 DCSUPP is a project-student matching platform developed by students in the 
 Department of Computer Science at the University of Toronto.
